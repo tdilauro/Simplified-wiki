@@ -16,3 +16,4 @@ Readium SDK is an open source project developing a productized, high-performance
 
 A separate sub-project intends to in parallel develop an interoperable implementation of a lightweight content protection technology (DRM) that can be implemented into the modular framework of Readium SDK. This DRM will be available under a separate license, terms and conditions TBD.
 * [Readium SDK](http://readium.github.io/sdk-api-doc/)
+* [Readium Documents on Google Docs] (https://drive.google.com/a/nypl.org/?hl=en&pli=1#folders/0BzaNaBNAB6FjbU90WlhGR2lDOXM)
