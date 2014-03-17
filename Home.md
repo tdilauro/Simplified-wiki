@@ -9,7 +9,6 @@ Evernote integration is intended to provide the features and functionality neede
 
 ### Goodreads
 Let users who are member of Goodreads connect to their Goodreads accounts, and access the books in their shelves, their ratings, their reviews, and their friends – the social reading graph.
-https://www.goodreads.com/api
 [Good Reads API](https://www.goodreads.com/api)
 
 ## Repositories from Readium Foundation
