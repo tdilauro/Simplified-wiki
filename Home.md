@@ -1,8 +1,20 @@
 Welcome to the iOS-Reader wiki!
 
+## Content Repositories
+### Overdrive
+OverDrive is creatied some APIs that allow third-party applications to connect to and interact with the OverDrive digital media database. The following APIs are currently available to approved users. An API Key is Required
+* [OverDrive APIs] (https://developer.overdrive.com/apis)
+
+### 3M Cloud Library
+3M's Cloud Library is accessible through license.  We will be executing a license as part of the development to begin integration work
+
+### HaithiTrust
+Haithitrust Data API is a programatic acces layer to their catalogue repository.
+[Haithi DTrust Data API](http://www.hathitrust.org/data_api)
+
 
 ## 3rd Party Services
-### Ever Note
+### Evernote
 Evernote integration is intended to provide the features and functionality needed for users who use ebook content as part of their self guided leaning or scholarly research.
 * [Evernote iOS SDK reference](http://dev.evernote.com/doc/reference/ios/)
 * [Evernote API site](http://dev.evernote.com/doc/)
