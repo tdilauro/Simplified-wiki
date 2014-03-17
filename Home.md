@@ -12,4 +12,7 @@ Let users who are member of Goodreads connect to their Goodreads accounts, and a
 * [Good Reads API](https://www.goodreads.com/api)
 
 ## Repositories from Readium Foundation
+Readium SDK is an open source project developing a productized, high-performance, cross-platform rendering engine for EPUB 3 content, optimized for use in native applications (mobile/tablet and secondarily desktop systems). Simplistic test applications for Android, iOS, OS/X and Windows are part of the SDK, along with test frameworks. Readium SDK is extensible in various areas including DRM support. Readium SDK will be dual-licensed under both GPL and a commercial-friendly (non-copyleft) license. Note that the default license currently in the open source code on github is GPL.
+
+A separate sub-project intends to in parallel develop an interoperable implementation of a lightweight content protection technology (DRM) that can be implemented into the modular framework of Readium SDK. This DRM will be available under a separate license, terms and conditions TBD.
 * [Readium SDK](http://readium.github.io/sdk-api-doc/)
