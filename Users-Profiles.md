@@ -1,16 +1,20 @@
-# Research and Referecne
+## Research and Reference
 
-# Media Consumer
+## Leisure and Entertainment
 
-## Commuter
+### Commuter
 
-## Bibliophile
+### Bibliophile
 
-# Mother/Care Giver
+## Mother/Care Giver
 
-# Millennial
+## Millennial?
 
-# Creator
+## Teen/Young Adult
+
+### Male
+
+### Female
 
 
 
