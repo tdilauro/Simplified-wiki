@@ -1,6 +1,5 @@
-# APIs, SDKS etc..
+## APIs, SDKS etc..
 
-## Resources
 ### Content
 #### Overdrive
 OverDrive is creatied some APIs that allow third-party applications to connect to and interact with the OverDrive digital media database. The following APIs are currently available to approved users. An API Key is Required
