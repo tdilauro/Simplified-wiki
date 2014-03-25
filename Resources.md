@@ -1,7 +1,7 @@
 ## APIs, SDKS etc..
 
 #### Authentication
-[OAuth](https://github.com/AFNetworking/AFOAuth2Client) MIT License
+[OAuth2.0 Client for iOS](https://github.com/AFNetworking/AFOAuth2Client) MIT License
 
 ### Content
 #### Overdrive
