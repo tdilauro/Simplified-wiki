@@ -1,15 +1,18 @@
 ## APIs, SDKS etc..
 
+#### Authentication
+[OAuth](https://github.com/AFNetworking/AFOAuth2Client) MIT License
+
 ### Content
 #### Overdrive
-OverDrive is creatied some APIs that allow third-party applications to connect to and interact with the OverDrive digital media database. The following APIs are currently available to approved users. An API Key is Required
+OverDrive is created some APIs that allow third-party applications to connect to and interact with the OverDrive digital media database. The following APIs are currently available to approved users. An API Key is Required
 * [OverDrive APIs] (https://developer.overdrive.com/apis)
 
 #### 3M Cloud Library
 3M's Cloud Library is accessible through license.  We will be executing a license as part of the development to begin integration work
 
 #### HaithiTrust
-Haithitrust Data API is a programatic acces layer to their catalogue repository.
+Haithitrust Data API is a programatic access layer to their catalogue repository.
 * [Haithi DTrust Data API](http://www.hathitrust.org/data_api)
 
 ### Annotation
