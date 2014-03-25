@@ -1,6 +1,6 @@
 ## Research and Reference
-#### Persona
-Reference Persona Haithi Trust
+
+**Reference** _Persona Haithi Trust_
 
 **Use Cases**
 * uses catalog search
