@@ -1,12 +1,10 @@
 ## Research and Reference
 #### Persona
 Reference Persona Haithi Trust
-****Use Cases
+******Use Cases**
 * uses catalog search
 * wants to download books
 * is an public library user
-
-**** Uses:
 
 ## Leisure and Entertainment
 ### Commuter
