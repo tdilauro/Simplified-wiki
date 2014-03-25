@@ -1,11 +1,12 @@
 ## Research and Reference
 
-**Reference** _Persona Haithi Trust_
-
 **Use Cases**
-* uses catalog search
+* uses catalog search or category browse
 * wants to download books
-* is an public library user
+* is a public library user
+* reads the relevant chapters
+* Bookmarks catalogue items (books) for borrowing
+* wants to capture notes about methods in notes, or Evernote on her mobile phone / Tablet when on  a job site
 
 ## Leisure and Entertainment
 ### Commuter
