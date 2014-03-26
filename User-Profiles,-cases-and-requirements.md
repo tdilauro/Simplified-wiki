@@ -22,7 +22,7 @@
 **Basic View Navigation**
 * Top Bar(TB) Menue for Reading View
 * **TB Options icon - menu items**
-* Display Options *
+* Display Options*
 
 
 * Book Mark page icon
