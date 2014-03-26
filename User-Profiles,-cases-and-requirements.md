@@ -1,4 +1,7 @@
-### Basic eReader use cases
+### Basic eReader Requirements
+
+***
+
 #### Platform requirements
 * iPad
 * iPhone
