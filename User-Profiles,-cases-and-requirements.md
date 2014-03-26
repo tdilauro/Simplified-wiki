@@ -19,19 +19,27 @@
 * Advance page turn after end of paginated content is scrolled
 * Turn page back with left wipe or double tap to advance page forward
 
+***
+
 **Basic View Navigation**
-* Top Bar(TB) Menue for Reading View
-* **TB Options icon - menu items**
-* Display Options*
+* Top Bar (TB) Menue for Reading View
+* **TB:Options icon - access drop down menu for Options Menue (OM) with following items:**
+* OM:Display Options icon - access control to increase decrease font, adjust brightness, change front from Sans Serif (Calibre) to Serif (Times Roman), Day Reading (White background, Black Text) or Night Reading (Black Background, White Text)
+* OM:Table of Contents icon - on tap opens table of contents control
+* OM:Book Marks icon - on tap opens book mark control for given work 
+* OM:Share icon - on tap opens native share feature of iOS
+* Add to shelf icon - opens my shelf control (see shelf control requirements)
+* **TB:Book Mark Page icon -  
+* **TB:Share icon** - on tap opens native share feature of iOS
+* **TB:Search Content icon** - on tap opens content search control
+* TB: Back arrow** - on tap navigates back from selected sub menu, control or view, or current content location to book Jacket or BookShelf List or Home screen
 
+**Optional Botom Bar Control**
+* Page Number display/counter
+* Content Guage (%percent read)
+* Book Icon - on tap Access Table of Contents 
 
-* Book Mark page icon
-* Share icon
-* Search Content icon
-* Menu Items
-
-
-
+***
 
 ## Research and Reference
 
@@ -57,7 +65,6 @@
 ### Male
 
 ### Female
-
 
 
 
