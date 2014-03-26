@@ -6,7 +6,7 @@
 * Launch Readium EPUB Engine
 
 #### eReader
-** Basic Requirements
+** Basic Requirements **
 * Open EPUB2
 * Open EPUB3
 * Open EPUB and Display Book Jacket
