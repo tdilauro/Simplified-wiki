@@ -31,11 +31,11 @@
 * _OM:Table of Contents icon_ - on tap opens table of contents control
 * _OM:Book Marks icon_ - on tap opens book mark control for given work 
 * _OM:Share icon_ - on tap opens native share feature of iOS
-* Add to shelf icon - opens my shelf control (see shelf control requirements)
+* _Add to shelf icon_ - opens my shelf control (see shelf control requirements)
 * **TB:Book Mark Page icon** -  
 * **TB:Share icon** - on tap opens native share feature of iOS
 * **TB:Search Content icon** - on tap opens content search control
-* TB: Back arrow** - on tap navigates back from selected sub menu, control or view, or current content location to book Jacket or BookShelf List or Home screen
+* **TB: Back arrow** - on tap navigates back from selected sub menu, control or view, or current content location to book Jacket or BookShelf List or Home screen
 
 **Optional Botom Bar Control**
 * Page Number display/counter
