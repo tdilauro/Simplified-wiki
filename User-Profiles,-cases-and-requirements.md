@@ -7,6 +7,7 @@
 
 #### eReader
 **Basic Requirements**
+
 * Open EPUB2
 * Open EPUB3
 * Open EPUB and Display Book Jacket
@@ -17,10 +18,12 @@
 * Allow flowable content to be scrolled via single touch swipe
 * Advance page turn after end of paginated content is scrolled
 * Turn page back with left wipe or double tap to advance page forward
+
 **Basic View Navigation**
 * Top Bar(TB) Menue for Reading View
 * **TB Options icon - menu items**
-* Display Options
+* Display Options *
+
 
 * Book Mark page icon
 * Share icon
