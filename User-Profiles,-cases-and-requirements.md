@@ -1,14 +1,14 @@
-### Basic eReader Requirements
+### Basic eReader iOS Application Requirements
 
 ***
 
-#### Platform requirements
+#### eReader Platform requirements
 * iPad
 * iPhone
 * iOS 6 and 7
 * Launch Readium EPUB Engine
 
-#### eReader
+#### eReader app requirements
 **Basic Requirements**
 
 * Open EPUB2
