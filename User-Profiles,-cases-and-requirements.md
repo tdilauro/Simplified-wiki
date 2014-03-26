@@ -1,0 +1,60 @@
+### Basic eReader use cases
+#### Platform requirements
+* iPad
+* iPhone
+* iOS 6 and 7
+* Launch Readium EPUB Engine
+
+#### eReader
+** Basic Requirements
+* Open EPUB2
+* Open EPUB3
+* Open EPUB and Display Book Jacket
+* Open EPUB and Display Chapter 1
+* Automatically Size Font to 12pt Font Calibri iPhone
+* Automatically Size Font to 14pt Font Calibri iPad
+* Automatically set view to single column view
+* Allow flowable content to be scrolled via single touch swipe
+* Advance page turn after end of paginated content is scrolled
+* Turn page back with left wipe or double tap to advance page forward
+** Basic View Navigation
+* Top Bar Menue for Reading View
+* ** Display Options icon - menu items : Set Font Size
+
+* Book Mark page icon
+* Share icon
+* Search Content icon
+* Menu Items
+
+
+
+
+## Research and Reference
+
+**Use Cases**
+* uses catalog search or category browse
+* wants to download books
+* is a public library user
+* reads the relevant chapters
+* Bookmarks catalogue items (books) for borrowing
+* wants to capture notes about methods in notes, or Evernote on her mobile phone / tablet when on  a job site
+
+## Leisure and Entertainment
+### Commuter
+
+### Bibliophile
+
+## Mother/Care Giver
+
+## Millennial?
+
+## Teen/Young Adult
+
+### Male
+
+### Female
+
+
+
+
+
