@@ -25,6 +25,7 @@
 ***
 
 **Basic View Navigation**
+
 * Top Bar (TB) Menue for Reading View
 * **TB:Options icon** - access drop down menu for Options Menue (OM) with following items:
 * OM:Display Options icon - access control to increase decrease font, adjust brightness, change front from Sans Serif (Calibre) to Serif (Times Roman), Day Reading (White background, Black Text) or Night Reading (Black Background, White Text)
@@ -44,11 +45,11 @@
 
 ***
 
-## Research and Reference
+## Research and Reference User (R&RU)
 
 **Use Cases**
-* uses catalog search or category browse
-* wants to download books
+* As a Researcher and Reference Users I want to conduct a catalog search or category browse
+* As a Researcher wants to download books
 * is a public library user
 * reads the relevant chapters
 * Bookmarks catalogue items (books) for borrowing
