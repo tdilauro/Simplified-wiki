@@ -26,7 +26,7 @@
 
 **Basic View Navigation**
 * Top Bar (TB) Menue for Reading View
-* **TB:Options icon - access drop down menu for Options Menue (OM) with following items:**
+* **TB:Options icon** - access drop down menu for Options Menue (OM) with following items:
 * OM:Display Options icon - access control to increase decrease font, adjust brightness, change front from Sans Serif (Calibre) to Serif (Times Roman), Day Reading (White background, Black Text) or Night Reading (Black Background, White Text)
 * OM:Table of Contents icon - on tap opens table of contents control
 * OM:Book Marks icon - on tap opens book mark control for given work 
