@@ -27,8 +27,8 @@
 **Basic View Navigation**
 
 * Top Bar (TB) Menue for Reading View
-* **TB:Options icon** - access drop down menu for Options Menue (OM) with following items:
-* OM:Display Options icon - access control to increase decrease font, adjust brightness, change front from Sans Serif (Calibre) to Serif (Times Roman), Day Reading (White background, Black Text) or Night Reading (Black Background, White Text)
+* **TB:Options icon** - access drop down menu for _Options Menue (OM)_ with following items:
+* _OM:Display Options icon_ - access control to increase decrease font, adjust brightness, change front from Sans Serif (Calibre) to Serif (Times Roman), Day Reading (White background, Black Text) or Night Reading (Black Background, White Text)
 * _OM:Table of Contents icon_ - on tap opens table of contents control
 * _OM:Book Marks icon_ - on tap opens book mark control for given work 
 * _OM:Share icon_ - on tap opens native share feature of iOS
