@@ -50,15 +50,30 @@ _I want to_
 
 1. Connect to my 3rd party reading list (Google Bookshelves, Good Reads, etc..)
 	
-_So I can_ 
-* See my previous reads	
+_So I can_ **See my previous reads**	
 
 _Confirmation Criteria_
 
 * The App can connect to my Google Books Reading List
 * Use my Good Reads books shelf API
 
-2. record my reads
+2. Connect to my 3rd party reading list (Google Bookshelves, Good Reads, etc..)
+	
+_So I can_ **Record my reads**
+
+_Confirmation Criteria_
+
+* The App can transact on my Google Books Reading List
+* The App can transact on my Good Reads books shelf API
+
+3. Create Wish List
+
+_So I can_ **So I can get notifications when the book is available**
+
+_Confirmation Criteria_
+
+*The App can use my Google Books Reading List to identify availability in the catalogue
+*The App can use my Good Reads books shelf API to identify availability in the catalogue
 
 ## Research and Reference User (R&RU)
 
@@ -84,7 +99,5 @@ _Confirmation Criteria_
 ### Male
 
 ### Female
-
-
 
 
