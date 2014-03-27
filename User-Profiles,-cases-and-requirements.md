@@ -25,7 +25,6 @@
 ***
 
 **View Navigation requirements**
-[https://drive.google.com/file/d/0B5uAYbtOQBxGMFU5d1hkcG9ITko2QWFrcUxwVFZEN1VWNG13/edit?usp=sharing](Test)
 
 * Top Bar (TB) Menue for Reading View
 * **TB:Options icon** - access drop down menu for _Options Menue (OM)_ with following items:
