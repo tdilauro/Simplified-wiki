@@ -38,7 +38,7 @@
 * **TB:Search Content icon** - on tap opens content search control
 * **TB: Back arrow** - on tap navigates back from selected sub menu, control or view, or current content location to book Jacket or BookShelf List or Home screen
 
-**Optional Botom Bar Menu (BM), Controls **
+**Optional Botom Bar Menu (BM), Controls**
 * Control:Page Number display/counter
 * Control:Content Guage (%percent read)
 * BM:Book Icon - on tap Access Table of Contents 
