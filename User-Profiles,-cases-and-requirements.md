@@ -46,14 +46,19 @@
 ***
 ### General Use Cases ###
 _As a_ **New User/Existing User** 
-_I want to_ 
-Connect to my 3rd party reading list (Google Bookshelves, Good Reads, etc..)	
+_I want to_
+
+1. Connect to my 3rd party reading list (Google Bookshelves, Good Reads, etc..)
+	
 _So I can_ 
-*See my previous reads	
-*The App can connect to my Google Books Reading List
-*Use my Good Reads books shelf API
+* See my previous reads	
 
+_Confirmation Criteria_
 
+* The App can connect to my Google Books Reading List
+* Use my Good Reads books shelf API
+
+2. record my reads
 
 ## Research and Reference User (R&RU)
 
