@@ -55,7 +55,7 @@
 * Bookmarks catalogue items (books) for borrowing
 * wants to capture notes about methods in notes, or Evernote on her mobile phone / tablet when on  a job site
 
-## Leisure and Entertainment
+## Leisure and Entertainment (L&EU)
 ### Commuter
 
 ### Bibliophile
