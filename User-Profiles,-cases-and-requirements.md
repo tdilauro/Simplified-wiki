@@ -13,8 +13,8 @@
 
 * Open EPUB2
 * Open EPUB3
-* Open EPUB and Display Book Jacket
-* Open EPUB and Display Chapter 1
+* Open EPUB and Display Book Jacket- on tap got to Chapter One
+* Open EPUB and Display Content - Chapter 1
 * Automatically Size Font to 12pt Font Calibri iPhone
 * Automatically Size Font to 14pt Font Calibri iPad
 * Automatically set view to single column view
