@@ -27,6 +27,8 @@
 **View Navigation requirements**
 ![Top Bar Menu](https://drive.google.com/a/nypl.org/file/d/0B5uAYbtOQBxGSWRaU3RJMEMxV01BQzhxM2RWRkt2a0NINHlR/edit?usp=sharing)
 
+![OTher](https://drive.google.com/file/d/0B5uAYbtOQBxGMFU5d1hkcG9ITko2QWFrcUxwVFZEN1VWNG13/edit?usp=sharing)
+
 * Top Bar (TB) Menue for Reading View
 * **TB:Options icon** - access drop down menu for _Options Menue (OM)_ with following items:
 * _OM:Display Options icon_ - access control to increase decrease font, adjust brightness, change front from Sans Serif (Calibre) to Serif (Times Roman), Day Reading (White background, Black Text) or Night Reading (Black Background, White Text)
