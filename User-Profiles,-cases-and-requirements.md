@@ -45,7 +45,7 @@
 
 ***
 ## General Use Cases ##
-* _As a _New User/Existing User _I want to_ Connect to my 3rd party reading list (Google Bookshelves, Good Reads, etc..)	So I can see my previous reads	
+* _As a _ New User/Existing User _I want to_ Connect to my 3rd party reading list (Google Bookshelves, Good Reads, etc..)	So I can see my previous reads	
 1. The App can connect to my Google Books Reading List
 2. the App can use my Good Reads books shelf API
 
