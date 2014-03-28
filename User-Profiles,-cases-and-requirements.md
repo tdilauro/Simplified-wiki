@@ -14,13 +14,36 @@
 * Open EPUB2
 * Open EPUB3
 * Open EPUB and Display Book Jacket- on tap got to Chapter One
+        
+        See tableView:didSelectRowAtIndexPath: in NavigationElementController. Can be accomplished by adding a tap recognizer on top, and telling it which file to load on that tap.
+
 * Open EPUB and Display Content - Chapter 1
+
+        See tableView:didSelectRowAtIndexPath: in NavigationElementController, it pushes to a specific RDNavigationElement when you tap a cell, to a certain file based on what was specified in the datasource.
+
 * Automatically Size Font to 12pt Font Calibri iPhone
+
+        Scaling is done on a percentage basis. In launcher app, see EpubSettings - fontScale property.
+
 * Automatically Size Font to 14pt Font Calibri iPad
+
+        Scaling is done on a percentage basis. In launcher app, see EpubSettings - fontScale property.
+
 * Automatically set view to single column view
+
+        Not all books seem to support two column views. In launcher app, see EpubSettings - isSyntheticSpread property, where YES means two columns, and NO means one column.
+
 * Allow flowable content to be scrolled via single touch swipe
+
+        There doesn't seem to be built in support for this, but adding it should be relatively trivial. **JF** 
+
 * Advance page turn after end of paginated content is scrolled
-* Turn page back with left wipe or double tap to advance page forward
+
+        I don't see any support for this built in via the current architecture.
+
+* Turn page back with left swipe or double tap to advance page forward
+        
+        There doesn't seem to be built in support for this, but adding it should be relatively trivial.
 
 ***
 
