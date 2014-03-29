@@ -21,15 +21,15 @@
 
         See tableView:didSelectRowAtIndexPath: in NavigationElementController, it pushes to a specific RDNavigationElement when you tap a cell, to a certain file based on what was specified in the datasource.
 
-* Automatically Size Font to 12pt Font Calibri iPhone
+* Automatically Size Font percentage equivalent to 12pt Font Calibri iPhone
 
         Scaling is done on a percentage basis. In launcher app, see EpubSettings - fontScale property.
 
-* Automatically Size Font to 14pt Font Calibri iPad
+* Automatically Size Font to equivalent percentage to 14pt Font Calibri iPad
 
         Scaling is done on a percentage basis. In launcher app, see EpubSettings - fontScale property.
 
-* Automatically set view to single column view
+* Automatically set view to single page view on iPhone and iPad.  
 
         Not all books seem to support two column views. In launcher app, see EpubSettings - isSyntheticSpread property, where YES means two columns, and NO means one column.
 
@@ -37,7 +37,7 @@
 
         There doesn't seem to be built in support for this, but adding it should be relatively trivial. **JF** 
 
-* Advance page turn after end of paginated content is scrolled
+* Advance page turn after end of paginated content is scrolled (ergo - infinite scroll) 
 
         I don't see any support for this built in via the current architecture.
 
