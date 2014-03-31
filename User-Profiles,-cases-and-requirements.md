@@ -71,7 +71,7 @@
 _As a_ **New User/Existing User** 
 _I want to:_
 
-1. Connect to my 3rd party reading list (Google Bookshelves, Good Reads, etc..)
+**Connect to my 3rd party reading list (Google Bookshelves, Good Reads, etc..)**
 	
 _So I can_ **See my previous reads**	
 
@@ -80,7 +80,7 @@ _Confirmation Criteria_
 * The App can connect to my Google Books Reading List
 * Use my Good Reads books shelf API
 
-2. Connect to my 3rd party reading list (Google Bookshelves, Good Reads, etc..)
+**Connect to my 3rd party reading list (Google Bookshelves, Good Reads, etc..)**
 	
 _So I can_ **Record my reads**
 
@@ -89,7 +89,7 @@ _Confirmation Criteria_
 * The App can transact on my Google Books Reading List
 * The App can transact on my Good Reads books shelf API
 
-3. Create Wish List
+**Create Wish List**
 
 _So I can_ **get notifications when the book is available**
 
@@ -98,7 +98,7 @@ _Confirmation Criteria_
 * The App can use my Google Books Reading List to identify availability in the catalogue
 * The App can use my Good Reads books shelf API to identify availability in the catalogue
 
-4. See primarily titles that are available
+**See primarily titles that are available**
 
 _So I can_ **browse through titles not available to read now**
 
@@ -108,7 +108,7 @@ _Confirmation Criteria_
 * I get Titles in the format my device and app supports
 * I get only titles that have an available copy (OD, 3M, Haithi, Guttenberg, other..)
 
-5.  Get a physical copy if the eBook isn't available
+**Get a physical copy if the eBook isn't available**
 
 _So I can_ **read the book when format is not an issue with me**
 
@@ -117,7 +117,7 @@ _Confirmation Criteria_
 * I can place a hold on the physical format if the digital format is not available
 * The physical title copy is available for pick-up
 
-6. Choose to see titles available to hold or get at a later date
+**Choose to see titles available to hold or get at a later date**
 
 _So I can_ **read the book for free**
 
