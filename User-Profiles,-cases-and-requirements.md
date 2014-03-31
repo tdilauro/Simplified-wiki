@@ -98,6 +98,21 @@ _Confirmation Criteria_
 *The App can use my Google Books Reading List to identify availability in the catalogue
 *The App can use my Good Reads books shelf API to identify availability in the catalogue
 
+4. See primarily titles that are available
+
+_So I don't have to browse through titles not available to read now_
+
+_Confirmation Criteria_
+*I get Titles I can download now 
+*I get Titles in the format my device and app supports
+*I get only titles that have an available copy (OD, 3M, Haithi, Guttenberg, other..)
+
+5.  Get a physical copy if the eBook isn't available
+
+_So I don't have to wait to read the book if format is not an issue_
+*I can place a hold on the physical format if the digital format is not available
+*The physical title copy is available for pick-up
+
 ## Research and Reference User (R&RU)
 
 **Use Cases**
