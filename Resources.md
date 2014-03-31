@@ -5,6 +5,8 @@
 
 ###Catalogue Data APIs###
 #### BiblioCommons####
+BiblioCommons is an innovative social discovery layer for public libraries, that combines powerful search and account management capabilities with a revolutionary social sharing and discovery platform
+
 * [BiblioCommons] (http://developer.bibliocommons.com/blog/read/Welcome_to_the_BiblioCommons_API)
 
 ### Content
