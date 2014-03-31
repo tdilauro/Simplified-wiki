@@ -91,7 +91,7 @@ _Confirmation Criteria_
 
 3. Create Wish List
 
-_So I can_ **So I can get notifications when the book is available**
+_So I can_ **get notifications when the book is available**
 
 _Confirmation Criteria_
 
@@ -100,7 +100,7 @@ _Confirmation Criteria_
 
 4. See primarily titles that are available
 
-_So I don't have to browse through titles not available to read now_
+_So I can_ **browse through titles not available to read now**
 
 _Confirmation Criteria_
 
@@ -110,7 +110,7 @@ _Confirmation Criteria_
 
 5.  Get a physical copy if the eBook isn't available
 
-_So I don't have to wait to read the book if format is not an issue_
+_So I can_ **read the book when format is not an issue with me**
 
 _Confirmation Criteria_
 
@@ -119,7 +119,7 @@ _Confirmation Criteria_
 
 6. Choose to see titles available to hold or get at a later date
 
-_So I can read the book for free_
+_So I can_ **read the book for free**
 
 _Confirmation Criteria_
 
