@@ -69,7 +69,7 @@
 ***
 ### General Use Cases ###
 _As a_ **New User/Existing User** 
-_I want to_
+_I want to:_
 
 1. Connect to my 3rd party reading list (Google Bookshelves, Good Reads, etc..)
 	
@@ -104,7 +104,7 @@ _So I can_ **browse through titles not available to read now**
 
 _Confirmation Criteria_
 
-* I get Titles I can download now 
+* I get Titles I can download now
 * I get Titles in the format my device and app supports
 * I get only titles that have an available copy (OD, 3M, Haithi, Guttenberg, other..)
 
