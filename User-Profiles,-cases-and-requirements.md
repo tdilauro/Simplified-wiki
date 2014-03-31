@@ -95,8 +95,8 @@ _So I can_ **get notifications when the book is available**
 
 _Confirmation Criteria_
 
-*The App can use my Google Books Reading List to identify availability in the catalogue
-*The App can use my Good Reads books shelf API to identify availability in the catalogue
+* The App can use my Google Books Reading List to identify availability in the catalogue
+* The App can use my Good Reads books shelf API to identify availability in the catalogue
 
 4. See primarily titles that are available
 
