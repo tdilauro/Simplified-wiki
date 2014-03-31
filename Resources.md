@@ -4,7 +4,7 @@
 [OAuth2.0 Client for iOS](https://github.com/AFNetworking/AFOAuth2Client) MIT License
 
 ###Catalogue Data APIs###
-#### BiblioComoons####
+#### BiblioCommons####
 * [BiblioCommons] (http://developer.bibliocommons.com/blog/read/Welcome_to_the_BiblioCommons_API)
 
 ### Content
