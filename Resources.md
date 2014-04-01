@@ -26,9 +26,8 @@ About 45,000 free texts.
 #### Internet Archive / Open Library ####
 
 #### Overdrive
-OverDrive is created some APIs that allow third-party applications to connect to and interact with the OverDrive digital media database. The following APIs are currently available to approved users. An API Key is Required
-* [OverDrive APIs] (https://developer.overdrive.com/apis)
 
+* [OverDrive APIs] (https://developer.overdrive.com/apis)
 * [API for checking availability](https://developer.overdrive.com/apis/library-availability)
 * [API for checking out a book and "locking in" a format (e.g. "ebook-epub-adobe") to get a download URL.](https://developer.overdrive.com/apis/checkouts)
 * [API for downloading a book in the locked-in format.](http://developer.overdrive.com/apis/download)
@@ -40,7 +39,15 @@ OverDrive is created some APIs that allow third-party applications to connect to
 
 #### HaithiTrust
 Haithitrust Data API is a programatic access layer to their catalogue repository.
-* [Haithi DTrust Data API](http://www.hathitrust.org/data_api)
+* [Haithi DTrust Data API](http://www.hathitrust.org/data_api) Documentation in PDF format.
+* Full volumes are available for the Espressnet project only, and only in Espresso Book Machine format. (Search term: "Volume-type resources".) Everyone else is restricted to page images.
+** _We need access to full documents in ePub or PDF format._ 
+* _How much access can we get? Do we have access to images of in-copyright books?_
+* _How do we get Hathi Trust books into Bibliocommons so that they show up in our catalogue?_
+* Google owns the OCR data and Hathi has a copy but cannot make it available to us.
+** _Is this true? Can we get access to the data by making a deal with Google?_
+** _Can we do the OCR ourselves on a proactive or on-demand basis?_
+** _Even if we can't have direct access to the OCR, can we do full-text search?_
 
 ### Annotation
 #### Evernote
