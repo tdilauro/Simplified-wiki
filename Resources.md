@@ -13,6 +13,12 @@ BiblioCommons is an innovative social discovery layer for public libraries, that
 
 #### Gutenberg####
 
+About 45,000 free texts.
+
+* Do we already have a mirror set up? If not, let's set one up.
+* How many books do we check out through Overdrive that we could replace with Gutenberg?
+* Are there changes we could make to the default epubs that would improve user experience? Doing some manual work on the top 100 books would be worth it.
+
 #### Internet Archive / Open Library ####
 
 #### Overdrive
