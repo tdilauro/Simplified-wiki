@@ -41,13 +41,13 @@ About 45,000 free texts.
 Haithitrust Data API is a programatic access layer to their catalogue repository.
 * [Haithi DTrust Data API](http://www.hathitrust.org/data_api) Documentation in PDF format.
 * Full volumes are available for the Espressnet project only, and only in Espresso Book Machine format. (Search term: "Volume-type resources".) Everyone else is restricted to page images.
-* * _We need access to full documents in ePub or PDF format._ 
+ - _We need access to full documents in ePub or PDF format._ 
 * _How much access can we get? Do we have access to images of in-copyright books?_
 * _How do we get Hathi Trust books into Bibliocommons so that they show up in our catalogue?_
 * Google owns the OCR data and Hathi has a copy but cannot make it available to us.
-* * _Is this true? Can we get access to the data by making a deal with Google?_
-* * _Can we do the OCR ourselves on a proactive or on-demand basis?_
-* * _Even if we can't have direct access to the OCR, can we do full-text search?_
+ - _Is this true? Can we get access to the data by making a deal with Google?_
+ - _Can we do the OCR ourselves on a proactive or on-demand basis?_
+ - _Even if we can't have direct access to the OCR, can we do full-text search?_
 
 ### Annotation
 #### Evernote
