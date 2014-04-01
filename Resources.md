@@ -22,9 +22,11 @@ About 45,000 free public domain texts.
 We plan to set up a mirror of the Gutenberg ePub documents. This gives us a text source over which we have complete technical and legal control.
 
 * _Set up the mirror._
- _ Provision a machine and set up a mirror.
- - Retrieve the MARC records and insert an "Electronic resource" pointer in each to point to our mirror.
- - Both the MARC and the mirror should (eventually) be updated nightly.
+ - Provision a machine and copy over the ePubs.
+ - Retrieve the [MARC records](http://gutenberg.readingroo.ms/cache/generated/feeds/) (not sure where those came from) and insert an "Electronic resource" pointer in each to point to our mirror.
+ - Inject the MARC records into our catalogue.
+ - Both the MARC records and the mirror should eventually be updated nightly.
+ - Come up with some way of identifying when a Gutenberg text is the same as an Overdrive text, and prefer the Gutenberg text.
 * _How many books do we check out through Overdrive that we could replace with Gutenberg?_
 * _Are there changes we could make to the default epubs that would improve user experience?_ Doing some manual work on the top 100 books would be worth it.
 
