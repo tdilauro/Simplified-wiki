@@ -29,11 +29,11 @@ About 45,000 free texts.
 OverDrive is created some APIs that allow third-party applications to connect to and interact with the OverDrive digital media database. The following APIs are currently available to approved users. An API Key is Required
 * [OverDrive APIs] (https://developer.overdrive.com/apis)
 
-*API for checking availability
-*[API for checking out a book and "locking in" a format (e.g. "ebook-epub-adobe") to get a download URL.](https://developer.overdrive.com/apis/checkouts)
+* [API for checking availability](https://developer.overdrive.com/apis/library-availability)
+* [API for checking out a book and "locking in" a format (e.g. "ebook-epub-adobe") to get a download URL.](https://developer.overdrive.com/apis/checkouts)
 * [API for downloading a book in the locked-in format.](http://developer.overdrive.com/apis/download)
-*_What format is the downloaded file? ODM? ASCM? We need to be able to open it in our reader._
-*No API for returning a book early. ("If a format has been locked in, then users need to use software like OverDrive Media Console or Adobe Digital Editions to complete the return process.") _We need to be able to do this from our reader._
+* _What format is the downloaded file? ODM? ASCM? We need to be able to open it in our reader._
+* No API for returning a book early. ("If a format has been locked in, then users need to use software like OverDrive Media Console or Adobe Digital Editions to complete the return process.") _We need to be able to do this from our reader._
 
 #### 3M Cloud Library
 3M's Cloud Library is accessible through license.  We will be executing a license as part of the development to begin integration work
