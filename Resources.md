@@ -23,7 +23,7 @@ are they using to create a NYPL credential?
 
 The [http://techdocs.iii.com/patronws_patron_data.shtml](Innovative Millenium API) (user:pass nypl_s:chapter) includes a "Patron Update Web Service" which can [http://techdocs.iii.com/patronws_api_operations.shtml#createPatron](create a new patron).
 
-### Patron authentication
+#### Patron authentication
 
 The [Innovative Patron
 API](http://vendordocs.iii.com/patron/patronapi.shtml) (user:pass
@@ -82,6 +82,24 @@ Haithitrust Data API is a programatic access layer to their catalogue repository
  - _Is this true? Can we get access to the data by making a deal with Google?_
  - _Can we do the OCR ourselves on a proactive or on-demand basis?_
  - _Even if we can't have direct access to the OCR, can we do full-text search?_
+
+### DRM
+
+Currently the only licit way to unlock a document protected by Adobe
+DRM is to use Adobe's SDK ($$$). Adobe is trying to contribute a
+binary module to Readium that will allow unlocking documents from
+Readium, but both the format (binary) and the license (restrictive)
+are unacceptable to the Readium Foundation. James expects this will
+eventually be resolved, but it may lock us into using Readium when we
+don't want to.
+
+In May 2014, the first implementation (? final standard?) of [Lightweight Content
+Protection](http://idpf.org/epub-content-protection) will be
+released. (By who?) This will be significantly easier to use and less
+onerous than Adobe DRM. James is trying to get us early access to LCP
+so we can write our own implementation. James will also be negotiating
+with Overdrive and 3M to get them to serve us books protected with
+LCP.
 
 ### Client libraries
 
