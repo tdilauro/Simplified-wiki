@@ -93,6 +93,8 @@ are unacceptable to the Readium Foundation. James expects this will
 eventually be resolved, but it may lock us into using Readium when we
 don't want to.
 
+* [Readium DRM interface documentation](https://github.com/NYPL/iOS-Reader/blob/master/Documents/Readium%20DRM%20interface.pdf?raw=true)
+
 In May 2014, the first implementation (? final standard?) of [Lightweight Content
 Protection](http://idpf.org/epub-content-protection) will be
 released. (By who?) This will be significantly easier to use and less
@@ -100,6 +102,8 @@ onerous than Adobe DRM. James is trying to get us early access to LCP
 so we can write our own implementation. James will also be negotiating
 with Overdrive and 3M to get them to serve us books protected with
 LCP.
+
+* [Draft of LCP standard](https://github.com/NYPL/iOS-Reader/blob/master/Documents/Lightweight%20Content%20Protection%20(LCP)%20Standard%201.0.pdf?raw=true)
 
 ### Client libraries
 
