@@ -3,6 +3,10 @@
 #### Authentication
 [OAuth2.0 Client for iOS](https://github.com/AFNetworking/AFOAuth2Client) MIT License
 
+[Patron API](http://vendordocs.iii.com/patron/patronapi.shtml)
+[Millenium API](http://techdocs.iii.com/millennium-api.shtml)
+user/pass:nypl_s/chapter
+
 ###Catalogue Data APIs###
 #### BiblioCommons####
 BiblioCommons is an innovative social discovery layer for public libraries, that combines powerful search and account management capabilities with a social sharing and discovery platform
@@ -15,7 +19,7 @@ BiblioCommons is an innovative social discovery layer for public libraries, that
 
 About 45,000 free texts.
 
-* Do we already have a mirror set up? If not, let's set one up.
+* Let's set up our own mirror of the ePub documents.
 * How many books do we check out through Overdrive that we could replace with Gutenberg?
 * Are there changes we could make to the default epubs that would improve user experience? Doing some manual work on the top 100 books would be worth it.
 
