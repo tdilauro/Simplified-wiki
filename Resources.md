@@ -105,6 +105,15 @@ LCP.
 
 * [Draft of LCP standard](https://github.com/NYPL/iOS-Reader/blob/master/Documents/Lightweight%20Content%20Protection%20(LCP)%20Standard%201.0.pdf?raw=true)
 
+### Lifecycle
+
+Each content provider has its own workflow for checking out books. Because of this, we have a very limited view into which books have been checked out and what books are currently available. The reader will send all lifecycle events through an API as yet to be defined, which will dispatch to the appropriate content provider.
+
+If nothing else, this will let us keep track of what books are being checked out. Many advanced lifecycle features depend on this--for instance, queuing requires that we know when a given book will be available.
+The simplest way to track the lifecycle of a loan may be to integrate with NYPL's existing loan infrastructure.
+
+Maintaining a detailed knowledge of what books have been checked out will also require changing the website to send loan lifecycle events to an NYPL server before/after sending the user to the third-party website where the book actually gets checked out. This will be very unreliable.
+
 ### Client libraries
 
 [OAuth2.0 Client for iOS](https://github.com/AFNetworking/AFOAuth2Client) MIT License
