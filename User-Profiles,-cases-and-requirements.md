@@ -35,7 +35,7 @@
 
 * Allow flowable content to be scrolled via single touch swipe
 
-        There doesn't seem to be built in support for this, but adding it should be relatively trivial. **JF** 
+        There doesn't seem to be built in support for this, but adding it should be relatively trivial.  
 
 * Advance page turn after end of paginated content is scrolled (ergo - infinite scroll) 
 
