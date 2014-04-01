@@ -49,7 +49,7 @@ We plan to set up a mirror of the Gutenberg ePub documents. This gives us a text
 
 * _Set up the mirror._
  - Provision a machine and copy over the ePubs.
- - Retrieve the [MARC records](http://gutenberg.readingroo.ms/cache/generated/feeds/) (not sure where those came from) and insert an "Electronic resource" pointer in each to point to our mirror.
+ - Retrieve the [MARC records](http://gutenberg.readingroo.ms/cache/generated/feeds/) and insert an "Electronic resource" pointer in each. There are a number of sources for MARC records ([this one](http://www.gutenberg.org/feeds/catalog.marc.bz2) is from gutenberg.org but looks identical to the one at readingroo.ms), and [a third-party script](http://ebooks.adelaide.edu.au/meta/pg/) for converting Gutenberg RDF documents to MARC.
  - Inject the MARC records into our catalogue.
  - Both the MARC records and the mirror should eventually be updated nightly.
  - Come up with some way of identifying when a Gutenberg text is the same as an Overdrive text, and prefer the Gutenberg text.
