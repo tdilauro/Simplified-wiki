@@ -19,15 +19,21 @@ BiblioCommons is an innovative social discovery layer for public libraries, that
 
 About 45,000 free texts.
 
-* Let's set up our own mirror of the ePub documents.
-* How many books do we check out through Overdrive that we could replace with Gutenberg?
-* Are there changes we could make to the default epubs that would improve user experience? Doing some manual work on the top 100 books would be worth it.
+* _Let's set up our own mirror of the ePub documents._
+* _How many books do we check out through Overdrive that we could replace with Gutenberg?_
+* _Are there changes we could make to the default epubs that would improve user experience?_ Doing some manual work on the top 100 books would be worth it.
 
 #### Internet Archive / Open Library ####
 
 #### Overdrive
 OverDrive is created some APIs that allow third-party applications to connect to and interact with the OverDrive digital media database. The following APIs are currently available to approved users. An API Key is Required
 * [OverDrive APIs] (https://developer.overdrive.com/apis)
+
+*API for checking availability
+*[API for checking out a book and "locking in" a format (e.g. "ebook-epub-adobe") to get a download URL.](https://developer.overdrive.com/apis/checkouts)
+* [API for downloading a book in the locked-in format.](http://developer.overdrive.com/apis/download)
+*_What format is the downloaded file? ODM? ASCM? We need to be able to open it in our reader._
+*No API for returning a book early. ("If a format has been locked in, then users need to use software like OverDrive Media Console or Adobe Digital Editions to complete the return process.") _We need to be able to do this from our reader._
 
 #### 3M Cloud Library
 3M's Cloud Library is accessible through license.  We will be executing a license as part of the development to begin integration work
