@@ -1,11 +1,37 @@
 ## APIs, SDKS etc..
 
-#### Authentication
-[OAuth2.0 Client for iOS](https://github.com/AFNetworking/AFOAuth2Client) MIT License
+### Patron APIs
 
-[Patron API](http://vendordocs.iii.com/patron/patronapi.shtml)
-[Millenium API](http://techdocs.iii.com/millennium-api.shtml)
-user/pass:nypl_s/chapter
+#### New NYPL patron
+
+The current procedure for getting a NYPL card can be started online
+(you get a temporary card ID that expires at the end of the day) but
+completion requires going to a library, showing ID, and picking up a
+physical card with a different ID on it. The PIN is not needed to
+exchange a temporary card for a permanent card. I don't know whether
+the temporary card ID is destroyed when the physical card is scanned.
+
+We will be allowing anyone who boots up the app from a NYC GeoIP to
+create a persistent card by providing their date of birth and
+address. This requires an API for creating new, persistent NYPL
+credentials.
+
+The Brooklyn Public Library created a program called [My Library
+NYC](http://mylibrarynyc.org/about), in which you can sign up online
+for a unified library card that works with all NYC libraries. What API
+are they using to create a NYPL credential?
+
+The [http://techdocs.iii.com/patronws_patron_data.shtml](Innovative Millenium API) (user:pass nypl_s:chapter) includes a "Patron Update Web Service" which can [http://techdocs.iii.com/patronws_api_operations.shtml#createPatron](create a new patron).
+
+### Patron authentication
+
+The [Innovative Patron
+API](http://vendordocs.iii.com/patron/patronapi.shtml) (user:pass
+nypl_s:chapter) can validate a patron based on identifier and PIN.
+
+The [http://techdocs.iii.com/patronws_patron_data.shtml](Innovative
+Millenium API) (user:pass nypl_s:chapter) probably also does
+validation, but I'm not sure how.
 
 ###Catalogue Data APIs###
 #### BiblioCommons####
@@ -57,6 +83,17 @@ Haithitrust Data API is a programatic access layer to their catalogue repository
  - _Can we do the OCR ourselves on a proactive or on-demand basis?_
  - _Even if we can't have direct access to the OCR, can we do full-text search?_
 
+### Client libraries
+
+[OAuth2.0 Client for iOS](https://github.com/AFNetworking/AFOAuth2Client) MIT License
+
+#### Repositories from Readium Foundation
+Readium SDK is an open source project developing a productized, high-performance, cross-platform rendering engine for EPUB 3 content, optimized for use in native applications (mobile/tablet and secondarily desktop systems). Simplistic test applications for Android, iOS, OS/X and Windows are part of the SDK, along with test frameworks. Readium SDK is extensible in various areas including DRM support. Readium SDK will be dual-licensed under both GPL and a commercial-friendly (non-copyleft) license. Note that the default license currently in the open source code on github is GPL.
+
+A separate sub-project intends to in parallel develop an interoperable implementation of a lightweight content protection technology (DRM) that can be implemented into the modular framework of Readium SDK. This DRM will be available under a separate license, terms and conditions TBD.
+* [Readium SDK](http://readium.github.io/sdk-api-doc/)
+* [Readium Documents on Google Docs] (https://drive.google.com/a/nypl.org/?hl=en&pli=1#folders/0BzaNaBNAB6FjbU90WlhGR2lDOXM)
+
 ### Annotation
 #### Evernote
 Evernote integration is intended to provide the features and functionality needed for users who use ebook content as part of their self guided leaning or scholarly research.
@@ -74,11 +111,3 @@ Let users who are member of Goodreads connect to their Goodreads accounts, and a
 
 #### LibraryThing
 [LibraryThing API](https://www.librarything.com/services/)
-
-### Reading
-#### Repositories from Readium Foundation
-Readium SDK is an open source project developing a productized, high-performance, cross-platform rendering engine for EPUB 3 content, optimized for use in native applications (mobile/tablet and secondarily desktop systems). Simplistic test applications for Android, iOS, OS/X and Windows are part of the SDK, along with test frameworks. Readium SDK is extensible in various areas including DRM support. Readium SDK will be dual-licensed under both GPL and a commercial-friendly (non-copyleft) license. Note that the default license currently in the open source code on github is GPL.
-
-A separate sub-project intends to in parallel develop an interoperable implementation of a lightweight content protection technology (DRM) that can be implemented into the modular framework of Readium SDK. This DRM will be available under a separate license, terms and conditions TBD.
-* [Readium SDK](http://readium.github.io/sdk-api-doc/)
-* [Readium Documents on Google Docs] (https://drive.google.com/a/nypl.org/?hl=en&pli=1#folders/0BzaNaBNAB6FjbU90WlhGR2lDOXM)
