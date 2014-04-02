@@ -82,7 +82,6 @@ Haithitrust Data API is a programmatic access layer to their catalogue repositor
 O'Reilly is a large technical publisher that is a pioneer in e-publishing, hostile towards DRM, interested in experiments, and with which Leonard has a good professional relationship. If we want to support publishers as ebook providers, O'Reilly would be a good place to start.
 
 * [O'Reilly Media books on Overdrive](http://ebooks.nypl.org/2C44B93D-BE81-4C84-9D70-33ACCAD960E7/10/50/en/SearchResults.htm?SearchID=14666093s&SortBy=Relevancy)
-* [O'Reilly Media's OPDS catalog](http://opds.oreilly.com/opds/)
 
 ### DRM
 
@@ -118,13 +117,41 @@ Because of this, Dave believes that there is no point in integrating BiblioCommo
 
 * [BiblioCommons] (http://developer.bibliocommons.com/blog/read/Welcome_to_the_BiblioCommons_API)
 
+### OPDS
+
+[OPDS](http://opds-spec.org/specs/opds-catalog-1-1-20110627/) is an Atom profile for describing catalogues of electronic publications.
+
+* Uses Atom's vocabulary for describing a book's metadata. Encourages the use of Dublin Core vocabulary except where Atom uses a different term for the same thing.
+* Uses Atom feeds to describe lists of publications, which can be filtered or ordered according to facets. The concept of a facet is defined, but no particular facets are defined.
+* Defines vocabulary for describing feeds of "new", "recommended", or "popular" items, as well as a user's "shelf" of acquired items.
+* Uses OpenSearch as a search protocol.
+* Defines a vocabulary for basic transitions (notably "borrow"), but does not define a protocol for carrying out those transitions.
+
+I think ODPS is a good place to start for a catalogue implementation. It's well supported and it reinvents as little as possible--mostly bookstore/library vocabulary.
+
+We might not want to serve Atom documents between the backend and the mobile client, since Atom is an XML format, but it shouldn't be hard to serve a (Siren)[https://github.com/kevinswiber/siren] version of an ODPS document. 
+
+A number of other sites and publishers publish ODPS feeds of open access materials, which we can scrape and automatically include in our catalogue. For example, the simplest way to integrate our Gutenberg mirror into a larger catalogue might be by publishing an ODPS feed for the Gutenberg mirror and crawling it daily.
+
+Some ODPS feeds of open access materials:
+
+* (Project Gutenberg)[http://m.gutenberg.org/ebooks.opds/] (In theory we could integrate directly with this without running our own PG mirror, not that we should do that.)
+* (Revues)[http://bookserver.revues.org/?sort=OA] (journals, en français)
+* (Internet Archive)[http://bookserver.archive.org/catalog/]
+* (Ebooks Graruits)[http://www.ebooksgratuits.com/opds/index.php]  (en français)
+
+Some ODPS feeds of books for sale:
+
+* (Pragmatic Programmers)[http://pragprog.com/catalog.opds]
+* (O'Reilly Media)[http://opds.oreilly.com/opds/]
+
 ### Lifecycle
 
 Each content provider has its own workflow for checking out books. We have pretty much no visibility into this workflow, because all the important events happen on Overdrive or 3M's site. The result is we don't know what is currently in our inventory and what is checked out. 
 
 Many features depend on this. For instance, queue management requires that we be able to understand the velocity of a license--how long it typically stays checked out.
 
-* _We need near-real-time lifecycle updates from Overdrive and 3M._ We need this even once the app is launched, because people will continue to check out ebooks through BiblioCommons, creating lifecycle events that we didn't cause.
+* _We need near-real-time lifecycle updates from Overdrive and 3M._ We need this even once the app is launched, because people will cohttp://m.gutenberg.org/ebooks.opds/ntinue to check out ebooks through BiblioCommons, creating lifecycle events that we didn't cause.
 * The reader will trigger lifecycle events by calling a backend API which will dispatch to the content provider's API.
 
 ### Client libraries
