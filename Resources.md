@@ -130,10 +130,10 @@ Atom profile for describing catalogues of electronic publications.
 * Uses OpenSearch as a search protocol.
 * Defines a vocabulary for basic transitions (notably "borrow"), but does not define a protocol for carrying out those transitions.
 
-According to (a comparison chart on Wikipedia)[http://en.wikipedia.org/wiki/OPDS#Comparison_of_OPDS_clients], a number of e-reading applications function as OPDS clients. Several bookstores (see below) offer OPDS feeds that can be presented to users of those applications, who can buy books from inside the application.
+As seen on [a comparison chart on Wikipedia](http://en.wikipedia.org/wiki/OPDS#Comparison_of_OPDS_clients), a number of e-reading applications function as OPDS clients. Several bookstores (see below) offer OPDS feeds that can be presented to users of those applications, who can buy books from inside the application.
 
 I think OPDS is a good place to start for a catalogue implementation. It's widely supported and it reinvents as little as possible--mostly bookstore/library vocabulary.
-We might not want to serve Atom documents between the backend and the mobile client, since Atom is an XML format, but it shouldn't be hard to serve a (Siren)[https://github.com/kevinswiber/siren] version of an OPDS document. 
+We might not want to serve Atom documents between the backend and the mobile client, since Atom is an XML format, but it shouldn't be hard to serve a [Siren](https://github.com/kevinswiber/siren) version of an OPDS document. 
 
 A number of other sites and publishers publish OPDS feeds of open access materials. We can use these to import items into our catalogue, or to create virtual catalogues of disparate materials.
 
