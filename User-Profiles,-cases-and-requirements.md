@@ -127,6 +127,34 @@ _Confirmation Criteria_
 * The title shows up in a holds list
 * The title is on hold in the library ILS and OPAC
 
+**Search available titles**
+
+_As a User_ **Looking for Something to Read**
+
+_So I can_  **find the title I am looking for and read it now**
+
+**Browse Recommended Titles by Librarians**
+
+_As a User_ **Looking for Something to Read**
+
+_So I can_  **find a title from a trusted source and read it now**
+
+**Browse Recommended Titles that are recommended by Friends**
+
+_As a User_ **Looking for Something to Read**
+
+_So I can_  **find a title from a trusted source and read it now**
+
+**Browse Recommended Titles of genera I am interested**
+
+_As a User_ **Looking for Something to Read**
+
+_So I can_  **find a title from a trusted source for a genera I like and read it now**
+
+
+
+
+
 ## Research and Reference User (R&RU)
 
 **Use Cases**
