@@ -92,25 +92,27 @@ O'Reilly is a large technical publisher that is a pioneer in e-publishing, hosti
 
 ### DRM
 
-Currently the only licit way to unlock a document protected by Adobe
+#### Adobe
+
+The current standard for DRM. The only licit way to unlock a document protected by Adobe
 DRM is to use Adobe's SDK ($$$). Adobe is trying to contribute a
 binary module to Readium that will allow unlocking documents from
 Readium, but both the format (binary) and the license (restrictive)
-are unacceptable to the Readium Foundation. James expects this will
-eventually be resolved, but it may lock us into using Readium when we
-don't want to.
+are unacceptable to the Readium Foundation.
 
+* James expects this will eventually be resolved by Adobe releasing a binary module under a nonrestrictive license. _How is this going_?
 * [Readium DRM interface documentation](https://github.com/NYPL/iOS-Reader/blob/master/Documents/Readium%20DRM%20interface.pdf?raw=true)
 
-In May 2014, the first implementation (? final standard?) of [Lightweight Content
-Protection](http://idpf.org/epub-content-protection) will be
-released. (By who?) This will be significantly easier to use and less
-onerous than Adobe DRM. James is trying to get us early access to LCP
-so we can write our own implementation. James will also be negotiating
-with Overdrive and 3M to get them to serve us books protected with
-LCP.
+#### LCP
 
-* [Draft of LCP standard](https://github.com/NYPL/iOS-Reader/blob/master/Documents/Lightweight%20Content%20Protection%20(LCP)%20Standard%201.0.pdf?raw=true)
+[Lightweight Content
+Protection](http://idpf.org/epub-content-protection) is an open standard for DRM. We have [a draft of the spec](https://github.com/NYPL/iOS-Reader/blob/master/Documents/Lightweight%20Content%20Protection%20(LCP)%20Standard%201.0.pdf?raw=true) and it looks pretty easy to implement a client. The final standard should be released around May 2014.
+
+*James is negotiating
+with Overdrive and 3M to get them to serve us books protected with
+LCP. _How is this going?_
+
+### Catalog
 
 ### Lifecycle
 
