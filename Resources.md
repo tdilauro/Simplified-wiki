@@ -108,7 +108,7 @@ BiblioCommons also does not support lifecycle events such as checkout. The only 
 
 Because of this, we believe there is no point in integrating BiblioCommons with the app. Since BiblioCommons is how people will be checking out ebooks when they're not using the app, it may make sense to integrate any new book sources (such as Gutenberg) with BiblioCommons.
 
-The BiblioCommons API is heavily focused on publicly available catalog data. It doesn't have any special knowledge of ebooks. The status of a given copy of a book (e.g. "checked out") is a user-specific field that we would have to specify ourselves.
+The BiblioCommons API is read-only and heavily focused on publicly available catalog data. It doesn't have any special knowledge of ebooks. The status of a given copy of a book (e.g. "checked out") is a user-specific field that we would have to specify ourselves. There is an interesting feature called "lists", giving us access to lists made by users of the web site, but again, it's all read-only.
 
 * [BiblioCommons] (http://developer.bibliocommons.com/blog/read/Welcome_to_the_BiblioCommons_API)
 * [API documentation](http://developer.bibliocommons.com/docs)
