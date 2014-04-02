@@ -76,6 +76,13 @@ Haithitrust Data API is a programmatic access layer to their catalogue repositor
  - _Can we do the OCR ourselves on a proactive or on-demand basis?_ David says this would be a big crowdsourcing project, but one that would be worth doing.
  - _Even if we can't have direct access to the OCR, can we do full-text search through a Hathi API as part of discovery?_
 
+#### Other sources
+
+Not worth the integration effort given that they don't host any popular books we can't get elsewhere, but let's keep them in mind.
+
+* [Project Gutenberg Self-Publishing](http://self.gutenberg.org/)
+* [WikiSource](http://en.wikisource.org/)
+
 ### DRM
 
 #### Adobe
