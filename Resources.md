@@ -120,7 +120,7 @@ Because of this, Dave believes that there is no point in integrating BiblioCommo
 ### OPDS
 
 [OPDS](http://opds-spec.org/specs/opds-catalog-1-1-20110627/) is an
-Atom profile for describing catalogues of electronic publications.
+Atom profile for describing catalogues of electronic publications. 
 
 * Uses Atom's vocabulary for describing a book's metadata. Encourages the use of Dublin Core vocabulary except where Atom uses a different term for the same thing.
 * Uses Atom feeds to describe lists of publications, which can be filtered or ordered according to facets. The concept of a facet is defined, but no particular facets are defined.
@@ -128,15 +128,19 @@ Atom profile for describing catalogues of electronic publications.
 * Uses OpenSearch as a search protocol.
 * Defines a vocabulary for basic transitions (notably "borrow"), but does not define a protocol for carrying out those transitions.
 
-I think OPDS is a good place to start for a catalogue implementation. It's widely supported and it reinvents as little as possible--mostly bookstore/library vocabulary.
-We might not want to serve Atom documents between the backend and the mobile client, since Atom is an XML format, but it shouldn't be hard to serve a {Siren)[https://github.com/kevinswiber/siren] version of an OPDS document. 
+According to (a comparison chart on Wikipedia)[http://en.wikipedia.org/wiki/OPDS#Comparison_of_OPDS_clients], a number of e-reading applications function as OPDS clients. Several bookstores (see below) offer OPDS feeds that can be presented to users of those applications, who can buy books from inside the application.
 
-A number of other sites and publishers publish OPDS feeds of open access materials, which we can scrape and automatically include in our catalogue. For example, the simplest way to integrate our Gutenberg mirror into a larger catalogue might be by publishing an OPDS feed for the Gutenberg mirror and crawling it daily.
+I think OPDS is a good place to start for a catalogue implementation. It's widely supported and it reinvents as little as possible--mostly bookstore/library vocabulary.
+We might not want to serve Atom documents between the backend and the mobile client, since Atom is an XML format, but it shouldn't be hard to serve a (Siren)[https://github.com/kevinswiber/siren] version of an OPDS document. 
+
+A number of other sites and publishers publish OPDS feeds of open access materials. We can use these to import items into our catalogue, or to create virtual catalogues of disparate materials.
+
+For example, the simplest way to integrate our Gutenberg mirror into a larger catalogue might be to publish an OPDS feed for the Gutenberg mirror and having the larger catalogue sync with it daily. (We could even use this technique to keep the Gutenberg mirror in sync with Gutenberg, but I'm pretty sure Gutenberg would rather we use rsync.) A library that wanted to use our Gutenberg mirror could hook up its OPDS feed to their system.
 
 Some OPDS feeds of open access materials:
 
-* [Project Gutenberg](http://m.gutenberg.org/ebooks.opds/) [In theory we could integrate directly with this without running our own PG mirror, not that we should do that. But we could keep our PG mirror in sync using this feed, although I don't think PG wants us to do that either.)
-* [Revues](http://bookserver.revues.org/?sort=OA) [journals, en français)
+* [Project Gutenberg](http://m.gutenberg.org/ebooks.opds/) (In theory we could integrate directly with this without running our own PG mirror, not that we should do that. But we could keep our PG mirror in sync using this feed, although I don't think PG wants us to do that either.)
+* [Revues](http://bookserver.revues.org/?sort=OA) (journals, en français)
 * [Internet Archive](http://bookserver.archive.org/catalog/)
 * [Ebooks Graruits](http://www.ebooksgratuits.com/opds/index.php)  [en français)
 
@@ -144,6 +148,9 @@ Some OPDS feeds of books for sale:
 
 * [Pragmatic Programmers](http://pragprog.com/catalog.opds)
 * [O'Reilly Media](http://opds.oreilly.com/opds/)
+* [FeedBooks](http://www.feedbooks.com/catalog.atom)
+* [SmashWords](http://www.smashwords.com/lexcycle/)
+* [All Romance Ebooks Online](http://www.allromanceebooks.com/epub-feed.xml)
 
 ### Lifecycle
 
@@ -151,7 +158,7 @@ Each content provider has its own workflow for checking out books. We have prett
 
 Many features depend on this. For instance, queue management requires that we be able to understand the velocity of a license--how long it typically stays checked out.
 
-* _We need near-real-time lifecycle updates from Overdrive and 3M._ We need this even once the app is launched, because people will cohttp://m.gutenberg.org/ebooks.opds/ntinue to check out ebooks through BiblioCommons, creating lifecycle events that we didn't cause.
+* _We need near-real-time lifecycle updates from Overdrive and 3M._ We need this even once the app is launched, because people will continue to check out ebooks through BiblioCommons, creating lifecycle events that we didn't cause.
 * The reader will trigger lifecycle events by calling a backend API which will dispatch to the content provider's API.
 
 ### Client libraries
