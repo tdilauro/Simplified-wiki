@@ -33,12 +33,6 @@ The [http://techdocs.iii.com/patronws_patron_data.shtml](Innovative
 Millenium API) (user:pass nypl_s:chapter) probably also does
 validation, but I'm not sure how.
 
-###Catalogue Data APIs###
-#### BiblioCommons####
-BiblioCommons is an innovative social discovery layer for public libraries, that combines powerful search and account management capabilities with a social sharing and discovery platform
-
-* [BiblioCommons] (http://developer.bibliocommons.com/blog/read/Welcome_to_the_BiblioCommons_API)
-
 ### Content
 
 #### Gutenberg####
@@ -112,16 +106,26 @@ Protection](http://idpf.org/epub-content-protection) is an open standard for DRM
 with Overdrive and 3M to get them to serve us books protected with
 LCP. _How is this going?_
 
-### Catalog
+### Catalogue
+
+### BiblioCommons###
+
+BiblioCommons contains the title listings for all of the ebooks we offer. It does not describe our _inventory_. BiblioCommons does not know how many copies of an electronic title we've bought, how many of those copies are currently lent out, or how many holds are on a title. All of that information is kept on Overdrive or 3M, and available via an API call for one particular title. (Thus the "check availability" button on BiblioCommons.)
+
+BiblioCommons also does not support lifecycle events such as checkout. The only thing it knows is the URL to the Overdrive/3M page for a title.
+
+Because of this, Dave believes that there is no point in integrating BiblioCommons with the app. Since BiblioCommons is how people will be checking out ebooks when they're not using the app, it may make sense to integrate any new book sources (such as Gutenberg) with BiblioCommons.
+
+* [BiblioCommons] (http://developer.bibliocommons.com/blog/read/Welcome_to_the_BiblioCommons_API)
 
 ### Lifecycle
 
-Each content provider has its own workflow for checking out books. Because of this, we have a very limited view into which books have been checked out and what books are currently available. The reader will send all lifecycle events through an API as yet to be defined, which will dispatch to the appropriate content provider.
+Each content provider has its own workflow for checking out books. We have pretty much no visibility into this workflow, because all the important events happen on Overdrive or 3M's site. The result is we don't know what is currently in our inventory and what is checked out. 
 
-If nothing else, this will let us keep track of what books are being checked out. Many advanced lifecycle features depend on this--for instance, queuing requires that we know when a given book will be available.
-The simplest way to track the lifecycle of a loan may be to integrate with NYPL's existing loan infrastructure.
+Many features depend on this. For instance, queue management requires that we be able to understand the velocity of a license--how long it typically stays checked out.
 
-Maintaining a detailed knowledge of what books have been checked out will also require changing the website to send loan lifecycle events to an NYPL server before/after sending the user to the third-party website where the book actually gets checked out. This will be very unreliable.
+* _We need near-real-time lifecycle updates from Overdrive and 3M._ We need this even once the app is launched, because people will continue to check out ebooks through BiblioCommons, creating lifecycle events that we didn't cause.
+* The reader will trigger lifecycle events by calling a backend API which will dispatch to the content provider's API.
 
 ### Client libraries
 
