@@ -18,12 +18,12 @@ create a persistent card by providing their date of birth and
 address. This requires an API for creating new, persistent NYPL
 credentials.
 
-The Brooklyn Public Library created a program called [My Library
-NYC](http://mylibrarynyc.org/about), in which you can sign up online
+The Brooklyn Public Library created a program called (My Library
+NYC)[http://mylibrarynyc.org/about], in which you can sign up online
 for a unified library card that works with all NYC libraries. What API
 are they using to create a NYPL credential?
 
-The [http://techdocs.iii.com/patronws_patron_data.shtml](Innovative Millenium API) (user:pass nypl_s:chapter) includes a "Patron Update Web Service" which can [http://techdocs.iii.com/patronws_api_operations.shtml#createPatron](create a new patron).
+The (Innovative Millenium API)[http://techdocs.iii.com/patronws_patron_data.shtml] (user:pass nypl_s:chapter) includes a "Patron Update Web Service" which can (create a new patron)[http://techdocs.iii.com/patronws_api_operations.shtml#createPatron].
 
 #### Patron authentication
 
