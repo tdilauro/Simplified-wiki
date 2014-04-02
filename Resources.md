@@ -116,6 +116,7 @@ BiblioCommons also does not support lifecycle events such as checkout. The only 
 Because of this, Dave believes that there is no point in integrating BiblioCommons with the app. Since BiblioCommons is how people will be checking out ebooks when they're not using the app, it may make sense to integrate any new book sources (such as Gutenberg) with BiblioCommons.
 
 * [BiblioCommons] (http://developer.bibliocommons.com/blog/read/Welcome_to_the_BiblioCommons_API)
+* [API documentation](http://developer.bibliocommons.com/docs)
 
 ### OPDS
 
