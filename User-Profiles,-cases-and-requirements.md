@@ -150,6 +150,8 @@ _So I can_  **find the title I am looking for and read it now**
 
 **Browse Recommended Titles by Librarians**
 
+***
+
 _As a User_ **Looking for Something to Read**
 
 _So I can_  **find a title from a trusted source and read it now**
@@ -170,8 +172,21 @@ _As a User_ **Looking for Something to Read**
 
 _So I can_  **find a title from a trusted source for a genera I like and read it now**
 
+**Create Collections**
 
+***
 
+_As a User_ **Looking for Something to Read**
+
+_So I can_  **find a title for a genera or topic I like and read it now**
+
+**Add Titles I have discovered at the library into a Collection**
+
+***
+
+_As a User_ **Looking for Something to Read**
+
+_So I can_  **Borrow a title I like and read it now**
 
 
 ## Research and Reference User (R&RU)
