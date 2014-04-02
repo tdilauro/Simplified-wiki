@@ -81,7 +81,8 @@ _Confirmation Criteria_
 * Use my Good Reads books shelf API
 
 **Connect to my 3rd party reading list (Google Bookshelves, Good Reads, etc..)**
-**
+
+***
 	
 _So I can_ **Record my reads**
 
@@ -91,7 +92,7 @@ _Confirmation Criteria_
 * The App can transact on my Good Reads books shelf API
 
 **Create Wish List**
-**
+***
 _So I can_ **get notifications when the book is available**
 
 _Confirmation Criteria_
@@ -100,7 +101,7 @@ _Confirmation Criteria_
 * The App can use my Good Reads books shelf API to identify availability in the catalogue
 
 **See primarily titles that are available**
-**
+***
 _So I can_ **browse through titles not available to read now**
 
 _Confirmation Criteria_
@@ -110,7 +111,7 @@ _Confirmation Criteria_
 * I get only titles that have an available copy (OD, 3M, Haithi, Guttenberg, other..)
 
 **Get a physical copy if the eBook isn't available**
-**
+***
 _So I can_ **read the book when format is not an issue with me**
 
 _Confirmation Criteria_
@@ -119,7 +120,7 @@ _Confirmation Criteria_
 * The physical title copy is available for pick-up
 
 **Choose to see titles available to hold or get at a later date**
-
+***
 _So I can_ **read the book for free**
 
 _Confirmation Criteria_
@@ -129,7 +130,7 @@ _Confirmation Criteria_
 * The title is on hold in the library ILS and OPAC
 
 **Search available titles**
-
+***
 _As a User_ **Looking for Something to Read**
 
 _So I can_  **find the title I am looking for and read it now**
