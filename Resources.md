@@ -87,7 +87,8 @@ Haithitrust Data API is a programatic access layer to their catalogue repository
 
 O'Reilly is a large technical publisher that is a pioneer in e-publishing, hostile towards DRM, interested in experiments, and with which Leonard has a good professional relationship. If we want to support publishers as ebook providers, O'Reilly would be a good place to start.
 
-* [O'Reilly Media books on Overdrive](http://ebooks.nypl.org/2C44B93D-BE81-4C84-9D70-33ACCAD960E7/10/50/en/SearchResults.htm?SearchID=14666093s&SortBy=Relevancy†)
+* [O'Reilly Media books on Overdrive](http://ebooks.nypl.org/2C44B93D-BE81-4C84-9D70-33ACCAD960E7/10/50/en/SearchResults.htm?SearchID=14666093s&SortBy=Relevancy)
+* [O'Reilly Media's OPDS catalog](http://opds.oreilly.com/opds/)
 
 ### DRM
 
