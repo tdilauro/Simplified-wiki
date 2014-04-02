@@ -1,5 +1,7 @@
 ## APIs, SDKS etc..
 
+* _Italicized bullet items_ are unresolved questions that need attention.
+
 ### Patron APIs
 
 #### New NYPL patron
@@ -29,8 +31,7 @@ The [Innovative Patron
 API](http://vendordocs.iii.com/patron/patronapi.shtml) (user:pass
 nypl_s:chapter) can validate a patron based on identifier and PIN.
 
-The [http://techdocs.iii.com/patronws_patron_data.shtml](Innovative
-Millenium API) (user:pass nypl_s:chapter) probably also does
+The [Innovative Millenium API](http://techdocs.iii.com/patronws_patron_data.shtml) (user:pass nypl_s:chapter) probably also does
 validation, but I'm not sure how.
 
 ### Content
@@ -66,16 +67,15 @@ We plan to set up a mirror of the Gutenberg ePub documents. This gives us a text
 3M's Cloud Library is accessible through license.  We will be executing a license as part of the development to begin integration work
 
 #### HaithiTrust
-Haithitrust Data API is a programatic access layer to their catalogue repository.
+Haithitrust Data API is a programmatic access layer to their catalogue repository.
 * [Haithi DTrust Data API](http://www.hathitrust.org/data_api) Documentation in PDF format.
+* We have access only to the public domain books that we volunteered to be scanned (about 40k volumes). _Is this accurat?_
 * Full volumes are available for the Espressnet project only, and only in Espresso Book Machine format. (Search term: "Volume-type resources".) Everyone else is restricted to page images.
  - _We need access to full documents in ePub or PDF format._ 
-* _How much access can we get? Do we have access to images of in-copyright books?_
-* _How do we get Hathi Trust books into Bibliocommons so that they show up in our catalogue?_
 * Google owns the OCR data and Hathi has a copy but cannot make it available to us.
- - _Is this true? Can we get access to the data by making a deal with Google?_
- - _Can we do the OCR ourselves on a proactive or on-demand basis?_
- - _Even if we can't have direct access to the OCR, can we do full-text search?_
+ - _Can we get access to the data by making a deal with Google?_ James says there's no more than a 25% chance of this, but it's worth a shot.
+ - _Can we do the OCR ourselves on a proactive or on-demand basis?_ David says this would be a big crowdsourcing project, but one that would be worth doing.
+ - _Even if we can't have direct access to the OCR, can we do full-text search through a Hathi API as part of discovery?_
 
 ### O'Reilly Media
 
@@ -102,7 +102,7 @@ are unacceptable to the Readium Foundation.
 [Lightweight Content
 Protection](http://idpf.org/epub-content-protection) is an open standard for DRM. We have [a draft of the spec](https://github.com/NYPL/iOS-Reader/blob/master/Documents/Lightweight%20Content%20Protection%20(LCP)%20Standard%201.0.pdf?raw=true) and it looks pretty easy to implement a client. The final standard should be released around May 2014.
 
-*James is negotiating
+* James is negotiating
 with Overdrive and 3M to get them to serve us books protected with
 LCP. _How is this going?_
 
