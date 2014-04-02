@@ -69,7 +69,7 @@ We plan to set up a mirror of the Gutenberg ePub documents. This gives us a text
 #### HaithiTrust
 Haithitrust Data API is a programmatic access layer to their catalogue repository.
 * [Haithi DTrust Data API](http://www.hathitrust.org/data_api) Documentation in PDF format.
-* We have access only to the public domain books that we volunteered to be scanned (about 40k volumes). _Is this accurat?_
+* We have access only to the public domain books that we volunteered to be scanned (about 40k volumes). _Is this accurate?_
 * Full volumes are available for the Espressnet project only, and only in Espresso Book Machine format. (Search term: "Volume-type resources".) Everyone else is restricted to page images.
  - _We need access to full documents in ePub or PDF format._ 
 * Google owns the OCR data and Hathi has a copy but cannot make it available to us.
@@ -141,8 +141,10 @@ Some OPDS feeds of open access materials:
 
 * [Project Gutenberg](http://m.gutenberg.org/ebooks.opds/)
 * [Internet Archive](http://bookserver.archive.org/catalog/)
+* [Many Books](http://manybooks.net/opds/index.php)
 * [Revues](http://bookserver.revues.org/?sort=OA) (journals, en français)
-* [Ebooks Graruits](http://www.ebooksgratuits.com/opds/index.php)  [en français)
+* [Ebooks Graruits](http://www.ebooksgratuits.com/opds/index.php)  (en français)
+* [YouScribe](http://opds.youscribe.com/Catalog/books.xml) (en français)
 
 Some OPDS feeds of books for sale:
 
@@ -151,6 +153,9 @@ Some OPDS feeds of books for sale:
 * [FeedBooks](http://www.feedbooks.com/catalog.atom)
 * [SmashWords](http://www.smashwords.com/lexcycle/)
 * [All Romance Ebooks Online](http://www.allromanceebooks.com/epub-feed.xml)
+* [BooksOnBoard](http://www.booksonboard.com/xml/catalog.atom)
+* [Beam eBooks](http://stanza.beam-ebooks.de/) (in Deutsch)
+
 
 ### Lifecycle
 
