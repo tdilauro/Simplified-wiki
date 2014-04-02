@@ -119,7 +119,8 @@ Because of this, Dave believes that there is no point in integrating BiblioCommo
 
 ### OPDS
 
-[OPDS](http://opds-spec.org/specs/opds-catalog-1-1-20110627/) is an Atom profile for describing catalogues of electronic publications.
+[OPDS](http://opds-spec.org/specs/opds-catalog-1-1-20110627/) is an
+Atom profile for describing catalogues of electronic publications.
 
 * Uses Atom's vocabulary for describing a book's metadata. Encourages the use of Dublin Core vocabulary except where Atom uses a different term for the same thing.
 * Uses Atom feeds to describe lists of publications, which can be filtered or ordered according to facets. The concept of a facet is defined, but no particular facets are defined.
@@ -127,23 +128,22 @@ Because of this, Dave believes that there is no point in integrating BiblioCommo
 * Uses OpenSearch as a search protocol.
 * Defines a vocabulary for basic transitions (notably "borrow"), but does not define a protocol for carrying out those transitions.
 
-I think ODPS is a good place to start for a catalogue implementation. It's well supported and it reinvents as little as possible--mostly bookstore/library vocabulary.
+I think OPDS is a good place to start for a catalogue implementation. It's widely supported and it reinvents as little as possible--mostly bookstore/library vocabulary.
+We might not want to serve Atom documents between the backend and the mobile client, since Atom is an XML format, but it shouldn't be hard to serve a {Siren)[https://github.com/kevinswiber/siren] version of an OPDS document. 
 
-We might not want to serve Atom documents between the backend and the mobile client, since Atom is an XML format, but it shouldn't be hard to serve a (Siren)[https://github.com/kevinswiber/siren] version of an ODPS document. 
+A number of other sites and publishers publish OPDS feeds of open access materials, which we can scrape and automatically include in our catalogue. For example, the simplest way to integrate our Gutenberg mirror into a larger catalogue might be by publishing an OPDS feed for the Gutenberg mirror and crawling it daily.
 
-A number of other sites and publishers publish ODPS feeds of open access materials, which we can scrape and automatically include in our catalogue. For example, the simplest way to integrate our Gutenberg mirror into a larger catalogue might be by publishing an ODPS feed for the Gutenberg mirror and crawling it daily.
+Some OPDS feeds of open access materials:
 
-Some ODPS feeds of open access materials:
+* [Project Gutenberg](http://m.gutenberg.org/ebooks.opds/) [In theory we could integrate directly with this without running our own PG mirror, not that we should do that. But we could keep our PG mirror in sync using this feed, although I don't think PG wants us to do that either.)
+* [Revues](http://bookserver.revues.org/?sort=OA) [journals, en français)
+* [Internet Archive](http://bookserver.archive.org/catalog/)
+* [Ebooks Graruits](http://www.ebooksgratuits.com/opds/index.php)  [en français)
 
-* (Project Gutenberg)[http://m.gutenberg.org/ebooks.opds/] (In theory we could integrate directly with this without running our own PG mirror, not that we should do that.)
-* (Revues)[http://bookserver.revues.org/?sort=OA] (journals, en français)
-* (Internet Archive)[http://bookserver.archive.org/catalog/]
-* (Ebooks Graruits)[http://www.ebooksgratuits.com/opds/index.php]  (en français)
+Some OPDS feeds of books for sale:
 
-Some ODPS feeds of books for sale:
-
-* (Pragmatic Programmers)[http://pragprog.com/catalog.opds]
-* (O'Reilly Media)[http://opds.oreilly.com/opds/]
+* [Pragmatic Programmers](http://pragprog.com/catalog.opds)
+* [O'Reilly Media](http://opds.oreilly.com/opds/)
 
 ### Lifecycle
 
