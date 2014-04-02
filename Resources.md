@@ -155,7 +155,7 @@ Some OPDS feeds of books for sale:
 * [All Romance Ebooks Online](http://www.allromanceebooks.com/epub-feed.xml)
 * [BooksOnBoard](http://www.booksonboard.com/xml/catalog.atom)
 * [Beam eBooks](http://stanza.beam-ebooks.de/) (in Deutsch)
-
+* [Librusek](http://lib.rus.ec/new/opds) (в России)
 
 ### Lifecycle
 
