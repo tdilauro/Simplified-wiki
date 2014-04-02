@@ -18,8 +18,7 @@ create a persistent card by providing their date of birth and
 address. This requires an API for creating new, persistent NYPL
 credentials.
 
-The Brooklyn Public Library created a program called (My Library
-NYC)[http://mylibrarynyc.org/about], in which you can sign up online
+The Brooklyn Public Library created a program called (My Library NYC)[http://mylibrarynyc.org/about], in which you can sign up online
 for a unified library card that works with all NYC libraries. What API
 are they using to create a NYPL credential?
 
