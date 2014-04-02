@@ -76,12 +76,6 @@ Haithitrust Data API is a programmatic access layer to their catalogue repositor
  - _Can we do the OCR ourselves on a proactive or on-demand basis?_ David says this would be a big crowdsourcing project, but one that would be worth doing.
  - _Even if we can't have direct access to the OCR, can we do full-text search through a Hathi API as part of discovery?_
 
-### O'Reilly Media
-
-O'Reilly is a large technical publisher that is a pioneer in e-publishing, hostile towards DRM, interested in experiments, and with which Leonard has a good professional relationship. If we want to support publishers as ebook providers, O'Reilly would be a good place to start.
-
-* [O'Reilly Media books on Overdrive](http://ebooks.nypl.org/2C44B93D-BE81-4C84-9D70-33ACCAD960E7/10/50/en/SearchResults.htm?SearchID=14666093s&SortBy=Relevancy)
-
 ### DRM
 
 #### Adobe
