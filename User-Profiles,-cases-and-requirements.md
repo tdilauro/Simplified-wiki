@@ -156,11 +156,15 @@ _So I can_  **find a title from a trusted source and read it now**
 
 **Browse Recommended Titles that are recommended by Friends**
 
+***
+
 _As a User_ **Looking for Something to Read**
 
 _So I can_  **find a title from a trusted source and read it now**
 
 **Browse Recommended Titles of genera I am interested**
+
+***
 
 _As a User_ **Looking for Something to Read**
 
@@ -181,18 +185,18 @@ _So I can_  **find a title from a trusted source for a genera I like and read it
 * wants to capture notes about methods in notes, or Evernote on her mobile phone / tablet when on  a job site
 
 ## Leisure and Entertainment (L&EU)
-### Commuter
+* Commuter
 
-### Bibliophile
+* Bibliophile
 
-## Mother/Care Giver
+* Mother/Care Giver
 
-## Millennial?
+* Millennial?
 
-## Teen/Young Adult
+* Teen/Young Adult
 
-### Male
+* Male
 
-### Female
+* Female
 
 
