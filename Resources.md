@@ -74,6 +74,7 @@ Haithitrust Data API is a programmatic access layer to their catalogue repositor
 * Google owns the OCR data and Hathi has a copy but cannot make it available to us.
  - _Can we get access to the data by making a deal with Google?_ James says there's no more than a 25% chance of this, but it's worth a shot.
  - _Can we do the OCR ourselves on a proactive or on-demand basis?_ David says this would be a big crowdsourcing project, but one that would be worth doing.
+ - _Can we ask Internet Archive to do the OCR? They already have a system in place._
  - _Even if we can't have direct access to the OCR, can we do full-text search through a Hathi API as part of discovery?_
 
 #### Other sources
