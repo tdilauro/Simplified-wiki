@@ -22,7 +22,7 @@ The Brooklyn Public Library created a program called (My Library NYC)[http://myl
 for a unified library card that works with all NYC libraries. What API
 are they using to create a NYPL credential?
 
-The (Innovative Millenium API)[http://techdocs.iii.com/patronws_patron_data.shtml] (user:pass nypl_s:chapter) includes a "Patron Update Web Service" which can (create a new patron)[http://techdocs.iii.com/patronws_api_operations.shtml#createPatron].
+The [Innovative Millenium API](http://techdocs.iii.com/patronws_patron_data.shtml) (user:pass nypl_s:chapter) includes a "Patron Update Web Service" which can [create a new patron](http://techdocs.iii.com/patronws_api_operations.shtml#createPatron).
 
 #### Patron authentication
 
