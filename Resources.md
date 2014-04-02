@@ -139,9 +139,9 @@ For example, the simplest way to integrate our Gutenberg mirror into a larger ca
 
 Some OPDS feeds of open access materials:
 
-* [Project Gutenberg](http://m.gutenberg.org/ebooks.opds/) (In theory we could integrate directly with this without running our own PG mirror, not that we should do that. But we could keep our PG mirror in sync using this feed, although I don't think PG wants us to do that either.)
-* [Revues](http://bookserver.revues.org/?sort=OA) (journals, en français)
+* [Project Gutenberg](http://m.gutenberg.org/ebooks.opds/)
 * [Internet Archive](http://bookserver.archive.org/catalog/)
+* [Revues](http://bookserver.revues.org/?sort=OA) (journals, en français)
 * [Ebooks Graruits](http://www.ebooksgratuits.com/opds/index.php)  [en français)
 
 Some OPDS feeds of books for sale:
