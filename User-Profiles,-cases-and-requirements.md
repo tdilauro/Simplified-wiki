@@ -109,13 +109,18 @@ _Confirmation Criteria_
 
 ***
 
-_So I can_ **browse through titles not available to read now**
+_So I can_ **browse through titles available to read now**
 
 _Confirmation Criteria_
 
 * I get Titles I can download now
 * I get Titles in the format my device and app supports
 * I get only titles that have an available copy (OD, 3M, Haithi, Guttenberg, other..)
+
+        Sent as OPDS acquisition feeds linked to from a navigation
+	feed with rel="new", rel="featured", or a custom link
+	relation.  Titles have <link> with rel="borrow", rel="sample",
+	and/or rel="open-access".
 
 **Get a physical copy if the eBook isn't available**
 
@@ -128,8 +133,10 @@ _Confirmation Criteria_
 * I can place a hold on the physical format if the digital format is not available
 * The physical title copy is available for pick-up
 
-         OPDS feed has a <link> with rel='hold'. Possibly a
-         different <link> for each branch that has a copy.
+         Sent as OPDS acquisition feeds, linked to from a navigation
+         feed with a custom link relation. Each title has a <link>
+         with custom rel='hold'. Possibly a different <link> for each
+         branch that has a copy.
 
 **Choose to see titles available to hold or get at a later date**
 
@@ -143,7 +150,9 @@ _Confirmation Criteria_
 * The title shows up in a holds list
 * The title is on hold in the library ILS and OPAC
 
-        Sent as OPDS feed. Holdable titles have a <link> with rel="hold".
+      Sent as OPDS acquisition feeds linked to from a navigation feed
+      with a custom link relation like "to-hold" in addition to "new",
+      "featured", etc. Holdable titles have a <link> with rel="hold".
 
 **Search available titles**
 
@@ -153,6 +162,9 @@ _As a User_ **Looking for Something to Read**
 
 _So I can_  **find the title I am looking for and read it now**
 
+         Sent as OpenSearch form within OPDS navigation feed. Search
+         results displayed as an acquisition feed.
+
 **Browse Recommended Titles by Librarians**
 
 ***
@@ -160,6 +172,10 @@ _So I can_  **find the title I am looking for and read it now**
 _As a User_ **Looking for Something to Read**
 
 _So I can_  **find a title from a trusted source and read it now**
+
+        OPDS acquisition feed, linked to from a navigation feed using
+        rel="recommended" in addition to a custom relation like
+        "from-librarians".
 
 **Browse Recommended Titles that are recommended by Friends**
 
@@ -169,6 +185,10 @@ _As a User_ **Looking for Something to Read**
 
 _So I can_  **find a title from a trusted source and read it now**
 
+        OPDS acquisition feed, linked to from a navigation feed using
+        rel="recommended" in addition to a custom link relation like
+        "from-friends".
+
 **Browse Recommended Titles of genera I am interested**
 
 ***
@@ -177,7 +197,11 @@ _As a User_ **Looking for Something to Read**
 
 _So I can_  **find a title from a trusted source for a genera I like and read it now**
 
-**Create Collections (ergo and faceted browse)**
+        OPDS acquisition feed, linked to from the main acquisition
+        feed using facets plus rel="recommended".
+
+
+**Create Collections (faceted browse)**
 
 ***
 
@@ -185,14 +209,29 @@ _As a User_ **Looking for Something to Read**
 
 _So I can_  **find a title for a genera or topic I like and read it now**
 
-**Add Titles I have discovered at the library into a (adding a title to list) **
+        OPDS acquisition feed, linked to from the main acquisition
+        feed using facets. May also be linked to from the recommended
+        acquisition feed for this facet.
+     
+
+**Add Titles I have discovered at the library into a list **
 
 ***
 
 _As a User_ **Looking to share or record a title I have read, or like to read**
 
 _So I can_  **Borrow and read it later or share **
+        
+	Main navigation feed links to an OPDS acquisition feed with a
+	custom relation like "custom-list". If user can create any
+	number of lists, all acquisition feeds show up in the
+	navigation feed with the same relationship but different
+	names.
 
+	A title that can be added to a list may feature a <link> that
+	will add the title to the list when triggered. Or, it may be
+	understood that the client may use AtomPub rules to POST a
+	title to any "custom-list" feed.
 
 ## Research and Reference User (R&RU)
 
