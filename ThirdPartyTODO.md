@@ -1,4 +1,4 @@
-==NYPL
+##NYPL
 
 The authentication APIs are in flux thanks to the SSO project. We can
 wait a while for this to calm down, but we need a way to authenticate
