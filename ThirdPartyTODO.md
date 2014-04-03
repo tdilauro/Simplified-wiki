@@ -1,0 +1,89 @@
+== NYPL
+
+The authentication APIs are in flux thanks to the SSO project. We can
+wait a while for this to calm down, but we need a way to authenticate
+a patron based on card number and PIN.
+
+We also need an API for bringing on new patrons. We also need clear
+_policy_ about the rules for becoming a patron and checking out ebooks
+without ever setting foot in a library building.
+
+== LCP
+
+Currently texts are protected by Adobe DRM. We don't want to be tied
+to Adobe's SDK, or to a binary plugin that they release as part of
+Readium. Instead, we want all protected texts to be protected by LCP,
+so that we can write a free implementation. This applies to Overdrive,
+3M (?), and Open Library.
+
+== Previews
+
+We want free preview versions of as many texts as possible. This will
+allow users to browse books without clogging up the queue or using up
+licenses unnecessarily.
+
+The previews should be as large as we can get. Ideally they would be
+DRM-free and we would host them on our own servers.
+
+This applies to Overdrive and 3M. If Open Library supported this, it
+would be nice for everyone, since there's only one license for most of
+their books.
+
+== Overdrive
+
+Many planned features require that we be able to measure the velocity
+of a license (i.e. how frequently it changes hands). To do this we
+need an accurate, near-real-time picture of our Overdrive
+inventory. We don't have anything close.
+
+Currently we know which titles we own, but not how many copies of
+those titles we've licensed, how many lends remain on those copies,
+how many copies of a title are currently checked out, or how many
+people are in the queue for a title.
+
+When a patron checks out a book, we don't hear about it. They
+currently can't return books, but if they could, we wouldn't hear
+about that either.
+
+We can get inventory information for a single book via the Overdrive
+API, but since we don't get notified when the status of a book
+changes, we have no idea which books need to be updated.
+
+If we could instantly switch everyone over to using our e-reader, we
+could solve this problem, since we can have the server-side API log
+inventory activity as it happens. But for the forseeable future there
+will be people checking out ebooks on the Overdrive and 3M websites.
+
+A reporting API is (probably) not good enough. Possible solutions
+include a feed of events that affect our inventory, or (in the short
+term) regular dumps of our inventory that are no older than N minutes.
+
+== 3M
+
+Nothing is known about the 3M API. In particular, we don't know if it
+has the same inventory visibility problems as Overdrive. But it
+probably does.
+
+== Hathi Trust
+
+We need to get our data back out of Hathi. Apparently this means
+sending them a bunch of blank hard drives.
+
+Will Google give us access to their OCR of our books? This is a long
+shot, but it doesn't hurt to ask.
+
+If Hathi will only serve us books that we contributed for scanning,
+then after we get our data back out we may not need their API at
+all. We can serve the PDFs ourselves.
+
+To the extent that we do need the API: Hathi's API can serve full
+volumes, but it will only serve them to the EspressNet project, in
+Espresso Book Machine format (a modified version of PDF). We need to
+be on the allow list, and we need to be able to get books in PDF
+format.
+
+== Gutenberg
+
+We need to set up our own mirror of the Gutenberg epubs. We might as
+well mirror the text and HTML versions, too, even though this project
+won't serve them--they'll be useful to have for the Labs Lab.
