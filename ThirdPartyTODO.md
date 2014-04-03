@@ -35,7 +35,7 @@ their books.
 
 We would like to host as many texts as possible on our own servers. For DRMed books, this requires that we be trusted to sign the books on the server and decrypt them on the client. 
 
-This seems like a huge mess both technically and politically.
+This seems like a huge mess both technically and politically. This applies to Overdrive and 3M. It doesn't apply to Open Library because we're not the only users of those books.
 
 ## Overdrive
 
