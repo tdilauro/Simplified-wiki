@@ -107,7 +107,7 @@ joining the queue for a book.
 
 It's tempting to see the nice selection available through Open Library
 and want to capture some of it for ourselves. However, the nice
-selection will not last too long if we integrate Open Library. There
+selection will not last too long if we start presenting Open Library books to 100ks of patrons. There
 is only one available copy of most books.
 
 It's also hypocritical to integrate our reader into Open Library (and
