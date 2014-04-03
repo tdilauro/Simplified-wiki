@@ -150,9 +150,9 @@ _Confirmation Criteria_
 * The title shows up in a holds list
 * The title is on hold in the library ILS and OPAC
 
-      Sent as OPDS acquisition feeds linked to from a navigation feed
-      with a custom link relation like "to-hold" in addition to "new",
-      "featured", etc. Holdable titles have a <link> with rel="hold".
+        Sent as OPDS acquisition feeds linked to from a navigation feed
+        with a custom link relation like "to-hold" in addition to "new",
+        "featured", etc. Holdable titles have a <link> with rel="hold".
 
 **Search available titles**
 
