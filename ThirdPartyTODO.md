@@ -21,15 +21,21 @@ so that we can write a free implementation. This applies to Overdrive,
 ## Previews
 
 We want free preview versions of as many texts as possible. This will
-allow users to browse books without clogging up the queue or using up
-licenses unnecessarily.
+allow patrons to browse books without clogging up the queue or spending
+licenses they're not really going to use.
 
 The previews should be as large as we can get. Ideally they would be
-DRM-free and we would host them on our own servers.
+DRM-free and we could host them on our own servers.
 
 This applies to Overdrive and 3M. If Open Library supported this, it
 would be nice for everyone, since there's only one license for most of
 their books.
+
+## Self-Hosting
+
+We would like to host as many texts as possible on our own servers. For DRMed books, this requires that we be trusted to sign the books on the server and decrypt them on the client. 
+
+This seems like a huge mess both technically and politically.
 
 ## Overdrive
 
