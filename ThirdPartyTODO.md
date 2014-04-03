@@ -44,9 +44,15 @@ Availability of previews from 3M are unknown.
 If Open Library supported free previews, it would be nice for
 everyone, since there's only one license for most of their books.
 
+### New acquisitions
+
+When Book Ops acquires a new title for NYPL, we need to know about it so we can retrieve its metadata from the appropriate API.
+
+The simplest solution may be to periodically crawl BiblioCommons, or whatever internal site Bibliocommons gets its data from.
+
 ### Cover images
 
-Any catalogue of books needs to also provide good quality cover images for use in our UI.
+Any catalogue of books needs to also provide good quality cover images for use in our UI. BiblioCommons has cover images for titles but the image quality is often lacking.
 
 Overdrive's API has links to good quality images.
 
