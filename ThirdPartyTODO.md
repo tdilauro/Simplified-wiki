@@ -64,7 +64,7 @@ term) regular dumps of our inventory that are no older than N minutes.
 
 Nothing is known about the 3M API. In particular, we don't know if it
 has the same inventory visibility problems as Overdrive. But it
-probably does.
+probably does. The first step is to get basic access and information about their API.
 
 ## Hathi Trust
 
