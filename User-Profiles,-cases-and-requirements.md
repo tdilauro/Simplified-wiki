@@ -128,6 +128,9 @@ _Confirmation Criteria_
 * I can place a hold on the physical format if the digital format is not available
 * The physical title copy is available for pick-up
 
+         OPDS feed has a <link> with rel='hold'. Possibly a
+         different <link> for each branch that has a copy.
+
 **Choose to see titles available to hold or get at a later date**
 
 ***
