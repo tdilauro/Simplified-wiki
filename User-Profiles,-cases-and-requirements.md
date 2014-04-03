@@ -118,8 +118,8 @@ _Confirmation Criteria_
 * I get only titles that have an available copy (OD, 3M, Haithi, Guttenberg, other..)
 
         Sent as OPDS acquisition feeds linked to from a navigation
-	feed with rel="new", rel="featured", or a custom link
-	relation.  Titles have <link> with rel="borrow", rel="sample",
+        feed with rel="new", rel="featured", or a custom link
+        relation.  Titles have <link> with rel="borrow", rel="sample",
 	and/or rel="open-access".
 
 **Get a physical copy if the eBook isn't available**
