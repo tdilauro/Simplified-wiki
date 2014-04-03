@@ -88,4 +88,4 @@ format.
 
 We need to set up our own mirror of the Gutenberg epubs. We might as
 well mirror the text and HTML versions, too, even though this project
-won't serve them--they'll be useful to have for the Labs Lab.
+won't serve them--they'll be useful to have for the Labs Lab. And we may well end up repackaging Gutenberg texts from their HTML source documents.
