@@ -35,7 +35,7 @@ validation, but I'm not sure how.
 
 ### Content
 
-#### Gutenberg####
+#### Project Gutenberg####
 
 About 45,000 free public domain texts.
 
@@ -50,8 +50,6 @@ We plan to set up a mirror of the Gutenberg ePub documents. This gives us a text
 * _How many books do we check out through Overdrive that we could replace with Gutenberg?_
 * _Are there changes we could make to the default epubs that would improve user experience?_ Doing some manual work on the top 100 books would be worth it.
 
-#### Internet Archive / Open Library ####
-
 #### Overdrive
 
 * [OverDrive APIs] (https://developer.overdrive.com/apis)
@@ -64,6 +62,57 @@ We plan to set up a mirror of the Gutenberg ePub documents. This gives us a text
 
 #### 3M Cloud Library
 3M's Cloud Library is accessible through license.  We will be executing a license as part of the development to begin integration work
+
+### Open Library
+
+Open Library is a project of the Internet Archive which uses physical
+books in libraries around the country as proxies for ebooks which can
+be checked out by anyone.
+
+Titles are encrypted with Adobe DRM. PDF quality is good. OCR is
+atrocious, so EPUBs are not that great.
+
+Open Library has a lot of old (non-public-domain) junk, but it also
+has a lot of solid midlist fiction and childrens' books. For instance,
+I did a spot check and looked at (38 ebooks tagged "Hugo
+winner")[https://openlibrary.org/subjects/hugo_award_winner#ebooks=true]
+in the library. There were 19 titles with available copies, 13 titles
+that had been checked out, and 6 titles only available in DAISY
+format.
+
+Open Library lent out about 140k ebooks in March 2014, which is
+significantly better than NYPL did.
+
+#### APIs
+
+[Open Library's API](https://openlibrary.org/developers/api) is a
+read-only API that provides bibliographic information about a book and
+its editions. It links to ebook versions of a book, but doesn't say
+whether copies are available or checked out.
+
+[The Open Library Read API](https://openlibrary.org/dev/docs/api/read)
+can look up book identifiers and return bibliographic information,
+plus a link to the page where you can borrow that book from Open
+Library. This API _does_ specify 'status' as 'full access',
+'lendable', 'checked out' or restricted'.
+
+Open Library has [minimal OPDS
+support](http://raj.blog.archive.org/2011/03/03/open-library-opds/)
+which seems to be undocumented.
+
+Open Library has no API functionality for checking out a book or
+joining the queue for a book.
+
+#### Summary
+
+It's tempting to see the nice selection available through Open Library
+and want to capture some of it for ourselves. However, the nice
+selection will not last too long if we integrate Open Library. There
+is only one available copy of most books.
+
+It's also hypocritical to integrate our reader into Open Library (and
+difficult to get Open Library to cooperate with us) since NYPL does
+not _contribute_ any books to Open Library.
 
 #### HathiTrust
 
