@@ -65,17 +65,20 @@ We plan to set up a mirror of the Gutenberg ePub documents. This gives us a text
 #### 3M Cloud Library
 3M's Cloud Library is accessible through license.  We will be executing a license as part of the development to begin integration work
 
-#### HaithiTrust
-Haithitrust Data API is a programmatic access layer to their catalogue repository.
-* [Haithi DTrust Data API](http://www.hathitrust.org/data_api) Documentation in PDF format.
-* We have access only to the public domain books that we volunteered to be scanned (about 40k volumes). _Is this accurate?_
-* Full volumes are available for the Espressnet project only, and only in Espresso Book Machine format. (Search term: "Volume-type resources".) Everyone else is restricted to page images.
- - _We need access to full documents in ePub or PDF format._ 
-* Google owns the OCR data and Hathi has a copy but cannot make it available to us.
- - _Can we get access to the data by making a deal with Google?_ James says there's no more than a 25% chance of this, but it's worth a shot.
- - _Can we do the OCR ourselves on a proactive or on-demand basis?_ David says this would be a big crowdsourcing project, but one that would be worth doing.
- - _Can we ask Internet Archive to do the OCR? They already have a system in place._
- - _Even if we can't have direct access to the OCR, can we do full-text search through a Hathi API as part of discovery?_
+#### HathiTrust
+
+* We contributed some 10ks of texts to be scanned. Some 1Ms of public documents are available in total.
+* From the premises of a library, anyone can download full documents in PDF format. They can also get EPUB format, but only by using the mobile site.
+* Cardholders cannot download full documents off premises because our authentication system is not hooked up to Hathi. (Hathi prefers Shibboleth, used by most university libraries.) 
+* OCR is bad enough to make the PDF format preferable.
+* There are unanswered questions as to which of these 1Ms of documents we can serve cardholders, and even what we can do with the 10ks we contributed. 
+
+##### The API
+
+* [Haithi DTrust Data API](http://www.hathitrust.org/data_api) API documentation in PDF format.
+* Full volumes are available for the Espressnet project only, and only in Espresso Book Machine format. (PDF documentation search term: "Volume-type resources".) Everyone else is restricted to page images, which makes the API useless for our purposes.
+ - Leonard asked Josh to pass on the request for Espressnet-like access, and for the ability to get documents in PDF and EPUB format. 
+* The [Hathi Trust Research Center](http://www.hathitrust.org/htrc) grants access to bulk data, but only for research purposes.
 
 ### Internet Archive
 
@@ -94,8 +97,8 @@ very poor. EPUB editions are sometimes [drastically
 truncated](https://archive.org/details/AtlasZoologie00Paul) relative
 to the PDF edition--we would want to use the PDF edition pretty much
 everywhere. Many texts are
-[https://archive.org/details/longtermcarepoli00mass](random historical
-documents), not "books" as generally understood.
+[random historical
+documents](https://archive.org/details/longtermcarepoli00mass), not "books" as generally understood.
 
 IA also makes available full copies of works I'm pretty sure are still
 under copyright, e.g. [A Farewell to
