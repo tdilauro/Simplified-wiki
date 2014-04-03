@@ -69,6 +69,7 @@ Open Library is a project of the Internet Archive which uses physical
 books in libraries around the country as proxies for ebooks which can
 be checked out by anyone.
 
+Each Open Library patron must have an individual Open Library account, Your account is limited to five books at once. Checking out a book and joining the queue for a book both count towards your total.
 Titles are encrypted with Adobe DRM. PDF quality is good. OCR is
 atrocious, so EPUBs are not that great.
 
@@ -102,6 +103,7 @@ which seems to be undocumented.
 
 Open Library has no API functionality for checking out a book or
 joining the queue for a book.
+
 
 #### Summary
 
@@ -161,7 +163,7 @@ by IA won't solve this problem, if it is indeed a problem.
 Summary: curated views of IA's catalog can be integrated into our
 catalog, but not IMO the entire catalog. It's a junkyard.
 
-#### Other sources
+### Other sources
 
 Not worth detailed investigation given that they don't host any popular books we can't get elsewhere, but let's keep them in mind.
 
