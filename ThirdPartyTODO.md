@@ -102,20 +102,16 @@ probably does. The first step is to get basic access and information about their
 ## Hathi Trust
 
 We need to get our data back out of Hathi. Apparently this means
-sending them a bunch of blank hard drives.
+sending them a bunch of blank hard drives. _No, this seems to be a fantasy. We can get bulk data through Hathi Trust Research Center, but only for research purposes._
 
 Will Google give us access to their OCR of our books? This is a long
-shot, but it doesn't hurt to ask.
+shot, but it doesn't hurt to ask. _It sounds like we can get the OCR without a struggle, but the OCR is not particularly good._
 
-If Hathi will only serve us books that we contributed for scanning,
-then after we get our data back out we may not need their API at
-all. We can serve the PDFs ourselves.
+I have asked Josh about getting the Hathi API to serve us full volumes in PDF and EPUB format.
 
-To the extent that we do need the API: Hathi's API can serve full
-volumes, but it will only serve them to the EspressNet project, in
-Espresso Book Machine format (a modified version of PDF). We need to
-be on the allow list, and we need to be able to get books in PDF
-format.
+We need some way of authenticating an NYPL cardholder to get access to the Hathi API even when they're not on NYPL property.
+
+There seems to be an unresolved legal question regarding whether we can serve full volumes from Hathi that we didn't contribute to Hathi. I'm not clear on the details and it seems unlikely given that a web user on NYPL property can download all sorts of documents from Hathi via the web browser.
 
 ## Gutenberg
 
