@@ -70,7 +70,8 @@ We plan to set up a mirror of the Gutenberg ePub documents. This gives us a text
 * We contributed some 10ks of texts to be scanned. Some 1Ms of public documents are available in total.
 * From the premises of a library, anyone can download full documents in PDF format. They can also get EPUB format, but only by using the mobile site.
 * Cardholders cannot download full documents off premises because our authentication system is not hooked up to Hathi. (Hathi prefers Shibboleth, used by most university libraries.) 
-* OCR is bad enough to make the PDF format preferable.
+* Works start with a cover page including a legal disclaimer.
+* OCR is bad enough to make the PDF format preferable. 
 * There are unanswered questions as to what exactly we can do with these 1Ms of documents and even the 10Ks of documents we originally contributed. However, it looks like a web user on NYPL premises can download a PDF of any of those 1Ms of texts. 
 
 ##### The API
