@@ -10,7 +10,9 @@ We also need an API for bringing on new patrons. We also need clear
 _policy_ about the rules for becoming a patron and checking out ebooks
 without ever setting foot in a library building.
 
-## LCP
+## General ebook distributor issues
+
+### LCP
 
 Currently texts are protected by Adobe DRM. We don't want to be tied
 to Adobe's SDK, or to a binary plugin that they release as part of
@@ -18,20 +20,39 @@ Readium. Instead, we want all protected texts to be protected by LCP,
 so that we can write a free implementation. This applies to Overdrive,
 3M (?), and Open Library.
 
-## Previews
+### Previews
 
 We want free preview versions of as many texts as possible. This will
-allow patrons to browse books without clogging up the queue or spending
-licenses they're not really going to use.
+allow users to browse books without clogging up the queue or using up
+licenses unnecessarily.
 
 The previews should be as large as we can get. Ideally they would be
-DRM-free and we could host them on our own servers.
+DRM-free and we would have permission to host them on our own
+servers. They would appear exactly like a truncated version of the
+full text.
 
-This applies to Overdrive and 3M. If Open Library supported this, it
-would be nice for everyone, since there's only one license for most of
-their books.
+Overdrive has preview versions of at least some texts, linked to from
+their API. A spot check of "The Adventures of Sherlock Holmes" shows
+that [the preview
+text](http://excerpts.contentreserve.com/FormatType-410/2389-1/76C/1B7/D0/AdventuresofSherlockHolmes9781620115091.epub)
+is DRM-free and contains the first 17% of the book. The preview ends
+with a page saying "End of sample. To search for additional titles
+please go to http://search.overdrive.com/".
 
-## Self-Hosting
+Availability of previews from 3M are unknown.
+
+If Open Library supported free previews, it would be nice for
+everyone, since there's only one license for most of their books.
+
+### Cover images
+
+Any catalogue of books needs to also provide good quality cover images for use in our UI.
+
+Overdrive's API has links to good quality images.
+
+Gutenberg texts generally have no cover image.
+
+### Self-Hosting
 
 We would like to host as many texts as possible on our own servers. For DRMed books, this requires that we be trusted to sign the books on the server and decrypt them on the client. 
 
