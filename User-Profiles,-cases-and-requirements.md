@@ -120,7 +120,7 @@ _Confirmation Criteria_
         Sent as OPDS acquisition feeds linked to from a navigation
         feed with rel="new", rel="featured", or a custom link
         relation.  Titles have <link> with rel="borrow", rel="sample",
-	and/or rel="open-access".
+        and/or rel="open-access".
 
 **Get a physical copy if the eBook isn't available**
 
