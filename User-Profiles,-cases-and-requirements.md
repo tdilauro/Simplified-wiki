@@ -212,9 +212,8 @@ _So I can_  **find a title for a genera or topic I like and read it now**
         OPDS acquisition feed, linked to from the main acquisition
         feed using facets. May also be linked to from the recommended
         acquisition feed for this facet.
-     
 
-**Add Titles I have discovered at the library into a list **
+**Add Titles I have discovered at the library into a list**
 
 ***
 
