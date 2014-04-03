@@ -140,6 +140,8 @@ _Confirmation Criteria_
 * The title shows up in a holds list
 * The title is on hold in the library ILS and OPAC
 
+    Sent as OPDS feed. Holdable titles have a <link> with rel="hold".
+
 **Search available titles**
 
 ***
