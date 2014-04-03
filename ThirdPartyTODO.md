@@ -1,4 +1,6 @@
-##NYPL
+Things we need (or at least should ask for) from third parties.
+
+## Elsewhere in NYPL
 
 The authentication APIs are in flux thanks to the SSO project. We can
 wait a while for this to calm down, but we need a way to authenticate
@@ -8,7 +10,7 @@ We also need an API for bringing on new patrons. We also need clear
 _policy_ about the rules for becoming a patron and checking out ebooks
 without ever setting foot in a library building.
 
-== LCP
+## LCP
 
 Currently texts are protected by Adobe DRM. We don't want to be tied
 to Adobe's SDK, or to a binary plugin that they release as part of
@@ -16,7 +18,7 @@ Readium. Instead, we want all protected texts to be protected by LCP,
 so that we can write a free implementation. This applies to Overdrive,
 3M (?), and Open Library.
 
-== Previews
+## Previews
 
 We want free preview versions of as many texts as possible. This will
 allow users to browse books without clogging up the queue or using up
@@ -29,7 +31,7 @@ This applies to Overdrive and 3M. If Open Library supported this, it
 would be nice for everyone, since there's only one license for most of
 their books.
 
-== Overdrive
+## Overdrive
 
 Many planned features require that we be able to measure the velocity
 of a license (i.e. how frequently it changes hands). To do this we
@@ -58,13 +60,13 @@ A reporting API is (probably) not good enough. Possible solutions
 include a feed of events that affect our inventory, or (in the short
 term) regular dumps of our inventory that are no older than N minutes.
 
-== 3M
+## 3M
 
 Nothing is known about the 3M API. In particular, we don't know if it
 has the same inventory visibility problems as Overdrive. But it
 probably does.
 
-== Hathi Trust
+## Hathi Trust
 
 We need to get our data back out of Hathi. Apparently this means
 sending them a bunch of blank hard drives.
@@ -82,7 +84,7 @@ Espresso Book Machine format (a modified version of PDF). We need to
 be on the allow list, and we need to be able to get books in PDF
 format.
 
-== Gutenberg
+## Gutenberg
 
 We need to set up our own mirror of the Gutenberg epubs. We might as
 well mirror the text and HTML versions, too, even though this project
