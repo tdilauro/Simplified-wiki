@@ -74,8 +74,8 @@ atrocious, so EPUBs are not that great.
 
 Open Library has a lot of old (non-public-domain) junk, but it also
 has a lot of solid midlist fiction and childrens' books. For instance,
-I did a spot check and looked at (38 ebooks tagged "Hugo
-winner")[https://openlibrary.org/subjects/hugo_award_winner#ebooks=true]
+I did a spot check and looked at [38 ebooks tagged "Hugo
+winner"](https://openlibrary.org/subjects/hugo_award_winner#ebooks=true)
 in the library. There were 19 titles with available copies, 13 titles
 that had been checked out, and 6 titles only available in DAISY
 format.
