@@ -177,7 +177,7 @@ _As a User_ **Looking for Something to Read**
 
 _So I can_  **find a title from a trusted source for a genera I like and read it now**
 
-**Create Collections**
+**Create Collections (ergo and faceted browse)**
 
 ***
 
@@ -185,13 +185,13 @@ _As a User_ **Looking for Something to Read**
 
 _So I can_  **find a title for a genera or topic I like and read it now**
 
-**Add Titles I have discovered at the library into a Collection**
+**Add Titles I have discovered at the library into a (adding a title to list) **
 
 ***
 
-_As a User_ **Looking for Something to Read**
+_As a User_ **Looking to share or record a title I have read, or like to read**
 
-_So I can_  **Borrow a title I like and read it now**
+_So I can_  **Borrow and read it later or share **
 
 
 ## Research and Reference User (R&RU)
