@@ -69,7 +69,7 @@ Open Library is a project of the Internet Archive which uses physical
 books in libraries around the country as proxies for ebooks which can
 be checked out by anyone.
 
-Each Open Library patron must have an individual Open Library account, Your account is limited to five books at once. Checking out a book and joining the queue for a book both count towards your total.
+Each Open Library patron must have an individual Open Library account. You can check out up to five books at once. 
 Titles are encrypted with Adobe DRM. PDF quality is good. OCR is
 atrocious, so EPUBs are not that great.
 
