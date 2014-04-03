@@ -77,9 +77,40 @@ Haithitrust Data API is a programmatic access layer to their catalogue repositor
  - _Can we ask Internet Archive to do the OCR? They already have a system in place._
  - _Even if we can't have direct access to the OCR, can we do full-text search through a Hathi API as part of discovery?_
 
+### Internet Archive
+
+Publishes several million public domain titles, scanned in-house. 
+Integration is possible [through
+ODPS](http://bookserver.archive.org/catalog/). We can mirror the
+alphabetical ODPS feed once, and keep it up to date by periodically
+grabbing the "Recent Scans" feed. We can show IA results in search
+results and if the user selects one of these texts, have them download
+directly from IA (while grabbing a copy for ourselves so we can
+directly serve the next person who downloads it.)
+
+IA has a wide selecton of texts but quality is pretty
+bad. Bibliographical information is sometimes missing. OCR quality is
+very poor. EPUB editions are sometimes [drastically
+truncated](https://archive.org/details/AtlasZoologie00Paul) relative
+to the PDF edition--we would want to use the PDF edition pretty much
+everywhere. Many texts are
+[https://archive.org/details/longtermcarepoli00mass](random historical
+documents), not "books" as generally understood.
+
+IA also makes available full copies of works I'm pretty sure are still
+under copyright, e.g. [A Farewell to
+Arms](https://archive.org/details/farewelltoarms01hemi). I'm not sure
+what their legal justification is. Note that that is a book scanned
+and OCRed by the Internet Archive itself, not contributed by a user
+(which is a whole different problem). So whitelisting books provided
+by IA won't solve this problem, if it is indeed a problem.
+
+Summary: curated views of IA's catalog can be integrated into our
+catalog, but not IMO the entire catalog. It's a junkyard.
+
 #### Other sources
 
-Not worth the integration effort given that they don't host any popular books we can't get elsewhere, but let's keep them in mind.
+Not worth detailed investigation given that they don't host any popular books we can't get elsewhere, but let's keep them in mind.
 
 * [Project Gutenberg Self-Publishing](http://self.gutenberg.org/)
 * [WikiSource](http://en.wikisource.org/)
