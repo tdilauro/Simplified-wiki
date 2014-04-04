@@ -173,13 +173,13 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 <tr>
 <td>Give me a feed of search results</td>
 <td></td>
-<td></td>
+<td>Not supported</td>
 </tr>
 
 <tr>
 <td>Give me a preview of this book</td>
 <td></td>
-<td></td>
+<td>Not supported</td>
 </tr>
 
 <tr>
@@ -191,7 +191,7 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 <tr>
 <td>Extend this patron's license for this book</td>
 <td></td>
-<td></td>
+<td>Not supported</td>
 </tr>
 
 <tr>
