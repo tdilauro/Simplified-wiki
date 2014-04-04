@@ -166,7 +166,7 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 
 <tr>
 <td>Tell me what happened to your inventory recently</td>
-<td>Not supported</td>
+<td><a href="https://developer.overdrive.com/apis/search">Search</a> with lastupdatetime + follow-up with <a href="https://developer.overdrive.com/apis/library-availability">Library Availability</a>?</td>
 <td>"Get Library Events"</td>
 </tr>
 
