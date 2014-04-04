@@ -59,6 +59,7 @@ We plan to set up a mirror of the Gutenberg ePub documents. This gives us a text
  - _What format is the downloaded file? ODM? ASCM? We need to be able to open it in our reader._
 * No API for returning a book early. ("If a format has been locked in, then users need to use software like OverDrive Media Console or Adobe Digital Editions to complete the return process.")
  - _We need to be able to do this from our reader._
+* Overdrive's web site has a separate section offering about 27000 ebooks from Project Gutenberg. The presentation is awful. This is probably the ~29000 ebooks from the 2010 PG DVD.
 
 #### 3M Cloud Library
 3M's Cloud Library is accessible through license.  We will be executing a license as part of the development to begin integration work
