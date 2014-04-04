@@ -96,8 +96,8 @@ successful. Why?
    time.
 3. They publish exclusive content that you can't get anywhere else.
 
-#3 is not really relevant to us (or is it?...), but I propose we learn
-from #1 and #2.
+3 is not really relevant to us (or is it?...), but I propose we learn
+from 1 and 2.
 
 In one respect, our selection is worse than Netflix. While they have
 the rights to a title, an unlimited number of people can stream that
