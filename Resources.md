@@ -62,7 +62,9 @@ We plan to set up a mirror of the Gutenberg ePub documents. This gives us a text
 * Overdrive's web site has a separate section offering about 27000 ebooks from Project Gutenberg. The presentation is awful. This is probably the ~29000 ebooks from the 2010 PG DVD.
 
 #### 3M Cloud Library
-3M's Cloud Library is accessible through license.  We will be executing a license as part of the development to begin integration work
+3M's Cloud Library is accessible through license.  We will be executing a license as part of the development to begin integration work.
+
+According to Marty from OverDrive, "most of the APIs needed for discovery and account integration are there - the main limitation you'll find is that you can't access the ePub files directly..  it's only possible to access the content through the 3M apps."
 
 ### Open Library
 
