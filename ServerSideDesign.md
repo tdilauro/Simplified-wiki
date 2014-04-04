@@ -148,3 +148,11 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 
 * Something happened to my inventory (e.g. someone checked out a book,
   a book was added to inventory).
+
+## API comparison
+
+<table>
+    <tr>
+        <td>Foo</td>
+    </tr>
+</table>
