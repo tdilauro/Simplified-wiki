@@ -152,7 +152,21 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 ## API comparison
 
 <table>
-    <tr>
-        <td>Foo</td>
-    </tr>
+ <tr>
+ <th>Feature</th>
+ <th>Overdrive</th>
+ <th>3M</th>
+ </tr>
+
+<tr>
+<td>Tell me about your entire inventory</td>
+<td>_Not supported_</td>
+<td>"Get Library Events"</td>
+</tr>
+
+<tr>
+<td>Tell me what happened to your inventory recently</td>
+<td>_Not supported_</td>
+<td>"Get Library Events"</td>
+</tr>
 </table>
