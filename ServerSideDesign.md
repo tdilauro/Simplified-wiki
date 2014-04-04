@@ -160,13 +160,91 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 
 <tr>
 <td>Tell me about your entire inventory</td>
-<td>_Not supported_</td>
+<td>Not supported</td>
 <td>"Get Library Events"</td>
 </tr>
 
 <tr>
 <td>Tell me what happened to your inventory recently</td>
-<td>_Not supported_</td>
+<td>Not supported</td>
 <td>"Get Library Events"</td>
 </tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
 </table>
