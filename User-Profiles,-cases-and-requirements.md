@@ -9,7 +9,7 @@
 * Launch Readium EPUB Engine
 
 #### eReader app requirements
-**Basic Requirements**
+**Open and ePub, view and interact with its content**
 
 * Open EPUB2
 * Open EPUB3
