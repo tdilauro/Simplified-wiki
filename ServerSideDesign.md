@@ -153,15 +153,15 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 
 <table>
  <tr>
- <th>Feature</th>
+ <th>Message from server to source</th>
  <th>Overdrive</th>
  <th>3M</th>
  </tr>
 
 <tr>
 <td>Tell me about your entire inventory</td>
-<td>Not supported</td>
-<td>"Get Library Events"</td>
+<td>Not supported?</td>
+<td>"Get Library Events" + "Get Library Purchase Count"</td>
 </tr>
 
 <tr>
@@ -185,7 +185,7 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 <tr>
 <td>Give me this book licensed to this patron</td>
 <td></td>
-<td>"Checkout", but no way of getting the actual book</td>
+<td>"Check Out", but no way of getting the actual book</td>
 </tr>
 
 <tr>
@@ -197,56 +197,20 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 <tr>
 <td>This patron is surrendering their license for this book.</td>
 <td></td>
-<td></td>
+<td>"Check In"</td>
 </tr>
 
 <tr>
 <td>Put this book on hold for this patron/put them in the hold queue.</td>
 <td></td>
-<td></td>
+<td>"Place Hold"</td>
 </tr>
 
 <tr>
 <td>Release this patron's hold on this book/remove them from the hold queue.
 </td>
 <td></td>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
-<td></td>
-<td></td>
+<td>"Cancel Hold"</td>
 </tr>
 
 </table>
