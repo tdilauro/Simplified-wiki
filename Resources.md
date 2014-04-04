@@ -172,7 +172,7 @@ Not worth detailed investigation given that they don't host any popular books we
 
 ### Art
 
-We have access to a huge variety of non-textual works to use in the interstitial spaces of our application. Think of the way the MTA uses art on the subway to make uniform spaces more interesting and relieve the boredom of waiting. We can display some pre-cached artwork while (e.g.) waiting for a download to complete or for a search to run. This will give even a generic e-reader some personality and more of a "library" feel.
+We have access to a huge variety of non-textual works to use in the interstitial spaces of our application. Think of the way the MTA uses art on the subway to make uniform spaces more interesting and relieve the boredom of waiting. We can display some pre-cached artwork while (e.g.) waiting for a download to complete or for a search to run. This is an easy way to give even a generic e-reader some personality and a "library" feel.
 
 Any topic-based discovery algorithm we use for books should also work for matching artwork to books.
 
