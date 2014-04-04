@@ -186,7 +186,7 @@ The Cooper-Hewitt museum has an API, and the Smithsonian has an internal API cal
 
 #### Europeana
 
-Basically the DPLA for European institutions. I have not investigated [the API](http://pro.europeana.eu/web/guest/api) because there's no point until we decide whether to do anything with DPLA data, but it looks pretty similar to DPLA.
+Basically the DPLA for European institutions. I have not investigated [the API](http://pro.europeana.eu/web/guest/api) because there's no point until we decide whether to do anything with DPLA data, but it looks pretty similar to DPLA. [A sample of the available data.](http://labs.europeana.eu/data/)
 
 #### Wikimedia Commons
 
