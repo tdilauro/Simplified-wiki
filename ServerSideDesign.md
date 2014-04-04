@@ -171,42 +171,44 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 </tr>
 
 <tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
+<td>Give me a feed of search results</td>
 <td></td>
 <td></td>
 </tr>
 
 <tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-
-<tr>
-<td></td>
+<td>Give me a preview of this book</td>
 <td></td>
 <td></td>
 </tr>
 
 <tr>
+<td>Give me this book licensed to this patron</td>
 <td></td>
-<td></td>
-<td></td>
+<td>"Checkout", but no way of getting the actual book</td>
 </tr>
+
 <tr>
-<td></td>
+<td>Extend this patron's license for this book</td>
 <td></td>
 <td></td>
 </tr>
 
 <tr>
+<td>This patron is surrendering their license for this book.</td>
 <td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Put this book on hold for this patron/put them in the hold queue.</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Release this patron's hold on this book/remove them from the hold queue.
+</td>
 <td></td>
 <td></td>
 </tr>
