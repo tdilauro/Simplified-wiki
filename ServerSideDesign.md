@@ -160,7 +160,7 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 
 <tr>
 <td>Tell me about your entire inventory</td>
-<td>Not supported?</td>
+<td><a href="https://developer.overdrive.com/docs/products-link">via Products link?</a> </td>
 <td>"Get Library Events" + "Get Library Purchase Count"</td>
 </tr>
 
@@ -172,44 +172,44 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 
 <tr>
 <td>Give me a feed of search results</td>
-<td></td>
+<td>Search API</td>
 <td>Not supported</td>
 </tr>
 
 <tr>
 <td>Give me a preview of this book</td>
-<td></td>
-<td>Not supported</td>
+<td>Linked to from book detail</td>
+<td>Not supported?</td>
 </tr>
 
 <tr>
 <td>Give me this book licensed to this patron</td>
-<td></td>
+<td>Checkouts API + Download API</td>
 <td>"Check Out", but no way of getting the actual book</td>
 </tr>
 
 <tr>
 <td>Extend this patron's license for this book</td>
-<td></td>
+<td>Not supported</td>
 <td>Not supported</td>
 </tr>
 
 <tr>
 <td>This patron is surrendering their license for this book.</td>
-<td></td>
+<td>Not supported--this is a DRM operation</td>
 <td>"Check In"</td>
 </tr>
 
 <tr>
 <td>Put this book on hold for this patron/put them in the hold queue.</td>
-<td></td>
+<td>Holds API/"Place a hold"</td>
 <td>"Place Hold"</td>
 </tr>
 
 <tr>
 <td>Release this patron's hold on this book/remove them from the hold queue.
 </td>
-<td></td>
+<td>Holds API/"Removing a hold"</td>
 <td>"Cancel Hold"</td>
 </tr>
 
