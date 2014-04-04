@@ -184,6 +184,10 @@ A random sampling of art: [1](http://collections.si.edu/search/results.htm?q=rec
 
 The Cooper-Hewitt museum has an API, and the Smithsonian has an internal API called EDAN, but I believe the DPLA API is the only programmatic access to art from across the Smithsonian.
 
+#### Europeana
+
+Basically the DPLA for European institutions. I have not investigated [the API](http://pro.europeana.eu/web/guest/api) because there's no point until we decide whether to do anything with DPLA data, but it looks pretty similar to DPLA.
+
 #### Wikimedia Commons
 
 [A sample](http://commons.wikimedia.org/wiki/Category:PD-Art_%28PD-US-not_renewed%29) of [public domain art](http://commons.wikimedia.org/wiki/Category:PD-Art_%28PD-US%29) available through Wikimedia Commons. Access is through the MediaWiki API. Metadata (whether relating to source or to topics) is not as good as for DPLA materials.
