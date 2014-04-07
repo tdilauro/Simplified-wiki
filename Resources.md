@@ -35,6 +35,11 @@ validation, but I'm not sure how.
 
 ### Content
 
+#### ePUB 3
+
+[IDPF - ePub 3 Overview](http://www.idpf.org/epub/30/spec/epub30-overview.html)
+
+
 #### Project Gutenberg####
 
 About 45,000 free public domain texts.
