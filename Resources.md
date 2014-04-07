@@ -146,7 +146,7 @@ results and if the user selects one of these texts, have them download
 directly from IA (while grabbing a copy for ourselves so we can
 directly serve the next person who downloads it.)
 
-IA has a wide selecton of texts but quality is pretty
+IA has a wide selection of texts but quality is pretty
 bad. Bibliographical information is sometimes missing. OCR quality is
 very poor. EPUB editions are sometimes [drastically
 truncated](https://archive.org/details/AtlasZoologie00Paul) relative
@@ -195,7 +195,7 @@ Basically the DPLA for European institutions. I have not investigated [the API](
 
 [A sample](http://commons.wikimedia.org/wiki/Category:PD-Art_%28PD-US-not_renewed%29) of [public domain art](http://commons.wikimedia.org/wiki/Category:PD-Art_%28PD-US%29) available through Wikimedia Commons. Access is through the MediaWiki API. Metadata (whether relating to source or to topics) is not as good as for DPLA materials.
 
-#### ONIX and MARC 21
+#### BISAC, ONIX and MARC 21
 
 ONIX for Books is the international standard for representing and communicating book industry product information in electronic form. ONIX for Books was developed and is maintained by EDItEUR, jointly with Book Industry Communication (UK) and the Book Industry Study Group (U.S.), and has user groups in Australia, Belgium, Canada, Finland, France, Germany, Italy, the Netherlands, Norway, Russia, Spain, Sweden and the Republic of Korea.
 
@@ -203,6 +203,7 @@ Several organizations have developed mappings from ONIX to MARC21, the most wide
 The OCLC work – which covers both ONIX 2.1 and ONIX 3.0 – is set in the context of a Metadata Services programm under which publishers’ ONIX files are used to enrich MARC records in the OCLC database with added content, and at the same time MARC elements can be fed back to enhance the usefulness of the publisher’s metadata feed.
 
 [ONIX and MARC 21 Controlled vocabularies](http://www.editeur.org/96/ONIX-and-MARC21/)
+[Book INndustry Study Group (BISAC) and ONIX](https://www.bisg.org/onix-books)
 
 ### DRM
 
