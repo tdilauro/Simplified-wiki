@@ -317,6 +317,11 @@ A separate sub-project intends to in parallel develop an interoperable implement
 * [Readium Documents on Google Docs] (https://drive.google.com/a/nypl.org/?hl=en&pli=1#folders/0BzaNaBNAB6FjbU90WlhGR2lDOXM)
 
 ### Annotation
+#### Readium
+
+[Readium Annotation Library Scope Document](https://docs.google.com/a/nypl.org/document/d/1NojAfl-jYu3n2AXmssEs9HuH2GNT_y-T5FeMEv3USAI/edit#heading=h.yexjj75e13op)
+
+
 #### Evernote
 Evernote integration is intended to provide the features and functionality needed for users who use ebook content as part of their self guided leaning or scholarly research.
 * [Evernote iOS SDK reference](http://dev.evernote.com/doc/reference/ios/)
