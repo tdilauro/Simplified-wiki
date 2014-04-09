@@ -71,6 +71,10 @@ We plan to set up a mirror of the Gutenberg ePub documents. This gives us a text
 
 According to Marty from OverDrive, "most of the APIs needed for discovery and account integration are there - the main limitation you'll find is that you can't access the ePub files directly..  it's only possible to access the content through the 3M apps."
 
+Library Id:a4tmf 
+Account Id:Library.a4tmf 
+Account Key:WlcUemPbYLYE09cP 
+
 ### Open Library
 
 Open Library is a project of the Internet Archive which uses physical
