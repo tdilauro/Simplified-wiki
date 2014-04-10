@@ -32,3 +32,15 @@ A lot of schemes have been devised to classify books.
 
 * Similarly, any list of books, no matter what other theme it might have, divides the universe of books into two sets: the books on the list and the books not on the list.
 
+## Recommendation sources
+
+#### Goodreads
+Let users who are member of Goodreads connect to their Goodreads accounts, and access the books in their shelves, their ratings, their reviews, and their friends – the social reading graph.
+* [Good Reads API](https://www.goodreads.com/api)
+
+#### LibraryThing
+[LibraryThing API](https://www.librarything.com/services/)
+
+## Recommendation engines
+
+http://blog.mortardata.com/post/82195614895/giving-away-our-recommendation-engine-for-free
