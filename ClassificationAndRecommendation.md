@@ -21,8 +21,11 @@ A lot of schemes have been devised to classify books.
 
 * Bookstores like Amazon have their own proprietary classifications, e.g. "Books > Arts & Photography > Architecture > Urban & Land Use Planning". These also show up as GoodReads "genres".
 
-* "Author" and "Series" are not good classifications on their own, but they do help to group books together. Readers of fiction tend to make decisions about authors and series rather than individual books.
+* Amazon books also come with classifications from the publishers, although these aren't displayed very prominently. Major publishers tend to use LOC subject headings or BISAC classifications. Self-published books effectively use tags.
+
+* A book's author and the series it belongs too groups it with other books in a very basic way.
 
 * Folksonomic classifications like tags divide up the space of books into books that have a certain feature and books that don't. These show up as GoodReads "shelves".
 
 * Lists of books similarly divide the space of books into books on the list and books not on the list.
+
