@@ -162,6 +162,14 @@ A lot of schemes have been devised to classify books.
 
 * [Dewey Decimal classification](http://dewey.info/) Sample: "188" (Stoic philosophy), child of "18" (Ancient, medieval & eastern philosophy), child of "1" (Philosophy & psychology)
 
-Library of Congress
+* [Library of Congress classification](http://www.loc.gov/catdir/cpso/lcco/) Sample: "QE521-545" (Volcanoes and earthquakes), child of "QE" (Geology), child of "Q" (Science)
 
-Folksonomic
+* [Library of Congress subject headings](http://www.loc.gov/aba/cataloging/subject/) Sample: "Fundraising cookbooks"
+
+* Bookstores like Amazon have their own proprietary classifications, e.g. "Books > Arts & Photography > Architecture > Urban & Land Use Planning". These also show up as GoodReads "genres".
+
+* "Author" and "Series" are not good classifications on their own, but they do help to group books together. Readers of fiction tend to make decisions about authors and series rather than individual books.
+
+* Folksonomic classifications like tags divide up the space of books into books that have a certain feature and books that don't. These show up as GoodReads "shelves".
+
+* Lists of books similarly divide the space of books into books on the list and books not on the list.
