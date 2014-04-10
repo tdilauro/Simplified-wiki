@@ -6,7 +6,7 @@ We have three complementary jobs when it comes to presenting books:
 
 The first is a job for a classification scheme. The second and third are jobs for a recommendation engine. 
 
-A good classification scheme reduces the need for a good recommendation engine, and vice versa. The more precisely you know what _kind_ of book someone likes, the less picky you need to be about the relative ranking of books in that category. 
+A good classification scheme reduces the need for a good recommendation engine, and vice versa. The more precisely you know what _kind_ of book someone likes, the less picky you need to be about the relative ranking of books in that category. But if you could always present someone with the perfect book they want right now, then classification would be irrelevant.
 
 # Classification schemes
 
