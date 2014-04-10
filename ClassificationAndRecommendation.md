@@ -34,6 +34,10 @@ A lot of schemes have been devised to classify books.
 
 ## Recommendation sources
 
+We only acquire a paid ebook if a librarian thinks it's worth stocking. This sets a minimum level of quality on our paid selection. This means automated techniques for detecting _quality_ aren't as useful. (They may still be useful on our public domain material.)
+
+Recommendations should focus on identifying aspects of a book most likely to appeal to particular audiences, so that we can order the same feeds differently for different audiences. 
+
 #### Goodreads
 Let users who are member of Goodreads connect to their Goodreads accounts, and access the books in their shelves, their ratings, their reviews, and their friends – the social reading graph.
 * [Good Reads API](https://www.goodreads.com/api)
