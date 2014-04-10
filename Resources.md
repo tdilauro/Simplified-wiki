@@ -9,7 +9,7 @@ A patron may have two different credentials:
 * A nypl.org username and password
 * A library card barcode and PIN
 
-To use Jason's analogy, the username/password is your account on a bank website, and the barcode/PIN is your ATM card. We are developing an "ATM", so our primary authentication mechanism will be barcode/PIN. 
+To use an analogy from Jason Varghese, the username/password is your account on a bank website, and the barcode/PIN is your ATM card. We are developing an "ATM", so our primary authentication mechanism will be barcode/PIN. 
 
 #### Barcode authentication
 
