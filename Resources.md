@@ -71,6 +71,10 @@ Notes:
 
 _Jason proposed that SSO offer an API for provisioning barcode and PIN--either associated with an existing username/password, or associated with a brand new account._ This way we don't have to make API calls directly to ILS. One less system talking directly to ILS is one less system that has to be notified when the ILS system changes.
 
+#### Mirroring changes to ebook providers
+
+It doesn't sound like 3M or OverDrive need to know about our accounts--we give them barcode/PIN and they verify with ILS. Hopefully there is nothing to do here. Other ebook providers might do things differently.
+
 #### Existing card provisioning APIs
 
 The Brooklyn Public Library created a program called [My Library NYC](http://mylibrarynyc.org/about), in which you can sign up online
