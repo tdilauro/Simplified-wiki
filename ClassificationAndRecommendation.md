@@ -28,7 +28,7 @@ A lot of schemes have been devised to classify books.
 
 * A book's author and the series it belongs to groups it with other books in a very basic way.
 
-* Folksonomic classifications (emergent classification derived from use) which divide up collection of books into books that have a certain feature and books that don't. These show up as GoodReads "shelves".
+* Folksonomic classifications are emergent classifications derived from use. For instance, GoodReads "shelves", Twitter's hashtags, or the tags in any system that supports tagging. A tag like "hugo-winner" or "female-protagonist" divides the universe of books into two sets: a set of book with a certain feature and a set of books that don't. Tags may also express sentiment ("4-stars").
 
 * Lists of books similarly divide the space of books into books on the list and books not on the list.
 
