@@ -41,6 +41,10 @@ Let users who are member of Goodreads connect to their Goodreads accounts, and a
 #### LibraryThing
 [LibraryThing API](https://www.librarything.com/services/)
 
+Bibliocommons lists
+
+Reviews (sentiment + subject matter)
+
 ## Recommendation engines
 
 http://blog.mortardata.com/post/82195614895/giving-away-our-recommendation-engine-for-free
