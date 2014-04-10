@@ -1,3 +1,9 @@
+We have two complementary jobs when it comes to presenting books:
+
+* To classify the books into feeds, such that each book in a feed is related in some way.
+* To show each patron the feeds most likely to interest them. Within each feed, to put more the best and most interesting books at the front of the feed.
+
+The first is a job for a classification scheme. The second is a job for a recommendation engine.
 
 # Classification schemes
 
