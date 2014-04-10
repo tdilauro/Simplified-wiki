@@ -27,7 +27,7 @@ In the first two cases, if the user changes their PIN, the next authenticated ca
 
 #### Username authentication
 
-Users who have both a nypl.org account and a library card may prefer to log in using username/password rather than barcode/PIN. The SSO project will provide an API for sending username/password and getting barcode/PIN in response. If we switch over to using a token instead of passing around barcode/PIN, we will get one of those tokens instead of getting barcode/PIN.
+Users who have both a nypl.org account and a library card may prefer to log in using username/password rather than barcode/PIN. _The SSO project will provide an API for sending username/password and getting barcode/PIN in response._ If we switch over to using a token instead of passing around barcode/PIN, we will get one of those tokens instead of getting barcode/PIN.
 
 #### Current authentication APIs
 
@@ -53,21 +53,21 @@ Some notes on the existing process:
 * The PIN for the permanent card is the same as the PIN for the temporary card.
 * Unfortunately I didn't test whether I could check out ebooks with the temporary card.
 
-Here are the use cases we want to support. 
+_Here are the use cases we want to support._
 
 1. Anyone who boots up the app from a NYC GeoIP should be able to get a permanent virtual library card by providing their date of birth and address. They can go to a branch library at any time if they want to exchange their virtual library card for a physical library card.
 2. Anyone who boots up the app from outside NYC should be able to get a temporary (30-day) virtual library card by providing their date of birth and address. Within that 30-day period they can go to a branch library to exchange their temporary virtual card for a "permanent" physical card.
-3. Anyone who boots up the app from outside NYC should be able to get a temporary (30-day) virtual library card by providing their date of birth and address _within NYC_. A "permanent" physical card will be mailed to their address, along with instructions for activating it.
+3. Anyone who boots up the app from outside NYC should be able to get a temporary (30-day) virtual library card by providing their date of birth and address *within NYC*. A "permanent" physical card will be mailed to their address, along with instructions for activating it.
 
 Notes:
 
-* Obviously there are lots of edge cases here, but I believe this captures what we want: to serve people who live in New York or spend a lot of time in New York. Making it difficult to game the system, but not at the expense of making things easy for New Yorkers.
+* Obviously there are lots of edge cases here, but I believe this captures what we want: to serve people who live in New York or spend a lot of time in New York. Making it difficult to game the system, but not at the expense of making things really easy for New Yorkers.
 * I put "permanent" in scare quotes because I believe physical cards are only good for three years, and have to be renewed. If this is true, we'll need additional use cases for renewing virtual cards.
 * #1 and #2 are almost the same. The difference is when you verify that you spend time in NYC. If you're in NYC right now, your virtual card is permanent until you exchange it for a physical card. If you're not in NYC right now, you have 30 days to get to a branch library to claim your permanent, physical card.
 * #3 is similar to how Google verifies that you own a business you claim to own.
 * Hopefully we can do #1 and #2 with a minimum of change to existing processes. #3 will require a completely new process, and IMO it can wait.
 
-Jason proposed that SSO offer an API for provisioning barcode and PIN--either associated with an existing username/password, or associated with a brand new account. This way we don't have to make API calls directly to ILS. One less system talking directly to ILS is one less system that has to be notified when the ILS system changes.
+_Jason proposed that SSO offer an API for provisioning barcode and PIN--either associated with an existing username/password, or associated with a brand new account._ This way we don't have to make API calls directly to ILS. One less system talking directly to ILS is one less system that has to be notified when the ILS system changes.
 
 #### Existing card provisioning APIs
 
