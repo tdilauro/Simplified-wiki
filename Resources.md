@@ -65,7 +65,9 @@ Notes:
 * I put "permanent" in scare quotes because I believe physical cards are only good for three years, and have to be renewed. If this is true, we'll need additional use cases for renewing virtual cards.
 * #1 and #2 are almost the same. The difference is when you verify that you spend time in NYC. If you're in NYC right now, your virtual card is permanent until you exchange it for a physical card. If you're not in NYC right now, you have 30 days to get to a branch library to claim your permanent, physical card.
 * #3 is similar to how Google verifies that you own a business you claim to own.
-* Hopefully we can do #1 and #2 with a minimum of change to existing processes. #3 will require a completely new process, and IMO it can wait.
+* Hopefully we can do #1 and #2 with a minimum of change to existing processes. The major change: _we need to provision virtual card numbers that are good for 30 days, or permanent, instead of the current cards that expire at the end of the day. The virtual card numbers need to have permission high enough to check out ebooks._
+* #3 will require a completely new process, and IMO it can wait.
+* Physical card numbers are pre-provisioned (that's the stack of cards on the counter). I don't know if the same is true for virtual card numbers. We may need to have a block of card numbers provisioned for us
 
 _Jason proposed that SSO offer an API for provisioning barcode and PIN--either associated with an existing username/password, or associated with a brand new account._ This way we don't have to make API calls directly to ILS. One less system talking directly to ILS is one less system that has to be notified when the ILS system changes.
 
