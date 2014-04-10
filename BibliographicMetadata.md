@@ -143,3 +143,11 @@ explicitly defined anywhere.
 Documents are probably served as application/json, but I don't know yet.
 
 ## BiblioCommons
+
+Bibliocommons's [Titles
+API](http://developer.bibliocommons.com/docs/titles_id) serves JSON
+documents that use custom terms like "authors", "isbns", and
+"title". Each term is explicitly defined in the API documentation.
+
+Documents are served as application/json. The format of the JSON
+documents is not explicitly defined.
