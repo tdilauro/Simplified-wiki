@@ -154,11 +154,13 @@ documents is not explicitly defined.
 
 # Classification schemes
 
-BISAC
+A lot of schemes have been devised to classify books.
 
-BIC
+* [BISAC](https://www.bisg.org/complete-bisac-subject-headings-2013-edition) Sample: "POLITICAL SCIENCE / Public Policy / City Planning & Urban Development"
 
-Dewey
+* [BIC](http://editeur.dyndns.org/bic_categories) Sample: "FKC" (Classic horror and ghost stories), child of "FK" (Horror and ghost stories), child of "F" (Fiction).
+
+* [Dewey Decimal classification](http://dewey.info/) Sample: "188" (Stoic philosophy), child of "18" (Ancient, medieval & eastern philosophy), child of "1" (Philosophy & psychology)
 
 Library of Congress
 
