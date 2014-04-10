@@ -18,10 +18,10 @@ _The SSO project will provide an API for sending barcode/PIN and getting a yes/n
 Our ebook providers accept barcode/PIN and turn around to authenticate it with ILS, so our server implementation needs to have barcode/PIN information to send to the ebook providers. There are a 
 number of ways this can work:
 
-1 The client can store this information from initial authentication and provide it to the server with every request that needs authentication. (We will verify it with SSO every time.)
-2 The server can keep this information from initial authentication. We will verify it only once.
-3 The server can use the initial authentication to get a token from SSO. We will use that token to request barcode/PIN from SSO whenever we need to pass it on to the ebook providers. This is the same as #1, but it means we don't store the barcode/PIN on our server.
-4 We can get the ebook providers to stop authenticating against ILS and start authenticating against SSO. We will then pass some information to the providers other than barcode/PIN.
+1. The client can store this information from initial authentication and provide it to the server with every request that needs authentication. (We will verify it with SSO every time.)
+2. The server can keep this information from initial authentication. We will verify it only once.
+3. The server can use the initial authentication to get a token from SSO. We will use that token to request barcode/PIN from SSO whenever we need to pass it on to the ebook providers. This is the same as #1, but it means we don't store the barcode/PIN on our server.
+4. We can get the ebook providers to stop authenticating against ILS and start authenticating against SSO. We will then pass some information to the providers other than barcode/PIN.
 
 In the first two cases, if the user changes their PIN, the next authenticated call will fail and we will ask the client to authenticate again.
 
@@ -69,7 +69,7 @@ Notes:
 
 Jason proposed that SSO offer an API for provisioning barcode and PIN--either associated with an existing username/password, or associated with a brand new account. This way we don't have to make API calls directly to ILS. One less system talking directly to ILS is one less system that has to be notified when the ILS system changes.
 
-#### Existing APIs
+#### Existing card provisioning APIs
 
 The Brooklyn Public Library created a program called [My Library NYC](http://mylibrarynyc.org/about), in which you can sign up online
 for a unified library card that works with all NYC libraries. What API
