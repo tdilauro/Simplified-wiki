@@ -1,9 +1,12 @@
-We have two complementary jobs when it comes to presenting books:
+We have three complementary jobs when it comes to presenting books:
 
 * To classify the books into feeds, such that each book in a feed is related in some way.
-* To show each patron the feeds most likely to interest them. Within each feed, to put more the best and most interesting books at the front of the feed.
+* To show each patron the feeds most likely to interest them. 
+* Within each feed, to put more the best and most interesting books at the front of the feed.
 
-The first is a job for a classification scheme. The second is a job for a recommendation engine.
+The first is a job for a classification scheme. The second and third are jobs for a recommendation engine. 
+
+A good classification scheme reduces the need for a good recommendation engine, and vice versa. The more precisely you know what _kind_ of book someone likes, the less picky you need to be about the relative ranking of books in that category. 
 
 # Classification schemes
 
@@ -23,7 +26,7 @@ A lot of schemes have been devised to classify books.
 
 * Amazon books also come with classifications from the publishers, although these aren't displayed very prominently. Major publishers tend to use LOC subject headings or BISAC classifications. Self-published books effectively use tags.
 
-* A book's author and the series it belongs too groups it with other books in a very basic way.
+* A book's author and the series it belongs to groups it with other books in a very basic way.
 
 * Folksonomic classifications like tags divide up the space of books into books that have a certain feature and books that don't. These show up as GoodReads "shelves".
 
