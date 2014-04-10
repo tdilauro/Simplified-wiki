@@ -4,4 +4,5 @@ Welcome to the iOS-Reader wiki!
 * [Server-side design](https://github.com/NYPL/iOS-Reader/wiki/ServerSideDesign)
 * [User Profiles, Uses Cases and Requirements](https://github.com/NYPL/iOS-Reader/wiki/User-Profiles,-cases-and-requirements)
 * [Context](https://github.com/NYPL/iOS-Reader/wiki/Context)
+* [Bibliographic Metadata](https://github.com/NYPL/iOS-Reader/wiki/BibliographicMetadata)
 * [What we want out of third parties](https://github.com/NYPL/iOS-Reader/wiki/ThirdPartyTODO)
