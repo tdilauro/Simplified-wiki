@@ -28,7 +28,7 @@ A lot of schemes have been devised to classify books.
 
 * A book's author and the series it belongs to groups it with other books in a very basic way.
 
-* Folksonomic classifications like tags divide up the space of books into books that have a certain feature and books that don't. These show up as GoodReads "shelves".
+* Folksonomic classifications (emergent classification derived from use) which divide up collection of books into books that have a certain feature and books that don't. These show up as GoodReads "shelves".
 
 * Lists of books similarly divide the space of books into books on the list and books not on the list.
 
