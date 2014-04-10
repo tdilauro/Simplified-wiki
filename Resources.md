@@ -384,11 +384,3 @@ Evernote integration is intended to provide the features and functionality neede
 #### Hypothes.is
 Hypothes.is an open platform for the collaborative evaluation of knowledge. It will combine sentence-level critique with community peer-review to provide commentary, references, and insight on top of news, blogs, scientific articles, books, terms of service, ballot initiatives, legislation and regulations, software code and potentially eBooks. Efforts are based on the Annotator project and annotation standards for digital documents being developed by the Open Annotation Collaboration for the Web community.
 [Hypothes.is](https://github.com/hypothesis)
-
-### Recommendation
-#### Goodreads
-Let users who are member of Goodreads connect to their Goodreads accounts, and access the books in their shelves, their ratings, their reviews, and their friends – the social reading graph.
-* [Good Reads API](https://www.goodreads.com/api)
-
-#### LibraryThing
-[LibraryThing API](https://www.librarything.com/services/)
