@@ -30,5 +30,5 @@ A lot of schemes have been devised to classify books.
 
 * Folksonomic classifications are emergent classifications derived from use. For instance, GoodReads "shelves", Twitter's hashtags, or the tags in any system that supports tagging. A tag like "hugo-winner" or "female-protagonist" divides the universe of books into two sets: a set of books that have a certain feature and a set of books that lack that feature. Tags may also express private sentiment ("4-stars").
 
-* Lists of books similarly divide the space of books into books on the list and books not on the list.
+* Similarly, any list of books, no matter what other theme it might have, divides the universe of books into two sets: the books on the list and the books not on the list.
 
