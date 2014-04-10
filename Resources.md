@@ -121,6 +121,10 @@ Library Id:a4tmf
 Account Id:Library.a4tmf 
 Account Key:WlcUemPbYLYE09cP 
 
+### unglue.it
+
+Only about 20 books currently, but they're high quality open access stuff. There is an unknown integration API that requires a library partner account. _James is investigating this._
+
 ### Open Library
 
 Open Library is a project of the Internet Archive which uses physical
