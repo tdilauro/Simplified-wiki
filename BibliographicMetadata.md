@@ -151,3 +151,15 @@ documents that use custom terms like "authors", "isbns", and
 
 Documents are served as application/json. The internal format of the JSON
 documents is not explicitly defined.
+
+# Classification schemes
+
+BISAC
+
+BIC
+
+Dewey
+
+Library of Congress
+
+Folksonomic
