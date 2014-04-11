@@ -2,7 +2,14 @@
 
 * _Italicized bullet items_ are unresolved questions that need attention.
 
-### Patron APIs
+### Administrative Interfaces
+
+#### Active Admin
+Active Admin is a Ruby on Rails plugin for generating administration style interfaces. It abstracts common business application patterns to make it simple for developers to implement beautiful and elegant interfaces with very little effort.  It is licensed free of charge under very liberal Creative Commons Licensing which allows redistribution.
+
+[Active Admin GitHub Repo](https://github.com/gregbell/active_admin)
+
+### III  - Patron APIs
 
 A patron may have two different credentials:
 
