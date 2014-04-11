@@ -140,7 +140,7 @@ documents that use custom terms like "isOwnedByCollections", "title",
 use this vocabulary when describing books. AFAICT, the terms are not
 explicitly defined anywhere.
 
-Documents are probably served as application/json, but I don't know yet.
+Documents are served as a custom media type, application/vnd.overdrive.api+json, but I don't think the media type is formally defined anywhere.
 
 ## BiblioCommons
 
