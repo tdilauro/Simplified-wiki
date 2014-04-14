@@ -14,11 +14,11 @@ without ever setting foot in a library building.
 
 ### LCP
 
-Currently texts are protected by Adobe DRM. We don't want to be tied
+Currently texts are encrypted with Adobe DRM. We don't want to be tied
 to Adobe's SDK, or to a binary plugin that they release as part of
 Readium. Instead, we want all protected texts to be protected by LCP,
-so that we can write a free implementation. This applies to Overdrive,
-3M (?), and Open Library.
+so that we can decrypt them using libre software (which we may write ourselves). This applies to every provider of DRM-encrypted ebooks: Overdrive,
+3M, Axis 360, and Open Library.
 
 ### Previews
 
@@ -39,14 +39,14 @@ is DRM-free and contains the first 17% of the book. The preview ends
 with a page saying "End of sample. To search for additional titles
 please go to http://search.overdrive.com/".
 
-Availability of previews from 3M are unknown.
+3M and Axis 360 appear not to offer previews at all.
 
 If Open Library supported free previews, it would be nice for
 everyone, since there's only one license for most of their books.
 
 ### New acquisitions
 
-When Book Ops acquires a new title for NYPL, we need to know about it so we can retrieve its metadata from the appropriate API.
+When Book Ops acquires a new print title for NYPL, we need to know about it so we can retrieve its metadata from the appropriate API.
 
 The simplest solution may be to periodically crawl BiblioCommons, or whatever internal site Bibliocommons gets its data from.
 
@@ -55,6 +55,10 @@ The simplest solution may be to periodically crawl BiblioCommons, or whatever in
 Any catalogue of books needs to also provide good quality cover images for use in our UI. BiblioCommons has cover images for titles but the image quality is often lacking.
 
 Overdrive's API has links to good quality images.
+
+3M probably has something but it's locked up in the same secret API as the books themselves.
+
+Axis 360 doesn't seem to offer anything.
 
 Gutenberg texts generally have no cover image.
 
@@ -69,7 +73,7 @@ This seems like a huge mess both technically and politically. This applies to Ov
 Many planned features require that we be able to measure the velocity
 of a license (i.e. how frequently it changes hands). To do this we
 need an accurate, near-real-time picture of our Overdrive
-inventory. We don't have anything close.
+inventory. We don't have anything close. _Update: we may be able to get this to work, but I haven't actually gotten it to work yet._
 
 Currently we know which titles we own, but not how many copies of
 those titles we've licensed, how many lends remain on those copies,
