@@ -1,5 +1,6 @@
 Welcome to the iOS-Reader wiki!
 
+* [Content Sources](https://github.com/NYPL/iOS-Reader/wiki/ContentSources)
 * [Resources](https://github.com/NYPL/iOS-Reader/wiki/Resources)
 * [Server-side design](https://github.com/NYPL/iOS-Reader/wiki/ServerSideDesign)
 * [User Profiles, Uses Cases and Requirements](https://github.com/NYPL/iOS-Reader/wiki/User-Profiles,-cases-and-requirements)
