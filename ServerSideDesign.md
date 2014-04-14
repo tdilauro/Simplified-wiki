@@ -198,14 +198,14 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 <td>Extend this patron's license for this book</td>
 <td>Not supported</td>
 <td>Not supported</td>
-<td></td>
+<td>Not supported</td>
 </tr>
 
 <tr>
 <td>This patron is surrendering their license for this book.</td>
 <td>Not supported--this is a DRM operation</td>
 <td>"Check In" (but DRM operation also required)</td>
-<td></td>
+<td>Not supported</td>
 </tr>
 
 <tr>
