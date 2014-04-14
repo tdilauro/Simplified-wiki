@@ -163,34 +163,35 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 <td>Tell me about your entire inventory</td>
 <td><a href="https://developer.overdrive.com/docs/products-link">via Products link?</a> </td>
 <td>"Get Library Events" + "Get Library Purchase Count"</td>
-<td></td>
+<td>"Availability" with "updatedDate" to get historical information, then "Availability" to get information about specific books</td>
 </tr>
 
 <tr>
 <td>Tell me what happened to your inventory recently</td>
 <td><a href="https://developer.overdrive.com/apis/search">Search</a> with lastupdatetime + follow-up with <a href="https://developer.overdrive.com/apis/library-availability">Library Availability</a>?</td>
 <td>"Get Library Events"</td>
-<td></td>
+<td>"Availability" with "updatedDate"</td>
 </tr>
 
 <tr>
 <td>Give me a feed of search results</td>
 <td>Search API</td>
 <td>Not supported</td>
-<td></td>
+<td>Not supported</td>
 </tr>
 
 <tr>
 <td>Give me a preview of this book</td>
 <td>Linked to from book detail</td>
 <td>Not supported?</td>
-<td></td>
+<td>Not supported</td>
 </tr>
 
 <tr>
 <td>Give me this book licensed to this patron</td>
 <td>Checkouts API + Download API</td>
 <td>"Check Out", but no way of getting the actual book</td>
+<td>"DRM Create"/"DRM Setup" + "Checkout"
 </tr>
 
 <tr>
@@ -211,7 +212,7 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 <td>Put this book on hold for this patron/put them in the hold queue.</td>
 <td>Holds API/"Place a hold"</td>
 <td>"Place Hold"</td>
-<td></td>
+<td>"Add to hold"</td>
 </tr>
 
 <tr>
@@ -219,7 +220,7 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 </td>
 <td>Holds API/"Removing a hold"</td>
 <td>"Cancel Hold"</td>
-<td></td>
+<td>"Remove Hold"</td>
 </tr>
 
 </table>
