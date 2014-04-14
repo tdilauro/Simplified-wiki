@@ -22,7 +22,7 @@
 ### Axis 360
 
 * We have a copy of the secret documentation.
-* Functional if uninspired. Seems to have every major feature we need.
+* Seems to have every major feature we need.
 
 ### Open Library
 
