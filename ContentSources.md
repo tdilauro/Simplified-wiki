@@ -1,21 +1,11 @@
-#### Project Gutenberg####
+## DRM-encrypted books
 
-About 45,000 free public domain texts.
+3M, Overdrive, and Axis 360 are the main vendors of DRM-encrypted ebooks. Each has a custom API that covers more or less the same ground. [Server-Side Design](https://github.com/NYPL/iOS-Reader/wiki/ServerSideDesign) has a back-to-back comparison of 3M, Overdrive, and Axis 360 when it comes to the integration features we care about. I won't go into the details here.
 
-We plan to set up a mirror of the Gutenberg ePub documents. This gives us a text source over which we have complete technical and legal control.
+### Overdrive
 
-* _Set up the mirror._
- - Provision a machine and copy over the ePubs.
- - Retrieve the [MARC records](http://gutenberg.readingroo.ms/cache/generated/feeds/) and insert an "Electronic resource" pointer in each. There are a number of sources for MARC records ([this one](http://www.gutenberg.org/feeds/catalog.marc.bz2) is from gutenberg.org but looks identical to the one at readingroo.ms), and [a third-party script](http://ebooks.adelaide.edu.au/meta/pg/) for converting Gutenberg RDF documents to MARC. 
- - Generate an OPDS feed, either from the MARC records or from the underlying RDF data.
- - The MARC records, the OPDS feed, and the mirror should eventually be updated nightly. The Adelaide third-party library provides daily feeds of new and updated MARC records.
- - Come up with some way of identifying when a Gutenberg text is the same as an Overdrive text, and prefer the Gutenberg text.
-* _How many books do we check out through Overdrive that we could replace with Gutenberg?_
-* _Are there changes we could make to the default epubs that would improve user experience?_ Doing some manual work on the top 100 books would be worth it.
-
-#### Overdrive
-
-* [OverDrive APIs] (https://developer.overdrive.com/apis)
+* [OverDrive APIs] (https://developer.overdrive.com/apis) are very well-designed in general.
+* The main sticking point is getting an ongoing picture of inventory.
 * [API for checking availability](https://developer.overdrive.com/apis/library-availability)
 * [API for checking out a book and "locking in" a format (e.g. "ebook-epub-adobe") to get a download URL.](https://developer.overdrive.com/apis/checkouts)
 * [API for downloading a book in the locked-in format.](http://developer.overdrive.com/apis/download)
@@ -24,18 +14,15 @@ We plan to set up a mirror of the Gutenberg ePub documents. This gives us a text
  - _We need to be able to do this from our reader._
 * Overdrive's web site has a separate section offering about 27000 ebooks from Project Gutenberg. The presentation is awful. This is probably the ~29000 ebooks from the 2010 PG DVD.
 
-#### 3M Cloud Library
-3M's Cloud Library is accessible through license.  We will be executing a license as part of the development to begin integration work.
+### 3M Cloud Library
 
-According to Marty from OverDrive, "most of the APIs needed for discovery and account integration are there - the main limitation you'll find is that you can't access the ePub files directly..  it's only possible to access the content through the 3M apps."
+* We have a copy of the secret documentation.
+* The primary missing functionality here is that there is no way to download a DRM-encrypted book. 3M wants everyone to use their reader.
 
-Library Id:a4tmf 
-Account Id:Library.a4tmf 
-Account Key:WlcUemPbYLYE09cP 
+### Axis 360
 
-### unglue.it
-
-Only about 20 books currently, but they're high quality open access stuff. There is an unknown integration API that requires a library partner account. _James is investigating this._
+* We have a copy of the secret documentation.
+* Functional if uninspired. Seems to have every major feature we need.
 
 ### Open Library
 
@@ -78,7 +65,6 @@ which seems to be undocumented.
 Open Library has no API functionality for checking out a book or
 joining the queue for a book.
 
-
 #### Summary
 
 It's tempting to see the nice selection available through Open Library
@@ -90,7 +76,28 @@ It's also hypocritical to integrate our reader into Open Library (and
 difficult to get Open Library to cooperate with us) since NYPL does
 not _contribute_ any books to Open Library.
 
-#### HathiTrust
+## Open-access books
+
+### Project Gutenberg
+
+About 45,000 free public domain texts.
+
+We plan to set up a mirror of the Gutenberg ePub documents. This gives us a text source over which we have complete technical and legal control.
+
+* _Set up the mirror._
+ - Provision a machine and copy over the ePubs.
+ - Retrieve the [MARC records](http://gutenberg.readingroo.ms/cache/generated/feeds/) and insert an "Electronic resource" pointer in each. There are a number of sources for MARC records ([this one](http://www.gutenberg.org/feeds/catalog.marc.bz2) is from gutenberg.org but looks identical to the one at readingroo.ms), and [a third-party script](http://ebooks.adelaide.edu.au/meta/pg/) for converting Gutenberg RDF documents to MARC. 
+ - Generate an OPDS feed, either from the MARC records or from the underlying RDF data.
+ - The MARC records, the OPDS feed, and the mirror should eventually be updated nightly. The Adelaide third-party library provides daily feeds of new and updated MARC records.
+ - Come up with some way of identifying when a Gutenberg text is the same as an Overdrive text, and prefer the Gutenberg text.
+* _How many books do we check out through Overdrive that we could replace with Gutenberg?_
+* _Are there changes we could make to the default epubs that would improve user experience?_ Doing some manual work on the top 100 books would be worth it.
+
+### unglue.it
+
+Only about 20 books currently, but they're high quality open access stuff. There is an unknown integration API that requires a library partner account. _James is investigating this._
+
+### HathiTrust
 
 * We contributed some 10ks of texts to be scanned. Some 1Ms of public documents are available in total.
 * From the premises of a library, anyone can download full documents in PDF format. They can also get EPUB format, but only by using the mobile site.
@@ -99,7 +106,7 @@ not _contribute_ any books to Open Library.
 * OCR is bad enough to make the PDF format preferable. 
 * There are unanswered questions as to what exactly we can do with these 1Ms of documents and even the 10Ks of documents we originally contributed. However, it looks like a web user on NYPL premises can download a PDF of any of those 1Ms of texts. 
 
-##### The API
+#### The API
 
 * [Haithi DTrust Data API](http://www.hathitrust.org/data_api) API documentation in PDF format.
 * Full volumes are available for the Espressnet project only, and only in Espresso Book Machine format. (PDF documentation search term: "Volume-type resources".) Everyone else is restricted to page images, which makes the API useless for our purposes.
@@ -144,13 +151,13 @@ Not worth detailed investigation given that they don't host any popular books we
 * [Project Gutenberg Self-Publishing](http://self.gutenberg.org/)
 * [WikiSource](http://en.wikisource.org/)
 
-### Art
+## Art
 
 We have access to a huge variety of non-textual works to use in the interstitial spaces of our application. Think of the way the MTA uses art on the subway to make uniform spaces more interesting and relieve the boredom of waiting. We can display some pre-cached artwork while (e.g.) waiting for a download to complete or for a search to run. This is an easy way to give even a generic e-reader some personality and a "library" feel.
 
 Any topic-based discovery algorithm we use for books should also work for matching artwork to books.
 
-#### DPLA
+### DPLA
 
 DPLA has [a comprehensive API](http://dp.la/info/developers/codex/) with liberal usage policies. Access to texts is scattershot. Most of the available texts come from Hathi Trust, which we would access separately, and most texts are of highly specialized interest. The artwork is different story. By integrating with DPLA we get a great source for high-quality interstitial art along with machine-readable metadata about the art.
 
@@ -158,10 +165,14 @@ A random sampling of art: [1](http://collections.si.edu/search/results.htm?q=rec
 
 The Cooper-Hewitt museum has an API, and the Smithsonian has an internal API called EDAN, but I believe the DPLA API is the only programmatic access to art from across the Smithsonian.
 
-#### Europeana
+### Europeana
 
 Basically the DPLA for European institutions. I have not investigated [the API](http://pro.europeana.eu/web/guest/api) because there's no point until we decide whether to do anything with DPLA data, but it looks pretty similar to DPLA. [A sample of the available data.](http://labs.europeana.eu/data/)
 
-#### Wikimedia Commons
+### Wikimedia Commons
 
 [A sample](http://commons.wikimedia.org/wiki/Category:PD-Art_%28PD-US-not_renewed%29) of [public domain art](http://commons.wikimedia.org/wiki/Category:PD-Art_%28PD-US%29) available through Wikimedia Commons. Access is through the MediaWiki API. Metadata (whether relating to source or to topics) is not as good as for DPLA materials.
+
+### Instagram
+
+Joe did a Shipit Day project involving pulling Instagram projects tagged #NYPL and using them as background images.
