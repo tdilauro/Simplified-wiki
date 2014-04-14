@@ -95,9 +95,11 @@ term) regular dumps of our inventory that are no older than N minutes.
 
 ## 3M
 
-Nothing is known about the 3M API. In particular, we don't know if it
-has the same inventory visibility problems as Overdrive. But it
-probably does. The first step is to get basic access and information about their API.
+3M insists that all patrons use their e-reader to download, decrypt, and read books. This is a deal-breaker.
+
+## Axis 360
+
+Once we start on the Axis 360 integration we will need access to a test environment.
 
 ## Hathi Trust
 
