@@ -156,30 +156,35 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
  <th>Message from server to source</th>
  <th>Overdrive</th>
  <th>3M</th>
+ <th>Axis360</th>
  </tr>
 
 <tr>
 <td>Tell me about your entire inventory</td>
 <td><a href="https://developer.overdrive.com/docs/products-link">via Products link?</a> </td>
 <td>"Get Library Events" + "Get Library Purchase Count"</td>
+<td></td>
 </tr>
 
 <tr>
 <td>Tell me what happened to your inventory recently</td>
 <td><a href="https://developer.overdrive.com/apis/search">Search</a> with lastupdatetime + follow-up with <a href="https://developer.overdrive.com/apis/library-availability">Library Availability</a>?</td>
 <td>"Get Library Events"</td>
+<td></td>
 </tr>
 
 <tr>
 <td>Give me a feed of search results</td>
 <td>Search API</td>
 <td>Not supported</td>
+<td></td>
 </tr>
 
 <tr>
 <td>Give me a preview of this book</td>
 <td>Linked to from book detail</td>
 <td>Not supported?</td>
+<td></td>
 </tr>
 
 <tr>
@@ -192,18 +197,21 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 <td>Extend this patron's license for this book</td>
 <td>Not supported</td>
 <td>Not supported</td>
+<td></td>
 </tr>
 
 <tr>
 <td>This patron is surrendering their license for this book.</td>
 <td>Not supported--this is a DRM operation</td>
-<td>"Check In"</td>
+<td>"Check In" (but DRM operation also required)</td>
+<td></td>
 </tr>
 
 <tr>
 <td>Put this book on hold for this patron/put them in the hold queue.</td>
 <td>Holds API/"Place a hold"</td>
 <td>"Place Hold"</td>
+<td></td>
 </tr>
 
 <tr>
@@ -211,6 +219,7 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 </td>
 <td>Holds API/"Removing a hold"</td>
 <td>"Cancel Hold"</td>
+<td></td>
 </tr>
 
 </table>
