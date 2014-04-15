@@ -151,3 +151,17 @@ documents that use custom terms like "authors", "isbns", and
 
 Documents are served as application/json. The internal format of the JSON
 documents is not explicitly defined.
+
+## GoodReads
+
+XML format. Includes reviews.
+
+## Amazon Product Advertising API
+
+XML format. Includes reviews. I believe we have more favorable usage terms if we scrape the website as a spider rather than going through the API.
+
+## LibraryThing
+
+XML and JSON formats are provided under different licenses.
+
+Includes lots of "Facts" about a book such as characters, important events, and quotations.
