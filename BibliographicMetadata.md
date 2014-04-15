@@ -168,8 +168,6 @@ Includes lots of "Facts" about a book such as characters, important events, and 
 
 # Side-by-side comparison
 
-## Vocabulary comparison
-
 This table compares five major vocabularies for ebook sources, plus
 one source for catalog data (BiblioCommons). It focuses on the terms we
 care most about for identifying titles, tracking our inventory, and
