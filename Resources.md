@@ -183,6 +183,7 @@ Some OPDS feeds of books for sale:
 * [O'Reilly Media](http://opds.oreilly.com/opds/)
 * [FeedBooks](http://www.feedbooks.com/catalog.atom)
 * [SmashWords](http://www.smashwords.com/lexcycle/)
+* [OmniLit](https://www.omnilit.com/epub-feed.xml)
 * [All Romance Ebooks Online](http://www.allromanceebooks.com/epub-feed.xml)
 * [BooksOnBoard](http://www.booksonboard.com/xml/catalog.atom)
 * [Beam eBooks](http://stanza.beam-ebooks.de/) (in Deutsch)
