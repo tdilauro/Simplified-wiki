@@ -21,13 +21,13 @@
 
         See tableView:didSelectRowAtIndexPath: in NavigationElementController, it pushes to a specific RDNavigationElement when you tap a cell, to a certain file based on what was specified in the datasource.
 
-* Automatically Size Font percentage equivalent to 12pt Font Calibri iPhone
+* Automatically Size Font percentage equivalent to 12pt Font Avenir iPhone
 
         Scaling is done on a percentage basis. In launcher app, see EpubSettings - fontScale property.
 
-* Automatically Size Font to equivalent percentage to 14pt Font Calibri iPad
+* Automatically Size Font to equivalent percentage to 14pt Font Avenir iPad
 
-        Scaling is done on a percentage basis. In launcher app, see EpubSettings - fontScale property.
+        Scaling is done on a percentage basis. In launcher app, see Epub Settings - fontScale property.
 
 * Automatically set view to single page view on iPhone and iPad.  
 
