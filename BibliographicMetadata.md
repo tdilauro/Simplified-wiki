@@ -193,7 +193,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Permalink</td>
+ <th>Permalink</th>
  <td>atom:id</td>
  <td>links[self], links[availability], links[metadata]</td>
  <td>BookLinkURL</td>
@@ -203,7 +203,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>ISBN-13</td>
+ <th>ISBN-13</th>
  <td>dc:identifier may be a urn:isbn: URI, but probably not</td>
  <td>metadata->formats[identifiers]</td>
  <td>ISBN13</td>
@@ -213,7 +213,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Title</td>
+ <th>Title</th>
  <td>atom:title</td>
  <td>title</td>
  <td>Title</td>
@@ -223,7 +223,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Subtitle</td>
+ <th>Subtitle</th>
  <td>usually part of dc:title</td>
  <td>subtitle</td>
  <td>Subtitle</td>
@@ -233,7 +233,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Series</td>
+ <th>Series</th>
  <td>- (some vendors may include with dc:title)</td>
  <td>series</td>
  <td>-</td>
@@ -243,7 +243,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Author</td>
+ <th>Author</th>
  <td>atom:author, atom:creator</td>
  <td>primaryCreator, metadata->creators</td>
  <td>Authors (list--separated how?)</td>
@@ -253,7 +253,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Description</td>
+ <th>Description</th>
  <td>atom:summary (text only) or atom:content (usually HTML, often has buy form/download link and other misc metadata)</td>
  <td>metadata->shortDescription</td>
  <td>Description (HTML format)</td>
@@ -263,7 +263,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Publisher</td>
+ <th>Publisher</th>
  <td>dc:publisher</td>
  <td>metadata->publisher</td>
  <td>Publisher</td>
@@ -273,7 +273,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Imprint</td>
+ <th>Imprint</th>
  <td>-</td>
  <td>metadata->imprint</td>
  <td>-</td>
@@ -283,7 +283,7 @@ table as we investigate more APIs.
 </tr>
 
 <tr>
- <td>Publication date</td>
+ <th>Publication date</th>
  <td>dc:issued (atom:published for when added to OPDS catalog)</td>
  <td>metadata->publishDate, metadata->publishDateText</td>
  <td>PubDate</td>
@@ -293,7 +293,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Language</td>
+ <th>Language</th>
  <td>dc:language</td>
  <td>metadata->languages</td>
  <td>Language</td>
@@ -303,7 +303,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Reader Rating</td>
+ <th>Reader Rating</th>
  <td>-</td>
  <td>metadata->starRating, metadata->popularity</td>
  <td>- (tracked, but not published through the API)</td>
@@ -313,7 +313,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Classifications</td>
+ <th>Classifications</th>
  <td>atom:Category</td>
  <td>metadata->subjects, metadata->gradeLevels</td>
  <td>-</td>
@@ -323,7 +323,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Cover image</td>
+ <th>Cover image</th>
  <td>link with rel="http://opds-spec.org/thumbnail"/"http://opds-spec.org/cover" /"x-stanza-cover-image"/"x-stanza-cover-image-thumbnail"</td>
  <td>images[thumbnail], metadata->images[cover] (contentreserve.com)</td>
  <td>CoverLinkURL (very high quality)</td>
@@ -333,7 +333,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Download link</td>
+ <th>Download link</th>
  <td>odps:indirectAcquisition for DRM-encrypted stuff. Otherwise link rel="http://opds-spec.org/acquisition" or "http://opds-spec.org/acquisition/open-access" or "http://opds-spec.org/acquisition/borrow" </td>
  <td>contentLink (using Download API)</td>
  <td>NO WAY</td>
@@ -343,7 +343,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Download link (sample)</td>
+ <th>Download link (sample)</th>
  <td>link rel="http://opds-spec.org/acquisition/sample" </td>
  <td>metadata->samples</td>
  <td>-</td>
@@ -353,7 +353,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Format</td>
+ <th>Format</th>
  <td>'type' of acquisition link</td>
  <td>metadata->formats</td>
  <td>BookFormat</td>
@@ -363,7 +363,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>File size</td>
+ <th>File size</th>
  <td>-</td>
  <td>metadata->formats[fileSize]</td>
  <td>Size</td>
@@ -373,7 +373,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Purchased copies</td>
+ <th>Purchased copies</th>
  <td>-</td>
  <td>availability->copiesOwned</td>
  <td>TotalCopies</td>
@@ -383,7 +383,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Available copies</td>
+ <th>Available copies</th>
  <td>-</td>
  <td>availability->copiesAvailable</td>
  <td>AvailableCopies</td>
@@ -393,7 +393,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Size of hold queue</td>
+ <th>Size of hold queue</th>
  <td>-</td>
  <td>availability->numberOfHolds</td>
  <td>OnHoldCount</td>
@@ -403,7 +403,7 @@ table as we investigate more APIs.
 </tr> 
 
 <tr>
- <td>Other</td>
+ <th>Other</th>
  <td>atom:rights supersedes dc:rights. Library use case probably has to be worked out on a case-by-case basis.</td>
  <td>metadata->awards, metadata->reviews, metadata->popularity, metadata->sortTitle</td>
  <td>NumberOfPages (always seems to be missing or wrong), PhysicalISBN</td>
