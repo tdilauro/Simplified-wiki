@@ -183,7 +183,7 @@ table as we investigate more APIs.
 </tr>
 
 <tr>
- <td>Internal ID</td>
+ <th>Internal ID</th>
  <td>atom:id or dc:identifier</td>
  <td>id</td>
  <td>ItemId</td>
