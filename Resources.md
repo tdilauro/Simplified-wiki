@@ -173,10 +173,13 @@ Some OPDS feeds of open access materials:
 * [Project Gutenberg](http://m.gutenberg.org/ebooks.opds/)
 * [Internet Archive](http://bookserver.archive.org/catalog/)
 * [Many Books](http://manybooks.net/opds/index.php)
-* [Baen Free Library](http://www.baenebooks.com/stanza.aspx)
+* [Baen Free Library](http://www.baenebooks.com/stanza.aspx) [in Deutsch](http://stanza.beam-ebooks.de/)
+* [TUEBL](http://tuebl.ca/catalog/)
+* [ePub Bud](http://www.epubbud.com/feeds/catalog.atom) (childrens' books)
 * [Revues](http://bookserver.revues.org/?sort=OA) (journals, en français)
 * [Ebooks Graruits](http://www.ebooksgratuits.com/opds/index.php)  (en français)
 * [YouScribe](http://opds.youscribe.com/Catalog/books.xml) (en français)
+
 
 Some OPDS feeds of books for sale:
 
