@@ -1,10 +1,16 @@
 ### Self Published Fan Fiction
 * WattPad - 
-* Person - Heather McCormack
-* Medium (OpEd, Publication "matter")
+* Person to speak with - Heather McCormack
+* Medium - OpEd, Publication "matter collection"- 
 
 * Bi-liner
 * Long Reads - 
+
+###Graphic Novels
+* [digital comic museum] (http://digitalcomicmuseum.com/)
+* [Comic Book +] (http://comicbookplus.com/)
+* [iVerse Media] (http://iversecomics.com/support/)
+
 ###Academic - 
 * kuali Ole - 
 * Contra Costa - 
