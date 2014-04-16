@@ -1,64 +1,3 @@
-### Self Published Fan Fiction
-* WattPad - 
-* Person to speak with - Heather McCormack
-* Medium - OpEd, Publication "matter collection"- 
-
-* Bi-liner
-* Long Reads - 
-
-###Graphic Novels
-* [digital comic museum] (http://digitalcomicmuseum.com/)
-* [Comic Book +] (http://comicbookplus.com/)
-* [iVerse Media] (http://iversecomics.com/support/)
-
-###Academic - 
-* kuali Ole - 
-* Contra Costa - 
-* FeedBooks - 
-####Here's a (non-exhaustive) list of publishers/projects that offer open access books.
-
-* Online Books Project from University of Pennsylvania
-* Unglue.it
-* Knowledge Unlatched
-* Open Book Publishers
-* Open Humanities Press
-* TOR (science fiction publisher - I believe they had a freemium model at one point but not sure they still do)
-* Safari Bookshelf (technical books - same as Tor)
-* OAPEN (Open Access Publishing in European Networks)
-
-#####University Presses:
-* U Michigan - mostly in HathiTrust
-* U California
-* U Pittsburgh
-* U Florida
-* U Georgia
-* Fordham
-* Texas A & M
-* Purdue
-* Ohio State
-* Cornell
-
-###Self Publish 
-####Smashwords - 
-See What is Free and Popular -  uncurated
-
-###Academic Market - Multi Use
-
-L'Sevier
-Springer
-Wiley
-O'Reily Media
-University Press
-
-####University Press (Class of Publisher) 
-#####Platforms - Rebeca Federman
-* Project Muse
-* jStor
-* Oxford Scholarship Online (OPSO) - Unlimited Multi-use
-
-###Street Literature
-* Kensington - curated collection
-
 ## DRM-encrypted books
 
 3M, Overdrive, and Axis 360 are the main vendors of DRM-encrypted ebooks. Each has a custom API that covers more or less the same ground. [Server-Side Design](https://github.com/NYPL/iOS-Reader/wiki/ServerSideDesign) has a back-to-back comparison of 3M, Overdrive, and Axis 360 when it comes to the integration features we care about. I won't go into the details here.
@@ -137,6 +76,20 @@ It's also hypocritical to integrate our reader into Open Library (and
 difficult to get Open Library to cooperate with us) since NYPL does
 not _contribute_ any books to Open Library.
 
+### Non-Open-Access Publishers with unknown integration support
+
+* [iVerse](http://iversecomics.com/library-pricing/) - Comic books. Charges libraries on a per-checkout basis and requires a custom app. We would need to pitch them the idea of an integrated reader, but they have the technology.
+
+* Kensington ("Street lit"; the rest in this list are closer to the academic end)
+* Elsevier
+* Wiley
+* Springer
+* O'Reilly
+* Project Muse
+* JSTOR
+* Oxford Scholarship Online
+
+
 ## Open-access books
 
 ### Project Gutenberg
@@ -207,14 +160,40 @@ There are _subsets_ of IA's catalog that are extremely interesting: for instance
 Summary: curated views of IA's catalog can be integrated into our
 catalog, but not IMO the entire catalog. It's a junkyard.
 
-### Sources with no integration strategy
+### Other open-access sources with integration ability
 
-### Sources with integration strategy but bad selection
+* [OAPEN](http://www.oapen.org/search?browse-all=yes). - Open access books from European academic presses. ~700 books in English, ~350 in Dutch. Individual download links. [Provided XML file](http://www.oapen.org/metadataexports?page=intro) includes bibliographic metadata and download links for each book--it's basically an OPDS feed.
+
+### Open-access sources with no integration ability
+
+* [Digital Comic Museum](http://digitalcomicmuseum.com/) - About 15,000 public domain comics, mostly from the 1940s-1960s. Comics are free but must be downloaded one at a time, and bots are forbidden by TOS. For the month of April they have [a deal](http://digitalcomicmuseum.com/forum/index.php/topic,5383.0.html) whereby a donation of $X gets you an FTP quota of X*10 gigabytes of data. I estimate 15,000 comics would be between 375 and 475 gigabytes of data.
+* [Comic Book Plus](http://comicbookplus.com/) - Very similar story to Digital Comic Museum. Many comics from the UK.
+* [NASA](http://www.nasa.gov/connect/ebooks/ebooks_archive_1.html) About 35 books, including some interesting books of history.
+
+Some university presses with a lot of stuff:
+
+* [University of California](http://escholarship.org/uc/search?type=monograph;browse=monographs) (378 books)
+* [University of Pittsburgh](http://digital.library.pitt.edu/p/pittpress/) (762 books) "scholarly, educational, and research use only."
+
+### Open-access sources with integration strategy but bad selection
 
 Not worth detailed investigation given that they don't host any popular books we can't get elsewhere, but let's keep them in mind.
 
 * [Project Gutenberg Self-Publishing](http://self.gutenberg.org/)
 * [WikiSource](http://en.wikisource.org/)
+* [Open Book Publishers](http://www.openbookpublishers.com/section/22/1/librarians-and-booksellers) - 41 books with 16 more on the way. Books are made available under one CC license or another, but only the HTML editions are free to read. Epub editions (presumably also CC-licensed) cost a small amount of money, usually 6 UKP.
+* [Knowledge Unlatched](http://collections.knowledgeunlatched.org/collection-availability-1/) - An unglue.it-like pilot program in which libraries band together to make adademic-press books open access. End result is a few books released through OAPEN and Hathi.
+* [The Online Books Page](http://onlinebooks.library.upenn.edu/new.html) - Completely random curated selection of books from Gutenberg, Hathi, archive.org, university websites, and random websites (did you know the US Golf Association hosts some historical books on golf?)
+* [Open Humanities Press](http://openhumanitiespress.org/) 14 theory-heavy books. Native PDFs. There are also 17 journals, but each has its own separate website.
+
+More university presses:
+
+* [University of Georgia](http://dlg.galileo.usg.edu/cgi-bin/meta.cgi?format=dlg&query=Coll%3Augapressbks&_cc=1&Welcome&Welcome) (48 books, but a lot more in [collections](http://dlg.galileo.usg.edu/Topics/Literature.html))
+* [Fordham](http://fordham.bepress.com/ebooks/) (about 30 books)
+* [Purdue](http://docs.lib.purdue.edu/purduepress_ebooks/) (about 30 books)
+* [Ohio State](https://ohiostatepress.org/index.htm?/books/openaccess.htm) (about 150 books, chapters in individual PDFs)
+* [Cornell](http://ecommons.library.cornell.edu/greatest_hits.html) (a big mess--I have no idea how much stuff is here)
+
 
 ## Art
 
