@@ -15,6 +15,28 @@
 * kuali Ole - 
 * Contra Costa - 
 * FeedBooks - 
+####Here's a (non-exhaustive) list of publishers/projects that offer open access books.
+
+* Online Books Project from University of Pennsylvania
+* Unglue.it
+* Knowledge Unlatched
+* Open Book Publishers
+* Open Humanities Press
+* TOR (science fiction publisher - I believe they had a freemium model at one point but not sure they still do)
+* Safari Bookshelf (technical books - same as Tor)
+* OAPEN (Open Access Publishing in European Networks)
+
+#####University Presses:
+* U Michigan - mostly in HathiTrust
+* U California
+* U Pittsburgh
+* U Florida
+* U Georgia
+* Fordham
+* Texas A & M
+* Purdue
+* Ohio State
+* Cornell
 
 ###Self Publish 
 ####Smashwords - 
