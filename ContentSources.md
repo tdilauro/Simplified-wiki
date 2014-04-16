@@ -1,6 +1,14 @@
-## DRM-encrypted books
+# Misc leftovers from 4/16 meeting
 
-3M, Overdrive, and Axis 360 are the main vendors of DRM-encrypted ebooks. Each has a custom API that covers more or less the same ground. [Server-Side Design](https://github.com/NYPL/iOS-Reader/wiki/ServerSideDesign) has a back-to-back comparison of 3M, Overdrive, and Axis 360 when it comes to the integration features we care about. I won't go into the details here.
+* Talk to Heather McCormack, community manager for 3M, she knows Wattpad, Smashwords, etc.
+* Online periodicals: Medium, Matter, Atavist, Byliner, LongReads
+* Talk to Contra Costa about their acquisition design. Can we send
+  them usage signals and get quality signals in return?
+* KUALI-OLE
+
+## Paid books
+
+3M, Overdrive, and Axis 360 are the main vendors of DRM-encrypted paid ebooks. Each has a custom API that covers more or less the same ground. [Server-Side Design](https://github.com/NYPL/iOS-Reader/wiki/ServerSideDesign) has a back-to-back comparison of 3M, Overdrive, and Axis 360 when it comes to the integration features we care about. I won't go into the details here.
 
 ### Overdrive
 
@@ -76,11 +84,13 @@ It's also hypocritical to integrate our reader into Open Library (and
 difficult to get Open Library to cooperate with us) since NYPL does
 not _contribute_ any books to Open Library.
 
-### Non-Open-Access Publishers with unknown integration support
+### Publishers with unknown integration support
 
 * [iVerse](http://iversecomics.com/library-pricing/) - Comic books. Charges libraries on a per-checkout basis and requires a custom app. We would need to pitch them the idea of an integrated reader, but they have the technology.
+* [WattPad](https://www.wattpad.com/) - Popular fan fiction community. Since it's a community and not so much a corpus I don't know if there's value in integrating it
+* [SmashWords](http://www.smashwords.com/) Has [an OPDS feed](http://www.smashwords.com/lexcycle/) but not clear how we could borrow paid books except through Overdrive.
 
-These are closer to the academic end:
+These are closer to the academic end. They probably have custom APIs with per-site access models.
 
 * Elsevier
 * Wiley
@@ -195,7 +205,8 @@ More university presses:
 * [Ohio State](https://ohiostatepress.org/index.htm?/books/openaccess.htm) (about 150 books, chapters in individual PDFs)
 * [Cornell](http://ecommons.library.cornell.edu/greatest_hits.html) (a big mess--I have no idea how much stuff is here)
 
-### Publishers who might be interested in cutting a deal
+### Entities who might be interested in cutting a deal
+* [FeedBooks](http://www.feedbooks.com/) - An ebook distributor that is much closer to us politically than 3M/Overdrive.
 * Kensington - Street literature, hard to get into libraries
 * Tor Forge "had a freemium model at one point but not sure they still do". Leonard happens to know Tor's editor-in-chief professionally and can ask him about this.
 * Singularity and Company. A bookstore in Brooklyn that acquires the rights to, digitizes and releases two books every month (one science fiction, one pulp adventure) on a subscription basis. [SAmple subscription offer.](http://singularityshop.com/collections/ebooks/products/lifetime-gift-subscription-to-savethescifi-com)
