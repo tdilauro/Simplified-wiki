@@ -80,7 +80,8 @@ not _contribute_ any books to Open Library.
 
 * [iVerse](http://iversecomics.com/library-pricing/) - Comic books. Charges libraries on a per-checkout basis and requires a custom app. We would need to pitch them the idea of an integrated reader, but they have the technology.
 
-* Kensington ("Street lit"; the rest in this list are closer to the academic end)
+These are closer to the academic end:
+
 * Elsevier
 * Wiley
 * Springer
@@ -194,6 +195,10 @@ More university presses:
 * [Ohio State](https://ohiostatepress.org/index.htm?/books/openaccess.htm) (about 150 books, chapters in individual PDFs)
 * [Cornell](http://ecommons.library.cornell.edu/greatest_hits.html) (a big mess--I have no idea how much stuff is here)
 
+### Publishers who might be interested in cutting a deal
+* Kensington - Street literature, hard to get into libraries
+* Tor Forge "had a freemium model at one point but not sure they still do". Leonard happens to know Tor's editor-in-chief professionally and can ask him about this.
+* Singularity and Company. A bookstore in Brooklyn that acquires the rights to, digitizes and releases two books every month (one science fiction, one pulp adventure) on a subscription basis. [SAmple subscription offer.](http://singularityshop.com/collections/ebooks/products/lifetime-gift-subscription-to-savethescifi-com)
 
 ## Art
 
