@@ -1,14 +1,14 @@
 ### Self Published Fan Fiction
-WattPad - 
-Person - Heather McCormack
-Medium (OpEd, Publication "matter")
+* WattPad - 
+* Person - Heather McCormack
+* Medium (OpEd, Publication "matter")
 
-Bi-liner
-Long Reads - 
-Academic - 
-kuali Ole - 
-Contra Costa - 
-FeedBooks - 
+* Bi-liner
+* Long Reads - 
+###Academic - 
+* kuali Ole - 
+* Contra Costa - 
+* FeedBooks - 
 
 ###Self Publish 
 ####Smashwords - 
@@ -24,12 +24,12 @@ University Press
 
 ####University Press (Class of Publisher) 
 #####Platforms - Rebeca Federman
-Project Muse
-jStor
-Oxford Scholarship Online (OPSO) - Unlimited Multi-use
+* Project Muse
+* jStor
+* Oxford Scholarship Online (OPSO) - Unlimited Multi-use
 
 ###Street Literature
-Kensington - curated collection
+* Kensington - curated collection
 
 ## DRM-encrypted books
 
