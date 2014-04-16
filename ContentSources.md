@@ -202,10 +202,14 @@ and OCRed by the Internet Archive itself, not contributed by a user
 (which is a whole different problem). So whitelisting books provided
 by IA won't solve this problem, if it is indeed a problem.
 
+There are _subsets_ of IA's catalog that are extremely interesting: for instance, there's [an amazing selection of old periodicals](https://archive.org/details/magazine_rack).
+
 Summary: curated views of IA's catalog can be integrated into our
 catalog, but not IMO the entire catalog. It's a junkyard.
 
-### Other sources
+### Sources with no integration strategy
+
+### Sources with integration strategy but bad selection
 
 Not worth detailed investigation given that they don't host any popular books we can't get elsewhere, but let's keep them in mind.
 
