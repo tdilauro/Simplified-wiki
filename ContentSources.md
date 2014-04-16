@@ -1,3 +1,36 @@
+### Self Published Fan Fiction
+WattPad - 
+Person - Heather McCormack
+Medium (OpEd, Publication "matter")
+
+Bi-liner
+Long Reads - 
+Academic - 
+kuali Ole - 
+Contra Costa - 
+FeedBooks - 
+
+###Self Publish 
+####Smashwords - 
+See What is Free and Popular -  uncurated
+
+###Academic Market - Multi Use
+
+L'Sevier
+Springer
+Wiley
+O'Reily Media
+University Press
+
+####University Press (Class of Publisher) 
+#####Platforms - Rebeca Federman
+Project Muse
+jStor
+Oxford Scholarship Online (OPSO) - Unlimited Multi-use
+
+###Street Literature
+Kensington - curated collection
+
 ## DRM-encrypted books
 
 3M, Overdrive, and Axis 360 are the main vendors of DRM-encrypted ebooks. Each has a custom API that covers more or less the same ground. [Server-Side Design](https://github.com/NYPL/iOS-Reader/wiki/ServerSideDesign) has a back-to-back comparison of 3M, Overdrive, and Axis 360 when it comes to the integration features we care about. I won't go into the details here.
@@ -156,6 +189,11 @@ Not worth detailed investigation given that they don't host any popular books we
 We have access to a huge variety of non-textual works to use in the interstitial spaces of our application. Think of the way the MTA uses art on the subway to make uniform spaces more interesting and relieve the boredom of waiting. We can display some pre-cached artwork while (e.g.) waiting for a download to complete or for a search to run. This is an easy way to give even a generic e-reader some personality and a "library" feel.
 
 Any topic-based discovery algorithm we use for books should also work for matching artwork to books.
+
+
+###Sendetics
+### ChileFresh.com
+### CoverArt
 
 ### DPLA
 
