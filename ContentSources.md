@@ -218,9 +218,10 @@ We have access to a huge variety of non-textual works to use in the interstitial
 Any topic-based discovery algorithm we use for books should also work for matching artwork to books.
 
 
-###Sendetics
-### ChileFresh.com
 ### CoverArt
+* [Syndetic Solutions](http://www.bowker.com/en-US/products/syndetics/)
+* [ChileFresh.com](www.chilefresh.com)
+* [Content Cafe](http://www.ebscohost.com/ebooks/public)
 
 ### DPLA
 
