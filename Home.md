@@ -9,3 +9,5 @@ Welcome to the iOS-Reader wiki!
 * [User Profiles, Uses Cases and Requirements](https://github.com/NYPL/iOS-Reader/wiki/User-Profiles,-cases-and-requirements)
 * [Context](https://github.com/NYPL/iOS-Reader/wiki/Context)
 
+# Design
+* [[Workflow]]
