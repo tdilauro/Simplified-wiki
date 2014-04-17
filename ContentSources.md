@@ -186,7 +186,7 @@ Some university presses with a lot of stuff:
 * [University of California](http://escholarship.org/uc/search?type=monograph;browse=monographs) (378 books)
 * [University of Pittsburgh](http://digital.library.pitt.edu/p/pittpress/) (762 books) "scholarly, educational, and research use only."
 
-### Open-access sources with integration strategy but bad selection
+### Open-access sources with bad/overlapping selection
 
 Not worth detailed investigation given that they don't host any popular books we can't get elsewhere, but let's keep them in mind.
 
