@@ -16,6 +16,9 @@ But we need a better term for talking about it.
 
 RESERVE!!!
 
+# Checkout
+We want to impose a 24 hour "Reserve" time by which we punt someone who's got a "reserve" window from a 3 or 7 day vendor window.
+
 # Questions
 * Is access to the patron's barcode + pin available to our app via the API patron?
  * If so - they don't have to type in a pin
