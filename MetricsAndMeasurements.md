@@ -28,7 +28,7 @@ Wait time is the time between a patron entering the hold queue for a book, and b
 
 Minimizing wait time is important because large wait time leads to failures to lend (q.v.).
 
-It's also very important that idle time be _predictable_, so that we can give patrons an accurate picture of how long it will take them to get a book.
+It's also very important that wait time be _predictable_, so that we can give patrons an accurate picture of how long it will take them to get a book.
 
 ### Reservation time
 
