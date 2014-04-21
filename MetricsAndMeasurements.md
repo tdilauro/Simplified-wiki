@@ -34,6 +34,8 @@ It's also very important that wait time be _predictable_, so that we can give pa
 
 Reservation time is the time between a book being made available to someone and the time they decide to either check it out or pass it up.
 
+If the user decides to pass it up, that's the worst. They wanted the book badly enough to get in the hold queue, but they don't want it now that it's available. Maybe they already read it some other way, maybe they're no longer interested, maybe they're still interested but they don't have time right now. However, it happened, they've bumped up the wait time for everyone behind them in the queue, and for nothing.
+
 Minimizing reservation time is important because your reservation time contributes to the wait time of everyone in the queue behind you. If there is no one in the queue behind you, it's okay to give you more time to make up your mind.
 
 ### Loan time
