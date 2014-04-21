@@ -68,7 +68,7 @@ This includes people who entered the queue, went all the way through the queue, 
 
 We can minimize failure to lend by buying more licenses (the vendors' prefered solution), and by decreasing wait time (serving patrons more quickly). 
 
-Giving accurate up-front estimates of wait time will bring this number down, because it will discourage patrons from joining a queue if they don't have the patience. However, someone who wants the book and doesn't join the queue because it's too long is still technically a "failure to lend". The benefits to the system of giving an up-front estimate of wait time are:
+Giving accurate up-front estimates of wait time will bring this measurement down, because it will discourage patrons from joining a queue they can't wait through. However, someone who wants the book and doesn't join the queue because it's too long is still technically a "failure to lend". The benefits to the system of giving an up-front estimate of wait time are:
 
 * We've front-loaded the patron's disappointment, instead of making them frustrated at a long wait, then bothering them with a notification long after they're forgotten the book or read it some other way.
 * The patron's decision not to join the queue decreases the wait time (by the length of the reservation time) for everyone who joins the queue in the future.
