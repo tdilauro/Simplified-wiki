@@ -2,7 +2,7 @@
 
 * Maximize the time patrons spend reading books they like.
 * Maximize the number of loans we get out of each license.
-* Minimize the money spent by the library on unused licenses.
+* Minimize the money spent by the library on unused loans.
 
 ## How licenses work
 
