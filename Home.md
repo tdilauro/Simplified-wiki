@@ -3,6 +3,7 @@ Welcome to the iOS-Reader wiki!
 * [Content Sources](https://github.com/NYPL/iOS-Reader/wiki/ContentSources)
 * [Bibliographic Metadata](https://github.com/NYPL/iOS-Reader/wiki/BibliographicMetadata)
 * [Classification and Recommendation](https://github.com/NYPL/iOS-Reader/wiki/ClassificationAndRecommendation)
+* [Metrics and Measurements](https://github.com/NYPL/iOS-Reader/wiki/MetricsAndMeasurements)
 * [Other Resources](https://github.com/NYPL/iOS-Reader/wiki/Resources)
 * [Server-side design](https://github.com/NYPL/iOS-Reader/wiki/ServerSideDesign)
 * [What we want out of third parties](https://github.com/NYPL/iOS-Reader/wiki/ThirdPartyTODO)
