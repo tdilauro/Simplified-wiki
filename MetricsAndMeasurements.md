@@ -82,4 +82,6 @@ Giving accurate up-front estimates of wait time will bring this measurement down
 
 Loans of public domain books from Gutenberg are free, and the patron gets to keep the book. Loans of public domain books from 3M and Overdrive are none of these things.
 
-_How many loans are for public domain books?_
+#### How many loans are for public domain books?
+
+On Overdrive we own between 100 and 700 licenses for public domain books. There are also a few books (e.g. Frankenstein) for which we own thousands of licenses, which kind of simulates the public domain thing.
