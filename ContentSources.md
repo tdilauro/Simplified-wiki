@@ -234,6 +234,7 @@ More university presses:
 
 ### Entities who might be interested in cutting a deal
 * [FeedBooks](http://www.feedbooks.com/) - An ebook distributor that is much closer to us politically than 3M/Overdrive.
+* [WattPad](http://www.wattpad.com/about)
 * Kensington - Street literature, hard to get into libraries
 * Tor Forge "had a freemium model at one point but not sure they still do". Leonard happens to know Tor's editor-in-chief professionally and can ask him about this.
 * Singularity and Company. A bookstore in Brooklyn that acquires the rights to, digitizes and releases two books every month (one science fiction, one pulp adventure) on a subscription basis. [SAmple subscription offer.](http://singularityshop.com/collections/ebooks/products/lifetime-gift-subscription-to-savethescifi-com)
