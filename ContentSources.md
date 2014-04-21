@@ -1,7 +1,6 @@
 # Misc leftovers from 4/16 meeting
 
 * Talk to Heather McCormack, community manager for 3M, she knows Wattpad, Smashwords, etc.
-* Online periodicals: Medium, Matter, Atavist, Byliner, LongReads
 * Talk to Contra Costa about their acquisition design. Can we send
   them usage signals and get quality signals in return?
 * KUALI-OLE
@@ -26,6 +25,7 @@
 
 * We have a copy of the secret documentation.
 * The primary missing functionality here is that there is no way to download a DRM-encrypted book. 3M wants everyone to use their reader.
+* Also missing: we don't hear about it when someone gives up on a book and releases their hold.
 
 ### Axis 360
 
@@ -180,14 +180,23 @@ catalog, but not IMO the entire catalog. It's a junkyard.
 * [Digital Comic Museum](http://digitalcomicmuseum.com/) - About 15,000 public domain comics, mostly from the 1940s-1960s. Comics are free but must be downloaded one at a time, and bots are forbidden by TOS. For the month of April they have [a deal](http://digitalcomicmuseum.com/forum/index.php/topic,5383.0.html) whereby a donation of $X gets you an FTP quota of X*10 gigabytes of data. I estimate 15,000 comics would be between 375 and 475 gigabytes of data.
 * [Comic Book Plus](http://comicbookplus.com/) - Very similar story to Digital Comic Museum. Many comics from the UK.
 * [NASA](http://www.nasa.gov/connect/ebooks/ebooks_archive_1.html) About 35 books, including some interesting books of history.
-* [The Online Books Page](http://onlinebooks.library.upenn.edu/new.html) - Completely random curated selection of books from Gutenberg, Hathi, archive.org, university websites, and random websites (did you know the US Golf Association hosts some historical books on golf?)
-* [E-Books directory](http://www.e-booksdirectory.com/) is a random eclectic selection of links like the Online Books Page, but the books are sorted into categories and the selection is more oriented towards pleasure reading. Claimed 8829 books in collection.
+
 * [Wikibooks](http://en.wikibooks.org/wiki/Main_Page)
+* Online periodicals: Medium, Matter, Atavist, Byliner, LongReads
 
 Some university presses with a lot of stuff:
 
 * [University of California](http://escholarship.org/uc/search?type=monograph;browse=monographs) (378 books)
 * [University of Pittsburgh](http://digital.library.pitt.edu/p/pittpress/) (762 books) "scholarly, educational, and research use only."
+
+
+### Lists of links to open-access books
+
+These sites don't host books; they host catalogues of links to books made available by other sources. There's likely to be a lot of overlap here.
+
+* [The Online Books Page](http://onlinebooks.library.upenn.edu/new.html) - Completely random curated selection of books from Gutenberg, Hathi, archive.org, university websites, and random websites (did you know the US Golf Association hosts some historical books on golf?)
+* [E-Books directory](http://www.e-booksdirectory.com/) Selection is oriented towards pleasure reading. Claimed 8829 books in collection.
+* [The Assayer](http://theassayer.org/) Selection is oriented towards math and technical books. About 1450 books.
 
 ### Open-access sources with bad/overlapping selection
 
@@ -206,6 +215,22 @@ More university presses:
 * [Purdue](http://docs.lib.purdue.edu/purduepress_ebooks/) (about 30 books)
 * [Ohio State](https://ohiostatepress.org/index.htm?/books/openaccess.htm) (about 150 books, chapters in individual PDFs)
 * [Cornell](http://ecommons.library.cornell.edu/greatest_hits.html) (a big mess--I have no idea how much stuff is here)
+* [U of Chicago's Oriental Institute](https://oi.uchicago.edu/research/pubs/catalog/)
+
+### Open textbooks
+
+* [College Open Textbooks](http://www.collegeopentextbooks.org/opentextbookcontent/open-textbooks-by-subject) and [CCCOER](http://oerconsortium.org/discipline-specific/) seem to run by be the same people. Free textbooks put together by and for community colleges. [Here are the books on MERLOT.](http://www.merlot.org/merlot/viewPortfolio.htm?id=334314) Looks like 183 books in collection.
+
+* [Openstax CNS](http://cnx.org/) (Not investigated)
+* [FreeBooks4Doctors](http://www.freebooks4doctors.com/) (Not investigated)
+* [Free Online Textbooks, Lecture Notes, Tutorials, and Videos on Mathematics](https://files.nyu.edu/jmg336/public/html/mathematics.html) (Not investigated)
+* [FreeTechBooks](http://www.freetechbooks.com/) (Not investigated)
+* [Khan Academy](https://www.khanacademy.org/) Not really "textbooks", but worth keeping in mind.
+* [OER Commons](http://www.oercommons.org/courses/material_types/textbooks) Claimed 980 textbooks.
+* [OpenStax](http://openstaxcollege.org/students) 13 textbooks.
+* [The Orange Grove](http://florida.theorangegrove.org/og/access/hierarchy.do?topic=d37c6ed5-3822-84a6-721c-6d9033a88541&page=1) Over 5000 links to books, most of them read-online books through [Intech](http://www.intechopen.com/)
+* [Textbook Revolution](http://textbookrevolution.org/index.php/Book:Lists/License) Lists of links, not investigated.
+* [Global Text Project](http://globaltext.terry.uga.edu/books)
 
 ### Entities who might be interested in cutting a deal
 * [FeedBooks](http://www.feedbooks.com/) - An ebook distributor that is much closer to us politically than 3M/Overdrive.
