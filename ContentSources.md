@@ -180,6 +180,9 @@ catalog, but not IMO the entire catalog. It's a junkyard.
 * [Digital Comic Museum](http://digitalcomicmuseum.com/) - About 15,000 public domain comics, mostly from the 1940s-1960s. Comics are free but must be downloaded one at a time, and bots are forbidden by TOS. For the month of April they have [a deal](http://digitalcomicmuseum.com/forum/index.php/topic,5383.0.html) whereby a donation of $X gets you an FTP quota of X*10 gigabytes of data. I estimate 15,000 comics would be between 375 and 475 gigabytes of data.
 * [Comic Book Plus](http://comicbookplus.com/) - Very similar story to Digital Comic Museum. Many comics from the UK.
 * [NASA](http://www.nasa.gov/connect/ebooks/ebooks_archive_1.html) About 35 books, including some interesting books of history.
+* [The Online Books Page](http://onlinebooks.library.upenn.edu/new.html) - Completely random curated selection of books from Gutenberg, Hathi, archive.org, university websites, and random websites (did you know the US Golf Association hosts some historical books on golf?)
+* [E-Books directory](http://www.e-booksdirectory.com/) is a random eclectic selection of links like the Online Books Page, but the books are sorted into categories and the selection is more oriented towards pleasure reading. Claimed 8829 books in collection.
+* [Wikibooks](http://en.wikibooks.org/wiki/Main_Page)
 
 Some university presses with a lot of stuff:
 
@@ -194,7 +197,6 @@ Not worth detailed investigation given that they don't host any popular books we
 * [WikiSource](http://en.wikisource.org/)
 * [Open Book Publishers](http://www.openbookpublishers.com/section/22/1/librarians-and-booksellers) - 41 books with 16 more on the way. Books are made available under one CC license or another, but only the HTML editions are free to read. Epub editions (presumably also CC-licensed) cost a small amount of money, usually 6 UKP.
 * [Knowledge Unlatched](http://collections.knowledgeunlatched.org/collection-availability-1/) - An unglue.it-like pilot program in which libraries band together to make adademic-press books open access. End result is a few books released through OAPEN and Hathi.
-* [The Online Books Page](http://onlinebooks.library.upenn.edu/new.html) - Completely random curated selection of books from Gutenberg, Hathi, archive.org, university websites, and random websites (did you know the US Golf Association hosts some historical books on golf?)
 * [Open Humanities Press](http://openhumanitiespress.org/) 14 theory-heavy books. Native PDFs. There are also 17 journals, but each has its own separate website.
 
 More university presses:
