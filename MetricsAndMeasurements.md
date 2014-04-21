@@ -9,7 +9,7 @@ This is Leonard's impression of how licensing works:
 
 * For most titles, we buy licenses that are both time-limited and use limited. That is, the license will expire after 26 loans or one year, whichever comes first. (_What are the actual numbers?_)
 * We acquire licenses to some titles (_which ones?_) on a pay-per-read basis.
-* We acquire some licenses one at a time, and others in bundle deals with the ebook provider.
+* For some titles, we acquire licenses for one title at a time. Other titles we acquire in bundle deals with the ebook provider. Our librarians may not even know which titles are available in these bundles.
 * Overdrive and 3M have purchasing consoles that encourage the library to buy more licenses. This is done on 
 the basis of the hold/license ratio (see below).
 
