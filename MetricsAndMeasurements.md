@@ -34,15 +34,17 @@ It's also very important that wait time be _predictable_, so that we can give pa
 
 Reservation time is the time between a book being made available to someone and the time they decide to either check it out or pass it up.
 
+Minimizing reservation time is important because your reservation time contributes to the wait time of everyone in the queue behind you. If there is no one in the queue behind you, it's okay to give you more time to make up your mind.
+
 ### Loan time
 
 The time between a patron checking out a book and checking it in. For genre fiction this may be very short--measured in hours. For literary fiction and serious fiction it is longer. 
 
 Not to be confused with the _maximum_ loan time, which is the time (set by the ebook vendor) at which the DRM license will expire.
 
-In general, we don't want to try to change loan time, because we want people to read at their own pace. The one exception is when the loan time is the same as the maximum loan time. This probably means that the patron didn't finish the book. They might not have even _started_ the book. In that case it would have been better for everyone if we hadn't loaned them the book at all.
+In general, we don't want to try to change loan time, because we want people to read at their own pace. The one exception is when the loan time is the same as the maximum loan time. This probably means that the patron didn't finish the book. They might not have even _started_ the book, in which case it would have been better if we hadn't loaned them the book at all. It cost us money, it drastically increased the wait time of everyone in the hold queue, and the patron didn't get anything out of it.
 
-For public domain books, the "loan time" is not a coherent concept. However, we still don't want to loan out books that a patron will never read, because it uses bandwidth and makes the patron feel guilty.
+For public domain books, "loan time" is not a coherent concept. However, we still don't want to loan out books that a patron will never read, because it uses bandwidth and makes the patron feel guilty.
 
 ### Idle time
 
