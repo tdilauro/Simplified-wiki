@@ -86,7 +86,7 @@ Loans of public domain books from Gutenberg are free, and the patron gets to kee
 
 I did a very basic title/author match to try to find books we own in Overdrive and 3M that are also in Gutenberg.
 
-On Overdrive we own between 100 and 700 licenses for between 90 and 350 public domain books. There are also a few books (e.g. Frankenstein) for which we own thousands of licenses, which kind of simulates the public domain thing. This is out of about 11000 titles (which does not represent the complete 
+On Overdrive we own between 130 and 900 licenses for between 120 and 380 public domain books. There are also a few books (e.g. Frankenstein) for which we own thousands of licenses, which kind of simulates the public domain thing. This is out of about 16000 titles.
 
 On 3M we own between 100 and 450 licenses for between 90 and 350 public domain books. This is out of a library size of about 14500 titles.
 
