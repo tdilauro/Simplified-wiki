@@ -1,8 +1,7 @@
 ## Our goals
 
 * Maximize the time patrons spend reading books they like.
-* Maximize the number of loans we get out of each license.
-* Minimize the money spent by the library on unused loans.
+* Minimize the number of unused loans.
 
 ## How licenses work
 
@@ -21,6 +20,10 @@ the basis of the hold/license ratio (see below).
 The ratio of active holds to active licenses. This is the metric used by 3M and Overdrive (_both of them?_) to drive license sales. When this ratio gets above 9 (_is that right? for both vendors?_) they tell us we should buy another license.
 
 This is a terrible metric because it encourages buying a lot of licenses for things that are currently popular, licenses that are likely to expire before we get enough usage out of them to justify their cost.
+
+### Unused loans
+
+When a license expires, the number of times we could have loaned it out if it hadn't expired is the number of unused loans. Unused loans represent wasted money. It may have been better if we hadn't bought that license at all. Given that we did buy the license, we should have tried harder to lend out the book.
 
 ### Wait time
 
