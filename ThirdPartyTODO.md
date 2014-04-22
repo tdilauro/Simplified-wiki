@@ -103,7 +103,7 @@ term) regular dumps of our inventory that are no older than N minutes.
 
 3M does not notify us when someone releases a hold on the book. We are informed about reservations, but only during the 7 days the reservation is active.
 
-3M does not provide any classification information for their books.
+3M does not provide any classification information for their books, or access to user ratings of the books.
 
 ## Axis 360
 
