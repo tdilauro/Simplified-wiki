@@ -1,7 +1,20 @@
-## Our goals
+## Our goals and objectives
 
-* Maximize the time patrons spend reading books they like.
-* Minimize the number of unused loans.
+### Project Objectives
+* Grow Users
+* Increase Circulation of collection
+
+#### Other Goals 
+* Maximize the time patrons spend reading books they like - this is a proxy to directing them to content they want
+* Minimize the number of unused loans - this can help circulation though greater availability
+* Expand the user profile for ebooks - this can grow users
+
+#### Usability Goals - how we will evaluate the app
+The app is intuitive: How easy is it for users to accomplish basic tasks the first time they encounter the design?
+The app is Efficient: Once users have learned the design, how quickly can they perform tasks?
+The app is Memorable: When users return to the design after a period of not using it, how easily can they reestablish proficiency?
+The app avoids user Errors: How many errors do users make, how severe are these errors, and how easily can they recover from the errors?
+The has high Satisfaction: How pleasant is it to use the design?
 
 ## How licenses work
 
