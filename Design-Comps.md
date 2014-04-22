@@ -43,3 +43,19 @@ Differing aesthetic is warming on Jen because of the sharability of it and need 
  * Could reduce the opacity while scrolling to increase emphasis
 * Balance between text (i.e title/author) and cover art
  * Cover art useful as an anchor because you remembered it 
+
+
+* profile
+ * What's the point? Can we eliminate this page?
+ * Does e-newsletter make sense here? Does events make sense here?
+ * Detracts from core functionality
+ * Eliminating this lets us restyle the profile page so it can have the stream of on hold as opposed to swimlane
+
+
+
+* What does tapping the lion do? : nothing
+
+* Could there be a visual way to indicate status of if it's available or not? 
+ * could it be temporal (i.e. days to available)?
+
+* Good way to represent "saving a book for later" but without putting it on hold? I want to rember these
