@@ -251,6 +251,10 @@ Any topic-based discovery algorithm we use for books should also work for matchi
 * [ChileFresh.com](www.chilefresh.com)
 * [Content Cafe](http://www.ebscohost.com/ebooks/public)
 
+### NYPL collections
+
+We have a huge collection of digitized material that we already [make available](http://digitalgallery.nypl.org/nypldigital/index.cfm) to patrons.
+
 ### DPLA
 
 DPLA has [a comprehensive API](http://dp.la/info/developers/codex/) with liberal usage policies. Access to texts is scattershot. Most of the available texts come from Hathi Trust, which we would access separately, and most texts are of highly specialized interest. The artwork is different story. By integrating with DPLA we get a great source for high-quality interstitial art along with machine-readable metadata about the art.
