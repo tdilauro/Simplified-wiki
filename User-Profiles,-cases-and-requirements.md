@@ -1,75 +1,26 @@
 ### Basic eReader iOS Application Requirements
 
+#### Things to consider
 
+##### Screen Size
 
-*** Things to consider
 One of the biggest challenges is designing an eReading App for a variety of screens : big, small; portrait, landscape; high resolution, low resolution; color, mono.
-
-Dealing with this just got a lot easier, thanks to a feature in new ebook formats (and in modern web browsers). The feature is called media queries.
-Media queries let designers add several style sheets to an ebook, each one optimized for a particular screen type. They automatically detect the screen type and deliver the style sheet to match it.
-You are here: Home > Digital Publishing 101 for Ebooks | Course Home > Module 4: Production and conversion > Ebook design considerations
-Ebook design considerations
-
-<< BACKNEXT >>
-Design decisions will impact heavily on readership and distribution goals. So it’s important to take them into account very early in the planning and editorial process — preferably well before beginning production. In this section, we’ll look at design considerations, including trade-offs compared to print editions, usability issues and ways to deal with the wide range of screens on which they’ll be read.
-
-Design limitations and trade-offs
 
 The key design factor driving recent ebook growth is readability on small screens, and the best way to achieve this today is to keep things very simple. Any deviation from this will limit your potential readership.
 
-Unfortunately, almost every design trick we’ve used to make print more interesting and readable – different type styles, sidebars, boxes, multiple columns, screens over text and text flowing around images – has the opposite effect in ebooks.
-Occam's Razor
-You might apply Occam’s Razor to ebook design. As the 14th century theologian said, ‘It is vain to do with more what can be done with fewer.’
-The problem is multiplied if you’re planning to add rich media such as video, audio, animation and interactive features.
+##### Formats and Media overlays
 
-Design features are improving with advances in formats, ebook creation tools and more powerful e-reader devices — but you should use them with care.
+EPub 3 has a feature in new ebook formats (and in modern web browsers). The feature is called media queries.
+Media queries let designers add several style sheets to an ebook, each one optimized for a particular screen type. They automatically detect the screen type and deliver the style sheet to match it.
+
+##### Occam's Razor
+
+You might apply Occam’s Razor to ebook design. As the 14th century theologian said, ‘It is vain to do with more what can be done with fewer.’
 
 For now, there’s an inescapable rule: Each new feature or design innovation you add will lower potential readership.
 
-By all means experiment a little and push some boundaries, but understand the impact and introduce enhanced features carefully, as we’ll discuss below.
-
-Usability: What publishers can learn from web developers
-
-An ebook is a piece of software as well as a book. Usability will become an increasingly important design consideration as ebooks become more sophisticated and interactive.
-
-Usability research and testing studies the way people interact with software, whether in the form of programs on your computer or websites.
-
-What is usability?
-
-According to usability expert Jakob Nielsen, usability is about ease of use but most importantly it’s about the quality of the experience. He defines five quality attributes of usability:
-
-Learnability: How easy is it for users to accomplish basic tasks the first time they encounter the design?
-Efficiency: Once users have learned the design, how quickly can they perform tasks?
-Memorability: When users return to the design after a period of not using it, how easily can they reestablish proficiency?
-Errors: How many errors do users make, how severe are these errors, and how easily can they recover from the errors?
-Satisfaction: How pleasant is it to use the design?
-Source: Jakob Nielsen, Usability 101, http://www.useit.com/alertbox/20030825.html
-
-Most of Nielsen’s work concerns the web but we can see that ebooks and the web share an increasing amount in common. For a narrative work which progresses in linear fashion from the first page to the last, there’s not much the publication designer can do to change usability. But as you move to enhanced ebooks, usability issues will move to the fore.
-
-Nielsen reviewed several Kindles from a usability perspective. Click to see what he had to say.
-
-
-
-
-
-
-
-
-Designing for variations in screen size and type
-
-One of the biggest challenges is designing for screen variations: big, small; portrait, landscape; high resolution, low resolution; color, mono.
-
-Dealing with this just got a lot easier, thanks to a feature in new ebook formats (and in modern web browsers). The feature is called media queries.
-
-Media queries let designers add several style sheets to an ebook, each one optimized for a particular screen type. They automatically detect the screen type and deliver the style sheet to match it.
-
-Considerations for ebook design
-
-If you want your ebook to use features that go beyond the simple, universal feature set of EPUB and basic Kindle formats, you should consider:
-
-Fallbacks: A way to use new features without losing older e-readers
-A fallback is a way to offer a new feature to an eBook that is not supported by older e-readers, your ebook can be programmed to use an alternative that is supported – a fallback.  We should check this feature in the ePub Spine to understand its applicability.
+##### Fallbacks 
+A way to use new features without losing older e-readers.  A fallback is a way to offer a new feature to an eBook that is not supported by older e-readers, your ebook can be programmed to use an alternative that is supported – a fallback.  We should check this feature in the ePub Spine to understand its applicability.
 
 ### Testing
 Readium provides a Smoke Test Plan and supporting documents for testing eBook Apps.  This document provides a high level overview of what the SDK should handle and what the application layer should handle as an eReading app.
