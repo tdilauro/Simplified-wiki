@@ -101,6 +101,10 @@ term) regular dumps of our inventory that are no older than N minutes.
 
 3M insists that all patrons use their e-reader to download, decrypt, and read books. This is a deal-breaker.
 
+3M does not notify us when someone releases a hold on the book. We are informed about reservations, but only during the 7 days the reservation is active.
+
+3M does not provide any classification information for their books.
+
 ## Axis 360
 
 Once we start on the Axis 360 integration we will need access to a test environment.
