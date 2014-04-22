@@ -34,3 +34,12 @@ Differing aesthetic is warming on Jen because of the sharability of it and need 
  * Homescreen - would be another vertial row for Just Checked Out
 * Show expected arrival time
 * Should make a very clear statement when you've got to take action to check out an item
+* Use case that's not being addressed here is looking for a book that you recognize
+ * no solution for that in a library
+ * Leonard: "There is a use case between browsing and searching"
+  * i.e. alphabetized
+* Not in mockups: Browse by Genre - wide-ranging genres
+* Possible to increase size of lane while scrolling?
+ * Could reduce the opacity while scrolling to increase emphasis
+* Balance between text (i.e title/author) and cover art
+ * Cover art useful as an anchor because you remembered it 
