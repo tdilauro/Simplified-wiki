@@ -1,13 +1,13 @@
 ## Mobile Client Views
 
-### Home Page
+#### Home Page
 
-### User Profile Page
+##### User Profile Page
 
-### Registration
+##### Registration
 
-### User Setting
+##### User Setting
 
-### Reading
+##### Reading
 
-### Reader Settings
+##### Reader Settings
