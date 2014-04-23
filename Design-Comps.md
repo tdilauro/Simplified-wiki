@@ -8,7 +8,7 @@ Screens:
 
 ## Core Feedback
 * Background blur
- * Jen has vetoed because design committee (she + COMM wouldn't approve)
+ * Jen indicated that NYPL's design committee (UX, Marketing and Communication probably wouldn't approve due to deviation from brand guide)
  * "It's just not on brand"
  * "I don't have anything I can give you for mobile now."
 * Circular profile photos
