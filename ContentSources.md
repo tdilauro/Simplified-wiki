@@ -239,17 +239,20 @@ More university presses:
 * Tor Forge "had a freemium model at one point but not sure they still do". Leonard happens to know Tor's editor-in-chief professionally and can ask him about this.
 * Singularity and Company. A bookstore in Brooklyn that acquires the rights to, digitizes and releases two books every month (one science fiction, one pulp adventure) on a subscription basis. [SAmple subscription offer.](http://singularityshop.com/collections/ebooks/products/lifetime-gift-subscription-to-savethescifi-com)
 
-## Art
+## Cover Art
+
+* Book records from 3M and Overdrive include links to covers for the book.
+* We can [get covers from LibraryThing](http://blog.librarything.com/main/2008/08/a-million-free-covers-from-librarything/) for free, given an ISBN. We can only request one cover per second, and a max of 1,000 per day.
+* Open Library has [bulk downloads of covers](https://openlibrary.org/dev/docs/api/covers).
+* [Syndetic Solutions](http://www.bowker.com/en-US/products/syndetics/)
+* [ChileFresh.com](www.chilefresh.com)
+* [Content Cafe](http://www.ebscohost.com/ebooks/public)
+
+## Interstitial Art
 
 We have access to a huge variety of non-textual works to use in the interstitial spaces of our application. Think of the way the MTA uses art on the subway to make uniform spaces more interesting and relieve the boredom of waiting. We can display some pre-cached artwork while (e.g.) waiting for a download to complete or for a search to run. This is an easy way to give even a generic e-reader some personality and a "library" feel.
 
 Any topic-based discovery algorithm we use for books should also work for matching artwork to books.
-
-
-### CoverArt
-* [Syndetic Solutions](http://www.bowker.com/en-US/products/syndetics/)
-* [ChileFresh.com](www.chilefresh.com)
-* [Content Cafe](http://www.ebscohost.com/ebooks/public)
 
 ### NYPL collections
 
