@@ -1,6 +1,6 @@
-## Mobile Client Views
+### Mobile Client Views
 
-#### Home Page
+##### Home Page
 
 ##### User Profile Page
 
