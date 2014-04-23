@@ -5,6 +5,29 @@
   them usage signals and get quality signals in return?
 * KUALI-OLE
 
+# What is "Content"?
+
+For our Minimum Viable Product, "content" means:
+
+* Textual ebooks, delivered electronically
+* Print books, to be checked out of branch libraries
+
+When doing our initial design we should keep in mind the following types of content we might deliver electronically and "read" through our client app:
+
+* Graphic novels/comic books
+* Audiobooks
+* Periodicals
+
+These types of content are a little further out there, but theoretically possible:
+
+* Academic papers
+* Textbooks
+* Reproductions of artwork
+* Historical documents, e.g. maps
+* Software (e.g. the stuff on [The Console Living Room](https://archive.org/details/consolelivingroom)
+
+# Textual Ebooks
+
 ## Paid books
 
 3M, Overdrive, and Axis 360 are the main vendors of DRM-encrypted paid ebooks. Each has a custom API that covers more or less the same ground. [Server-Side Design](https://github.com/NYPL/iOS-Reader/wiki/ServerSideDesign) has a back-to-back comparison of 3M, Overdrive, and Axis 360 when it comes to the integration features we care about. I won't go into the details here.
