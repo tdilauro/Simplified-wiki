@@ -10,11 +10,11 @@
 For our Minimum Viable Product, "content" means:
 
 * Textual ebooks, delivered electronically
+* Electronically delivered graphic novels (there are some already in Overdrive/3M).
 * Print books, to be checked out of branch libraries
 
 When doing our initial design we should keep in mind the following types of content we might deliver electronically and "read" through our client app:
 
-* Graphic novels/comic books
 * Audiobooks
 * Periodicals
 
