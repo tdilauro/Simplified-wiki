@@ -162,11 +162,12 @@ XML format. Includes reviews. I believe we have more favorable usage terms if we
 
 ## LibraryThing
 
-I'm specifically thinking of (ck.getwork)[http://www.librarything.com/services/rest/documentation/1.1/librarything.ck.getwork.php).
+Probably the most useful (set of bibliographic APIs)[https://www.librarything.com/wiki/index.php/LibraryThing_APIs].
 
-XML and JSON formats are provided under different licenses.
-
-Includes lots of "Facts" about a book such as characters, important events, and quotations.
+* (LibraryThing "What Work")[http://blog.librarything.com/thingology/2009/03/new-api-what-work/] looks up the LibraryThing "work" for an ISBN or title/author.
+* (ThingTitle)[http://blog.librarything.com/thingology/2006/08/introducing-the-thingtitle-api/] is similar but gives a little more information.
+* Once we have the work ID, we can tie this into (ck.getwork)[http://www.librarything.com/services/rest/documentation/1.1/librarything.ck.getwork.php) to get access to Common Knowledge facts about the book.
+* (Bunch of data feeds I haven't looked at.)[http://www.librarything.com/feeds/]
 
 # Side-by-side comparison
 
