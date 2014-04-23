@@ -112,12 +112,12 @@ rather than going through the API.
 
 ## LibraryThing
 
-Probably the most useful (set of bibliographic APIs)[https://www.librarything.com/wiki/index.php/LibraryThing_APIs].
+Probably the most useful [set of bibliographic APIs](https://www.librarything.com/wiki/index.php/LibraryThing_APIs].
 
-* (LibraryThing "What Work")[http://blog.librarything.com/thingology/2009/03/new-api-what-work/] looks up the LibraryThing "work" for an ISBN or title/author.
-* (ThingTitle)[http://blog.librarything.com/thingology/2006/08/introducing-the-thingtitle-api/] is similar but gives a little more information.
+* [LibraryThing "What Work"](http://blog.librarything.com/thingology/2009/03/new-api-what-work/) looks up the LibraryThing "work" for an ISBN or title/author.
+* [ThingTitle](http://blog.librarything.com/thingology/2006/08/introducing-the-thingtitle-api/) is similar but gives a little more information.
 * Once we have the work ID, we can tie this into (ck.getwork)[http://www.librarything.com/services/rest/documentation/1.1/librarything.ck.getwork.php) to get access to Common Knowledge facts about the book.
-* (Bunch of data feeds I haven't looked at.)[http://www.librarything.com/feeds/]
+* [Bunch of data feeds I haven't looked at.](http://www.librarything.com/feeds/)
 
 * Very good objective metadata
 * Very good subjective metadata, but reviews are behind a TOS-wall.
