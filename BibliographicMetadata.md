@@ -162,6 +162,8 @@ XML format. Includes reviews. I believe we have more favorable usage terms if we
 
 ## LibraryThing
 
+I'm specifically thinking of (ck.getwork)[http://www.librarything.com/services/rest/documentation/1.1/librarything.ck.getwork.php).
+
 XML and JSON formats are provided under different licenses.
 
 Includes lots of "Facts" about a book such as characters, important events, and quotations.
