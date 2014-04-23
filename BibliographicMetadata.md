@@ -122,6 +122,15 @@ Probably the most useful [set of bibliographic APIs](https://www.librarything.co
 * Very good objective metadata
 * Very good subjective metadata, but reviews are behind a TOS-wall.
 
+# Cover Art Sources
+
+* Book records from 3M and Overdrive include links to covers for the book.
+* We can [get covers from LibraryThing](http://blog.librarything.com/main/2008/08/a-million-free-covers-from-librarything/) for free, given an ISBN. We can only request one cover per second, and a max of 1,000 per day.
+* Open Library has [bulk downloads of covers](https://openlibrary.org/dev/docs/api/covers).
+* [Syndetic Solutions](http://www.bowker.com/en-US/products/syndetics/)
+* [ChileFresh.com](www.chilefresh.com)
+* [Content Cafe](http://www.ebscohost.com/ebooks/public)
+
 # Vocabularies
 
 All of these metadata sources use different made-up vocabularies to
