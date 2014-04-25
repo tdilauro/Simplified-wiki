@@ -127,6 +127,7 @@ Protection](http://idpf.org/epub-content-protection) is an open standard for DRM
 * [LCP Overview](https://docs.google.com/a/nypl.org/file/d/0B1GPVlu8pS7MRTc4SVMwRVBlaUg4bFlGWGNzWHZvclhJWGdZ/edit)
 * [LCP implementation process flow](https://docs.google.com/a/nypl.org/file/d/0B1GPVlu8pS7MQzZyUUFWQ0RZSDQ/edit)
 * We know of [a license server](http://162.243.236.226:8989/manage/) that serves encrypted EPUBs and custom licenses for decrypting them.
+* [Readium SDK Module Requirements](https://docs.google.com/a/nypl.org/document/d/1M4mLL_BN2hM0C39-hkw0AzPiSMbq_trq5Z38cptA4Fc/edit#heading=h.eod12t2qp8vg)
 * [Readium SDK LCP DRM Module](https://docs.google.com/a/nypl.org/file/d/0B1GPVlu8pS7MaHJBankzeGFpckk/edit)
 * We may be implementing our own open source license server and client reader.
 * James is negotiating with Overdrive and 3M to get them to serve us books protected with
