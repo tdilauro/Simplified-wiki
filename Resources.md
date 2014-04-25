@@ -125,9 +125,9 @@ are unacceptable to the Readium Foundation.
 Protection](http://idpf.org/epub-content-protection) is an open standard for DRM. We have [a draft of the spec](https://github.com/NYPL/iOS-Reader/blob/master/Documents/Lightweight%20Content%20Protection%20(LCP)%20Standard%201.0.pdf?raw=true) and it looks pretty easy to implement. The final standard should be released around May 2014.
 * [LCP for Lending](https://github.com/NYPL/iOS-Reader/blob/master/Documents/LCPforLending.pdf?raw=true) is a set of extensions to LCP to support library use cases: destroying a license before its expiration date ("returning" a book), and renewing a license ("renewing" a loan).
 * We know of [a license server](http://162.243.236.226:8989/manage/) that serves encrypted EPUBs and custom licenses for decrypting them.
+* [Readium SDK LCP DRM Module](https://docs.google.com/a/nypl.org/file/d/0B1GPVlu8pS7MaHJBankzeGFpckk/edit)
 * We may be implementing our own open source license server and client reader.
-* James is negotiating
-with Overdrive and 3M to get them to serve us books protected with
+* James is negotiating with Overdrive and 3M to get them to serve us books protected with
 LCP. _How is this going?_
 
 ### Catalogue
