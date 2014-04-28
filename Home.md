@@ -13,3 +13,4 @@ Welcome to the iOS-Reader wiki!
 # Design
 * [[Workflow]]
 * [[Design Comps]]
+* [[Information Architecture]]
