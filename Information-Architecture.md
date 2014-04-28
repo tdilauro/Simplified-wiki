@@ -19,13 +19,40 @@
 
 ###### Navigation Elements
 
+* Menu Items
+* Settings
+
 ###### Information Elements
 
+* User Image/Gravatar (from Social Network)
+* Current Login State / User
+* User info (Names, B-Day Address, affiliated branch)
+* Library and Library Card Bar Code (Scannable)
+* eBooks on Holds Book Jacket, title author (availability?) 
+* 3rd Party Apps linked (G+, Twitter, FB.) 
 
 ##### Registration View
 
+###### Information Elements
+
+###### Navigation Elements
+
 ##### User Setting View
 
+###### Information Elements
+
+###### Navigation Elements
+
 ##### Reading View
+
+###### Information Elements
+
+* Book content
+* Location in content
+
+###### Navigation Elements
+
+* Reader Settings
+* 
 
 ##### Reader Settings
