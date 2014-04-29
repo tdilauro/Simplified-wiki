@@ -70,32 +70,7 @@ This seems like a huge mess both technically and politically. This applies to Ov
 
 ## Overdrive
 
-Many planned features require that we be able to measure the velocity
-of a license (i.e. how frequently it changes hands). To do this we
-need an accurate, near-real-time picture of our Overdrive
-inventory. We don't have anything close. _Update: we may be able to get this to work, but I haven't actually gotten it to work yet._
-
-Currently we know which titles we own, but not how many copies of
-those titles we've licensed, how many lends remain on those copies,
-how many copies of a title are currently checked out, or how many
-people are in the queue for a title.
-
-When a patron checks out a book, we don't hear about it. They
-currently can't return books, but if they could, we wouldn't hear
-about that either.
-
-We can get inventory information for a single book via the Overdrive
-API, but since we don't get notified when the status of a book
-changes, we have no idea which books need to be updated.
-
-If we could instantly switch everyone over to using our e-reader, we
-could solve this problem, since we can have the server-side API log
-inventory activity as it happens. But for the forseeable future there
-will be people checking out ebooks on the Overdrive and 3M websites.
-
-A reporting API is (probably) not good enough. Possible solutions
-include a feed of events that affect our inventory, or (in the short
-term) regular dumps of our inventory that are no older than N minutes.
+It's very difficult to get a near-real-time picture of our Overdrive circulation. We have something that's pretty good, but it means a lot of API calls--hundreds every minute. I've asked Overdrive for a better API and they've told me to use what they have.
 
 ## 3M
 
@@ -104,6 +79,10 @@ term) regular dumps of our inventory that are no older than N minutes.
 3M does not notify us when someone releases a hold on the book. We are informed about reservations, but only during the 7 days the reservation is active.
 
 3M does not provide any classification information for their books, or access to user ratings of the books.
+
+3M's API has bugs that makes me skeptical it has ever been used. The "Place Hold" and "Release Hold" APIs respond to a PUT request with a 405 error and this message:
+
+<string>The requested resource does not support http method 'GET'.</string>
 
 ## Axis 360
 
