@@ -35,7 +35,7 @@ has never used the 3M Reader?
 
 ## Overdrive
 
-Signup: Happens out of band. (Where exactly?)
+Signup: Is there any explicit signup? When I go to ebooks.nypl.org I'm invited to sign in with barcode+PIN.
 
 Using the [Checkouts
 API](https://developer.overdrive.com/apis/checkouts) or the [Patron
@@ -47,11 +47,11 @@ authentication API.](https://developer.overdrive.com/apis/patron-auth)
 This requires providing the patron's barcode and PIN. The OAuth token
 expires after one hour.
 
-Behind the scenes, Overdrive must be proxying barcode+PIN to NYPL's
+Behind the scenes, Overdrive is proxying barcode+PIN to NYPL's
 system to verify correctness.
 
 EXPERIMENT: Can we get a patron OAuth token for a patron who has never
-used Overdrive?
+used Overdrive, using only barcode+PIN?
 
 ## Axis 360
 
@@ -67,6 +67,12 @@ There is an API call called "DRM Create" which creates a new DRM
 account for a patron. I'm not sure what this does, but it looks like
 you need to set up the system ahead of time with whatever DRM
 providers you're using (e.g. Blio or Acoustik).
+
+## Bibliocommons
+
+Bibliocommons user accounts are nypl.org user accounts. I don't know if this is because BC is integrated with our database or because BC manages our user accounts. 
+
+If you know the nypl.org username you can look up the user record using the BC API (the /users search). However this includes no useful information AFAICT. The BC user ID is not the same as the NYPL barcode.
 
 ## Innovative Patron API
 
@@ -201,10 +207,6 @@ In the first two cases, if the user changes their PIN, the next authenticated ca
 Users who have both a nypl.org account and a library card may prefer to log in using username/password rather than barcode/PIN. _The SSO project will provide an API for sending username/password and getting barcode/PIN in response._ If we switch over to using a token instead of passing around barcode/PIN, we will get one of those tokens instead of getting barcode/PIN.
 
 #### Current authentication APIs
-
-The [Innovative Patron
-API](http://vendordocs.iii.com/patron/patronapi.shtml) (user:pass
-nypl_s:chapter) can validate a patron based on identifier and PIN.
 
 The [Innovative Millenium API](http://techdocs.iii.com/patronws_patron_data.shtml) (user:pass nypl_s:chapter) probably also does
 validation, but I'm not sure how.
