@@ -1,7 +1,7 @@
 Welcome to the iOS-Reader wiki!
 
 * [Context](https://github.com/NYPL/iOS-Reader/wiki/Context)
-* [Goals, Objectives, measures of Sucess](https://github.com/NYPL/iOS-Reader/wiki/MetricsAndMeasurements)
+* [Goals, Objectives, Measures](https://github.com/NYPL/iOS-Reader/wiki/MetricsAndMeasurements)
 
 ## Resources
 #### Content
