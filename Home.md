@@ -15,9 +15,9 @@ Welcome to the iOS-Reader wiki!
 * [Metrics and Measurements](https://github.com/NYPL/iOS-Reader/wiki/MetricsAndMeasurements)
 * [Other Resources](https://github.com/NYPL/iOS-Reader/wiki/Resources)
 * [What we want out of third parties](https://github.com/NYPL/iOS-Reader/wiki/ThirdPartyTODO)
-* [User Profiles, Uses Cases and Requirements](https://github.com/NYPL/iOS-Reader/wiki/User-Profiles,-cases-and-requirements)
 
 ## Design
+* [User Profiles, Uses Cases and Requirements](https://github.com/NYPL/iOS-Reader/wiki/User-Profiles,-cases-and-requirements)
 * [[Workflow]]
 * [[Design Comps]]
 * [[Information Architecture]]
