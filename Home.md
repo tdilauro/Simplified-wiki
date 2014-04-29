@@ -1,6 +1,7 @@
 Welcome to the iOS-Reader wiki!
 
 * [Context](https://github.com/NYPL/iOS-Reader/wiki/Context)
+* [Goals, Objectives, measures of Sucess](https://github.com/NYPL/iOS-Reader/wiki/MetricsAndMeasurements)
 
 ## Resources
 #### Content
@@ -12,7 +13,6 @@ Welcome to the iOS-Reader wiki!
 
 #### Transactional interfaces
 * [User Accounts and Authentication](https://github.com/NYPL/iOS-Reader/wiki/Authentication)
-* [Metrics and Measurements](https://github.com/NYPL/iOS-Reader/wiki/MetricsAndMeasurements)
 * [Other Resources](https://github.com/NYPL/iOS-Reader/wiki/Resources)
 * [What we want out of third parties](https://github.com/NYPL/iOS-Reader/wiki/ThirdPartyTODO)
 
