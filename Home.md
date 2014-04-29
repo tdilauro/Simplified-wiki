@@ -1,5 +1,6 @@
 Welcome to the iOS-Reader wiki!
 
+## Resources
 * [Content Sources](https://github.com/NYPL/iOS-Reader/wiki/ContentSources)
 * [Bibliographic Metadata](https://github.com/NYPL/iOS-Reader/wiki/BibliographicMetadata)
 * [User Accounts and Authentication](https://github.com/NYPL/iOS-Reader/wiki/Authentication)
