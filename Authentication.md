@@ -76,6 +76,10 @@ nypl_s/chapter) It's not clear whether we actually have access to this
 API. If so, I don't know the hostname or port of the endpoint we can
 use.
 
+### Patron creation
+
+There's [a patron creation call](http://techdocs.iii.com/patronws_api_operations.shtml#createPatron) but I have no idea what the HTTP method looks like or whether we have this enabled. 
+
 ### PIN Validation
 
 We can validate a patron's PIN by sending a GET request to
@@ -238,14 +242,8 @@ Notes:
 
 _Jason proposed that SSO offer an API for provisioning barcode and PIN--either associated with an existing username/password, or associated with a brand new account._ This way we don't have to make API calls directly to ILS. One less system talking directly to ILS is one less system that has to be notified when the ILS system changes.
 
-#### Mirroring changes to ebook providers
-
-It doesn't sound like 3M or OverDrive need to know about our accounts--we give them barcode/PIN and they verify with ILS. Hopefully there is nothing to do here. Other ebook providers might do things differently.
-
 #### Existing card provisioning APIs
 
 The Brooklyn Public Library created a program called [My Library NYC](http://mylibrarynyc.org/about), in which you can sign up online
 for a unified library card that works with all NYC libraries. What API
 are they using to create a NYPL credential?
-
-The [Innovative Millenium API](http://techdocs.iii.com/patronws_patron_data.shtml) (user:pass nypl_s:chapter) includes a "Patron Update Web Service" which can [create a new patron](http://techdocs.iii.com/patronws_api_operations.shtml#createPatron).
