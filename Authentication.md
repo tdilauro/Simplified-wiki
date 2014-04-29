@@ -1,4 +1,175 @@
+## Requirements
+
+* Checking out books from Overdrive or (possibly) Axis 360 requires
+  that we know the user's barcode and PIN. If there is no way to look
+  up a patron's PIN, that information must come from the patron. This
+  means a system where users are expected to know their barcode and
+  PIN, and provide it to us as their primary credential.
+* We need to be able to create a new patron account, with a barcode.
+
+To integrate with nypl.org accounts we also need the following:
+
+* Validate nypl.org username and password
+* Look up barcode and PIN for nypl.org username
+
+If we can have these two features we can use nypl.org username and
+password as the primary credential, and quietly manage barcode and PIN
+behind the scenes.
+
+## 3M
+
+Signup: Signup happens out of band. (Inside the 3M reader app? What
+information is requested? Probably barcode+PIN.)
+
+Authentication: 3M's API authenticates the library. The library may
+take actions on behalf of any patron. For instance, the library may
+make a Checkout call for a patron by including the patron's barcode in
+the "PatronId" tag.
+
+Behind the scenes, 3M must be storing barcode/PIN on server side, and
+validating barcode/PIN with NYPL's system before letting a request go
+through. How are they doing this?
+
+EXPERIMENT: Can we place a hold on a book on behalf of a PatronId who
+has never used the 3M Reader?
+
+## Overdrive
+
+Signup: Happens out of band. (Where exactly?)
+
+Using the [Checkouts
+API](https://developer.overdrive.com/apis/checkouts) or the [Patron
+Information
+API)(https://developer.overdrive.com/apis/patron-information) on
+behalf of a patron requires authenticating as that patron. We can get
+an OAuth token for an individual patron using the [Patron
+authentication API.](https://developer.overdrive.com/apis/patron-auth)
+This requires providing the patron's barcode and PIN. The OAuth token
+expires after one hour.
+
+Behind the scenes, Overdrive must be proxying barcode+PIN to NYPL's
+system to verify correctness.
+
+EXPERIMENT: Can we get a patron OAuth token for a patron who has never
+used Overdrive?
+
+## Axis 360
+
+Axis 360 seems to support both an Overdrive-type system and a 3M-type
+system, depending on a setting called the "patron validation
+flag". When the flag is set, making API calls requires going through a
+system called "Patron Auth" which is very similar to Overdrive's
+"Patron Authentication API". This system takes barcode and PIN as
+input. But when the flag is not set, it's like 3M. The library can act
+on behalf of any patron, without authenticating.
+
+There is an API call called "DRM Create" which creates a new DRM
+account for a patron. I'm not sure what this does, but it looks like
+you need to set up the system ahead of time with whatever DRM
+providers you're using (e.g. Blio or Acoustik).
+
+## Innovative Patron API
+
+This is an API to our internal patron database. [The
+documentation.](http://vendordocs.iii.com/) (user/pass:
+nypl_s/chapter) It's not clear whether we actually have access to this
+API. If so, I don't know the hostname or port of the endpoint we can
+use.
+
+### PIN Validation
+
+We can validate a patron's PIN by sending a GET request to
+[https://{site}/PATRONAPI/{barcode}/{PING}/pintest](http://partner.iii.com:4500/PATRONAPI/20879875432970/1234/pintest).
+
+If the PIN is valid, an HTML document containing the following data:
+
+   RETCOD=0
+
+If invalid, the data looks like this (it's separated by BR tags): 
+
+   RETCOD=1
+   ERRNUM=4
+   ERRMSG=Invalid patron PIN
+
+### Patron data
+
+We can get detailed information about a patron's library account by
+sending a GET request to
+[http://{site}/PATRONAPI/{barcode}/](http://partner.iii.com:4500/PATRONAPI/20879875432970/dump).
+
+Sample URL:
+
+"20879875432970" here is the 14-digit barcode number.
+
+The response is an awkwardly-formatted HTML document:
+
+    REC INFO[p!]=p
+    EXP DATE[p43]=  -  -  
+    PCODE1[p44]= 
+    PCODE2[p45]= 
+    PCODE3[p46]=0
+    P TYPE[p47]=2
+    TOT CHKOUT[p48]=259
+    TOT RENWAL[p49]=12
+    CUR CHKOUT[p50]=14
+    BIRTH DATE[p51]=  -  -19  
+    HOME LIBR[p53]=main 
+    PMESSAGE[p54]= 
+    MBLOCK[p56]=-
+    REC TYPE[p80]=p
+    RECORD #[p81]=1002752
+    REC LENG[p82]=1273
+    CREATED[p83]=06-10-08
+    UPDATED[p84]=04-29-14
+    REVISIONS[p85]=2404
+    AGENCY[p86]=1
+    CL RTRND[p95]=1
+    MONEY OWED[p96]=$0.00
+    CUR ITEMA[p102]=2
+    CUR ITEMB[p103]=0
+    ILL REQUES[p122]=2
+    CUR ITEMC[p124]=0
+    CUR ITEMD[p125]=0
+    CIRCACTIVE[p163]=04-29-14
+    LANG PREF[p263]=   
+    NOTICE PREF[p268]=z
+    WAITLIST[p297]=0
+    HOLD[p8]=P#=1002752, I#=1011894, P=08-09-10, NNB=08-09-10 (0 days), RLA=0, NNA=01-17-38, ST=0, TP=b, PU=main 
+    HOLD[p8]=P#=1002752, I#=1137241, P=05-03-12, NNB=05-03-12 (0 days), RLA=0, NNA=01-17-38, ST=105, TP=i, PU=main 
+    HOLD[p8]=P#=1002752, I#=1040403, P=06-08-12, NNB=06-08-12 (0 days), RLA=0, NNA=01-17-38, ST=105, TP=i, PU=     
+    HOLD[p8]=P#=1002752, I#=1000033, P=09-10-12, NNB=09-10-12 (0 days), RLA=0, NNA=01-17-38, ST=105, TP=i, PU=     
+    MESSAGE[pm]=PONY!
+    PATRN NAME[pn]=Leckbee, Eric
+    ADDRESS[pa]=$$$
+    TELEPHONE[pt]=510-655-5200
+    NOTE[px]=SATAN!
+    NOTE[px]=PIN is 1234
+    NOTE[px]=Fri Jul 29 2011: Claimed returned .i1259509 on Fri Jul 29 2011
+    MULTI[p1]=
+    P BARCODE[pb]=20879875432970
+    PIN[p=]=sZEtR.yTgJVaM
+    EMAIL ADDR[pz]=ericleckbee@yahoo.com
+    COURSES[ps]=MATH123
+    LINK REC[p^]=i
+
+Some useful fields:
+
+ * BLK UNTIL: The date until which the patron is blocked from using library services.
+ * EXP DATE: The expiration date of the patron's borrowing privileges.
+ * LANG PREF: Preferred language
+ * P BARCODE: The patron's barcode
+ * PATRN NAME: The patron's name
+ * PIN: Optional field containing the patron's PIN in encrypted
+   form. Since there are only 9999 possible PINs, cracking this is
+   pretty easy, but a) we may not have this field, and b) that's
+   a dumb way to get the PIN.
+
+ Note that in the example document, MESSAGE[px] also includes the
+ plain text "PIN is 1234". Again, no guarantee our system does that.
+
 ### III  - Patron APIs
+
+*This is old writing and has not been brought up to date.*
 
 A patron may have two different credentials:
 
