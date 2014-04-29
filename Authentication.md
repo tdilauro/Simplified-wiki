@@ -30,8 +30,14 @@ Behind the scenes, 3M must be storing barcode/PIN on server side, and
 validating barcode/PIN with NYPL's system before letting a request go
 through. How are they doing this?
 
+EXPERIMENT: Can we look up a PatronId for a patron who has never used the 3M Reader?
+
+EXPERIMENT FAILED: The "Patron Circulation" API returns identical results for a real barcode with no holds, and a nonexistent barcode.
+
 EXPERIMENT: Can we place a hold on a book on behalf of a PatronId who
 has never used the 3M Reader?
+
+EXPERIMENT DOUBLE-FAILED: "Place Hold" and "Release Hold" APIs don't work, period.
 
 ## Overdrive
 
