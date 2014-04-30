@@ -6,7 +6,7 @@
 
 One of the biggest challenges is designing an eReading App for a variety of screens : big, small; portrait, landscape; high resolution, low resolution; color, mono.
 
-The key design factor driving recent ebook growth is readability on small screens, and the best way to achieve this today is to keep things very simple. Any deviation from this will limit your potential readership.
+The key design factor driving recent ebook growth is readability on small screens, and the best way to achieve this today is to keep things very simple. Any deviation from this will limit our potential readership.
 
 ##### Formats and Media overlays
 
