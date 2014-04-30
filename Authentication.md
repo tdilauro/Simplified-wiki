@@ -25,7 +25,9 @@ take actions on behalf of any patron. For instance, the library may
 make a Checkout call for a patron by including the patron's barcode in
 the "PatronId" tag.
 
-QUESTION: Who set this up with 3M, and what was the process?
+UNANSWERED QUESTION: Who set this up with 3M, and what was the process?
+
+UNANSWERED QUESTION: Do we have to register a patron with 3M before we can make API calls that affect their account? If so, what's the process?
 
 EXPERIMENT: Can we look up current circulation information for any patron?
 
