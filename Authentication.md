@@ -18,15 +18,12 @@ behind the scenes.
 
 ## 3M
 
-Signup: Signup happens out of band. (Inside the 3M reader app? What
-information is requested? Probably barcode+PIN.)
+Signup: When a patron loads up the 3M reader for the first time they're asked to enter barcode+PIN. This information is verified with the library before the reader will load.
 
 Authentication: 3M's API authenticates the library. The library may
 take actions on behalf of any patron. For instance, the library may
 make a Checkout call for a patron by including the patron's barcode in
 the "PatronId" tag.
-
-When a patron loads up the 3M reader for the first time they're asked to enter barcode+PIN. This information is verified with the library before the reader will load.
 
 QUESTION: Who set this up with 3M, and what was the process?
 
