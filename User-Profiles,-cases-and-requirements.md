@@ -58,7 +58,7 @@ Readium provides a _Smoke Test Plan_ and supporting documents for testing eBook 
 
         Not all books seem to support two column views. In launcher app, see EpubSettings - isSyntheticSpread property, where YES means two columns, and NO means one column.
 
-** Content Navigation
+***Content Navigation***
 
 * Allow flowable content to be scrolled via single touch swipe
 
