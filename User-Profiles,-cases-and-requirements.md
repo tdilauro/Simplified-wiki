@@ -74,7 +74,7 @@ Readium provides a _Smoke Test Plan_ and supporting documents for testing eBook 
 
 * Allow user to access spline/table of contents in order to navigate to that section of content
 
-** Content Display Settings 
+***Content Display Settings***
 
 * Allow user to adjust Font Size
 
@@ -82,7 +82,7 @@ Readium provides a _Smoke Test Plan_ and supporting documents for testing eBook 
 
 * Allow user to switch to night mode (white text on black vs black text on white)
 
-**View Navigation requirements**
+***View Navigation requirements***
 
 * Top Bar (TB) Menue for Reading View
 * **TB:Options icon** - access drop down menu for _Options Menue (OM)_ with following items:
@@ -106,6 +106,18 @@ Readium provides a _Smoke Test Plan_ and supporting documents for testing eBook 
 
 _As a_ **New User/Existing User** 
 _I want to:_
+
+**Sign up for a new card or connect to my existing NYPL library card account**
+
+***
+_So I can_ **Borrow content from Library**
+
+_Confirmation Criteria_
+
+* I can Borrow a book and it is reflected in the ILS
+* I can Get an ebook from our vendors
+* I can reserve an ebook from our vendors and have the transaction reflect in the ILS
+* My patron record and credential are created in the ILS
 
 **Connect to my 3rd party reading list (Google Bookshelves, Good Reads, etc..)**
 
