@@ -74,15 +74,17 @@ It's very difficult to get a near-real-time picture of our Overdrive circulation
 
 ## 3M
 
-3M insists that all patrons use their e-reader to download, decrypt, and read books. This is a deal-breaker.
+* 3M insists that all patrons use their e-reader to download, decrypt, and read books. This is a deal-breaker. Without this feature, all the stuff below is moot and they simply cannot participate in this project.
 
-3M does not notify us when someone releases a hold on the book. We are informed about reservations, but only during the 7 days the reservation is active.
+* 3M's API has bugs that makes me skeptical it has ever been used. The "Place Hold" and "Release Hold" APIs respond to a PUT request with a 405 error and this message:
 
-3M does not provide any classification information for their books, or access to user ratings of the books.
+<code>&lt;string&gt;The requested resource does not support http method 'GET'.&lt;/string&gt;</code>
 
-3M's API has bugs that makes me skeptical it has ever been used. The "Place Hold" and "Release Hold" APIs respond to a PUT request with a 405 error and this message:
+* It's not clear whether we must register a patron with 3M before we can make API calls that affect their account.
 
-<string>The requested resource does not support http method 'GET'.</string>
+* 3M does not notify us when someone releases a hold on the book. We are informed about reservations, but only during the 7 days the reservation is active.
+
+* 3M does not provide any classification information for their books, or access to user ratings of the books (information they do have).
 
 ## Axis 360
 
