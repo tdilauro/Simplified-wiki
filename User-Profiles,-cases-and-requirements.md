@@ -58,6 +58,8 @@ Readium provides a _Smoke Test Plan_ and supporting documents for testing eBook 
 
         Not all books seem to support two column views. In launcher app, see EpubSettings - isSyntheticSpread property, where YES means two columns, and NO means one column.
 
+** Content Navigation
+
 * Allow flowable content to be scrolled via single touch swipe
 
         There doesn't seem to be built in support for this, but adding it should be relatively trivial.  
@@ -70,7 +72,15 @@ Readium provides a _Smoke Test Plan_ and supporting documents for testing eBook 
         
         There doesn't seem to be built in support for this, but adding it should be relatively trivial.
 
-***
+* Allow user to access spline/table of contents in order to navigate to that section of content
+
+** Content Display Settings 
+
+* Allow user to adjust Font Size
+
+* Allow user to adjust Font type (Serif vs Non Serif)
+
+* Allow user to switch to night mode (white text on black vs black text on white)
 
 **View Navigation requirements**
 
