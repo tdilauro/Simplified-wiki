@@ -22,18 +22,18 @@ For now, there’s an inescapable rule: Each new feature or design innovation we
 ##### Fallbacks 
 A way to use new features without losing older e-readers.  A fallback is a way to offer a new feature to an eBook reader that is not supported by older solutions, ebook can be programmed to use alternative styles sheets and media formats that are supported – a fallback.  We should check this feature in the ePub Spine to understand its applicability.
 
-### Testing
+#### Testing
 Readium provides a _Smoke Test Plan_ and supporting documents for testing eBook Apps.  This document provides a high level overview of what the SDK should handle and what the application layer should handle as an eReading app.
 
 * [Smoke Test](https://docs.google.com/a/nypl.org/document/d/1KYOcjBkxfcbriHE6a2Psley1GWJ3oF_FuZHY1nzMNM4/edit#heading=h.uzn2xmfd3mst)
 
-### eReader Platform requirements
+## eReader Platform requirements
 * iPad
 * iPhone
 * iOS 6 and 7
 * Launch Readium EPUB Engine
 
-### eReader app requirements
+## eReader app requirements
 **Open and ePub, view and interact with its content**
 
 * Open EPUB2
