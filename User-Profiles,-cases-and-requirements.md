@@ -15,24 +15,25 @@ Media queries let designers add several style sheets to an ebook, each one optim
 
 ##### Occam's Razor
 
-You might apply Occam’s Razor to ebook design. As the 14th century theologian said, ‘It is vain to do with more what can be done with fewer.’
+We might apply Occam’s Razor to ebook reader UX design. As the 14th century theologian said, ‘It is vain to do with more what can be done with fewer.’
 
-For now, there’s an inescapable rule: Each new feature or design innovation you add will lower potential readership.
+For now, there’s an inescapable rule: Each new feature or design innovation we add will lower potential readership.
 
 ##### Fallbacks 
-A way to use new features without losing older e-readers.  A fallback is a way to offer a new feature to an eBook that is not supported by older e-readers, your ebook can be programmed to use an alternative that is supported – a fallback.  We should check this feature in the ePub Spine to understand its applicability.
+A way to use new features without losing older e-readers.  A fallback is a way to offer a new feature to an eBook reader that is not supported by older solutions, ebook can be programmed to use alternative styles sheets and media formats that are supported – a fallback.  We should check this feature in the ePub Spine to understand its applicability.
 
 ### Testing
-Readium provides a Smoke Test Plan and supporting documents for testing eBook Apps.  This document provides a high level overview of what the SDK should handle and what the application layer should handle as an eReading app.
+Readium provides a _Smoke Test Plan_ and supporting documents for testing eBook Apps.  This document provides a high level overview of what the SDK should handle and what the application layer should handle as an eReading app.
+
 * [Smoke Test](https://docs.google.com/a/nypl.org/document/d/1KYOcjBkxfcbriHE6a2Psley1GWJ3oF_FuZHY1nzMNM4/edit#heading=h.uzn2xmfd3mst)
 
-#### eReader Platform requirements
+### eReader Platform requirements
 * iPad
 * iPhone
 * iOS 6 and 7
 * Launch Readium EPUB Engine
 
-#### eReader app requirements
+### eReader app requirements
 **Open and ePub, view and interact with its content**
 
 * Open EPUB2
