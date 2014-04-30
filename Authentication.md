@@ -44,7 +44,7 @@ RESULT: Total failure. The "Place Hold" and "Release Hold" APIs don't work, peri
 
 ## Overdrive
 
-Signup: Is there any explicit signup? When I go to ebooks.nypl.org I'm invited to sign in with barcode+PIN.
+Signup: When a new user goes to ebooks.nypl.org they are invited to sign in with barcode+PIN. Is there an additional signup step?
 
 Using the [Checkouts
 API](https://developer.overdrive.com/apis/checkouts) or the [Patron
@@ -56,11 +56,12 @@ authentication API.](https://developer.overdrive.com/apis/patron-auth)
 This requires providing the patron's barcode and PIN. The OAuth token
 expires after one hour.
 
-Behind the scenes, Overdrive is proxying barcode+PIN to NYPL's
-system to verify correctness.
+Getting this to work requires connecting Overdrive to NYPL's authentication system. This requires two magic strings: an "authenticationName" and a "websiteId". I have applied for these magic strings using Shawn Farrell's Overdrive developer account.
 
 EXPERIMENT: Can we get a patron OAuth token for a patron who has never
 used Overdrive, using only barcode+PIN?
+
+RESULT: On hold until we get the ability to act on the live NYPL collection on behalf of patrons.
 
 ## Axis 360
 
