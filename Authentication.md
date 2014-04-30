@@ -26,18 +26,19 @@ take actions on behalf of any patron. For instance, the library may
 make a Checkout call for a patron by including the patron's barcode in
 the "PatronId" tag.
 
-Behind the scenes, 3M must be storing barcode/PIN on server side, and
-validating barcode/PIN with NYPL's system before letting a request go
-through. How are they doing this?
+When a patron loads up the 3M reader for the first time they're asked to enter barcode+PIN. This information is verified with the library before the reader will load.
 
-EXPERIMENT: Can we look up a PatronId for a patron who has never used the 3M Reader?
+QUESTION: Who set this up with 3M, and what was the process?
 
-EXPERIMENT FAILED: The "Patron Circulation" API returns identical results for a real barcode with no holds, and a nonexistent barcode.
+EXPERIMENT: Can we look up current circulation information for any patron?
+RESULT: Yes, we can. 
+
+EXPERIMENT: Can we look up circulation information for a patron who has never used the 3M Reader?
+RESULT: The "Patron Circulation" API returns identical results whether we give a real barcode with no circulation, or a nonexistent barcode. This implies that 3M checks barcodes with NYPL as needed instead of having a big list of them,
 
 EXPERIMENT: Can we place a hold on a book on behalf of a PatronId who
 has never used the 3M Reader?
-
-EXPERIMENT DOUBLE-FAILED: "Place Hold" and "Release Hold" APIs don't work, period.
+RESULT: Total failure. The "Place Hold" and "Release Hold" APIs don't work, period.
 
 ## Overdrive
 
