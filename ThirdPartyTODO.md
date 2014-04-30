@@ -20,6 +20,10 @@ Readium. Instead, we want all protected texts to be protected by LCP,
 so that we can decrypt them using libre software (which we may write ourselves). This applies to every provider of DRM-encrypted ebooks: Overdrive,
 3M, Axis 360, and Open Library.
 
+### License-level view
+
+At any time we know how many licenses we own, but we don't know when we acquired each license, how many loans are left on each license, or when each license will expire. Having this information will let us plan our queue better and give advance warning of when licenses for a popular book are about to expire.
+
 ### Previews
 
 We want free preview versions of as many texts as possible. This will
