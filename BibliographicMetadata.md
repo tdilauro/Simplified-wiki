@@ -20,6 +20,8 @@ know about a book:
 
 It also includes information about the content of the book:
 
+* Table of contents
+* Bibliography
 * Characters in a work of fiction
 * Real-life events and people mentioned in the book
 * Other books mentioned in the book's bibliography
