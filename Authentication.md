@@ -31,13 +31,16 @@ When a patron loads up the 3M reader for the first time they're asked to enter b
 QUESTION: Who set this up with 3M, and what was the process?
 
 EXPERIMENT: Can we look up current circulation information for any patron?
+
 RESULT: Yes, we can. 
 
 EXPERIMENT: Can we look up circulation information for a patron who has never used the 3M Reader?
-RESULT: The "Patron Circulation" API returns identical results whether we give a real barcode with no circulation, or a nonexistent barcode. This implies that 3M checks barcodes with NYPL as needed instead of having a big list of them,
+
+RESULT: The "Patron Circulation" API returns identical results whether we give a real barcode with no circulation, or a nonexistent barcode. This implies that 3M checks barcodes with NYPL as needed instead of having a big list of them.
 
 EXPERIMENT: Can we place a hold on a book on behalf of a PatronId who
 has never used the 3M Reader?
+
 RESULT: Total failure. The "Place Hold" and "Release Hold" APIs don't work, period.
 
 ## Overdrive
