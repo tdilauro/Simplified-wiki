@@ -79,6 +79,10 @@ This view provides information regarding preferences of the user such as notific
 
 ##### Reader Application Settings
 
+* Change font size
+* Change font face (likely just "serif" or "sans-serif")
+* Switch between white-on-black, black-on-white, and black-on-sepia
+
 ### Client Book States
 
 Books are always in one of the following states, each of which should have an associated visual indicator:
