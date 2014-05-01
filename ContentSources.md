@@ -194,6 +194,10 @@ There are _subsets_ of IA's catalog that are extremely interesting: for instance
 Summary: curated views of IA's catalog can be integrated into our
 catalog, but not IMO the entire catalog. It's a junkyard.
 
+### Non-English sources
+
+* [Aozora Bunko](http://www.aozora.gr.jp/) - I have no idea how to even see how many books there are on this site. [English-language description.](http://www.japannewbie.com/2011/02/13/how-to-use-aozora-bunko-to-get-free-japanese-books/)
+
 ### Other open-access sources with integration ability
 
 * [OAPEN](http://www.oapen.org/search?browse-all=yes). - Open access books from European academic presses. ~700 books in English, ~350 in Dutch. Individual download links. [Provided XML file](http://www.oapen.org/metadataexports?page=intro) includes bibliographic metadata and download links for each book--it's basically an OPDS feed.
