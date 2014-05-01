@@ -78,3 +78,22 @@ This view provides information regarding preferences of the user such as notific
 * Application Navigation
 
 ##### Reader Application Settings
+
+### Client Book States
+
+Books are always in one of the following states, each of which should have an associated visual indicator:
+
+* **Permanent:** These are books which the user has downloaded that can be retained indefinitely. Such books will likely primarily be public domain titles, e.g. those obtained via Project Gutenberg.
+* **On loan:** These are books for which the user has taken successfully taken out a loan. An indicator may reveal the number of days left on the loan without having to view the book's details.
+* **Awaiting loan decision**: These are books for which the user has requested a loan at a time when a copy was not available but that has since become available. The user has a set number of days to make a decision as to if she will accept or decline the loan.
+* **Loan expired**: These are books which have expired due to the user not opting to return the book before the end of the loan term. These books remain for two reasons: to avoid the potential confusion that would result from a book suddenly disappearing, and to provide the user with a convenient way to request another loan.
+* **Loan decision expired:** Similar to the previous state, this state indicates that a loan was offered but neither accepted nor declined.
+
+In addition to the above states, a given book may have one of the additional states:
+
+* **Downloading:** These are books for which a download is currently in progress.
+* **Download completed:** These are books that have been successfully downloaded by not yet interacted with in any way. The purpose of this state is to highlight that the book is newly available to the user and will be cleared upon opening the book (at a minimum).
+* **Download failed:** These are books for which a previously initiated download has since failed and has not yet been retried.
+* **Download queued:** These are books for which the user has requested downloading that have not yet begun downloading due to a limitation on simultaneous downloads.
+* **Download paused:** These are books for which the user has temporarily paused downloading with the option of resuming later.
+* **Book opened:** These are books in which the user has navigated away from the first page. The intent of this state is to make it clear to the user that opening the book will bring them directly to where they left off rather than the default location.
