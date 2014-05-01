@@ -12,7 +12,7 @@ A good classification scheme reduces the need for a good recommendation engine, 
 
 A lot of schemes have been devised to classify books.
 
-* [BISAC](https://www.bisg.org/complete-bisac-subject-headings-2013-edition) Sample: "POLITICAL SCIENCE / Public Policy / City Planning & Urban Development"
+* [BISAC](https://www.bisg.org/complete-bisac-subject-headings-2013-edition) Sample: "POLITICAL SCIENCE / Public Policy / City Planning & Urban Development" [FAST](http://www.oclc.org/research/activities/fast.html?urlm=159754) gives a faceted classifcation of BISAC headings.
 
 * [BIC](http://editeur.dyndns.org/bic_categories) Sample: "FKC" (Classic horror and ghost stories), child of "FK" (Horror and ghost stories), child of "F" (Fiction). A bidirectional BIC↔BISAC mapping can be [obtained from BISG](https://www.bisg.org/news/bisg-bulletin-extraupdated-bic-bisac-subject-codes-mapping-available-now).
 
