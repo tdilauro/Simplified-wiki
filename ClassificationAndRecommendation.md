@@ -30,44 +30,43 @@ A lot of schemes have been devised to classify books.
  - Art
  - Biography
  - Business
-* Chick-lit
-* Children's
-* Christian
-* Classics
-* Comics
-* Contemporary
-* Cookbooks
-* Crime
-* Ebooks
-* Fantasy
-* Fiction
-* Gay and Lesbian
-* Graphic novels
-* Historical fiction
-* History
-* Horror
-* Humor and Comedy
-* Manga
-* Memoir
-* Music
-* Mystery
-* Non-fiction
-* Paranormal
-* Philosophy
-* Poetry
-* Psychology
-* Religion
-* Romance
-* Science
-* Science fiction
-* Self help
-* Suspense
-* Spirituality
-* Sports
-* Thriller
-* Travel
-* Young-adult
-
+ - Chick-lit
+ - Children's
+ - Christian
+ - Classics
+ - Comics
+ - Contemporary
+ - Cookbooks
+ - Crime
+ - Ebooks
+ - Fantasy
+ - Fiction
+ - Gay and Lesbian
+ - Graphic novels
+ - Historical fiction
+ - History
+ - Horror
+ - Humor and Comedy
+ - Manga
+ - Memoir
+ - Music
+ - Mystery
+ - Non-fiction
+ - Paranormal
+ - Philosophy
+ - Poetry
+ - Psychology
+ - Religion
+ - Romance
+ - Science
+ - Science fiction
+ - Self help
+ - Suspense
+ - Spirituality
+ - Sports
+ - Thriller
+ - Travel
+ - Young-adult
 
 
 * A book's author and the series it belongs to groups it with other books in a very basic way.
