@@ -107,49 +107,6 @@ XML format.
 * Includes good objective metadata
 * Includes good subjective metadata, including reviews, but "harvesting and indexing" data is forbidden without permission.
 
-When you join GoodReads, it asks you to select your favorite genres. Here are the available genres:
-
-* Art
-* Biography
-* Business
-* Chick-lit
-* Children's
-* Christian
-* Classics
-* Comics
-* Contemporary
-* Cookbooks
-* Crime
-* Ebooks
-* Fantasy
-* Fiction
-* Gay and Lesbian
-* Graphic novels
-* Historical fiction
-* History
-* Horror
-* Humor and Comedy
-* Manga
-* Memoir
-* Music
-* Mystery
-* Non-fiction
-* Paranormal
-* Philosophy
-* Poetry
-* Psychology
-* Religion
-* Romance
-* Science
-* Science fiction
-* Self help
-* Suspense
-* Spirituality
-* Sports
-* Thriller
-* Travel
-* Young-adult
-
 ## iDreamBooks
 
 "Metacritic for books". They have [a JSON-based API](http://idreambooks.com/api). We can get a list of recent critically acclaimed books and books that were recently featured on TV. For a given book we can get up to 5 critical reviews.
