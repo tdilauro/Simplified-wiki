@@ -27,10 +27,9 @@ A lot of schemes have been devised to classify books.
 * Amazon books also come with classifications from the publishers, although these aren't displayed very prominently. Major publishers tend to use LOC subject headings or BISAC classifications. Self-published books effectively use tags.
 
 * When you join GoodReads, it asks you to select your favorite genres. Here are the available genres:
-
- ** Art
- ** Biography
-* Business
+ - Art
+ - Biography
+ - Business
 * Chick-lit
 * Children's
 * Christian
