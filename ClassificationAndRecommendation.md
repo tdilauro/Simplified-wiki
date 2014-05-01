@@ -26,6 +26,51 @@ A lot of schemes have been devised to classify books.
 
 * Amazon books also come with classifications from the publishers, although these aren't displayed very prominently. Major publishers tend to use LOC subject headings or BISAC classifications. Self-published books effectively use tags.
 
+* When you join GoodReads, it asks you to select your favorite genres. Here are the available genres:
+
+ ** Art
+ ** Biography
+* Business
+* Chick-lit
+* Children's
+* Christian
+* Classics
+* Comics
+* Contemporary
+* Cookbooks
+* Crime
+* Ebooks
+* Fantasy
+* Fiction
+* Gay and Lesbian
+* Graphic novels
+* Historical fiction
+* History
+* Horror
+* Humor and Comedy
+* Manga
+* Memoir
+* Music
+* Mystery
+* Non-fiction
+* Paranormal
+* Philosophy
+* Poetry
+* Psychology
+* Religion
+* Romance
+* Science
+* Science fiction
+* Self help
+* Suspense
+* Spirituality
+* Sports
+* Thriller
+* Travel
+* Young-adult
+
+
+
 * A book's author and the series it belongs to groups it with other books in a very basic way.
 
 * Folksonomic classifications are emergent classifications derived from use. For instance, GoodReads "shelves", Twitter's hashtags, or the tags in any system that supports tagging. A tag like "hugo-winner" or "female-protagonist" divides the universe of books into two sets: a set of books that have a certain feature and a set of books that lack that feature. Tags may also express private sentiment ("4-stars").
