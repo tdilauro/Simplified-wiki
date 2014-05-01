@@ -58,6 +58,12 @@ these use sources serve XML or JSON documents that use custom
 vocabularies. To figure out exactly what the XML tag names and JSON
 field names mean, you must consult some nearby piece of documentation.
 
+## NYPL MARC
+
+* Includes topics, genre, summary, and more.
+* [A MARC XML record](http://catalog.nypl.org/xrecord=b20000382~S1) Compare [the same data in HTML](http://catalog.nypl.org/record=b20000382~S1)
+* Matt is converting our MARC catalog to JSON. We'll see what data we have available in there once he's done.
+
 ## 3M XML
 
 A vocabulary for describing 3M Cloud Library's catalog. It looks to
@@ -143,6 +149,10 @@ When you join GoodReads, it asks you to select your favorite genres. Here are th
 * Thriller
 * Travel
 * Young-adult
+
+## iDreamBooks
+
+"Metacritic for books". They have [a JSON-based API](http://idreambooks.com/api). 
 
 ## Amazon Product Advertising API
 
