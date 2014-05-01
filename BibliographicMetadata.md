@@ -152,7 +152,13 @@ When you join GoodReads, it asks you to select your favorite genres. Here are th
 
 ## iDreamBooks
 
-"Metacritic for books". They have [a JSON-based API](http://idreambooks.com/api). 
+"Metacritic for books". They have [a JSON-based API](http://idreambooks.com/api). We can get a list of recent critically acclaimed books and books that were recently featured on TV. For a given book we can get up to 5 critical reviews.
+
+API TOS are oriented around displaying reviews directly to end-users.
+
+* You agree to not use the API to redistribute, harvest or index iDreamBooks' data without our explicit consent.
+* You agree to not truncate, modify or change our data.
+* You may not store our data except for caching purposes.
 
 ## Amazon Product Advertising API
 
