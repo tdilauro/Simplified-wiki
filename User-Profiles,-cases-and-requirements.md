@@ -102,7 +102,7 @@ Readium provides a _Smoke Test Plan_ and supporting documents for testing eBook 
 * BM:Book Icon - on tap access content Table of Contents 
 
 ***
-### General Use Cases
+## General User Stories and Use Cases
 
 _As a_ **New User/Existing User** 
 _I want to:_
