@@ -295,3 +295,21 @@ Basically the DPLA for European institutions. I have not investigated [the API](
 ### Instagram
 
 Joe did a Shipit Day project involving pulling Instagram projects tagged #NYPL and using them as background images.
+
+### Español / Portugués
+
+A not comprehensive list of ebook resources with free offerings:
+- http://www.dominiopublico.gov.br/pesquisa/PesquisaObraForm.jsp Brazilian Gov-backed Portuguese public domain site (150k+)
+- http://www.brasiliana.usp.br/bbd Portuguese (3800)
+- http://livros.universia.com.br/sobre/ Portuguese (~500)
+- http://free-ebooks.net/ with [espanol](http://espanol.free-ebooks.net/) and [portugues](http://portugues.free-ebooks.net/) subdomains
+- http://obrasraras.sibi.usp.br/bore/browse?type=title Portuguese historical books (5k+)
+- http://www.culturaacademica.com.br/catalogo.html Portuguese academic books (not all free)
+- http://aplauso.imprensaoficial.com.br/lista-livros.php yet another Portuguese list
+- http://www.lusosofia.net/index.php philosophy in Portuguese
+- http://www.clubdelebook.com/descargas/ list of free ePub download sites for publishers in spanish
+- http://www.libroteca.net/ (47k+)
+- http://www.biblioteca.org.ar/catalogo.asp Argentinian site (30k+)
+- https://github.com/d-a-l/biblioteca derecho a leer "right to read" has a GitHub repo with some books
+- https://www.bubok.es/tienda
+- http://casadellibro.universia.es/?ebookFree=true&ebook=true
