@@ -196,17 +196,11 @@ catalog, but not IMO the entire catalog. It's a junkyard.
 
 ### Non-English sources
 
-### Español / Portugués
+#### Español
 
 A not comprehensive list of ebook resources with free offerings:
-- http://www.dominiopublico.gov.br/pesquisa/PesquisaObraForm.jsp Brazilian Gov-backed Portuguese public domain site (150k+)
-- http://www.brasiliana.usp.br/bbd Portuguese (3800)
-- http://livros.universia.com.br/sobre/ Portuguese (~500)
-- http://free-ebooks.net/ with [espanol](http://espanol.free-ebooks.net/) and [portugues](http://portugues.free-ebooks.net/) subdomains
-- http://obrasraras.sibi.usp.br/bore/browse?type=title Portuguese historical books (5k+)
-- http://www.culturaacademica.com.br/catalogo.html Portuguese academic books (not all free)
-- http://aplauso.imprensaoficial.com.br/lista-livros.php yet another Portuguese list
-- http://www.lusosofia.net/index.php philosophy in Portuguese
+
+- http://free-ebooks.net/ [espanol](http://espanol.free-ebooks.net/)
 - http://www.clubdelebook.com/descargas/ list of free ePub download sites for publishers in spanish
 - http://www.libroteca.net/ (47k+)
 - http://www.biblioteca.org.ar/catalogo.asp Argentinian site (30k+)
@@ -221,6 +215,17 @@ A not comprehensive list of ebook resources with free offerings:
 #### Français
 
 #### Deutsch
+
+#### Portugués
+
+- http://free-ebooks.net/ [portugues](http://portugues.free-ebooks.net/) subdomains
+- http://www.dominiopublico.gov.br/pesquisa/PesquisaObraForm.jsp Brazilian Gov-backed Portuguese public domain site (150k+)
+- http://www.brasiliana.usp.br/bbd Portuguese (3800)
+- http://livros.universia.com.br/sobre/ Portuguese (~500)
+- http://obrasraras.sibi.usp.br/bore/browse?type=title Portuguese historical books (5k+)
+- http://www.culturaacademica.com.br/catalogo.html Portuguese academic books (not all free)
+- http://aplauso.imprensaoficial.com.br/lista-livros.php yet another Portuguese list
+- http://www.lusosofia.net/index.php philosophy in Portuguese
 
 #### 中文
 
