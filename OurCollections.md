@@ -2,6 +2,18 @@
 
 Only one language is counted per book, so the 'total' is the total number of books in that collection.
 
+For reference, here are the main language communities we need to serve, according to James:
+
+* en (English)
+* es (Spanish)
+* zh (Chinese)
+* fr (French)
+* de (German)
+* pl (Polish)
+* ru (Russian)
+* iw (Hebrew)
+* hi (Hindi)
+
 ## 3M
 
 * "en" 14496
