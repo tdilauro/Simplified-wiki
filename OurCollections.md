@@ -11,6 +11,7 @@ For reference, here are the main language communities we need to serve, accordin
 * de (German)
 * pl (Polish)
 * ru (Russian)
+* ko (Korean)
 * iw (Hebrew)
 * hi (Hindi)
 
