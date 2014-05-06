@@ -6,7 +6,7 @@ Welcome to the iOS-Reader wiki!
 ## Resources
 #### Content
 * [Content Sources](https://github.com/NYPL/iOS-Reader/wiki/ContentSources)
-* [Overview of our active collections](https://github.com/NYPL/iOS-Reader/wiki/ContentSources)
+* [Overview of our active collections](https://github.com/NYPL/iOS-Reader/wiki/OurCollections)
 
 #### Metadata, etc
 * [Bibliographic Metadata](https://github.com/NYPL/iOS-Reader/wiki/BibliographicMetadata)
