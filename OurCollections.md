@@ -57,13 +57,15 @@ For reference, here are the main language communities we need to serve, accordin
 
 # Subject
 
-I include every classification that shows up more than 100 times. Every one of a book's classifications is counted, so the number of classifications is much higher than the number of books.
+I include every classification that is used for at least 0.5% of the books. Every one of a book's classifications is counted, so the number of classifications is much higher than the number of books.
 
 ## 3M
 
 3M provides no subject information; we need to get it from OCLC.
 
 ## Overdrive
+
+Cutoff point: 271
 
 * "Fiction" 23862
 * "Nonfiction" 23050
@@ -127,52 +129,53 @@ I include every classification that shows up more than 100 times. Every one of a
 * "Art" 286
 * "Paranormal" 285
 * "Contemporary" 283
-* "Literary" 264
-* "Crafts" 261
-* "Personal Memoirs" 257
-* "Law" 249
-* "African American" 245
-* "Management" 234
-* "Drama" 233
-* "Picture Book Fiction" 233
-* "Non-English Fiction" 229
-* "Mathematics" 220
-* "Passion" 214
-* "Essays" 213
-* "Foreign Language Study" 203
-* "Medical" 198
-* "African American Fiction" 193
-* "Non-English Nonfiction" 190
-* "Pets" 190
-* "African-American" 184
-* "spanish" 177
-* "Science Fiction & Fantasy" 174
-* "Engineering" 172
-* "Christian" 168
-* "True Crime" 167
-* "Home Design & Décor" 162
-* "United States" 159
-* "Self Help" 159
-* "Women Sleuths" 152
-* "Magic" 152
-* "Home & Family" 152
-* "Urban Fiction" 151
-* "Library & Information Science" 142
-* "Inspirational" 140
-* "Contemporary Women" 131
-* "Buddhism" 127
-* "Personal Growth" 126
-* "Photography" 124
-* "romance" 116
-* "Mythology" 114
-* "Folklore" 110
-* "Adventure" 107
-* "detective" 106
-* "Physics" 105
-* "Programming & Software Development" 102
 
 ## Gutenberg
 
+Cutoff point: 227
+
 ### LCC classifications
 
+* PS 5835
+* PR 5682
+* PZ 3793
+* PQ 2469
+* AP 1404
+* PT 1243
+* DA 602
+* DC 487
+* BS 460
+* PN 447
+* DS 430
+* PA 351
+* PL 336
+* D501 326
+* PH 311
+* QH 311
+* BX 291
+* BV 277
+* G 258
+* B 255
+* D 253
+* AG 236
+
 ### LCSH classifications
+
+* Short stories 1340
+* Fiction 1216
+* Science fiction 1127
+* Poetry 562
+* Adventure stories 534
+* Historical fiction 491
+* English wit and humor -- Periodicals 479
+* Love stories 474
+* Detective and mystery stories 412
+* Conduct of life -- Juvenile fiction 381
+* Western stories 342
+* England -- Fiction 286
+* Domestic fiction 265
+* Humorous stories 253
+* Fairy tales 252
+* Children's stories 252
+* Man-woman relationships -- Fiction 242
+* English fiction -- 19th century 234
