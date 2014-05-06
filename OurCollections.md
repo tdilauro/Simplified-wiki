@@ -27,6 +27,19 @@ Only one language is counted per book, so the 'total' is the total number of boo
 
 ## Gutenberg
 
-
+* "en" 37885
+* "fr" 2376
+* "de" 1034
+* "fi" 850
+* "nl" 655
+* "pt" 533
+* "it" 479
+* "zh" 407
+* "es" 384
+* "el" 216
+* "hu" 102
+* _Total: 44921_
+* Languages with less than 100 titles each: 1561
+* _Grand total_: 45482
 
 # Subject
