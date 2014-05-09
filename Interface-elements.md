@@ -10,7 +10,7 @@ _(NOTE: wording is not final)_
   - Name
   - n book covers
   - ["More" button](#lanedetail)
-  - "Swipe up" action to add book to [ignore list](#ignore)
+  - "Swipe up" action to add book to [ignore list](#ignored)
 - [ ] [Search bar](#search)
 
 ## <a name="search"></a>Search
