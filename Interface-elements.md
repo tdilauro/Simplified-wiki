@@ -14,6 +14,19 @@ _(NOTE: wording is not final)_
 - [ ] [Search bar](#search)
 
 ## <a name="search"></a>Search
+- [ ] Keyboard
+- [ ] Keyword input area
+- [ ] Book result list, each with:
+  - Title
+  - Author
+  - Cover
+  - [Status of book](https://github.com/NYPL/iOS-Reader/wiki/Information-Architecture#client-book-states)
+  - "Remove from saved" button (if applicable)
+  - "Remove hold" button (if applicable)
+  - Estimated time until checkout available (if applicable)
+  - "Checkout book" button (if applicable, prompts download)
+  - ["Read book" button](#reader) (if applicable)
+  - ["View detail" button](#bookdetail)
 
 ## <a name="lanedetail"></a>Lane detail
 - [ ] Lane name
