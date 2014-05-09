@@ -4,7 +4,7 @@ _(NOTE: wording is not final)_
 - [ ] [My books](#mybooks)
 - [ ] [Library](#library)
 
-## <a name="library"></a>Library
+## Library
 - [ ] Notification of items waiting for action (links to My books)
 - [ ] Lanes, each with:
   - Name
