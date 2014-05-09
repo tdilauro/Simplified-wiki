@@ -1,7 +1,7 @@
 _(NOTE: wording is not final)_
 ## Available everywhere (except the reader)
-- [ ] [Settings](#settings)
-- [ ] [My books](#mybooks)
+- [ ] [Settings](#application-settings)
+- [ ] [My books](#my-books)
 - [ ] [Library](#library)
 
 ## Library
@@ -13,7 +13,7 @@ _(NOTE: wording is not final)_
   - "Swipe up" action to add book to [ignore list](#ignored)
 - [ ] [Search bar](#search)
 
-## <a name="search"></a>Search
+## Search
 - [ ] Keyboard
 - [ ] Keyword input area
 - [ ] Book result list, each with:
