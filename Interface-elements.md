@@ -9,8 +9,8 @@ _(NOTE: wording is not final)_
 - [ ] Lanes, each with:
   - Name
   - n book covers
-  - ["More" button](#lanedetail)
-  - "Swipe up" action to add book to [ignore list](#ignored)
+  - ["More" button](#lane-detail)
+  - "Swipe up" action to add book to [ignore list](#ignored-books)
 - [ ] [Search bar](#search)
 
 ## Search
@@ -26,9 +26,9 @@ _(NOTE: wording is not final)_
   - Estimated time until checkout available (if applicable)
   - "Checkout book" button (if applicable, prompts download)
   - ["Read book" button](#reader) (if applicable)
-  - ["View detail" button](#bookdetail)
+  - ["View detail" button](#book-detail)
 
-## <a name="lanedetail"></a>Lane detail
+## Lane detail
 - [ ] Lane name
 - [ ] Option to sort by: Name | Author
 - [ ] List of books, each with:
@@ -38,11 +38,11 @@ _(NOTE: wording is not final)_
   - [Status of book](https://github.com/NYPL/iOS-Reader/wiki/Information-Architecture#client-book-states)
   - "Ignore book" button (prompts confirmation)
   - "Save for later" button
-  - ["View detail" button](#bookdetail)
+  - ["View detail" button](#book-detail)
 - [ ] [Search bar](#search)
 - [ ] Button to return to previous screen
 
-## <a name="mybooks"></a>My books
+## My books
 - [ ] List of books, each with:
   - Title
   - Author
@@ -53,10 +53,10 @@ _(NOTE: wording is not final)_
   - Estimated time until checkout available (if applicable)
   - "Checkout book" button (if applicable, prompts download)
   - ["Read book" button](#reader) (if applicable)
-  - ["View detail" button](#bookdetail)
+  - ["View detail" button](#book-detail)
 - [ ] Filter between: All | Saved for later
 
-## <a name="bookdetail"></a>Book detail
+## Book detail
 - [ ] Cover
 - [ ] Name
 - [ ] Author
@@ -71,65 +71,65 @@ _(NOTE: wording is not final)_
 - [ ] "Book due in" message (if applicable)
 - [ ] Button to return to previous screen
 
-## <a name="reader"></a>Reader
+## Reader
 † Appears on tap or on book end
 - [ ] Book length visualization
 - [ ] Current position within book length
 - [ ] Book text
-- [ ] † [Bookmark widget](#bwidget)
-- [ ] † [Font/color options](#readersettings)
+- [ ] † [Bookmark widget](#bookmark-widget)
+- [ ] † [Font/color options](#reader-settings)
 - [ ] † "Table of contents" button
 - [ ] † "Next page" button/swipe
 - [ ] † "Previous page" button/swipe
 - [ ] † "Exit reader" button
 
-## <a name="readersettings"></a>Reader settings
+## Reader settings
 - [ ] Choose between font: Sans-serif | Serif
 - [ ] Choose between contrast modes: Black-on-white | Sepia | White-on-black
 - [ ] "Increase font size" button
 - [ ] "Decrease font size" button
 
-## <a name="bwidget"></a>Bookmark widget
+## Bookmark widget
 - [ ] Page # (or Chapter #)
 - [ ] Text snippet
 - [ ] "Remove bookmark" button
 - [ ] "Go to bookmark" button
 
-## <a name="bookend"></a>Book end
+## Book end
 - [ ] "Return book" button
 - [ ] "Rate book" buttons (5 stars)
 - [ ] "Previous page" button/swipe
 
-## <a name="settings"></a>App settings
+## App settings
 - [ ] Barcode
 - [ ] Barcode numbers
 - [ ] PIN (obscured => tap to reveal?)
-- [ ] ["Ignored books" button](#ignored)
+- [ ] ["Ignored books" button](#ignored-books)
 - [ ] ["Feedback" button](#feedback)
 - [ ] ["Credits/Acknowledgments" button](#credits)
 - [ ] "Logout" button (prompts confirmation of data deletion)
 
-## <a name="ignored"></a>Ignored books
+## Ignored books
 - [ ] "Ignored books" title text
 - [ ] List of books, each with:
   - Title
   - Author
   - Cover
   - "Remove from ignored" button
-  - ["View detail" button](#bookdetail)
+  - ["View detail" button](#book-detail)
 
-## <a name="feedback"></a>Feedback
+## Feedback
 - [ ] Text area for feedback
 - [ ] Text area for email (optional)
 - [ ] "Send feedback" button
 - [ ] "Cancel" button
 
-## <a name="credits"></a>Credits
+## Credits
 - [ ] Credits text
 - [ ] Acknowledgments text
 - [ ] Button to return to previous screen
 
-## <a name="auth"></a>Authentication
+## Authentication
 - [ ] Message indicating requirement to log in
 - [ ] Barcode input
 - [ ] Button to prompt camera for automatic barcode scan
