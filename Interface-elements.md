@@ -1,0 +1,121 @@
+_(NOTE: wording is not final)_
+## Available everywhere (except the reader)
+- [ ] [[Settings]]
+- [ ] My books
+- [ ] [[Library|Library]]
+
+## Library
+- [ ] Notification of items waiting for action (links to My books)
+- [ ] Lanes, each with:
+  - Name
+  - n book covers
+  - "More" button
+  - "Swipe up" action to add book to ignore list
+- [ ] Search bar
+
+## Lane detail
+- [ ] Lane name
+- [ ] Option to sort by: Name | Author
+- [ ] List of books, each with:
+  - Title
+  - Author
+  - Cover
+  - [Status of book](https://github.com/NYPL/iOS-Reader/wiki/Information-Architecture#client-book-states)
+  - "Ignore book" button (prompts confirmation)
+  - "Save for later" button
+  - "View detail" button
+- [ ] Search bar
+- [ ] Button to return to previous screen
+
+## My books
+- [ ] List of books, each with:
+  - Title
+  - Author
+  - Cover
+  - [Status of book](https://github.com/NYPL/iOS-Reader/wiki/Information-Architecture#client-book-states)
+  - "Remove from saved" button (if applicable)
+  - "Remove hold" button (if applicable)
+  - Estimated time until checkout available (if applicable)
+  - "Checkout book" button (if applicable)
+  - "Read book" button (if applicable)
+  - "View detail" button
+- [ ] Filter between: All | Saved for later
+
+## Book detail
+- [ ] Cover
+- [ ] Name
+- [ ] Author
+- [ ] Abstract
+- [ ] "Read book" button (if applicable)
+- [ ] "Check out" button (if applicable)
+- [ ] "Hold book" button (if applicable)
+- [ ] "Save for later" button
+- [ ] Genre/LCSH headings type of content
+- [ ] Estimated time until checkout available (if applicable)
+- [ ] Button to return to previous screen
+
+## Reader
+† Appears on tap or on book end
+- [ ] Book length visualization
+- [ ] Current position within book length
+- [ ] Book text
+- [ ] † Bookmark widget
+- [ ] † Font/color options
+- [ ] † "Table of contents" button
+- [ ] † "Next page" button/swipe
+- [ ] † "Previous page" button/swipe
+- [ ] † "Exit reader" button
+
+## Reader settings
+- [ ] Choose between font: Sans-serif | Serif
+- [ ] Choose between contrast modes: Black-on-white | Sepia | White-on-black
+- [ ] "Increase font size" button
+- [ ] "Decrease font size" button
+
+## Bookmark widget
+- [ ] Page # (or Chapter #)
+- [ ] Text snippet
+- [ ] "Remove bookmark" button
+- [ ] "Go to bookmark" button
+
+## Book end
+- [ ] "Return book" button
+- [ ] "Rate book" buttons (5 stars)
+- [ ] "Previous page" button/swipe
+
+## App settings
+- [ ] Barcode
+- [ ] Barcode numbers
+- [ ] PIN (obscured => tap to reveal?)
+- [ ] "Ignored books" button
+- [ ] "Feedback" button
+- [ ] "Credits/Acknowledgments" button
+- [ ] "Logout" button (prompts confirmation of data deletion)
+
+## Ignored books
+- [ ] "Ignored books" title text
+- [ ] List of books, each with:
+  - Title
+  - Author
+  - Cover
+  - "Remove from ignored" button
+  - "View detail" button
+
+## Feedback
+- [ ] Text area for feedback
+- [ ] Text area for email (optional)
+- [ ] "Send feedback" button
+- [ ] "Cancel" button
+
+## Credits
+- [ ] Credits text
+- [ ] Acknowledgments text
+
+## Authentication
+- [ ] Message indicating requirement to log in
+- [ ] Barcode input
+- [ ] Button to prompt camera for automatic barcode scan
+- [ ] PIN input
+- [ ] "Sign in" button
+- [ ] "Cancel" button
+- [ ] "Sign up" button **(TO BE CONFIRMED)**
