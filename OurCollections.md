@@ -63,6 +63,79 @@ I include every classification that is used for at least 0.5% of the books. Ever
 
 3M provides no subject information; we need to get it from OCLC.
 
+These are the top 20 results for a sample of 6410 books from 3M.
+
+### Dewey Decimal headings (top-level only)
+
+* 813 3548
+* 823 748
+* FIC 506
+* 973 65
+* B 48
+* 796 43
+* 782 39
+* 306 38
+* 641 37
+* 364 36
+* 613 34
+* 839 33
+* 658 29
+* 818 27
+* 791 27
+* 814 26
+* 650 25
+* 863 25
+* 158 25
+* 808 25
+
+### LCC headings (top-level only)
+
+* PZ7 613
+* PS3553 226
+* PS3568 193
+* PS3552 162
+* PS3566 149
+* PS3602 143
+* PS3558 134
+* PS3603 128
+* PS3569 127
+* PS3563 125
+* PS3619 119
+* PS3613 112
+* PS3557 107
+* PS3561 97
+* PS3601 95
+* PS3554 91
+* PR9199 89
+* PS3612 86
+* PS3608 85
+* PS3604 85
+
+
+### FAST subject headings
+
+* United States 668
+* Man-woman relationships 467
+* Murder--Investigation 440
+* Police 362
+* England 299
+* New York (State)--New York 272
+* Detective and mystery stories 222
+* Private investigators 211
+* Manners and customs 210
+* Great Britain 206
+* Families 194
+* Magic 189
+* Women detectives 187
+* England--London 185
+* Murder 168
+* Vampires 153
+* Schools 142
+* Love stories 131
+* Paranormal fiction 127
+* Missing persons 122
+
+
 ## Overdrive
 
 Cutoff point: 271
