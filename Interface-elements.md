@@ -64,9 +64,11 @@ _(NOTE: wording is not final)_
 - [ ] ["Read book" button](#reader) (if applicable)
 - [ ] "Check out" button (if applicable, prompts download)
 - [ ] "Hold book" button (if applicable)
-- [ ] "Save for later" button
+- [ ] "Return book" button (if applicable)
+- [ ] "Save for later" button (if applicable)
 - [ ] Genre/LCSH headings type of content
 - [ ] Estimated time until checkout available (if applicable)
+- [ ] "Book due in" message (if applicable)
 - [ ] Button to return to previous screen
 
 ## <a name="reader"></a>Reader
