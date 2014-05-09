@@ -179,3 +179,9 @@ Cutoff point: 227
 * Children's stories 252
 * Man-woman relationships -- Fiction 242
 * English fiction -- 19th century 234
+
+# Usage
+
+## Overdrive
+
+Our Overdrive collection numbers about 50,000 books. During the period 2014 April 16-2014 May 8, only about 20,000 of those books saw a checkout or checkin event.
