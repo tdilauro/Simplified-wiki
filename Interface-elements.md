@@ -1,6 +1,6 @@
 _(NOTE: wording is not final)_
 ## Available everywhere (except the reader)
-- [ ] [Settings](#application-settings)
+- [ ] [Settings](#app-settings)
 - [ ] [My books](#my-books)
 - [ ] [Library](#library)
 
