@@ -17,15 +17,22 @@ E-Book Titles (One Copy One User): 3,314
 Overdrive: $8,333.33
 
 Top Circulating Subjects	
-Biography/Memoir   Print %	(57%)  Ebook % (80%)   General Rank (1)      Ebook Rank (3)
-History	                        (35%)          (60%)                (2)                 (6)
+Biography/Memoir   
+Print %	(57%)  Ebook % (80%)   General Rank (1)      Ebook Rank (3)
+History
+Print % (35%)  Ebook % (60%)   General Rank (2)      Ebook Rank (6)
 Medicine/Health	
-Self Help/Psychology	
-Current Events/Political	
-Cooking	Business/Finance/Careers	
-Religion/Philosophy	
+Print % (68%)  Ebook % (57%)   General Rank (3)      Ebook Rank (2)
+Self Help/Psychology
+Print % (25%)  Ebook % (49%)   General Rank (4)      Ebook Rank (8)
+Current Events/Political
+Print % (18%)  Ebook % (46%)   General Rank (5)      Ebook Rank (10)	
+Cooking	Business/Finance/Careers
+	
+Religion/Philosophy
+	
 How-To/Home Arts	
-68%	25%	18%	84%		19%	38%	
-57%	49%	46%	34%	33%	29%	21%
-3	4	5	6	7	8	9	
-2	8	10	1		9	5
+84%		19%	38%	
+34%	33%	29%	21%
+6	7	8	9	
+1		9	5
