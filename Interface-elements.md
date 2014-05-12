@@ -22,12 +22,12 @@ _(NOTE: wording is not final)_
   - Author
   - Cover
   - [Status of book](https://github.com/NYPL/iOS-Reader/wiki/Information-Architecture#client-book-states)
-  - "Remove from saved" button (if applicable)
+  - "Remove from saved" button (if applicable _or "Forget"_)
   - "Remove hold" button (if applicable)
   - Estimated time until checkout available (if applicable)
-  - "Checkout book" button (if applicable, prompts download)
-  - ["Read book" button](#reader) (if applicable)
-  - ["View detail" button](#book-detail)
+  - "Checkout book" or "Borrow" button (if applicable, prompts download)
+  - ["Read book" or "Read" button](#reader) (if applicable)
+  - ["View detail" or "Details" button](#book-detail)
 
 ## Lane detail
 - [ ] Lane name
