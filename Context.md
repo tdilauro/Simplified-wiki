@@ -1,9 +1,9 @@
 ###E-Content Spend (not broken out by format): $2,050,000###
 
 **Overdrive Stats:**
-E-Book Titles (One Copy, One User): 45,018
+* E-Book Titles (One Copy, One User): 45,018
 
-Audiobook Titles (One Copy, One User): 15,009
+* Audiobook Titles (One Copy, One User): 15,009
 
 Music Titles (One Copy, One User): 1,574
 
