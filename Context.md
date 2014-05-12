@@ -18,20 +18,23 @@
 
 #### Top Circulating Subjects	####
 **Biography/Memoir**  
-* Print %	(57%)  
+* Print % (57%)  
 * Ebook % (80%)   
 * General Rank (1)      
 * Ebook Rank (3)
+
 **History**
 * Print % (35%)  
 * Ebook % (60%)   
 * General Rank (2)      
 * Ebook Rank (6)
+
 **Medicine/Health**	
 * Print % (68%)  
 * Ebook % (57%)   
 * General Rank (3)      
 * Ebook Rank (2)
+
 **Self Help/Psychology**
 * Print % (25%)  
 * Ebook % (49%)   
@@ -41,22 +44,26 @@
 * Print % (18%)  
 * Ebook % (46%)   
 * General Rank (5)      
-* Ebook Rank (10)	
+* Ebook Rank (10)
+	
 **Cooking**	
 * Print % (84%)  
 * Ebook % (34%)   
 * General Rank (6)      
 * Ebook Rank (1)
+
 **Business/Finance/Careers**
 * Print % (%)  
 * Ebook % (33%)   
 * General Rank (7)      
-* Ebook Rank (1)	
+* Ebook Rank (1)
+	
 **Religion/Philosophy**
 * Print % (19%)  
 * Ebook % (29%)   
 * General Rank (8)      
-* Ebook Rank (9)	
+* Ebook Rank (9)
+	
 **How-To/Home Arts**	
 * Print % (38%)  
 * Ebook % (21%)   
