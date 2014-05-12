@@ -25,13 +25,13 @@ _(NOTE: wording is not final)_
   - "Remove from saved" button (if applicable _or "Forget"_)
   - "Remove hold" button (if applicable)
   - Estimated time until checkout available (if applicable)
-  - "Checkout book" or "Borrow" button (if applicable, prompts download)
-  - ["Read book" or "Read" button](#reader) (if applicable)
-  - ["View detail" or "Details" button](#book-detail)
+  - "Checkout book" button (or "Borrow" if applicable, prompts download)
+  - ["Read book" button](#reader) (or simply "Read" if applicable)
+  - ["View detail" button](#book-detail or "Details" )
 
 ## Lane detail
 - [ ] Lane name
-- [ ] Option to sort by: Name | Author
+- [ ] Option to sort by: Title | Author
 - [ ] List of books, each with:
   - Title
   - Author
@@ -62,10 +62,10 @@ _(NOTE: wording is not final)_
 - [ ] Name
 - [ ] Author
 - [ ] Abstract
-- [ ] ["Read book" button](#reader) (if applicable)
-- [ ] "Check out" button (if applicable, prompts download)
+- [ ] ["Read book" button](#reader) ( or simply "Read" if applicable)
+- [ ] "Check out" button ( or "Borrow" if applicable, prompts download)
 - [ ] "Hold book" button (if applicable)
-- [ ] "Return book" button (if applicable)
+- [ ] "Return book" button (or "Return" if applicable)
 - [ ] "Save for later" button (if applicable)
 - [ ] Genre/LCSH headings type of content
 - [ ] Estimated time until checkout available (if applicable)
