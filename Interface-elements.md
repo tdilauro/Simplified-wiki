@@ -3,7 +3,6 @@ _(NOTE: wording is not final)_
 - [ ] [Settings](#app-settings)
 - [ ] [My books](#my-books)
 - [ ] [Library](#library)
-- [ ] NYPL Logo
 
 ## Library
 - [ ] Notification of items waiting for action (links to My books)
@@ -13,6 +12,7 @@ _(NOTE: wording is not final)_
   - ["More" button](#lane-detail)
   - "Swipe up" action to add book to [ignore list](#ignored-books)
 - [ ] [Search bar](#search)
+- [ ] NYPL Logo
 
 ## Search
 - [ ] Keyboard
