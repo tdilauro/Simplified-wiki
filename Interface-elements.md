@@ -90,8 +90,8 @@ _(NOTE: wording is not final)_
 - [ ] "Decrease font size" button
 
 ## Bookmark widget
-- [ ] Page # (or Chapter #)
-- [ ] Text snippet
+- [ ] Page # (or Chapter #)  If applicable, ebooks are flowable and not broken into pages, just resources since the font and screen is variable and the pagination goes away.
+- [ ] Text snippet (_Please Clarify_)
 - [ ] "Remove bookmark" button
 - [ ] "Go to bookmark" button
 
