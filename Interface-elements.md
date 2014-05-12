@@ -40,6 +40,7 @@ _(NOTE: wording is not final)_
   - [Status of book](https://github.com/NYPL/iOS-Reader/wiki/Information-Architecture#client-book-states)
   - "Ignore book" button (prompts confirmation)
   - "Save for later" button
+  - "Checkout book" button (or "Borrow" if applicable, prompts download)
   - ["View detail" button](#book-detail)
 - [ ] [Search bar](#search)
 - [ ] Button to return to previous screen
