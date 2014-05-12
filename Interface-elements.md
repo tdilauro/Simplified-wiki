@@ -16,6 +16,7 @@ _(NOTE: wording is not final)_
 ## Search
 - [ ] Keyboard
 - [ ] Keyword input area
+  - Watermark prompt of e.g. "Title/Author"
 - [ ] Book result list, each with:
   - Title
   - Author
