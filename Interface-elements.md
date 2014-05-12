@@ -3,6 +3,7 @@ _(NOTE: wording is not final)_
 - [ ] [Settings](#app-settings)
 - [ ] [My books](#my-books)
 - [ ] [Library](#library)
+- [ ] NYPL Logo
 
 ## Library
 - [ ] Notification of items waiting for action (links to My books)
