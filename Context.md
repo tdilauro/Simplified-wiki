@@ -2,10 +2,15 @@
 
 **Overdrive Stats:**
 E-Book Titles (One Copy, One User): 45,018
+
 Audiobook Titles (One Copy, One User): 15,009
+
 Music Titles (One Copy, One User): 1,574
+
 Video Titles (One Copy, One User): 1,012
+
 E-Books (Metered Access): 5.261
+
 Multi-User: 100 Titles (One year access)
 
 **3M Stats:**
