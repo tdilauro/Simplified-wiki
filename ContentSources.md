@@ -216,6 +216,8 @@ A not comprehensive list of ebook resources with free offerings:
 
 #### Deutsch
 
+- http://gutenberg.spiegel.de/
+
 #### Portugués
 
 - http://free-ebooks.net/ [portugues](http://portugues.free-ebooks.net/) subdomains
@@ -236,6 +238,10 @@ A not comprehensive list of ebook resources with free offerings:
 * [Aozora Bunko](http://www.aozora.gr.jp/) - I have no idea how to even see how many books there are on this site. [English-language description.](http://www.japannewbie.com/2011/02/13/how-to-use-aozora-bunko-to-get-free-japanese-books/)
 
 #### עברית 
+
+#### Scandanavian languages
+
+- http://runeberg.org/katalog.html (Also includes some English. Not OCRed, many books are taken from Google Books or Internet Archive)
 
 ### Other open-access sources with integration ability
 
