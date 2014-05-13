@@ -22,6 +22,8 @@ A lot of schemes have been devised to classify books.
 
 * [Library of Congress subject headings](http://www.loc.gov/aba/cataloging/subject/) Sample: "Fundraising cookbooks"
 
+* [FAST subject headings](http://www.oclc.org/research/activities/fast/download.html) Sample: "African American teenagers--Education" Full dataset available under CC-BY.
+
 * Bookstores like Amazon have their own proprietary classifications, e.g. "Books > Arts & Photography > Architecture > Urban & Land Use Planning". These also show up as GoodReads "genres".
 
 * Amazon books also come with classifications from the publishers, although these aren't displayed very prominently. Major publishers tend to use LOC subject headings or BISAC classifications. Self-published books effectively use tags.
