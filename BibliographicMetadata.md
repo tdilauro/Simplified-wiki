@@ -107,6 +107,14 @@ XML format.
 * Includes good objective metadata
 * Includes good subjective metadata, including reviews, but "harvesting and indexing" data is forbidden without permission.
 
+## Booki.sh
+
+Owned by Zola. We buy access to the Bookish recommendation API. They also have a basic metadata API. I'm not sure if we get access to the metadata API under the same terms as the recommendation API.
+
+Coverage is about 1.5 million books. Metadata comes from publishers and distributors. Primary key is ISBN13.
+
+Zola is working on an API to (truncated) reviews of books and to estimate star ratings. Also working on a search API to map (e.g.) title/author to ISBN.
+
 ## iDreamBooks
 
 "Metacritic for books". They have [a JSON-based API](http://idreambooks.com/api). We can get a list of recent critically acclaimed books and books that were recently featured on TV. For a given book we can get up to 5 critical reviews.
@@ -127,6 +135,11 @@ XML format.
 TOS forbids usage except to promote Amazon's products. I believe we
 have more favorable usage terms if we scrape the website as a spider
 rather than going through the API.
+
+## NYT 
+
+* [Best Sellers API](http://developer.nytimes.com/docs/best_sellers_api/) - Basic historical popularity information. Includes links to NYT reviews where appropriate.
+* [Article Search API](http://developer.nytimes.com/docs/read/article_search_api_v2) - Can be used to [search for book reviews](http://developer.nytimes.com/forum/read/90523)
 
 ## LibraryThing
 
