@@ -1,6 +1,6 @@
 _(NOTE: wording is not final)_
 
-A clickable version of this mockup can be found [here](https://popapp.in/projects/53738be686797f32740ef81a/preview)
+[Clickable version of this mockup](https://popapp.in/projects/53738be686797f32740ef81a/preview)
 
 ## Available everywhere (except the reader)
 - [ ] [Settings](#app-settings)
