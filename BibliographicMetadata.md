@@ -139,6 +139,10 @@ API TOS are oriented around displaying reviews directly to end-users.
 * You agree to not truncate, modify or change our data.
 * You may not store our data except for caching purposes.
 
+## WikiData
+
+* (Example: "The Art of War")[http://www.wikidata.org/wiki/Q8251] Good source for data about books (mostly PD books) We always get author information and link to Wikipedia page. If we're lucky we might get related images, author images, or summary. (First paragraph of Wikipedia page makes a decent summary in many cases.)
+
 ## Amazon Product Advertising API
 
 XML format.
