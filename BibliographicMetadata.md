@@ -64,6 +64,16 @@ field names mean, you must consult some nearby piece of documentation.
 * [A MARC XML record](http://catalog.nypl.org/xrecord=b20000382~S1) Compare [the same data in HTML](http://catalog.nypl.org/record=b20000382~S1)
 * Matt is converting our MARC catalog to JSON. We'll see what data we have available in there once he's done.
 
+## OCLC Classify
+
+* [A free API](http://classify.oclc.org/classify2/) that can turn title/author or isbn into internal "work ids" or OCLC IDs. If we get internal "work ids", we can always turn them into a list of OCLC  IDs.  TODO: nail down terms of use. noncommercial?
+
+## Worldcat Open Data
+
+Significant amounts of bibliographic data available in RDF format, available once you know the OCLC ID. Data is made available under an [attribution-style license](http://opendatacommons.org/licenses/by/1.0/)
+
+* [Example RDF](http://experiment.worldcat.org/oclc/795121502.rdf)
+
 ## 3M XML
 
 A vocabulary for describing 3M Cloud Library's catalog. It looks to
