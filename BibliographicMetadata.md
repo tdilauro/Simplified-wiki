@@ -162,6 +162,7 @@ rather than going through the API.
 ## USA Today
 
 * [Book review API](http://developer.usatoday.com/docs/read/book_reviews) 
+* [Best-selling books API](http://developer.usatoday.com/docs/read/bestselling_books)
 * [TOS](http://developer.usatoday.com/API_Terms_of_Use) "Your use of the USAT Census API, the USAT Books/Music/Movie Reviews API, and the USAT Articles API is not limited to your personal, noncommercial use and you may use those specific USAT APIs for commercial purposes."
 
 ## LibraryThing
