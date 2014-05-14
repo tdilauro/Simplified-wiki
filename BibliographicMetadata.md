@@ -109,7 +109,10 @@ XML format.
 
 ## Booki.sh
 
-Owned by Zola. We buy access to the Bookish recommendation API. They also have a basic metadata API. I'm not sure if we get access to the metadata API under the same terms as the recommendation API.
+* [Recommendation API](http://docs.bookishrecapi.apiary.io/)
+* [Metadata API](http://docs.bookmetadata.apiary.io/)
+
+Owned by Zola. We already buy access to the Bookish recommendation API. They also have a basic metadata API. I'm not sure if we get access to the metadata API under the same terms as the recommendation API.
 
 Coverage is about 1.5 million books. Metadata comes from publishers and distributors. Primary key is ISBN13.
 
