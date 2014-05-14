@@ -73,6 +73,7 @@ field names mean, you must consult some nearby piece of documentation.
 Significant amounts of bibliographic data available in RDF format, available once you know the OCLC ID. Data is made available under an [attribution-style license](http://opendatacommons.org/licenses/by/1.0/)
 
 * [Example RDF](http://experiment.worldcat.org/oclc/795121502.rdf)
+* Author information is linked to VIAF [(e.g.)](http://viaf.org/viaf/71391324/), which makes it possible to localize author names.
 
 ## 3M XML
 
