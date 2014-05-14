@@ -159,6 +159,11 @@ rather than going through the API.
 * [Best Sellers API](http://developer.nytimes.com/docs/best_sellers_api/) - Basic historical popularity information. Includes links to NYT reviews where appropriate.
 * [Article Search API](http://developer.nytimes.com/docs/read/article_search_api_v2) - Can be used to [search for book reviews](http://developer.nytimes.com/forum/read/90523)
 
+## USA Today
+
+* [Book review API](http://developer.usatoday.com/docs/read/book_reviews) 
+* [TOS](http://developer.usatoday.com/API_Terms_of_Use) "Your use of the USAT Census API, the USAT Books/Music/Movie Reviews API, and the USAT Articles API is not limited to your personal, noncommercial use and you may use those specific USAT APIs for commercial purposes."
+
 ## LibraryThing
 
 Probably the most useful [set of bibliographic APIs](https://www.librarything.com/wiki/index.php/LibraryThing_APIs].
