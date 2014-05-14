@@ -82,7 +82,7 @@ Readium provides a _Smoke Test Plan_ and supporting documents for testing eBook 
 
 * Allow user to switch to night mode (white text on black vs black text on white)
 
-***View Navigation requirements***
+***Example View Navigation requirements (subject to design change)***
 
 * Top Bar (TB) Menue for Reading View
 * **TB:Options icon** - access drop down menu for _Options Menue (OM)_ with following items:
@@ -282,15 +282,17 @@ _So I can_  **Borrow and read it later or share **
 ## Research and Reference User (R&RU)
 
 **Use Cases**
-* As a Researcher and Reference Users I want to conduct a catalog search or category browse
-* As a Researcher wants to download books
-* is a public library user
-* reads the relevant chapters
-* Bookmarks catalogue items (books) for borrowing
-* wants to capture notes about methods in notes, or Evernote on her mobile phone / tablet when on  a job site
+* As a Researcher and Reference User I want to conduct a catalog search or category browse
+* As a Researcher I want want to download eBooks for repeat reference
+* As a public library User I want to conduct a catalog search or category browse
+* As a Researcher and Reference User I only want to read the relevant chapters
+* As a Research and Reference User I want to Bookmark catalogue items (books) for borrowing
+* As a I Research and Reference User I want to capture notes about methods in notes, or Evernote on her mobile phone / tablet when on  a job site
 
 ## Leisure and Entertainment (L&EU)
-* Commuter
+**Commuter**
+As a Commuter I want to read medium length works
+As a 
 
 * Bibliophile
 
