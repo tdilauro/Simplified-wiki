@@ -1,4 +1,4 @@
-### Mobile Client Views
+# Mobile Client Views
 
 ##### Home Page View
 
