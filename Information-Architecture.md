@@ -152,7 +152,7 @@ With the following scheme, a book is always in *exactly one* of the following st
 - Return Book X. → NONE
 - Allow the loan for Book X to expire. → LOAN EXPIRED
 
-#### (OPENED) Once I have opened Book X, I can:
+#### (BOOK OPENED) Once I have opened Book X, I can:
 
 - Return Book X. → NONE
 - Allow the loan for Book X to expire. → LOAN EXPIRED
