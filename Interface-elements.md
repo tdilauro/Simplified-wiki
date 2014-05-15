@@ -1,5 +1,3 @@
-_(NOTE: wording is not final)_
-
 [Clickable version of this mockup](https://popapp.in/projects/53738be686797f32740ef81a/preview)
 
 ## Available everywhere (except the reader)
@@ -143,3 +141,12 @@ _(NOTE: wording is not final)_
 - [ ] "Sign in" button
 - [ ] "Cancel" button
 - [ ] "Sign up" button **(TO BE CONFIRMED)**
+
+## About Book States
+
+Below is a chart of possible book states/overlays/marks and where they are displayed (book list or detail page).
+
+![Chart with possible book states. States with the same color are mutually exclusive.](https://photos-4.dropbox.com/t/0/AAClCn9TN11ZoLwIHhLl9D1O4-TviBWCzyhbbjY0byqrcw/12/2092213/png/1024x768/3/1400191200/0/2/book%20states%202.png/Xdxmgxuo174KzBUeH38CCsB39Rwbzq-EZbAWz3Yxvcg)
+
+_Chart with possible book states. States with the same color are mutually exclusive._
+
