@@ -83,8 +83,6 @@ This view provides information regarding preferences of the user such as notific
 * Change font face (likely just "serif" or "sans-serif")
 * Switch between white-on-black, black-on-white, and black-on-sepia
 
-### Client Book States
-
 # Client Book States
 
 With the following scheme, a book is always in *exactly one* of the following states:
