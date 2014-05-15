@@ -85,7 +85,7 @@ This view provides information regarding preferences of the user such as notific
 
 ### Client Book States
 
-![chart with possible book states. states with the same color are mutually exclusive.](https://dl-web.dropbox.com/get/NYPL%20Labs/simplified/book%20states.png?_subject_uid=2092213&w=AACMi-z-zXG3Co0012T1VujSSYtJiRWazvG-4qC2iytdeg)
+![chart with possible book states. states with the same color are mutually exclusive.](https://photos-6.dropbox.com/t/0/AADGaxeXBrb5uXD2udD_8ZaF8zlMjtOnkcTNYsjigHMTZw/12/2092213/png/1024x768/3/1400187600/0/2/book%20states.png/OHPpIzWw06uoV2frrb2BFooa4Nu7eSthwpTEKhD_xPo)
 
 _Chart with possible book states. States with the same color are mutually exclusive._
 
