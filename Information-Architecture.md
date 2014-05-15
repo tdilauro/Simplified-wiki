@@ -85,10 +85,6 @@ This view provides information regarding preferences of the user such as notific
 
 ### Client Book States
 
-![chart with possible book states. states with the same color are mutually exclusive.](https://photos-6.dropbox.com/t/0/AADGaxeXBrb5uXD2udD_8ZaF8zlMjtOnkcTNYsjigHMTZw/12/2092213/png/1024x768/3/1400187600/0/2/book%20states.png/OHPpIzWw06uoV2frrb2BFooa4Nu7eSthwpTEKhD_xPo)
-
-_Chart with possible book states. States with the same color are mutually exclusive._
-
 Books are always in one of the following states, each of which should have an associated visual indicator:
 
 * **Permanent:** These are books which the user has downloaded that can be retained indefinitely. Such books will likely primarily be public domain titles, e.g. those obtained via Project Gutenberg.
