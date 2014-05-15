@@ -146,7 +146,7 @@
 
 Below is a chart of possible book states/overlays/marks and where they are displayed (book list or detail page).
 
-![Chart with possible book states. States with the same color are mutually exclusive.](https://photos-4.dropbox.com/t/0/AAClCn9TN11ZoLwIHhLl9D1O4-TviBWCzyhbbjY0byqrcw/12/2092213/png/1024x768/3/1400191200/0/2/book%20states%202.png/Xdxmgxuo174KzBUeH38CCsB39Rwbzq-EZbAWz3Yxvcg)
+![Chart with possible book states. States with the same color are mutually exclusive.](https://photos-5.dropbox.com/t/0/AADS5BI-DHL_KgfXF-bbA-2wT0hWA0fS32Mi857T3oXOFg/12/2092213/png/1024x768/3/1400191200/0/2/book%20states%203.png/_blo1s4MNCHPPeBWWxy70K0TiGwCbwvsx4_d80YkI6w)
 
 _Chart with possible book states. States with the same color are mutually exclusive._
 
