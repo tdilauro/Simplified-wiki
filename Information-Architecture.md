@@ -85,19 +85,76 @@ This view provides information regarding preferences of the user such as notific
 
 ### Client Book States
 
-Books are always in one of the following states, each of which should have an associated visual indicator:
+# Client Book States
 
-* **Permanent:** These are books which the user has downloaded that can be retained indefinitely. Such books will likely primarily be public domain titles, e.g. those obtained via Project Gutenberg.
-* **On loan:** These are books for which the user has taken successfully taken out a loan. An indicator may reveal the number of days left on the loan without having to view the book's details.
-* **Awaiting loan decision**: These are books for which the user has requested a loan at a time when a copy was not available but that has since become available. The user has a set number of days to make a decision as to if she will accept or decline the loan.
-* **Loan expired**: These are books which have expired due to the user not opting to return the book before the end of the loan term. These books remain for two reasons: to avoid the potential confusion that would result from a book suddenly disappearing, and to provide the user with a convenient way to request another loan.
-* **Loan decision expired:** Similar to the previous state, this state indicates that a loan was offered but neither accepted nor declined.
+With the following scheme, a book is always in *exactly one* of the following states:
 
-In addition to the above states, a given book may have one of the additional states:
+#### (NONE) I can:
 
-* **Downloading:** These are books for which a download is currently in progress.
-* **Download completed:** These are books that have been successfully downloaded by not yet interacted with in any way. The purpose of this state is to highlight that the book is newly available to the user and will be cleared upon opening the book (at a minimum).
-* **Download failed:** These are books for which a previously initiated download has since failed and has not yet been retried.
-* **Download queued:** These are books for which the user has requested downloading that have not yet begun downloading due to a limitation on simultaneous downloads.
-* **Download paused:** These are books for which the user has temporarily paused downloading with the option of resuming later.
-* **Book opened:** These are books in which the user has navigated away from the first page. The intent of this state is to make it clear to the user that opening the book will bring them directly to where they left off rather than the default location.
+- Add Book X to my saved list. → SAVED
+- Wait in line for Book X if it's not available. → WAITING FOR LOAN
+- Take out a loan for Book X immediately if it's available. → NOT DOWNLOADED
+
+#### (SAVED) When I have Book X in my saved list, I can:
+
+- Remove Book X from my saved list. → NONE
+- Wait in line for Book X if it's not available. → WAITING FOR LOAN
+- Take out a loan for Book X immediately if it's available. → NOT DOWNLOADED
+
+#### (WAITING FOR LOAN) When I'm waiting for Book X, I can:
+
+- Elect to stop waiting for Book X. → NONE
+- Successfully complete the wait for Book X and receive a loan offer. → LOAN OFFERED
+
+#### (LOAN OFFERED) When a loan has been offered, I can:
+
+- Accept the loan offer for Book X. → NOT DOWNLOADED
+- Decline the loan offer for Book X. → NONE
+- Do nothing, and let the loan offer for Book X expire. → LOAN OFFER EXPIRED
+
+#### (LOAN OFFER EXPIRED) When the loan offer for Book X has expired, I can:
+
+- Dismiss the notification that the loan offer has expired. → NONE
+- Dismiss the notification that the loan offer, then go to the library to get it again. → NONE
+
+#### (NOT DOWNLOADED) When I have been issued a loan for Book X, I can:
+
+- Place Book X is in the download queue if other books are downloading. → DOWNLOAD QUEUED
+- Begin downloading Book X if there is no download queue. → DOWNLOADING
+- Return Book X. → NONE
+- Allow the loan for Book X to expire. → LOAN EXPIRED
+
+#### (LOAN EXPIRED) When the loan for Book X has expired, I can:
+
+- Dismiss the notification that the loan has expired. → NONE
+- Dismiss the notification that the loan has, then go to the library to get it again. → NONE
+
+#### (DOWNLOAD QUEUED) While the download for Book X is queued, I can:
+
+- Automatically begin downloading Book X once other books are finished. → DOWNLOADING
+- Cancel the download for Book X. → NOT DOWNLOADED
+- Fail the download due to loss of connectivity. → DOWNLOAD FAILED
+
+#### (DOWNLOADING) When I'm downloading Book X, I can:
+
+- Wait for the download for Book X to complete successfully. → DOWNLOAD COMPLETED
+- Cancel the download for Book X. → NOT DOWNLOADED
+- Fail the download due to loss of connectivity. → DOWNLOAD FAILED
+
+#### (DOWNLOAD FAILED) When the download for Book X has failed, I can:
+
+- Place Book X is in the download queue if other books are downloading. → DOWNLOAD QUEUED
+- Begin downloading Book X if there is no download queue. → DOWNLOADING
+- Return Book X. → NONE
+- Allow the loan for Book X to expire. → LOAN EXPIRED
+
+#### (DOWNLOAD COMPLETED) Once the download for Book X has completed successfully, I can:
+
+- Open Book X. → BOOK OPENED
+- Return Book X. → NONE
+- Allow the loan for Book X to expire. → LOAN EXPIRED
+
+#### (OPENED) Once I have opened Book X, I can:
+
+- Return Book X. → NONE
+- Allow the loan for Book X to expire. → LOAN EXPIRED
