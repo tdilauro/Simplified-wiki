@@ -1,3 +1,9 @@
+- [Mockup](#mockup)
+- [About Book States](#about-book-states)
+- [About Button States](#about-button-states)
+
+# Mockup
+
 [Clickable version of this mockup](https://popapp.in/projects/53738be686797f32740ef81a/preview)
 
 ## Available everywhere (except the reader)
@@ -142,7 +148,7 @@
 - [ ] "Cancel" button
 - [ ] "Sign up" button **(TO BE CONFIRMED)**
 
-## About Book States
+# About Book States
 
 Below is a chart of possible book states/overlays/marks and where they are displayed (book list or detail page).
 
@@ -150,3 +156,10 @@ Below is a chart of possible book states/overlays/marks and where they are displ
 
 _Chart with possible book states. States with the same color are mutually exclusive._
 
+# About Button States
+
+Below is a chart of possible book states/overlays/marks and where they are displayed (book list or detail page).
+
+![Diagram with book-borrowing states.](https://photos-2.dropbox.com/t/0/AABgkYeCLXMFdYlTfzBa9zW9KAzeEngmxLulKFlX9mY07g/12/2092213/png/1024x768/3/1400259600/0/2/button%20states.png/ODRKotqr735NlLWKuXBqmOO4BXpkgF_nyZLnkjJ0S4U)
+
+_Diagram with book-borrowing states._
