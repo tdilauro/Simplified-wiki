@@ -24,3 +24,14 @@ We want to impose a 24 hour "Reserve" time by which we punt someone who's got a 
  * If so - they don't have to type in a pin
  * Creates use cases where I have a barcode and account, but not a pin
 * Hold language
+
+
+# New Workflow
+
+## Highest Level Specs for First Release Target
+* Mobile application for reading NYPL [proprietary DRM] + Open Access eBooks
+* Targeting iPhone + iPad
+ * Targeting iOS 6 + 7
+* 
+
+## FutureFeatures
