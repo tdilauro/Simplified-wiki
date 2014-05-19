@@ -98,6 +98,10 @@ is formally defined anywhere.
 * Supposedly includes subjective metadata, but it's pretty sparse
 * The availability API includes some inventory metadata.
 
+## Gutenberg Bookshelves
+
+Project Gutenberg has a number of manually-created wiki [bookshelves](http://www.gutenberg.org/wiki/Category:Bookshelf) which divide books up by category. See for instance the [Children's Bookshelf](http://www.gutenberg.org/wiki/Category:Children%27s_Bookshelf).
+
 ## BiblioCommons
 
 Bibliocommons's [Titles
