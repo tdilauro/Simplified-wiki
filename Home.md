@@ -23,6 +23,7 @@ Welcome to the iOS-Reader wiki!
 * [[Design Comps]]
 * [[Information Architecture]]
 * [[ServerSideDesign]]
+* [[Cloud and Syncing]]
 
 # Project Management
 * [[Sprints]]
