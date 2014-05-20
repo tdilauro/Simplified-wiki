@@ -1,4 +1,4 @@
-Welcome to the iOS-Reader wiki!
+Welcome to the Library Simplified wiki!
 
 * [Context](https://github.com/NYPL/iOS-Reader/wiki/Context)
 * [Goals, Objectives, Measures](https://github.com/NYPL/iOS-Reader/wiki/MetricsAndMeasurements)
