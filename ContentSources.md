@@ -30,7 +30,7 @@ These types of content are a little further out there, but theoretically possibl
 
 ## Paid books
 
-3M, Overdrive, and Axis 360 are the main vendors of DRM-encrypted paid ebooks. Each has a custom API that covers more or less the same ground. [Server-Side Design](https://github.com/NYPL/iOS-Reader/wiki/ServerSideDesign) has a back-to-back comparison of 3M, Overdrive, and Axis 360 when it comes to the integration features we care about. I won't go into the details here.
+3M, Overdrive, and Axis 360 are the main vendors of DRM-encrypted paid ebooks. Each has a custom API that covers more or less the same ground. [[Server-Side Design|ServerSideDesign]] has a back-to-back comparison of 3M, Overdrive, and Axis 360 when it comes to the integration features we care about. I won't go into the details here.
 
 ### Overdrive
 

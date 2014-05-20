@@ -29,7 +29,7 @@
   - Title
   - Author
   - Cover
-  - [Status of book](https://github.com/NYPL/iOS-Reader/wiki/Information-Architecture#client-book-states)
+  - [[Status of book|Information-Architecture#client-book-states]]
   - "Remove from saved" button (if applicable _or "Forget"_)
   - "Remove hold" button (if applicable)
   - Estimated time until checkout available (if applicable)
@@ -44,7 +44,7 @@
   - Title
   - Author
   - Cover
-  - [Status of book](https://github.com/NYPL/iOS-Reader/wiki/Information-Architecture#client-book-states)
+  - [[Status of book|Information-Architecture#client-book-states]]
   - "Ignore book" button (prompts confirmation)
   - "Save for later" button
   - "Checkout book" button (or "Borrow" if applicable, prompts download)
@@ -57,7 +57,7 @@
   - Title
   - Author
   - Cover
-  - [Status of book](https://github.com/NYPL/iOS-Reader/wiki/Information-Architecture#client-book-states)
+  - [[Status of book|Information-Architecture#client-book-states]]
   - "Remove from saved" button (if applicable)
   - "Remove hold" button (if applicable)
   - Estimated time until checkout available (if applicable)

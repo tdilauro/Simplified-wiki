@@ -1,24 +1,24 @@
 Welcome to the Library Simplified wiki!
 
-* [Context](https://github.com/NYPL/iOS-Reader/wiki/Context)
-* [Goals, Objectives, Measures](https://github.com/NYPL/iOS-Reader/wiki/MetricsAndMeasurements)
+* [[Context]]
+* [[Goals, Objectives, Measures|MetricsAndMeasurements]]
 
 ## Resources
 #### Content
-* [Content Sources](https://github.com/NYPL/iOS-Reader/wiki/ContentSources)
-* [Overview of our active collections](https://github.com/NYPL/iOS-Reader/wiki/OurCollections)
+* [[Content Sources]]
+* [[Overview of our active collections|OurCollections]]
 
 #### Metadata, etc
-* [Bibliographic Metadata](https://github.com/NYPL/iOS-Reader/wiki/BibliographicMetadata)
-* [Classification and Recommendation](https://github.com/NYPL/iOS-Reader/wiki/ClassificationAndRecommendation)
+* [[Bibliographic Metadata]]
+* [[Classification and Recommendation]]
 
 #### Transactional interfaces
-* [User Accounts and Authentication](https://github.com/NYPL/iOS-Reader/wiki/Authentication)
-* [Other Resources](https://github.com/NYPL/iOS-Reader/wiki/Resources)
-* [What we want out of third parties](https://github.com/NYPL/iOS-Reader/wiki/ThirdPartyTODO)
+* [[User Accounts and Authentication|Authentication]]
+* [[Other Resources|Resources]]
+* [[What we want out of third parties|ThirdPartyTODO]]
 
 ## Design
-* [User Profiles, Uses Cases and Requirements](https://github.com/NYPL/iOS-Reader/wiki/User-Profiles,-cases-and-requirements)
+* [[User Profiles, Uses Cases and Requirements|User-Profiles,-cases-and-requirements]]
 * [[Workflow]]
 * [[Design Comps]]
 * [[Information Architecture]]
