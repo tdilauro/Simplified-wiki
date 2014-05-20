@@ -5,12 +5,12 @@ Welcome to the Library Simplified wiki!
 
 ## Resources
 #### Content
-* [[Content Sources]]
+* [[Content Sources|ContentSources]]
 * [[Overview of our active collections|OurCollections]]
 
 #### Metadata, etc
-* [[Bibliographic Metadata]]
-* [[Classification and Recommendation]]
+* [[Bibliographic Metadata|BibliographicMetadata]]
+* [[Classification and Recommendation|ClassificationandRecommendation]]
 
 #### Transactional interfaces
 * [[User Accounts and Authentication|Authentication]]
