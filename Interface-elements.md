@@ -152,7 +152,7 @@
 
 Below is a chart of possible book states/overlays/marks and where they are displayed (book list or detail page).
 
-![Chart with possible book states. States with the same color are mutually exclusive.](https://photos-5.dropbox.com/t/0/AAAzpRWWtf2SVhvmfS-WaGGkW89WBH_nUvFxP_iVkp2xYQ/12/2092213/png/1024x768/3/1400263200/0/2/book%20states%204.png/lWyucOgVmcLsmfa4ITsR7XrXeYWQwNDe1a6oh3yw2dE)
+![Chart with possible book states. States with the same color are mutually exclusive.](https://www.dropbox.com/s/cl32gnb7jomz31l/book%20states%204.png?dl=1)
 
 _Chart with possible book states. States with the same color are mutually exclusive._
 
@@ -160,6 +160,6 @@ _Chart with possible book states. States with the same color are mutually exclus
 
 Below is a chart of possible book states/overlays/marks and where they are displayed (book list or detail page).
 
-![Diagram with book-borrowing states.](https://photos-2.dropbox.com/t/0/AABgkYeCLXMFdYlTfzBa9zW9KAzeEngmxLulKFlX9mY07g/12/2092213/png/1024x768/3/1400259600/0/2/button%20states.png/ODRKotqr735NlLWKuXBqmOO4BXpkgF_nyZLnkjJ0S4U)
+![Diagram with book-borrowing states.](https://www.dropbox.com/s/87wdb8vra56iwpg/button%20states.png?dl=1)
 
 _Diagram with book-borrowing states._
