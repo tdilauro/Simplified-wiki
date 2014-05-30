@@ -110,7 +110,7 @@ So the overlap is real, but it's not huge. I haven't determined how often these 
 ### Usage
 * Frequency of visits per week ?
 * Time period (Day or Night, randomly)
-* Measures hoe people use the app.  Does it solve a problem? 
+* Measures how people use the app.  Does it solve a problem? 
 * Sessions per week 
 
 ### Lifetime Value (platform effectiveness)
@@ -118,24 +118,29 @@ So the overlap is real, but it's not huge. I haven't determined how often these 
 * iOS vs Android vs MAC vs PC (can be measures by Google analytics of site using browser/platform)
 * This measures the effectiveness of the APPs channel performance (e.g. mobile)
 
-Retention Rate (Stickiness)
-The one-, seven- and 30-day retention rates.
-Do the same people continue to use the app over time.? 
-This may be difficult given the loan period.
+### Retention Rate (Stickiness)
+* The one-, seven- and 30-day retention rates.
+* Do the same people continue to use the app over time.? 
+* This may be difficult given the loan period.
 
-Active Users
-Number of users who use APP with regularity. 
-Monthly active users (MAU) 
-Daily active users (DAU) 
+### Active Users
+* Number of users who use APP with regularity. 
+* Monthly active users (MAU) 
+* Daily active users (DAU) 
 
-Session Length
-Quantifies the depth of a person's relationship with an App.  
-Browse list
-Item Page
+### Session Length
+* Quantifies the depth of a person's relationship with an App.  
+* Browse list dwell time
+* Work/Title Item Page
 
-App Launch / Load Time
-Page load time
+### Other
+* App Launch / Load Time
+* Page load times for lists or Work/Title Pages
+* Book Load Times
+* Crash report volumes
+* Error/Defect report volumes (non fatal app errors) 
 
-User Acquisition
-This is really a measure of marketing channel effectiveness.  Because we are testing a given population for the pilot we are won’t be able to measure this unless we extend the campaign to other schools.  (e.g. test outside the population.)
+
+### User Acquisition
+This is really a measure of marketing channel effectiveness.  Because we are testing a given population for the pilot we are won’t be able to measure this unless we extend the campaign to broader target markets.  (e.g. test outside the NYPL population.)
 
