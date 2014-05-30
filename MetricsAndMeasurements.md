@@ -104,3 +104,38 @@ On Overdrive we own between 130 and 900 licenses for between 120 and 380 public 
 On 3M we own between 100 and 450 licenses for between 90 and 350 public domain books. This is out of a library size of about 14500 titles.
 
 So the overlap is real, but it's not huge. I haven't determined how often these books get loaned out.
+
+## Application Performance Metrics
+
+### Usage
+* Frequency of visits per week ?
+* Time period (Day or Night, randomly)
+* Measures hoe people use the app.  Does it solve a problem? 
+* Sessions per week 
+
+### Lifetime Value (platform effectiveness)
+* Usage via Mobile vs Web (Surveys suggest Mobile/Tablet is dominant platform preference.  
+* iOS vs Android vs MAC vs PC (can be measures by Google analytics of site using browser/platform)
+* This measures the effectiveness of the APPs channel performance (e.g. mobile)
+
+Retention Rate (Stickiness)
+The one-, seven- and 30-day retention rates.
+Do the same people continue to use the app over time.? 
+This may be difficult given the loan period.
+
+Active Users
+Number of users who use APP with regularity. 
+Monthly active users (MAU) 
+Daily active users (DAU) 
+
+Session Length
+Quantifies the depth of a person's relationship with an App.  
+Browse list
+Item Page
+
+App Launch / Load Time
+Page load time
+
+User Acquisition
+This is really a measure of marketing channel effectiveness.  Because we are testing a given population for the pilot we are won’t be able to measure this unless we extend the campaign to other schools.  (e.g. test outside the population.)
+
