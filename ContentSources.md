@@ -214,6 +214,8 @@ A not comprehensive list of ebook resources with free offerings:
 
 #### Français
 
+- http://www.feedbooks.com/books/recent?lang=fr (+ German, Spanish, Italian, with covers)
+
 #### Deutsch
 
 - http://gutenberg.spiegel.de/
