@@ -155,6 +155,82 @@ A lot of schemes have been devised to classify books.
 * United States
 * World
 
+#### HUMOR & ENTERTAINMENT
+* Dance
+* Drama
+* Film & TV
+* Humor
+* Music
+* Performing Arts
+
+#### LITERARY FICTION
+* Literary Collections
+
+#### PARENTING & FAMILY
+* Education
+* Family & Relationships
+* Parenting
+
+#### POLITICS & CURRENT EVENTS
+* Political Science
+
+#### REFERENCE
+* Dictionaries
+* Encyclopedias
+* Foreign Language Study
+* Law
+* Study Aids
+
+#### RELIGION & SPIRITUALITY
+* Body, Mind, & Spirit
+* Buddhism
+* Christianity
+* Hinduism
+* Islam
+* Judaism
+* New Age
+* Religious Fiction
+
+#### ROMANCE & EROTICA
+* Contemporary Romance
+* Erotica
+* Historical Romance
+* Paranormal Romance
+* Regency Romance
+* Romance
+* Suspense Romance
+
+##### SCIENCE FICTION & FANTASY
+* Epic Fantasy
+* Fantasy
+* Horror
+* Military
+* Movies/Gaming
+* Science Fiction
+* Space Opera
+* Urban Fantasy
+
+#### SCIENCE, TECHNOLOGY, & NATURE
+* Computers
+* Mathematics
+* Medical
+* Nature
+* Psychology
+* Science
+* Social Science
+* Technology & Engineering
+
+#### SELF-HELP
+
+#### TRAVEL, ADVENTURE, & SPORTS
+* Sports
+* Transportation
+* Travel
+
+#### URBAN
+
+#### YOUNG ADULT
+
 ## Recommendation sources
 
 We only acquire a paid ebook if a librarian thinks it's worth stocking. This sets a minimum level of quality on our paid selection. This means automated techniques for detecting _quality_ aren't as useful. (They may still be useful on our public domain material.)
