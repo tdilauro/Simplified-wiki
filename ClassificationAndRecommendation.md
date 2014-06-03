@@ -77,9 +77,9 @@ A lot of schemes have been devised to classify books.
 
 * Similarly, any list of books, no matter what other theme it might have, divides the universe of books into two sets: the books on the list and the books not on the list.
 
-* another means to classify books as the collection grows woudld be the following:
+### Another means to classify books as the collection grows woudld be the following:
 
-** ART, ARCHITECTURE, & DESIGN
+* ART, ARCHITECTURE, & DESIGN
 * Architecture
 * Art
 * Criticism & Theory
@@ -88,63 +88,72 @@ A lot of schemes have been devised to classify books.
 * History
 * Photography
 
-BIOGRAPHY & MEMOIR
+* BIOGRAPHY & MEMOIR
 
-BUSINESS & ECONOMICS
-Economics
-Management & Leadership
-Personal Finance & Investing
-Real Estate
-CHILDREN
-CLASSICS & POETRY
-Classics
-Poetry
-CRAFTS, COOKING, & GARDEN
-Antiques & Collectibles
-Bartending & Cocktails
-Cooking
-Crafts, Hobbies, & Games
-Gardening
-Health & Diet
-House & Home
-Pets
-Vegetarian & Vegan
-CRIME, THRILLERS, & MYSTERY
-Action & Adventure
-Espionage
-Hard Boiled
-Legal Thrillers
-Military Thrillers
-Mystery
-Police Procedurals
-Supernatural Thrillers
-Thrillers
-True Crime
-Women Detectives
-CRITICISM & PHILOSOPHY
-Language Arts & Disciplines
-Literary Criticism
-Philosophy
-FICTION GENERAL
-GRAPHIC NOVELS & COMICS
-Literary
-Manga
-Superhero
-HISTORICAL FICTION
-HISTORY
-Africa
-Ancient
-Asia
-Civil War
-Europe
-Latin America
-Medieval
-Middle East
-Military
-Modern
-Renaissance
-United States
-World
+* BUSINESS & ECONOMICS
+* Economics
+* Management & Leadership
+* Personal Finance & Investing
+* Real Estate
+
+* CHILDREN
+
+* CLASSICS & POETRY
+* Classics
+* Poetry
+
+* CRAFTS, COOKING, & GARDEN
+* Antiques & Collectibles
+* Bartending & Cocktails
+* Cooking
+* Crafts, Hobbies, & Games
+* Gardening
+* Health & Diet
+* House & Home
+* Pets
+* Vegetarian & Vegan
+
+* CRIME, THRILLERS, & MYSTERY
+* Action & Adventure
+* Espionage
+* Hard Boiled
+* Legal Thrillers
+* Military Thrillers
+* Mystery
+* Police Procedurals
+* Supernatural Thrillers
+* Thrillers
+* True Crime
+* Women Detectives
+
+* CRITICISM & PHILOSOPHY
+* Language Arts & Disciplines
+* Literary Criticism
+* Philosophy
+
+* FICTION GENERAL
+
+* GRAPHIC NOVELS & COMICS
+* Literary
+* Manga
+* Superhero
+
+* HISTORICAL FICTION
+
+* HISTORY
+* Africa
+* Ancient
+* Asia
+* Civil War
+* Europe
+* Latin America
+* Medieval
+* Middle East
+* Military
+* Modern
+* Renaissance
+* United States
+* World
 
 ## Recommendation sources
 
