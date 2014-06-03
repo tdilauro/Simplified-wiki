@@ -79,7 +79,7 @@ A lot of schemes have been devised to classify books.
 
 ### Another means to classify books as the collection grows woudld be the following:
 
-* ART, ARCHITECTURE, & DESIGN
+#### ART, ARCHITECTURE, & DESIGN
 * Architecture
 * Art
 * Criticism & Theory
@@ -88,9 +88,9 @@ A lot of schemes have been devised to classify books.
 * History
 * Photography
 
-* BIOGRAPHY & MEMOIR
+#### BIOGRAPHY & MEMOIR
 
-* BUSINESS & ECONOMICS
+#### BUSINESS & ECONOMICS
 * Economics
 * Management & Leadership
 * Personal Finance & Investing
@@ -98,11 +98,11 @@ A lot of schemes have been devised to classify books.
 
 * CHILDREN
 
-* CLASSICS & POETRY
+#### CLASSICS & POETRY
 * Classics
 * Poetry
 
-* CRAFTS, COOKING, & GARDEN
+#### CRAFTS, COOKING, & GARDEN
 * Antiques & Collectibles
 * Bartending & Cocktails
 * Cooking
@@ -113,7 +113,7 @@ A lot of schemes have been devised to classify books.
 * Pets
 * Vegetarian & Vegan
 
-* CRIME, THRILLERS, & MYSTERY
+#### CRIME, THRILLERS, & MYSTERY
 * Action & Adventure
 * Espionage
 * Hard Boiled
@@ -126,21 +126,21 @@ A lot of schemes have been devised to classify books.
 * True Crime
 * Women Detectives
 
-* CRITICISM & PHILOSOPHY
+#### CRITICISM & PHILOSOPHY
 * Language Arts & Disciplines
 * Literary Criticism
 * Philosophy
 
-* FICTION GENERAL
+#### FICTION GENERAL
 
-* GRAPHIC NOVELS & COMICS
+#### GRAPHIC NOVELS & COMICS
 * Literary
 * Manga
 * Superhero
 
-* HISTORICAL FICTION
+#### HISTORICAL FICTION
 
-* HISTORY
+#### HISTORY
 * Africa
 * Ancient
 * Asia
