@@ -77,7 +77,7 @@ A lot of schemes have been devised to classify books.
 
 * Similarly, any list of books, no matter what other theme it might have, divides the universe of books into two sets: the books on the list and the books not on the list.
 
-### Another means to classify books as the collection grows woudld be the following:
+* Another means to classify books as the collection grows would be the following:
 
 #### ART, ARCHITECTURE, & DESIGN
 * Architecture
