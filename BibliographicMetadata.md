@@ -199,6 +199,7 @@ Provides a variety of metadata. It's a paid service, but we're already paying fo
 * [Syndetic Solutions](http://www.bowker.com/en-US/products/syndetics/)
 * [ChileFresh.com](www.chilefresh.com)
 * [Content Cafe](http://www.ebscohost.com/ebooks/public)
+* [Recovering the Classics](http://thecreativeactionnetwork.com/shop/&campaign=Recovering-the-Classics&s=0&tag=all)
 
 # Vocabularies
 
