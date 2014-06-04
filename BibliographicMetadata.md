@@ -158,6 +158,8 @@ TOS forbids usage except to promote Amazon's products. I believe we
 have more favorable usage terms if we scrape the website as a spider
 rather than going through the API.
 
+The [SNAP](https://snap.stanford.edu/data/web-Amazon.html) dataset has Amazon user reviews up to March 2013. We might be able to use it--I don't know what the terms are.
+
 ## NYT 
 
 * [Best Sellers API](http://developer.nytimes.com/docs/best_sellers_api/) - Basic historical popularity information. Includes links to NYT reviews where appropriate.
@@ -180,6 +182,14 @@ Probably the most useful [set of bibliographic APIs](https://www.librarything.co
 
 * Very good objective metadata
 * Very good subjective metadata, but reviews are behind a TOS-wall.
+
+## Content Cafe 
+
+Provides a variety of metadata. It's a paid service, but we're already paying for it.
+
+* [Overview](http://contentcafe2.btol.com/ContentCafeClient/ContentCafe.aspx?UserID=[id]&Password=[pw]&ItemKey=9781594744495&Options=Y)
+* [List of reviews](http://contentcafe2.btol.com/ContentCafeClient/ReviewsDetail.aspx?UserID=[id]&Password=[pw]&ItemKey=9781594744495&Options=Y)
+* [Cover art](http://contentcafe2.btol.com/ContentCafe/Jacket.aspx?userID=[id]&password=[pw]&content=M&Return=1&Type=M&Value=9780698146815)
 
 # Cover Art Sources
 
