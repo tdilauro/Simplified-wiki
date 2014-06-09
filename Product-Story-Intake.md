@@ -110,4 +110,37 @@ _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books availabl
 
 ***
 
+### [Bookmark my pages/So I can return to where I left off reading] 
+
+### [Annotate pages/So I can take notes]	
+
+### [Copy snippets of text/So I can keep favorite lines]	
+
+### [Share my reads friends via twitter/So I can let my friends know what I'm reading]
+#####Confirmation Criteria
+* The user account can invoke Twitter App
+* The user account can use Twitter API
+* The app allows the user to enter or preserve their twitter credentials
+
+### [Share my reads friends via Facebook/So I can let my friends know what I'm reading
+#####Confirmation Criteria
+* The user account can invoke FB App
+* The user account can use FB wall API
+* The app allows the user to enter or preserve their FB credentials
+
+### Preview a book/So I can see if I really want to read the whole book
+#####Confirmation Criteria
+* The preview is offered along side download
+* The preview is used as opposed to a linked lend if the preview is read"
+
+### Get Notification is book is available or wait period changed/So that I can find something else or plan my next read
+#####Confirmation Criteria
+* The app sends a notifications when the books wait time changes by more than 3 days.
+* The app collects the users email/SMS credentials
+
+### Know how long I need to wait, not where I am in line/ So that I can find something else or plan my next read
+#####Confirmation Criteria
+* The app displays the estimated wait time for wish lists
+* The app displays the estimated time for titles recommended
+* The app displays the estimated time for titles in search results
 ### 
