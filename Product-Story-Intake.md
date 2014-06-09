@@ -32,6 +32,11 @@ _SUMARY DESCRIPTION_: This is a basic search function of the eBook Collection.  
 * I can search for titles by multiple facets (title, subject, author, genre) and get like title results that are available for download in my needed format
 ***
 
+### [Get recommendations from Library/So I don't have to search for items]
+_SUMARY DESCRIPTION_:	This is the core discovery mechanism for the eBook Collection.  However, it may eventually link to a broader set or combined set of recommendation signals to items in the catalogue regardless of format.
+* See available titles recommended by Staff (Physical or Digital)
+*  See available ebook (Digital) titles that are recommended, down loadable, and of the right digital format for my device
+
 ### [Connect to my 3rd party Reading list/So I can record my reads]
 _SUMARY DESCRIPTION_:Users who are part of online book clubs or actively manage their reading can link the app to those existing venues for recording their reading history or story in their books
 #####Confirmation Criteria
