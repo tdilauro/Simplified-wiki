@@ -68,6 +68,8 @@ field names mean, you must consult some nearby piece of documentation.
 
 * [A free API](http://classify.oclc.org/classify2/) that can turn title/author or isbn into internal "work ids" or OCLC IDs. If we get internal "work ids", we can always turn them into a list of OCLC  IDs.  TODO: nail down terms of use. noncommercial?
 
+* Author information is linked to VIAF [(e.g.)](http://viaf.org/viaf/71391324/), which makes it possible to localize author names.
+
 ## OCLC xID
 
 Maps between OCLC number, ISBN, OCLC work ID (owi), and LCCN.
@@ -75,6 +77,8 @@ Maps between OCLC number, ISBN, OCLC work ID (owi), and LCCN.
 * [Documentation for lookup by OCLC number](http://xisbn.worldcat.org/xisbnadmin/xoclcnum/api.htm)
 * [Documentation for lookup by OCLC work id](http://xisbn.worldcat.org/webservices/xid/owi/)
 * [Example](http://xisbn.worldcat.org/webservices/xid/oclcnum/797427636?method=getEditions&format=xml&fl=lccn,isbn,owi,url)
+* [Terms of service](http://xisbn.worldcat.org/xisbnadmin/index.htm) Non-commercial use that does not exceed 1k accesses per day. More access is allowed via subscription. This requires a [WorldCat affiliate account](http://www.worldcat.org/wcpa/do/AffiliateUserServices?method=initSelfRegister&atype=xisbn).
+
 
 ## Worldcat Open Data
 
@@ -82,8 +86,6 @@ Significant amounts of bibliographic data available in RDF format, available onc
 
 * [Example RDF](http://experiment.worldcat.org/oclc/795121502.rdf)
 * Author information is linked to VIAF [(e.g.)](http://viaf.org/viaf/71391324/), which makes it possible to localize author names.
-
-* [Terms of service](http://xisbn.worldcat.org/xisbnadmin/index.htm) Non-commercial use that does not exceed 1k accesses per day. More access is allowed via subscription. This requires a [WorldCat affiliate account](http://www.worldcat.org/wcpa/do/AffiliateUserServices?method=initSelfRegister&atype=xisbn).
 
 ## 3M XML
 
