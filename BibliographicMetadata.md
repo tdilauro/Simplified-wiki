@@ -199,6 +199,7 @@ Probably the most useful [set of bibliographic APIs](https://www.librarything.co
 
 Provides a variety of metadata. It's a paid service, but we're already paying for it.
 
+* [Documentation](http://contentcafe2.btol.com/ContentCafe/ContentCafe.asmx)
 * [Overview](http://contentcafe2.btol.com/ContentCafeClient/ContentCafe.aspx?UserID=[id]&Password=[pw]&ItemKey=9781594744495&Options=Y)
 * [List of reviews](http://contentcafe2.btol.com/ContentCafeClient/ReviewsDetail.aspx?UserID=[id]&Password=[pw]&ItemKey=9781594744495&Options=Y)
 * [Cover art](http://contentcafe2.btol.com/ContentCafe/Jacket.aspx?userID=[id]&password=[pw]&content=M&Return=1&Type=M&Value=9780698146815)
