@@ -55,12 +55,27 @@ _SUMARY DESCRIPTION_:This an ability of the app to be rapidly acquired or distri
 * The App download location can be shared by a user (email, Social Network)
 ***
 
-### [Create and account using my email credentials/Don't have enter information again]
-_SUMMARY DESCRIPTION_:
-The App can use Oauth2.0 or OpenID for GMAIL
-2. The App can use SOAP for MSN"
-
+### [Use the App on Smart Phone]
+#####Confirmation Criteria
+* The App can be installed on an iPhone
+* The App can be installed on an Android
+* The App can be installed on Windows Phone"
 ***
+
+### [Create and account using my email credentials/Don't have enter information again]
+_SUMMARY DESCRIPTION_:This allows users to sign up for the app using their etablish credentials for email or social network like Facebook, Google or Yahoo.  This also allows app to capture data needed for library card registration.
+#####Confirmation Criteria
+* The App can use Oauth2.0 or OpenID for GMAIL
+* The App can use SOAP for MSN (?)
+***
+
+### [Create an account using my device credentials/Don't have enter information again]
+_SUMMARY DESCRIPTION_: This allows the user to establish their credentials using the already established credentials on the platform the are using.
+#####Confirmation Criteria
+* The App can us my iCoud ID (iOS)
+* The App can use my SIM ID and or Android Device ID (if applicatble)
+***
+
 ### Homescreen has scrollable Lanes of available material [James]
 _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books available to borrow (or download) now, scrollable from side-to-side sorted by categories.
 
