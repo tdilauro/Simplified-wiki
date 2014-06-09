@@ -5,7 +5,7 @@
 
 # Google Drive Links
 - [Main design folder](https://drive.google.com/a/nypl.org/folderview?id=0B4nRQ9rWvUGEdUZkdFhpem1RQTQ&usp=sharing)
-- Exported assets and design specs](https://drive.google.com/a/nypl.org/folderview?id=0B4nRQ9rWvUGEM2pwZmxHMFd4R1k&usp=sharing)
+- [Exported assets and design specs](https://drive.google.com/a/nypl.org/folderview?id=0B4nRQ9rWvUGEM2pwZmxHMFd4R1k&usp=sharing)
 
 # Mockup
 
