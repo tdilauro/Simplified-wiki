@@ -8,7 +8,7 @@ _SUMMARY DESCRIPTION:_ An existing NYPL user with a valid, active library card c
 ***
 
 ### [Get a Library Card/Register I can Borrow eBooks]	
-_SUMARY DESCRIPTION_: Settings View of app allows a user app for a library card by providing the user the ability to provide (Name, DOB, Address, User Name, Pword, PIN, email, Phone Number)
+_SUMARY DESCRIPTION_: Settings View of app allows a user app for a library card by providing the user the ability to provide (Name, DOB, Address, User Name, Password, PIN, email, Phone Number)
 #####Confirmation Criteria
 * The user can log into other digital properties with their newly established credentials
 * Information from the form is stored in the appropriate Identity Management database (SSO)
@@ -62,11 +62,19 @@ _SUMARY DESCRIPTION_:This an ability of the app to be rapidly acquired or distri
 #####Confirmation Criteria
 * The App can be installed on an iPhone
 * The App can be installed on an Android
-* The App can be installed on Windows Phone"
+* The App can be installed on Windows Phone
 ***
 
+### [Use the App on my Tablet]
+* The App appropriately uses the screen real-estate
+* The App adjust the views as necessary to not require pixilation
+* The Can render content without formatting issues
+* The App can be installed on iOS
+* The App can be Installed on Android (TBD)
+* The App can be Installed on Windows Tablet (TBD)
+
 ### [Create and account using my email credentials/Don't have enter information again]
-_SUMMARY DESCRIPTION_:This allows users to sign up for the app using their etablish credentials for email or social network like Facebook, Google or Yahoo.  This also allows app to capture data needed for library card registration.
+_SUMMARY DESCRIPTION_:This allows users to sign up for the app using their establish credentials for email or social network like Facebook, Google or Yahoo.  This also allows app to capture data needed for library card registration.
 #####Confirmation Criteria
 * The App can use Oauth2.0 or OpenID for GMAIL
 * The App can use SOAP for MSN (?)
@@ -76,7 +84,7 @@ _SUMMARY DESCRIPTION_:This allows users to sign up for the app using their etabl
 _SUMMARY DESCRIPTION_: This allows the user to establish their credentials using the already established credentials on the platform the are using.
 #####Confirmation Criteria
 * The App can us my iCoud ID (iOS)
-* The App can use my SIM ID and or Android Device ID (if applicatble)
+* The App can use my SIM ID and or Android Device ID (if applicable)
 ***
 
 ### Homescreen has scrollable Lanes of available material [James]
