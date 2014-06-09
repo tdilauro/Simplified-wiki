@@ -19,6 +19,19 @@ _SUMARY DESCRIPTION_: Settings View of app allows a user app for a library card 
 * The user's account is created in our eBook Distributor (Overdrive, 3M, Axis 360)
 ***
 
+### [Connect my library account to my App/Don't have enter information again]	
+_SUMARY DESCRIPTION_: This functionality can range from scanning the library barcode to simply providing the necessary credentials and confirming them with the requisite ILS or Identity Management System
+#####Confirmation Criteria
+* The App can use III ILS Patron API
+* The App can use Polaris ILS API
+* The app can use SSO (CAS, OAUTH, Shiboleth, other if required - TBD)
+
+### [Search available titles/So I can borrow the title for free]
+_SUMARY DESCRIPTION_: This is a basic search function of the eBook Collection.  However, it may eventually link to a broader search of the catalogue regardless of format.
+* Can enter a titles and get like title results that are available for download in my needed format
+* I can search for titles by multiple facets (title, subject, author, genre) and get like title results that are available for download in my needed format
+***
+
 ### [Connect to my 3rd party Reading list/So I can record my reads]
 _SUMARY DESCRIPTION_:Users who are part of online book clubs or actively manage their reading can link the app to those existing venues for recording their reading history or story in their books
 #####Confirmation Criteria
