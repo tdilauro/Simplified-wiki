@@ -2,6 +2,7 @@ Welcome to the Library Simplified wiki!
 
 * [[Context]]
 * [[Goals, Objectives, Measures|MetricsAndMeasurements]]
+* [[Glossary]]
 
 ## Resources
 #### Content
