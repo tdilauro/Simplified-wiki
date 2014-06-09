@@ -1,11 +1,13 @@
 ***
 
-###[User can sign into app using existing NYPL Credentials]
+### [User can sign into app using existing NYPL Credentials]
+
 * (https://app.asana.com/0/12956401148094/12956401148102)[James]
+
 _SUMMARY DESCRIPTION:_ An existing NYPL user with a valid, active library card can use their existing credentials [BARCODE + PIN] to authenticate to the app, and perform any functions which require an account. 
 ***
 
-###[Get a Library Card/Register I can Borrow eBooks]	
+### [Get a Library Card/Register I can Borrow eBooks]	
 _SUMARY DESCRIPTION_: Settings View of app allows a user app for a library card by providing the user the ability to provide (Name, DOB, Address, User Name, Pword, PIN, email, Phone Number)
 #####Confirmation Criteria
 * The user can log into other digital properties with their newly established credentials
@@ -17,7 +19,7 @@ _SUMARY DESCRIPTION_: Settings View of app allows a user app for a library card 
 * The user's account is created in our eBook Distributor (Overdrive, 3M, Axis 360)
 ***
 
-###[Connect to my 3rd party Reading list/So I can record my reads]
+### [Connect to my 3rd party Reading list/So I can record my reads]
 _SUMARY DESCRIPTION_:Users who are part of online book clubs or actively manage their reading can link the app to those existing venues for recording their reading history or story in their books
 #####Confirmation Criteria
 * The App can transact on my Google Books Reading List
@@ -25,13 +27,13 @@ _SUMARY DESCRIPTION_:Users who are part of online book clubs or actively manage 
 * 3rd Party Book List Integration
 ***
 
-###[Create Wish List/So I can get notifications when the book is available]
+### [Create Wish List/So I can get notifications when the book is available]
 _SUMARY DESCRIPTION_:This allows users to create lists of book they may want to borrow from the library
 #####Confirmation Criteria
 * The App can use my Google Books Reading List to identify wished for books and whether they become a part of the NYPL collection
 * The App can use my Good Reads books shelf API to wished for books and whether they become a part of the NYPL collection
 
-###[Be recommended only titles that are available/So I don't have to browse through titles not available to read now]
+### [Be recommended only titles that are available/So I don't have to browse through titles not available to read now]
 _SUMARY DESCRIPTION_:This feature or setting allows discovery of books that can be accessed immediately by the reader with out having to wait in hold queues.
 #####Confirmation Criteria
 * I get only Titles in our Catalogue/Collection (Not sold by our platform vendor but unlicensed by NYPL)
