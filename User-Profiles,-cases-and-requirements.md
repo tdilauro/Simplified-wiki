@@ -32,6 +32,7 @@ Readium provides a _Smoke Test Plan_ and supporting documents for testing eBook 
 * iPhone
 * iOS 6 and 7
 * Launch Readium EPUB Engine
+* Web Reader (This is in the grant but I would prefer to consider port to Android)
 
 ## eReader app requirements
 **Open and ePub, view and interact with its content**
