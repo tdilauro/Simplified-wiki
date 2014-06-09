@@ -147,48 +147,60 @@ _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books availabl
 
 ***
 
-##Library(institution) Users Stories
+## Library (institution) Users Stories
 
 ### [Provide Recommendation from Bookish/because we don't have our own recommendation list]
+#####Confirmation Criteria
 * the app subscribes get feeds from Bookish API
 
 ### [Connect to my ILS/So I don't have to manage multiple Patron records]
+#####Confirmation Criteria
 * The app can connect to the III ILS Patron API
 * The App can use Polaris API for users"
 
 ### [Connect to my OPAC/So it shows content available via my catalogue]
+#####Confirmation Criteria
 * The App can use the BibCommons or Encore API
 
 ### [Use Licensed Content/So I can provide content users want]
+#####Confirmation Criteria
 * The App can use content hosted by Overdrive, 3M, or BiblioCommons
 
-### [Use Open Access Content/So I can access free content]	
+### [Use Open Access Content/So I can access free content]
+#####Confirmation Criteria	
 * The App can use content from HaithiTrust
 * The App can use content from University Press
 * The App can use content from The Guttenburg Project
 
 ### Use Subscription Content Service Providers/Use Scribed, Oyster and new ebook services coming online
+#####Confirmation Criteria
 * The App can use content from Scribed
 * The App can use content from Osyter
 
 ### [Promote Recommended Catalogue Items/Increase Circulation]
+#####Confirmation Criteria
 * The app displays only those items that are available for the needed format
 * The app tracks those recommendations viewed but not borrowed or held
 * The app opens to the recommendation view
 
 ### [Connect to my DRM/So I can use content I licensed]
+#####Confirmation Criteria
 * The App can use the Adobe DLLs for Content protection
 
 ### [Not need Adobe DRM/So I don't have to host an Adobe CMS]
+#####Confirmation Criteria
 * The App can use Adobe's CMS service
 
 ### [Use Adobe DRM/So I can use my Adobe CMS investment, use my licensed content]
+#####Confirmation Criteria
 * The App can be directed to a unique instance of Adobe
 
 ### [Use Adobe DRM/So I can use my distributors Adobe CMS instance and use my licensed content]
+#####Confirmation Criteria
 * The App can be directed to a unique instance of Adobe
 
 ### [Use my SSO solution/So I can access my systems easily]
+#####Confirmation Criteria
 * The app provides a configurable SSO interface or DLL
 * The app saves my log on credentials on the client
 * The app supports secure communication SSL, crypto key exchange, static or dynamic tokens
@@ -198,10 +210,12 @@ _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books availabl
 * The app supports SAML (ether HTM/SSL or SOAP/Encrypted XML methods)
 
 ### [Prompt Readers to check books back in/So that we can re-loan the book]
+#####Confirmation Criteria
 * The app prompts if the book is not been opened in 3 days
 * The app prompts when user views the last page
 * The app prompts after the preview has been read
 
 ### [Preview a book/So we don't waist a lend license]
+#####Confirmation Criteria
 * The preview is offered along side download
 * The preview is used as opposed to a licensed lend if the preview is read
