@@ -216,7 +216,7 @@ Feedbooks offers thousands of public domain ebooks in five languages. Unlike in 
 
 The site integrates with Readmill, so you can send an ebook directly to your Readmill cloud library.
 
-⇢ Feedbooks
+[⇢ Feedbooks](http://www.feedbooks.com/)
 
 ### Manybooks
 
@@ -226,7 +226,7 @@ The books are available in a vast number of different file formats, so if you ar
 
 Currently there are almost 30,000 titles in Manybooks.
 
-⇢ Manybooks
+[⇢ Manybooks](http://manybooks.net/)
 
 ### World Public Library
 
@@ -238,7 +238,7 @@ All books available here are free, but not all are public domain, so reading Ter
 
 The site offers over 3 million digital items, grouped into easy-to-browse collections, including classic literature, children’s books, and academic research collections.
 
-⇢ World Public Library
+[⇢ World Public Library](http://worldlibrary.org/)
 
 ### Google Book Search
 
@@ -246,13 +246,13 @@ Google launched its own ebookstore some time ago, but the earlier book scan proj
 
 Perform any search and you’ll see a list of results. If you see Preview or Full View link under the book’s title, it means you can read its scan in the browser.
 
-⇢ Google Book Search
+[⇢ Google Book Search](http://books.google.com/)
 
 ### Books Should Be Free
 
 The site offers thousands of free public domain books, as audiobooks or text files. Titles in 30 languages can be found here.
 
-⇢ Books Should Be free
+[⇢ Books Should Be free](http://www.booksshouldbefree.com/)
 
 ### The Literature Network
 
@@ -262,13 +262,13 @@ Currently there are over 3,600 full books and over 4,400 short stories & poems f
 
 The key to explore the site is author index, from where you can browse linked books, quotes forum threads and quizzes.
 
-⇢ The Literature Network
+[⇢ The Literature Network](http://www.online-literature.com/)
 
 ### Bartleby
 
 The site offers free Harvard Classics - complete volumes of the most comprehensive and well-researched anthology of all time (read-online, no downloads offered).
 
-⇢ Bartleby
+[⇢ Bartleby](http://www.bartleby.com/)
 
 ### DailyLit
 
@@ -276,7 +276,7 @@ The platform’s offer should suit modern-day people who are always in a hurry. 
 
 Apart from DailyLit’s own serialized fiction, you can find here hundreds of classic novels. Pride and Prejudice and War of the Worlds were two first books offered on platform’s launch in 2006.
 
-⇢ DailyLit
+[⇢ DailyLit](https://www.dailylit.com/)
 
 ### Read Easily
 
@@ -284,7 +284,7 @@ The site is dedicated particularly for the partially sighted and visually impair
 
 Free classics can be read online, and you can change colors, fonts, as well as increase font size to make the text more legible.
 
-⇢ Read Easily
+[⇢ Read Easily](http://www.readeasily.com/)
 
 ### LibriVox
 
@@ -292,13 +292,13 @@ Founded in 2005, LibriVox is an extensive library of free public domain audioboo
 
 Volunteers record chapters of public domain books. Afterwards LibriVox releases the audio file for free in the public domain, and you may use it the way you like.
 
-⇢ LibriVox
+[⇢ LibriVox](https://librivox.org/)
 
 ### Legamus
 
 The site makes free audio books from texts that entered public domain in Europe.
 
-⇢ Legamus
+[⇢ Legamus](http://legamus.eu/)
 
 ### Open Culture
 
@@ -306,19 +306,19 @@ Open Culture is a popular blog that curates access to educational and cultural m
 
 Among several collections, you can find here a directory of over 500 free ebooks. Most of them are in public domain.
 
-⇢ Open Culture
+[⇢ Open Culture](http://www.openculture.com/)
 
 ### Classic Literature Library
 
 Public domain books organized into collections. The complete works of William Shakespeare, Jules Verne, Charles Dickens or Mark Twain, among others.
 
-⇢ Classic Literature Library
+[⇢ Classic Literature Library](http://classic-literature.co.uk/)
 
 ### The Online Books Page
 
 The site, managed by the University of Pennsylvania, offers a clean interface to browse for over 1 million free ebooks from around the web.
 
-⇢ The Online Books Page
+[⇢ The Online Books Page](http://digital.library.upenn.edu/books/)
 
 ### Great Books and Classics
 
@@ -326,25 +326,25 @@ A repository of works of classic writers and philosophers, from Sophocles to Epi
 
 The books in digital format can be read here online as html files.
 
-⇢ Great Books and Classics
+[⇢ Great Books and Classics](http://www.grtbooks.com/)
 
 ### Classic Reader
 
 All books on this website are in public domain. You can choose from 3810 titles by 358 authors.
 
-⇢ Classic Reader
+[⇢ Classic Reader](http://www.classicreader.com/)
 
 ### Planet Publish
 
 A decent collection of popular works of classic literature, in pdf format.
 
-⇢ Planet Publish
+[⇢ Planet Publish](http://www.planetpublish.com/)
 
 ### Classical Chinese Literature
 
 Chinese classics with each character hyperlinked to its definition and etymology.
 
-⇢ Classical Chinese Literature
+[⇢ Classical Chinese Literature](http://zhongwen.com/gudian.htm)
 
 ### Wolne Lektury
 
@@ -352,13 +352,13 @@ Extremely well-managed collection of free public domain books in Polish language
 
 Currently there are over 2,300 titles available, either for online reading or to download (epub, mobi, pdf formats).
 
-⇢ Wolne Lektury
+[⇢ Wolne Lektury](http://wolnelektury.pl/)
 
 ### Projekti Lönnrot
 
 Public domain books in Finnish and Swedish.
 
-⇢ Projekti Lönnrot
+[⇢ Projekti Lönnrot](http://www.lonnrot.net/)
 
 
 
