@@ -194,6 +194,175 @@ There are _subsets_ of IA's catalog that are extremely interesting: for instance
 Summary: curated views of IA's catalog can be integrated into our
 catalog, but not IMO the entire catalog. It's a junkyard.
 
+The dates books enter public domain vary between countries. Some rights depend on registrations with a country-by-country basis, but the most important factor is how many years have to pass after the death of the creator to allow the works into public domain.
+
+This list will updated yearly. If you want any other site to be included, please leave a suggestion in the comments below.
+
+
+### Europeana
+
+[Europeana](http://www.europeana.eu/portal/) offers access to millions of digitized items from European museums, libraries, and archives.
+
+More than 2,000 European institutions across Europe contribute to the site, including the British Library and national libraries from many countries.
+
+To find free public domain books, search for the author or title, and in the left-side panel narrow results by file type (“text”), and by copyright (“public domain marked”).
+
+
+### Feedbooks
+
+This French ebook site is designed with mobile reading in mind. It’s tailored for mobile browsers, so you can download free ebooks directly to your tablet or smartphone.
+
+Feedbooks offers thousands of public domain ebooks in five languages. Unlike in Internet Archive, most of the free books have covers to look good on your e-reader or e-reading application.
+
+The site integrates with Readmill, so you can send an ebook directly to your Readmill cloud library.
+
+⇢ Feedbooks
+
+### Manybooks
+
+This is a popular catalog of public domain ebooks, sourced from Project Gutenberg and Internet Archive.
+
+The books are available in a vast number of different file formats, so if you are looking for less popular ones, like Plucker or FictionBook2, Manybooks is a good destination to explore.
+
+Currently there are almost 30,000 titles in Manybooks.
+
+⇢ Manybooks
+
+### World Public Library
+
+World Public Library - front page
+
+The site is a part of a global effort to “preserve and disseminate classic works of literature, serials, bibliographies, dictionaries, encyclopaedias and other reference works.”
+
+All books available here are free, but not all are public domain, so reading Terms and Conditions section is recommended.
+
+The site offers over 3 million digital items, grouped into easy-to-browse collections, including classic literature, children’s books, and academic research collections.
+
+⇢ World Public Library
+
+### Google Book Search
+
+Google launched its own ebookstore some time ago, but the earlier book scan project, Google Book Search, is still there.
+
+Perform any search and you’ll see a list of results. If you see Preview or Full View link under the book’s title, it means you can read its scan in the browser.
+
+⇢ Google Book Search
+
+### Books Should Be Free
+
+The site offers thousands of free public domain books, as audiobooks or text files. Titles in 30 languages can be found here.
+
+⇢ Books Should Be free
+
+### The Literature Network
+
+The site calls itself a “searchable online literature for the student, educator, or enthusiast.”
+
+Currently there are over 3,600 full books and over 4,400 short stories & poems from over 250 authors.
+
+The key to explore the site is author index, from where you can browse linked books, quotes forum threads and quizzes.
+
+⇢ The Literature Network
+
+### Bartleby
+
+The site offers free Harvard Classics - complete volumes of the most comprehensive and well-researched anthology of all time (read-online, no downloads offered).
+
+⇢ Bartleby
+
+### DailyLit
+
+The platform’s offer should suit modern-day people who are always in a hurry. You can read an ebook in daily installments, delivered by mail or RSS feed.
+
+Apart from DailyLit’s own serialized fiction, you can find here hundreds of classic novels. Pride and Prejudice and War of the Worlds were two first books offered on platform’s launch in 2006.
+
+⇢ DailyLit
+
+### Read Easily
+
+The site is dedicated particularly for the partially sighted and visually impaired.
+
+Free classics can be read online, and you can change colors, fonts, as well as increase font size to make the text more legible.
+
+⇢ Read Easily
+
+### LibriVox
+
+Founded in 2005, LibriVox is an extensive library of free public domain audiobooks.
+
+Volunteers record chapters of public domain books. Afterwards LibriVox releases the audio file for free in the public domain, and you may use it the way you like.
+
+⇢ LibriVox
+
+### Legamus
+
+The site makes free audio books from texts that entered public domain in Europe.
+
+⇢ Legamus
+
+### Open Culture
+
+Open Culture is a popular blog that curates access to educational and cultural media.
+
+Among several collections, you can find here a directory of over 500 free ebooks. Most of them are in public domain.
+
+⇢ Open Culture
+
+### Classic Literature Library
+
+Public domain books organized into collections. The complete works of William Shakespeare, Jules Verne, Charles Dickens or Mark Twain, among others.
+
+⇢ Classic Literature Library
+
+### The Online Books Page
+
+The site, managed by the University of Pennsylvania, offers a clean interface to browse for over 1 million free ebooks from around the web.
+
+⇢ The Online Books Page
+
+### Great Books and Classics
+
+A repository of works of classic writers and philosophers, from Sophocles to Epicurus, to Sun-Tzu.
+
+The books in digital format can be read here online as html files.
+
+⇢ Great Books and Classics
+
+### Classic Reader
+
+All books on this website are in public domain. You can choose from 3810 titles by 358 authors.
+
+⇢ Classic Reader
+
+### Planet Publish
+
+A decent collection of popular works of classic literature, in pdf format.
+
+⇢ Planet Publish
+
+### Classical Chinese Literature
+
+Chinese classics with each character hyperlinked to its definition and etymology.
+
+⇢ Classical Chinese Literature
+
+### Wolne Lektury
+
+Extremely well-managed collection of free public domain books in Polish language.
+
+Currently there are over 2,300 titles available, either for online reading or to download (epub, mobi, pdf formats).
+
+⇢ Wolne Lektury
+
+### Projekti Lönnrot
+
+Public domain books in Finnish and Swedish.
+
+⇢ Projekti Lönnrot
+
+
+
+
 ### Non-English sources
 
 #### Español
