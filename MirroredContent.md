@@ -41,3 +41,5 @@ We maintain the mirror with rsync as per [these instructions](http://www.gutenbe
 The mirror is stored in mirror/gutenberg.org. This command will update the mirror:
 
 $ rsync --del -av --include="*.epub" --include="*cover*" --filter="-! */" ftp@ftp.ibiblio.org::gutenberg-epub gutenberg.org
+
+The initial mirror will probably hang several times because S3FS does not deal well with uploading thousands of files at once. Once we complete a mirror, updates should be no problem. 
