@@ -1,15 +1,18 @@
 ***
 
-### [User can sign into app using existing NYPL Credentials]
+### User can sign into app using existing NYPL Credentials
 
-* (https://app.asana.com/0/12956401148094/12956401148102)[James]
+* https://app.asana.com/0/12956401148094/12956401148102
 
 _SUMMARY DESCRIPTION:_ An existing NYPL user with a valid, active library card can use their existing credentials [BARCODE + PIN] to authenticate to the app, and perform any functions which require an account. 
 
 ***
 
-### [Get a Library Card/Register I can Borrow eBooks]	
-_SUMARY DESCRIPTION_: Settings View of app allows a user app for a library card by providing the user the ability to provide (Name, DOB, Address, User Name, Password, PIN, email, Phone Number)
+### Get a Library Card/Register I can Borrow eBooks
+
+* https://app.asana.com/0/12956401148094/12956401148106
+	
+_SUMMARY DESCRIPTION_: Settings View of app allows a user app for a library card by providing the user the ability to provide (Name, DOB, Address, User Name, Password, PIN, email, Phone Number)
 #####Confirmation Criteria
 * The user can log into other digital properties with their newly established credentials
 * Information from the form is stored in the appropriate Identity Management database (SSO)
@@ -21,27 +24,35 @@ _SUMARY DESCRIPTION_: Settings View of app allows a user app for a library card 
 
 ***
 
-### [Connect my library account to my App/Don't have enter information again]	
-_SUMARY DESCRIPTION_: This functionality can range from scanning the library barcode to simply providing the necessary credentials and confirming them with the requisite ILS or Identity Management System
+### Connect my library account to my App/Don't have enter information again
+* https://app.asana.com/0/12956401148094/13026724002726
+
+_SUMMARY DESCRIPTION_: This functionality can range from scanning the library barcode to simply providing the necessary credentials and confirming them with the requisite ILS or Identity Management System
 #####Confirmation Criteria
 * The App can use III ILS Patron API
 * The App can use Polaris ILS API
 * The app can use SSO (CAS, OAUTH, Shibboleth, other if required - TBD)
 
-### [Search available titles/So I can borrow the title for free]
-_SUMARY DESCRIPTION_: This is a basic search function of the eBook Collection.  However, it may eventually link to a broader search of the catalogue regardless of format.
+### Search available titles/So I can borrow the title for free
+
+* https://app.asana.com/0/12956401148094/13026724002738
+
+_SUMMARY DESCRIPTION_: This is a basic search function of the eBook Collection.  However, it may eventually link to a broader search of the catalogue regardless of format.
 * Can enter a titles and get like title results that are available for download in my needed format
 * I can search for titles by multiple facets (title, subject, author, genre) and get like title results that are available for download in my needed format
 
 ***
 
-### [Get recommendations from Library/So I don't have to search for items]
-_SUMARY DESCRIPTION_:	This is the core discovery mechanism for the eBook Collection.  However, it may eventually link to a broader set or combined set of recommendation signals to items in the catalogue regardless of format.
+### Get recommendations from Library/So I don't have to search for items
+* https://app.asana.com/0/12956401148094/13026724002738
+
+_SUMMARY DESCRIPTION_:	This is the core discovery mechanism for the eBook Collection.  However, it may eventually link to a broader set or combined set of recommendation signals to items in the catalogue regardless of format.
 * See available titles recommended by Staff (Physical or Digital)
 *  See available ebook (Digital) titles that are recommended, down loadable, and of the right digital format for my device
 
 ### [Connect to my 3rd party Reading list/So I can record my reads]
-_SUMARY DESCRIPTION_:Users who are part of online book clubs or actively manage their reading can link the app to those existing venues for recording their reading history or story in their books
+* https://app.asana.com/0/12956401148094/13026724002741
+_SUMMARY DESCRIPTION_:Users who are part of online book clubs or actively manage their reading can link the app to those existing venues for recording their reading history or story in their books
 #####Confirmation Criteria
 * The App can transact on my Google Books Reading List
 * The App can transact on my Good Reads books shelf API
@@ -49,21 +60,29 @@ _SUMARY DESCRIPTION_:Users who are part of online book clubs or actively manage 
 
 ***
 
-### [Create Wish List/So I can get notifications when the book is available]
-_SUMARY DESCRIPTION_:This allows users to create lists of book they may want to borrow from the library
+### Create Wish List/So I can get notifications when the book is available 
+
+* https://app.asana.com/0/12956401148094/13026724002752
+
+_SUMMARY DESCRIPTION_:This allows users to create lists of book they may want to borrow from the library
 #####Confirmation Criteria
 * The App can use my Google Books Reading List to identify wished for books and whether they become a part of the NYPL collection
 * The App can use my Good Reads books shelf API to wished for books and whether they become a part of the NYPL collection
 
 ### [Be recommended only titles that are available/So I don't have to browse through titles not available to read now]
-_SUMARY DESCRIPTION_:This feature or setting allows discovery of books that can be accessed immediately by the reader with out having to wait in hold queues.
+* https://app.asana.com/0/12956401148094/13026724002754
+
+_SUMMARY DESCRIPTION_:This feature or setting allows discovery of books that can be accessed immediately by the reader with out having to wait in hold queues.
 #####Confirmation Criteria
 * I get only Titles in our Catalogue/Collection (Not sold by our platform vendor but unlicensed by NYPL)
 * I get Titles in the format my device and app supports (If content is only in Kindle, and I am non iPhone don't bother)
 * I get only titles that have an available copy 
 
 ### [Borrow a physical copy if the eBook isn't available/So I don't have to wait to read the book]
-_SUMARY DESCRIPTION_:Based on the popularity of the searched for title, I may be willing to get an alternate digital version (Audio) or  physical copy.  I would like to see the alternate versions held in the broader collection
+
+* https://app.asana.com/0/12956401148094/13026724002756
+
+_SUMMARY DESCRIPTION_:Based on the popularity of the searched for title, I may be willing to get an alternate digital version (Audio) or  physical copy.  I would like to see the alternate versions held in the broader collection
 #####Confirmation Criteria
 * I can place a hold on the physical format if the digital format is not available
 * The hold reservation is in the ILS/or digital CMS
@@ -73,7 +92,10 @@ _SUMARY DESCRIPTION_:Based on the popularity of the searched for title, I may be
 ***
 
 ### [Find and Download the App/So I can try the app]
-_SUMARY DESCRIPTION_:This an ability of the app to be rapidly acquired or distributed by users
+
+* https://app.asana.com/0/12956401148094/13026724002758
+
+_SUMMARY DESCRIPTION_:This an ability of the app to be rapidly acquired or distributed by users
 #####Confirmation Criteria
 * The App is In the Apple App Store
 * The App is in Google Play (if applicable)
@@ -228,3 +250,13 @@ _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books availabl
 #####Confirmation Criteria
 * The preview is offered along side download
 * The preview is used as opposed to a licensed lend if the preview is read
+
+### Push Notification of major events to phone / So reader knows they have the option to take action
+Summary: For big things, namely hold notifications, a notification can be sent to the users device prompting them to take an action.
+
+##### Confirmation Criteria:
+* Push notification is sent to a users device any time they have placed an item on hold
+* Push notification enables user to go straight to the part of the app where they can take that action
+* If user takes action, push notification is removed from device
+* Until user takes action, or action expires, the notification stays on the device, unless explicitly cleared (i.e. does not go away the first time the user just opens the app post-notification)
+
