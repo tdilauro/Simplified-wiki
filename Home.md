@@ -8,7 +8,7 @@ Welcome to the Library Simplified wiki!
 #### Content
 * [[Content Sources|ContentSources]]
 * [[Overview of our active collections|OurCollections]]
-* [[Mirrored content]]
+* [[Mirrored content|MirroredContent]]
 
 #### Metadata, etc
 * [[Bibliographic Metadata|BibliographicMetadata]]
