@@ -9,7 +9,7 @@ We keep everything in an S3 bucket called 'simplified.nypl.org'. We use S3FS-FUS
 
 ## Installing S3FS
 
-* sudo apt-get install git autogen automake libfuse-dev libcurl4-openssl-dev libxml2-dev
+* sudo apt-get install git make autogen automake libfuse-dev libcurl4-openssl-dev libxml2-dev
 * git clone https://github.com/s3fs-fuse/s3fs-fuse.git
 * cd s3fs-fuse
 * ./autogen
