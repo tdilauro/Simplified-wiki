@@ -3,9 +3,9 @@
 * Project Gutenberg .epub files and images
 * Cover images from Open Library
 
-# How we mirror
+# S3
 
-We keep everything in an S3 bucket called 'simplified.nypl.org'. We use S3FS-FUSE to mount the S3 bucket as a filesystem. This lets us use rsync and other filesystem tools on the bucket.
+I've created an S3 bucket called 'simplified.nypl.org'. We use S3FS-FUSE to mount the S3 bucket as a filesystem. This lets us use rsync and other filesystem tools on the bucket. Unfortunately, these tools don't work very well because S3 is not a filesystem.
 
 ## Installing S3FS
 
