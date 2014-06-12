@@ -170,22 +170,28 @@ _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books availabl
 * The app allows the user to enter or preserve their twitter credentials
 
 ### [Share my reads friends via Facebook/So I can let my friends know what I'm reading
+
+* https://app.asana.com/0/12956401148094/13058132459407
+
 #####Confirmation Criteria
 * The user account can invoke FB App
 * The user account can use FB wall API
 * The app allows the user to enter or preserve their FB credentials
 
 ### Preview a book/So I can see if I really want to read the whole book
+* https://app.asana.com/0/12956401148094/13058132459411
 #####Confirmation Criteria
 * The preview is offered along side download
 * The preview is used as opposed to a linked lend if the preview is read
 
 ### Get Notification is book is available or wait period changed/So that I can find something else or plan my next read
+* https://app.asana.com/0/12956401148094/13058132459415
 #####Confirmation Criteria
 * The app sends a notifications when the books wait time changes by more than 3 days.
 * The app collects the users email/SMS credentials
 
 ### Know how long I need to wait, not where I am in line/ So that I can find something else or plan my next read
+* https://app.asana.com/0/12956401148094/13058132459413
 #####Confirmation Criteria
 * The app displays the estimated wait time for wish lists
 * The app displays the estimated time for titles recommended
@@ -197,15 +203,18 @@ _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books availabl
 ## Library (institution) Users Stories
 
 ### [Provide Recommendation from Bookish/because we don't have our own recommendation list]
+* https://app.asana.com/0/12956401148094/13058132459494
 #####Confirmation Criteria
 * the app subscribes get feeds from Bookish API
 
 ### [Connect to my ILS/So I don't have to manage multiple Patron records]
+* https://app.asana.com/0/12956401148094/13058132459500
 #####Confirmation Criteria
 * The app can connect to the III ILS Patron API
 * The App can use Polaris API for users
 
 ### [Connect to my OPAC/So it shows content available via my catalogue]
+* https://app.asana.com/0/12956401148094/13058132459507
 #####Confirmation Criteria
 * The App can use the BibCommons or Encore API
 
