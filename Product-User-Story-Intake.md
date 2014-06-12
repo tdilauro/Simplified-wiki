@@ -215,21 +215,31 @@ _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books availabl
 * The app tracks those recommendations viewed but not borrowed or held
 * The app opens to the recommendation view
 
-### [Connect to my DRM/So I can use content I licensed]
+### [Connect to my DRM/So I can use content I licensed or purchased]
 #####Confirmation Criteria
 * The App can use the Adobe DLLs for Content protection
+* The App can use Sony's compiled libraries for use with URMS
+* The App can use Readium LCP code libraries for for use with URMS
 
 ### [Not need Adobe DRM/So I don't have to host an Adobe CMS]
 #####Confirmation Criteria
 * The App can use Adobe's CMS service
+* The App can use Sony's URMS
+* The App can use Readium LCP
 
 ### [Use Adobe DRM/So I can use my Adobe CMS investment, use my licensed content]
 #####Confirmation Criteria
-* The App can be directed to a unique instance of Adobe
+* The App can be directed to a unique instance of Adobe (depends on Readium/Adobe SDK integration)
 
 ### [Use Adobe DRM/So I can use my distributors Adobe CMS instance and use my licensed content]
 #####Confirmation Criteria
 * The App can be directed to a unique instance of Adobe
+
+### [Use Sony URMS and/or LCP/So I can acquire content direct from publishers without having to purchase an Adobe SDK or CMS license]
+#####Confirmation Criteria
+* The App can work with Sony URMS
+* The App can work with LCP
+* The App can identify which DRM technology is use on the content (Content Filter)
 
 ### [Use my SSO solution/So I can access my systems easily]
 #####Confirmation Criteria
