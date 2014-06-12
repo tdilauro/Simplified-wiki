@@ -206,8 +206,8 @@ _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books availabl
 
 ### Use Subscription Content Service Providers/Use Scribed, Oyster and new ebook services coming online
 #####Confirmation Criteria
-* The App can use content from Scribed
-* The App can use content from Osyter
+* The App can use content from Scribed (TBD)
+* The App can use content from Osyter (TBD)
 
 ### [Promote Recommended Catalogue Items/Increase Circulation]
 #####Confirmation Criteria
@@ -217,13 +217,13 @@ _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books availabl
 
 ### [Connect to my DRM/So I can use content I licensed or purchased]
 #####Confirmation Criteria
-* The App can use the Adobe DLLs for Content protection
+* The App can use the Adobe DLLs for Content protection (depends on Readium/Adobe SDK integration)
 * The App can use Sony's compiled libraries for use with URMS
 * The App can use Readium LCP code libraries for for use with URMS
 
 ### [Not need Adobe DRM/So I don't have to host an Adobe CMS]
 #####Confirmation Criteria
-* The App can use Adobe's CMS service
+* The App can use Adobe's CMS service (depends on Readium/Adobe SDK integration)
 * The App can use Sony's URMS
 * The App can use Readium LCP
 
@@ -233,7 +233,7 @@ _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books availabl
 
 ### [Use Adobe DRM/So I can use my distributors Adobe CMS instance and use my licensed content]
 #####Confirmation Criteria
-* The App can be directed to a unique instance of Adobe
+* The App can be directed to a unique instance of Adobe(depends on Readium/Adobe SDK integration)
 
 ### [Use Sony URMS and/or LCP/So I can acquire content direct from publishers without having to purchase an Adobe SDK or CMS license]
 #####Confirmation Criteria
@@ -264,10 +264,11 @@ _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books availabl
 
 ### Push Notification of major events to phone / So reader knows they have the option to take action
 Summary: For big things, namely hold notifications, a notification can be sent to the users device prompting them to take an action.
-
-##### Confirmation Criteria:
+#####Confirmation Criteria
+* The app displays notifications when an event happens
+* The App icon badges update when an event happens
 * Push notification is sent to a users device any time they have placed an item on hold
 * Push notification enables user to go straight to the part of the app where they can take that action
-* If user takes action, push notification is removed from device
+* If user takes action, push notification/badge is removed
 * Until user takes action, or action expires, the notification stays on the device, unless explicitly cleared (i.e. does not go away the first time the user just opens the app post-notification)
 
