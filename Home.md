@@ -29,4 +29,4 @@ Welcome to the Library Simplified wiki!
 
 # Project Management
 * [[Sprints]]
-* [[Product Story Intake]]
+* [[Product User Story Intake]]
