@@ -202,6 +202,7 @@ _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books availabl
 * The App can use content from HaithiTrust
 * The App can use content from University Press
 * The App can use content from The Guttenburg Project
+* The App can use other content from other Public Domain Work repositories [see list]
 
 ### Use Subscription Content Service Providers/Use Scribed, Oyster and new ebook services coming online
 #####Confirmation Criteria
