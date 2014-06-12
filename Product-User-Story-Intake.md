@@ -105,6 +105,9 @@ _SUMMARY DESCRIPTION_:This an ability of the app to be rapidly acquired or distr
 ***
 
 ### [Use the App on Smart Phone]
+
+* https://app.asana.com/0/12956401148094/13058132459368
+
 #####Confirmation Criteria
 * The App can be installed on an iPhone
 * The App can be installed on an Android
@@ -112,7 +115,10 @@ _SUMMARY DESCRIPTION_:This an ability of the app to be rapidly acquired or distr
 
 ***
 
-### [Use the App on my Tablet]
+### Use the App on my Tablet
+
+* https://app.asana.com/0/12956401148094/13058132459372
+
 * The App appropriately uses the screen real-estate
 * The App adjust the views as necessary to not require pixilation
 * The Can render content without formatting issues
@@ -129,6 +135,9 @@ _SUMMARY DESCRIPTION_:This allows users to sign up for the app using their estab
 ***
 
 ### [Create an account using my device credentials/Don't have enter information again]
+
+* https://app.asana.com/0/12956401148094/13058132459384
+
 _SUMMARY DESCRIPTION_: This allows the user to establish their credentials using the already established credentials on the platform the are using.
 #####Confirmation Criteria
 * The App can us my iCoud ID (iOS)
@@ -137,17 +146,24 @@ _SUMMARY DESCRIPTION_: This allows the user to establish their credentials using
 ***
 
 ### Homescreen has scrollable Lanes of available material [James]
+
+* https://app.asana.com/0/12956401148094/13058132459388
+
 _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books available to borrow (or download) now, scrollable from side-to-side sorted by categories.
 
 ***
 
 ### [Bookmark my pages/So I can return to where I left off reading] 
+* https://app.asana.com/0/12956401148094/13058132459397 (needs clarity)
 
-### [Annotate pages/So I can take notes]	
+### [Annotate pages/So I can take notes]
+* https://app.asana.com/0/12956401148094/13058132459399 (needs clarity)
 
-### [Copy snippets of text/So I can keep favorite lines]	
+### Copy snippets of text/So I can keep favorite lines	
+* https://app.asana.com/0/12956401148094/13058132459401 (needs clarity)
 
-### [Share my reads friends via twitter/So I can let my friends know what I'm reading]
+### Share my reads friends via twitter/So I can let my friends know what I'm reading
+* https://app.asana.com/0/12956401148094/13058132459403 (needs clarity)
 #####Confirmation Criteria
 * The user account can invoke Twitter App
 * The user account can use Twitter API
