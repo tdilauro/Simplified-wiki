@@ -162,7 +162,7 @@ _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books availabl
 ### Preview a book/So I can see if I really want to read the whole book
 #####Confirmation Criteria
 * The preview is offered along side download
-* The preview is used as opposed to a linked lend if the preview is read"
+* The preview is used as opposed to a linked lend if the preview is read
 
 ### Get Notification is book is available or wait period changed/So that I can find something else or plan my next read
 #####Confirmation Criteria
@@ -202,7 +202,7 @@ _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books availabl
 * The App can use content from HaithiTrust
 * The App can use content from University Press
 * The App can use content from The Guttenburg Project
-* The App can use other content from other Public Domain Work repositories [see list]
+* The App can use other content from other Public Domain Work repositories [see Content Sources](https://github.com/NYPL/Simplified-docs/wiki/ContentSources)
 
 ### Use Subscription Content Service Providers/Use Scribed, Oyster and new ebook services coming online
 #####Confirmation Criteria
