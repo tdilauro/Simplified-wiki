@@ -198,6 +198,31 @@ _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books availabl
 * The app displays the estimated time for titles in search results
 ### 
 
+### Push Notification of major events to phone / So reader knows they have the option to take action
+Summary: For big things, namely hold notifications, a notification can be sent to the users device prompting them to take an action.
+#####Confirmation Criteria
+* The app displays notifications when an event happens
+* The App icon badges update when an event happens
+* Push notification is sent to a users device any time they have placed an item on hold
+* Push notification enables user to go straight to the part of the app where they can take that action
+* If user takes action, push notification/badge is removed
+* Until user takes action, or action expires, the notification stays on the device, unless explicitly cleared (i.e. does not go away the first time the user just opens the app post-notification)
+
+***
+### Include Gale Group database as a content source
+_Summary_: Gale Group offers a ton of fixed-layout content (in PDF, which will convert to fixed-layout ePub), which will be available to any NYPL user given a NYPL ID (proxy will allow off-site access). App, when signed in as a user, will enable direct download link access to gale content (and open the door to other PDF based DB's)
+
+Confirmation Criteria:
+* User w/ valid NYPL ID (aka can use app) can also search/download/read gale group PDF
+* PDF viewable within in-app reader (readium)
+
+Outside Requirements:
+* SSO Completion
+* EasyProxy
+
+***
+
+
 ***
 
 ## Library (institution) Users Stories
@@ -287,13 +312,4 @@ _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books availabl
 * The preview is offered along side download
 * The preview is used as opposed to a licensed lend if the preview is read
 
-### Push Notification of major events to phone / So reader knows they have the option to take action
-Summary: For big things, namely hold notifications, a notification can be sent to the users device prompting them to take an action.
-#####Confirmation Criteria
-* The app displays notifications when an event happens
-* The App icon badges update when an event happens
-* Push notification is sent to a users device any time they have placed an item on hold
-* Push notification enables user to go straight to the part of the app where they can take that action
-* If user takes action, push notification/badge is removed
-* Until user takes action, or action expires, the notification stays on the device, unless explicitly cleared (i.e. does not go away the first time the user just opens the app post-notification)
 
