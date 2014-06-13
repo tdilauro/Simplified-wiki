@@ -70,6 +70,13 @@ field names mean, you must consult some nearby piece of documentation.
 
 * Author information is linked to VIAF [(e.g.)](http://viaf.org/viaf/71391324/), which makes it possible to localize author names.
 
+## Worldcat Open Data
+
+Significant amounts of bibliographic data available in RDF format, available once you know the OCLC ID. Data is made available under an [attribution-style license](http://opendatacommons.org/licenses/by/1.0/)
+
+* [Example RDF](http://experiment.worldcat.org/oclc/795121502.rdf)
+* Author information is linked to VIAF [(e.g.)](http://viaf.org/viaf/71391324/), which makes it possible to localize author names.
+
 ## OCLC xID
 
 Maps between OCLC number, ISBN, OCLC work ID (owi), and LCCN.
@@ -79,13 +86,15 @@ Maps between OCLC number, ISBN, OCLC work ID (owi), and LCCN.
 * [Example](http://xisbn.worldcat.org/webservices/xid/oclcnum/797427636?method=getEditions&format=xml&fl=lccn,isbn,owi,url)
 * [Terms of service](http://xisbn.worldcat.org/xisbnadmin/index.htm) Non-commercial use that does not exceed 1k accesses per day. More access is allowed via subscription. This requires a [WorldCat affiliate account](http://www.worldcat.org/wcpa/do/AffiliateUserServices?method=initSelfRegister&atype=xisbn).
 
+This API is extremely prone to 500 errors. I don't think there's any reason to use it given the existence of WorldCat Open Data.
 
-## Worldcat Open Data
+## Syndetics
 
-Significant amounts of bibliographic data available in RDF format, available once you know the OCLC ID. Data is made available under an [attribution-style license](http://opendatacommons.org/licenses/by/1.0/)
+This is a pay service but we are already paying for it. I don't have login/password credentials, so I can't get documentation or support, but I do know our API credential.
 
-* [Example RDF](http://experiment.worldcat.org/oclc/795121502.rdf)
-* Author information is linked to VIAF [(e.g.)](http://viaf.org/viaf/71391324/), which makes it possible to localize author names.
+We can look up significant amounts of metadata (review, summary, excerpt) given ISBN or OCLC number.
+
+* [Someone else's copy of the documentation I can't find elsewhere](https://developers.exlibrisgroup.com/resources/voyager/code_contributions/SyndeticsStarterDocument.pdf)
 
 ## 3M XML
 
