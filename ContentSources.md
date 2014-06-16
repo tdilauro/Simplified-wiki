@@ -109,7 +109,7 @@ not _contribute_ any books to Open Library.
 
 ### Publishers with unknown integration support
 
-* [iVerse](http://iversecomics.com/library-pricing/) - Comic books. Charges libraries on a per-checkout basis and requires a custom app. We would need to pitch them the idea of an integrated reader, but they have the technology.
+* [iVerse](http://iversecomics.com/library-pricing/) - Comic books. An online streaming service that provides libraries with access to thousands of digital graphic novels, comic books and manga at a per-checkout price with simultaneous circulation to virtually any mobile device, tablet or PC. Library Edition is built upon our popular Comics Plus digital distribution platform (powered by iVerse Media) that has delivered more than 20 million content downloads to consumers worldwide.. We would need to pitch them the idea of an integrated reader, but they have the technology.
 * [WattPad](https://www.wattpad.com/) - Popular fan fiction community. Since it's a community and not so much a corpus I don't know if there's value in integrating it
 * [SmashWords](http://www.smashwords.com/) Has [an OPDS feed](http://www.smashwords.com/lexcycle/) but not clear how we could borrow paid books except through Overdrive.
 
