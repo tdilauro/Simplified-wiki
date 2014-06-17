@@ -91,7 +91,7 @@ _SUMMARY DESCRIPTION_:Based on the popularity of the searched for title, I may b
 
 ***
 
-### [Find and Download the App/So I can try the app]
+### Find and Download the App/So I can try the app
 
 * https://app.asana.com/0/12956401148094/13026724002758
 
@@ -104,7 +104,7 @@ _SUMMARY DESCRIPTION_:This an ability of the app to be rapidly acquired or distr
 
 ***
 
-### [Use the App on Smart Phone]
+### Use the App on Smart Phone
 
 * https://app.asana.com/0/12956401148094/13058132459368
 
@@ -126,7 +126,7 @@ _SUMMARY DESCRIPTION_:This an ability of the app to be rapidly acquired or distr
 * The App can be Installed on Android (TBD)
 * The App can be Installed on Windows Tablet (TBD)
 
-### [Create and account using my email credentials/Don't have enter information again]
+### Create and account using my email credentials/Don't have enter information again
 _SUMMARY DESCRIPTION_:This allows users to sign up for the app using their establish credentials for email or social network like Facebook, Google or Yahoo.  This also allows app to capture data needed for library card registration.
 #####Confirmation Criteria
 * The App can use Oauth2.0 or OpenID for GMAIL
@@ -134,7 +134,7 @@ _SUMMARY DESCRIPTION_:This allows users to sign up for the app using their estab
 
 ***
 
-### [Create an account using my device credentials/Don't have enter information again]
+### Create an account using my device credentials/Don't have enter information again
 
 * https://app.asana.com/0/12956401148094/13058132459384
 
@@ -153,10 +153,10 @@ _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books availabl
 
 ***
 
-### [Bookmark my pages/So I can return to where I left off reading] 
+### Bookmark my pages/So I can return to where I left off reading 
 * https://app.asana.com/0/12956401148094/13058132459397 (needs clarity)
 
-### [Annotate pages/So I can take notes]
+### Annotate pages/So I can take notes
 * https://app.asana.com/0/12956401148094/13058132459399 (needs clarity)
 
 ### Copy snippets of text/So I can keep favorite lines	
@@ -170,7 +170,6 @@ _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books availabl
 * The app allows the user to enter or preserve their twitter credentials
 
 ### [Share my reads friends via Facebook/So I can let my friends know what I'm reading
-
 * https://app.asana.com/0/12956401148094/13058132459407
 
 #####Confirmation Criteria
@@ -208,8 +207,17 @@ Summary: For big things, namely hold notifications, a notification can be sent t
 * If user takes action, push notification/badge is removed
 * Until user takes action, or action expires, the notification stays on the device, unless explicitly cleared (i.e. does not go away the first time the user just opens the app post-notification)
 
-***
-### Include Gale Group database as a content source
+### Read PDFs as fixed layout ePubs
+* https://app.asana.com/0/12956401148094/13171109685224
+_Summary_: Given that Readium's SDK can work with fixed-layout epubs, the client should be able to convert PDFs to Epub3 fixed layout and open them within the reading app.
+
+Confirmation Criteria:
+* A PDF can be imported as a readable text in my library
+Notes:
+* Highly dependent on Readium codebase. Will have to see what it's capacity is to actually do this
+
+### Gale Group databases are available as a content source
+* https://app.asana.com/0/12956401148094/13171109685228
 _Summary_: Gale Group offers a ton of fixed-layout content (in PDF, which will convert to fixed-layout ePub), which will be available to any NYPL user given a NYPL ID (proxy will allow off-site access). App, when signed in as a user, will enable direct download link access to gale content (and open the door to other PDF based DB's)
 
 Confirmation Criteria:
@@ -257,43 +265,51 @@ Outside Requirements:
 * The App can use other content from other Public Domain Work repositories [see Content Sources](https://github.com/NYPL/Simplified-docs/wiki/ContentSources)
 
 ### Use Subscription Content Service Providers/Use Scribed, Oyster and new ebook services coming online
+* https://app.asana.com/0/12956401148094/13164366681674
 #####Confirmation Criteria
 * The App can use content from Scribed (TBD)
 * The App can use content from Osyter (TBD)
 
-### [Promote Recommended Catalogue Items/Increase Circulation]
+### Promote Recommended Catalogue Items/Increase Circulation
+* https://app.asana.com/0/12956401148094/13164366681678
 #####Confirmation Criteria
 * The app displays only those items that are available for the needed format
 * The app tracks those recommendations viewed but not borrowed or held
 * The app opens to the recommendation view
 
-### [Connect to my DRM/So I can use content I licensed or purchased]
+### Connect to my DRM/So I can use content I licensed or purchased
+* https://app.asana.com/0/12956401148094/13164366681682
 #####Confirmation Criteria
 * The App can use the Adobe DLLs for Content protection (depends on Readium/Adobe SDK integration)
 * The App can use Sony's compiled libraries for use with URMS
 * The App can use Readium LCP code libraries for for use with URMS
 
-### [Not need Adobe DRM/So I don't have to host an Adobe CMS]
+### Not need Adobe DRM/So I don't have to host an Adobe CMS
+* https://app.asana.com/0/12956401148094/13171109685195
 #####Confirmation Criteria
 * The App can use Adobe's CMS service (depends on Readium/Adobe SDK integration)
 * The App can use Sony's URMS
 * The App can use Readium LCP
 
-### [Use Adobe DRM/So I can use my Adobe CMS investment, use my licensed content]
+### Use Adobe DRM/So I can use my Adobe CMS investment, use my licensed content
+* https://app.asana.com/0/12956401148094/13171109685199
 #####Confirmation Criteria
 * The App can be directed to a unique instance of Adobe (depends on Readium/Adobe SDK integration)
 
-### [Use Adobe DRM/So I can use my distributors Adobe CMS instance and use my licensed content]
+### Use Adobe DRM/So I can use my distributors Adobe CMS instance and use my licensed content
+* https://app.asana.com/0/12956401148094/13171109685203
 #####Confirmation Criteria
 * The App can be directed to a unique instance of Adobe(depends on Readium/Adobe SDK integration)
 
-### [Use Sony URMS and/or LCP/So I can acquire content direct from publishers without having to purchase an Adobe SDK or CMS license]
+### Use Sony URMS and/or LCP/So I can acquire content direct from publishers without having to purchase an Adobe SDK or CMS license
+*https://app.asana.com/0/12956401148094/13171109685207
 #####Confirmation Criteria
 * The App can work with Sony URMS
 * The App can work with LCP
 * The App can identify which DRM technology is use on the content (Content Filter)
 
-### [Use my SSO solution/So I can access my systems easily]
+### Use my SSO solution/So I can access my systems easily
+* https://app.asana.com/0/12956401148094/13171109685211
 #####Confirmation Criteria
 * The app provides a configurable SSO interface or DLL
 * The app saves my log on credentials on the client
@@ -303,20 +319,22 @@ Outside Requirements:
 * The app supports OPEN ID, OAuth 2.0
 * The app supports SAML (ether HTM/SSL or SOAP/Encrypted XML methods)
 
-### [Prompt Readers to check books back in/So that we can re-loan the book]
+### Prompt Readers to check books back in/So that we can re-loan the book
+* https://app.asana.com/0/12956401148094/13171109685215
 #####Confirmation Criteria
 * The app prompts if the book is not been opened in 3 days
 * The app prompts when user views the last page
 * The app prompts after the preview has been read
 
-### [Preview a book/So we don't waist a lend license]
+### Preview a book/So we don't waste a lend license
+* https://app.asana.com/0/12956401148094/13171109685220
 #####Confirmation Criteria
 * The preview is offered along side download
 * The preview is used as opposed to a licensed lend if the preview is read
 
 
 ### App can lend content from 3rd party subscription databases in PDF
-
+ * https://app.asana.com/0/12956401148094/13171109685228
 _Summary_: NYPL (and most libraries) subscribe to databases like Gale Group which deliver content in PDF form. Given Readium's ability to display fixed-layout epub3, the engine should be able to render the files. Given this (and that these databases are one of the library's most bountiful sources of content), we should index database PDF content and make it available to any library user through the app.
 
 CONFIRMATION CRITERIA:
