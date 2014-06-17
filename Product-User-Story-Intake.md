@@ -243,11 +243,13 @@ Outside Requirements:
 #####Confirmation Criteria
 * The App can use the BibCommons or Encore API
 
-### [Use Licensed Content/So I can provide content users want]
+### Use Licensed Content/So I can provide content users want
+* https://app.asana.com/0/12956401148094/13164366681665
 #####Confirmation Criteria
 * The App can use content hosted by Overdrive, 3M, or BiblioCommons
 
-### [Use Open Access Content/So I can access free content]
+### Use Open Access Content/So I can access free content
+* https://app.asana.com/0/12956401148094/13164366681669
 #####Confirmation Criteria	
 * The App can use content from HaithiTrust
 * The App can use content from University Press
@@ -313,3 +315,6 @@ Outside Requirements:
 * The preview is used as opposed to a licensed lend if the preview is read
 
 
+### App can lend content from 3rd party subscription databases in PDF
+
+_Summary_: NYPL (and most libraries) subscribe to databases like Gale Group which deliver content in PDF form. Given Readium's ability to display fixed-layout epub3, the engine should be able to render the files. 
