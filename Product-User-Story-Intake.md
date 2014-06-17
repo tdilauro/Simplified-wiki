@@ -151,7 +151,6 @@ _SUMMARY DESCRIPTION_: This allows the user to establish their credentials using
 
 _SUMMARY DESCRIPTION_: Home View of app is "store" with covers of books available to borrow (or download) now, scrollable from side-to-side sorted by categories.
 
-***
 
 ### Bookmark my pages/So I can return to where I left off reading 
 * https://app.asana.com/0/12956401148094/13058132459397 (needs clarity)
