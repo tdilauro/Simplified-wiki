@@ -317,4 +317,11 @@ Outside Requirements:
 
 ### App can lend content from 3rd party subscription databases in PDF
 
-_Summary_: NYPL (and most libraries) subscribe to databases like Gale Group which deliver content in PDF form. Given Readium's ability to display fixed-layout epub3, the engine should be able to render the files. 
+_Summary_: NYPL (and most libraries) subscribe to databases like Gale Group which deliver content in PDF form. Given Readium's ability to display fixed-layout epub3, the engine should be able to render the files. Given this (and that these databases are one of the library's most bountiful sources of content), we should index database PDF content and make it available to any library user through the app.
+
+CONFIRMATION CRITERIA:
+* Users can search, download, and read GaleGroup PDFs as fixed layout Epubx
+* Users can search, download, and read ProQuest PDFs
+
+Other areas:
+This is dependent on both SSO being completed and the completion of the EZ-Proxy database integration.
