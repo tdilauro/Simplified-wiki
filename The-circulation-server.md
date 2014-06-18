@@ -15,12 +15,11 @@ through a license, or both). For each book, this view includes:
   and the book.
 
 The circulation server is not necessarily responsible for gathering,
-keeping, or processing the raw data associated with this consolidated
-view (e.g. OCLC Classify records, NYT bestseller information, or
-Amazon reviews).
+keeping, or processing raw data (e.g. OCLC Classify records, NYT bestseller information, or
+Amazon reviews), or the preliminary data used to build this view (rows in the 'workrecords' table).
 
 Hoever, the circulation server is responsible for the _search engine_,
-which for now probably means storing that raw data. Search results are
+which for now probably means storing that intermediate data. Search results are
 served as OPDS feeds. The only supported search is a combination
 title/author search.
 
