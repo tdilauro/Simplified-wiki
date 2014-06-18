@@ -237,6 +237,15 @@ _Summary_:
 
 ### Remove unwanted lanes from homescreen
 
+
+### Autodownload content I can "check out" now when I can download it
+
+Notes:
+* automatically on wifi
+* Optional on Cellular w/ setting switch in settings
+
+# See Size of download (mbs)
+
 ***
 
 
