@@ -25,6 +25,7 @@ Welcome to the Library Simplified wiki!
 * [[Design Comps]]
 * [[Information Architecture]]
 * [[ServerSideDesign]]
+ - [CirculationServer|The circulation server]
 * [[Cloud and Syncing]]
 
 # Project Management
