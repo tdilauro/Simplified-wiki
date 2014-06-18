@@ -227,7 +227,15 @@ Outside Requirements:
 * SSO Completion
 * EasyProxy
 
+### User can import and read their own epub within the app
+
+_Summary_: Users should be able to import their own unencrypted epubs into the reader app and have it show up  as a readable title on their "My bookshelf""
+
+### User can select the languages they wish to read and be recommended titles in these languages
+_Summary_: 
+
 ***
+
 
 
 ***
