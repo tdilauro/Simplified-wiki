@@ -234,6 +234,9 @@ _Summary_: Users should be able to import their own unencrypted epubs into the r
 ### User can select the languages they wish to read and be recommended titles in these languages
 _Summary_: 
 
+
+### Remove unwanted lanes from homescreen
+
 ***
 
 
