@@ -19,7 +19,7 @@ keeping, or processing the raw data associated with this consolidated
 view (e.g. OCLC Classify records, NYT bestseller information, or
 Amazon reviews).
 
-Hoever, the circulation server is responsible for the _search engine,
+Hoever, the circulation server is responsible for the _search engine_,
 which for now probably means storing that raw data. Search results are
 served as OPDS feeds. The only supported search is a combination
 title/author search.
