@@ -88,9 +88,8 @@ If you know the nypl.org username you can look up the user record using the BC A
 
 This is an API to our internal patron database. [The
 documentation.](http://vendordocs.iii.com/) (user/pass:
-nypl_s/chapter) It's not clear whether we actually have access to this
-API. If so, I don't know the hostname or port of the endpoint we can
-use.
+nypl_s/chapter) We have access to this API and the Simplified server repository
+includes code for getting patron information and validating PIN.
 
 ### Patron creation
 
@@ -185,7 +184,15 @@ Some useful fields:
    a dumb way to get the PIN.
 
  Note that in the example document, MESSAGE[px] also includes the
- plain text "PIN is 1234". Again, no guarantee our system does that.
+ plain text "PIN is 1234". Our system does not do this.
+
+### III SierraDNA
+
+A new API covering the same ground as the Millenium Patron API but also giving access to more stuff. The successor to the Millenium Patron API.
+
+[Documentation](http://csdirect.iii.com/sierrahelp/Default.htm#ssql/ssql_sierradna.html%3FTocPath%3DSierra%2520Direct%2520SQL%2520Access|_____2) (password is the same as for Millenium Patron).
+
+There is a component of direct SQL access. [Information on the database schema](http://techdocs.iii.com/sierradna/)
 
 ### III  - Patron APIs
 
