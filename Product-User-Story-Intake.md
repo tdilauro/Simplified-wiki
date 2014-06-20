@@ -244,7 +244,12 @@ Notes:
 * automatically on wifi
 * Optional on Cellular w/ setting switch in settings
 
-# See Size of download (mbs)
+### See Size of download (mbs)
+
+
+### See metadata about books in catalog that's unicode compliant
+
+### Read a book with unicode encoded characters (To research epub3 standard)
 
 ***
 
