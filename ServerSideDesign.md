@@ -224,3 +224,27 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 </tr>
 
 </table>
+
+
+## July '14 Server Design Elements
+For our first test build, targeted for the end of July 2014, we will need a live server performing authentication, search, and delivery of our Project Gutenberg corpus.
+
+This will include:
+* User Model
+* Authentication
+* Reading events to keep on server - Things that they have right now
+* App debugging information
+* Navigation feed [in whatever language - i.e. books in language] [mostly statically generated]
+* Recommended lanes -- not paginated
+* Other feeds [OPDS acquisition feeds] will be paginated - next link to next page. Will follow OPDS pagination guidelines
+* Sorts [OPDS "facets"] - By title, By Author - facet groups will be sent to client
+* Search: [Title + Author] - might not be fast
+
+This work temporarily puts on hold:
+* Cover images
+* Book Description
+* Book Quality Assessment
+* Permanence of database
+* Hierarchy + quality of hierarchy
+
+Authentication will be handled by connecting to the [iii authentication server](https://github.com/NYPL/Simplified-docs/wiki/Authentication#innovative-patron-api).
