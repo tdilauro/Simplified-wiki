@@ -248,3 +248,5 @@ This work temporarily puts on hold:
 * Hierarchy + quality of hierarchy
 
 Authentication will be handled by connecting to the [iii authentication server](https://github.com/NYPL/Simplified-docs/wiki/Authentication#innovative-patron-api).
+
+Leonard is investigating the viability of Heroku as an architecture for this server, but it might ultimately not make sense to keep it there.
