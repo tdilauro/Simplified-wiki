@@ -20,6 +20,13 @@ Readium. Instead, we want all protected texts to be protected by LCP,
 so that we can decrypt them using libre software (which we may write ourselves). This applies to every provider of DRM-encrypted ebooks: Overdrive,
 3M, Axis 360, and Open Library.
 
+#### LCP Strategy
+We're going to have to work with vendors to get them to trust us with hosting their content using LCP. While larger publishers are apt to trust us only with major established systems like Sony's DRM, for smaller publishers, we're likely to try to get traction using LCP for NYPL to host our own titles.
+
+One concept for building this layer of trust is to build a LCP DRM gateway server for publishers to encrypt their content before it reaches NYPL. This gateway would sit in front of NYPL's LCP server and take publishers unencrypted ePub files (over SSL/TLS) and encrypt them with the master keys being returned to the publisher. This would ensure that NYPL would have no access to un-DRMed content, and would provide mechanisms for publishers to audit and revoke NYPL content if they find we're violating the terms of their contract. This would allow us to generate the keys for the content to be tied to NYPL's LCP server while still giving publishers technical means to revoke NYPL's keys for security.
+
+This is tantamount to the system that Sony has in place where publishers encrypt their content prior to sending it to any distributors. 
+
 ### License-level view
 
 At any time we know how many licenses we own, but we don't know when we acquired each license, how many loans are left on each license, or when each license will expire. Having this information will let us plan our queue better and give advance warning of when licenses for a popular book are about to expire.
