@@ -145,6 +145,10 @@ We plan to set up a mirror of the Gutenberg ePub documents. This gives us a text
 
 Only about 20 books currently, but they're high quality open access stuff. There is an unknown integration API that requires a library partner account. _James is investigating this._
 
+* [MARC records](https://unglue.it/marc/) for some (by what criteria?) of the open access books.
+* [The library license agreement](https://www.docracy.com/0_uyw26qv9c/unglue-it-library-license-agreement) necessary to buy library licenses for books on unglue.it.
+* [The page to create a library account](https://unglue.it/libraryauth/create/)
+
 ### HathiTrust
 
 * We contributed some 10ks of texts to be scanned. Some 1Ms of public documents are available in total.
