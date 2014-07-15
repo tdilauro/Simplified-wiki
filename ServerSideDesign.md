@@ -240,6 +240,8 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
   template](https://developer.overdrive.com/apis/download) which gives me the URL to the ACSM
   license file, which contains the URL to the actual ebook.
 
+* 3M does not serve free previews of books, even if free previews have been negotiated with the publisher.
+
 * Currently all our licenses for a given book are treated as interchangeable. But they're not interchangeable. Licenses from different publishers have different rules associated with them. Individual licenses for a single book may have different expiration dates and different numbers of loans remaining. We need the ability to address licenses individually. Eventually we would like to assign a patron to a specific license when they check out a book, but just knowing the status of the licenses is good enough to start. If we know that five of our ten licenses for a book are about to expire, we want to push the book harder to get as many lends out as possible before it expires.
 
 * 3M tracks user ratings for books, but doesn't make that information available in "Get Item Details". We'd like access to that information. If there's any more detailed bibliographic information about a book
