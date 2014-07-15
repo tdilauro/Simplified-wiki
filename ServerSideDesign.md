@@ -232,7 +232,7 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 
 </table>
 
-## What 3M needs to add
+## What we need from 3M
 
 * The number one requirement is that after 'Checkout', I be able to
   download the license file and encrypted ebook file for the book I
@@ -255,6 +255,10 @@ one is the rating.
 * What exactly happens when a book becomes available, anyway? Is there a notification mechanism we need to know about? If so, how can we program that mechanism?
 
 * Advanced queue management. Our tech support staff needs the ability to arbitrarily rearrange the queue for a book (e.g. to restore someone's place in the queue if they make a mistake). Exposing this behavior through the API will let us write tools for them. We also plan to run experiments with non-traditional queues (e.g. making reservations so you know you'll get a book at a certain time) which will require that we take control of all queue activity. 
+
+## What we need from Overdrive
+
+* There is no notification of any kind when a book becomes available to one of our patrons. To get this information we must poll the Holds API. This requires authentication, which means providing the user's barcode and PIN. This means that we'll need to store the user's PIN in plaintext locally if we want to check their holds in the background, outside the context of an HTTP request their client is making. (We might want to do this to provide email notifications, for instance.)
 
 ## July '14 Server Design Elements
 For our first test build, targeted for the end of July 2014, we will need a live server performing authentication, search, and delivery of our Project Gutenberg corpus.
