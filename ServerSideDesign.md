@@ -183,14 +183,14 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 <tr>
 <td>Give me a preview of this book</td>
 <td>Linked to from book detail</td>
-<td>Not supported?</td>
-<td>Not supported</td>
+<td>*Not supported*</td>
+<td>*Not supported*</td>
 </tr>
 
 <tr>
 <td>Give me this book licensed to this patron</td>
 <td>Checkouts API + Download API</td>
-<td>"Check Out", but no way of getting the actual book</td>
+<td>"Check Out", but *no way of getting the actual book*</td>
 <td>"DRM Create"/"DRM Setup" + "Checkout"
 </tr>
 
@@ -223,8 +223,36 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 <td>"Remove Hold"</td>
 </tr>
 
+<tr>
+<td>View all of this patron's holds and checkouts.</td>
+<td>Linked to from patron representation</td>
+<td>"Get Patron Circulation"</td>
+<td>*Not supported*</td>
+</tr>
+
 </table>
 
+## What 3M needs to add
+
+* The number one requirement is that after 'Checkout', I be able to
+  download the license file and encrypted ebook file for the book I
+  just checked out. See, for example, [Overdrive's Checkouts API](https://developer.overdrive.com/apis/checkouts). When I check out a book from Overdrive I am given a ["downloadLink"
+  template](https://developer.overdrive.com/apis/download) which gives me the URL to the ACSM
+  license file, which contains the URL to the actual ebook.
+
+* Currently all our licenses for a given book are treated as interchangeable. But they're not interchangeable. Licenses from different publishers have different rules associated with them. Individual licenses for a single book may have different expiration dates and different numbers of loans remaining. We need the ability to address licenses individually. Eventually we would like to assign a patron to a specific license when they check out a book, but just knowing the status of the licenses is good enough to start. If we know that five of our ten licenses for a book are about to expire, we want to push the book harder to get as many lends out as possible before it expires.
+
+* 3M tracks user ratings for books, but doesn't make that information available in "Get Item Details". We'd like access to that information. If there's any more detailed bibliographic information about a book
+that we don't currently get, it would be nice to get it, but the big
+one is the rating.
+
+* Near-real-time usage information. 3M's event log does a good job, but we would like a callback
+  mechanism to make sure we don't miss especially important events,
+  such as a book becoming available to someone at the head of a queue.
+
+* What exactly happens when a book becomes available, anyway? Is there a notification mechanism we need to know about? If so, how can we program that mechanism?
+
+* Advanced queue management. Our tech support staff needs the ability to arbitrarily rearrange the queue for a book (e.g. to restore someone's place in the queue if they make a mistake). Exposing this behavior through the API will let us write tools for them. We also plan to run experiments with non-traditional queues (e.g. making reservations so you know you'll get a book at a certain time) which will require that we take control of all queue activity. 
 
 ## July '14 Server Design Elements
 For our first test build, targeted for the end of July 2014, we will need a live server performing authentication, search, and delivery of our Project Gutenberg corpus.
