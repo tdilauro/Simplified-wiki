@@ -258,6 +258,10 @@ one is the rating.
 
 ## What we need from Overdrive
 
+* Overdrive has no visible audit log. We have hacked something together using the monitor software, but it's neither precise nor accurate. This makes it difficult to measure what's happening to our Overdrive inventory.
+
+* We have no way of seeing our entire Overdrive inventory. We don't know about a book until we see something happen to it in the monitor. If we buy a license for a book, but no one ever looks at the book, we never hear about it.
+
 * There is no notification of any kind when a book becomes available to one of our patrons. To get this information we must poll the Holds API. This requires authentication, which means providing the user's barcode and PIN. This means that we'll need to store the user's PIN in plaintext locally if we want to check their holds in the background, outside the context of an HTTP request their client is making. (We might want to do this to provide email notifications, for instance.)
 
 ## July '14 Server Design Elements
