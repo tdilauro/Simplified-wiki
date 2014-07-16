@@ -211,6 +211,9 @@ More than 2,000 European institutions across Europe contribute to the site, incl
 
 To find free public domain books, search for the author or title, and in the left-side panel narrow results by file type (“text”), and by copyright (“public domain marked”).
 
+### Pulp Magazines Project
+
+[About 200 scanned PDF agazines](http://www.pulpmags.org/). A combination of pre-1923 magazines and post-1923 magazines with no copyright renewal. An academic project.
 
 ### Feedbooks
 
