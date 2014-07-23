@@ -12,6 +12,8 @@ without ever setting foot in a library building.
 
 ## What we need from 3M
 
+* See also the [basic list of messages](https://github.com/NYPL/Simplified-docs/wiki/ServerSideDesign#api-comparison) we want to be able to send _any_ source of ebooks.
+
 * The number one requirement is that after 'Checkout', I be able to
   download the license file and encrypted ebook file for the book I
   just checked out. See, for example, [Overdrive's Checkouts API](https://developer.overdrive.com/apis/checkouts). When I check out a book from Overdrive I am given a ["downloadLink"
