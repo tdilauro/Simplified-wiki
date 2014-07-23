@@ -232,38 +232,6 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 
 </table>
 
-## What we need from 3M
-
-* The number one requirement is that after 'Checkout', I be able to
-  download the license file and encrypted ebook file for the book I
-  just checked out. See, for example, [Overdrive's Checkouts API](https://developer.overdrive.com/apis/checkouts). When I check out a book from Overdrive I am given a ["downloadLink"
-  template](https://developer.overdrive.com/apis/download) which gives me the URL to the ACSM
-  license file, which contains the URL to the actual ebook.
-
-* 3M does not serve free previews of books, even if free previews have been negotiated with the publisher.
-
-* Currently all our licenses for a given book are treated as interchangeable. But they're not interchangeable. Licenses from different publishers have different rules associated with them. Individual licenses for a single book may have different expiration dates and different numbers of loans remaining. We need the ability to address licenses individually. Eventually we would like to assign a patron to a specific license when they check out a book, but just knowing the status of the licenses is good enough to start. If we know that five of our ten licenses for a book are about to expire, we want to push the book harder to get as many lends out as possible before it expires.
-
-* 3M tracks user ratings for books, but doesn't make that information available in "Get Item Details". We'd like access to that information. If there's any more detailed bibliographic information about a book
-that we don't currently get, it would be nice to get it, but the big
-one is the rating.
-
-* Near-real-time usage information. 3M's event log does a good job, but we would like a callback
-  mechanism to make sure we don't miss especially important events,
-  such as a book becoming available to someone at the head of a queue.
-
-* What exactly happens when a book becomes available, anyway? Is there a notification mechanism we need to know about? If so, how can we program that mechanism?
-
-* Advanced queue management. Our tech support staff needs the ability to arbitrarily rearrange the queue for a book (e.g. to restore someone's place in the queue if they make a mistake). Exposing this behavior through the API will let us write tools for them. We also plan to run experiments with non-traditional queues (e.g. making reservations so you know you'll get a book at a certain time) which will require that we take control of all queue activity. 
-
-## What we need from Overdrive
-
-* Overdrive has no visible audit log. We have hacked something together using the monitor software, but it's neither precise nor accurate. This makes it difficult to measure what's happening to our Overdrive inventory.
-
-* We have no way of seeing our entire Overdrive inventory. We don't know about a book until we see something happen to it in the monitor. If we buy a license for a book, but no one ever looks at the book, we never hear about it.
-
-* There is no notification of any kind when a book becomes available to one of our patrons. To get this information we must poll the Holds API. This requires authentication, which means providing the user's barcode and PIN. This means that we'll need to store the user's PIN in plaintext locally if we want to check their holds in the background, outside the context of an HTTP request their client is making. (We might want to do this to provide email notifications, for instance.)
-
 ## July '14 Server Design Elements
 For our first test build, targeted for the end of July 2014, we will need a live server performing authentication, search, and delivery of our Project Gutenberg corpus.
 
