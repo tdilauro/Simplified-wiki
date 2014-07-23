@@ -10,6 +10,47 @@ We also need an API for bringing on new patrons. We also need clear
 _policy_ about the rules for becoming a patron and checking out ebooks
 without ever setting foot in a library building.
 
+## What we need from 3M
+
+* The number one requirement is that after 'Checkout', I be able to
+  download the license file and encrypted ebook file for the book I
+  just checked out. See, for example, [Overdrive's Checkouts API](https://developer.overdrive.com/apis/checkouts). When I check out a book from Overdrive I am given a ["downloadLink"
+  template](https://developer.overdrive.com/apis/download) which gives me the URL to the ACSM
+  license file, which contains the URL to the actual ebook.
+
+* 3M cannot serve free previews of books, even if the publisher allows for them.
+
+* There is no API for getting a book's cover image.
+
+* Currently all our licenses for a given book are treated as interchangeable. But they're not interchangeable. Licenses from different publishers have different rules associated with them. Individual licenses for a single book may have different expiration dates and different numbers of loans remaining. We need the ability to address licenses individually. Eventually we would like to assign a patron to a specific license when they check out a book, but just knowing the status of the licenses is good enough to start. If we know that five of our ten licenses for a book are about to expire, we want to push the book harder to get as many lends out as possible before it expires.
+
+* 3M has a genre classification for each book, and tracks user ratings for each book, but doesn't make that information available in "Get Item Details". We'd like access to that information. If there's any more  bibliographic information about a book that we don't currently get, it would be nice to get that too, but the big ones are classification and rating.
+
+* Near-real-time usage information. 3M's event log does a good job, but we would like a callback
+  mechanism to make sure we don't miss especially important events,
+  such as a book becoming available to someone at the head of a queue.
+
+* There is no entry in the event log when someone releases a hold on a book.
+
+* Active reservations (a patron can check out a book if they want) do have an entry in the event log, but they disappear once the patron checks out the book or the reservation expires.
+
+* What exactly happens when a book becomes available, anyway? Is there a notification mechanism we need to know about? If so, how can we program that mechanism?
+
+* We want features for advanced queue management. Our tech support staff needs the ability to arbitrarily rearrange the queue for a book (e.g. to restore someone's place in the queue if they make a mistake). Exposing this behavior through the API will let us write tools for them. We also plan to run experiments with non-traditional queues (e.g. making reservations so you know you'll get a book at a certain time) which will require that we take control of all queue activity. We're working on getting more specific requirements.
+
+* The "Place Hold" and "Release Hold" APIs respond to a PUT request with a 405 error and this message:
+
+<string>The requested resource does not support http method 'GET'.</string>
+
+## What we need from Overdrive
+
+* Overdrive has no visible audit log. We have hacked something together using the monitor software, but it's neither precise nor accurate. This makes it difficult to measure what's happening to our Overdrive inventory.
+
+* We have no way of seeing our entire Overdrive inventory. We don't know about a book until we see something happen to it in the monitor. If we buy a license for a book, but no one ever looks at the book, we never hear about it.
+
+* There is no notification of any kind when a book becomes available to one of our patrons. To get this information we must poll the Holds API. This requires authentication, which means providing the user's barcode and PIN. This means that we'll need to store the user's PIN in plaintext locally if we want to check their holds in the background, outside the context of an HTTP request their client is making. (We might want to do this to provide email notifications, for instance.)
+
+
 ## General ebook distributor issues
 
 ### LCP
@@ -82,20 +123,6 @@ This seems like a huge mess both technically and politically. This applies to Ov
 ## Overdrive
 
 It's very difficult to get a near-real-time picture of our Overdrive circulation. We have something that's pretty good, but it means a lot of API calls--hundreds every minute. I've asked Overdrive for a better API and they've told me to use what they have.
-
-## 3M
-
-* 3M insists that all patrons use their e-reader to download, decrypt, and read books. This is a deal-breaker. Without this feature, all the stuff below is moot and they simply cannot participate in this project.
-
-* 3M's API has bugs that makes me skeptical it has ever been used. The "Place Hold" and "Release Hold" APIs respond to a PUT request with a 405 error and this message:
-
-<code>&lt;string&gt;The requested resource does not support http method 'GET'.&lt;/string&gt;</code>
-
-* It's not clear whether we must register a patron with 3M before we can make API calls that affect their account.
-
-* 3M does not notify us when someone releases a hold on the book. We are informed about reservations, but only during the 7 days the reservation is active.
-
-* 3M does not provide any classification information for their books, or access to user ratings of the books (information they do have).
 
 ## Axis 360
 
