@@ -230,6 +230,13 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 <td>*Not supported*</td>
 </tr>
 
+<tr>
+<td>Hear about checkins, checkouts, hold placements, hold releases, availability of new titles, license expiration (for the book), books becoming available to next person in queue.</td>
+<td>DOESN'T HAVE (via inference): Books becoming available to next person in queue. Can _generally_ infer everything else, but don't really know (i.e. who gets the book next).</td>
+<td>DOESN'T HAVE: Availability (to next person in queue), Hold Releases</td>
+<td>Foo</td>
+</tr>
+
 </table>
 
 ## July '14 Server Design Elements
