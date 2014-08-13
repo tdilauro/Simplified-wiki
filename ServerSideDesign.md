@@ -153,10 +153,10 @@ A combination of OPDS, LCP, and plain HTTP will cover most of this.
 
 <table>
  <tr>
- <th>Message from server to source</th>
- <th>Overdrive</th>
- <th>3M</th>
- <th>Axis360</th>
+ <th width=150px>Message from server to source</th>
+ <th width=150px>Overdrive</th>
+ <th width=150px>3M</th>
+ <th width=150px>Axis360</th>
  </tr>
 
 <tr>
