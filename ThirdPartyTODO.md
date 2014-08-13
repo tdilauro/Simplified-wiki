@@ -44,6 +44,19 @@ without ever setting foot in a library building.
 
 <string>The requested resource does not support http method 'GET'.</string>
 
+
+### 3M Project Requirements (IN PROGRESS)
+**NYPL Library Simplified - Specifications for Integration**
+We're tremendously excited to work with you on the Library Simplified project to include content from 3M in the e-reading platforms of The New York Public Library and our Partner Libraries.
+
+We've taken an initial look at the 3M platform & API and have determined that there are a few things that'll need to done before we can make that integration.
+
+#### Core Requirements [Table of Contents]
+
+#### API: Check Out A Book & Download License File
+
+
+
 ## What we need from Overdrive
 
 * Overdrive has no visible audit log. We have hacked something together using the monitor software, but it's neither precise nor accurate. This makes it difficult to measure what's happening to our Overdrive inventory.
