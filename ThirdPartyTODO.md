@@ -54,6 +54,11 @@ We've taken an initial look at the 3M platform & API and have determined that th
 #### Core Requirements [Table of Contents]
 
 #### API: Check Out A Book & Download License File
+The number one requirement is that after 'Checkout', I be able to download the license file and encrypted ebook file for the book I just checked out. See, for example, Overdrive's Checkouts API. When I check out a book from Overdrive I am given a "downloadLink" template which gives me the URL to the ACSM license file, which contains the URL to the actual ebook.
+
+
+
+
 
 
 
