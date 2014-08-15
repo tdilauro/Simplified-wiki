@@ -215,6 +215,10 @@ To find free public domain books, search for the author or title, and in the lef
 
 [About 200 scanned PDF agazines](http://www.pulpmags.org/). A combination of pre-1923 magazines and post-1923 magazines with no copyright renewal. An academic project.
 
+### Living Books about Life
+
+[25 nonfiction books](http://www.livingbooksaboutlife.org/) on biology topics. General interest, not textbooks.
+
 ### Feedbooks
 
 This French ebook site is designed with mobile reading in mind. It’s tailored for mobile browsers, so you can download free ebooks directly to your tablet or smartphone.
