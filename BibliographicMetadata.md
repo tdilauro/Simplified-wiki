@@ -136,6 +136,19 @@ documents is not explicitly defined.
 * Includes minimal objective metadata
 * Includes no subjective metadata
 
+### Working with Bibliocommons API
+Anything that can be constructed as an Advanced Search can be structured for a paramaterized title search.
+
+As discussed in [http://developer.bibliocommons.com/forum/read/155663](forum thread):
+<blockquote>
+Queries from advanced search can be passed using search_type=custom. For example:
+
+https://api.bibliocommons.com/v1/titles.json?library=gvpl&search_type=custom&q=anywhere%3A(moondog)%20%20formatcode%3A(BK%20OR%20EBOOK)&api_key={key}
+</blockquote>
+
+
+
+
 ## GoodReads
 
 XML format.
