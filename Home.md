@@ -9,6 +9,7 @@ Welcome to the Library Simplified wiki!
 * [[Content Sources|ContentSources]]
 * [[Overview of our active collections|OurCollections]]
 * [[Mirrored content|MirroredContent]]
+* [[Project Gutenberg Blacklist|ProjectGutenbergBlacklist]]
 
 #### Metadata, etc
 * [[Bibliographic Metadata|BibliographicMetadata]]
