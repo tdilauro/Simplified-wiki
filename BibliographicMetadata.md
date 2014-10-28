@@ -146,8 +146,12 @@ Queries from advanced search can be passed using search_type=custom. For example
 https://api.bibliocommons.com/v1/titles.json?library=gvpl&search_type=custom&q=anywhere%3A(moondog)%20%20formatcode%3A(BK%20OR%20EBOOK)&api_key={key}
 </blockquote>
 
+## Harvard LibraryCloud
 
+JSON or MARC format. Some data comes from OCLC but some (e.g. "ShelfRank", a rating of community engagement a.k.a. popularity) is original.
 
+* [MARC downloads](http://openmetadata.lib.harvard.edu/bibdata)
+* [API](http://librarycloud.harvard.edu/v1/docs/item/)
 
 ## GoodReads
 
