@@ -14,36 +14,37 @@ without ever setting foot in a library building.
 
 * See also the [basic list of messages](https://github.com/NYPL/Simplified-docs/wiki/ServerSideDesign#api-comparison) we want to be able to send _any_ source of ebooks.
 
-* The number one requirement is that after 'Checkout', I be able to
-  download the license file and encrypted ebook file for the book I
-  just checked out. See, for example, [Overdrive's Checkouts API](https://developer.overdrive.com/apis/checkouts). When I check out a book from Overdrive I am given a ["downloadLink"
-  template](https://developer.overdrive.com/apis/download) which gives me the URL to the ACSM
-  license file, which contains the URL to the actual ebook.
+* A successful response from the "Checkout" API must include a link to the ACSM file which can be used to get a license.
+
+* A successful response from the "Get Patron Circulation" API must include a link to the ACSM file for every checked-out <Item>. (This way, a patron can check out a book one one device, then read the book on another device.)
 
 * 3M cannot serve free previews of books, even if the publisher allows for them.
 
-* There is no API for getting a book's cover image.
-
-* Currently all our licenses for a given book are treated as interchangeable. But they're not interchangeable. Licenses from different publishers have different rules associated with them. Individual licenses for a single book may have different expiration dates and different numbers of loans remaining. We need the ability to address licenses individually. Eventually we would like to assign a patron to a specific license when they check out a book, but just knowing the status of the licenses is good enough to start. If we know that five of our ten licenses for a book are about to expire, we want to push the book harder to get as many lends out as possible before it expires.
-
-* 3M has a genre classification for each book, and tracks user ratings for each book, but doesn't make that information available in "Get Item Details". We'd like access to that information. If there's any more  bibliographic information about a book that we don't currently get, it would be nice to get that too, but the big ones are classification and rating.
-
-* Near-real-time usage information. 3M's event log does a good job, but we would like a callback
-  mechanism to make sure we don't miss especially important events,
-  such as a book becoming available to someone at the head of a queue.
+* The response for "Get Item Details" should include the following information for an item:
+  * The genre classification (e.g. "Performing Arts / Business Aspects")
+  * The user rating
 
 * There is no entry in the event log when someone releases a hold on a book.
 
 * Active reservations (a patron can check out a book if they want) do have an entry in the event log, but they disappear once the patron checks out the book or the reservation expires.
 
-* What exactly happens when a book becomes available, anyway? Is there a notification mechanism we need to know about? If so, how can we program that mechanism?
-
-* We want features for advanced queue management. Our tech support staff needs the ability to arbitrarily rearrange the queue for a book (e.g. to restore someone's place in the queue if they make a mistake). Exposing this behavior through the API will let us write tools for them. We also plan to run experiments with non-traditional queues (e.g. making reservations so you know you'll get a book at a certain time) which will require that we take control of all queue activity. We're working on getting more specific requirements.
-
 * The "Place Hold" and "Release Hold" APIs respond to a PUT request with a 405 error and this message:
 
 <string>The requested resource does not support http method 'GET'.</string>
 
+(I admit I haven't tested this recently.)
+
+_Stuff I think we can live without:_
+
+* What exactly happens when a book becomes available, anyway? Is there a notification mechanism we need to know about? If so, how can we program that mechanism?
+
+* Currently all our licenses for a given book are treated as interchangeable. But they're not interchangeable. Licenses from different publishers have different rules associated with them. Individual licenses for a single book may have different expiration dates and different numbers of loans remaining. We need the ability to address licenses individually. Eventually we would like to assign a patron to a specific license when they check out a book, but just knowing the status of the licenses is good enough to start. If we know that five of our ten licenses for a book are about to expire, we want to push the book harder to get as many lends out as possible before it expires.
+
+* Near-real-time usage information. 3M's event log does a good job, but we would like a callback
+  mechanism to make sure we don't miss especially important events,
+  such as a book becoming available to someone at the head of a queue.
+
+* We want features for advanced queue management. Our tech support staff needs the ability to arbitrarily rearrange the queue for a book (e.g. to restore someone's place in the queue if they make a mistake). Exposing this behavior through the API will let us write tools for them. We also plan to run experiments with non-traditional queues (e.g. making reservations so you know you'll get a book at a certain time) which will require that we take control of all queue activity. We're working on getting more specific requirements.
 
 ### 3M Project Requirements (IN PROGRESS)
 **NYPL Library Simplified - Specifications for Integration**
