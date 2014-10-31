@@ -28,9 +28,11 @@ without ever setting foot in a library building.
 
 * The "Place Hold" and "Release Hold" APIs respond to a PUT request with a 405 error and this message:
 
-<string>The requested resource does not support http method 'GET'.</string>
+`The requested resource does not support http method 'GET'.`
 
 (I admit I haven't tested this recently.)
+
+* If our heavy usage of "Get Item Circulation" to find out about changes in circulation is a problem, we're happy to adopt some other system.
 
 _Stuff I think we can live without for a while:_
 
