@@ -18,8 +18,6 @@ without ever setting foot in a library building.
 
 * A successful response from the "Get Patron Circulation" API must include a link to the ACSM file for every checked-out <Item>. (This way, a patron can check out a book one one device, then read the book on another device.)
 
-* 3M cannot serve free previews of books, even if the publisher allows for them.
-
 * The response for "Get Item Details" should include the following information for an item:
   * The genre classification (e.g. "Performing Arts / Business Aspects")
   * The user rating
@@ -34,7 +32,9 @@ without ever setting foot in a library building.
 
 (I admit I haven't tested this recently.)
 
-_Stuff I think we can live without:_
+_Stuff I think we can live without for a while:_
+
+* If the publisher allows for a free preview of a book, 3M should make an unencrypted EPUB of the book available, the way Overdrive does.
 
 * What exactly happens when a book becomes available, anyway? Is there a notification mechanism we need to know about? If so, how can we program that mechanism?
 
