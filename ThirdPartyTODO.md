@@ -56,10 +56,27 @@ We've taken an initial look at the 3M platform & API and have determined that th
 
 #### Core Requirements [Table of Contents]
 
-#### API: Check Out A Book & Download License File
-The number one requirement is that after 'Checkout', I be able to download the license file and encrypted ebook file for the book I just checked out. See, for example, Overdrive's Checkouts API. When I check out a book from Overdrive I am given a "downloadLink" template which gives me the URL to the ACSM license file, which contains the URL to the actual ebook.
+#### Borrowing:
+##### API: Check Out A Book & Download License File (Adobe DRM)
+The number one requirement is that after 'Checkout', we be able to download the license file and encrypted ebook file for the book just checked out. See, for example, Overdrive's Checkouts API. When a book is checked out from Overdrive, I am given a "downloadLink" template which gives me the URL to the ACSM license file, which contains the URL to the actual ebook.
 
+In effect, your |//TODO NAME OF API CALL HERE| performs the first half of this in that it registers with your servers the title to be checked out on behalf of a patron. However, we cannot yet recieve the ACSM license file which allows an Adobe DRM client to register as the authorized client for a patron and download the encrypted epub.
 
+Once the Library Simplified client has the ASCM, its Adobe SDK handles the licence registration against your Adobe DRM server |//TODO: GET THE NAME|, obtains the key for the client to decrypt the book, and retrieves the encrypted epub from your servers.
+
+###### Example: /checkout
+|//TODO: TK|
+
+##### API: Return a checked out Epub Early
+In addition to checking out an epub from 3m, we want to enable our users to return their books early |//TODO Need to check if their API already supports this. This may already be a feature of the Adobe SDK as it exists right now|.
+
+*LEONARD*: Can you check if this API is still not working? In your original notes, it appeared the existing checkout AND return APIs aren't responding to requests. Also, do we want to write model calls for them?
+
+Already your API has the RELEASE HOLD method, but it appears not to be responsing to requests. At the same time, we don't have any visibility in the logs to determine if a released hold has gone through and been returned to the pool (or destroyed if that's what the license is to do). Having this visibility will be necessary to complete the hold release.
+
+#### Assumptions Which We Might Have to Revise
+* An Adobe-registered Library Simplified client may authenticate against 3M's Adobe |//TODO NAME| server.
+* All LibrarySimplified devices for a user are considered a single domain. If someone checks out a 3m book from LibrarySimplified, it will not actually play on a 3m reader app for the duration of the checkout.
 
 
 
