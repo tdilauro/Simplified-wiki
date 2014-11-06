@@ -100,7 +100,7 @@ We'd also like to understand whether invoking the 3M "Check-in" API communicates
 
 #### API: Place hold and Cancel hold
 
-The 3M API currently has API methods "Place Hold" and "Cancel Hold", but "Place Hold" gives a 405 error code when we try to invoke it, Since we can't place a hold, we can't verify that "Cancel Hold" works.
+The 3M API currently has API methods "Place Hold" and "Cancel Hold", but "Place Hold" gives a 405 error code when we make the PUT request. Since we can't place a hold, we can't verify that "Cancel Hold" works.
 
 ##### API: "Get Patron Circulation"
 
