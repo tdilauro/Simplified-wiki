@@ -58,11 +58,11 @@ We've taken an initial look at the 3M platform & API and have determined that th
 
 #### Borrowing:
 ##### API: Check Out A Book & Download License File (Adobe DRM)
-The number one requirement is that after 'Checkout', we be able to download the license file and encrypted ebook file for the book just checked out. See, for example, Overdrive's Checkouts API. When a book is checked out from Overdrive, I am given a "downloadLink" template which gives me the URL to the ACSM license file, which contains the URL to the actual ebook.
+The number one requirement is that after 'Checkout', we be able to download the license file and encrypted ebook file for the book just checked out.
 
-Your "Checkout" API performs the first half of this: it registers with your servers the title to be checked out on behalf of a patron. However, we cannot yet recieve the ACSM license file which allows an Adobe DRM client to register as the authorized client for a patron and download the encrypted epub.
+Our model for this is Overdrive's Checkouts API. When a book is checked out from Overdrive, the client is given a "downloadLink" template which can be filled in to get the URL to the ACSM license file. The Adobe SDK can use the ACSM license file to download and decrypt the ebook itself.
 
-Once the Library Simplified client has the ASCM, its Adobe SDK handles the licence registration against your Adobe DRM server |//TODO: GET THE NAME|, obtains the key for the client to decrypt the book, and retrieves the encrypted epub from your servers.
+Your "Checkout" API performs the first half of this: it registers with your servers the title to be checked out on behalf of a patron. However, we cannot yet recieve the ACSM license file.
 
 ###### Example: /checkout
 <?xml version="1.0" encoding="utf98"?>
@@ -71,6 +71,8 @@ Once the Library Simplified client has the ASCM, its Adobe SDK handles the licen
  <DueDateInUTC>2012904925T19:27:35</DueDateInUTC>
  <DownloadLink>http://???.???/delivery/metadata?udid=fzug9&exporter=com.bookpac.exporter.fulfillmenttoken&token=b5JVXqYaRWFwff384wyg84tpeAyZJLE8R84EoUTjo47@&tokenType=vendorID</DownloadLink>
 </CheckoutResult>
+
+Once the Library Simplified client has the ASCM, its Adobe SDK handles the licence registration against your Adobe DRM server |//TODO: GET THE NAME|, obtains the key for the client to decrypt the book, and retrieves the encrypted epub from your servers.
 
 ##### API: Return a checked out Epub Early
 
