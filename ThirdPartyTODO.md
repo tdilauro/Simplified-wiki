@@ -57,7 +57,8 @@ We've taken an initial look at the 3M platform & API and have determined that th
 #### Core Requirements [Table of Contents]
 
 #### Borrowing:
-##### API: Check Out A Book & Download License File (Adobe DRM)
+
+##### API: "Checkout": Check Out A Book & Download License File (Adobe DRM)
 The number one requirement is that after 'Checkout', we be able to download the license file and encrypted ebook file for the book just checked out.
 
 Our model for this is Overdrive's Checkouts API. When a book is checked out from Overdrive, the client is given a "downloadLink" template which can be filled in to get the URL to the ACSM license file. The Adobe SDK can use the ACSM license file to download and decrypt the ebook itself.
@@ -79,7 +80,7 @@ Your "Checkout" API performs the first half of this: it registers with your serv
 
 Once the Library Simplified client has the ASCM, its Adobe SDK handles the licence registration against your Adobe DRM server (ebookfs.3m.com), obtains the key for the client to decrypt the book, and retrieves the encrypted epub from ebookdownload.3m.com.
 
-##### API: Return a checked out Epub Early
+##### API: "Check-in"
 
 In addition to checking out an epub from 3M, we want to enable our users to return their books early. The "Check-in" API seems to allow for this, but since we can't check out a book, we can't verify that "Check-in" works.
 
@@ -89,11 +90,11 @@ We'd also like to understand whether invoking the 3M "Check-in" API communicates
 
 The 3M API currently has API methods "Place Hold" and "Cancel Hold", but "Place Hold" gives a 405 error code when we try to invoke it, Since we can't place a hold, we can't verify that "Cancel Hold" works.
 
-#### API: Patron access to the ACSM file after initial checkout
+###### API: "Get Patron Circulation"
 
-A successful response from the "Get Patron Circulation" API must include a link to the ACSM file for every checked-out. This way, a patron can check out a book on one device, then read the book on another device.
+A successful response from the "Get Patron Circulation" API must include a link to the ACSM file for every book with an active loan for the authenticated patron. This way, a patron can check out a book on one device, then read the book on another device.
 
-#### API: "Get Item Details"
+##### API: "Get Item Details"
 
 The response for the "Get Item Details" API should include the following information for an item:
 
@@ -102,7 +103,7 @@ The response for the "Get Item Details" API should include the following informa
 
 This information is visible in the 3M app but not exposed through the API.
 
-#### API: "Get Library Current Events"
+##### API: "Get Library Current Events"
 
 * While a reservation is active, the event log served by the "Get Library Current Events" includes an event for the creation of the reservation. When the reservation expires or is fulfilled (the patron checks out the book reserved for them), the event log no longer gives any indication that the reservation ever existed.
 
