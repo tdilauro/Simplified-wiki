@@ -60,23 +60,50 @@ We've taken an initial look at the 3M platform & API and have determined that th
 ##### API: Check Out A Book & Download License File (Adobe DRM)
 The number one requirement is that after 'Checkout', we be able to download the license file and encrypted ebook file for the book just checked out. See, for example, Overdrive's Checkouts API. When a book is checked out from Overdrive, I am given a "downloadLink" template which gives me the URL to the ACSM license file, which contains the URL to the actual ebook.
 
-In effect, your |//TODO NAME OF API CALL HERE| performs the first half of this in that it registers with your servers the title to be checked out on behalf of a patron. However, we cannot yet recieve the ACSM license file which allows an Adobe DRM client to register as the authorized client for a patron and download the encrypted epub.
+Your "Checkout" API performs the first half of this: it registers with your servers the title to be checked out on behalf of a patron. However, we cannot yet recieve the ACSM license file which allows an Adobe DRM client to register as the authorized client for a patron and download the encrypted epub.
 
 Once the Library Simplified client has the ASCM, its Adobe SDK handles the licence registration against your Adobe DRM server |//TODO: GET THE NAME|, obtains the key for the client to decrypt the book, and retrieves the encrypted epub from your servers.
 
 ###### Example: /checkout
-|//TODO: TK|
+<?xml version="1.0" encoding="utf98"?>
+ <CheckoutResult xmlns:xsi="http://www.w3.org/2001/XMLSchema9instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <ItemId>fzug9</ItemId>
+ <DueDateInUTC>2012904925T19:27:35</DueDateInUTC>
+ <DownloadLink>http://???.???/delivery/metadata?udid=fzug9&exporter=com.bookpac.exporter.fulfillmenttoken&token=b5JVXqYaRWFwff384wyg84tpeAyZJLE8R84EoUTjo47@&tokenType=vendorID</DownloadLink>
+</CheckoutResult>
 
 ##### API: Return a checked out Epub Early
-In addition to checking out an epub from 3m, we want to enable our users to return their books early |//TODO Need to check if their API already supports this. This may already be a feature of the Adobe SDK as it exists right now|.
 
-*LEONARD*: Can you check if this API is still not working? In your original notes, it appeared the existing checkout AND return APIs aren't responding to requests. Also, do we want to write model calls for them?
+In addition to checking out an epub from 3M, we want to enable our users to return their books early. The "Check-in" API seems to allow for this, but since we can't check out a book, we can't verify that "Check-in" works. We'd also like to understand whether invoking the 3M "Check-in" API communicates the check-in to the content server, or whether we also need to use the Adobe SDK to communicate directly with the content server to invalidate the license.
 
-Already your API has the RELEASE HOLD method, but it appears not to be responsing to requests. At the same time, we don't have any visibility in the logs to determine if a released hold has gone through and been returned to the pool (or destroyed if that's what the license is to do). Having this visibility will be necessary to complete the hold release.
+##### API: Place hold and Cancel hold
+
+The 3M API currently has API methods "Place Hold" and "Cancel Hold", but "Place Hold" gives a 405 error code when we try to invoke it, Since we can't place a hold, we can't verify that "Cancel Hold" works.
+
+#### API: Patron access to the ACSM file after initial checkout
+
+A successful response from the "Get Patron Circulation" API must include a link to the ACSM file for every checked-out. This way, a patron can check out a book on one device, then read the book on another device.
+
+#### API: "Get Item Details"
+
+The response for the "Get Item Details" API should include the following information for an item:
+
+* The genre classification (e.g. "Performing Arts / Business Aspects" or ["Performing Arts", "Business Aspects"])
+* The average user rating (e.g. "4.0")
+
+This information is visible in the 3M app but not exposed through the API.
+
+#### API: "Get Library Current Events"
+
+* While a reservation is active, the event log served by the "Get Library Current Events" includes an event for the creation of the reservation. When the reservation expires or is fulfilled (the patron checks out the book reserved for them), the event log no longer gives any indication that the reservation ever existed.
+
+* The event log returned by the "Get Library Current Events" API includes an event whenever a patron puts a hold on a book, but not when a patron releases a hold. This means we have no way of knowing when a user of the 3M reader app releases a hold.
 
 #### Assumptions Which We Might Have to Revise
+
 * An Adobe-registered Library Simplified client may authenticate against 3M's Adobe |//TODO NAME| server.
-* All LibrarySimplified devices for a user are considered a single domain. If someone checks out a 3m book from LibrarySimplified, it will not actually play on a 3m reader app for the duration of the checkout.
+
+* All of a patron's Library Simplified devices are considered a single domain. If someone checks out a 3M book through Library Simplified, they will not be able to read that book in the 3M reader app.
 
 
 
