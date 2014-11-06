@@ -65,17 +65,17 @@ Our model for this is Overdrive's Checkouts API. When a book is checked out from
 Your "Checkout" API performs the first half of this: it registers with your servers the title to be checked out on behalf of a patron. However, we cannot yet recieve the ACSM license file.
 
 ###### Example: /checkout
-```<?xml version="1.0" encoding="utf98"?>
+`<?xml version="1.0" encoding="utf98"?>`
 
- <CheckoutResult xmlns:xsi="http://www.w3.org/2001/XMLSchema9instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+` <CheckoutResult xmlns:xsi="http://www.w3.org/2001/XMLSchema9instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">`
 
- <ItemId>fzug9</ItemId>`
+` <ItemId>fzug9</ItemId>`
 
- <DueDateInUTC>2012904925T19:27:35</DueDateInUTC>
+` <DueDateInUTC>2012904925T19:27:35</DueDateInUTC>`
 
- <DownloadLink>http://ebook.3m.com/delivery/metadata?udid=fzug9&exporter=com.bookpac.exporter.fulfillmenttoken&token=b5JVXqYaRWFwff384wyg84tpeAyZJLE8R84EoUTjo47@&tokenType=vendorID</DownloadLink>
+` <DownloadLink>http://ebook.3m.com/delivery/metadata?udid=fzug9&exporter=com.bookpac.exporter.fulfillmenttoken&token=b5JVXqYaRWFwff384wyg84tpeAyZJLE8R84EoUTjo47@&tokenType=vendorID</DownloadLink>`
 
-</CheckoutResult>```
+`</CheckoutResult>`
 
 Once the Library Simplified client has the ASCM, its Adobe SDK handles the licence registration against your Adobe DRM server (ebookfs.3m.com), obtains the key for the client to decrypt the book, and retrieves the encrypted epub from ebookdownload.3m.com.
 
