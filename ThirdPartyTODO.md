@@ -111,9 +111,10 @@ This information is visible in the 3M app but not exposed through the API.
 
 #### Assumptions Which We Might Have to Revise
 
-* An Adobe-registered Library Simplified client may authenticate against 3M's Adobe |//TODO NAME| server.
+* An Adobe-registered Library Simplified client may authenticate against 3M's Adobe server.
 
-* All of a patron's Library Simplified devices are considered a single domain. If someone checks out a 3M book through Library Simplified, they will not be able to read that book in the 3M reader app.
+#### Questions
+* How does Adobe account system work for 3m? We presume you are creating an Adobe ID on the backend on behalf of each user. What we want to know is will it be possible for a user with another valid Adobe account (not created by 3m) to check out and open a protected epub from you.
 
 
 
