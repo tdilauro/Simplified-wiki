@@ -66,17 +66,24 @@ Your "Checkout" API performs the first half of this: it registers with your serv
 
 ###### Example: /checkout
 ```<?xml version="1.0" encoding="utf98"?>
+
  <CheckoutResult xmlns:xsi="http://www.w3.org/2001/XMLSchema9instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
  <ItemId>fzug9</ItemId>`
+
  <DueDateInUTC>2012904925T19:27:35</DueDateInUTC>
- <DownloadLink>http://???.???/delivery/metadata?udid=fzug9&exporter=com.bookpac.exporter.fulfillmenttoken&token=b5JVXqYaRWFwff384wyg84tpeAyZJLE8R84EoUTjo47@&tokenType=vendorID</DownloadLink>
+
+ <DownloadLink>http://ebook.3m.com/delivery/metadata?udid=fzug9&exporter=com.bookpac.exporter.fulfillmenttoken&token=b5JVXqYaRWFwff384wyg84tpeAyZJLE8R84EoUTjo47@&tokenType=vendorID</DownloadLink>
+
 </CheckoutResult>```
 
-Once the Library Simplified client has the ASCM, its Adobe SDK handles the licence registration against your Adobe DRM server |//TODO: GET THE NAME|, obtains the key for the client to decrypt the book, and retrieves the encrypted epub from your servers.
+Once the Library Simplified client has the ASCM, its Adobe SDK handles the licence registration against your Adobe DRM server (ebookfs.3m.com), obtains the key for the client to decrypt the book, and retrieves the encrypted epub from ebookdownload.3m.com.
 
 ##### API: Return a checked out Epub Early
 
-In addition to checking out an epub from 3M, we want to enable our users to return their books early. The "Check-in" API seems to allow for this, but since we can't check out a book, we can't verify that "Check-in" works. We'd also like to understand whether invoking the 3M "Check-in" API communicates the check-in to the content server, or whether we also need to use the Adobe SDK to communicate directly with the content server to invalidate the license.
+In addition to checking out an epub from 3M, we want to enable our users to return their books early. The "Check-in" API seems to allow for this, but since we can't check out a book, we can't verify that "Check-in" works.
+
+We'd also like to understand whether invoking the 3M "Check-in" API communicates the check-in to the content server, or whether we also need to use the Adobe SDK to communicate directly with the content server to invalidate the license.
 
 ##### API: Place hold and Cancel hold
 
