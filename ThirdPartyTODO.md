@@ -135,7 +135,7 @@ We also need the following information not currently visible in the 3M app:
 
 Without this information we have no way of knowing which choices to give the patron.
 
-#### Sample response
+##### Sample response
 
 In this response the genre classification is represented as a set of nested tags and the maximum loan duration is measured in hours. This is just for purposes of example.
 
