@@ -14,23 +14,7 @@ without ever setting foot in a library building.
 
 * See also the [basic list of messages](https://github.com/NYPL/Simplified-docs/wiki/ServerSideDesign#api-comparison) we want to be able to send _any_ source of ebooks.
 
-* A successful response from the "Checkout" API must include a link to the ACSM file which can be used to get a license.
-
-* A successful response from the "Get Patron Circulation" API must include a link to the ACSM file for every checked-out <Item>. (This way, a patron can check out a book one one device, then read the book on another device.)
-
-* The response for "Get Item Details" should include the following information for an item:
-  * The genre classification (e.g. "Performing Arts / Business Aspects")
-  * The user rating
-
-* There is no entry in the event log when someone releases a hold on a book.
-
-* Active reservations (a patron can check out a book if they want) do have an entry in the event log, but they disappear once the patron checks out the book or the reservation expires.
-
-* The "Place Hold" and "Release Hold" APIs respond to a PUT request with a 405 error and this message:
-
-`The requested resource does not support http method 'GET'.`
-
-(I admit I haven't tested this recently.)
+* The stuff in the requirements document (below)
 
 * If our heavy usage of "Get Item Circulation" to find out about changes in circulation is a problem, we're happy to adopt some other system.
 
