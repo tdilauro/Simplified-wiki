@@ -38,7 +38,7 @@ We're tremendously excited to work with you on the Library Simplified project to
 
 We've taken an initial look at the 3M platform & API and have determined that there are a few things that'll need to done before we can make that integration.
 
-#### Core Requirements [Table of Contents]
+### Core Requirements
 
 #### HTTPS
 
