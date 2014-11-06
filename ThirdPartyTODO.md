@@ -126,7 +126,7 @@ A successful response from the "Get Patron Circulation" API must include a link 
 
 The response for the "Get Item Details" API should include the following information for an item. This information is visible in the 3M app but not exposed through the API:
 
-* The genre classification (e.g. "Performing Arts / Business Aspects" or ["Performing Arts", "Business Aspects"])
+* The genre classification (e.g. "Performing Arts / Business Aspects")
 * The average user rating (e.g. "4.0")
 
 We also need the following information not currently visible in the 3M app:
@@ -152,6 +152,8 @@ In this response the genre classification is represented as a set of nested tags
    `<Genre name="Space Opera" />`
 
   `</Genre>`
+
+  `<Rating>4.4</Rating>`
 
   `<MaximumLoanDuration>504</MaximumLoanDuration>`
 
