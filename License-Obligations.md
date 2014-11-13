@@ -6,7 +6,7 @@ This page details our obligations resulting from the software and services we us
 
 ## Adobe RMSDK 11
 
-_NOTE: This is taken from the RMSDK 11 User manual._
+_NOTE: This is taken from the RMSDK 11 user manual._
 
 **7 Device Certification Process**
 
