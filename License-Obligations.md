@@ -1,6 +1,6 @@
 # Introduction
 
-This page details our obligations as a result of the software and services we use.
+This page details our obligations resulting from the software and services we use.
 
 # Client
 
