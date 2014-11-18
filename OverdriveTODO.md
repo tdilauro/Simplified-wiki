@@ -2,12 +2,12 @@
 
 ### DRM credential management
 
-We currently have no visibility into the DRM credentials associated with a patron's account, whether they were created by Overdrive, or created by the patron and manually associated with the patron's Overdrive account. We ask for an API similar to the one offered by Baker & Taylor, with the following three pieces of functionality:
+We currently have no visibility into the DRM credentials associated with a patron's account, whether they were created by Overdrive, or created by the patron and manually associated with the patron's Overdrive account. We ask for an API similar to the one offered by Baker & Taylor, with the following four pieces of functionality:
 
 1. Associate an existing DRM credential with the patron's Overdrive account.
 2. List the DRM credentials currently associated with the patron's Overdrive account.
 3. Create a new DRM credential and associate it with the patron's Overdrive account.
-4. Disassociate a DRM credential (not one created by Overdrive) from the patron's Overdrive account.
+4. Disassociate a DRM credential from the patron's Overdrive account. We do not require that this functionality work for credentials originally created by Overdrive.
 
 Access to this functionality would be controlled by Overdrive's existing patron token.
 
