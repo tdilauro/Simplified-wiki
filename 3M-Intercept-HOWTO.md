@@ -16,7 +16,7 @@
 
 7. Hit the Borrow button in the 3M app. Moments later, the request should appear in Charles.
 
-8. In the Session tab of Charles, find the request and examine the response. You should see something like the following:
+8. In the Session tab of Charles, find and examine the request. You should see something like the following:
 
     http://paste.lisp.org/display/144796/raw
 
