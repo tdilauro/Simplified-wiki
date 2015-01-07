@@ -231,6 +231,32 @@ A lot of schemes have been devised to classify books.
 
 #### YOUNG ADULT
 
+## Practical application of Classification for user brows-ability
+
+There is evidence that humans naturally struggle to make rational decisions when presented to many options.  As the above classification schema illustrates, navigating the breadth of content classifications could be confusing or result in poor selection or discomfort.
+
+A further simplification for initial browse-ability would be too futher aggregate classifications above into the CATALOG in the Following way:
+### STAFF PICKS
+This consist of NYPL staff recommendations 
+
+### FICTION
+
+* Mystery/Crime/Thriller - sub-genre and appeal classifications could be further swim lanes
+* Science Fiction and Fantasy -sub-genre and appeal classifications could be further swim lanes
+* Romance -sub-genre and appeal classifications could be further swim lanes
+* Literary Fiction -sub-genre and appeal classifications could be further swim lanes
+
+### NON-FICTION
+subjects could be further swim lanes
+
+### CHILDREN
+
+### YOUNG ADULT (FICTION)
+* Mystery/Crime/Thriller - sub-genre and appeal classifications could be further swim lanes
+* Science Fiction and Fantasy -sub-genre and appeal classifications could be further swim lanes
+* Romance -sub-genre and appeal classifications could be further swim lanes
+
+
 ## Recommendation sources
 
 We only acquire a paid ebook if a librarian thinks it's worth stocking. This sets a minimum level of quality on our paid selection. This means automated techniques for detecting _quality_ aren't as useful. (They may still be useful on our public domain material.)
