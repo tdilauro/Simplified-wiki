@@ -26,7 +26,14 @@ virtualenv env
 source env/bin/activate
 ```
 
-# Outstanding questions
+# Outstanding questions/issues
+
+* How do we turn the instructions above into a puppet module?
+* What Jenkins jobs do we need to define? How are they to be set up?
+* Is it still useful to run the server in a python virtualenv? Or does it not matter since these are single-purpose servers?
+* What are the AWS credentials that will let the content server and the metadata wrangler upload static content to S3?
+* Instead of a single 'libsimple' database I need three databases, one for each component.
+* What exactly is the dev environment 'for'? How about the QA environment?
 
 ## Database for unit tests
 
