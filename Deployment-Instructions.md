@@ -35,6 +35,7 @@ source env/bin/activate
 * What are the AWS credentials that will let the content server and the metadata wrangler upload static content to S3?
 * Instead of a single 'libsimple' database I need three databases, one for each component.
 * What exactly is the dev environment 'for'? How about the QA environment? What's my development workflow?
+* Can we connect the dev environment to the ILS to perform patron authentication? If not, can we connect to a sandbox ILS instead?
 
 ## Database for unit tests
 
