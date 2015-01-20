@@ -26,11 +26,11 @@ virtualenv env
 source env/bin/activate
 ```
 
-# Outstanding problems
+# Outstanding questions
 
 ## Database for unit tests
 
-I need a transient database to use when running the unit test suite. This would be a database that I can destroy and re-create if something goes wrong during a test.
+I need a transient database to use when running the unit test suite in the development environment. This would be a database that I can destroy and re-create if something goes wrong during a test.
 
 1. I set up postgresql servers on the development machines and create/destroy databases as needed.
 2. Test database managed on the same terms as the dev/qa/production database. Instead of getting to a known state by dropping and recreating the database itself, I do it by dropping all the tables.
