@@ -3,16 +3,16 @@ Step-by-step instructions for deploying any of the Simplified applications on an
 ```
 # Install packaged requirements.
 sudo yum install git postgresql python-nose python-sqlalchemy python-pip 
-# These are necessary for installing python lxml through pip
+sudo pip install virtualenv virtualenvwrapper
+
+# These are necessary for installing python lxml through pip.
+# libxslt-python may also be necessary, I'm not sure.
 sudo yum install python-devel libxml2-devel libsxlt-devel gcc
+
 # This is necessary for installing psycopg2 through pip
 sudo yum install postgresql-devel
 
-# libxslt-python may also be necessary
-
-sudo pip install virtualenv virtualenvwrapper
-
-# Check out the repository and install Python requirements.
+# Check out the repository and install Python requirements through pip
 git clone https://github.com/NYPL/Simplified-circulation.git
 cd Simplified-circulation
 git submodule init
@@ -24,6 +24,14 @@ virtualenv env
 # Manual step: install env/bin/simplified_env and add the following line to the bottom of env/bin/activate:
 # source simplified_env
 source env/bin/activate
-
-
 ```
+
+# Outstanding problems
+
+## Database for unit tests
+
+I need a transient database to use when running the unit test suite. This would be a database that I can destroy and re-create if something goes wrong during a test.
+
+1. I set up postgresql servers on the development machines and create/destroy databases as needed.
+2. Test database managed on the same terms as the dev/qa/production database. Instead of getting to a known state by dropping and recreating the database itself, I do it by dropping all the tables.
+3. I change the tests to use sqlite instead of postgres.
