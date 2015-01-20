@@ -4,6 +4,7 @@ Welcome to the Library Simplified wiki!
 * [[Goals, Objectives, Measures|MetricsAndMeasurements]]
 * [[Glossary]]
 * [[License Obligations]]
+* [[Deployment Instructions]]
 
 ## Resources
 #### Content
