@@ -13,17 +13,41 @@ sudo yum install python-devel libxml2-devel libsxlt-devel gcc
 sudo yum install postgresql-devel
 
 # Check out the repository and install Python requirements through pip
-git clone https://github.com/NYPL/Simplified-circulation.git
-cd Simplified-circulation
+```
+
+```
+git clone https://github.com/NYPL/Simplified-circulation.git circulation
+cd circulation
+```
+
+OR
+
+```
+git clone https://github.com/NYPL/Simplified-content.git content
+cd content
+```
+
+OR
+
+```
+git clone https://github.com/NYPL/Simplified-metadata.git metadata
+cd metadata
+```
+
+```
+# Initialize submodules
 git submodule init
 git submodule update
-pip install -r requirements.txt
 
 # Create a virtual environment
 virtualenv env
 # Manual step: install env/bin/simplified_env and add the following line to the bottom of env/bin/activate:
 # source simplified_env
 source env/bin/activate
+
+# Install Python requirements into the virtual environment
+pip install -r requirements.txt
+
 ```
 
 # Outstanding questions/issues
