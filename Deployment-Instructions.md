@@ -30,7 +30,7 @@ cd content
 OR
 
 ```
-git clone https://github.com/NYPL/Simplified-metadata.git metadata
+git clone https://github.com/NYPL/Simplified-server.git metadata
 cd metadata
 ```
 
