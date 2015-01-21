@@ -23,7 +23,7 @@ cd circulation
 OR
 
 ```
-git clone https://github.com/NYPL/Simplified-content.git content
+git clone https://github.com/NYPL/Simplified-content-server.git content
 cd content
 ```
 
