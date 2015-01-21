@@ -11,9 +11,9 @@ sudo yum install python-devel libxml2-devel libsxlt-devel gcc
 
 # This is necessary for installing psycopg2 through pip
 sudo yum install postgresql-devel
-
-# Check out the repository and install Python requirements through pip
 ```
+
+Check out the appropriate repository:
 
 ```
 git clone https://github.com/NYPL/Simplified-circulation.git circulation
@@ -33,6 +33,8 @@ OR
 git clone https://github.com/NYPL/Simplified-metadata.git metadata
 cd metadata
 ```
+
+Then:
 
 ```
 # Initialize submodules
