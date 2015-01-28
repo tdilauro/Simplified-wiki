@@ -54,13 +54,13 @@ pip install -r requirements.txt
 
 # Outstanding questions/issues
 
+* I need a dev environment where I can do active development with a persistent connection and access to a large dataset. Is this what you mean by a "dev" environment? If not, what is the dev environment for and how can I get the dev environment I need?
 * How do we turn the instructions above into a puppet module?
 * Where is a safe place to store the all-important simplified_env file, which contains credentials and secrets?
 * What Jenkins jobs do we need to define? How are they to be set up?
 * Is it still useful to run the server in a python virtualenv? Or does it not matter since these are single-purpose servers?
 * What are the AWS credentials that will let the content server and the metadata wrangler upload static content to S3?
 * Instead of a single 'libsimple' database I need three databases, one for each component.
-* What exactly is the dev environment 'for'? How about the QA environment? What's my development workflow?
 * Can we connect the dev environment to the ILS to perform patron authentication? If not, can we connect to a sandbox ILS instead?
 
 ## Database for unit tests
