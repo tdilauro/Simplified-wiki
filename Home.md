@@ -16,6 +16,7 @@ Welcome to the Library Simplified wiki!
 #### Metadata, etc
 * [[Bibliographic Metadata|BibliographicMetadata]]
 * [[Classification and Recommendation|ClassificationandRecommendation]]
+* [[Open Distribution to Libraries | https://docs.google.com/document/d/1jaHZSsMCZY80rH5sqJcp_kya0W2Dtkda7MrdFBkrOg8/edit]]
 
 #### Transactional interfaces
 * [[User Accounts and Authentication|Authentication]]
