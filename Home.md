@@ -32,6 +32,7 @@ Welcome to the Library Simplified wiki!
 * [[ServerSideDesign]]
  - [[CirculationServer|The circulation server]]
 * [[Cloud and Syncing]]
+* [[Admin Interfaces]]
 
 # Project Management
 * [[Sprints]]
