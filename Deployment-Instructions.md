@@ -41,7 +41,7 @@ git submodule init
 git submodule update
 
 # Create a virtual environment
-virtualenv env
+virtualenv -p /usr/bin/python2.7 env
 # Manual step: install env/bin/simplified_env and add the following line to the bottom of env/bin/activate:
 # source simplified_env
 source env/bin/activate
