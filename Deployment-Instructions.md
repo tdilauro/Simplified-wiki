@@ -2,7 +2,7 @@ Step-by-step instructions for deploying any of the Simplified applications on an
 
 ```
 # Install packaged requirements.
-sudo yum install git postgresql python-nose python-sqlalchemy python-pip 
+sudo yum install python27 git postgresql python-nose python-sqlalchemy python-pip 
 sudo pip install virtualenv virtualenvwrapper
 
 # These are necessary for installing python lxml through pip.
