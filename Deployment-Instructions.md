@@ -6,8 +6,7 @@ sudo yum install git postgresql python-nose python-sqlalchemy python-pip
 sudo pip install virtualenv virtualenvwrapper
 
 # These are necessary for installing python lxml through pip.
-# libxslt-python may also be necessary, I'm not sure.
-sudo yum install python-devel libxml2-devel libsxlt-devel gcc
+sudo yum install python-devel libxml2-devel libsxlt-devel gcc libxslt-python
 
 # This is necessary for installing psycopg2 through pip
 sudo yum install postgresql-devel
