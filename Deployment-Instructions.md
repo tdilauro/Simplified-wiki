@@ -12,6 +12,9 @@ sudo yum install libxml2-devel libsxlt-devel gcc libxslt-python
 sudo yum install postgresql-devel
 ```
 
+# Used by pillow to generate JPG thumbnails.
+sudo yum install libjpeg8 libjpeg8-dev
+
 Check out the appropriate repository:
 
 ```
