@@ -57,6 +57,8 @@ pip install -r requirements.txt
 
 ```
 
+* Make sure that the directory in $DATA_DIRECTORY is writable by the user that will be running scripts.
+
 # Outstanding questions/issues
 
 * I need a dev environment where I can do active development with a persistent connection and access to a large dataset. Is this what you mean by a "dev" environment? If not, what is the dev environment for and how can I get the dev environment I need?
