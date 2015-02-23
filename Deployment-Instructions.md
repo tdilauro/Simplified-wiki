@@ -10,6 +10,9 @@ sudo yum install libxml2-devel libsxlt-devel gcc libxslt-python
 
 # This is necessary for installing psycopg2 through pip
 sudo yum install postgresql-devel
+
+# The content server also needs an Xvfb server.
+sudo yum install xorg-x11-server-Xvfb
 ```
 
 # Used by pillow to generate JPG thumbnails.
