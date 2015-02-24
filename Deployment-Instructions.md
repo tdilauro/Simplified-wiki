@@ -6,7 +6,7 @@ sudo yum install python27 python27-devel git postgresql python-nose python-sqlal
 sudo pip install virtualenv virtualenvwrapper
 
 # These are necessary for installing python lxml through pip.
-sudo yum install libxml2-devel libsxlt-devel gcc libxslt-python
+sudo yum install libxml2-devel libxslt-devel gcc libxslt-python
 
 # This is necessary for installing psycopg2 through pip
 sudo yum install postgresql-devel
