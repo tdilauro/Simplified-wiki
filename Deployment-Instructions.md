@@ -12,7 +12,7 @@ sudo yum install libxml2-devel libsxlt-devel gcc libxslt-python
 sudo yum install postgresql-devel
 
 # Used by pillow to generate JPG thumbnails.
-sudo yum install libjpeg8 libjpeg8-dev
+sudo yum install libjpeg libjpeg-devel
 ```
 
 The content server also needs to have Xvfb installed:
