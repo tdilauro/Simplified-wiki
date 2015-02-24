@@ -11,12 +11,16 @@ sudo yum install libxml2-devel libsxlt-devel gcc libxslt-python
 # This is necessary for installing psycopg2 through pip
 sudo yum install postgresql-devel
 
-# The content server also needs an Xvfb server.
-sudo yum install xorg-x11-server-Xvfb
-```
-
 # Used by pillow to generate JPG thumbnails.
 sudo yum install libjpeg8 libjpeg8-dev
+```
+
+The content server also needs to have Xvfb installed:
+
+```
+# Content server only
+sudo yum install xorg-x11-server-Xvfb
+```
 
 Check out the appropriate repository:
 
@@ -61,19 +65,6 @@ pip install -r requirements.txt
 
 # Outstanding questions/issues
 
-* I need a dev environment where I can do active development with a persistent connection and access to a large dataset. Is this what you mean by a "dev" environment? If not, what is the dev environment for and how can I get the dev environment I need?
-* Instead of a single 'libsimple' database I need three databases, one for each component.
 * How do we turn the instructions above into a puppet module?
 * Where is a safe place to store the all-important simplified_env file, which contains credentials and secrets?
 * What Jenkins jobs do we need to define? How are they to be set up?
-* Is it still useful to run the server in a python virtualenv? Or does it not matter since these are single-purpose servers?
-* What are the AWS credentials that will let the content server and the metadata wrangler upload static content (covers and ebooks) to S3? Do you have preferred bucket names?
-* Can we connect the dev environment to the ILS to perform patron authentication? If not, can we connect to a sandbox ILS instead?
-
-## Database for unit tests
-
-I need a transient database to use when running the unit test suite in the development environment. This would be a database that I can destroy and re-create if something goes wrong during a test.
-
-1. I set up postgresql servers on the development machines and create/destroy databases as needed.
-2. Test database managed on the same terms as the dev/qa/production database. Instead of getting to a known state by dropping and recreating the database itself, I do it by dropping all the tables.
-3. I change the tests to use sqlite instead of postgres.
