@@ -2,7 +2,7 @@ Step-by-step instructions for deploying any of the Simplified applications on an
 
 ```
 # Install packaged requirements.
-sudo yum install python27 python27-devel git postgresql python-nose python-sqlalchemy python-pip 
+sudo yum install python27 python27-devel git postgresql python-nose python-sqlalchemy python-pip nginx
 sudo pip install virtualenv virtualenvwrapper
 
 # These are necessary for installing python lxml through pip.
@@ -13,6 +13,8 @@ sudo yum install postgresql-devel
 
 # Used by pillow to generate JPG thumbnails.
 sudo yum install libjpeg libjpeg-devel
+
+# TODO: pip install uwsgi?
 ```
 
 The content server also needs to have Xvfb installed:
