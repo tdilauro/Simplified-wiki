@@ -24,6 +24,13 @@ The content server also needs to have Xvfb installed:
 sudo yum install xorg-x11-server-Xvfb
 ```
 
+The metadata wrangler needs to have lapack installed:
+
+```
+# Metadata wrangler only
+sudo yum install lapack
+```
+
 Check out the appropriate repository:
 
 ```
