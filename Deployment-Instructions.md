@@ -24,11 +24,11 @@ The content server also needs to have Xvfb installed:
 sudo yum install xorg-x11-server-Xvfb
 ```
 
-The metadata wrangler needs to have lapack installed:
+The metadata wrangler needs to have scipy installed:
 
 ```
 # Metadata wrangler only
-sudo yum install lapack
+sudo yum install numpy scipy python-matplotlib ipython python-pandas sympy python-nose
 ```
 
 Check out the appropriate repository:
