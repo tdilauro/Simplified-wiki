@@ -71,6 +71,8 @@ pip install -r requirements.txt
 
 ```
 
+[This page](http://www.zezuladp.com/2014/10/scaling-numpy-and-scipy-with-django-and.html) explains the problems with installing scipy (used by the metadata wrangler) through pip. I'm using pip because we are running Python 2.7 and AMI instances have Python 2.6 as the system Python.
+
 Make sure that the directory in $DATA_DIRECTORY is writable by the user that will be running scripts.
 
 ```
