@@ -28,7 +28,7 @@ The metadata wrangler has a number of additional dependencies so that scikit-lea
 
 ```
 # Metadata wrangler only
-sudo yum install numpy python-matplotlib ipython python-pandas sympy python-nose gcc gcc-c++ lapack-devel
+sudo yum install numpy python-matplotlib ipython python-pandas sympy python-nose gcc gcc-c++ lapack-devel blas-static lapack-static
 ```
 
 Check out the appropriate repository:
