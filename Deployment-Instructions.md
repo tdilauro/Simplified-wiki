@@ -76,13 +76,14 @@ pip install -r requirements.txt
 Make sure that the directory in $DATA_DIRECTORY is writable by the user that will be running scripts.
 
 ```
-$ chown ec2-user.ec2-user /storage
+$ sudo chown ec2-user.ec2-user /storage
 ```
 
-On the metadata wrangler, link or copy the appeal dataset into the data directory:
+On the metadata wrangler, link or copy the appeal dataset into the data directory, and download the TextBlob corpora:
 
 ```
-$ ln -s /home/ec2-user/metadata/appeal-data /storage/appeal
+$ sudo ln -s /home/ec2-user/metadata/appeal-data /storage/appeal
+$ python -m textblob.download_corpora
 ```
 
 # Outstanding questions/issues
