@@ -65,7 +65,7 @@ virtualenv -p /usr/bin/python2.7 env
 # source simplified_env
 source env/bin/activate
 
-# Install Python requirements into the virtual environment
+# Install Python requirements into the virtual environment. This can take a very long time.
 pip install -r requirements.txt
 
 ```
