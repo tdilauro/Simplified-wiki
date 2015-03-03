@@ -24,7 +24,7 @@ The content server also needs to have Xvfb installed:
 sudo yum install xorg-x11-server-Xvfb
 ```
 
-The metadata wrangler needs to have scipy installed:
+The metadata wrangler has a number of additional dependencies so that scikit-learn can be installed:
 
 ```
 # Metadata wrangler only
