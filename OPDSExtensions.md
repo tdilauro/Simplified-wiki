@@ -140,5 +140,74 @@ scheme="http://schema.org/additionalType"/>
 
 Currently Simplified doesn't need anything like this because we only
 show textual ebooks. I don't think it will suffice to
-opds:indirectAcquisition, because sometimes I need to talk about a
+use opds:indirectAcquisition, because sometimes I need to talk about a
 book when there is no way of actually obtaining that book.
+
+# Metadata lookup protocol
+
+This is a protocol for bulk machine-to-machine transfer of metadata. The metadata lookup protocol takes as its input one or more URNs that identify published books. It returns an OPDS feed with one entry for each URN. Each entry contains relevant metadata about that book, or a status message.
+
+On a server that supports the lookup protocol the URI Template for the protocol is:
+
+/lookup{?urn*}
+
+Of course I can specify this URI template in a description document to get rid of the hard-coded template, but I haven't defined a description document format yet.
+
+## URN format
+
+For ISBNs, the URN format is the standard urn:isbn: format. For other ways of identifying books I've come up with a format based on {identifier type}/{identifier}. e.g.
+
+urn:librarysimplified.org/terms/id/Gutenberg%20ID/100
+urn:librarysimplified.org/terms/id/3M%20ID/aws4f
+
+A given server will probably only be able to resolve a subset of these URNs. This is something that can be specified in the hypothetical description document, e.g. "I can tell you about a book if you give me an ISBN  or an Overdrive ID, but nothing else."
+
+## Entry format
+
+The `<id>` of an entry in the OPDS feed returned by the lookup protocol is a URN provided by the client.
+
+If the server has metadata to offer about the book identified by that URN, the entry contains that metadata.
+
+Instead of metadata, the entry may contain a `status_code` and a `message` which explains why no metadata is forthcoming.
+
+Some examples:
+
+```
+  <entry>
+    <id>urn:librarysimplified.org/terms/id/Gutenberg ID/nosuchid</id>
+    <simplified:status_code>400</simplified:status_code>
+    <simplified:message>'nosuchid' is not a well-formed identifier</simplified:message>
+  </entry>
+```
+
+```
+  <entry>
+    <id>urn:librarysimplified.org/terms/id/Gutenberg ID/1984</id>
+    <simplified:status_code>404</simplified:status_code>
+    <simplified:message>No text with identifier '1984'.</simplified:message>
+  </entry>
+```
+
+```
+  <entry>
+    <id>urn:librarysimplified.org/terms/id/Gutenberg ID/100</id>
+    <simplified:status_code>202</simplified:status_code>
+    <simplified:message>You're the first one to ask about this identifier. I'll try to find out about it.</simplified:message>
+  </entry>
+```
+
+The client should treat the `status_code` for a URN as if it had made an HTTP request to that URN and gotten that status code in response. In particular, if the client gets a `status_code` of 400 or 410 it should not ask about that URN again. A `status_code` of 404 does _not_ mean 'don't ask again'; it means that the controlling authority says the given identifier does not _currently_ identify any book.
+
+## schema:sameAs
+
+The lookup service may use schema:sameas to assert that, in its opinion, there are other URNs that identify the same work.
+
+<link rel="http://schema.org/sameAs" href="urn:isbn:1208320490"/>
+
+## Possible extensions
+
+I'm hesitant to do this because I really don't want to recreate HTTP inside OPDS, but some sort of max-age data might be useful as a signal re: when it's okay to ask about this identifier again.
+
+It's theoretically possible for an identifier to refer to more than one book. (e.g. ISBNs get reused). What happens then?
+
+The URLs to this service can get incredibly long. For the sake of maximum compatibility with different web gateways I'd like to specify a way to do lookups over POST. This would probably involve POSTing a document of media type "text/uri-list" to /lookup.
