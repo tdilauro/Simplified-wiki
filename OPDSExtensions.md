@@ -149,7 +149,9 @@ This is a protocol for bulk machine-to-machine transfer of metadata. The metadat
 
 On a server that supports the lookup protocol the URI Template for the protocol is:
 
+```
 /lookup{?urn*}
+```
 
 Of course I can specify this URI template in a description document to get rid of the hard-coded template, but I haven't defined a description document format yet.
 
@@ -157,12 +159,14 @@ Of course I can specify this URI template in a description document to get rid o
 
 For ISBNs, the URN format is the standard urn:isbn: format. For other ways of identifying books I've come up with a format based on {identifier type}/{identifier}. e.g.
 
+```
 urn:librarysimplified.org/terms/id/Gutenberg%20ID/100
 urn:librarysimplified.org/terms/id/3M%20ID/aws4f
+```
 
 A given server will probably only be able to resolve a subset of these URNs. This is something that can be specified in the hypothetical description document, e.g. "I can tell you about a book if you give me an ISBN  or an Overdrive ID, but nothing else."
 
-## Entry format
+## Extensions to `<entry>`
 
 The `<id>` of an entry in the OPDS feed returned by the lookup protocol is a URN provided by the client.
 
@@ -202,7 +206,9 @@ The client should treat the `status_code` for a URN as if it had made an HTTP re
 
 The lookup service may use schema:sameas to assert that, in its opinion, there are other URNs that identify the same work.
 
+```
 <link rel="http://schema.org/sameAs" href="urn:isbn:1208320490"/>
+```
 
 ## Possible extensions
 
