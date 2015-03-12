@@ -1,14 +1,20 @@
 # Extra metadata
 
+Wherever possible we use terms from Dublin Core or schema.org rather than making up our own terms.
+
 ## Availability information
 
+```
    <simplified:total_licenses>0</simplified:total_licenses>
    <simplified:available_licenses>0</simplified:available_licenses>
    <simplified:active_holds>0</simplified:active_holds>
+```
 
 ## Audience
 
+```
 <category term="Adult" scheme="http://schema.org/audience"/>
+```
 
 The terms we use are 'Adult', 'Young Adult', and 'Children'. It's kind
 of a lie to have http://schema.org/audience as the scheme because
@@ -50,7 +56,9 @@ years.
 
 ## Permanent work ID
 
+```
 <simplified:pwid>f819023c-a8a5-6d88-8c66-7a5c0c4ab249</simplified:pwid>
+```
 
 This is used for machine-to-machine integration. It's an opaque
 identifier that identifies a work of literature independent of edition
@@ -70,8 +78,10 @@ pwid-prime.
 
 ## Category weights
 
+```
 <category schema:ratingValue="2" term="sh98004865"
 scheme="http://purl.org/dc/terms/LCSH" label="Paranormal fiction"/>
+```
 
 This is used in machine-to-machine integration so that the circulation
 manager (which builds an index by topic) knows how heavily to weight a
@@ -81,6 +91,7 @@ I think using schema:ratingValue here is a big hack.
 
 ## Detailed author information
 
+```
 <author>
      <name>F. Paul Wilson</name>
      <simplified:sort_name>Wilson, F. Paul</simplified:sort_name>
@@ -88,6 +99,7 @@ I think using schema:ratingValue here is a big hack.
      <simplified:wikipedia_name>F._Paul_Wilson</simplified:wikipedia_name>
      <schema:sameas>http://viaf.org/viaf/100960913</schema:sameas>
 </author>
+```
 
 Speaks for itself I think. Currently we only use this in
 machine-to-machine integration, but you can see the value of being
@@ -97,11 +109,13 @@ able to link to an author's Wikipedia page.
 
 Something like this:
 
+```
 <link href="/Fiction/all"
       type="application/atom+xml;profile=opds-catalog;kind=acquisition"
       title="All fiction"
       total="70000"
 />
+```
 
 There's no implication that if you get the feed you will get all 70k
 entries in a single document, just that that's the approximate total
@@ -119,8 +133,10 @@ means the client can't make decisions about e.g. sorting collections by size or 
 
 Something like this:
 
+```
 <category term="http://schema.org/MusicRecording"
 scheme="http://schema.org/additionalType"/>
+```
 
 Currently Simplified doesn't need anything like this because we only
 show textual ebooks. I don't think it will suffice to
