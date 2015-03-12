@@ -1,14 +1,12 @@
-These are extensions Leonard has made to OPDS. They're documented here for use by client authors and with an eye towards standardizing some of them.
+# Extra metadata
 
-= Extra metadata
-
-== Availability information
+## Availability information
 
    <simplified:total_licenses>0</simplified:total_licenses>
    <simplified:available_licenses>0</simplified:available_licenses>
    <simplified:active_holds>0</simplified:active_holds>
 
-== Audience
+## Audience
 
 <category term="Adult" scheme="http://schema.org/audience"/>
 
@@ -22,7 +20,7 @@ for Audience, because I may end up adding American school grades
 ("Grades 5-6") to the vocabulary. But agreeing on values for
 Adult/Young Adult/Children might be a good idea.
 
-== Publication date
+## Publication date
 
 ```
 <published>2014-04-01</published>
@@ -50,7 +48,7 @@ uptight about defining exactly what dates mean, but for Gutenberg
 texts the differences between these different dates can be hundreds of
 years.
 
-== Permanent work ID
+## Permanent work ID
 
 <simplified:pwid>f819023c-a8a5-6d88-8c66-7a5c0c4ab249</simplified:pwid>
 
@@ -70,7 +68,7 @@ format into account. So all print editions of 'Moby-Dick' would share
 a pwid-prime, and all audiobooks of 'Moby-Dick' would share another
 pwid-prime.
 
-== Category weights
+## Category weights
 
 <category schema:ratingValue="2" term="sh98004865"
 scheme="http://purl.org/dc/terms/LCSH" label="Paranormal fiction"/>
@@ -81,7 +79,7 @@ given topic for a given book.
 
 I think using schema:ratingValue here is a big hack.
 
-== Detailed author information
+## Detailed author information
 
 <author>
      <name>F. Paul Wilson</name>
@@ -95,7 +93,7 @@ Speaks for itself I think. Currently we only use this in
 machine-to-machine integration, but you can see the value of being
 able to link to an author's Wikipedia page.
 
-== Estimated total size of partial feed
+## Estimated total size of partial feed
 
 Something like this:
 
@@ -117,7 +115,7 @@ It might be okay to put this information in the
 title (e.g. "All fiction (70000)") but I don't like that because it
 means the client can't make decisions about e.g. sorting collections by size or hiding collections that are miniscule.
 
-== Medium of an entry
+## Medium of an entry
 
 Something like this:
 
