@@ -216,4 +216,4 @@ I'm hesitant to do this because I really don't want to recreate HTTP inside OPDS
 
 It's theoretically possible for an identifier to refer to more than one book. (e.g. ISBNs get reused). What happens then?
 
-The URLs to this service can get incredibly long. For the sake of maximum compatibility with different web gateways I'd like to specify a way to do lookups over POST. This would probably involve POSTing a document of media type "text/uri-list" to /lookup.
+The URLs to this service can get incredibly long. For the sake of maximum compatibility with different web gateways I'd like to specify a way to do lookups over POST. This would probably involve POSTing a document of media type "text/uri-list" to the lookup URL.
