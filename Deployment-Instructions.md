@@ -24,6 +24,19 @@ The content server also needs to have Xvfb installed:
 sudo yum install xorg-x11-server-Xvfb
 ```
 
+The circulation manager needs to have Elasticsearch installed:
+
+```
+# Circulation manager only
+sudo rpm --import https://packages.elasticsearch.org/GPG-KEY-elasticsearch
+# Install elasticsearch.repo. Instructions are here: http://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html#_yum
+sudo yum install elasticsearch
+sudo chkconfig --add elasticsearch
+```
+
+(You can install Elasticsearch on its own server, of course; just be sure to set SEARCH_SERVER_URL appropriately.)
+
+
 The metadata wrangler has a number of additional dependencies so that scikit-learn can be installed:
 
 ```
