@@ -82,6 +82,8 @@ source env/bin/activate
 # This can take a very long time--over 30 minutes for the metadata wrangler.
 pip install -r requirements.txt
 
+# Download the TextBlob corpora
+python -m textblob.download_corpora
 ```
 
 [This page](http://www.zezuladp.com/2014/10/scaling-numpy-and-scipy-with-django-and.html) explains the problems with installing scipy (used by the metadata wrangler) through pip. I'm using pip because we are running Python 2.7 and AMI instances have Python 2.6 as the system Python.
@@ -92,17 +94,10 @@ Make sure that the directory in $DATA_DIRECTORY is writable by the user that wil
 $ sudo chown ec2-user.ec2-user /storage
 ```
 
-Download the TextBlob corpora:
-
-```
-$ python -m textblob.download_corpora
-```
-
 On the metadata wrangler, link or copy the appeal dataset into the data directory:
 
 ```
 $ sudo ln -s /home/ec2-user/metadata/appeal-data /storage/appeal
-$ python -m textblob.download_corpora
 ```
 
 # Outstanding questions/issues
