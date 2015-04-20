@@ -92,7 +92,13 @@ Make sure that the directory in $DATA_DIRECTORY is writable by the user that wil
 $ sudo chown ec2-user.ec2-user /storage
 ```
 
-On the metadata wrangler, link or copy the appeal dataset into the data directory, and download the TextBlob corpora:
+Download the TextBlob corpora:
+
+```
+$ python -m textblob.download_corpora
+```
+
+On the metadata wrangler, link or copy the appeal dataset into the data directory:
 
 ```
 $ sudo ln -s /home/ec2-user/metadata/appeal-data /storage/appeal
