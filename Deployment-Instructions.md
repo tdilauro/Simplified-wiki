@@ -17,10 +17,11 @@ sudo yum install libjpeg libjpeg-devel
 # TODO: pip install uwsgi?
 ```
 
-The content server also needs to have Xvfb installed:
+The content server also needs to have Xvfb and Java installed:
 
 ```
 # Content server only
+sudo yum install java
 sudo yum install xorg-x11-server-Xvfb
 ```
 
