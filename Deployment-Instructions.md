@@ -37,6 +37,7 @@ sudo chkconfig --add elasticsearch
 
 (You can install Elasticsearch on its own server, of course; just be sure to set SEARCH_SERVER_URL appropriately.)
 
+See the /etc/elasticsearch/elasticsearch.yml config file on the circulation manager for an example of using unicast to create a cluster between several different circulation machines.
 
 The metadata wrangler has a number of additional dependencies so that scikit-learn can be installed:
 
