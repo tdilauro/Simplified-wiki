@@ -14,7 +14,6 @@ sudo yum install postgresql-devel
 # Used by pillow to generate JPG thumbnails.
 sudo yum install libjpeg libjpeg-devel
 
-# TODO: pip install uwsgi?
 ```
 
 The content server also needs to have Xvfb and Java installed:
