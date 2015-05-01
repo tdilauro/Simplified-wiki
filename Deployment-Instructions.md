@@ -112,14 +112,14 @@ source env/bin/activate
 python -m textblob.download_corpora
 ```
 
-Make sure that the directory in $DATA_DIRECTORY is writable by the user that will be running scripts.
+On the metadata wrangler, check out Simplified-data as $DATA_DIRECTORY:
 
 ```
-$ sudo chown ec2-user.ec2-user /storage
+git clone https://github.com/NYPL/Simplified-data.git $DATA_DIRECTORY
 ```
 
-On the metadata wrangler, link or copy the appeal dataset into the data directory:
+Make sure that $DATA_DIRECTORY is writable by the user that will be running scripts.
 
 ```
-$ sudo ln -s /home/ec2-user/metadata/appeal-data /storage/appeal
+$ sudo chown ec2-user.ec2-user $DATA_DIRECTORY
 ```
