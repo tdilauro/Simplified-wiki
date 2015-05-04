@@ -134,14 +134,10 @@ means the client can't make decisions about e.g. sorting collections by size or 
 Something like this:
 
 ```
-<category term="http://schema.org/MusicRecording"
-scheme="http://schema.org/additionalType"/>
+<entry schema:additionalType="http://schema.org/MusicRecording"/>
 ```
 
-Currently Simplified doesn't need anything like this because we only
-show textual ebooks. I don't think it will suffice to
-use opds:indirectAcquisition, because sometimes I need to talk about a
-book when there is no way of actually obtaining that book.
+Simplified's circulation manager doesn't need this because we only show textual ebooks, but since there are non-textual items in our collection I need this during machine-to-machine integration. Otherwise the fact that a given item is a music recording tends to get lost.
 
 # Metadata lookup protocol
 
