@@ -26,6 +26,7 @@ http://schema.org/audience doesn't actually control that vocabulary
 ```
 <category term="9" scheme="http://schema.org/typicalAgeRange"/>
 <category term="9-12" scheme="http://schema.org/typicalAgeRange"/>
+<category term="11-" scheme="http://schema.org/typicalAgeRange"/>
 ```
 
 Only useful for children's and YA books. Currently only the single-number "9" format is supported.
