@@ -16,15 +16,19 @@ Wherever possible we use terms from Dublin Core or schema.org rather than making
 <category term="Adult" scheme="http://schema.org/audience"/>
 ```
 
-The terms we use are 'Adult', 'Young Adult', and 'Children'. It's kind
+The terms we use are 'Adult', 'Adults Only', 'Young Adult', and 'Children'. It's kind
 of a lie to have http://schema.org/audience as the scheme because
 http://schema.org/audience doesn't actually control that vocabulary
 (we made it up), it just says what an audience is.
 
-I don't think we should try to create a complete controlled vocabulary
-for Audience, because I may end up adding American school grades
-("Grades 5-6") to the vocabulary. But agreeing on values for
-Adult/Young Adult/Children might be a good idea.
+## Target age
+
+```
+<category term="9" scheme="http://schema.org/typicalAgeRange"/>
+<category term="9-12" scheme="http://schema.org/typicalAgeRange"/>
+```
+
+Only useful for children's and YA books. Currently only the single-number "9" format is supported.
 
 ## Publication date
 
