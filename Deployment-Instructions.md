@@ -123,3 +123,9 @@ Make sure that $DATA_DIRECTORY is writable by the user that will be running scri
 ```
 $ sudo chown ec2-user.ec2-user $DATA_DIRECTORY
 ```
+
+# Running
+
+```
+$ env/bin/uwsgi --ini uwsgi.ini --touch-reload=uwsgi.ini --reload-on-exception --buffer-size=131072 &
+```
