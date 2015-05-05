@@ -37,6 +37,9 @@ sudo rpm --import https://packages.elasticsearch.org/GPG-KEY-elasticsearch
 # Install elasticsearch.repo. Instructions are here: http://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html#_yum
 sudo yum install elasticsearch
 sudo chkconfig --add elasticsearch
+
+# Install the AWS discovery plugin
+sudo /usr/share/elasticsearch/bin/plugin install elasticsearch/elasticsearch-cloud-aws/2.5.0
 ```
 
 See the /etc/elasticsearch/elasticsearch.yml config file on the circulation manager machines for an example of using unicast to create a cluster between several different circulation machines. Here, the machine at 10.225.128.160 is set up to make a cluster with the machine at 10.225.130.107:
