@@ -130,7 +130,6 @@ $ sudo chown ec2-user.ec2-user $DATA_DIRECTORY
 # Running
 
 ```
-
 # NOTE: This assumes you have already run 'source env/bin/activate' from
 # your current shell!
 $ env/bin/uwsgi --ini uwsgi.ini --touch-reload=uwsgi.ini --reload-on-exception --buffer-size=131072 &
