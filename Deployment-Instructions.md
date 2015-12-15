@@ -29,15 +29,28 @@ sudo yum install xorg-x11-server-Xvfb
 
 # Circulation manager-specific packages
 
-The circulation manager needs to have Elasticsearch installed:
+The circulation manager needs to have Elasticsearch installed.
+
+On RPM-based systems:
 
 ```
-# Circulation manager only
 sudo rpm --import https://packages.elasticsearch.org/GPG-KEY-elasticsearch
 # Install elasticsearch.repo. Instructions are here: http://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html#_yum
 sudo yum install elasticsearch
 sudo chkconfig --add elasticsearch
+```
 
+On DEB-based systems:
+
+```
+wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list
+sudo apt-get update && sudo apt-get install elasticsearch
+```
+
+On AWS instances, also run this step:
+
+```
 # Install the AWS discovery plugin
 sudo /usr/share/elasticsearch/bin/plugin install elasticsearch/elasticsearch-cloud-aws/2.5.0
 ```
