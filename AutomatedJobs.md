@@ -18,6 +18,7 @@ If the Axis job or one of the 3M jobs breaks or stops running, you can start it 
 # Jobs that need to run regularly or bad things will happen
 
 * bin/refresh_materialized_views (Once a night, at 3 AM. Requires postgres 9.4)
+* bin/update_random_order (Once a night, at 4 AM.)
 * bin/update_nyt_best_seller_lists (Once a week)
 * bin/cache_opds_blocks (Every 5 minutes)
 * bin/cache_opds_lane_facets (Currently disabled)
