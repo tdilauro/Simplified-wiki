@@ -5,6 +5,7 @@ Welcome to the Library Simplified wiki!
 * [[Glossary]]
 * [[License Obligations]]
 * [[Deployment Instructions]]
+* [[Automated Jobs and how to use them|AutomatedJobs]]
 
 ## Resources
 #### Content
