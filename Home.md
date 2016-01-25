@@ -1,11 +1,14 @@
 Welcome to the Library Simplified wiki!
 
+* [[Deployment Instructions]]
+* [[Automated Jobs and how to use them|AutomatedJobs]]
+
+# Everything below this line needs to be migrated
+
 * [[Context]]
 * [[Goals, Objectives, Measures|MetricsAndMeasurements]]
 * [[Glossary]]
 * [[License Obligations]]
-* [[Deployment Instructions]]
-* [[Automated Jobs and how to use them|AutomatedJobs]]
 
 ## Resources
 #### Content
