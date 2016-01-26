@@ -1,4 +1,9 @@
-Welcome to the Library Simplified wiki!
+The Library Simplified project aims to streamline the experience of borrowing electronic books from a public library. We offer:
+
+* An e-reader that puts patron experience first.
+* Seamless integration of collections from multiple vendors.
+* Easy access to a wide variety of public domain and open-access books.
+* Better accessibility.
 
 # Installation and setup
 
@@ -6,6 +11,12 @@ Welcome to the Library Simplified wiki!
 * [[Automated Jobs and how to use them|AutomatedJobs]]
 * [[The configuration file|Configuration]]
 * [[Setting up lanes|LaneConfiguration]]
+
+# Architecture
+
+* [[Overview|ArchitecturalOverview]]
+* [[The standards we use|StandardsDocuments]]
+* [[Supported data sources|DataSources]]
 
 # Everything below this line needs to be migrated
 
