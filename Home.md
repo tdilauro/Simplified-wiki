@@ -24,41 +24,34 @@ This wiki is written by the Library Simplified developers and intended for use b
 * [[The generic metadata layer|GenericMetadata]]
 * [[The generic circulation API|GenericCirculation]]
 
-# Everything below this line needs to be migrated
+# Integrations
 
-* [[Context]]
-* [[Goals, Objectives, Measures|MetricsAndMeasurements]]
-* [[Glossary]]
+## Sources of open-access books
 
-## Resources
-#### Content
-* [[Content Sources|ContentSources]]
-* [[Overview of our active collections|OurCollections]]
-* [[Mirrored content|MirroredContent]]
-* [[Project Gutenberg Blacklist|ProjectGutenbergBlacklist]]
+* [[ProjectGutenberg]]
+* [[unglue.it|UnglueIt]]
+* [[StandardEbooks]]
+* [[Other|OpenAccessContentSources]]
 
-#### Metadata, etc
-* [[Bibliographic Metadata|BibliographicMetadata]]
-* [[Classification and Recommendation|ClassificationandRecommendation]]
-* [[Open Distribution to Libraries | https://docs.google.com/document/d/1jaHZSsMCZY80rH5sqJcp_kya0W2Dtkda7MrdFBkrOg8/edit]]
-* [[Extensions to OPDS|OPDSExtensions]]
+## Sources of licensed books
 
-#### Transactional interfaces
-* [[User Accounts and Authentication|Authentication]]
-* [[Other Resources|Resources]]
-* [[What we want out of third parties|ThirdPartyTODO]]
-* [[What we want from Overdrive|OverdriveTODO]]
+* [[Overdrive]]
+* [[3M Cloud Library|CloudLibrary]]
+* [[Axis 360|Axis360]]
+* [[Other|LicensedContentSources]]
 
-## Design
-* [[User Profiles, Uses Cases and Requirements|User-Profiles,-cases-and-requirements]]
-* [[Workflow]]
-* [[Design Comps]]
-* [[Information Architecture]]
-* [[ServerSideDesign]]
- - [[CirculationServer|The circulation server]]
-* [[Cloud and Syncing]]
-* [[Admin Interfaces]]
+## Sources of metadata
 
-# Project Management
-* [[Sprints]]
-* [[Product User Story Intake]]
+* [[VIAF]]
+* [[OCLC Linked Data]]
+* [[OCLC Lookup]]
+
+## Other integrations
+
+* [[ILSes and other patron authenticators]]
+* [[DRM access control servers|DRM]]
+
+# Metadata
+
+* [[Classification]]
+* [[Discovery]]
