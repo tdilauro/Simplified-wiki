@@ -20,13 +20,14 @@ This wiki is written by the Library Simplified developers and intended for use b
 * [[Overview|ArchitecturalOverview]]
 * [[The standards we use|StandardsDocuments]]
 * [[Supported data sources|DataSources]]
+* [[The generic metadata layer|GenericMetadata]]
+* [[The generic circulation API|GenericCirculation]]
 
 # Everything below this line needs to be migrated
 
 * [[Context]]
 * [[Goals, Objectives, Measures|MetricsAndMeasurements]]
 * [[Glossary]]
-* [[License Obligations]]
 
 ## Resources
 #### Content
