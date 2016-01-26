@@ -1,7 +1,10 @@
 Welcome to the Library Simplified wiki!
 
+# Installation
+
 * [[Deployment Instructions]]
 * [[Automated Jobs and how to use them|AutomatedJobs]]
+* [[Configuration|Configuration]]
 
 # Everything below this line needs to be migrated
 
