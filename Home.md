@@ -44,6 +44,7 @@ This wiki is written by the Library Simplified developers and intended for use b
 * [[VIAF]]
 * [[OCLC Linked Data]]
 * [[OCLC Lookup]]
+* [[Others|MetadataSources]]
 
 ## Other integrations
 
