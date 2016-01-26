@@ -28,17 +28,17 @@ This wiki is written by the Library Simplified developers and intended for use b
 
 ## Sources of open-access books
 
-* [[ProjectGutenberg]]
+* [[Project Gutenberg|ProjectGutenberg]]
 * [[unglue.it|UnglueIt]]
-* [[StandardEbooks]]
-* [[Other|OpenAccessContentSources]]
+* [[Standard Ebooks|Standard Ebooks]]
+* [[Others|OpenAccessContentSources]]
 
 ## Sources of licensed books
 
 * [[Overdrive]]
 * [[3M Cloud Library|CloudLibrary]]
 * [[Axis 360|Axis360]]
-* [[Other|LicensedContentSources]]
+* [[Others|LicensedContentSources]]
 
 ## Sources of metadata
 
