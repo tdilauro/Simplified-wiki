@@ -1,10 +1,11 @@
 Welcome to the Library Simplified wiki!
 
-# Installation
+# Installation and setup
 
 * [[Deployment Instructions]]
 * [[Automated Jobs and how to use them|AutomatedJobs]]
-* [[Configuration|Configuration]]
+* [[The configuration file|Configuration]]
+* [[Setting up lanes|LaneConfiguration]]
 
 # Everything below this line needs to be migrated
 
