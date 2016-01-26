@@ -14,6 +14,7 @@ This wiki is written by the Library Simplified developers and intended for use b
 * [[Automated Jobs and how to use them|AutomatedJobs]]
 * [[The configuration file|Configuration]]
 * [[Setting up lanes|LaneConfiguration]]
+* [[Error handling]]
 
 # Architecture
 
