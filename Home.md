@@ -1,9 +1,12 @@
 The Library Simplified project aims to streamline the experience of borrowing electronic books from a public library. We offer:
 
-* An e-reader that puts patron experience first.
+* A mobile e-reader (iOS and Android) that focuses on patron experience and accessibility.
 * Seamless integration of collections from multiple vendors.
 * Easy access to a wide variety of public domain and open-access books.
-* Better accessibility.
+
+*Our goal is to make it as easy to borrow an electronic book from your local library as it is to buy one from an online store.*
+
+This wiki is written by the Library Simplified developers and intended for use by technical staff at libraries. For details on how to get your library involved, see [[the Library Simplified website|http://www.librarysimplified.org/]].
 
 # Installation and setup
 
