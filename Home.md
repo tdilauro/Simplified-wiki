@@ -15,6 +15,7 @@ This wiki is written by the Library Simplified developers and intended for use b
 * [[The configuration file|Configuration]]
 * [[Setting up lanes|LaneConfiguration]]
 * [[Error handling|ErrorHandling]]
+* [[Contributing to the project|Contributing]]
 
 # Architecture
 
