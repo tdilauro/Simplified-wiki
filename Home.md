@@ -8,6 +8,23 @@ The Library Simplified project aims to streamline the experience of borrowing el
 
 This wiki is written by the Library Simplified developers and intended for use by technical staff at public libraries. For details on how to get your library involved, see [[the Library Simplified website|http://www.librarysimplified.org/]].
 
+# Overview
+
+Library Simplified is a collection of middleware, server software and mobile client applications for iOS and Android that libraries may use to deliver digital content to their patrons for experimentation or daily eBook services. It is designed to provide a unique user experience for the lending of eBooks and other digital content. It is intended to work and integrate with technologies and systems common to libraries such as an Integrated Library System/Library Management Systems (ILS/LMS), Online Public Access Catalogue (OPAC) or Single Sign On (SSO) credential management system or commercial eBook hosting and distribution service such as Overdrive, Baker & Taylor's Access 360, or 3M Cloud Library.
+
+Currently, our active public repositories include:
+
+- **Client-side Readers**
+  - [iOS app](https://github.com/NYPL-Simplified/Simplified-iOS)
+  - [Android app](https://github.com/NYPL-Simplified/Simplified-Android)
+
+- **Backend Servers**
+  - [Circulation Manager](https://github.com/NYPL-Simplified/circulation)
+  - [Open Access Content Server](https://github.com/NYPL-Simplified/content-server)
+  - [Metadata Wrangler](https://github.com/NYPL-Simplified/metadata-wrangler)
+  - [Server Core](https://github.com/NYPL/Simplified-server-core)
+  - [Data Store](https://github.com/NYPL-Simplified/data)
+
 # Installation and setup
 
 * [[Deployment Instructions]]
