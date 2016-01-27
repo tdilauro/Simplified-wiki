@@ -10,7 +10,12 @@ This wiki is written by the Library Simplified developers and intended for use b
 
 # Overview
 
-Library Simplified is a collection of middleware, server software and mobile client applications for iOS and Android that libraries may use to deliver digital content to their patrons for experimentation or daily eBook services. It is designed to provide a unique user experience for the lending of eBooks and other digital content. It is intended to work and integrate with technologies and systems common to libraries such as an Integrated Library System/Library Management Systems (ILS/LMS), Online Public Access Catalogue (OPAC) or Single Sign On (SSO) credential management system or commercial eBook hosting and distribution service such as Overdrive, Baker & Taylor's Access 360, or 3M Cloud Library.
+Library Simplified is a collection of middleware, server software and mobile client applications for iOS and Android that libraries may use to deliver digital content to their patrons for experimentation or daily eBook services. It is designed to provide a unique user experience for the lending of eBooks and other digital content. It integrates with technologies and systems common to libraries like:
+
+* A Integrated Library System/Library Management System (ILS/LMS)
+* Online Public Access Catalogue (OPAC)
+* Single Sign On (SSO) credential management system 
+* Commercial eBook hosting and distribution services
 
 Currently, our active public repositories include:
 
