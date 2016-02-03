@@ -17,14 +17,25 @@ If the Axis job or one of the 3M jobs breaks or stops running, you can start it 
 
 # Jobs that need to run regularly or bad things will happen
 
+* bin/bibliographic_coverage_3m (If you have a 3M Cloud Library collection)
+* bin/bibliographic_coverage_overdrive (If you have an Overdrive collection)
+* bin/bibliographic_coverage_axis (If you have an Axis 360 collection)
+
+These jobs should be run every five minutes. As new books come into the collection, these jobs assemble basic bibliographic metadata for the books to make them available to patrons as soon as possible. The `metadata_coverage` job (see below) is responsible for getting a fuller set of metadata for new books, including a properly scaled cover image.
+
 * bin/refresh_materialized_views (Once a night, at 3 AM. Requires postgres 9.4)
+* bin/metadata_coverage (Every 10 minutes)
 * bin/update_random_order (Once a night, at 4 AM.)
 * bin/update_nyt_best_seller_lists (Once a week)
 * bin/cache_opds_blocks (Every 5 minutes)
-* bin/cache_opds_lane_facets (Currently disabled)
+* bin/content_server_monitor (Once a day)
+
+No longer necessary:
+
 * bin/make_presentation_ready (Every 10 minutes)
 * bin/make_identifiers_without_work_presentation_ready (Every 10 minutes)
-* bin/content_server_monitor (Once a day)
+* bin/cache_opds_lane_facets (Temporarily disabled)
+
 
 ## Jobs that should be run as needed
 
