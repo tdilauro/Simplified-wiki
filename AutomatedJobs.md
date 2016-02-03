@@ -54,10 +54,13 @@ Note that some of these jobs can take a _very_ long time to complete, the longes
 
 ## Jobs that need to run regularly or bad things will happen
 
-* bin/identifiers_resolve (Every 10 minutes)
 * bin/make_presentation_ready (Every 10 minutes)
 * bin/content_server_monitor (Once a day)
 * bin/refresh_materialized_views (Once a night, at 3 AM. Requires postgres 9.4)
+
+No longer necessary:
+
+* bin/identifiers_resolve (Every 10 minutes)
 
 ## Jobs that should be run as needed
 
