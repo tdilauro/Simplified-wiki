@@ -19,7 +19,7 @@ If the Axis job or one of the 3M jobs breaks or stops running, you can start it 
 
 * bin/bibliographic_coverage
 
-This job should be run every five minutes. As new books come into the collection, this job assembles basic bibliographic metadata for the books to make them available to patrons as soon as possible. The `metadata_coverage` job (see below) is responsible for getting a fuller set of metadata for new books, including a properly scaled cover image.
+This job should be run every five minutes. As new books come into the collection, this job assembles basic bibliographic metadata for the books to make them available to patrons as soon as possible. The `metadata_wrangler_coverage` job (see below) is responsible for getting a fuller set of metadata for new books, including a properly scaled cover image.
 
 * bin/cache_opds_blocks (Every 5 minutes)
 * bin/metadata_wrangler_coverage (Every 10 minutes)
