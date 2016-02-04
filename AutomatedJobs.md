@@ -21,11 +21,11 @@ If the Axis job or one of the 3M jobs breaks or stops running, you can start it 
 
 This job should be run every five minutes. As new books come into the collection, this job assembles basic bibliographic metadata for the books to make them available to patrons as soon as possible. The `metadata_coverage` job (see below) is responsible for getting a fuller set of metadata for new books, including a properly scaled cover image.
 
+* bin/cache_opds_blocks (Every 5 minutes)
+* bin/metadata_wrangler_coverage (Every 10 minutes)
 * bin/refresh_materialized_views (Once a night, at 3 AM. Requires postgres 9.4)
-* bin/metadata_coverage (Every 10 minutes)
 * bin/update_random_order (Once a night, at 4 AM.)
 * bin/update_nyt_best_seller_lists (Once a week)
-* bin/cache_opds_blocks (Every 5 minutes)
 * bin/content_server_monitor (Once a day)
 
 No longer necessary:
