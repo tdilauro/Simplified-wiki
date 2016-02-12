@@ -40,27 +40,25 @@ sudo apt-get install python-numpy
 
 ### On Mac:
 
-Install homebrew: ```ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
+1. Install homebrew:
+    ```ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
+2. Install the XCode command line tools when prompted.
+3. Download and install Postgres.app from postgresapp.com.
+4. Set up SSH keys using github's instructions: https://help.github.com/articles/generating-ssh-keys/
+5. Install Python, pip, virtualenv, and Postgres executables
 
-Install the XCode command line tools when prompted.
-
-Download and install Postgres.app from postgresapp.com.
-
-Set up SSH keys using github's instructions: https://help.github.com/articles/generating-ssh-keys/
-
-
-```
-# install python 2.7
-brew install python
-# install easy_install
-curl https://bootstrap.pypa.io/ez_setup.py -o - | python
-# install pip
-easy_install pip
-# install virtualenv
-pip install virtualenv
-# Add postgres executables to PATH
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin/
-```
+    ```
+    # install python 2.7
+    brew install python
+    # install easy_install
+    curl https://bootstrap.pypa.io/ez_setup.py -o - | python
+    # install pip
+    easy_install pip
+    # install virtualenv
+    pip install virtualenv
+    # Add postgres executables to PATH
+    export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin/
+    ```
 
 ## Content server only
 The content server also needs to have Xvfb installed:
