@@ -4,7 +4,7 @@ Step-by-step instructions for deploying any of the Simplified applications on an
 
 ## All applications
 
-On Red Hat systems:
+### On Red Hat systems:
 
 ```
 sudo yum install python27 python27-devel git postgresql python-nose python-sqlalchemy python-pip nginx
@@ -22,7 +22,7 @@ sudo yum install libjpeg libjpeg-devel
 # TODO: pip install uwsgi?
 ```
 
-On Ubuntu systems:
+### On Ubuntu systems:
 
 ```
 sudo apt-get install python-dev git postgresql python-nose python-sqlalchemy python-pip nginx
@@ -38,7 +38,7 @@ sudo apt-get install libjpeg-dev
 sudo apt-get install python-numpy
 ```
 
-On Mac:
+### On Mac:
 
 Install homebrew: ```ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
 
