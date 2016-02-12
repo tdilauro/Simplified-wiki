@@ -203,3 +203,11 @@ On the metadata wrangler and the circulation manager, download the TextBlob corp
 ```
 $ python -m textblob.download_corpora
 ```
+
+# Stand Up Your Server
+
+There are lots of technologies you can use to get your server up and running. Before you do any of them, make sure you can run `python app.py` and get the app going locally.
+
+Done? Great! Now you can use whatever tools your dev team likes best to get the app to the people. If you don't have a preference, you might like to use our [Deployment Instructions for Nginx & uWSGI](Deployment:-Nginx-&-uWSGI). If you run into any problems, please share them along with your solutions, so we can update the instructions.
+
+If you use a different stack, we'd love for you to send us a setup walk-through with us so we can add it to the wiki.
