@@ -1,3 +1,4 @@
+These directions come primarily from [a very helpful tutorial created by Vladik Khononov](http://vladikk.com/2013/09/12/serving-flask-with-nginx-on-ubuntu/).
 
 1. Install nginx.
 
