@@ -101,21 +101,21 @@ Depending on whether you're installing the circulation manager, the metadata wra
 EITHER
 
 ```
-git clone https://github.com/NYPL/Simplified-circulation.git circulation
+git clone https://github.com/NYPL-Simplified/circulation.git circulation
 cd circulation
 ```
 
 OR
 
 ```
-git clone https://github.com/NYPL/Simplified-content-server.git content
+git clone https://github.com/NYPL-Simplified/content_server.git content
 cd content
 ```
 
 OR
 
 ```
-git clone https://github.com/NYPL/Simplified-server.git metadata
+git clone https://github.com/NYPL-Simplified/metadata_wrangler.git metadata
 cd metadata
 ```
 
