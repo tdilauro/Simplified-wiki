@@ -187,7 +187,7 @@ grant all privileges on database simplified_circulation_test to simplified_test;
 On the metadata wrangler, check out the Simplified-data repository to your data directory (the directory you specified as "data_directory" in the configuration file):
 
 ```
-$ git clone https://github.com/NYPL/Simplified-data.git $DATA_DIRECTORY 
+$ git clone https://github.com/NYPL-Simplified/data.git $DATA_DIRECTORY 
 ```
 
 On the content server, you can just create an empty directory at $DATA_DIRECTORY
