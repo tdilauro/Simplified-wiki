@@ -48,7 +48,7 @@ These directions come primarily from [a very helpful tutorial created by Vladik 
 5. Then create a symbolic link to it and restart nginx. 
 
     ```sh
-    $ sudo ln -s nginx.conf /etc/nginx/conf.d
+    $ sudo ln -s /var/www/circulation/nginx.conf /etc/nginx/conf.d
     $ service nginx restart
     ```
     Now when you navigate to your server's address in a web browser, you should get a 502 error. Fantastic!
