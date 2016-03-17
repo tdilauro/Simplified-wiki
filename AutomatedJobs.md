@@ -7,7 +7,7 @@
 * bin/overdrive_monitor_full (If you have an Overdrive collection)
 * bin/overdrive_monitor_recent (If you have an Overdrive collection)
 * bin/overdrive_reaper (If you have an Overdrive collection)
-* bin/axis_monitor (If you have an Overdrive collection)
+* bin/axis_monitor (If you have an Axis360 collection)
 
 These jobs are how the circulation manager learns about new books in a collection. These jobs also help the circulation manager find out about changes to circulation in something close to real time. 
 
