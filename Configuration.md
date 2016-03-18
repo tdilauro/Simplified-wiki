@@ -359,7 +359,7 @@ manager uses it to track a library's Overdrive collection. The metadata
 wrangler uses it to get metadata for books offered by Overdrive.
 
 The following keys are all required, and should all be provided you by
-Overdrive when you request access to the Overdrive API:
+Overdrive when you [[request access|https://developer.overdrive.com/application]] to the Overdrive API:
 
 * `client_key`
 * `client_secret`
