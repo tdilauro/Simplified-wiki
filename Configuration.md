@@ -365,7 +365,6 @@ Overdrive when you [[request access|https://developer.overdrive.com/application]
 * `client_secret`
 * `website_id`
 * `library_id`
-* `collection_name`
 
 You can also define `ils_name` and `cname_url`, two other pieces of
 information provided by Overdrive, but they're currently not used.
