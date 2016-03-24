@@ -103,7 +103,7 @@ These directions come primarily from [a very helpful tutorial created by Vladik 
 9. Finally, create a vassals directory and link your uwsgi.ini file there:
     ```sh
     $ mkdir /etc/uwsgi/vassals
-    $ sudo ln -s uwsgi.ini /etc/uwsgi/vassals
+    $ sudo ln -s $YOUR_LS_APP_DIR/uwsgi.ini /etc/uwsgi/vassals
     ```
 
 10. Run `sudo start uwsgi` and make sure that everything's working properly. Look to `/var/log/nginx/errors.log` and `/var/log/uwsgi/emperor.log` for errors as you go.
