@@ -7,7 +7,7 @@ Step-by-step instructions for deploying any of the Simplified applications on an
 ### On Red Hat systems:
 
 ```
-sudo yum install python27 python27-devel git postgresql python-nose python-sqlalchemy python-pip nginx libffi-devel
+sudo yum install python27 python27-devel git postgresql python-nose python-sqlalchemy python-pip nginx
 sudo pip install virtualenv virtualenvwrapper
 
 # These are necessary for installing python lxml through pip.
@@ -19,13 +19,16 @@ sudo yum install postgresql-devel
 # Used by pillow to generate JPG thumbnails.
 sudo yum install libjpeg libjpeg-devel
 
+# Used by cairosvg to generate SVG thumbnails.
+sudo yum install libffi-devel
+
 # TODO: pip install uwsgi?
 ```
 
 ### On Ubuntu systems:
 
 ```
-sudo apt-get install python-dev git postgresql python-nose python-sqlalchemy python-pip nginx libffi-dev
+sudo apt-get install python-dev git postgresql python-nose python-sqlalchemy python-pip nginx
 sudo pip install virtualenv virtualenvwrapper
 sudo apt-get install libxml2-dev libxslt-dev gcc python-libxml2
 
@@ -34,6 +37,9 @@ sudo apt-get install postgresql-server-dev-9.3
 
 # Used by pillow to generate JPG thumbnails.
 sudo apt-get install libjpeg-dev
+
+# Used by cairosvg to generate SVG thumbnails.
+sudo apt-get install libffi-dev
 
 sudo apt-get install python-numpy
 ```
