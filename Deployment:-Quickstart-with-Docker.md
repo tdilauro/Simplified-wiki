@@ -1,30 +1,36 @@
-So you're deploying your library's circulation manager. Awesome! If you'd like to get up and running quickly, we recommend using our Docker image. Here's how to get started:
+So you're deploying your library's circulation manager. Awesome! If you'd like to get up and running quickly, we recommend using our Docker image.
 
-#### *Local Prep*
+##### *Local Prep*
 
-The very first thing you need to do is **create your configuration file.** On your local machine, use [this documentation](Configuration) to create the JSON file for your particular library's configuration. You can use [this JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/#) to validate your configuration file. Call your file `config.json` and put it on your production server at `/var/www/config.json`. For the rest of the instructions, we'll be working on this server.
+1. **Create your configuration file.** On your local machine, use [this documentation](Configuration) to create the JSON file for your particular library's configuration. If you're unfamiliar with Json, you can use [this JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/#) to validate your configuration file.
 
-#### *On the Host Server*
+2. Name your file `config.json` and **put it on your production server** at `/var/www/config.json`. For the rest of the instructions, we'll be working on this server.
 
-1. **Install Docker.** Docker has [step-by-step instructions](https://docs.docker.com/linux/step_one/) for this. On a Linux server and depending on your package manager, you could also install with: `sudo apt-get install docker.io` or `sudo yum install docker.io`
+##### *On the Host Server*
+
+1. **Install Docker.** Docker has [step-by-step instructions](https://docs.docker.com/linux/step_one/) to grab its most up-to-date version. Depending on your package manager, you could also install a slightly older version with: `sudo apt-get install docker.io` or `sudo yum install docker.io`.
 
 2. **Get the Docker image** for both Elasticsearch v1.x and the Library Simplified Circulation Manager. Run:
 
-    `$ sudo docker pull elasticsearch:1 && sudo docker pull nypl/circulation`
+    ```sh
+    $ sudo docker pull elasticsearch:1 && sudo docker pull nypl/circulation
+    ```
 
 3. **Create an Elasticsearch container,** and grab its IP Address. Run:
 
     ```sh
-    $ sudo docker run -d --name es elasticsearch:1
-    $ sudo docker ps
-    $ sudo docker inspect es | grep 'IPAddress'
+    $ sudo docker run -d --name es elasticsearch:1     # create an elasticsearch container
+    $ sudo docker ps                                   # confirm that it's running
+    $ sudo docker inspect es | grep 'IPAddress'        # note its IP address
     ```
 
    When you run `sudo docker ps`, you'll see a single running container called es. Use the IP that comes from running `inspect` to update your your `config.json` file with the proper Elasticsearch location. You should end up with something like `http://172.17.0.2:9200`
 
 4. **Create a Circulation Manager container.** Running the following command will plop you directly into the shell for your container, as root.
 
-    `$ sudo docker run -it -p 80:80 -v /var/www/config.json:/var/www/circulation/config.json --name circ nypl/circulation`
+    ```sh
+    $ sudo docker run -it -p 80:80 -v /var/www/config.json:/var/www/circulation/config.json --name circ nypl/circulation
+    ```
 
     *What you're doing.* You're running this container in interactive mode (`-it`), binding its port 80 to your server's port 80 (`-p`), passing in your configuration file where it needs to be (`-v`) and calling it "circ".
 
