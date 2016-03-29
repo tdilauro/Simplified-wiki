@@ -29,7 +29,9 @@ So you're deploying your library's circulation manager. Awesome! If you'd like t
 4. **Create a Circulation Manager container.** Running the following command will plop you directly into the shell for your container, as root.
 
     ```sh
-    $ sudo docker run -it -p 80:80 -v /var/www/config.json:/var/www/circulation/config.json --name circ nypl/circulation
+    $ sudo docker run -it -p 80:80 --name circ \
+        -v /var/www/config.json:/var/www/circulation/config.json \
+        nypl/circulation
     ```
 
     *What you're doing.* You're running this container in interactive mode (`-it`), binding its port 80 to your server's port 80 (`-p`), passing in your configuration file where it needs to be (`-v`) and calling it "circ".
@@ -46,3 +48,8 @@ So you're deploying your library's circulation manager. Awesome! If you'd like t
     When you visit your IP address now, you should see an OPDS feed. If you don't, you'll want to check the logs of your container to troubleshoot: `/var/log/nginx/error.log` and `/var/www/circulation/uwsgi.log`.
 
 6. **Do _not_ exit out of the container session with `exit`** or your container (and thus your deployed site) will end. Instead, use the key binding `CTRL+p CTRL+q` to detach from the container. You can reattach at any time with the command `sudo docker attach circ`.
+
+7. You can hop into your running container at any time with the command:
+    ```sh
+    $ docker exec -it circ /bin/bash
+    ```
