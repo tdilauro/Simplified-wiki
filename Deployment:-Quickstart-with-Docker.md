@@ -13,7 +13,7 @@ So you're deploying your library's circulation manager. Awesome! If you'd like t
 2. **Get the Docker image** for both Elasticsearch v1.x and the Library Simplified Circulation Manager. Run:
 
     ```sh
-    $ sudo docker pull elasticsearch:1 && sudo docker pull nypl/circulation
+    $ sudo docker pull elasticsearch:1 && sudo docker pull nypl/circulation:devel
     ```
 
 3. **Create an Elasticsearch container,** and grab its IP Address. Run:
@@ -31,7 +31,7 @@ So you're deploying your library's circulation manager. Awesome! If you'd like t
     ```sh
     $ sudo docker run -it -p 80:80 --name circ \
         -v /var/www/config.json:/var/www/circulation/config.json \
-        nypl/circulation
+        nypl/circulation:devel
     ```
 
     *What you're doing.* You're running this container in interactive mode (`-it`), binding its port 80 to your server's port 80 (`-p`), passing in your configuration file where it needs to be (`-v`) and calling it "circ".
