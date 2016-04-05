@@ -20,7 +20,7 @@ sudo yum install postgresql-devel
 sudo yum install libjpeg libjpeg-devel
 
 # Used by cairosvg to generate SVG thumbnails.
-sudo yum install libffi-devel
+sudo yum install libffi-devel pycairo
 
 # TODO: pip install uwsgi?
 ```
