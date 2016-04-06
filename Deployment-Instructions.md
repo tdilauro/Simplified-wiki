@@ -21,8 +21,6 @@ sudo yum install libjpeg libjpeg-devel
 
 # Used by cairosvg to generate SVG thumbnails.
 sudo yum install libffi-devel pycairo
-
-# TODO: pip install uwsgi?
 ```
 
 ### On Ubuntu systems:
@@ -65,19 +63,6 @@ sudo apt-get install python-numpy
     # Add postgres executables to PATH
     export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin/
     ```
-
-## Content server only
-The content server also needs to have Xvfb installed:
-
-```
-# Content server only
-sudo yum install xorg-x11-server-Xvfb
-```
-
-Ubuntu:
-```
-sudo apt-get install xvfb
-```
 
 ## Metadata wrangler only
 The metadata wrangler has a number of additional dependencies so that scikit-learn can be installed:
