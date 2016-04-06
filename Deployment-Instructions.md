@@ -85,6 +85,13 @@ sudo apt-get install openjdk-7-jre
 ```
 Follow the instructions here: https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html
 
+Or, on a brew-capable Mac:
+  $ brew tap caskroom/cask
+  $ brew install brew-cask
+  $ brew cask install java
+  $ brew install homebrew/versions/elasticsearch17
+
+
 # Check out the Simplified repositories
 
 Depending on whether you're installing the circulation manager, the metadata wrangler, or the content server, you'll check out a different Git repository.
