@@ -38,14 +38,14 @@ So you're deploying your library's circulation manager. Awesome! If you'd like t
 
     *Troubleshooting.* You'll want to check the logs of your container (`/var/log/nginx/error.log` and `/var/www/circulation/uwsgi.log`) to troubleshoot:
 
-        ```sh
-        # check logs of running supervisor processes
-        $ sudo docker logs circ-deploy
+    ```sh
+    # check logs of running supervisor processes
+    $ sudo docker logs circ-deploy
 
-        # check logs inside the container
-        $ sudo docker exec circ-deploy cat /var/log/nginx/error.log | less
-        $ sudo docker exec circ-deploy cat /var/www/circulation/uwsgi.log | less
-        ```
+    # check logs inside the container
+    $ sudo docker exec circ-deploy cat /var/log/nginx/error.log | less
+    $ sudo docker exec circ-deploy cat /var/www/circulation/uwsgi.log | less
+    ```
 
 5. **Create a Circulation Manager script-running container.** Now we need to fill in that empty OPDS feed with your library's books, which will require running a number of scripts. Read the details below about the arguments you're passing before running this script; you will probably need to alter it to meet your needs.
 
@@ -74,15 +74,15 @@ So you're deploying your library's circulation manager. Awesome! If you'd like t
 
     *Troubleshooting.* You'll want to check the logs of your container. For example:
 
-        ```sh
-        # check logs of running supervisor processes
-        $ sudo docker logs circ-scripts
+    ```sh
+    # check logs of running supervisor processes
+    $ sudo docker logs circ-scripts
 
-        # check logs of cron and scripts
-        $ sudo docker exec circ-scripts cat /var/log/cron.log | less
-        $ sudo docker exec circ-scripts ls /var/log/libsimple
-        $ sudo docker exec circ-scripts cat /var/log/libsimple/overdrive_monitor_full | less
-        ```
+    # check logs of cron and scripts
+    $ sudo docker exec circ-scripts cat /var/log/cron.log | less
+    $ sudo docker exec circ-scripts ls /var/log/libsimple
+    $ sudo docker exec circ-scripts cat /var/log/libsimple/overdrive_monitor_full | less
+    ```
 
 6. **Confirm your scripts are running.** Once you've given your scripts some time to run (~30 minutes should be enough time to start having works move through the import process), you'll want to refresh your views so they show up in your deployed app.
 
