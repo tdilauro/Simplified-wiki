@@ -191,7 +191,7 @@ CREATE USER simplified_test with password '[password]';
 grant all privileges on database simplified_circulation_test to simplified_test;
 ```
 
-# Set up the data directory
+# Set up the data directory (metadata and content only)
 
 On the metadata wrangler, check out the Simplified-data repository to your data directory (the directory you specified as "data_directory" in the configuration file):
 
