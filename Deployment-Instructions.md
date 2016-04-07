@@ -178,6 +178,8 @@ $ sudo -u postgres psql
 
 On Mac OS X, start the Postgresql server and a psql session by clicking on the elephant icon.
 
+Within the psql session, run these commands:
+
 ```
 CREATE DATABASE simplified_circulation_test;
 CREATE DATABASE simplified_circulation_dev;
