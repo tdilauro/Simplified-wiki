@@ -111,6 +111,8 @@ On a brew-capable Mac, there's no need to install the JDK. Instead, try this:
   $ brew install homebrew/versions/elasticsearch17
 ```
 
+Use the instructions given in `$brew info elasticsearch17` to make sure ElasticSearch starts on bootup, or to get it started on a one-time basis.
+
 # Check out the Simplified repositories
 
 Depending on whether you're installing the circulation manager, the metadata wrangler, or the content server, you'll check out a different Git repository.
