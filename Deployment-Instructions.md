@@ -37,7 +37,7 @@ sudo apt-get install postgresql-server-dev-9.3
 sudo apt-get install libjpeg-dev
 
 # Used by cairosvg to generate SVG thumbnails.
-sudo apt-get install libffi-dev
+sudo apt-get install libffi-dev python-cairo
 
 sudo apt-get install python-numpy
 ```
