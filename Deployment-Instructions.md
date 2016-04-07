@@ -63,6 +63,11 @@ sudo apt-get install python-numpy
     # Add postgres executables to PATH
     export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin/
     ```
+6. Install additional dependencies
+```
+    brew install cairo --use-clang
+    brew install py2cairo
+```
 
 ## Metadata wrangler only
 The metadata wrangler has a number of additional dependencies so that scikit-learn can be installed:
