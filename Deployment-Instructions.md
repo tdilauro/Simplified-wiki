@@ -82,15 +82,28 @@ Ubuntu:
 sudo apt-get install liblapack-dev
 ```
 
-## Circulation manager only
-Set up the Elasticsearch service
+## Set up the Elasticsearch service (Circulation manager only)
+
+### Linux
+
+Install the JDK:
 
 ```
 sudo apt-get install openjdk-7-jre
 ```
-Follow the instructions here: https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html
 
-Or, on a brew-capable Mac:
+Then, follow the instructions here: https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html
+
+Make sure Elasticsearch starts on bootup! Here's how to start it manually:
+
+```
+sudo service elasticsearch start
+```
+
+### Mac OS X
+
+On a brew-capable Mac, there's no need to install the JDK. Instead, try this:
+
 ```
   $ brew tap caskroom/cask
   $ brew install brew-cask
