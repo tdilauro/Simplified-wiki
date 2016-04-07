@@ -131,6 +131,7 @@ git submodule update
 The next step is to create a virtual environment and set up your [[configuration file|Configuration]]. To create the virtual environment, use `virtualenv`:
 
 ```
+$ cd circulation # Or metadata, or content
 virtualenv -p /usr/bin/python2.7 env
 ```
 
