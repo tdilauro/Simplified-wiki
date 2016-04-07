@@ -163,13 +163,6 @@ export SIMPLIFIED_CONFIGURATION_FILE="/full/path/to/configuration/file.json"
 
 where `/full/path/to/configuration/file.json` is the full path to your configuration file.
 
-For the content manager, also add these two lines to `activate`:
-
-```
-Xvfb :1 &
-export DISPLAY=:1
-```
-
 Now, activate the virtual environment:
 
 ```
