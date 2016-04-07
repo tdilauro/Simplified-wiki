@@ -169,8 +169,15 @@ pip install -r requirements.txt
 
 # Set up database users
 
+On Linux, run this command to get into a Postgresql client:
+
 ```
 $ sudo -u postgres psql
+```
+
+On Mac OS X, start the Postgresql server and a psql session by clicking on the elephant icon.
+
+```
 CREATE DATABASE simplified_circulation_test;
 CREATE DATABASE simplified_circulation_dev;
 
