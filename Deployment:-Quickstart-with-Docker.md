@@ -57,7 +57,7 @@ So you're deploying your library's circulation manager. Awesome! If you'd like t
     # However, if you're running scripts for the first time ever and your library resides in the Central timezone,
     # has a ThreeM account, and began business with ThreeM on April 1, 2014:
     $ sudo docker run -d --name circ-scripts \
-        -e timezone="US/Central" \
+        -e TZ="US/Central" \
         -e libsimple_init=true \
         -e threem_start_date="2014-04-01" \
         -v /var/www/config.json:/var/www/circulation/config.json \
