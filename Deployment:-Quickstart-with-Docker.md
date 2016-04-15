@@ -56,7 +56,7 @@ So you're deploying your library's circulation manager. Awesome! If you'd like t
         nypl/circ-scripts
     ```
 
-    *What you're doing.* You're running this container in detached mode (`-d`), passing in your configuration file to where it needs to be (`-v`), and calling it "circ-scripts". With the (`-e`) optional argument, you can pass a [Debian-system timezone](http://manpages.ubuntu.com/manpages/saucy/man3/DateTime::TimeZone::Catalog.3pm.html) representing your local time zone, which will cause timed scripts to run according to your local time.
+    *What you're doing.* You're running this container in detached mode (`-d`), passing in your configuration file to where it needs to be (`-v`), and calling it "circ-scripts". With the (`-e`) optional argument `TZ`, you can pass a [Debian-system timezone](http://manpages.ubuntu.com/manpages/saucy/man3/DateTime::TimeZone::Catalog.3pm.html) representing your local time zone, which will cause timed scripts to run according to your local time.
 
     *Troubleshooting.* You'll want to check the logs of your container. For example:
 
