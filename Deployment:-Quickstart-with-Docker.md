@@ -50,27 +50,13 @@ So you're deploying your library's circulation manager. Awesome! If you'd like t
 5. **Create a Circulation Manager script-running container.** Now we need to fill in that empty OPDS feed with your library's books, which will require running a number of scripts. Read the details below about the arguments you're passing before running this script; you will probably need to alter it to meet your needs.
 
     ```sh
-    # Depending on your needs, it could also be as simple as running:
-    $ sudo docker run -d -v /var/www/config.json:/var/www/circulation/config.json \
-        --name circ-scripts nypl/circ-scripts
-
-    # However, if you're running scripts for the first time ever and your library resides in the Central timezone,
-    # has a ThreeM account, and began business with ThreeM on April 1, 2014:
     $ sudo docker run -d --name circ-scripts \
         -e TZ="US/Central" \
-        -e libsimple_init=true \
-        -e threem_start_date="2014-04-01" \
         -v /var/www/config.json:/var/www/circulation/config.json \
         nypl/circ-scripts
     ```
 
-    *What you're doing.* You're running this container in detached mode (`-d`), passing in your configuration file to where it needs to be (`-v`), and calling it "circ-scripts". Each of the (`-e`) options passes in an optional variable that you may or may not need, depending on when and where you're creating the container.
-
-    | Argument | Value | Default | Purpose |
-    | --- | --- | --- | --- |
-    | timezone | a [Debian-system timezone](http://manpages.ubuntu.com/manpages/saucy/man3/DateTime::TimeZone::Catalog.3pm.html) representing your local time | "US/Eastern" | Allows timed scripts to run according to your local time |
-    | libsimple_init | true | null | Runs scripts that must be specifically initialized. (Currently this only impacts ThreeM accounts.) |
-    | threem_start_date | a date, formatted YYYY-MM-DD | two years before the day you create the container | Determines at what point we should start looking for active ThreeM licenses. |
+    *What you're doing.* You're running this container in detached mode (`-d`), passing in your configuration file to where it needs to be (`-v`), and calling it "circ-scripts". With the (`-e`) optional argument, you can pass a [Debian-system timezone](http://manpages.ubuntu.com/manpages/saucy/man3/DateTime::TimeZone::Catalog.3pm.html) representing your local time zone, which will cause timed scripts to run according to your local time.
 
     *Troubleshooting.* You'll want to check the logs of your container. For example:
 
