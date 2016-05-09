@@ -67,7 +67,8 @@ sudo apt-get install python-numpy
 ```
     brew install cairo --use-clang
     brew install py2cairo
-    brew install libjpeg zlib
+    brew install libjpeg
+    brew install homebrew/dupes/zlib
 ```
 
 ## Metadata wrangler only
