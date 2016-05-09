@@ -67,6 +67,7 @@ sudo apt-get install python-numpy
 ```
     brew install cairo --use-clang
     brew install py2cairo
+    brew install libjpeg zlib
 ```
 
 ## Metadata wrangler only
