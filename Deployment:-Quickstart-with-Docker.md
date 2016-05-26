@@ -83,6 +83,7 @@ So you're deploying your library's circulation manager. Awesome! If you'd like t
 
     Docker has fantastic documentation to get more familiar with its command line tools, like `docker exec` and `docker inspect`. We recommend you [check them out](https://docs.docker.com/engine/reference/commandline/cli/).
 
-##### Evaluating Success
+
+##### *Evaluating Success*
 
 If your Docker containers are running successfully, you should have a `/var/log/libsimple` directory full of logfiles in your circ-scripts container, and you should be able to visit your server's domain and see an OPDS feed from circ-deploy. If either of these things aren't occurring, use the troubleshooting details above to check `var/log/cron.log` or the logfiles in `/var/log/libsimple` for circ-scripts and/or `/var/www/circulation/uwsgi.log` or `/var/log/nginx/error.log`.
