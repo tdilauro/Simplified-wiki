@@ -40,7 +40,7 @@ These directions come primarily from [a very helpful tutorial created by Vladik 
         location @circulation {
             include uwsgi_params;
             uwsgi_read_timeout 120;
-            uwsgi_pass unix:$YOUR_UWSGI_SOCKET_DIR;
+            uwsgi_pass unix:$YOUR_UWSGI_SOCKET_DIR/uwsgi.sock;
         }
     }
     ```
