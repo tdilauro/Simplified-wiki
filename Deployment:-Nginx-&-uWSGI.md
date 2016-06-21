@@ -8,7 +8,7 @@ These directions come primarily from [a very helpful tutorial created by Vladik 
     $ sudo yum install nginx
     
     # Confirmation step:
-    $ sudo /etc/init.d/nginx start
+    $ sudo service nginx start
     ```
     When you navigate to your server's public address in a browser, you should see a generic "Welcome to nginx" page.
 
@@ -16,16 +16,20 @@ These directions come primarily from [a very helpful tutorial created by Vladik 
 
     ```sh
     # If you're not already in your LS repo, go there, e.g.
-    $ cd $YOUR_LS_APP_DIR
+    $ cd YOUR_LS_APP_DIR
     
     # Pop into your Python environment & install uWSGI
     $ source env/bin/activate
     $ pip install uwsgi
     ```
 
-3. Create an appropriately-named directory in a location where nginx will have access. We'll refer to it in the next step as $YOUR_UWSGI_SOCKET_DIR.
+3. Create an appropriately-named directory in a location where nginx will have access. We'll refer to it in the next step as YOUR_UWSGI_SOCKET_DIR. Make sure that both nginx and ec2-user has permissions.
 
-    `$ mkdir /var/www/circulation`
+    ```
+    $ mkdir /var/www/circulation
+    $ sudo chown nginx:nginx /var/www/circulation
+    $ sudo chmod 777 /var/www/circulation
+    ```
 
 4. In your LS repo, configure nginx with an `nginx.conf` file. For example:
 
@@ -49,7 +53,7 @@ These directions come primarily from [a very helpful tutorial created by Vladik 
 
     ```sh
     $ sudo ln -s /var/www/circulation/nginx.conf /etc/nginx/conf.d/circulation.conf
-    $ service nginx restart
+    $ sudo service nginx restart
     ```
     Now when you navigate to your server's address in a web browser, you should get a 502 error. Fantastic!
 
@@ -58,7 +62,7 @@ These directions come primarily from [a very helpful tutorial created by Vladik 
     ```
     [uwsgi]
     # full path to the application's base folder
-    base = $YOUR_LS_APP_DIR
+    base = YOUR_LS_APP_DIR
     
     # python module to import & environment details
     app = app
@@ -67,7 +71,7 @@ These directions come primarily from [a very helpful tutorial created by Vladik 
     pythonpath = %(base)
 
     # socket file's location & permissions
-    socket = $YOUR_UWSGI_SOCKET_DIR
+    socket = YOUR_UWSGI_SOCKET_DIR
     chmod-socket = 666
 
     callable = app
@@ -75,35 +79,20 @@ These directions come primarily from [a very helpful tutorial created by Vladik 
     touch-reload = uwsgi.ini
     ```
 
-7. Confirm that your uWSGI configuration works.
-
-    `$ uwsgi --ini $YOUR_LS_APP_DIR/uwsgi.ini`
-
-    When you visit your server's address in the web browser, you should see your LS app! Make sure that if you're configuring the Metadata Wrangler, you try the `/lookup` route for a feed, as the home index is not currently being used.
-
-8. Configure uWSGI Emperor with a `/etc/init/uwsgi.conf` file. 
-
-    You may choose another way to push the work of running your app to a background file, but Emperor is an option. Here's what that configuration file might look like:
+7. Enter the virtual environment, and confirm that your uWSGI configuration works.
 
     ```
-    description "uWSGI"
-    start on runlevel [2345]
-    stop on runlevel [!2345]
-    respawn
-
-    env UWSGI=$YOUR_LS_APP_DIR/env/bin/uwsgi
-    env LOGTO=/var/log/uwsgi/emperor.log
-
-    script
-        source $YOUR_LS_APP_DIR/env/bin/activate
-        $UWSGI --master --emperor /etc/uwsgi/vassals --die-on-term --uid ec2-user --gid ec2-user --logto $LOGTO
-    end script
+    $ cd YOUR_LS_APP_DIR
+    $ source env/bin/activate
+    $ uwsgi --ini uwsgi.ini
     ```
 
-9. Finally, create a vassals directory and link your uwsgi.ini file there:
+    You'll see a single line of text in your terminal: `[uWSGI] getting INI configuration from uwsgi.ini`, followed by a blank link. Before ending the process, visit your server's address in the web browser, and you should an OPDS feed that represents your LS app! Make sure that if you're configuring the Metadata Wrangler, you try the `/lookup` route for a feed, as the home index is not currently being used.
+
+8. If you experience errors during step #7, look to `/var/log/nginx/errors.log` and `/var/log/uwsgi/emperor.log` for information about what's going wrong.
+
+9. Once things are working, run uWSGI in the background:
     ```sh
-    $ mkdir /etc/uwsgi/vassals
-    $ sudo ln -s $YOUR_LS_APP_DIR/uwsgi.ini /etc/uwsgi/vassals
+    $ source env/bin/activate
+    $ uwsgi --ini uwsgi.ini &
     ```
-
-10. Run `sudo start uwsgi` and make sure that everything's working properly. Look to `/var/log/nginx/errors.log` and `/var/log/uwsgi/emperor.log` for errors as you go.
