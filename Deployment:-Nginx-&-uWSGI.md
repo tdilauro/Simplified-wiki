@@ -31,23 +31,7 @@ These directions come primarily from [a very helpful tutorial created by Vladik 
     $ sudo chmod 777 /var/www/circulation
     ```
 
-4. In your LS repo, configure nginx with an `nginx.conf` file. For example:
-
-    ```
-    server {
-        listen      80 deferred;
-        server_name $YOUR.SERVER.IP.ADDRESS;
-        charset     utf-8;
-        client_max_body_size 75M;
-    
-        location / { try_files $uri @circulation; }
-        location @circulation {
-            include uwsgi_params;
-            uwsgi_read_timeout 120;
-            uwsgi_pass unix:$YOUR_UWSGI_SOCKET_DIR/uwsgi.sock;
-        }
-    }
-    ```
+4. In your LS repo, configure nginx with an `nginx.conf` file. **For the most up-to-date example, use the file found [here](https://github.com/NYPL-Simplified/circulation-docker/blob/master/deploy/nginx.conf).** Be sure to change the `uwsgi_pass` variable to reference `unix:YOUR_UWSGI_SOCKET_DIR/uwsgi.sock`.
 
 5. Then create a symbolic link to it and restart nginx. 
 
@@ -57,36 +41,7 @@ These directions come primarily from [a very helpful tutorial created by Vladik 
     ```
     Now when you navigate to your server's address in a web browser, you should get a 502 error. Fantastic!
 
-6. In your LS repo, configure uWSGI with an `uwsgi.ini` file. For example:
-
-    ```
-    [uwsgi]
-    #application's base folder
-    base = YOUR_LS_APP_DIR
-    home = %(base)/env
-    pythonpath = %(base)
-    
-    #python module to import
-    module = api.app
-    callable = app
-    
-    #socket file's location
-    socket = YOUR_UWSGI_SOCKET_DIR/%n.sock
-    
-    #permissions for the socket file
-    chmod-socket = 666
-    
-    #location of log files
-    logto = %(base)/%n.log
-    log-format = %(addr) - - [%(ltime)] "%(method) %(uri) %(proto)" %(status) %(size) "%(referer)" "%(uagent)" host_hdr=%(host) req_time_elapsed=%(msecs)
-    
-    processes = 6
-    threads = 2
-    harakiri = 300
-    lazy-apps = true
-    touch-reload=uwsgi.ini
-    buffer-size=131072
-    ```
+6. In your LS repo, configure uWSGI with an `uwsgi.ini` file. **For the most up-to-date example, use the file found [here](https://github.com/NYPL-Simplified/circulation-docker/blob/master/deploy/uwsgi.ini).** Be sure to set the `base` variable to YOUR_LS_APP_DIR, and the `socket` variable to `YOUR_UWSGI_SOCKET_DIR/%n.sock`
 
 7. Enter the virtual environment, and confirm that your uWSGI configuration works.
 
