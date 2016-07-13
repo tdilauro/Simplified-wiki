@@ -61,22 +61,31 @@ These directions come primarily from [a very helpful tutorial created by Vladik 
 
     ```
     [uwsgi]
-    # full path to the application's base folder
+    #application's base folder
     base = YOUR_LS_APP_DIR
-    
-    # python module to import & environment details
-    app = app
-    module = %(app)
     home = %(base)/env
     pythonpath = %(base)
-
-    # socket file's location & permissions
-    socket = YOUR_UWSGI_SOCKET_DIR
-    chmod-socket = 666
-
+    
+    #python module to import
+    module = api.app
     callable = app
+    
+    #socket file's location
+    socket = YOUR_UWSGI_SOCKET_DIR/%n.sock
+    
+    #permissions for the socket file
+    chmod-socket = 666
+    
+    #location of log files
     logto = %(base)/%n.log
-    touch-reload = uwsgi.ini
+    log-format = %(addr) - - [%(ltime)] "%(method) %(uri) %(proto)" %(status) %(size) "%(referer)" "%(uagent)" host_hdr=%(host) req_time_elapsed=%(msecs)
+    
+    processes = 6
+    threads = 2
+    harakiri = 300
+    lazy-apps = true
+    touch-reload=uwsgi.ini
+    buffer-size=131072
     ```
 
 7. Enter the virtual environment, and confirm that your uWSGI configuration works.
