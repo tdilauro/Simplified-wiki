@@ -171,6 +171,8 @@ The _motivation_ is why the patron created the annotation. This is how we distin
 
 The _body_ is the content of the annotation. For MVP this will never be present, and the server does not have to care about it.
 
+Note that (Open Annotation in EPUB)[http://www.idpf.org/epub/oa/] uses different terms from Web Annotation Data Model: it uses `hasTarget`, `hasBody`, `motivatedBy`; WADM has `target`, `body`, `motivation`.  Open Annotation in EPUB is based on (Open Annotation)[http://www.openannotation.org/spec/core/], which was made obsolete by the Web Annotation Data Model. We will be using WADM except when OAiEPUB has a concept we need that is not defined in WADM.
+
 ### Target format
 
 Web Annotation Data Model defines various ways of targeting part of an HTML document, using [selectors](https://www.w3.org/TR/annotation-model/#selectors). Open Annotation in EPUB [defines](http://www.idpf.org/epub/oa/#id.eso6b8nzsvsp) a way to use Canonical Fragment Identifiers to target part of an EPUB.
@@ -178,5 +180,3 @@ Web Annotation Data Model defines various ways of targeting part of an HTML docu
 Unfortunately neither of these will meet our needs on its own. An EPUB contains a number of HTML documents, so we need a way of knowing which spine item we're talking about. A CFI can identify a spine item, but it can only be resolved once we know which book we're talking about.
 
 *This is unresolved!*
-
-(I'm also not sure why Open Annotation in EPUB uses a different vocabulary from Web Annotation Data Model: `hasTarget`, `hasBody`, `motivatedBy` instead of `target`, `body`, `motivation`.)
