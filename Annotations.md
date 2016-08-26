@@ -50,7 +50,7 @@ An annotation that is deleted has `active` set to False. Its `content` is blanke
 
 ## The link
 
-According to [Discovery of annotation containers](*https://www.w3.org/TR/annotation-protocol/#discovery-of-annotation-containers), a resource advertises an annotation container using the `Link` header and the link relation `http://www.w3.org/ns/oa#annotationService`.
+According to [Discovery of annotation containers](https://www.w3.org/TR/annotation-protocol/#discovery-of-annotation-containers), a resource advertises an annotation container using the `Link` header and the link relation `http://www.w3.org/ns/oa#annotationService`.
 
 ```
 Link: <http://example.org/annotations/>; rel="http://www.w3.org/ns/oa#annotationService"
