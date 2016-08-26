@@ -73,6 +73,7 @@ Our representations will need to include the JSON-LD context for Open Annotation
 
 This is just a guess.
 
+```
 HTTP/1.1 200 OK
 Content-Type: 
 Allow: GET,OPTIONS,HEAD
@@ -90,6 +91,7 @@ Content-Length: 924
   "items": [
   ]
 }
+```
 
 ### A container with items
 
