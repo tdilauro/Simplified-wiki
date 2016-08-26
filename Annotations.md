@@ -17,10 +17,11 @@ All of these specs are based on [JSON-LD](https://www.w3.org/TR/json-ld/). The W
 1. Your bookshelf links to your annotations feed.
 2. Sending GET to your annotations feed gives you a complete list of all your current reading positions.
 3. POSTing an annotation to your annotations feed adds it to the list.
-4. An annotation will be rejected unless it is the current reading position for a book for which the patron has an active loan. 
-5. Each annotation position has a permalink and sending DELETE to that link will remove the annotation.
-6. A given loan can only have one current reading position for a given patron. A new reading position overwrites  an old one.
-7. When the patron returns a book their current reading position for that book is at risk, but is not immediately deleted. (Because they might borrow the book again in the near future.)
+4. An annotation will be rejected unless its motivation is "bookmarking" (i.e. marking a single point in the book) and its purpose is "idling" (i.e. leaving the book to come back to it later).
+5. An annotation will be rejected unless it is associated with an identifier for which the patron has an active loan.
+6. Each annotation position has a permalink and sending DELETE to that link will remove the annotation.
+7. A given loan can only have one current reading position for a given patron. A new reading position overwrites  an old one.
+8. When the patron returns a book their current reading position for that book is at risk, but is not immediately deleted. (Because they might borrow the book again in the near future.)
 
 ## Possible database schema
 
@@ -39,5 +40,6 @@ Annotations are associated with identifiers, not with loans, because they genera
 
 An annotation that is deleted has `active` set to False and has its `content` blanked out.
 
-`motivation` will be used to group annotations of different types (e.g. page bookmarks versus highlighted passages).
-Unfortunately `motivation` is not sufficient in the long run to distinguish between bookmarks that were made for idling (e.g. 
+`motivation` corresponds to the Web Annotation Data Model's idea of "motivation" and will be used to group annotations of different types (e.g. page bookmark vs current reading position or highlighted passage). Note that under WADM, an annotation MAY have zero or many motivations, but SHOULD have one.
+
+`timestamp` is set when the annotation is created and updated whenever it is updated, or when it is deleted.
