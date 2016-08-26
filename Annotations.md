@@ -12,7 +12,9 @@ There is a [Web Annotation Protocol test client](https://github.com/BigBlueHat/w
 
 For EPUB books in particular, we need to take vocabulary from [Open Annotation In EPUB](http://www.idpf.org/epub/oa/). We are _not_ adopting Open Annotation In EPUB wholesale because 1) it's EPUB-specific, 2) it's not a web-based protocol but rather a set of rules for storing annotations _inside_ an EPUB. Since patrons don't generally get to keep the EPUBs they borrow from the library, that's not an option.
 
-All of these specs are based on [JSON-LD](https://www.w3.org/TR/json-ld/). The Web Annotation Protocol is the concrete implementation of what is described in abstract terms by [Portable Web Publications for the Open Web Platform](https://www.w3.org/TR/pwp/).
+All of these specs are based on [JSON-LD](https://www.w3.org/TR/json-ld/).
+
+[Portable Web Publications for the Open Web Platform](https://www.w3.org/TR/pwp/) is a related document that we're more or less ignoring because it doesn't have any practical application ATM.
 
 ## Minimal Viable Product
 
@@ -179,7 +181,7 @@ Web Annotation Data Model defines various ways of targeting part of an HTML docu
 
 A target has a `source`, which in our case identifies the book, and a `selector`, which identifies part of a book. For `source` we'll be using the URN for a book's identifier. This is the same URN seen in the `<id>` tag of an OPDS entry.
 
-For `selector`... we can borrow `FragmentSelector` from Open Annotation in EPUB. Is this sufficient? I know that CFI has problems when it comes to reliably identifying part of a book. But here's what it would look like if CFI were reliable enough to use:
+We can borrow `FragmentSelector` from Open Annotation in EPUB. CFI has a lot of problems, so we probably won't use this. But here's what it would look like if CFI were reliable enough to use:
 
 ```
 "target": {
@@ -190,3 +192,5 @@ For `selector`... we can borrow `FragmentSelector` from Open Annotation in EPUB.
     }
 }
 ```
+
+We will most likely develop our own custom selector format which combines elements of `FragmentSelector` and [TextPositionSelector](https://www.w3.org/TR/annotation-model/#text-position-selector). This selector has two jobs: first, identify a resource within an EPUB file; second, identify a point or span of text within that resource.
