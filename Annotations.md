@@ -51,3 +51,91 @@ According to [Discovery of annotation containers](*https://www.w3.org/TR/annotat
 ```
 Link: <http://example.org/annotations/>; rel="http://www.w3.org/ns/oa#annotationService"
 ```
+
+## Retrieving the annotation container
+
+Covered in [Container Retrieval](https://www.w3.org/TR/annotation-protocol/#container-retrieval)
+
+```
+GET /annotations/
+Prefer: return=representation;include="http://www.w3.org/ns/oa#PreferContainedDescriptions"
+```
+
+There are a number of different rules for getting data at different levels of granularity. To start with we only need to support `PreferContainedDescriptions`.
+
+## Representation of annotation containers
+
+The container data model is described in [Annotation Collection](https://www.w3.org/TR/annotation-model/#annotation-collection). Its media type is `application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"`. 
+
+Our representations will need to include the JSON-LD context for Open Annotation in EPUB (`http://www.idpf.org/epub/oa/1.0/context.json`).
+
+### An empty container
+
+This is just a guess.
+
+HTTP/1.1 200 OK
+Content-Type: 
+Allow: GET,OPTIONS,HEAD
+Vary: Accept, Prefer
+Content-Length: 924
+
+{
+  "@context": "http://www.w3.org/ns/anno.jsonld",
+  "id": "http://example.org/annotations/,
+  "type": "AnnotationPage",
+  "partOf": {
+    "id": "http://example.org/annotations/",
+    "total": 0
+  },
+  "items": [
+  ]
+}
+
+### A container with items
+
+Taken from [Responses With Annotations](https://www.w3.org/TR/annotation-protocol/#responses-with-annotations)
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"
+Allow: GET,OPTIONS,HEAD
+Vary: Accept, Prefer
+Content-Length: 924
+
+{
+  "@context": "http://www.w3.org/ns/anno.jsonld",
+  "id": "http://example.org/annotations/?iris=0&page=0",
+  "type": "AnnotationPage",
+  "partOf": {
+    "id": "http://example.org/annotations/?iris=0",
+    "total": 42023
+  },
+  "next": "http://example.org/annotations/?iris=0&page=1",
+  "items": [
+    {
+      "id": "http://example.org/annotations/anno1",
+      "type": "Annotation",
+      "body": "http://example.net/body1",
+      "target": "http://example.com/page1"
+    },
+    {
+      "id": "http://example.org/annotations/anno2",
+      "type": "Annotation",
+      "body": {
+        "type": "TextualBody",
+        "value": "I like this!"
+      },
+      "target": "http://example.com/book1"
+    }
+    // ...
+    {
+      "id": "http://example.org/annotations/anno50",
+      "type": "Annotation",
+      "body" : "http://example.org/texts/description1",
+      "target": "http://example.com/images/image1"
+    }
+  ]
+}
+```
+
+Note the pagination feature, which we won't be dealing with yet.
