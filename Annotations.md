@@ -40,11 +40,11 @@ content
 
 Annotations are associated with identifiers, not with loans, because they generally need to outlive loans.
 
-An annotation that is deleted has `active` set to False and has its `content` blanked out.
+An annotation that is deleted has `active` set to False. Its `content` is blanked out and its `timestamp` is updated.
 
 `motivation` corresponds to the Web Annotation Data Model's idea of "motivation" and will be used to group annotations of different types (e.g. page bookmark vs current reading position or highlighted passage). Note that under WADM, an annotation MAY have zero or many motivations, but SHOULD have one.
 
-`timestamp` is set when the annotation is created and updated whenever it is updated, or when it is deleted.
+`timestamp` is set when the annotation is created and updated whenever it is updated.
 
 ## The link
 
