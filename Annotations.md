@@ -8,6 +8,8 @@ Our current goal is to sync a patron's current reading position across devices. 
 
 Our core protocol is the [Web Annotation Protocol](https://www.w3.org/TR/annotation-protocol/), a simple REST wrapper around the [Linked Data Platform](https://www.w3.org/TR/ldp/). Its data model is taken from the [Web Annotation Data Model](https://www.w3.org/TR/annotation-model/) and [Activity Streams Collections](https://www.w3.org/TR/activitystreams-core/#collections).
 
+There is a [Web Annotation Protocol test client](https://github.com/BigBlueHat/web-annotation-protocol-tester).
+
 For EPUB books in particular, we need to take vocabulary from [Open Annotation In EPUB](http://www.idpf.org/epub/oa/). We are _not_ adopting Open Annotation In EPUB wholesale because 1) it's EPUB-specific, 2) it's not a web-based protocol but rather a set of rules for storing annotations _inside_ an EPUB. Since patrons don't generally get to keep the EPUBs they borrow from the library, that's not an option.
 
 All of these specs are based on [JSON-LD](https://www.w3.org/TR/json-ld/). The Web Annotation Protocol is the concrete implementation of what is described in abstract terms by [Portable Web Publications for the Open Web Platform](https://www.w3.org/TR/pwp/).
