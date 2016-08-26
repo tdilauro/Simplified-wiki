@@ -19,7 +19,7 @@ All of these specs are based on [JSON-LD](https://www.w3.org/TR/json-ld/). The W
 1. Your bookshelf links to your annotations feed.
 2. Sending GET to your annotations feed gives you a complete list of all your current reading positions.
 3. POSTing an annotation to your annotations feed adds it to the list.
-4. An annotation will be rejected unless its motivation is "bookmarking" (i.e. marking a single point in the book) and its purpose is "idling" (i.e. leaving the book to come back to it later).
+4. An annotation will be rejected unless its motivation is "idling" (i.e. leaving the book to come back to it later).
 5. An annotation will be rejected unless it is associated with an identifier for which the patron has an active loan.
 6. Each annotation position has a permalink and sending DELETE to that link will remove the annotation.
 7. A given loan can only have one current reading position for a given patron. A new reading position overwrites  an old one.
@@ -69,11 +69,11 @@ There are a number of different rules for getting data at different levels of gr
 
 The container data model is described in [Annotation Collection](https://www.w3.org/TR/annotation-model/#annotation-collection). Its media type is `application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"`. 
 
-Our representations will need to include the JSON-LD context for Open Annotation in EPUB (`http://www.idpf.org/epub/oa/1.0/context.json`).
+Our representations will need to include the JSON-LD context for Open Annotation in EPUB (`http://www.idpf.org/epub/oa/1.0/context.json`). Since "idling" is a motivation we are making up, we also need to include our own custom context.
 
 ### An empty container
 
-This is just a guess.
+This is just a guess at what an empty container would look like.
 
 ```
 HTTP/1.1 200 OK
@@ -143,3 +143,30 @@ Content-Length: 924
 ```
 
 Note the pagination feature, which we won't be dealing with yet.
+
+## What does an annotation look like?
+
+Here's a simple example taken from the (Web Annotation Data Model)[https://www.w3.org/TR/annotation-model/#motivation-and-purpose]. For our purposes, an annotation has a target, a body, and a motivation.
+
+```
+{
+  "@context": "http://www.w3.org/ns/anno.jsonld",
+  "id": "http://example.org/anno18",
+  "type": "Annotation",
+  "motivation": "bookmarking",
+  "body": [
+    {
+      "type": "TextualBody",
+      "value": "A good description of the topic that bears further investigation",
+      "purpose": "describing"
+    }
+  ],
+  "target": "http://example.com/page1"
+}
+```
+
+The _target_ is the thing being annotated. In our case it will either be a book, a position in a book, or a span in a book. For MVP it will always be a position in a book.
+
+The _motivation_ is why the patron cares about the target. This is how we distinguish between idling, bookmarking, and highlighting. For MVP this will always be 'idling'.
+
+The _body_ is the content of the annotation. For MVP this will never be present, and the server does not have to care about its content.
