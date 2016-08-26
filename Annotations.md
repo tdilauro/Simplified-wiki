@@ -173,7 +173,7 @@ The _motivation_ is why the patron created the annotation. This is how we distin
 
 The _body_ is the content of the annotation. For MVP this will never be present, and the server does not have to care about it.
 
-Note that (Open Annotation in EPUB)[http://www.idpf.org/epub/oa/] uses different terms from Web Annotation Data Model: it uses `hasTarget`, `hasBody`, `motivatedBy`; WADM has `target`, `body`, `motivation`.  Open Annotation in EPUB is based on (Open Annotation)[http://www.openannotation.org/spec/core/], which was made obsolete by the Web Annotation Data Model. We will be using WADM except when OAiEPUB has a concept we need that is not defined in WADM.
+Note that [Open Annotation in EPUB](http://www.idpf.org/epub/oa/) uses different terms from Web Annotation Data Model: it uses `hasTarget`, `hasBody`, `motivatedBy`; WADM has `target`, `body`, `motivation`.  Open Annotation in EPUB is based on [Open Annotation](http://www.openannotation.org/spec/core/), which was made obsolete by the Web Annotation Data Model. We will be using WADM except when OAiEPUB has a concept we need that is not defined in WADM.
 
 ### Target format
 
