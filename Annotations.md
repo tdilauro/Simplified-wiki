@@ -193,4 +193,6 @@ We can borrow `FragmentSelector` from Open Annotation in EPUB. CFI has a lot of 
 }
 ```
 
-We will most likely develop our own custom selector format which combines elements of `FragmentSelector` and [TextPositionSelector](https://www.w3.org/TR/annotation-model/#text-position-selector). This selector has two jobs: first, identify a resource within an EPUB file; second, identify a point or span of text within that resource.
+We will most likely develop our own custom selector format to replace `FragmentSelector` with an alternate way of identifying a resource within an EPUB document. We can then use [Refinement of Selection](https://www.w3.org/TR/annotation-model/#refinement-of-selection) to combine our custom selector with (some other selector)[https://www.w3.org/TR/annotation-model/#selectors].
+
+Hadrien mentions that we may want to specify multiple selectors: multiple redundant paths into the same part of the resource.
