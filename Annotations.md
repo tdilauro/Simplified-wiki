@@ -144,7 +144,7 @@ Content-Length: 924
 
 Note the pagination feature, which we won't be dealing with yet.
 
-## What does an annotation look like?
+## Parts of an annotation
 
 Here's a simple example taken from the (Web Annotation Data Model)[https://www.w3.org/TR/annotation-model/#motivation-and-purpose]. For our purposes, an annotation has a target, a body, and a motivation.
 
@@ -167,6 +167,12 @@ Here's a simple example taken from the (Web Annotation Data Model)[https://www.w
 
 The _target_ is the thing being annotated. In our case it will either be a book, a position in a book, or a span in a book. For MVP it will always be a position in a book.
 
-The _motivation_ is why the patron cares about the target. This is how we distinguish between idling, bookmarking, and highlighting. For MVP this will always be 'idling'.
+The _motivation_ is why the patron created the annotation. This is how we distinguish between idling, bookmarking, and highlighting. For MVP this will always be 'idling'.
 
-The _body_ is the content of the annotation. For MVP this will never be present, and the server does not have to care about its content.
+The _body_ is the content of the annotation. For MVP this will never be present, and the server does not have to care about it.
+
+### Target format
+
+Web Annotation Data Model defines various ways of targeting part of an HTML document, using (selectors)[https://www.w3.org/TR/annotation-model/#selectors]. Open Annotation in EPUB [defines](http://www.idpf.org/epub/oa/#id.eso6b8nzsvsp) a way to use Canonical Fragment Identifiers to target part of an EPUB.
+
+(I'm also not sure why Open Annotation in EPUB uses a different vocabulary from Web Annotation Data Model: `hasTarget`, `hasBody`, `motivatedBy` instead of `target`, `body`, `motivation`.
