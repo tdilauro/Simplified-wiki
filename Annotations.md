@@ -43,3 +43,11 @@ An annotation that is deleted has `active` set to False and has its `content` bl
 `motivation` corresponds to the Web Annotation Data Model's idea of "motivation" and will be used to group annotations of different types (e.g. page bookmark vs current reading position or highlighted passage). Note that under WADM, an annotation MAY have zero or many motivations, but SHOULD have one.
 
 `timestamp` is set when the annotation is created and updated whenever it is updated, or when it is deleted.
+
+## The link
+
+According to [Discovery of annotation containers](*https://www.w3.org/TR/annotation-protocol/#discovery-of-annotation-containers), a resource advertises an annotation container using the `Link` header and the link relation `http://www.w3.org/ns/oa#annotationService`.
+
+```
+Link: <http://example.org/annotations/>; rel="http://www.w3.org/ns/oa#annotationService"
+```
