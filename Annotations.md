@@ -177,6 +177,16 @@ Note that (Open Annotation in EPUB)[http://www.idpf.org/epub/oa/] uses different
 
 Web Annotation Data Model defines various ways of targeting part of an HTML document, using [selectors](https://www.w3.org/TR/annotation-model/#selectors). Open Annotation in EPUB [defines](http://www.idpf.org/epub/oa/#id.eso6b8nzsvsp) a way to use Canonical Fragment Identifiers to target part of an EPUB.
 
-Unfortunately neither of these will meet our needs on its own. An EPUB contains a number of HTML documents, so we need a way of knowing which spine item we're talking about. A CFI can identify a spine item, but it can only be resolved once we know which book we're talking about.
+A target has a `source`, which in our case identifies the book, and a `selector`, which identifies part of a book. For `source` we'll be using the URN for a book's identifier. This is the same URN seen in the `<id>` tag of an OPDS entry.
 
-*This is unresolved!*
+For `selector`... we can borrow `FragmentSelector` from Open Annotation in EPUB. Is this sufficient? I know that CFI has problems when it comes to reliably identifying part of a book. But here's what it would look like if CFI were reliable enough to use:
+
+```
+"target": {
+    "source": "urn:librarysimplified.org/terms/id/3M%20ID/c73g2z9",
+    "selector": {
+      "type": "oa:FragmentSelector",
+      "value": "epubcfi(/6/4[chap01ref]!/4[body01]/10[para05]/3:10)"
+    }
+}
+```
