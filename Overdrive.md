@@ -134,7 +134,7 @@ this template:
 https://oauth.overdrive.com/auth?client_id={ID}&redirect_uri={URLredirectedTo}&scope=accountId:{ID}&response_type=code&state={optionalStateParameter}
 ```
 
-Overdrive will redirect the patron to your redirect URI. They will be
+Overdrive will redirect the patron to... some URL somewhere. I'm not sure yet if it's a URL on your ILS or one managed by Overdrive. Either way, the patron will be
 asked to log in. Once they log in they will be asked to authorize
 Library Simplified to act on their behalf. Once they allow this,
 Overdrive will send them to your redirect URI:
