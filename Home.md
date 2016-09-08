@@ -49,19 +49,31 @@ Currently, our active public repositories include:
 
 # Integrations
 
+## Sources of books
+
+* [[The Library Simplified open-access content server|OpenAccessContentServer]]
+* [[Overdrive]]
+* [[3M Cloud Library|CloudLibrary]]
+* [[Axis 360|Axis360]]
+* [[Others|LicensedContentSources]]
+
+## ILSes and other patron authenticators
+
+* [[Sierra]]
+* [[Millenium|Millenium]]
+* [[Sirsi Dynix]]
+* [[Evergreen]]
+* [[Koha]]
+* [[Clever]]
+* [[FirstBook]]
+
+
 ## Sources of open-access books
 
 * [[Project Gutenberg|ProjectGutenberg]]
 * [[unglue.it|UnglueIt]]
 * [[Standard Ebooks|Standard Ebooks]]
 * [[Others|OpenAccessContentSources]]
-
-## Sources of licensed books
-
-* [[Overdrive]]
-* [[3M Cloud Library|CloudLibrary]]
-* [[Axis 360|Axis360]]
-* [[Others|LicensedContentSources]]
 
 ## Sources of metadata
 
@@ -72,7 +84,6 @@ Currently, our active public repositories include:
 
 ## Other integrations
 
-* [[ILSes and other patron authenticators]]
 * [[DRM access control servers|DRM]]
 
 # Metadata
