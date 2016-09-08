@@ -5,9 +5,15 @@ There are currently two active versions of the Sierra API: [Version
 and [Version
 3](https://sandbox.iii.com/docs/Content/zTutorials/tutAuthenticate.htm).
 
-We currently believe that version 2 cannot be integrated with Library Simplified. Libraries that use version 2 of Sierra API should either upgrade to version 3 or install another API such as [Millenium].
+We currently believe that version 2 cannot be integrated with Library Simplified. Libraries that use version 2 of Sierra API should either upgrade to version 3 or install another API such as [[Millenium]]. It may also be possible to integrate with an ILS indirectly thorough a library's Overdrive account, but this is not a good long-term solution because it creates a major dependency on Overdrive.
 
 ## Setup
+
+To set up Sierra for integration with your Library Simplified circulation manager, you'll need to create an API key and a secret. This information will go into the circulation manager configuration. You'll also need to associate a redirect URL with your API key. The redirect URL should point to the `oauth_callback` controller in your circulation manager:
+
+```
+https://my-circulation-manager.com/oauth_callback?provider=Sierra
+```
 
 ## Getting an authorization token with Client Credentials Grant
 
