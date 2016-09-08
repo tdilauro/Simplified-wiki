@@ -1,4 +1,4 @@
-= Overdrive integration
+# Overdrive integration
 
 This document is to help you connect your library's Overdrive
 collection to your Library Simplified circulation manager.
@@ -7,7 +7,7 @@ First, you should know that Overdrive provides a
 [glossary](https://developer.overdrive.com/docs/reference-guide) that
 explains most of the terminology.
 
-== Getting access
+## Getting access
 
 To start connecting your library's Overdrive account to your Library
 Simplified circulation manager, go to the [Member
@@ -28,7 +28,7 @@ Simplified system.
 It can take a week or more to get approved for API access, so don't
 put this off!
 
-== Types of APIs
+## Types of APIs
 
 Overdrive distinguishes between "Discovery" and "Circulation" APIs. To
 quote the glossary:
@@ -48,7 +48,7 @@ in your Overdrive collection, and the Circulation APIs to conduct
 transactions on behalf of your patrons. Library Simplified needs
 access to both.
 
-== Types of authentication
+## Types of authentication
 
 When the Library Simplified circulation manager makes a call to the
 Overdrive API, Overdrive needs to verify that the circulation manager
@@ -77,7 +77,7 @@ token is a string that you can present to the Overdrive API to get it
 to actually do something. An access token is generally good for one
 hour. Once it expires, you need to get a new one.
 
-=== Client authentication
+### Client authentication
 
 [Client
 authentication](https://developer.overdrive.com/apis/client-auth) is
@@ -89,7 +89,7 @@ Although this is the simplest way to get an an access token, the token
 is not authorized to act on behalf of a specific patron. You can look
 at the collection but you can't borrow books.
 
-=== Patron authentication
+### Patron authentication
 
 [Patron
 authentication](https://developer.dev.overdrive.com/apis/patron-auth)
@@ -110,7 +110,7 @@ was associated with. You can borrow books, place holds, etc.
 
 As with other access tokens, this token is only good for an hour.
 
-=== Granted authentication
+### Granted authentication
 
 [Granted authentication](https://developer.overdrive.com/granted-auth)
 is a more complex way of getting an access token to act on behalf of a
