@@ -74,7 +74,7 @@ specific patron.
 
 In all three cases, the goal is to get an _access token_. An access
 token is a string that you can present to the Overdrive API to get it
-to actually do something. An access token is generally good for one
+to actually do something. An Overdrive access token is generally good for one
 hour. Once it expires, you need to get a new one.
 
 ### Client authentication
