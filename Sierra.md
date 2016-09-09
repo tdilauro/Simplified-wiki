@@ -103,12 +103,4 @@ class SierraAPI(object):
         headers = {'Authorization': "Bearer %s" % bearer}
         response = requests.get(url, headers=headers)
         return response.content
-
-    def verify_pin(self, bearer, pin):
-        url = self.host + '/iii/sierra-api/v2/patrons/pin/verify'
-        headers = {'Authorization': "Bearer %s" % bearer,
-                   'Content-Type': 'application/json'}
-        body = json.dumps(dict(pin=pin))
-        response = requests.post(url, headers=headers, data=body)
-        return response.content
 ```
