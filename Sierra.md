@@ -39,7 +39,7 @@ Example: `https://sandbox.iii.com/iii/sierra-api/authorize?client_id=sierra-clie
 
 `state` can be set to any value. `redirect_uri` is the URI defined in the initial setup step, the link into the circulation manager's `oauth_callback` controller.
 
-The client will open a web view to the `iii.com` URL [QUESTION: will this work given the common practice of hiding this server behind an IP whitelist?]. That URL will redirect the patron to a Sierra login form. They will log in, authorize the Simplified app, and will be sent to a URL based on the `redirect_uri`, something like: `https://my-circulation-manager.com/oauth_callback?provider=Sierra&code=3ui+a98th1i4&state=some-state`.
+The client will open a web view to the `iii.com` URL [QUESTION: will this work given the common practice of hiding this server behind an IP whitelist?]. That URL will redirect the patron to a Sierra login form. They will log in and will be sent to a URL based on the `redirect_uri`, something like: `https://my-circulation-manager.com/oauth_callback?provider=Sierra&code=3ui+a98th1i4&state=some-state`. In my experience there is no separate step asking them to authorize the Simplified app.
 
 The circulation manager must not continue if the `state` that comes in here does not match the `state` that was sent out in the OPDS authorization document.
 
