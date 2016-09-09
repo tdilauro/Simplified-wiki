@@ -70,3 +70,45 @@ Once the hour is up, the circ manager is going to have to start sending 401s aga
 ## Logging out
 
 The flip side of this is there seems to be no way to tell Sierra to log a patron out. A patron who logs out of the Simplified app will be immediately reauthorized (as per above) on the next 401 error. However we can force a logout on the client side by clearing the web view's cookies. The next time they get a 401 error they'll be asked to log in again.
+
+## Some sample code
+
+```
+class SierraAPI(object):
+
+    def __init__(self, host, key, secret,
+                 redirect_uri='http://localhost:6500/oauth_callback'):
+        self.host = host
+        self.key = key
+        self.secret = secret
+        self.redirect_uri = redirect_uri
+
+    def login_url(self, state):
+        qs = urllib.urlencode(dict(state=state, response_type='code',
+                                   redirect_uri=self.redirect_uri,
+                                   client_id=self.key)
+        )
+        return self.host + '/iii/sierra-api/authorize?%s' % qs
+        
+    def get_token(self):
+        url = self.host + '/iii/sierra-api/v2/token'
+        basic = base64.encodestring("%s:%s" % (self.key, self.secret)).strip()
+        headers = {'Authorization': "Basic %s" % basic}
+        response = requests.post(url, headers=headers)
+        data = json.loads(response.content)
+        return data['access_token']
+
+    def patron_lookup(self, bearer, barcode):
+        url = self.host + '/iii/sierra-api/v2/patrons/find?barcode=%s' % barcode
+        headers = {'Authorization': "Bearer %s" % bearer}
+        response = requests.get(url, headers=headers)
+        return response.content
+
+    def verify_pin(self, bearer, pin):
+        url = self.host + '/iii/sierra-api/v2/patrons/pin/verify'
+        headers = {'Authorization': "Bearer %s" % bearer,
+                   'Content-Type': 'application/json'}
+        body = json.dumps(dict(pin=pin))
+        response = requests.post(url, headers=headers, data=body)
+        return response.content
+```
