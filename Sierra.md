@@ -33,20 +33,30 @@ Since the circulation manager only needs to interact with the ILS when acting on
 
 This is a standard OAuth Authorization Code Grant, documented [here](http://sandbox.iii.com/docs/Content/zReference/authAuthCode.htm).
 
-To act on behalf of a specific patron we need to get that patron to log in to the ILS. This starts by opening a web view to the URL `https://{root}/authorize?client_id={client ID}&redirect_uri={application URI}&state={state}&response_type=code`.
+Let's say a patron wants to check their loans. They're going to get a 401 error. We don't know which patron they are. We will send them an OAuth authentication document with the 401 error and that document will tell them to log in to the ILS at a URL like `https://{root}/authorize?client_id={client ID}&redirect_uri={application URI}&state={state}&response_type=code`.
 
 Example: `https://sandbox.iii.com/iii/sierra-api/authorize?client_id=sierra-client-id&redirect_uri=https://my-circulation-manager.com/oauth_callback%3Fprovider=Sierra&state=some-state&response_type=code`
 
 `state` can be set to any value. `redirect_uri` is the URI defined in the initial setup step, the link into the circulation manager's `oauth_callback` controller.
 
-The patron will be redirected to a Sierra login form. They log in, authorize the Simplified app, and are sent to a URL based on the `redirect_uri`, something like: `https://my-circulation-manager.com/oauth_callback?provider=Sierra&code=3ui+a98th1i4&state=some-state`.
+The client will open a web view to the `iii.com` URL [QUESTION: will this work given the common practice of hiding this server behind an IP whitelist?]. That URL will redirect the patron to a Sierra login form. They will log in, authorize the Simplified app, and will be sent to a URL based on the `redirect_uri`, something like: `https://my-circulation-manager.com/oauth_callback?provider=Sierra&code=3ui+a98th1i4&state=some-state`.
 
-The circulation
+The circulation manager must not continue if the `state` that comes in here does not match the `state` that was sent out in the OPDS authorization document.
 
+Assuming the `state` does match, the circulation manager then needs to exchange the `code` for an access token.
 
+This works the same way as the Client Credentials Grant described above. You put your client key and secret into a Basic Auth request. The only difference is the entity-body:
+
+```
+grant_type=authorization_code&code=3ui+a98th1i4
+&redirect_uri=redirect_uri=https%3A%2F%2Fmy-circulation-manager.com%2Foauth_callback%3Fprovider%3DSierra'
+```
+
+The response will include an access token good for one hour, which will allow us to act on behalf of a patron. More importantly, we now know that the user of the Simplified app is a real, authorized library patron.
 
 ## Getting patron information
 
-Now we're authorized to act on behalf of a patron, but the only thing we really need to do is look up their identifying information.
+Now we're authorized to act on behalf of a patron, but the only thing we really need to do is look up their identifying information. This is documented [here](
+https://sandbox.iii.com/iii/sierra-api/swagger/index.html#!/info/Get_token_information_get_0) as the "Get token information" endpoint.
 
-https://sandbox.iii.com/iii/sierra-api/swagger/index.html#!/info/Get_token_information_get_0
+This endpoint is not present in version 2 of the Sierra API.
