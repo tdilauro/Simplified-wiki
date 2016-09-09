@@ -52,7 +52,7 @@ grant_type=authorization_code&code=3ui+a98th1i4
 &redirect_uri=redirect_uri=https%3A%2F%2Fmy-circulation-manager.com%2Foauth_callback%3Fprovider%3DSierra'
 ```
 
-The response will include an access token good for one hour, which will allow us to act on behalf of a patron. More importantly, we now know that the user of the Simplified app is a real, authorized library patron.
+The response will include an access token good for one hour. We can use this token as a `Bearer` token to act on behalf of a patron. More importantly, we now know that the user of the Simplified app is a real, authorized library patron.
 
 ## Getting patron information
 
