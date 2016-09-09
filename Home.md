@@ -88,8 +88,8 @@ Currently, our active public repositories include:
 
 * [[SIP]] - A common protocol for authenticating patrons
 * [[Sierra]]
-* [[Millenium|Millenium]]
-* [[Sirsi Dynix]]
+* [[Millenium]]
+* [[SirsiDynix]]
 * [[Evergreen]]
 * [[Koha]]
 * [[Clever]]
