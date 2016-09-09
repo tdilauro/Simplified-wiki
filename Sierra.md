@@ -5,7 +5,7 @@ There are currently two active versions of the Sierra API: [Version
 and [Version
 3](https://sandbox.iii.com/docs/Content/zTutorials/tutAuthenticate.htm). Version 1 may still be in use in some libraries.
 
-We currently believe that version 2 cannot be integrated with Library Simplified. Libraries that use version 2 of Sierra API should either upgrade to version 3 or install another API such as [[Millenium]]. It may also be possible to integrate with an ILS indirectly thorough a library's Overdrive account, but this is not a good long-term solution because it creates a major dependency on Overdrive.
+We believe that version 2 cannot be integrated with Library Simplified. Libraries that use version 2 of Sierra API should either upgrade to version 3 or install another API such as [[Millenium]]. It may also be possible to integrate with an ILS indirectly thorough a library's Overdrive account, but this is not a good long-term solution because it creates a major dependency on Overdrive.
 
 ## Setup
 
@@ -65,10 +65,8 @@ This endpoint is not present in version 2 of the Sierra API. ([Example URL](http
 
 ## Reauthorizing
 
-Once the hour is up, the circ manager is going to have to start sending 401s again, and the client is going to have to open up that web view again. Up to a certain point, this can be done in the background. I don't know how 
-
- and it's possible the whole thing can be done in the background without making the web view visible. We won't know for sure without a v3 Sierra system to try it out on.
+Once the hour is up, the circ manager is going to have to start sending 401s again, and the client is going to have to open up that web view again. If the client's session cookie is still around in the web view, the patron will still be logged in and the token refresh can be done in the background, without patron intervention. The client's session cookie is a standard Tomcat JSESSIONID cookie that expires at the close of the sesssion. So long as the "session" stays open on the mobile device and the Sierra instance doesn't get restarted, the client will be logged in indefinitely.
 
 ## Logging out
 
-There seems to be no way to tell Sierra to log a patron out. Without that feature, a patron who logs out of the Simplified app will be immediately reauthorized (as per above) on the next 401 error. However we can probably force a logout on the client side by clearing the web view's cookies.
+The flip side of this is there seems to be no way to tell Sierra to log a patron out. A patron who logs out of the Simplified app will be immediately reauthorized (as per above) on the next 401 error. However we can force a logout on the client side by clearing the web view's cookies. The next time they get a 401 error they'll be asked to log in again.
