@@ -63,4 +63,10 @@ This endpoint is not present in version 2 of the Sierra API. ([Example URL](http
 
 ## Reauthorizing
 
-Once the hour is up, the circ manager is going to have to start sending 401s again, and the client is going to have to open up that web view again. However, it's not clear yet whether or not the patron will actually have to log in again. They probably won't have to re-authorize the Simplified app (unless they chose "authorize once" the first time), and it's possible the whole thing can be done in the background without making the web view visible. We won't know for sure without a v3 Sierra system to try it out on.
+Once the hour is up, the circ manager is going to have to start sending 401s again, and the client is going to have to open up that web view again. Up to a certain point, this can be done in the background. I don't know how 
+
+ and it's possible the whole thing can be done in the background without making the web view visible. We won't know for sure without a v3 Sierra system to try it out on.
+
+## Logging out
+
+There seems to be no way to tell Sierra to log a patron out. Without that feature, a patron who logs out will be immediately reauthorized (as per above). However we can force a logout by clearing the web view's cookies.
