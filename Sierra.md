@@ -71,4 +71,4 @@ Once the hour is up, the circ manager is going to have to start sending 401s aga
 
 ## Logging out
 
-There seems to be no way to tell Sierra to log a patron out. Without that feature, a patron who logs out will be immediately reauthorized (as per above). However we can force a logout by clearing the web view's cookies.
+There seems to be no way to tell Sierra to log a patron out. Without that feature, a patron who logs out of the Simplified app will be immediately reauthorized (as per above) on the next 401 error. However we can probably force a logout on the client side by clearing the web view's cookies.
