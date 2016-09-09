@@ -64,11 +64,15 @@ Currently, our active public repositories include:
 * [[Capstone|Capstone]]
 * [[ComicPlus]]
 * [[Marshall Cavendish]]
+* [[Salem Press]]
+* [[Zinio]] (periodicals)
 
 ## Primarily audiovisual material
 
 * [[OneClickDigital|One Click Digital]] (from Recorded Books)
 * [[BookFlix|BookFlix]] (from Scholastic)
+* [[Science Flix|ScienceFlix]] (from Scholastic)
+* [[TrueFlix]] (from Scholastic)
 * [[IndieFlix Videos|IndieFlix]] (from Recorded Books)
 
 ### Courses and tests
@@ -76,6 +80,9 @@ Currently, our active public repositories include:
 * [[Lynda.com|Lynda]]
 * [[Learning Express|LearningExpress]]
 * [[Mango Languages|MangoLanguages]]
+* [[Transparent Languages|TransparentLanguages]]
+* [[Universal Class|UniversalClass]]
+
 
 ## ILSes and other patron authenticators
 
