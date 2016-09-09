@@ -49,13 +49,31 @@ Currently, our active public repositories include:
 
 # Integrations
 
-## Sources of books
+## Sources of content
+
+## Primarily ebooks
 
 * [[The Library Simplified open-access content server|OpenAccessContentServer]]
 * [[Overdrive]]
-* [[3M Cloud Library|CloudLibrary]]
+* [[Hoopla]]
+* [[Bibliotheca|Bibliotheca]] (formerly 3M Cloud Library)
 * [[Axis 360|Axis360]]
-* [[Others|LicensedContentSources]]
+* [[Gale Virtual Reference|GaleVirtualReference]]
+* [[Grey House|GreyHouse]]
+
+## Primarily audio books
+
+* [[OneClickDigital|One Click Digital]] (a.k.a. Recorded Books)
+
+## Primarily 
+
+* [[Biblioboard]]
+* [[ComicPlus]]
+* [[BookFlix|BookFlix]] (from Scholastic)
+
+### Courses and tests
+
+* [[
 
 ## ILSes and other patron authenticators
 
