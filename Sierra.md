@@ -5,7 +5,11 @@ There are currently two active versions of the Sierra API: [Version
 and [Version
 3](https://sandbox.iii.com/docs/Content/zTutorials/tutAuthenticate.htm). Version 1 may still be in use in some libraries.
 
-We believe that version 2 cannot be integrated with Library Simplified except through SIP. Libraries that use version 2 of Sierra API should either connect via SIP, upgrade to version 3 or install another API such as [[Millenium]]. It may also be possible to integrate with an ILS indirectly thorough a library's Overdrive account, but this is not a good long-term solution because it creates a major dependency on Overdrive.
+It should be possible to use [[SIP]] to integrate any version of Sierra with a Library Simplified circulation manager. However, with version 3 of the Sierra API it becomes possible to integrate Sierra with a Library Simplified circulation manager through an OAuth Authorization Code Grant.
+
+We believe that version 2 cannot be integrated with Library Simplified except through SIP. Libraries that use version 2 of Sierra API should either connect via SIP, upgrade to version 3 or install another API such as [[Millenium]]. 
+
+It may also be possible to integrate with an ILS indirectly thorough a library's Overdrive account, but this is not a good long-term solution because it creates a major dependency on Overdrive.
 
 ## Setup
 
