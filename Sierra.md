@@ -27,6 +27,8 @@ The entity-body should be the string `grant_type=client_credentials`.
 
 This is covered [here](http://sandbox.iii.com/docs/Content/zReference/authClient.htm).
 
+You can use the access token as a `Bearer` token to make API requests that don't require acting on behalf of a particular patron.
+
 Since the circulation manager only needs to interact with the ILS when acting on behalf of a particular patron, this will probably never be used in production code, but it might be useful when troubleshooting problems with the ILS.
 
 ## Getting a patron authorization token with Authorization Code Grant
