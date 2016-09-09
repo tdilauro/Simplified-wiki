@@ -31,7 +31,19 @@ Since the circulation manager only needs to interact with the ILS when acting on
 
 ## Getting a patron authorization token with Authorization Code Grant
 
-http://sandbox.iii.com/docs/Content/zReference/authAuthCode.htm
+This is a standard OAuth Authorization Code Grant, documented [here](http://sandbox.iii.com/docs/Content/zReference/authAuthCode.htm).
+
+To act on behalf of a specific patron we need to get that patron to log in to the ILS. This starts by opening a web view to the URL `https://{root}/authorize?client_id={client ID}&redirect_uri={application URI}&state={state}&response_type=code`.
+
+Example: `https://sandbox.iii.com/iii/sierra-api/authorize?client_id=sierra-client-id&redirect_uri=https://my-circulation-manager.com/oauth_callback%3Fprovider=Sierra&state=some-state&response_type=code`
+
+`state` can be set to any value. `redirect_uri` is the URI defined in the initial setup step, the link into the circulation manager's `oauth_callback` controller.
+
+The patron will be redirected to a Sierra login form. They log in, authorize the Simplified app, and are sent to a URL based on the `redirect_uri`, something like: `https://my-circulation-manager.com/oauth_callback?provider=Sierra&code=3ui+a98th1i4&state=some-state`.
+
+The circulation
+
+
 
 ## Getting patron information
 
