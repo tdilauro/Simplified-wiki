@@ -86,6 +86,7 @@ Currently, our active public repositories include:
 
 ## ILSes and other patron authenticators
 
+* [[SIP]] - A common protocol for authenticating patrons
 * [[Sierra]]
 * [[Millenium|Millenium]]
 * [[Sirsi Dynix]]
