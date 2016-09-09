@@ -59,4 +59,4 @@ The response will include an access token good for one hour, which will allow us
 Now we're authorized to act on behalf of a patron, but the only thing we really need to do is look up their identifying information. This is documented [here](
 https://sandbox.iii.com/iii/sierra-api/swagger/index.html#!/info/Get_token_information_get_0) as the "Get token information" endpoint.
 
-This endpoint is not present in version 2 of the Sierra API.
+This endpoint is not present in version 2 of the Sierra API. ([Example URL](https://lci-tr.iii.com/iii/sierra-api/swagger/index.html), will not be available outside NYPL.)
