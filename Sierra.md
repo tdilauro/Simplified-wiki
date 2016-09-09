@@ -60,3 +60,7 @@ Now we're authorized to act on behalf of a patron, but the only thing we really 
 https://sandbox.iii.com/iii/sierra-api/swagger/index.html#!/info/Get_token_information_get_0) endpoint. That tells you which patron we're looking at. You can then use ["Get a patron by record ID"](https://sandbox.iii.com/iii/sierra-api/swagger/index.html#!/patrons/Get_a_patron_by_record_ID_get_9) to get detailed information about the patron, for purposes such as determining the patron type and outstanding fines.
 
 This endpoint is not present in version 2 of the Sierra API. ([Example URL](https://lci-tr.iii.com/iii/sierra-api/swagger/index.html), will not be available outside NYPL.) This is why we say that version 2 can't be integrated into Library Simplified.
+
+## Reauthorizing
+
+Once the hour is up, the circ manager is going to have to start sending 401s again, and the client is going to have to open up that web view again. However, it's not clear yet whether or not the patron will actually have to log in again. They probably won't have to re-authorize the Simplified app (unless they chose "authorize once" the first time), and it's possible the whole thing can be done in the background without making the web view visible. We won't know for sure without a v3 Sierra system to try it out on.
