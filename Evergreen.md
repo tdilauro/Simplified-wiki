@@ -6,8 +6,9 @@ Authentication can be handled two ways: either with a [[SIP]] integration ([Ever
 
 It looks like the [open-ils.auth](https://wiki.evergreen-ils.org/doku.php?id=open-ils_auth_api:open-ils.auth) service can give a yes-no answer given username and password.
 
-### Patron record
+## Patron record
 
 A patron record can be fetched through SIP.
 
 Presumably the open-ils.actor service can give more detailed information about a patron, but I can't find documentation on it.
+
