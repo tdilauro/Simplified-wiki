@@ -1,4 +1,4 @@
-Many content sources used by libraries cannot be integrated into the Library Simplified ecosystem because they don't have an API that meets our requirements. This page summarizes a brief attempt to figure out what sort of content is on offer, how authentication happens, and how the content is delivered.
+Many content sources used by libraries cannot be integrated into the Library Simplified ecosystem because they don't have an API that meets our requirements. This page is our attempt to keep track of the content sources used by Simplified partner libraries.
 
 Any content source that wants to integrate with a library needs to answer these three questions:
 
