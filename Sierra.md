@@ -1,6 +1,6 @@
-Sierra is an ILS that provides an API for patron authentication.
+Sierra provides a number of APIs for patron authentication. The one they're pushing heavily is the REST API, as opposed to the [[Millenium]] and SOAP APIs, which they consider to be "legacy".
 
-There are currently two active versions of the Sierra API: [Version
+There are currently two active versions of the Sierra REST API: [Version
 2](https://sandbox.iii.com/docs/v2/Content/zTutorials/tutAuthenticate.htm)
 and [Version
 3](https://sandbox.iii.com/docs/Content/zTutorials/tutAuthenticate.htm). Version 1 may still be in use in some libraries.
