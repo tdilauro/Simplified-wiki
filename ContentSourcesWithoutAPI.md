@@ -8,6 +8,8 @@ Working on an ODL-based interface, but it's not ready yet.
 
 Ebooks, delivered through a web view. [Available through NYPL](http://go.galegroup.com.i.ezproxy.nypl.org/ps/start.do?p=GVRL&u=nypl&authCount=1), where access is gated and content served through EZProxy.
 
+According to [this page](http://support.gale.com/technical/697), MARC records are made available for the entire collection, but the URL that supposedly gives us the records yields an Internal Server Error.
+
 ## Grey House
 
 
