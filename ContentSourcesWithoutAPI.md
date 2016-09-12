@@ -6,7 +6,11 @@ Working on an ODL-based interface, but it's not ready yet.
 
 ## Gale Virtual Reference
 
+Ebooks, delivered through a web view. [Available through NYPL](http://go.galegroup.com.i.ezproxy.nypl.org/ps/start.do?p=GVRL&u=nypl&authCount=1), where access is gated and content served through EZProxy.
+
 ## Grey House
+
+
 
 ## Capstone
 
@@ -36,7 +40,7 @@ Comics. Custom app, no API.
 
 All three of these sites are from Scholastic and combine ebooks with videos through a web view.
 
-BookFlix is available at NYPL, where authentication is handled and content is delivered through EZProxy.
+BookFlix is [available at NYPL](http://bkflix.grolier.com.i.ezproxy.nypl.org/sw/node-33982/bk0030pr), where authentication is handled and content is delivered through EZProxy.
 
 ## hoopla
 
