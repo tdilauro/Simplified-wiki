@@ -66,7 +66,7 @@ Currently, our active public repositories include:
 * In addition to SIP, Sierra offers a number of APIs:
  - The [[Millenium]] Patron API
  - The [[Sierra]] REST API
- - The SOAP Patron API
+ - The "PatronIO" SOAP API is used for _creating_ patron records. It is not useful for validating patron credentials.
 * [[SirsiDynix]]
 * [[Evergreen]]
 * [[Koha]]
