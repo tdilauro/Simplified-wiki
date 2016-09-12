@@ -6,7 +6,7 @@ Any content source that wants to integrate with a library needs to answer these 
 2. How does the content source know that the user is one of our patrons? (Most common answer, at least for NYPL: authentication proxy.)
 3. Once the patron makes their choice, how is the content delivered? (Most common answer: web view)
 
-#3 is the deal-breaker for us. A mobile application needs self-contained packages of content.
+That third one is the deal-breaker for us. A mobile application needs self-contained packages of content.
 
 ## Biblioboard
 
