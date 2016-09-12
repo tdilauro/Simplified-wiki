@@ -66,6 +66,7 @@ Currently, our active public repositories include:
 * [[Marshall Cavendish]]
 * [[Salem Press]]
 * [[Zinio]] (periodicals)
+* Many content sources [[have no API]](ContentSourcesWithoutAPI) and cannot be properly integrated into Simplified.
 
 ## Primarily audiovisual material
 
