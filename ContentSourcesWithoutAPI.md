@@ -1,10 +1,12 @@
-Many content sources used by libraries cannot be integrated into the Library Simplified ecosystem because they don't have an API that meets our requirements. This page is our attempt to keep track of the content sources used by Simplified partner libraries.
+Many content sources used by libraries cannot be integrated into the Library Simplified ecosystem because they don't have an API that meets our requirements. This page is our attempt to keep track of the content sources used by Simplified partner libraries and explain why they can't be put into the system.
 
 Any content source that wants to integrate with a library needs to answer these three questions:
 
 1. How does the library know what's in the catalog? (Most common answer: MARC records. Runner-up: you don't, just hand over your patron and we'll show them.)
 2. How does the content source know that the user is one of our patrons? (Most common answer, at least for NYPL: authentication proxy.)
 3. Once the patron makes their choice, how is the content delivered? (Most common answer: web view)
+
+#3 is the deal-breaker for us. A mobile application needs self-contained packages of content.
 
 ## Biblioboard
 
