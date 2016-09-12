@@ -12,7 +12,13 @@ Working on an ODL-based interface, but it's not ready yet.
 
 ## Marshall Cavendish
 
+Ebooks, delivered through a web view. [Here's the closest I could get to actual content](http://wdn.ipublishcentral.net/marshall_cavendish/viewinside/46771198771670), and to [the catalog](http://www.marshallcavendishebooks.com/product/adventures-benny).
+
+Not sure how authentication works.
+
 ## Salem Press
+
+Ebooks seem to be the focus. [The login site](http://online.salempress.com/) seems to imply the existence of an ILS integration. I don't know what the catalog looks like.
 
 ## IndieFlix
 
@@ -26,7 +32,7 @@ Magazines. Custom app, no API.
 
 Comics. Custom app, no API.
 
-### BookFlix/Science Flix/TrueFlix
+## BookFlix/Science Flix/TrueFlix
 
 All three of these sites are from Scholastic and combine ebooks with videos through a web view.
 
