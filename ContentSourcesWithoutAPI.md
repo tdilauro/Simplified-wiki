@@ -34,9 +34,9 @@ A service that provides a custom app must have some kind of API--that's how the 
 
 Patrons choose a library that offers hoopla service, then verify their membership in that library by providing barcode and (optional) PIN. Presumably this is done through an ILS integration. Apart from this ILS integration, hoopla offers no integrations to a library.
 
-## Interactive educational software
+## Interactive educational resources
 
-These services won't fit into an OPDS-based app because the content they deliver is not in a container that we can reasonably render.
+Even if we can get the content, the experience these services provide probably won't fit into the Simplified app because the content they deliver is not in a container that we can reasonably render. In most cases the best we can possibly do is open a web view and transparently handle authentication.
 
 ### Lynda.com
 
