@@ -42,7 +42,7 @@ Videos. No custom app.
 
 ## Zinio
 
-Magazines. Custom app, no API.
+Magazines. Custom app, no API. According to Recorded Books, this content will eventually be available through the One Click Digital API.
 
 ## Comics Plus
 
