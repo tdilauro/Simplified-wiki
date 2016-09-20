@@ -58,6 +58,7 @@ Currently, our active public repositories include:
 * [[Bibliotheca|Bibliotheca]] (formerly 3M Cloud Library)
 * [[Axis 360|Axis360]]
 * [[OneClickDigital|One Click Digital]] (from Recorded Books)
+* [[desLibris]] (from the Canadian Electronic Library)
 * Many content sources [[have no API|ContentSourcesWithoutAPI]] and cannot be properly integrated into Simplified.
 
 ## ILSes and other patron authenticators
