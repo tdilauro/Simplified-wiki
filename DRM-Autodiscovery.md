@@ -102,7 +102,7 @@ This says:
 3. The URMS Store that provides the book is `CEL`.
 4. If you need to create a profile with `CEL`, you can send an authenticated GET request to `https://host/register/CEL`.
 
-You might also get an OPDS entry like this:
+However, there's another option. You might get an OPDS entry instead that looks like this:
 
 ```
 <entry>
