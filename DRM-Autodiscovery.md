@@ -14,7 +14,7 @@ The good thing about Adobe IDs is that once you have one, you can use it for _an
 
 If a circulation manager is not associated with any Vendor ID server, there's nothing we can do but hope the client already has an Adobe ID from some other source. If a circulation manager _is_ associated with a Vendor ID server, there's a simple way to tell someone who has just checked out a book that they can easily get a Vendor ID if they need one. (Most circulation managers will be associated with the Open Ebooks Vendor ID server, so we should be able to do this.)
 
-The details are covered in the [Vendor ID Service](https://docs.google.com/document/d/1j8nWPVmy95pJ_iU4UTC-QgHK2QhDUSdQ0OQTFR2NE_0/edit#) spec. I've slightly modified the tag names for this example. Here's the OPDS entry you might get back after borrowing a book.
+The details are covered in the  spec. I've slightly modified the tag names for this example. Here's the OPDS entry you might get back after borrowing a book.
 
 ```
 <entry>
@@ -35,7 +35,7 @@ The `<indirectAcquisition>` tag inside the `<link>` tag says that you'll be able
 
 The `<drm>` tag inside the `<link>` tag tells you how to get an Adobe ID if you don't already have one. The `<client-token>` is used by the ACS client as the `authData` argument when calling `dpdrm::DRMProcessor::initSignInWorkflow`. (details are in Adobe's Vendor ID Specification).
 
-Where does that `<client-token>` value come from? It's an encoded JSON Web Token that is calculated by the circulation manager. This value can be calculated on the fly given only the patron identifier. Since we just loaned out a book (or we are looking at a specific patron's loans), the patron identifier has already been loaded from the database. This means calculating a new token for every request doesn't put any undue burden on the circulation manager.
+Where does that `<client-token>` value come from? In this case, it's an encoded JSON Web Token that is calculated by the circulation manager according to the rules in the [Vendor ID Service](https://docs.google.com/document/d/1j8nWPVmy95pJ_iU4UTC-QgHK2QhDUSdQ0OQTFR2NE_0/edit#) spec. But it can be any string that meets the criteria laid out in Adobe's Vendor ID spec. Since it shows up a lot but is rarely used, it should be a value that can be calculated very quickly on the fly, to avoid undue burden on the circulation manager.
 
 An OPDS feed that has multiple `<link>` tags to an ACS-encrypted resource should provide an identical `<drm>` tag for each one. The circulation manager should not omit the `<drm>` tag because it believes the patron already has an Adobe ID; the patron might be using a new device, and this procedure will allow the patron to look up an existing Adobe ID.
 
@@ -43,7 +43,9 @@ An OPDS feed that has multiple `<link>` tags to an ACS-encrypted resource should
 
 An Adobe ID can have at most six device IDs associated with it. An attempt to register a seventh device will fail. Unfortunately edge cases mean patrons frequently reach the device limit with one or two devices.
 
-We need a way to clear all the device IDs from an existing Adobe ID. If all else fails, a client needs a way to wipe out its Adobe ID and get a brand new one.
+We need a way to clear all the device IDs from an existing Adobe ID. The patron will have to re-register their devices, but under this system that happens automatically, and the patron's access to books will be preserved.
+
+If all else fails, a client needs a way to wipe out its Adobe ID and get a brand new one. This will mean the patron loses access to previously borrowed books.
 
 ## Sony URMS
 
