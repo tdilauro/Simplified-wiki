@@ -68,7 +68,7 @@ Before a book is borrowed, this is how we indicate that decrypting a book will r
     <opds:indirectAcquisition
           type="application/atom+xml;type=entry;profile=opds-catalog">
       <opds:indirectAcquisition
-            type="vnd.opds/drm-encrypted;method=urms">
+            type="vnd.librarysimplified/drm-encrypted;method=urms">
         <opds:indirectAcquisition type="application/epub"/>
       </opds:indirectAcquisition>
     </opds:indirectAcquisition>
@@ -80,19 +80,20 @@ Before a book is borrowed, this is how we indicate that decrypting a book will r
 This says:
 
 1. Borrow the book and you will get an OPDS entry.
-2. The OPDS entry will help you get a DRM-encrypted file managed according to URMS rules.
-3. If you decrypt the file you will get an EPUB.
+2. The OPDS entry will help you negotiate the URMS API.
+3. Once you make it through the API you will get an EPUB.
 
 Once you borrow the book you will be served an OPDS entry like this:
 
 ```
 <entry>
- <link rel="acquisition" href="urn:urms-ccid:KDFASDJFLIAKSJ" type="vnd.opds/drm-encrypted;method=urms">
+ <link rel="acquisition" href="urn:urms-ccid:KDFASDJFLIAKSJ" type="vnd.librarysimplified/drm-encrypted;method=urms">
   <opds:indirectAcquisition type="application/epub"/>
+  <link rel="acquisition" href="https://host/foo.epub" type="vnd.librarysimplified/drm-encrypted;method=urms" />
  </link>
- <link rel="acquisition" href="https://host/foo.epub" type="vnd.opds/drm-encrypted;method=urms" />
- <link rel="http://librarysimplified.org/drm/urms/ccid" href="urn:urms-ccid:KDFASDJFLIAKSJ"/>
- <link rel="http://opds-spec.org/drm/register-client" href="https://host/register/CEL" drm:storeID="CEL" drm:type="urms"/>
+ <link rel="http://opds-spec.org/drm/register-client" 
+       href="https://host/register/CEL" drm:storeID="CEL"
+       drm:type="urms"/>
 </entry>
 ```
 
