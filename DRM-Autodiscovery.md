@@ -39,8 +39,11 @@ Where does that `<client-token>` value come from? It's an encoded JSON Web Token
 
 An OPDS feed that has multiple `<link>` tags to an ACS-encrypted resource should provide an identical `<drm>` tag for each one. The circulation manager should not omit the `<drm>` tag because it believes the patron already has an Adobe ID; the patron might be using a new device, and this procedure will allow the patron to look up an existing Adobe ID.
 
-
 ### Failure modes
+
+An Adobe ID can have at most six device IDs associated with it. An attempt to register a seventh device will fail. Unfortunately edge cases mean patrons frequently reach the device limit with one or two devices.
+
+We need a way to clear all the device IDs from an existing Adobe ID. If all else fails, a client needs a way to wipe out its Adobe ID and get a brand new one.
 
 ## Sony URMS
 
