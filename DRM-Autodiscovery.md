@@ -108,6 +108,10 @@ It's nice to have that direct link to the EPUB, because it means you can start d
 
 ### Client registration
 
+When the client makes a GET request to the `/drm/register-client` link (in this case, `https://host/register/CEL`), it needs to send whatever authentication credentials the circulation manager expects, the same as if it were following an OPDS `bookshelf` link.
+
+Behind the scenes, the circulation manager will make sure the patron has a registered user account with the appropriate URMS Store. Then it will request an auth token for that patron from the URMS Store. The auth token will be passed back to the client (it looks like `3375:z4nk82tdj32hf4ad`). The client can use this token to create a profile that connects the patron to their device.
+
 ### Failure modes
 
 ## LCP
