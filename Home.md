@@ -46,6 +46,7 @@ Currently, our active public repositories include:
 * [[The generic metadata layer|GenericMetadata]]
 * [[The generic circulation API|GenericCirculation]]
 * [[The annotation API|Annotations]]
+* [[DRM autodiscovery|DRMAutodiscovery]]
 
 # Integrations
 
