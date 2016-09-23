@@ -87,9 +87,10 @@ Once you borrow the book you will be served an OPDS entry like this:
 
 ```
 <entry>
- <link rel="acquisition" href="https://host/foo.epub" type="vnd.opds/drm-encrypted;method=urms">
+ <link rel="acquisition" href="urn:urms-ccid:KDFASDJFLIAKSJ" type="vnd.opds/drm-encrypted;method=urms">
   <opds:indirectAcquisition type="application/epub"/>
  </link>
+ <link rel="acquisition" href="https://host/foo.epub" type="vnd.opds/drm-encrypted;method=urms" />
  <link rel="http://librarysimplified.org/drm/urms/ccid" href="urn:urms-ccid:KDFASDJFLIAKSJ"/>
  <link rel="http://opds-spec.org/drm/register-client" href="https://host/register/CEL" drm:storeID="CEL" drm:type="urms"/>
 </entry>
@@ -97,27 +98,14 @@ Once you borrow the book you will be served an OPDS entry like this:
 
 This says:
 
-1. You can get the book from `http://host/foo.epub`, but it's going to be encrypted with URMS.
-2. The CCID of the book is `KDFASDJFLIAKS`.
+1. You can get the book from `http://host/foo.epub`, but it's going to be encrypted with URMS, and you won't be able to turn it into a usable form.
+2. To get the book in `application/epub`, you need to start from the CCID, which is `KDFASDJFLIAKSJ`.
 3. The URMS Store that provides the book is `CEL`.
 4. If you need to create a profile with `CEL`, you can send an authenticated GET request to `https://host/register/CEL`.
 
-However, there's another option. You might get an OPDS entry instead that looks like this:
+It's nice to have that direct link to the EPUB, because it means you can start downloading the book while you wait to fulfill the loan, but it's not mandatory. If the EPUB link is missing, you can still fulfill the book with just a CCID and a URMS profile.
 
-```
-<entry>
- <link rel="acquisition" href="urn:urms-ccid:KDFASDJFLIAKSJ" type="vnd.opds/drm-encrypted;method=urms">
-  <opds:indirectAcquisition type="application/epub"/>
- </link>
- <link rel="http://opds-spec.org/drm/register-client" href="https://host/register/CEL" drm:storeID="CEL" drm:type="urms"/>
-</entry>
-```
-
-1. You can get the book by fulfilling its CCID, which is `KDFASDJFLIAKS`, with your profile for the store that provides this book. The book will be automatically downloaded.
-2. The URMS Store that provides the book is `CEL`.
-3. If you need to create a profile with `CEL`, you can send an authenticated GET request to `https://host/register/CEL`.
-
-The second use case is simpler, but the first means that the client can start downloading the encrypted book while it's fulfilling the loan.
+### Client registration
 
 ### Failure modes
 
