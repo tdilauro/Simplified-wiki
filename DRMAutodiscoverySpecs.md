@@ -88,12 +88,10 @@ This specification serves as a registry for reserved strings
 corresponding to popular DRM schemes. The following schemes are
 defined:
 
-+--------------+-----+------------+
 | Short string | URI | Description |
 | ACS | http://librarysimplified.org/terms/drm/scheme/ACS | Adobe ACS |
 | URMS | http://librarysimplified.org/terms/drm/scheme/URMS | Sony URMS |
 | LCP | http://librarysimplified.org/terms/drm/scheme/LCP | Readium URMS |
-+--------------+-----+------------+
 
 # The `http://librarysimplified.org/terms/drm/register-client` link relation
 
@@ -161,3 +159,5 @@ representation's original media type before encryption and obfuscation
 were applied.
 
 # The `urms-ccid` URI scheme
+
+# atom:link inside atom:link
