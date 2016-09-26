@@ -123,6 +123,7 @@ Behind the scenes, the circulation manager will make sure the patron has a regis
 ## Work to be done
 
 * Fill in the LCP section.
-* Define the `vnd.librarysimplified/drm-encrypted` media type, with its `method` and `decrypts-to` parameters.
+* Formally define the `vnd.librarysimplified/drm-encrypted` media type, with its `method` and `decrypts-to` parameters.
+* Formally define the extension namespace for DRM with its `drm`, `vendor`, `client-token`, `type`, and `clientID` tags and attributes.
 * Define a DRM-independent (?) mechanism for retrieving lists of registered device IDs.
 * Define a DRM-independent (?) mechanism for completely resetting a client ID.
