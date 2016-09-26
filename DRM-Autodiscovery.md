@@ -43,9 +43,11 @@ An OPDS feed that has multiple `<link>` tags to an ACS-encrypted resource should
 
 An Adobe ID can have at most six device IDs associated with it. An attempt to register a seventh device will fail. Unfortunately edge cases mean patrons frequently reach the device limit with one or two devices.
 
-We need a way to clear all the device IDs from an existing Adobe ID. The patron will have to re-register their devices, but under this system that happens automatically, and the patron's access to books will be preserved.
+To avoid this, a server may offer an authenticated client a way to get a list of their authenticated device IDs. One registered device may deregister a different registered device if it knows the ID. Since reregistration happens automatically under this system, a device that bumps into the device limit can deregister another device and register itself automatically.
 
 If all else fails, a client needs a way to wipe out its Adobe ID and get a brand new one. This will mean the patron loses access to previously borrowed books.
+
+The mechanisms for registering a device ID with the Vendor ID service, getting a list of registered device IDs, and wiping out an Adobe ID are not defined here.
 
 ## Sony URMS
 
