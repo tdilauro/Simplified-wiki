@@ -118,11 +118,64 @@ Behind the scenes, the circulation manager will make sure the patron has a regis
 
 ## LCP
 
+Before a book is borrowed, here's how we indicate that reading a book will require knowledge of LCP.
+
+```
+<entry>
+ <title>An LCP Book</title>
+ <link rel="borrow" href="...">
+    <opds:indirectAcquisition
+          type="application/atom+xml;type=entry;profile=opds-catalog">
+      <opds:indirectAcquisition
+            type="application/vnd.readium.lcp.license-1.0+json">
+        <opds:indirectAcquisition type="application/epub"/>
+      </opds:indirectAcquisition>
+    </opds:indirectAcquisition>
+  </opds:indirectAcquisition>
+ </link>
+</entry>
+```
+
+This says:
+
+1. Borrow the book and you'll get an OPDS entry.
+2. That entry will contain a link to an LCP License Document
+3. You'll be able to use the LSD to actually get the book.
+
+Once you borrow the book, you'll get an OPDS entry that looks like this:
+
+```
+<entry>
+ <title>An LCP Book</title>
+ <link rel="acquisition" href="...">
+    <opds:indirectAcquisition
+          type="application/vnd.readium.lcp.license-1.0+json">
+      <opds:indirectAcquisition type="application/epub"/>
+    </opds:indirectAcquisition>
+    <drm:drm type="http://librarysimplified.org/terms/drm/LCP">
+      <drm:client-token>sodih43oth489</drm:client-token>
+    </drm:drm>
+  </opds:indirectAcquisition>
+ </link>
+</entry>
+```
+
+The `drm:client-token`, "sodih43oth489" in this example, is the LCP user key. A client can use this to get access to the book and decrypt it. The provider may choose to generate a different user key for each loan, or to use the user key as described in Section 4 of the LCP specification: "the result of applying a hashing function on the User Passphrase", a string of text known by the user. 
+
+If the provider defines the user key as defined in Section 4, DRM autodiscovery beyond this point is limited to making sure the patron can come up with the User Passphrase given the prompt. If the provider generates a different user key for each loan, it MUST provide that key as `drm:client-token` here, because there is no User Passphrase.
+
+If the provider serves `drm:client-token` upon initial checkout, it MUST also serve the same `drm:client-token` every time it describes the loan (e.g. when listing books on the patron's bookshelf). This way, a patron will always be able to bring a book onto a fresh device and read it there.
+
+In a library setting, the LCP user key SHOULD be a different value for every loan. This suggestion takes precedence over the statement in 4.4 of the LCP spec that "the Provider should use the same User Key for all licenses issued to the same User." This allows a library to evade a major privacy problem: the existence of a persistent identifier (such as the Adobe ID or URMS client ID) associated with every one of a patron's loans and tracked outside the library's control.
+
+The downside of providing a different user key for every loan is that the patron will be unable to bring their book into an e-reader application that does not also support OPDS and this DRM autodiscovery protocol.
+
 ## Failure modes
+
+LCP does not have a notion of a client ID as distinct from the User Key, and does not impose limits on the number of devices that can be used to fulfill a loan. As such it is not subject to the common failure modes encountered by library patrons.
 
 ## Work to be done
 
-* Fill in the LCP section.
 * Formally define the `vnd.librarysimplified/drm-encrypted` media type, with its `method` and `decrypts-to` parameters.
 * Formally define the extension namespace for DRM with its `drm`, `vendor`, `client-token`, `type`, and `clientID` tags and attributes.
 * Define a DRM-independent (?) mechanism for retrieving lists of registered device IDs.
