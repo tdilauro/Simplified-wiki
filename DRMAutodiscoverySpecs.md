@@ -1,6 +1,6 @@
 # The DRM XML namespace
 
-This namespace is used to convey information about the DRM scheme used
+This XML namespace is used to convey information about the DRM scheme used
 to encrypt documents served through OPDS feeds, and to provide the
 information necessary for a client to download and decrypt those
 documents.
@@ -8,6 +8,8 @@ documents.
 The URI for this namespace is
 `http://librarysimplified.org/terms/drm`. It is sometimes prefixed as
 `drm` in examples, e.g. `drm:clientToken`.
+
+This namespace defines one tag (`drm`), and two attributes (`scheme`, `clientToken`, and `serverToken`).
 
 ## `drm:drm`
 
