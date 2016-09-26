@@ -118,12 +118,15 @@ Behind the scenes, the circulation manager will make sure the patron has a regis
 
 ## LCP
 
+LCP works more or less like ACS. When you borrow a book you get a License Document (media type: `application/vnd.readium.lcp.license-1.0+json`). You can combine the License Document with the "user key" and a client-side secret to download and decrypt the book. One big advantage of LCP is that there is no separate client registration step.
+
 Before a book is borrowed, here's how we indicate that reading a book will require knowledge of LCP.
 
 ```
 <entry>
  <title>An LCP Book</title>
- <link rel="borrow" href="..." type="application/atom+xml;type=entry;profile=opds-catalog">
+ <link rel="borrow" href="..."
+       type="application/atom+xml;type=entry;profile=opds-catalog">
     <opds:indirectAcquisition
           type="application/vnd.readium.lcp.license-1.0+json">
       <opds:indirectAcquisition type="application/epub"/>
@@ -144,7 +147,8 @@ Once you borrow the book, you'll get an OPDS entry that looks like this:
 ```
 <entry>
  <title>An LCP Book</title>
- <link rel="acquisition" href="..." type="application/vnd.readium.lcp.license-1.0+json">
+ <link rel="acquisition" href="..."
+       type="application/vnd.readium.lcp.license-1.0+json">
     <drm:drm type="http://librarysimplified.org/terms/drm/LCP">
       <drm:client-token>sodih43oth489</drm:client-token>
     </drm:drm>
