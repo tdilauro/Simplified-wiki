@@ -150,12 +150,11 @@ Once you borrow the book, you'll get an OPDS entry that looks like this:
  <link rel="acquisition" href="...">
     <opds:indirectAcquisition
           type="application/vnd.readium.lcp.license-1.0+json">
+      <drm:drm type="http://librarysimplified.org/terms/drm/LCP">
+        <drm:client-token>sodih43oth489</drm:client-token>
+      </drm:drm>
       <opds:indirectAcquisition type="application/epub"/>
     </opds:indirectAcquisition>
-    <drm:drm type="http://librarysimplified.org/terms/drm/LCP">
-      <drm:client-token>sodih43oth489</drm:client-token>
-    </drm:drm>
-  </opds:indirectAcquisition>
  </link>
 </entry>
 ```
