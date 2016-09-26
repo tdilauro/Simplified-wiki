@@ -47,8 +47,6 @@ Currently, our active public repositories include:
 * [[The generic circulation API|GenericCirculation]]
 * [[The annotation API|Annotations]]
 * [[DRM autodiscovery|DRM-Autodiscovery]]
-* [Authentication for OPDS](https://docs.google.com/document/d/1-_0HHt664bDjybtCauBJXUSDXiT-Clg1sZUVNxHyLjw/edit#heading=h.hnebrdam8f0o) - A spec for autodiscovery of authentication mechanisms
-* [Vendor ID Service](https://docs.google.com/document/d/1j8nWPVmy95pJ_iU4UTC-QgHK2QhDUSdQ0OQTFR2NE_0/edit#heading=h.jxwemo85jady) - A spec for an Adobe Vendor ID service that can be used by every library participating in a multi-library application.
 
 # Integrations
 
