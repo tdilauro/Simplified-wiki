@@ -45,9 +45,7 @@ When `atom:link` is used to link to a resource with the `atom:rel` of
 ## `drm:clientToken`
 
 The value of the `drm:clientToken` attribute is a piece of information that may be
-necessary or useful in authenticating the client with the DRM server,
-authorizing the client to obtain the DRM-encrypted resource, or
-decrypting the resource once obtained.
+necessary or useful in authenticating or authorizing the client with the DRM server. This information might be necessary to obtain the DRM-encrypted resource, or to decrypt it after obtaining it.
 
 When the Adobe ACS DRM scheme is in use, the value of
 `drm:clientToken` MUST be interpreted as base64-encoded `authData` that can be used
