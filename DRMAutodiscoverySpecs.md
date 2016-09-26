@@ -89,6 +89,7 @@ corresponding to popular DRM schemes. The following schemes are
 defined:
 
 | Short string | URI | Description |
+| ------------ | --- | ----------- |
 | ACS | http://librarysimplified.org/terms/drm/scheme/ACS | Adobe ACS |
 | URMS | http://librarysimplified.org/terms/drm/scheme/URMS | Sony URMS |
 | LCP | http://librarysimplified.org/terms/drm/scheme/LCP | Readium URMS |
