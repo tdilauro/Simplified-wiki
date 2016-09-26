@@ -68,7 +68,7 @@ Before a book is borrowed, this is how we indicate that decrypting a book will r
     <opds:indirectAcquisition
           type="application/atom+xml;type=entry;profile=opds-catalog">
       <opds:indirectAcquisition
-            type="vnd.librarysimplified/drm-encrypted;method=urms">
+            type="vnd.librarysimplified/drm-encrypted;method=urms;decrypts-to=application/epub">
         <opds:indirectAcquisition type="application/epub"/>
       </opds:indirectAcquisition>
     </opds:indirectAcquisition>
@@ -87,9 +87,9 @@ Once you borrow the book you will be served an OPDS entry like this:
 
 ```
 <entry>
- <link rel="acquisition" href="urn:urms-ccid:KDFASDJFLIAKSJ" type="vnd.librarysimplified/drm-encrypted;method=urms">
+ <link rel="acquisition" href="urn:urms-ccid:KDFASDJFLIAKSJ" type="vnd.librarysimplified/drm-encrypted;method=urms;decrypts-to=application/epub">
   <opds:indirectAcquisition type="application/epub"/>
-  <link rel="acquisition" href="https://host/foo.epub" type="vnd.librarysimplified/drm-encrypted;method=urms" />
+  <link rel="acquisition" href="https://host/foo.epub" type="vnd.librarysimplified/drm-encrypted;method=urms;decrypts-to=application/epub" />
  </link>
  <link rel="http://opds-spec.org/drm/register-client" 
        href="https://host/register/CEL" drm:storeID="CEL"
