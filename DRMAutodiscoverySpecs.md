@@ -63,11 +63,9 @@ the resource. If the client knows the User Passphrase, the value of
 provided, the client MUST prompt for the User Passphrase as per the
 LCP spec.
 
-When the URMS DRM scheme is in use, the server SHOULD NOT provide a
+When the URMS DRM scheme is in use, the server MUST NOT provide a
 value for the `drm:clientToken` attribute. If this value is present it
-MUST be interpreted as the URMS CCID, but in a compliant system this
-will not provide any additional information, because a URMS CCID is
-given to OPDS clients through the `urms-ccid` URI scheme (q.v.).
+MUST be ignored.
 
 ## `drm:serverToken`
 
