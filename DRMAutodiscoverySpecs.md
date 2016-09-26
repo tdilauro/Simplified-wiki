@@ -105,7 +105,9 @@ When the ACS DRM scheme is in use, a client which sends a properly
 authenticated HTTP GET request to the target URL MUST get back a
 representation of media type `text/plain`. The entity-body MUST
 contain a Base64-encoded string that can be used as authData, as per
-the Adobe Vendor ID Specification, to get an Adobe ID.
+the Adobe Vendor ID Specification, to get an Adobe ID for the authenticated user.
+
+Note that when the ACS DRM scheme is in use, the authData can also be provided directly in an OPDS entry as the `drm:clientToken`. The solution based on following a link is designed for a situation where calculating the authData is expensive.
 
 When the URMS DRM scheme is in use, a client which sends a properly
 authenticated HTTP GET request to the target URL MUST get back
