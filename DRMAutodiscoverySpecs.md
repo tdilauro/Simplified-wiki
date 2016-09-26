@@ -53,15 +53,15 @@ When the Adobe ACS DRM scheme is in use, the value of
 `drm:clientToken` MUST be interpreted as `authData` that can be used
 to obtain an Adobe ID. If the client already has an Adobe ID, the
 value of `drm:clientToken` MAY be ignored. If no value for
-`drm:clientToken` is provided, the client MAY proceed as usual, but
-may be unable to download and decrypt the ACS-encrypted resource.
+`drm:clientToken` is provided, and the client has no Adobe ID, the client MAY proceed as usual, but
+will most likely be unable to download or decrypt the ACS-encrypted resource.
 
 When the Readium LCP DRM scheme is in use, the value of
 `drm:clientToken` MUST be interpreted as the LCP user key that guards
 the resource. If the client knows the User Passphrase, the value of
 `drm:clientToken` MAY be ignored. If no value for `drm:clientToken` is
 provided, the client MUST prompt for the User Passphrase as per the
-LCP spec..
+LCP spec.
 
 When the URMS DRM scheme is in use, the server SHOULD NOT provide a
 value for the `drm:clientToken` attribute. If this value is present it
