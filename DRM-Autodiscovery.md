@@ -6,6 +6,8 @@ DRM specs leave certain parts of the control flow undefined, especially as regar
 
 We can't just hard-code something into an app, but the ecosystem won't work if every circulation manager is allowed to come up with its own way of bridging this gap. This page tracks the additional conventions we've come up with to fill in the gaps.
 
+This document explores the various use cases in context. [[The formal specifications that came out of this process are here.|DRMAutodiscoverSpecs]]
+
 ## Adobe ACS
 
 When you borrow a book that is held in an ACS server, you are given an ACSM file. (Media type: `vnd.adobe/adept+xml`) This is a short XML document describing your rights under the license. If you have an ACSM file _and_ an Adobe ID, you can put both of them into a black box of Adobe code, turn the crank, and get both the actual book and a key that lets you decrypt the book.
