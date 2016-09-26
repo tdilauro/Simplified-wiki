@@ -44,13 +44,13 @@ When `atom:link` is used to link to a resource with the `atom:rel` of
 
 ## `drm:clientToken`
 
-The value of `drm:clientToken` is a piece of information that may be
+The value of the `drm:clientToken` attribute is a piece of information that may be
 necessary or useful in authenticating the client with the DRM server,
 authorizing the client to obtain the DRM-encrypted resource, or
 decrypting the resource once obtained.
 
 When the Adobe ACS DRM scheme is in use, the value of
-`drm:clientToken` MUST be interpreted as `authData` that can be used
+`drm:clientToken` MUST be interpreted as base64-encoded `authData` that can be used
 to obtain an Adobe ID. If the client already has an Adobe ID, the
 value of `drm:clientToken` MAY be ignored. If no value for
 `drm:clientToken` is provided, and the client has no Adobe ID, the client MAY proceed as usual, but
@@ -71,7 +71,7 @@ given to OPDS clients through the `urms-ccid` URI scheme (q.v.).
 
 ## `drm:serverToken`
 
-The value of `drm:serverToken` is a piece of information that may be
+The value of the `drm:serverToken` attribute is a piece of information that may be
 useful in distinguishing between multiple providers of the same
 information. The meaning of the attribute differs depending on the DRM
 scheme in use.
