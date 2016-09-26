@@ -25,11 +25,6 @@ The `drm:drm` tag MAY be the child of an `atom:link` tag. When it appears,
 it is intended to shed light on the representation that will be
 returned by following that link.
 
-!!!The `drm:drm` tag MAY be the child of an `atom:entry` tag. When it
-appears, it is intended to provide an alternate path for fulfilling
-the DRM-encrypted resource, a path that does not rely on following
-links.!!!
-
 The `drm:drm` tag MUST provide a value for the `drm:scheme`
 attribute. It MAY provide values for the `drm:clientToken` and
 `drm:serverToken` attributes.
