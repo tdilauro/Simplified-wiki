@@ -16,9 +16,17 @@ ODL is a JSON document format used by ebook distributors to send licensing infor
 
 [[The specification draft|https://docs.google.com/document/d/1jaHZSsMCZY80rH5sqJcp_kya0W2Dtkda7MrdFBkrOg8/edit]]
 
-# Protocols
+# DRM systems
+
+## ACS (Adobe Content Server)
+
+## URMS (Sony User Rights Management Solution)
 
 ## LCP (Lightweight Content Protection)
+
+A [License Status Document](https://docs.google.com/document/d/1ErBf0Gl32jNH-QVKWpGPfZDMWMeQP7dH9YY5g7agguQ/edit#) describes the rights granted to a reader by a license.
+
+# Protocols
 
 # Vocabularies
 
@@ -29,3 +37,8 @@ ODL is a JSON document format used by ebook distributors to send licensing infor
 ## schema.org
 
 ## librarysimplified.org
+
+# Miscellaneous
+
+* [JSON Web Token](https://tools.ietf.org/html/rfc7519)
+* [Problem detail document](https://tools.ietf.org/html/rfc7807)
