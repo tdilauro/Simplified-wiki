@@ -154,9 +154,9 @@ found in the DRM Scheme Registry are especially appropriate values for
 *scheme*. If multiple URIs are present, they should be listed in the
 order they were applied to the original representation.
 
-*original*: The name of a media type, representing the
+*original-type*: The name of a media type, representing the
 representation's original media type before encryption and obfuscation
-were applied.
+were applied. To avoid ambiguity, this media type may not have parameters applied to it.
 
 # The `urms-ccid` URI scheme
 
