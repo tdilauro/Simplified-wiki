@@ -140,7 +140,7 @@ This says:
 
 1. Borrow the book and you'll get an OPDS entry.
 2. That entry will contain a link to an LCP License Document
-3. You'll be able to use the LSD to actually get the book.
+3. You'll be able to use the LCP License Document to actually get the book.
 
 Once you borrow the book, you'll get an OPDS entry that looks like this:
 
