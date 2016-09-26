@@ -123,13 +123,10 @@ Before a book is borrowed, here's how we indicate that reading a book will requi
 ```
 <entry>
  <title>An LCP Book</title>
- <link rel="borrow" href="...">
+ <link rel="borrow" href="..." type="application/atom+xml;type=entry;profile=opds-catalog">
     <opds:indirectAcquisition
-          type="application/atom+xml;type=entry;profile=opds-catalog">
-      <opds:indirectAcquisition
-            type="application/vnd.readium.lcp.license-1.0+json">
-        <opds:indirectAcquisition type="application/epub"/>
-      </opds:indirectAcquisition>
+          type="application/vnd.readium.lcp.license-1.0+json">
+      <opds:indirectAcquisition type="application/epub"/>
     </opds:indirectAcquisition>
   </opds:indirectAcquisition>
  </link>
