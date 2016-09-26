@@ -26,8 +26,8 @@ it is intended to shed light on the representation that will be
 returned by following that link.
 
 The `drm:drm` tag MUST provide a value for the `drm:scheme`
-attribute. It MAY provide values for the `drm:clientToken` and
-`drm:serverToken` attributes.
+attribute. Depending on the DRM scheme in use, values for the `drm:clientToken` and
+`drm:serverToken` attributes might be required, optional, or forbidden.
 
 ## `drm:scheme`
 
