@@ -90,7 +90,7 @@ defined:
 | ------------ | --- | ----------- |
 | ACS | http://librarysimplified.org/terms/drm/scheme/ACS | Adobe ACS |
 | URMS | http://librarysimplified.org/terms/drm/scheme/URMS | Sony URMS |
-| LCP | http://librarysimplified.org/terms/drm/scheme/LCP | Readium URMS |
+| LCP | http://librarysimplified.org/terms/drm/scheme/LCP | Readium LCP |
 
 # The `http://librarysimplified.org/terms/drm/register-client` link relation
 
