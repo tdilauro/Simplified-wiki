@@ -19,12 +19,12 @@ The details are covered in the  spec. I've slightly modified the tag names for t
 ```
 <entry>
 <link rel="http://opds-spec.org/acquisition" href="..." type="vnd.adobe/adept+xml">
-  <opds:indirectAcquisition type="application/epub+zip"/>
   <drm:drm type="http://librarysimplified.org/terms/drm/ACS">
     <drm:vendor>Open Ebooks</acs:vendor>
     <drm:client-token>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vd3d3
 LmxpYnJhcnlzaW1wbGlmaWVkLm9yZy8iLCJzdWIiOiIxMjM0NTY3OCJ9.DTKf7eva3YBb7RzMWs_5EK36wQPfk_RMxBf7UvLAgxc</drm:client-token>
   </drm:drm>
+  <opds:indirectAcquisition type="application/epub+zip"/>
 </link>
 </entry>
 ```
@@ -147,14 +147,11 @@ Once you borrow the book, you'll get an OPDS entry that looks like this:
 ```
 <entry>
  <title>An LCP Book</title>
- <link rel="acquisition" href="...">
-    <opds:indirectAcquisition
-          type="application/vnd.readium.lcp.license-1.0+json">
-      <drm:drm type="http://librarysimplified.org/terms/drm/LCP">
-        <drm:client-token>sodih43oth489</drm:client-token>
-      </drm:drm>
-      <opds:indirectAcquisition type="application/epub"/>
-    </opds:indirectAcquisition>
+ <link rel="acquisition" href="..." type="application/vnd.readium.lcp.license-1.0+json">
+    <drm:drm type="http://librarysimplified.org/terms/drm/LCP">
+      <drm:client-token>sodih43oth489</drm:client-token>
+    </drm:drm>
+    <opds:indirectAcquisition type="application/epub"/>
  </link>
 </entry>
 ```
