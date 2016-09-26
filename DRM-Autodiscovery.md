@@ -6,7 +6,7 @@ DRM specs leave certain parts of the control flow undefined, especially as regar
 
 We can't just hard-code something into an app, but the ecosystem won't work if every circulation manager is allowed to come up with its own way of bridging this gap. This page tracks the additional conventions we've come up with to fill in the gaps.
 
-This document explores the various use cases in context. [[The formal specifications that came out of this process are here.|DRMAutodiscoverSpecs]]
+This document explores the various use cases in context. [[The formal specifications that came out of this process are here.|DRMAutodiscoverySpecs]]
 
 ## Adobe ACS
 
