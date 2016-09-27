@@ -46,7 +46,7 @@ necessary or useful in authenticating or authorizing the client with the DRM ser
 
 The `drm:clientToken` tag MAY contain a string leaf node. If present, the string value of the leaf node MUST be interpreted as a client token.
 
-The `drm:clientToken` tag MAY contain a `drm:href` attribute. If present, sending an authenticated GET request to the value of the `drm:href` attribute MUST result in an response with the `Content-Type` server set to `vnd.librarysimplified/drm-client-registration-token`. The contents of the entity-body MUST be interpreted as a client token.
+The `drm:clientToken` tag MAY contain a `drm:href` attribute. If present, the value of `drm:href` MUST be an URL with the `https:` scheme. Sending a properly authenticated HTTP GET request to this URL MUST result in an response with the `Content-Type` server set to `vnd.librarysimplified/drm-client-registration-token`. The contents of the entity-body MUST be interpreted as a client token.
 
 The meaning of the client token obtained from a `drm:clientToken` tag depends on the value of the `drm:type` attribute in the enclosing `drm:drm` tag.
 
