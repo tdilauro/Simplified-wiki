@@ -69,7 +69,9 @@ When the LCP or Adobe DRM schemes are in use, the meaning of the `drm:serverToke
 
 # The Client Token Protocol
 
-A URL that complies with the Client Token Protocol MUST respond to a properly authenticated HTTP GET request with  a client token. The contents of the entity-body MUST be interpreted as a client token. The default media type of a client token is `vnd.librarysimplified/drm-client-registration-token`. The meaning of a token of any other media type is undefined.
+A URL that complies with the Client Token Protocol MUST respond to a properly authenticated HTTP GET request with  a client token.
+
+This specification defines the meaning of client tokens of media type `vnd.librarysimplified/drm-client-registration-token`. It does not define the meaning of client tokens of other media types.
 
 The meaning of a client token depends on the DRM scheme under consideration. In the DRM Extensions for OPDS, the DRM scheme is conveyed through the `drm:scheme` attribute.
 
