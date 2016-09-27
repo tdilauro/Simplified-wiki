@@ -146,7 +146,7 @@ This media type is used to describe a document that has been
 obfuscated or encrypted according to a DRM scheme or some other
 algorithm. The document may be served as some other media type, such
 as `application/epub+zip`, and may even be recognizable as a file of that
-type, but cannot be properly processed until it is decrypted or
+type, but cannot be properly processed or understood until it is decrypted or
 deobfuscated.
 
 This media type defines two optional parameters:
