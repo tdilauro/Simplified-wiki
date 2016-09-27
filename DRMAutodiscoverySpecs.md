@@ -159,6 +159,20 @@ order they were applied to the original representation.
 representation's original media type before encryption and obfuscation
 were applied. To avoid ambiguity, this media type may not have parameters applied to it.
 
-# The `urms-ccid` URI scheme
+# The `ccid-urms` URL scheme
+
+The `ccid-urms` URL scheme is a way of linking to a URMS-encrypted resource by its CCID. The format is `ccid-urms:{ccid}`, where `{ccid}` is the CCID.
+
+Example: `ccid-urms:000000000000000000000000000001` refers to the URMS resource with CCID "000000000000000000000000000001".
+
+A `ccid-urms` URL is dereferenced by downloading (if necessary) and decrypting the URMS resource identified by the CCID. Generally this means extracting the CCID and passing it into the `RegisterBookTask` method of the URMS SDK, or the equivalent method of a compatible SDK.
+
+If the resource is cached locally, a `ccid-urms` URL may be dereferenced by decrypting the cached resource, without downloading it again.
+
+The `ccid-urms` scheme introduces no special security considerations beyond those introduced by the URMS system itself.
+
+The `ccid-urms` scheme does not define semantics for the fragment identifier.
+
+The name of the scheme was chosen to be `ccid-urms`, rather than `urms-ccid`, because of Section 2.5 of [RFC 2718](https://tools.ietf.org/html/rfc2718).
 
 # atom:link inside atom:link
