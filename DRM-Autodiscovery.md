@@ -82,13 +82,11 @@ Before a book is borrowed, this is how we indicate that decrypting a book will r
 ```
 <entry>
  <title>A URMS Book</title>
- <link rel="borrow" href="...">
+ <link rel="borrow" href="..."
+       type="application/atom+xml;type=entry;profile=opds-catalog">
     <opds:indirectAcquisition
-          type="application/atom+xml;type=entry;profile=opds-catalog">
-      <opds:indirectAcquisition
-            type="vnd.librarysimplified/drm-encrypted;method=urms;decrypts-to=application/epub">
-        <opds:indirectAcquisition type="application/epub"/>
-      </opds:indirectAcquisition>
+          type="vnd.librarysimplified/obfuscated;scheme=http://librarysimplified.org/terms/drm/scheme/URMS;original-type=application/epub">
+      <opds:indirectAcquisition type="application/epub"/>
     </opds:indirectAcquisition>
   </opds:indirectAcquisition>
  </link>
@@ -98,14 +96,14 @@ Before a book is borrowed, this is how we indicate that decrypting a book will r
 This says:
 
 1. Borrow the book and you will get an OPDS entry.
-2. The OPDS entry will help you negotiate the URMS API.
+2. The OPDS entry will help you get a document that is subject to the rules of URMS DRM.
 3. Once you make it through the API you will get an EPUB.
 
 Once you borrow the book you will be served an OPDS entry like this:
 
 ```
 <entry>
- <link rel="acquisition" href="urn:urms-ccid:KDFASDJFLIAKSJ" type="vnd.librarysimplified/drm-encrypted;method=urms;decrypts-to=application/epub">
+ <link rel="acquisition" href="urn:urms-ccid:01234567890" type="vnd.librarysimplified/drm-encrypted;method=urms;decrypts-to=application/epub">
   <opds:indirectAcquisition type="application/epub"/>
   <link rel="acquisition" href="https://host/foo.epub" type="vnd.librarysimplified/drm-encrypted;method=urms;decrypts-to=application/epub" />
  </link>
