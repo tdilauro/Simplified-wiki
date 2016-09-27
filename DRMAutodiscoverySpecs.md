@@ -159,7 +159,7 @@ order they were applied to the original representation.
 
 *original-type*: The name of a media type, representing the
 representation's original media type before encryption and obfuscation
-were applied. To avoid ambiguity, this media type may not have parameters applied to it.
+were applied. To avoid ambiguity, this media type may not have parameters applied to it. (TODO: URL-escaping the parameter value would allow parameters to be applied to it.)
 
 # The `ccid-urms` URL scheme
 
