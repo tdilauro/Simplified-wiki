@@ -46,14 +46,13 @@ necessary or useful in authenticating or authorizing the client with the DRM ser
 
 The `drm:clientToken` tag MAY contain a string leaf node. If present, the string value of the leaf node MUST be interpreted as a client token.
 
-The `drm:clientToken` tag MAY contain a `drm:href` attribute. If present, sending an authenticated GET request to the value of the `drm:href` attribute MUST result in an response with the `Content-Type` server set to `text/plain`. The contents of the entity-body MUST be interpreted as a client token.
+The `drm:clientToken` tag MAY contain a `drm:href` attribute. If present, sending an authenticated GET request to the value of the `drm:href` attribute MUST result in an response with the `Content-Type` server set to `vnd.librarysimplified/drm-client-registration-token`. The contents of the entity-body MUST be interpreted as a client token.
 
-The behavior of the client token obtained from a `drm:clientToken` tag depends on the value of the `drm:type` attribute in the enclosing `drm:drm` tag.
+The meaning of the client token obtained from a `drm:clientToken` tag depends on the value of the `drm:type` attribute in the enclosing `drm:drm` tag.
 
 ### Client token under ACS
 
-When the Adobe ACS DRM scheme is in use, the client token MUST be interpreted as base64-encoded `authData` that can be used to obtain an Adobe ID. If the client already has an Adobe ID, the
-client token MAY be ignored.
+When the Adobe ACS DRM scheme is in use, the client token MUST be interpreted as base64-encoded `authData` that can be used to obtain an Adobe ID. If the client already has an Adobe ID, the client token MAY be ignored.
 
 If no client token is provided, and the client has no Adobe ID, the client MAY proceed with fulfilling a book as usual, but will most likely be unable to download or decrypt the ACS-encrypted resource.
 
@@ -81,16 +80,13 @@ the resource. If the client knows the User Passphrase, the client token MAY be i
 
 ## `drm:serverToken`
 
-The value of the `drm:serverToken` attribute is a piece of information that may be
-useful in distinguishing between multiple providers of the same
-information. The meaning of the attribute differs depending on the DRM
-scheme in use.
+The `drm:serverToken` tag contains information that may be useful in distinguishing between multiple DRM servers of the same type.
 
-When the URMS DRM scheme is in use, the value of `drm:serverToken`
-serves to identify the URMS Store that provides the resource.
+This tag supports two optional attributes, `drm:href` and `drm:serverID`. The meaning of these attributes differ depending on the DRM scheme in use.
 
-When the LCP or Adobe DRM schemes are in use, the value of
-`drm:serverToken` is undefined, and a server SHOULD NOT provide it.
+When the URMS DRM scheme is in use, the value of `drm:href` is the URL of the URMS Store that provides the resource. The value of `drm:serverID` is the ID of the URMS Store that provides the resource.
+
+When the LCP or Adobe DRM schemes are in use, the value of `drm:href` and `drm:serverID` within a `drm:serverToken` tag are undefined.
 
 # The DRM Scheme Registry
 
@@ -124,6 +120,10 @@ order they were applied to the original representation.
 *original-type*: The name of a media type, representing the
 representation's original media type before encryption and obfuscation
 were applied. To avoid ambiguity, this media type may not have parameters applied to it. (TODO: URL-escaping the parameter value would allow parameters to be applied to it.)
+
+# The `vnd.librarysimplified/drm-client-registration-token` media type
+
+A document of this media type represents a currently active client token (see "`drm:clientToken"). Apart from this fact, its semantics are identical to the semantics of `application/octet-stream`.
 
 # The `ccid-urms` URL scheme
 
