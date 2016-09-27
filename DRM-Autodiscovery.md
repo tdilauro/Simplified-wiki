@@ -16,15 +16,14 @@ The good thing about Adobe IDs is that once you have one, you can use it for _an
 
 If a circulation manager is not associated with any Vendor ID server, there's nothing we can do but hope the client already has an Adobe ID from some other source. If a circulation manager _is_ associated with a Vendor ID server, there's a simple way to tell someone who has just checked out a book that they can easily get a Vendor ID if they need one. (Most circulation managers will be associated with the Open Ebooks Vendor ID server, so we should be able to do this.)
 
-The details are covered in the  spec. I've slightly modified the tag names for this example. Here's the OPDS entry you might get back after borrowing a book.
+Here's an OPDS entry you might get back after borrowing a book.
 
 ```
 <entry>
 <link rel="http://opds-spec.org/acquisition" href="..." type="vnd.adobe/adept+xml">
-  <drm:drm type="http://librarysimplified.org/terms/drm/ACS">
-    <drm:vendor>Open Ebooks</acs:vendor>
-    <drm:client-token>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vd3d3
-LmxpYnJhcnlzaW1wbGlmaWVkLm9yZy8iLCJzdWIiOiIxMjM0NTY3OCJ9.DTKf7eva3YBb7RzMWs_5EK36wQPfk_RMxBf7UvLAgxc</drm:client-token>
+  <drm:drm type="http://librarysimplified.org/terms/drm/scheme/ACS">
+    <drm:clientToken>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vd3d3
+LmxpYnJhcnlzaW1wbGlmaWVkLm9yZy8iLCJzdWIiOiIxMjM0NTY3OCJ9.DTKf7eva3YBb7RzMWs_5EK36wQPfk_RMxBf7UvLAgxc</drm:clientToken>
   </drm:drm>
   <opds:indirectAcquisition type="application/epub+zip"/>
 </link>
@@ -35,11 +34,26 @@ The `<link>` tag explains how to get an ACSM file.
 
 The `<indirectAcquisition>` tag inside the `<link>` tag says that you'll be able to exchange the ACSM file for an EPUB. But the ACSM file isn't enough on its own; you also need an Adobe ID.
 
-The `<drm>` tag inside the `<link>` tag tells you how to get an Adobe ID if you don't already have one. The `<client-token>` is used by the ACS client as the `authData` argument when calling `dpdrm::DRMProcessor::initSignInWorkflow`. (details are in Adobe's Vendor ID Specification).
+The `<drm>` tag inside the `<link>` tag tells you how to get an Adobe ID if you don't already have one. The `<clientToken>` is used by the ACS client as the `authData` argument when calling `dpdrm::DRMProcessor::initSignInWorkflow`. (details are in Adobe's Vendor ID Specification).
 
-Where does that `<client-token>` value come from? In this case, it's an encoded JSON Web Token that is calculated by the circulation manager according to the rules in the [Vendor ID Service](https://docs.google.com/document/d/1j8nWPVmy95pJ_iU4UTC-QgHK2QhDUSdQ0OQTFR2NE_0/edit#) spec. But it can be any string that meets the criteria laid out in Adobe's Vendor ID spec. Since it shows up a lot but is rarely used, it should be a value that can be calculated very quickly on the fly, to avoid undue burden on the circulation manager.
+Where does that `<clientToken>` value come from? In this case, it's an encoded JSON Web Token that is calculated by the circulation manager according to the rules in the [Vendor ID Service](https://docs.google.com/document/d/1j8nWPVmy95pJ_iU4UTC-QgHK2QhDUSdQ0OQTFR2NE_0/edit#) spec. But it can be any string that meets the criteria laid out in Adobe's Vendor ID spec. Since it shows up a lot but is rarely used, it should be a value that can be calculated very quickly on the fly, to avoid undue burden on the circulation manager.
 
-An OPDS feed that has multiple `<link>` tags to an ACS-encrypted resource should provide an identical `<drm>` tag for each one. The circulation manager should not omit the `<drm>` tag because it believes the patron already has an Adobe ID; the patron might be using a new device, and this procedure will allow the patron to look up an existing Adobe ID.
+If a site's client token is expensive to calculate, it can be kept behind a link, so that it's only calculated when a client requests it:
+
+```
+<entry>
+<link rel="http://opds-spec.org/acquisition" href="..." type="vnd.adobe/adept+xml">
+  <drm:drm type="http://librarysimplified.org/terms/drm/scheme/ACS">
+    <drm:clientToken drm:href="https://my-site/getAuthData"/>
+  </drm:drm>
+  <opds:indirectAcquisition type="application/epub+zip"/>
+</link>
+</entry>
+```
+
+The details of how to turn the link into a client token are covered in the spec ["DRM Extensions to OPDS"](https://github.com/NYPL-Simplified/Simplified/wiki/DRMAutodiscoverySpecs#drm-extensions-to-opds).
+
+An OPDS feed that has multiple `<link>` tags to ACS-encrypted resources SHOULD provide an identical `<drm>` tag for each one. The circulation manager SHOULD NOT omit the `<drm>` tag because it believes the patron already has an Adobe ID; the patron might be using a new device, and this procedure will allow the patron to look up an existing Adobe ID. However, the `<drm>` tag is optional and MAY be omitted.
 
 ### Failure modes
 
