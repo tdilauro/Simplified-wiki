@@ -43,7 +43,7 @@ necessary or useful in authenticating or authorizing the client with the DRM ser
 
 The `drm:clientToken` tag MAY contain a string leaf node. If present, the string value of the leaf node MUST be interpreted as a client token.
 
-The `drm:clientToken` tag MAY contain a `drm:href` attribute. If present, the value of `drm:href` MUST be an URL with the `https:` scheme. Sending a properly authenticated HTTP GET request to this URL MUST result in an response with the `Content-Type` server set to `vnd.librarysimplified/drm-client-registration-token`. The contents of the entity-body MUST be interpreted as a client token.
+The `drm:clientToken` tag MAY contain a `drm:href` attribute. If present, the value of `drm:href` MUST be an URL with the `https:` scheme. This URL MUST comply with the Client Token Protocol.
 
 The meaning of the client token obtained from a `drm:clientToken` tag depends on the value of the `drm:type` attribute in the enclosing `drm:drm` tag.
 
@@ -100,6 +100,10 @@ The value of `drm:href` is the URL of the URMS Store that provides the resource.
 ### `serverToken` under other DRM schemes.
 
 When the LCP or Adobe DRM schemes are in use, the meaning of the `drm:serverToken` tag is undefined. It SHOULD NOT be provided.
+
+# The Client Token Protocol
+
+A URL complies with the Client Token Protocol if sending a properly authenticated HTTP GET request to the URL results in an response with the `Content-Type` server set to `vnd.librarysimplified/drm-client-registration-token`. The contents of the entity-body MUST be interpreted as a client token.
 
 # The DRM Scheme Registry
 
