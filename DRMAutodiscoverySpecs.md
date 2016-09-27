@@ -159,3 +159,35 @@ The `ccid-urms` scheme does not define semantics for the fragment identifier.
 The name of the scheme was chosen to be `ccid-urms`, rather than `urms-ccid`, because of Section 2.5 of [RFC 2718](https://tools.ietf.org/html/rfc2718).
 
 # atom:link inside atom:link
+
+In rare cases it may be necessary to insert an `<atom:link>` tag inside another `<atom:link>` tag. Although this is valid Atom, the Atom RFC does not define the meaning of that second `<atom:link>` tag.
+
+We interpret an embedded `<atom:link>` tag to be a link from _the resource in the parent link_ to some other resource. The `rel` of the embedded link is the relationship between _the resource in the parent link_ and the other resource, _not_ the relationship between the Atom entry and the other resource.
+
+Here's an example:
+
+```
+<entry>
+ ...
+ <link rel="acquisition"
+       href="ccid-urms:01234567890"
+       type="vnd.librarysimplified/obfuscated;method=http://librarysimplified.org/terms/drm/URMS;original-type=application/epub"
+  >
+  <opds:indirectAcquisition type="application/epub"/>
+  ...
+  <link rel="acquisition"
+        href="https://host/foo.epub"
+        type="vnd.librarysimplified/drm-encrypted;method=urms;decrypts-to=application/epub"
+  />
+ </link>
+ ...
+</entry>
+```
+
+The `<entry>` is talking about a certain book. The parent link is to the resource `ccid-urms:01234567890`. The link relation is `acquisition`, indicating that dereferencing `ccid-urms:01234567890` will get you an (obfuscated) copy of the book. The `<opds:indirectAcquisition>` tag inside this first link indicates that the client can, if it knows how, deobfuscate the book and turn it into a normal `application/epub` document.
+
+Inside that link is another link, to `https://host/foo.epub`. Again, the link relation is `acquisition`. This indicates that acquiring `https://host/foo.epub` is a _partial_ solution to acquiring `ccid-urms:01234567890`. It's not a complete solution, because you're going to end up with an obfuscated copy of the book -- there's no `<opds:indirectAcquisition>` tag inside the child link, the way there is inside a parent. The only way to turn the obfuscated book into a normal `application/epub` is to properly dereference the `ccid-urms` URL.
+
+So why bother? Because giving the path to the obfuscated file allows the client to download it in the background, and fulfill it later. This is totally optional but it can speed things up.
+
+Putting the HTTP link inside the `ccid-urms` link makes it clear that they represent different routes to the same fulfillment. Keeping them as separate links would make it look like were two different formats of the book: one that is permanently obfuscated, and one that is obfuscated but can be turned into an EPUB.
