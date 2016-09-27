@@ -92,7 +92,9 @@ defined:
 | URMS | http://librarysimplified.org/terms/drm/scheme/URMS | Sony URMS |
 | LCP | http://librarysimplified.org/terms/drm/scheme/LCP | Readium LCP |
 
-# The `http://librarysimplified.org/terms/drm/register-client` link relation
+# The `drm/rel/register-client` link relation
+
+This is an extension link relation idenfied by the URI `http://librarysimplified.org/terms/drm/rel/register-client`.
 
 This link relation is used to indicate a URL that can kick off the
 process of registering a client with a DRM server. An `atom:link` that
