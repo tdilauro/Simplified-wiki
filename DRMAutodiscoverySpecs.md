@@ -140,7 +140,7 @@ were applied. To avoid ambiguity, this media type may not have parameters applie
 
 # The `vnd.librarysimplified/drm-client-registration-token` media type
 
-A document of this media type represents a currently active client token (see "`drm:clientToken"). Apart from this fact, its semantics are identical to the semantics of `application/octet-stream`.
+A document of this media type represents a currently active client token (see "`drm:clientToken`"). Apart from this fact, its semantics are identical to the semantics of `application/octet-stream`.
 
 # The `ccid-urms` URL scheme
 
