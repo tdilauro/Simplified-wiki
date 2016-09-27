@@ -47,6 +47,32 @@ The `drm:clientToken` tag MAY contain a `drm:href` attribute. If present, the va
 
 The meaning of the client token obtained from a `drm:clientToken` tag depends on the value of the `drm:type` attribute in the enclosing `drm:drm` tag.
 
+## `drm:serverToken`
+
+The `drm:serverToken` tag contains information that may be useful in distinguishing between multiple DRM servers of the same type.
+
+The `drm:serverToken` element MAY contain a string leaf node.
+
+The `drm:serverToken` MAY contain a value for the `drm:href` attribute.
+
+The meaning of the values associated with `drm:serverToken` tag depends on the value of the `drm:type` attribute in the enclosing `drm:drm` tag.
+
+### `serverToken` under URMS
+
+When the URMS DRM scheme is in use, a `drm:serverToken` tag SHOULD be provided. If it is provided, both `drm:href` and a leaf node MUST be present.
+
+The value of `drm:href` is the URL of the URMS Store that provides the resource. The string leaf node is the ID of the URMS Store that provides the resource.
+
+### `serverToken` under other DRM schemes.
+
+When the LCP or Adobe DRM schemes are in use, the meaning of the `drm:serverToken` tag is undefined. It SHOULD NOT be provided.
+
+# The Client Token Protocol
+
+A URL complies with the Client Token Protocol if sending a properly authenticated HTTP GET request to the URL results in an response with the `Content-Type` server set to `vnd.librarysimplified/drm-client-registration-token`. The contents of the entity-body MUST be interpreted as a client token.
+
+The meaning of a client token depends on the DRM scheme under consideration. In the DRM Extensions for OPDS, the DRM scheme is conveyed through the `drm:scheme` attribute.
+
 ### Client token under ACS
 
 When the Adobe ACS DRM scheme is in use, the client token MUST be interpreted as base64-encoded `authData` that can be used to obtain an Adobe ID. If the client already has an Adobe ID, the client token MAY be ignored.
@@ -81,29 +107,7 @@ In a library setting, the LCP user key SHOULD be a different value for every loa
 
 (The downside of providing a different user key for every loan is that the patron will be unable to bring their book into an e-reader application that does not also support OPDS and this DRM autodiscovery protocol.)
 
-## `drm:serverToken`
 
-The `drm:serverToken` tag contains information that may be useful in distinguishing between multiple DRM servers of the same type.
-
-The `drm:serverToken` element MAY contain a string leaf node.
-
-The `drm:serverToken` MAY contain a value for the `drm:href` attribute.
-
-The meaning of the values associated with `drm:serverToken` tag depends on the value of the `drm:type` attribute in the enclosing `drm:drm` tag.
-
-### `serverToken` under URMS
-
-When the URMS DRM scheme is in use, a `drm:serverToken` tag SHOULD be provided. If it is provided, both `drm:href` and a leaf node MUST be present.
-
-The value of `drm:href` is the URL of the URMS Store that provides the resource. The string leaf node is the ID of the URMS Store that provides the resource.
-
-### `serverToken` under other DRM schemes.
-
-When the LCP or Adobe DRM schemes are in use, the meaning of the `drm:serverToken` tag is undefined. It SHOULD NOT be provided.
-
-# The Client Token Protocol
-
-A URL complies with the Client Token Protocol if sending a properly authenticated HTTP GET request to the URL results in an response with the `Content-Type` server set to `vnd.librarysimplified/drm-client-registration-token`. The contents of the entity-body MUST be interpreted as a client token.
 
 # The DRM Scheme Registry
 
