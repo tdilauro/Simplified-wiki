@@ -1,15 +1,12 @@
-# The DRM XML namespace
+# DRM Extensions to OPDS
 
-This XML namespace is used to convey information about the DRM scheme used
-to encrypt documents served through OPDS feeds, and to provide the
-information necessary for a client to download and decrypt those
-documents.
+This spec defines a new XML namespace. Elements from this namespace can be included in an OPDS `<link>` tag to convey information about the DRM scheme used to encrypt the document at the other end of the link. The purpose is to provide the information necessary for a client to download and decrypt those documents, and to inform clients of the DRM scheme in use, so that clients unable to handle that DRM scheme can bow out gracefully.
 
 The URI for this namespace is
-`http://librarysimplified.org/terms/drm`. It is sometimes prefixed as
+`http://librarysimplified.org/terms/drm`. In the examples that follow it is prefixed as
 `drm` in examples, e.g. `drm:clientToken`.
 
-This namespace defines one tag (`drm`), and two attributes (`scheme`, `clientToken`, and `serverToken`).
+This namespace defines three tags (`drm`, `clientToken`, and `serverToken`), and two attributes (`scheme` and `href`).
 
 ## `drm:drm`
 
@@ -82,11 +79,21 @@ the resource. If the client knows the User Passphrase, the client token MAY be i
 
 The `drm:serverToken` tag contains information that may be useful in distinguishing between multiple DRM servers of the same type.
 
-This tag supports two optional attributes, `drm:href` and `drm:serverID`. The meaning of these attributes differ depending on the DRM scheme in use.
+The `drm:serverToken` element MAY contain a string leaf node.
 
-When the URMS DRM scheme is in use, the value of `drm:href` is the URL of the URMS Store that provides the resource. The value of `drm:serverID` is the ID of the URMS Store that provides the resource.
+The `drm:serverToken` MAY contain a value for the `drm:href` attribute.
 
-When the LCP or Adobe DRM schemes are in use, the value of `drm:href` and `drm:serverID` within a `drm:serverToken` tag are undefined.
+The meaning of the values associated with `drm:serverToken` tag depends on the value of the `drm:type` attribute in the enclosing `drm:drm` tag.
+
+### `serverToken` under URMS
+
+When the URMS DRM scheme is in use, a `drm:serverToken` tag SHOULD be provided. If it is provided, both `drm:href` and a leaf node MUST be present.
+
+The value of `drm:href` is the URL of the URMS Store that provides the resource. The string leaf node is the ID of the URMS Store that provides the resource.
+
+### `serverToken` under other DRM schemes.
+
+When the LCP or Adobe DRM schemes are in use, the meaning of the `drm:serverToken` tag is undefined. It SHOULD NOT be provided.
 
 # The DRM Scheme Registry
 
