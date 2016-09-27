@@ -75,6 +75,12 @@ Since generating a URMS Authtoken is an expensive operation, it is recommended t
 When the Readium LCP DRM scheme is in use, the client token MUST be interpreted as the LCP user key that guards
 the resource. If the client knows the User Passphrase, the client token MAY be ignored -- the client can hash the User Passphrase and get the same result. If no client token is provided, the client MUST prompt for the User Passphrase as per the LCP spec.
 
+If the provider serves `drm:client-token` upon initial checkout, it MUST also serve the same `drm:client-token` every time it describes the loan (e.g. when listing books on the patron's bookshelf). This way, a patron will always be able to bring a book onto a fresh device and read it there.
+
+In a library setting, the LCP user key SHOULD be a different value for every loan. This suggestion takes precedence over the statement in 4.4 of the LCP spec that "the Provider should use the same User Key for all licenses issued to the same User." This allows a library to evade a major privacy problem: the existence of a persistent identifier (such as the Adobe ID or URMS client ID) associated with every one of a patron's loans and tracked outside the library's control.
+
+(The downside of providing a different user key for every loan is that the patron will be unable to bring their book into an e-reader application that does not also support OPDS and this DRM autodiscovery protocol.)
+
 ## `drm:serverToken`
 
 The `drm:serverToken` tag contains information that may be useful in distinguishing between multiple DRM servers of the same type.
