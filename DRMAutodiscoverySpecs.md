@@ -28,8 +28,7 @@ it is intended to shed light on the representation that will be
 returned by following that link.
 
 The `drm:drm` tag MUST provide a value for the `drm:scheme`
-attribute. Depending on the DRM scheme in use, values for the `drm:clientToken` and
-`drm:serverToken` attributes might be required, optional, or forbidden.
+attribute. Its purpose is to help a client jump through DRM hoops, not to signal the mere presence of DRM (the `vnd.librarysimplified/obfuscated` media type can be used for that.) Depending on the DRM scheme in use, values for the `drm:clientToken` and `drm:serverToken` attributes might be required, optional, or forbidden.
 
 ## `drm:scheme`
 
