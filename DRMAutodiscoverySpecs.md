@@ -39,13 +39,13 @@ The `drm:clientToken` tag MAY define a value for the `drm:vendor` attribute.
 
 The meaning of the `drm:vendor` attribute, and the client token obtained from a `drm:clientToken` tag, depends on the DRM scheme in use for the enclosing `<opds:link>`.
 
-### `clientToken` under ACS
+### `clientToken` `vendor` under ACS
 
 When the ACS DRM scheme is in use, and a `drm:clientToken` tag is provided, it MUST also provide a value for `drm:vendor`. The value of `drm:vendor` is the name of the vendor that runs the Adobe Vendor ID server. This is a value suitable for passing in as the `authority` argument to `initSignInWorkflow` (as described in the Adobe Vendor ID Specification).
 
-### `clientToken` under other DRM schemes
+### `clientToken` `vendor` under other DRM schemes
 
-When the LCP or Adobe DRM schemes are in use, the meaning of the `drm:vendor` attribute is undefined when it shows up in the `drm:clientToken` tag.
+When the LCP or Adobe DRM schemes are in use, the meaning of a `drm:clientToken` element's `drm:vendor` attribute is undefined.
 
 ## `drm:serverToken`
 
