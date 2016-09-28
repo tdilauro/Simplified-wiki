@@ -114,7 +114,7 @@ Once you borrow the book you will be served an OPDS entry like this:
  </link>
  <drm:licensor>
   <drm:clientToken href="https://host/register/CEL"/>
-  <drm:serverToken href="http://urms-12345678.eu-west-1.elb.amazonaws.com">959</drm:serverToken>
+  <drm:serverToken href="http://urms-12345678.eu-west-1.elb.amazonaws.com" vendor="959"/>
  </drm:licensor>
 </entry>
 ```
@@ -123,7 +123,7 @@ This says:
 
 1. You can get the book from `http://host/foo.epub`, but it's going to be encrypted with URMS, and you won't be able to turn it into a usable form.
 2. To get the book in `application/epub`, you need to start from the CCID, which is `01234567890`.
-3. The URMS Store that provides this book is URMS Store 959, and its URL is `http://urms-12345678.eu-west-1.elb.amazonaws.com`.
+3. The URMS Store that provides this book is URMS Store 959, and it can be found at `http://urms-12345678.eu-west-1.elb.amazonaws.com`.
 4. If you need to create a profile with that URMS Store, you can get an AuthToken by sending an authenticated GET request to `https://host/register/CEL`. That URL acts as described in the [Client Token Protocol](https://github.com/NYPL-Simplified/Simplified/wiki/DRMAutodiscoverySpecs#the-client-token-protocol).
 
 It's nice to have that direct link to the EPUB, because it means you can start downloading the book while you wait to fulfill the loan, but it's not mandatory. If the EPUB link is missing, you can still fulfill the book with just a CCID and a URMS profile.
