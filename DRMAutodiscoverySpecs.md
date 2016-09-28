@@ -6,7 +6,7 @@ The URI for this namespace is
 `http://librarysimplified.org/terms/drm`. In the examples that follow it is prefixed as
 `drm` in examples, e.g. `drm:clientToken`.
 
-This namespace defines three tags (`drm`, `clientToken`, and `serverToken`), and two attributes (`scheme` and `href`).
+This namespace defines three tags (`licensor`, `clientToken`, and `serverToken`), and two attributes (`name` and `href`).
 
 ## `drm:licensor`
 
@@ -28,14 +28,20 @@ It's important for two reasons to identify the DRM scheme in use. First, most cl
 
 ## `drm:clientToken`
 
-The `drm:clientToken` tag either contains or links to a piece of information that may be
+The `drm:clientToken` element either contains or links to a piece of information that may be
 necessary or useful in authenticating or authorizing the client with the DRM server. This information might be necessary to obtain the DRM-encrypted resource, or to decrypt it after obtaining it.
 
 The `drm:clientToken` tag MAY contain a string leaf node. If present, the string value of the leaf node MUST be interpreted as a client token according to the Client Token Protocol.
 
 The `drm:clientToken` tag MAY contain a `drm:href` attribute. If present, the value of `drm:href` MUST be an URL with the `https:` scheme. This URL MUST comply with the Client Token Protocol, and its `vnd.librarysimplified/drm-client-registration-token` representation MUST be interpreted as a client token according to the Client Token Protocol.
 
-The meaning of the client token obtained from a `drm:clientToken` tag depends on the DRM scheme in use for the enclosing `<opds:link>`.
+The `drm:clientToken` tag MAY define a value for the `drm:vendor` attribute.
+
+The meaning of the `drm:vendor` attribute, and the client token obtained from a `drm:clientToken` tag, depends on the DRM scheme in use for the enclosing `<opds:link>`.
+
+### `clientToken` under ACS
+
+When the ACS DRM scheme is in use, and a `drm:clientToken` tag is provided, it MUST also provide a value for `drm:vendor`. The value of `drm:vendor` is the name of the vendor that runs the Adobe Vendor ID server. This is a value suitable for passing in as the `authority` argument to `initSignInWorkflow` (as described in the Adobe Vendor ID Specification).
 
 ## `drm:serverToken`
 
@@ -45,13 +51,15 @@ The `drm:serverToken` element MAY contain a string leaf node.
 
 The `drm:serverToken` MAY contain a value for the `drm:href` attribute.
 
+The `drm:serverToken` MAY contain a value for the `drm:vendor` attribute.
+
 The meaning of the values associated with the `drm:serverToken` tag depends on the DRM scheme in use for the enclosing `<opds:link>`.
 
 ### `serverToken` under URMS
 
-When the URMS DRM scheme is in use, a `drm:serverToken` tag SHOULD be provided. If it is provided, both `drm:href` and a leaf node MUST be present.
+When the URMS DRM scheme is in use, a `drm:serverToken` tag SHOULD be provided. If it is provided, both `drm:href` and `drm:vendor` MUST be specified.
 
-The value of `drm:href` is the URL of the URMS Store that provides the resource. The string leaf node is the ID of the URMS Store that provides the resource.
+The value of `drm:href` is the URL of the URMS Store that provides the resource. The value of `drm:vendor` is the ID of the URMS Store that provides the resource.
 
 ### `serverToken` under other DRM schemes
 
