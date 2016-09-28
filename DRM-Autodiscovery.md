@@ -34,7 +34,7 @@ The `<link>` tag explains how to get an ACSM file.
 
 The `<indirectAcquisition>` tag inside the `<link>` tag says that you'll be able to exchange the ACSM file for an EPUB. But the ACSM file isn't enough on its own; you also need an Adobe ID.
 
-The `<drm>` tag inside the `<link>` tag tells you how to get an Adobe ID if you don't already have one. The `<clientToken>` is used by the ACS client as the `authData` argument when calling `dpdrm::DRMProcessor::initSignInWorkflow`. (details are in Adobe's Vendor ID Specification).
+The `<licensor>` tag inside the `<link>` tag tells you how to get an Adobe ID if you don't already have one. The `<clientToken>` is used by the ACS client as the `authData` argument when calling `dpdrm::DRMProcessor::initSignInWorkflow`. (details are in Adobe's Vendor ID Specification).
 
 Where does that `<clientToken>` value come from? In this case, it's an encoded JSON Web Token that is calculated by the circulation manager according to the rules in the [Vendor ID Service](https://docs.google.com/document/d/1j8nWPVmy95pJ_iU4UTC-QgHK2QhDUSdQ0OQTFR2NE_0/edit#) spec. But it can be any string that meets the criteria laid out in Adobe's Vendor ID spec. Since it shows up a lot but is rarely used, it should be a value that can be calculated very quickly on the fly, to avoid undue burden on the circulation manager.
 
@@ -53,7 +53,7 @@ If a site's client token is expensive to calculate, it can be kept behind a link
 
 The details of how to turn the link into a client token are covered in the spec ["DRM Extensions to OPDS"](https://github.com/NYPL-Simplified/Simplified/wiki/DRMAutodiscoverySpecs#drm-extensions-to-opds).
 
-An OPDS feed that has multiple `<link>` tags to ACS-encrypted resources SHOULD provide an identical `<drm>` tag for each one. The circulation manager SHOULD NOT omit the `<drm>` tag because it believes the patron already has an Adobe ID; the patron might be using a new device, and this procedure will allow the patron to look up an existing Adobe ID. However, the `<drm>` tag is optional and MAY be omitted.
+An OPDS feed that has multiple `<link>` tags to ACS-encrypted resources SHOULD provide an identical `<licensor>` tag for each one. The circulation manager SHOULD NOT omit the `<licensor>` tag because it believes the patron already has an Adobe ID; the patron might be using a new device, and this procedure will allow the patron to look up an existing Adobe ID. However, the `<licensor>` tag is optional and MAY be omitted.
 
 ### Failure modes
 
