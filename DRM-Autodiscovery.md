@@ -21,10 +21,10 @@ Here's an OPDS entry you might get back after borrowing a book.
 ```
 <entry>
 <link rel="http://opds-spec.org/acquisition" href="..." type="vnd.adobe/adept+xml">
-  <drm:drm type="http://librarysimplified.org/terms/drm/scheme/ACS">
+  <drm:licensor>
     <drm:clientToken>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vd3d3
 LmxpYnJhcnlzaW1wbGlmaWVkLm9yZy8iLCJzdWIiOiIxMjM0NTY3OCJ9.DTKf7eva3YBb7RzMWs_5EK36wQPfk_RMxBf7UvLAgxc</drm:clientToken>
-  </drm:drm>
+  </drm:licensor>
   <opds:indirectAcquisition type="application/epub+zip"/>
 </link>
 </entry>
@@ -43,7 +43,7 @@ If a site's client token is expensive to calculate, it can be kept behind a link
 ```
 <entry>
 <link rel="http://opds-spec.org/acquisition" href="..." type="vnd.adobe/adept+xml">
-  <drm:drm type="http://librarysimplified.org/terms/drm/scheme/ACS">
+  <drm:licensor>
     <drm:clientToken drm:href="https://my-site/getAuthData"/>
   </drm:drm>
   <opds:indirectAcquisition type="application/epub+zip"/>
@@ -85,7 +85,7 @@ Before a book is borrowed, this is how we indicate that decrypting a book will r
  <link rel="borrow" href="..."
        type="application/atom+xml;type=entry;profile=opds-catalog">
     <opds:indirectAcquisition
-          type="vnd.librarysimplified/obfuscated;scheme=http://librarysimplified.org/terms/drm/scheme/URMS;original-type=application/epub">
+          type="vnd.librarysimplified/obfuscated;scheme=http://librarysimplified.org/terms/drm/scheme/URMS">
       <opds:indirectAcquisition type="application/epub"/>
     </opds:indirectAcquisition>
   </opds:indirectAcquisition>
@@ -105,17 +105,17 @@ Once you borrow the book you will be served an OPDS entry like this:
 <entry>
  <link rel="acquisition"
        href="ccid-urms:01234567890"
-       type="vnd.librarysimplified/obfuscated;scheme=http://librarysimplified.org/terms/drm/scheme/URMS;original-type=application/epub">
+       type="vnd.librarysimplified/obfuscated;scheme=http://librarysimplified.org/terms/drm/scheme/URMS">
   <opds:indirectAcquisition type="application/epub"/>
   <link rel="acquisition"
         href="https://host/foo.epub"
         type="vnd.librarysimplified/obfuscated;scheme=http://librarysimplified.org/terms/drm/scheme/URMS;original-type=application/epub"
   />
  </link>
- <drm:drm>
+ <drm:licensor>
   <drm:clientToken href="https://host/register/CEL"/>
   <drm:serverToken href="http://urms-12345678.eu-west-1.elb.amazonaws.com">959</drm:serverToken>
- </drm:drm>
+ </drm:licensor>
 </entry>
 ```
 
@@ -163,9 +163,9 @@ Once you borrow the book, you'll get an OPDS entry that looks like this:
  <title>An LCP Book</title>
  <link rel="acquisition" href="..."
        type="application/vnd.readium.lcp.license-1.0+json">
-    <drm:drm scheme="http://librarysimplified.org/terms/drm/scheme/LCP">
+    <drm:licensor">
       <drm:client-token>sodih43oth489</drm:client-token>
-    </drm:drm>
+    </drm:licensor>
     <opds:indirectAcquisition type="application/epub"/>
  </link>
 </entry>
