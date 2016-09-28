@@ -8,33 +8,23 @@ The URI for this namespace is
 
 This namespace defines three tags (`drm`, `clientToken`, and `serverToken`), and two attributes (`scheme` and `href`).
 
-## `drm:drm`
+## `drm:licensor`
 
-The `drm:drm` tag indicates that some special DRM-specific information
-will help the client decode a representation. In some cases, it may
-not be possible to even retrieve a representation without the
-information kept in the `drm:drm` tag.
+The `drm:licensor` tag indicates that some special DRM-specific licensing information will help the client decode a representation. In some cases, it may not be possible to even retrieve a representation without the information kept in the `drm:licensor` tag.
 
-This document defines the semantics of the `drm:drm` tag when the value of
-the `scheme` attribute is one defined in the DRM Scheme Registry. It
-does not define the semantics of the `drm` tag when the value of the
-`scheme` attribute is a URI not found in the DRM Scheme Registry.
+This document defines the semantics of the `drm:licensor` tag under DRM systems described in the DRM Scheme Registry (q.v.). It does not define the semantics of the `drm:licensor` tag under other DRM systems.
 
-The `drm:drm` tag MAY be the child of an `atom:link` tag. When it appears,
-it is intended to shed light on the representation that will be
-returned by following that link.
+The `drm:licensor` tag MAY be the child of an `atom:link` tag. When it appears, it is intended to shed light on the representation that will be returned by following that link.
 
-The `drm:drm` tag MUST provide a value for the `drm:scheme`
-attribute. Its purpose is to help a client jump through DRM hoops, not to signal the mere presence of DRM (the `vnd.librarysimplified/obfuscated` media type can be used for that.) Depending on the DRM scheme in use, values for the `drm:clientToken` and `drm:serverToken` attributes might be required, optional, or forbidden.
+If acquiring a book through an `<opds:link>` tag would require negotiating a DRM system, the client MUST be able to determine _which_ DRM system is in use by examining the `<opds:link>` tag and its children. It MUST be possible to determine which DRM system is in use _before_ triggering an unsafe state transition such as OPDS `borrow` or `buy`. There are three ways to determine which DRM system is in use:
 
-## `drm:scheme`
+* A DRM-specific media type, either in the `type` of the `<opds:link>` tag, or in an embedded `<opds:indirectAcquisition>` tag, can indicate that the resource is controlled by an ACS or LCP system. For example, a link that leads to an `vnd.adobe/adept+xml` file which leads to an `application/epub+zip` file is controlled by an ACS system.
 
-The value of the `scheme` attribute identifies the DRM scheme in
-use. This MUST either be a short string from the DRM Scheme Registry
-(q.v.), or a URI.
+* A `ccid-urms` URL in the target of an `<opds:link>` indicates that the resource is controlled by a URMS system.
 
-When the `drm:drm` tag is used, it MUST provide a value for the
-`drm:scheme` attribute.
+* The use of the `vnd.librarysimplified/obfuscated` media type in the `<opds:link>` tag or an embedded `<opds:indirectAcquisition>` indicates that a DRM system is in use. The `scheme` parameter to that media type indicates _which_ DRM scheme is in use.
+
+It's important for two reasons to identify the DRM scheme in use. First, most clients can handle some DRM schemes but not others. A client has a right to know, before asking its user to pay for a book, whether it will actually be able to decrypt the book. Second, some of the `drm:` elements and attributes have different meanings, depending on the DRM scheme in use.
 
 ## `drm:clientToken`
 
@@ -45,7 +35,7 @@ The `drm:clientToken` tag MAY contain a string leaf node. If present, the string
 
 The `drm:clientToken` tag MAY contain a `drm:href` attribute. If present, the value of `drm:href` MUST be an URL with the `https:` scheme. This URL MUST comply with the Client Token Protocol, and its `vnd.librarysimplified/drm-client-registration-token` representation MUST be interpreted as a client token according to the Client Token Protocol.
 
-The meaning of the client token obtained from a `drm:clientToken` tag depends on the value of the `drm:type` attribute in the enclosing `drm:drm` tag.
+The meaning of the client token obtained from a `drm:clientToken` tag depends on the DRM scheme in use for the enclosing `<opds:link>`.
 
 ## `drm:serverToken`
 
@@ -55,7 +45,7 @@ The `drm:serverToken` element MAY contain a string leaf node.
 
 The `drm:serverToken` MAY contain a value for the `drm:href` attribute.
 
-The meaning of the values associated with `drm:serverToken` tag depends on the value of the `drm:type` attribute in the enclosing `drm:drm` tag.
+The meaning of the values associated with the `drm:serverToken` tag depends on the DRM scheme in use for the enclosing `<opds:link>`.
 
 ### `serverToken` under URMS
 
@@ -63,7 +53,7 @@ When the URMS DRM scheme is in use, a `drm:serverToken` tag SHOULD be provided. 
 
 The value of `drm:href` is the URL of the URMS Store that provides the resource. The string leaf node is the ID of the URMS Store that provides the resource.
 
-### `serverToken` under other DRM schemes.
+### `serverToken` under other DRM schemes
 
 When the LCP or Adobe DRM schemes are in use, the meaning of the `drm:serverToken` tag is undefined. It SHOULD NOT be provided.
 
@@ -73,7 +63,9 @@ A URL that complies with the Client Token Protocol MUST respond to a properly au
 
 This specification defines the meaning of client tokens of media type `vnd.librarysimplified/drm-client-registration-token`. It does not define the meaning of client tokens of other media types.
 
-The meaning of a client token depends on the DRM scheme under consideration. In the DRM Extensions for OPDS, the DRM scheme is conveyed through the `drm:scheme` attribute.
+If the media type of a client token is `vnd.librarysimplified/drm-client-registration-token`, the `scheme` parameter MUST be set to the DRM scheme in use.
+
+The meaning of a client token depends on the DRM scheme in use. This specification defines the meaning of a client token for the DRM schemes defined in the DRM Scheme Registry.
 
 ### Client token under ACS
 
@@ -109,11 +101,9 @@ In a library setting, the LCP user key SHOULD be a different value for every loa
 
 (The downside of providing a different user key for every loan is that the patron will be unable to bring their book into an e-reader application that does not also support OPDS and this DRM autodiscovery protocol.)
 
-
-
 # The DRM Scheme Registry
 
-This specification serves as a registry for reserved strings
+This specification serves as a registry for reserved strings and URIs
 corresponding to popular DRM schemes. The following schemes are
 defined:
 
@@ -144,9 +134,15 @@ order they were applied to the original representation.
 representation's original media type before encryption and obfuscation
 were applied. To avoid ambiguity, this media type may not have parameters applied to it. (TODO: URL-escaping the parameter value would allow parameters to be applied to it.)
 
-# The `vnd.librarysimplified/drm-client-registration-token` media type
+# The `vnd.librarysimplified/drm-client-token` media type
 
 A document of this media type represents a currently active client token (see "`drm:clientToken`"). Apart from this fact, its semantics are identical to the semantics of `application/octet-stream`.
+
+This media type defines one required parameter:
+
+*scheme*: A URI identifying the DRM scheme associated with the client token.
+URIs found in the DRM Scheme Registry are especially appropriate values for
+*scheme*. For example, an LCP user key would be served as vnd.librarysimplified/drm-client-token;scheme=http://librarysimplified.org/terms/drm/scheme/LCP.
 
 # The `ccid-urms` URL scheme
 
