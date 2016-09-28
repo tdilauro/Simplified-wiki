@@ -130,6 +130,10 @@ It's nice to have that direct link to the EPUB, because it means you can start d
 
 ### Failure modes
 
+Each URMS Store can impose a limit on the number of devices associated with a user ID. This can lead to the same problem we see with Adobe IDs -- patrons who've reached the device limit and don't know how to fix the problem. 
+
+Since the URMS Device API offers "Get Devices" and "Delete Device" endpoints, it may be possible for one device to automatically bump off some other device and register itself, without any new mechanism being created.
+
 ## LCP
 
 LCP works more or less like ACS. When you borrow a book you get a License Document (media type: `application/vnd.readium.lcp.license-1.0+json`). You can combine the License Document with the "user key" and a client-side secret to download and decrypt the book. One big advantage of LCP is that there is no separate client registration step.
