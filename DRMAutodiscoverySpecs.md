@@ -6,7 +6,7 @@ The URI for this namespace is
 `http://librarysimplified.org/terms/drm`. In the examples that follow it is prefixed as
 `drm` in examples, e.g. `drm:clientToken`.
 
-This namespace defines three tags (`licensor`, `clientToken`, and `serverToken`), and two attributes (`name` and `href`).
+This namespace defines three tags (`licensor`, `clientToken`, and `serverToken`), and two attributes (`href` and `vendor`).
 
 ## `drm:licensor`
 
