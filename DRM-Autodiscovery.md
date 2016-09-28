@@ -125,7 +125,7 @@ This says:
 2. To get the book in `application/epub`, you need to start from the CCID, which is `01234567890`.
 3. The URMS Store that provides this book is URMS Store 959, and it can be found at `http://urms-12345678.eu-west-1.elb.amazonaws.com`.
 4. If you need to create a profile with that URMS Store, you can get an AuthToken by sending an authenticated GET request to `https://host/register/CEL`. That URL acts as described in the [Client Token Protocol](https://github.com/NYPL-Simplified/Simplified/wiki/DRMAutodiscoverySpecs#the-client-token-protocol).
-5. You can get _part_ of the way towards fulfilling this link by downloading the encrypted EPUB from `https://host/foo.epub`, but you won't be able to decrypt it without going through the `ccid-urms` URL. It's nice to have this direct link, because it means you can start downloading the book while you wait to fulfill the loan, but it's not mandatory. If the EPUB link is missing, you can still fulfill the book with just a CCID and a URMS profile.
+5. You can get _part_ of the way towards fulfilling this link by downloading the encrypted EPUB from `https://host/foo.epub`, but you won't be able to decrypt it without going through the `ccid-urms` URL. It's nice to have this direct link, because it means you can start downloading the book while you wait to fulfill the loan, but it's not mandatory. If the EPUB link was missing, you could still fulfill the book with just a CCID and a URMS profile.
 
 ### Failure modes
 
