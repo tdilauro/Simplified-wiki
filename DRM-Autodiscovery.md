@@ -82,7 +82,7 @@ Before a book is borrowed, this is how we indicate that decrypting a book will r
 ```
 <entry>
  <title>A URMS Book</title>
- <link rel="borrow" href="..."
+ <link rel="http://opds-spec.org/acquisition/borrow" href="..."
        type="application/atom+xml;type=entry;profile=opds-catalog">
     <opds:indirectAcquisition
           type="vnd.librarysimplified/obfuscated;scheme=http://librarysimplified.org/terms/drm/scheme/URMS">
@@ -103,11 +103,11 @@ Once you borrow the book you will be served an OPDS entry like this:
 
 ```
 <entry>
- <link rel="acquisition"
+ <link rel="http://opds-spec.org/acquisition"
        href="ccid-urms:01234567890"
        type="vnd.librarysimplified/obfuscated;scheme=http://librarysimplified.org/terms/drm/scheme/URMS">
   <opds:indirectAcquisition type="application/epub"/>
-  <link rel="acquisition"
+  <link rel="http://opds-spec.org/acquisition"
         href="https://host/foo.epub"
         type="vnd.librarysimplified/obfuscated;scheme=http://librarysimplified.org/terms/drm/scheme/URMS;original-type=application/epub"
   />
@@ -142,7 +142,7 @@ Before a book is borrowed, here's how we indicate that reading a book will requi
 ```
 <entry>
  <title>An LCP Book</title>
- <link rel="borrow" href="..."
+ <link rel="http://opds-spec.org/acquisition/borrow" href="..."
        type="application/atom+xml;type=entry;profile=opds-catalog">
     <opds:indirectAcquisition
           type="application/vnd.readium.lcp.license-1.0+json">
@@ -164,7 +164,7 @@ Once you borrow the book, you'll get an OPDS entry that looks like this:
 ```
 <entry>
  <title>An LCP Book</title>
- <link rel="acquisition" href="..."
+ <link rel="http://opds-spec.org/acquisition" href="..."
        type="application/vnd.readium.lcp.license-1.0+json">
     <drm:licensor">
       <drm:client-token>sodih43oth489</drm:client-token>
