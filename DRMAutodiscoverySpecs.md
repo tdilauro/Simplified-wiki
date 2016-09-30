@@ -181,13 +181,13 @@ Here's an example:
 ```
 <entry>
  ...
- <link rel="acquisition"
+ <link rel="http://opds-spec.org/acquisition"
        href="ccid-urms:01234567890"
        type="vnd.librarysimplified/obfuscated;method=http://librarysimplified.org/terms/drm/URMS;original-type=application/epub"
   >
   <opds:indirectAcquisition type="application/epub"/>
   ...
-  <link rel="acquisition"
+  <link rel="http://opds-spec.org/acquisition"
         href="https://host/foo.epub"
         type="vnd.librarysimplified/drm-encrypted;method=urms;decrypts-to=application/epub"
   />
@@ -196,9 +196,9 @@ Here's an example:
 </entry>
 ```
 
-The `<entry>` is talking about a certain book. The parent link is to the resource `ccid-urms:01234567890`. The link relation is `acquisition`, indicating that dereferencing `ccid-urms:01234567890` will get you an (obfuscated) copy of the book. The `<opds:indirectAcquisition>` tag inside this first link indicates that the client can, if it knows how, deobfuscate the book and turn it into a normal `application/epub` document.
+The `<entry>` is talking about a certain book. The parent link is to the resource `ccid-urms:01234567890`. The link relation is `http://opds-spec.org/acquisition`, indicating that dereferencing `ccid-urms:01234567890` will get you an (obfuscated) copy of the book. The `<opds:indirectAcquisition>` tag inside this first link indicates that the client can, if it knows how, deobfuscate the book and turn it into a normal `application/epub` document.
 
-Inside that link is another link, to `https://host/foo.epub`. Again, the link relation is `acquisition`. This indicates that acquiring `https://host/foo.epub` is a _partial_ solution to acquiring `ccid-urms:01234567890`. It's not a complete solution, because you're going to end up with an obfuscated copy of the book -- there's no `<opds:indirectAcquisition>` tag inside the child link, the way there is inside a parent. The only way to turn the obfuscated book into a normal `application/epub` is to properly dereference the `ccid-urms` URL.
+Inside that link is another link, to `https://host/foo.epub`. Again, the link relation is `http://opds-spec.org/acquisition`. This indicates that acquiring `https://host/foo.epub` is a _partial_ solution to acquiring `ccid-urms:01234567890`. It's not a complete solution, because you're going to end up with an obfuscated copy of the book -- there's no `<opds:indirectAcquisition>` tag inside the child link, the way there is inside a parent. The only way to turn the obfuscated book into a normal `application/epub` is to properly dereference the `ccid-urms` URL.
 
 So why bother? Because giving the path to the obfuscated file allows the client to download it in the background, and fulfill it later. This is totally optional but it can speed things up.
 
