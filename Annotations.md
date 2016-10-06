@@ -33,9 +33,9 @@ All of these specs are based on [JSON-LD](https://www.w3.org/TR/json-ld/).
 annotations
 id
 patron_id
-identifier_id
-motivation
-timestamp
+identifier_id (device, or annotation)
+motivation (Last Reading known Position, User Bookmark, Note, Bibligraphical Reference)
+timestamp (Server or Client?)
 active (boolean)
 content
 ```
