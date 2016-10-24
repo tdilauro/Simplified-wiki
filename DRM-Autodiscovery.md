@@ -22,6 +22,7 @@ Here's an OPDS entry you might get back after borrowing a book.
 <entry>
 <link rel="http://opds-spec.org/acquisition" href="..." type="vnd.adobe/adept+xml">
   <drm:licensor>
+    <drm:vendor>NYPL</drm:vendor>
     <drm:clientToken>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vd3d3
 LmxpYnJhcnlzaW1wbGlmaWVkLm9yZy8iLCJzdWIiOiIxMjM0NTY3OCJ9.DTKf7eva3YBb7RzMWs_5EK36wQPfk_RMxBf7UvLAgxc</drm:clientToken>
   </drm:licensor>
@@ -34,7 +35,7 @@ The `<link>` tag explains how to get an ACSM file.
 
 The `<indirectAcquisition>` tag inside the `<link>` tag says that you'll be able to exchange the ACSM file for an EPUB. But the ACSM file isn't enough on its own; you also need an Adobe ID.
 
-The `<licensor>` tag inside the `<link>` tag tells you how to get an Adobe ID if you don't already have one. The `<clientToken>` is used by the ACS client as the `authData` argument when calling `dpdrm::DRMProcessor::initSignInWorkflow`. (details are in Adobe's Vendor ID Specification).
+The `<licensor>` tag inside the `<link>` tag tells you how to get an Adobe ID if you don't already have one. The `<clientToken>` is used by the ACS client as the `authData` argument when calling `dpdrm::DRMProcessor::initSignInWorkflow`. (details are in Adobe's Vendor ID Specification). The `<vendor>` is used as the `authority` argument.
 
 Where does that `<clientToken>` value come from? In this case, it's an encoded JSON Web Token that is calculated by the circulation manager according to the rules in the [Vendor ID Service](https://docs.google.com/document/d/1j8nWPVmy95pJ_iU4UTC-QgHK2QhDUSdQ0OQTFR2NE_0/edit#) spec. But it can be any string that meets the criteria laid out in Adobe's Vendor ID spec. Since it shows up a lot but is rarely used, it should be a value that can be calculated very quickly on the fly, to avoid undue burden on the circulation manager.
 
