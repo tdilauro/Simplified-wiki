@@ -1,5 +1,7 @@
 So you're deploying your library's circulation manager. Awesome! If you'd like to get up and running quickly, we recommend using our Docker image.
 
+#### Circulation Manager
+
 ##### *Local Prep*
 
 1. **Create your configuration file.** On your local machine, use [this documentation](Configuration) to create the JSON file for your particular library's configuration. If you're unfamiliar with Json, you can use [this JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/#) to validate your configuration file.
@@ -10,44 +12,15 @@ So you're deploying your library's circulation manager. Awesome! If you'd like t
 
 1. **Install Docker.** Docker has [step-by-step instructions](https://docs.docker.com/linux/step_one/) to grab its most up-to-date version. Depending on your package manager, you could also install a slightly older version with: `sudo apt-get install docker.io` or `sudo yum install docker.io`.
 
-2. **Get the Docker image** for both Elasticsearch v1.x and the Library Simplified Circulation Manager. Run:
+2. **Get the Docker images** for the Library Simplified Circulation Manager. Run:
 
     ```sh
-    $ sudo docker pull elasticsearch:1 && sudo docker pull nypl/circ-deploy && sudo docker pull nypl/circ-scripts
+    $ sudo docker pull nypl/circ-deploy && sudo docker pull nypl/circ-scripts
     ```
 
-3. **Create an Elasticsearch container,** and grab its IP Address. Run:
+3. **Create any dependent, temporary containers** (optional) for integrations like Elasticsearch and Postgres. *We don't recommend using containers in the long-term for holding or maintaining data.* However, if you just want to get a sense of how your Circulation Manager will work, containers are a quick option. Instructions for integrating [Elasticsearch](#es) and [Postgres](#pg) via Docker can be found below.
 
-    ```sh
-    $ sudo docker run -d --name es elasticsearch:1     # create an elasticsearch container
-    $ sudo docker ps                                   # confirm that it's running
-    $ sudo docker inspect es | grep 'IPAddress'        # note its IP address
-    ```
-
-   When you run `sudo docker ps`, you'll see a single running container called es. Use the IP that comes from running `inspect` to update your your `config.json` file with the proper Elasticsearch location. You should end up with something like `"http://172.17.0.2:9200"`.
-
-4. **Create a Circulation Manager deployment container.**
-
-    ```sh
-    $ sudo docker run -d -p 80:80 --name circ-deploy \
-        -v /var/www/config.json:/var/www/circulation/config.json \
-        nypl/circ-deploy
-    ```
-
-    *What you're doing.* You're running this container in detached mode (`-d`), binding its port 80 to your server's port 80 (`-p`), passing in your configuration file where it needs to be (`-v`) and calling it "circ-deploy". When you visit your server through a browser, you'll see a very sparse OPDS feed.
-
-    *Troubleshooting.* You'll want to check the logs of your container (`/var/log/nginx/error.log` and `/var/www/circulation/uwsgi.log`) to troubleshoot:
-
-    ```sh
-    # check logs of running supervisor processes
-    $ sudo docker logs circ-deploy
-
-    # check logs inside the container
-    $ sudo docker exec circ-deploy cat /var/log/nginx/error.log | less
-    $ sudo docker exec circ-deploy cat /var/www/circulation/uwsgi.log | less
-    ```
-
-5. **Create a Circulation Manager script-running container.** Now we need to fill in that empty OPDS feed with your library's books, which will require running a number of scripts. Read the details below about the arguments you're passing before running this script; you will probably need to alter it to meet your needs.
+4. **Create a Circulation Manager script-running container.** Now we need to fill in that empty OPDS feed with your library's books, which will require running a number of scripts. Read the details below about the arguments you're passing before running this script; you will probably need to alter it to meet your needs.
 
     ```sh
     $ sudo docker run -d --name circ-scripts \
@@ -70,6 +43,27 @@ So you're deploying your library's circulation manager. Awesome! If you'd like t
     $ sudo docker exec circ-scripts cat /var/log/libsimple/overdrive_monitor_full | less
     ```
 
+5. **Create a Circulation Manager deployment container.**
+
+    ```sh
+    $ sudo docker run -d -p 80:80 --name circ-deploy \
+        -v /var/www/config.json:/var/www/circulation/config.json \
+        nypl/circ-deploy
+    ```
+
+    *What you're doing.* You're running this container in detached mode (`-d`), binding its port 80 to your server's port 80 (`-p`), passing in your configuration file where it needs to be (`-v`) and calling it "circ-deploy". When you visit your server through a browser, you'll see a very sparse OPDS feed.
+
+    *Troubleshooting.* You'll want to check the logs of your container (`/var/log/nginx/error.log` and `/var/www/circulation/uwsgi.log`) to troubleshoot:
+
+    ```sh
+    # check logs of running supervisor processes
+    $ sudo docker logs circ-deploy
+
+    # check logs inside the container
+    $ sudo docker exec circ-deploy cat /var/log/nginx/error.log | less
+    $ sudo docker exec circ-deploy cat /var/www/circulation/uwsgi.log | less
+    ```
+
 6. **Confirm your scripts are running.** Once you've given your scripts some time to run (~30 minutes should be enough time to start having works move through the import process), you'll want to refresh your views so they show up in your deployed app.
 
     ```sh
@@ -89,7 +83,28 @@ So you're deploying your library's circulation manager. Awesome! If you'd like t
 If your Docker containers are running successfully, you should have a `/var/log/libsimple` directory full of logfiles in your circ-scripts container, and you should be able to visit your server's domain and see an OPDS feed from circ-deploy. If either of these things aren't occurring, use the troubleshooting details above to check `var/log/cron.log` or the logfiles in `/var/log/libsimple` for circ-scripts and/or `/var/www/circulation/uwsgi.log` or `/var/log/nginx/error.log`.
 
 
-##### *Postgres*
+#### <a name='es'></a>*Elasticsearch* (optional support container)
+
+While we do **not** recommend you run Elasticsearch from a Docker container permanently, you may want to get up and running with a throwaway search index. Elasticsearch isn't installed via the Dockerfile, so the fastest way to connect to it will be through another container. Here's how:
+
+1. **Get the Docker image** for Elasticsearch v1.x:
+
+    ```sh
+    $ sudo docker pull elasticsearch:1
+    ```
+
+2. **Create an Elasticsearch container,** and grab its IP Address. Run:
+
+    ```sh
+    $ sudo docker run -d --name es elasticsearch:1     # create an elasticsearch container
+    $ sudo docker ps                                   # confirm that it's running
+    $ sudo docker inspect es | grep 'IPAddress'        # note its IP address
+    ```
+
+3. **Add the Elasticsearch URL to your configuration file.** When you run `sudo docker ps`, you'll see a single running container called es. Use the IP that comes from running `inspect` to update your your `config.json` file with the proper Elasticsearch location. You should end up with something like `"http://172.17.0.2:9200"`.
+
+
+#### <a name='pg'></a>*Postgres* (optional support container)
 
 While we do **not** recommend you run Postgres from a Docker container permanently, you may want to get up and running with a throwaway database. Postgres isn't installed via the Dockerfile, so the best way to connect to Postgres will be through another container. Here's how:
 
