@@ -47,15 +47,13 @@ This is the cheap option, but you can only choose it if you're using SimplyE as 
 The technical details are in the [[Vendor ID Service spec|https://docs.google.com/document/d/1j8nWPVmy95pJ_iU4UTC-QgHK2QhDUSdQ0OQTFR2NE_0/edit#heading=h.jxwemo85jady]] and the [[DRM Extensions to OPDS|https://github.com/NYPL-Simplified/Simplified/wiki/DRMAutodiscoverySpecs#drm-extensions-to-opds]], but here's roughly how it works:
 
 1. A patron using SimplyE tries to open a book encrypted with Adobe DRM. They don't have an Adobe ID on this device (though they may have created one from another device). They need their Adobe ID.
-2. Fortunately, your circulation manager has forseen this possibility and provided a special message that the client can present to Adobe to get an Adobe ID. The message is encrypted with your library's `secret`. When decrypted, the message says: "Patron X at library Y wants their Adobe ID. Signed, library Y." 
-3. Adobe receives the message and passes it on (without decrypting it) to NYPL.
-4. NYPL receives the encrypted message and is able to decrypt it because you shared the `secret` with NYPL.
+2. Fortunately, your circulation manager has forseen this possibility and provided a special message that the client can present to Adobe to get an Adobe ID. The message is signed with your library's `secret`. It says: "Patron X at library Y wants their Adobe ID. Signed, library Y." 
+3. Adobe receives the message and passes it on to NYPL.
+4. NYPL receives the message and is able to verify the signature because you shared your `secret` with NYPL.
 5. NYPL creates (if necessary) or looks up (if possible) the Adobe ID for patron X, and sends it back to Adobe.
 6. Adobe forwards the Adobe ID back to your patron's SimplyE client.
 7. Now that they have their Adobe ID, the patron is able to open the encrypted book.
 
-In step 2, "X" is an alias for the patron, not the patron's actual identifier. NYPL can distinguish between one patron and another, but has no way of tying "X" back to a specific person.
+In step 2, "X" is an alias for the patron, not the patron's actual identifier. NYPL can distinguish between one patron and another, but has no way of tying "X" back to a specific person. Adobe sees the message as well, but they also have no way of tying "X" back to a specific person.
 
 In step 4, NYPL knows that the message is from library Y because it was signed with library Y's secret. 
-
-Although Adobe sees the message (in step 2), it can't decode the message, because it doesn't know the `secret`. All it can do is pass the message on to NYPL. So Adobe doesn't learn anything about your patrons through this process.
