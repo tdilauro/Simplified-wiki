@@ -95,6 +95,7 @@ Currently, our active public repositories include:
 ## Other integrations
 
 * [[DRM access control servers|DRM]]
+* [[Adobe Vendor ID server|AdobeVendorID]]
 
 # Metadata
 
