@@ -115,4 +115,4 @@ While we do **not** recommend you run Postgres from a Docker container permanent
     $ docker exec -u postgres pg psql -c "grant all privileges on database simplified_circ_db to simplified;"
     ```
 
-4. **Add the Postgres URL to your configuration file.** In `config.json`, add the appropriate  `production_url`. You should end up with something like `"postgres://simplified:test@172.17.0.3:5432"`, following the `"postgres://<USERNAME>:<PASSWORD>@<HOST>:<PORT>/<DATABASE_NAME>"` format.
+4. **Add the Postgres URL to your configuration file.** In `config.json`, add the appropriate  `production_url`. You should end up with something like `"postgres://simplified:test@172.17.0.3:5432/simplified_circ_db"`, following the `"postgres://<USERNAME>:<PASSWORD>@<HOST>:<PORT>/<DATABASE_NAME>"` format.
