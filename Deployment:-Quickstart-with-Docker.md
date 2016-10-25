@@ -87,3 +87,32 @@ So you're deploying your library's circulation manager. Awesome! If you'd like t
 ##### *Evaluating Success*
 
 If your Docker containers are running successfully, you should have a `/var/log/libsimple` directory full of logfiles in your circ-scripts container, and you should be able to visit your server's domain and see an OPDS feed from circ-deploy. If either of these things aren't occurring, use the troubleshooting details above to check `var/log/cron.log` or the logfiles in `/var/log/libsimple` for circ-scripts and/or `/var/www/circulation/uwsgi.log` or `/var/log/nginx/error.log`.
+
+
+##### *Postgres*
+
+While we do **not** recommend you run Postgres from a Docker container permanently, you may want to get up and running with a throwaway database. Postgres isn't installed via the Dockerfile, so the best way to connect to Postgres will be through another container. Here's how:
+
+1. **Get the Docker image** for Postgres 9.4 or 9.5:
+
+    ```sh
+    $ sudo docker pull postgres:9.5
+    ```
+
+2. **Create a Postgres container,** and grab its IP Address. Run:
+
+    ```sh
+    $ sudo docker run -d --name pg postgres:9.5        # create a postgres container
+    $ sudo docker ps                                   # confirm that it's running
+    $ sudo docker inspect pg | grep 'IPAddress'        # note its IP address
+    ```
+
+3. **Create a Postgres database.** Run:
+
+    ```sh
+    $ docker exec -u postgres pg psql -c "create user simplified with password 'test';"    # create a user and password
+    $ docker exec -u postgres pg psql -c "create database simplified_circ_db;"            # create database
+    $ docker exec -u postgres pg psql -c "grant all privileges on database simplified_circ_db to simplified;"
+    ```
+
+4. **Add the Postgres URL to your configuration file.** In `config.json`, add the appropriate  `production_url`. You should end up with something like `"postgres://simplified:test@172.17.0.3:5432"`, following the `"postgres://<USERNAME>:<PASSWORD>@<HOST>:<PORT>/<DATABASE_NAME>"` format.
