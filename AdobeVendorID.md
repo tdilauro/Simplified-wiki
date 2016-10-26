@@ -12,6 +12,8 @@ Your config file must define an integration called `Adobe Vendor ID`. It must de
 
 * `vendor_id`: This is the name of your vendor ID as registered with Adobe.
 * `node_value`: This is the node value supplied by Adobe.
+* `library_uri`: A URI that represents your library. The URL to your library's website is fine.
+* `secret`: A secret string. This lets your Vendor ID implementation know whether a client is authorized to ask for a given patron's Vendor ID.
 
 Example:
 
@@ -19,7 +21,9 @@ Example:
 "integrations" : {
 	"Adobe Vendor ID" : {
 	    "vendor_id" : "My Library",
-	    "node_value" : "49aa62d328e2"
+	    "node_value" : "49aa62d328e2",
+            "library_uri" : "http://my-library.org/",
+            "secret": "29789882ff0ea36dc7bdf15232f3021e"
 	}
 }
 ```
@@ -45,6 +49,8 @@ This is the cheap option, but you can only choose it if you're using SimplyE as 
 	}
 }
 ```
+
+This is almost the same as the expensive option, but you don't need the `node_value`. Be sure to communicate your `library_uri` and your `secret` to the SimplyE team (mechanism TBD); they have to know about your library for this system to work.
 
 ## How it works
 
