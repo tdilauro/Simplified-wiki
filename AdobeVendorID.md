@@ -16,10 +16,12 @@ Your config file must define an integration called `Adobe Vendor ID`. It must de
 Example:
 
 ```
+"integrations" : {
 	"Adobe Vendor ID" : {
 	    "vendor_id" : "My Library",
 	    "node_value" : "49aa62d328e2"
 	}
+}
 ```
 
 Tell Adobe that your Vendor ID base URL is the root of your circulation manager plus `AdobeAuth`. For example, if your circulation manager is hosted at `https://my-circulation-manager.com/`, your Vendor ID base URL will be `https://my-circulation-manager.com/AdobeAuth`.
@@ -28,18 +30,20 @@ Once you set this up, Adobe will certify your implementation and you'll be able 
 
 # Connect to the SimplyE Vendor ID server
 
-This is the cheap option, but you can only choose it if you're using SimplyE as your OPDS client. In this option you are delegating the job of issuing Vendor IDs to NYPL.
+This is the cheap option, but you can only choose it if you're using SimplyE as your OPDS client. In this option you are delegating the job of issuing Adobe IDs to NYPL.
 
-* `vendor_id`: This is the literal string "NYPL".
+* `vendor_id`: This is the literal string "NYPL". You are getting Adobe IDs from NYPL and not some other source.
 * `library_uri`: A URI that represents your library. The URL to your library's website is fine. This lets NYPL distinguish between your patrons and another library's patrons.
 * `secret`: A secret string that is shared between you and NYPL. This lets NYPL verify that a request actually came from you and is not someone trying to hack the system.
 
 ```
+"integrations" : {
 	"Adobe Vendor ID" : {
 	    "vendor_id" : "NYPL",
             "library_uri" : "http://my-library.org/",
             "secret" : "29789882ff0ea36dc7bdf15232f3021e"
 	}
+}
 ```
 
 ## How it works
@@ -54,6 +58,6 @@ The technical details are in the [[Vendor ID Service spec|https://docs.google.co
 6. Adobe forwards the Adobe ID back to your patron's SimplyE client.
 7. Now that they have their Adobe ID, the patron is able to open the encrypted book.
 
-In step 2, "X" is an alias for the patron, not the patron's actual identifier. NYPL can distinguish between one patron and another, but has no way of tying "X" back to a specific person. Adobe sees the message as well, but they also have no way of tying "X" back to a specific person.
+In step 2, "X" is a made-up alias for the patron, not the patron's actual identifier as kept in your ILS. NYPL can distinguish between one patron and another, but has no way of tying "X" back to a specific library card. Adobe sees the message as well, but they also have no way of tying "X" back to a specific person.
 
 In step 4, NYPL knows that the message is from library Y because it was signed with library Y's secret. 
