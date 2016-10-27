@@ -10,6 +10,8 @@ To connect your circulation manager to one or more authentication sources, defin
 * `bearer_token_signing_secret`: A secret used to sign OAuth bearer tokens before sending them to clients. If you define an OAuth provider, this MUST be present. If you define more than one OAuth provider, they will all sign keys using the same secret.
 * `register_url`: If you provide this, unauthenticated patrons will be given the opportunity to sign up for an account rather than enter credentials. A patron who chooses to sign up for an account will be sent to the given URL. TODO: This is not implemented yet, and there are several undecided issues surrounding it.
 
+Each authentication source needs its own configuration. They are covered individually below.
+
 # Sierra - Millenium Patron API
 
 Here's an example for a common case: a library that authenticates patrons using Sierra's Millenium Patron API.
