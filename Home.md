@@ -64,7 +64,7 @@ Currently, our active public repositories include:
 
 ## ILSes and other patron authenticators
 
-* How to [[connect the circulation manager to your patron database|AuthenticationSetup]].
+* How to [[connect the circulation manager to your ILS/patron database|AuthenticationSetup]].
 
 * [[SIP]] - A common protocol for authenticating patrons
 * In addition to SIP, Sierra offers a number of APIs:
