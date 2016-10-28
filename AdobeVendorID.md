@@ -20,8 +20,8 @@ Example:
 ```
 "integrations" : {
 	"Adobe Vendor ID" : {
-	    "vendor_id" : "My Library",
-	    "node_value" : "49aa62d328e2",
+            "vendor_id" : "My Library",
+            "node_value" : "49aa62d328e2",
             "library_uri" : "http://my-library.org/",
             "secret": "29789882ff0ea36dc7bdf15232f3021e"
 	}
@@ -32,9 +32,9 @@ Tell Adobe that your Vendor ID base URL is the root of your circulation manager 
 
 Once you set this up, Adobe will certify your implementation and you'll be able to issue Vendor IDs.
 
-# Connect to the SimplyE Vendor ID server
+# Connect your SimplyE library to NYPL's Vendor ID server
 
-This is the cheap option, but you can only choose it if you're using SimplyE as your OPDS client. In this option you are delegating the job of issuing Adobe IDs to NYPL.
+This is the cheap option, but you can only choose it if your patrons are using SimplyE as their primary OPDS client. In this option you are delegating the job of issuing Adobe IDs to NYPL.
 
 * `vendor_id`: This is the literal string "NYPL". You are getting Adobe IDs from NYPL and not some other source.
 * `library_uri`: A URI that represents your library. The URL to your library's website is fine. This lets NYPL distinguish between your patrons and another library's patrons.
@@ -43,7 +43,7 @@ This is the cheap option, but you can only choose it if you're using SimplyE as 
 ```
 "integrations" : {
 	"Adobe Vendor ID" : {
-	    "vendor_id" : "NYPL",
+            "vendor_id" : "NYPL",
             "library_uri" : "http://my-library.org/",
             "secret" : "29789882ff0ea36dc7bdf15232f3021e"
 	}
