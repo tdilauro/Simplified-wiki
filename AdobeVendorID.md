@@ -13,7 +13,7 @@ Your config file must define an integration called `Adobe Vendor ID`. It must de
 * `vendor_id`: This is the name of your vendor ID as registered with Adobe.
 * `node_value`: This is the node value supplied by Adobe.
 * `library_uri`: A URI that represents your library. The URL to your library's website is fine.
-* `secret`: A secret string. This lets your Vendor ID implementation know whether a client is authorized to ask for a given patron's Vendor ID.
+* `authdata_secret`: A secret string. This lets your Vendor ID implementation know whether a client is authorized to ask for a given patron's Vendor ID.
 
 Example:
 
@@ -23,7 +23,7 @@ Example:
             "vendor_id" : "My Library",
             "node_value" : "49aa62d328e2",
             "library_uri" : "http://my-library.org/",
-            "secret": "29789882ff0ea36dc7bdf15232f3021e"
+            "authdata_secret": "29789882ff0ea36dc7bdf15232f3021e"
 	}
 }
 ```
@@ -38,28 +38,28 @@ This is the cheap option, but you can only choose it if your patrons are using S
 
 * `vendor_id`: This is the literal string "NYPL". You are getting Adobe IDs from NYPL and not some other source.
 * `library_uri`: A URI that represents your library. The URL to your library's website is fine. This lets NYPL distinguish between your patrons and another library's patrons.
-* `secret`: A secret string that is shared between you and NYPL. This lets NYPL verify that a request actually came from you and is not someone trying to hack the system.
+* `authdata_secret`: A secret string that is shared between you and NYPL. This lets NYPL verify that a request actually came from you and is not someone trying to hack the system.
 
 ```
 "integrations" : {
 	"Adobe Vendor ID" : {
             "vendor_id" : "NYPL",
             "library_uri" : "http://my-library.org/",
-            "secret" : "29789882ff0ea36dc7bdf15232f3021e"
+            "authdata_secret" : "29789882ff0ea36dc7bdf15232f3021e"
 	}
 }
 ```
 
-This is almost the same as the expensive option, but you don't need the `node_value`. Be sure to communicate your `library_uri` and your `secret` to the SimplyE team (mechanism TBD); they have to know about your library for this system to work.
+This is almost the same as the expensive option, but you don't need the `node_value`. Be sure to communicate your `library_uri` and your `authdata_secret` to the SimplyE team (mechanism TBD); they have to know about your library for this system to work.
 
 ## How it works
 
 The technical details are in the [[Vendor ID Service spec|https://docs.google.com/document/d/1j8nWPVmy95pJ_iU4UTC-QgHK2QhDUSdQ0OQTFR2NE_0/edit#heading=h.jxwemo85jady]] and the [[DRM Extensions to OPDS|https://github.com/NYPL-Simplified/Simplified/wiki/DRMAutodiscoverySpecs#drm-extensions-to-opds]], but here's roughly how it works:
 
 1. A patron using SimplyE tries to open a book encrypted with Adobe DRM. They don't have an Adobe ID on this device (though they may have created one from another device). They need their Adobe ID.
-2. Fortunately, your circulation manager has forseen this possibility and provided a special message that the client can present to Adobe to get an Adobe ID. The message is signed with your library's `secret`. It says: "Patron X at library Y wants their Adobe ID. Signed, library Y." 
+2. Fortunately, your circulation manager has forseen this possibility and provided a special message that the client can present to Adobe to get an Adobe ID. The message is signed with your library's `authdata_secret`. It says: "Patron X at library Y wants their Adobe ID. Signed, library Y." 
 3. Adobe receives the message and passes it on to NYPL.
-4. NYPL receives the message and is able to verify the signature because you shared your `secret` with NYPL.
+4. NYPL receives the message and is able to verify the signature because you shared your `authdata_secret` with NYPL.
 5. NYPL creates (if necessary) or looks up (if possible) the Adobe ID for patron X, and sends it back to Adobe.
 6. Adobe forwards the Adobe ID back to your patron's SimplyE client.
 7. Now that they have their Adobe ID, the patron is able to open the encrypted book.
