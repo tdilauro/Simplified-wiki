@@ -21,8 +21,7 @@ Here's an OPDS entry you might get back after borrowing a book.
 ```
 <entry>
 <link rel="http://opds-spec.org/acquisition" href="..." type="vnd.adobe/adept+xml">
-  <drm:licensor>
-    <drm:vendor>NYPL</drm:vendor>
+  <drm:licensor drm:vendor="NYPL">
     <drm:clientToken>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vd3d3
 LmxpYnJhcnlzaW1wbGlmaWVkLm9yZy8iLCJzdWIiOiIxMjM0NTY3OCJ9.DTKf7eva3YBb7RzMWs_5EK36wQPfk_RMxBf7UvLAgxc</drm:clientToken>
   </drm:licensor>
