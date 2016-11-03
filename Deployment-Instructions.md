@@ -117,36 +117,39 @@ Use the instructions given in `$brew info elasticsearch17` to make sure ElasticS
 
 # Check out the Simplified repositories
 
-Depending on whether you're installing the circulation manager, the metadata wrangler, or the content server, you'll check out a different Git repository.
-
-EITHER
+You're probably checking out the circulation manager. Here's the command:
 
 ```
-git clone https://github.com/NYPL-Simplified/circulation.git circulation
+git clone git@github.com:NYPL-Simplified/circulation.git circulation
 cd circulation
 ```
 
-OR
+Make sure you [[have an SSH key associated with your Github account|https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/]], or you won't be able to clone a repository over SSH.
 
-```
-git clone https://github.com/NYPL-Simplified/content_server.git content
-cd content
-```
-
-OR
+If you're checking out the metadata wrangler, the command is the same but the repository is different.
 
 ```
 git clone https://github.com/NYPL-Simplified/metadata_wrangler.git metadata
 cd metadata
 ```
 
-Then:
+If you're checking out the content server, that's a third repository:
 
 ```
-# Initialize submodules
+git clone https://github.com/NYPL-Simplified/content_server.git content
+cd content
+```
+
+# Initialize the submodules
+
+All three repositories include a Git submodule for the `Simplified-server-core` project, which defines common things like the database schema. You'll need to initialize this module.
+
+```
 git submodule init
 git submodule update
 ```
+
+When you run `git submodule update`, the `Simplified-server-core` project will be cloned into the `core` directory.
 
 # Create the Python virtual environment
 
