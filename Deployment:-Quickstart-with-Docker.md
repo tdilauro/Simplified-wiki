@@ -10,7 +10,7 @@ So you're deploying your library's circulation manager. Awesome! If you'd like t
 
 ##### *On the Host Server*
 
-1. **Install Docker.** Docker has [step-by-step instructions](https://docs.docker.com/linux/step_one/) to grab its most up-to-date version. Depending on your package manager, you could also install a slightly older version with: `sudo apt-get install docker.io` or `sudo yum install docker.io`.
+1. **Install Docker.** Docker has [step-by-step instructions](https://docs.docker.com/engine/installation/linux/) to grab its most up-to-date version. Depending on your package manager, you could also install a slightly older version with: `sudo apt-get install docker-engine` or `sudo yum install docker-engine`.
 
 2. **Get the Docker images** for the Library Simplified Circulation Manager. Run:
 
