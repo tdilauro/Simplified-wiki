@@ -45,7 +45,7 @@ When the ACS DRM scheme is in use, and a `drm:clientToken` tag is provided, it M
 
 ### `clientToken` `vendor` under other DRM schemes
 
-When the LCP or Adobe DRM schemes are in use, the meaning of a `drm:clientToken` element's `drm:vendor` attribute is undefined.
+When the LCP or URMS DRM schemes are in use, the meaning of a `drm:clientToken` element's `drm:vendor` attribute is undefined.
 
 ## `drm:serverToken`
 
