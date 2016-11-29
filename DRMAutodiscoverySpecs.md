@@ -79,7 +79,18 @@ The meaning of a client token depends on the DRM scheme in use. This specificati
 
 ### Client token under ACS
 
-When the Adobe ACS DRM scheme is in use, the client token MUST be interpreted as base64-encoded `authData` that can be used to obtain an Adobe ID. If the client already has an Adobe ID, the client token MAY be ignored.
+The overall purpose of the client token under ACS is to trigger the `initSignInWorkflow` (which associates the user's Adobe ID with the current device, creating the Adobe ID if necessary) and the `initDeactivateWorkflow` (which disassociates the current device from the user's Adobe ID). The `initSignInWorkflow` is documented in version 0.9.0 of the Adobe Vendor ID Specification. The `initDeactivateWorkflow` is currently undocumented.
+
+Both workflows rely on getting an Adobe server to contact some other server to authenticate and provide information about a user. This server is expected to implement the Authentication Web Service (also documented in the Adobe Vendor ID Specification), and this is the server that is expected to take the client token as input and understand what it means.
+
+When the Adobe ACS DRM scheme is in use, there are two possible interpretations for the client token. If the client token contains no spaces, it MUST be interpreted as `authData` that can be used to obtain an Adobe ID through the `initSignInWorkflow`. Note that an `authData` cannot be used in the `initDeactivateWorkflow`.
+
+If the client token contains a single space, the part of the token before the space MUST be interpreted as the 'username' for purposes of the `initSignInWorkflow` or `initDeactivateWorkflow`. The part of the token after the space MUST be interpreted as the 'password' for purposes of the `initSignInWorkflow` or `initDeactivateWorkflow`. 
+(NOTE: If Adobe makes it possible to use `authData` in the `initDeactivateWorkflow` this section will be struck from this spec.)
+
+The client token MUST NOT be usable to authenticate the user except through Adobe's Authentication Web Service. In particular, the user's password MUST NOT be derivable from the client token, and the user's username SHOULD NOT be derivable from the client token.
+
+If the client does not wish to trigger the `initSignInWorkflow` or `initDeactivateWorkflow`, the client token MAY be ignored.
 
 If no client token is provided, and the client has no Adobe ID, the client MAY proceed with fulfilling a book as usual, but will most likely be unable to download or decrypt the ACS-encrypted resource.
 
