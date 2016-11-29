@@ -85,8 +85,7 @@ Both workflows rely on getting an Adobe server to contact some other server to a
 
 When the Adobe ACS DRM scheme is in use, there are two possible interpretations for the client token. If the client token contains no spaces, it MUST be interpreted as `authData` that can be used to obtain an Adobe ID through the `initSignInWorkflow`. Note that an `authData` cannot be used in the `initDeactivateWorkflow`.
 
-If the client token contains a single space, the part of the token before the space MUST be interpreted as the 'username' for purposes of the `initSignInWorkflow` or `initDeactivateWorkflow`. The part of the token after the space MUST be interpreted as the 'password' for purposes of the `initSignInWorkflow` or `initDeactivateWorkflow`. 
-(NOTE: If Adobe makes it possible to use `authData` in the `initDeactivateWorkflow` this section will be struck from this spec.)
+If the client token contains a single space, the part of the token before the space MUST be interpreted as the 'username' for purposes of the `initSignInWorkflow` or `initDeactivateWorkflow`. The part of the token after the space MUST be interpreted as the 'password' for purposes of the `initSignInWorkflow` or `initDeactivateWorkflow`. Due to limitations imposed by Adobe, the 'username' MUST NOT exceed 80 characters and the 'password' MUST NOT exceed 76 characters. (NOTE: If Adobe makes it possible to use `authData` in the `initDeactivateWorkflow` this section will be struck from this spec.)
 
 The client token MUST NOT be usable to authenticate the user except through Adobe's Authentication Web Service. In particular, the user's password MUST NOT be derivable from the client token, and the user's username SHOULD NOT be derivable from the client token.
 
