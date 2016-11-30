@@ -13,7 +13,7 @@ Your config file must define an integration called `Adobe Vendor ID`. It must de
 * `vendor_id`: This is the name of your vendor ID as registered with Adobe.
 * `node_value`: This is the node value supplied by Adobe.
 * `library_uri`: A URI that represents your library. The URL to your library's website is fine.
-* `library_short_name`: A short string that distinguishes your library from other libraries. There's no hard limit, but it should be less than 10 characters.
+* `library_short_name`: A short uppercase string that distinguishes your library from other libraries. There's no hard limit, but it should be less than 10 characters.
 * `authdata_secret`: A secret string. This lets your Vendor ID implementation know whether a client is authorized to ask for a given patron's Vendor ID.
 
 Example:
@@ -40,7 +40,7 @@ This is the cheap option, but you can only choose it if your patrons are using S
 
 * `vendor_id`: This is the literal string "NYPL". You are getting Adobe IDs from NYPL and not some other source.
 * `library_uri`: A URI that represents your library. The URL to your library's website is fine.
-* `library_short_name`: A short string that distinguishes your library from other libraries. There's no hard limit, but it should be less than 10 characters. This lets NYPL distinguish between your patrons and another library's patrons.
+* `library_short_name`: A short uppercase string that distinguishes your library from other libraries. There's no hard limit, but it should be less than 10 characters. This lets NYPL distinguish between your patrons and another library's patrons. By convention, the first two characters of `library_short_name` should be your library's state or province.
 * `authdata_secret`: A secret string that is shared between you and NYPL. This lets NYPL verify that a request actually came from you and is not someone trying to hack the system.
 
 ```
