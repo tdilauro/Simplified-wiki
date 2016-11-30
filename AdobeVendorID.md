@@ -13,6 +13,7 @@ Your config file must define an integration called `Adobe Vendor ID`. It must de
 * `vendor_id`: This is the name of your vendor ID as registered with Adobe.
 * `node_value`: This is the node value supplied by Adobe.
 * `library_uri`: A URI that represents your library. The URL to your library's website is fine.
+* `library_short_name`: A short string that distinguishes your library from other libraries. There's no hard limit, but it should be less than 10 characters.
 * `authdata_secret`: A secret string. This lets your Vendor ID implementation know whether a client is authorized to ask for a given patron's Vendor ID.
 
 Example:
@@ -23,6 +24,7 @@ Example:
             "vendor_id" : "My Library",
             "node_value" : "49aa62d328e2",
             "library_uri" : "http://my-library.org/",
+            "library_short_name": "MYLIBRARY",
             "authdata_secret": "29789882ff0ea36dc7bdf15232f3021e"
 	}
 }
@@ -37,7 +39,8 @@ Once you set this up, Adobe will certify your implementation and you'll be able 
 This is the cheap option, but you can only choose it if your patrons are using SimplyE as their primary OPDS client. In this option you are delegating the job of issuing Adobe IDs to NYPL.
 
 * `vendor_id`: This is the literal string "NYPL". You are getting Adobe IDs from NYPL and not some other source.
-* `library_uri`: A URI that represents your library. The URL to your library's website is fine. This lets NYPL distinguish between your patrons and another library's patrons.
+* `library_uri`: A URI that represents your library. The URL to your library's website is fine.
+* `library_short_name`: A short string that distinguishes your library from other libraries. There's no hard limit, but it should be less than 10 characters. This lets NYPL distinguish between your patrons and another library's patrons.
 * `authdata_secret`: A secret string that is shared between you and NYPL. This lets NYPL verify that a request actually came from you and is not someone trying to hack the system.
 
 ```
@@ -45,12 +48,13 @@ This is the cheap option, but you can only choose it if your patrons are using S
 	"Adobe Vendor ID" : {
             "vendor_id" : "NYPL",
             "library_uri" : "http://my-library.org/",
+            "library_short_name": "MYLIBRARY",
             "authdata_secret" : "29789882ff0ea36dc7bdf15232f3021e"
 	}
 }
 ```
 
-This is almost the same as the expensive option, but you don't need the `node_value`. Be sure to communicate your `library_uri` and your `authdata_secret` to the SimplyE team (mechanism TBD); they have to know about your library for this system to work.
+This is almost the same as the expensive option, but you don't need the `node_value`. Be sure to communicate your `library_uri`, `library_short_name`, and your `authdata_secret` to the SimplyE team (mechanism TBD); they have to know about your library (and your `library_short_name` must be unique) for this system to work.
 
 ## How it works
 
