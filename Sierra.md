@@ -9,7 +9,9 @@ It should be possible to use [[SIP]] to integrate any version of Sierra with a L
 
 We believe that version 2 cannot be integrated with Library Simplified except through SIP. Libraries that use version 2 of Sierra API should either connect via SIP, upgrade to version 3 or install another API such as [[Millenium]]. 
 
-It may also be possible to integrate with an ILS indirectly thorough a library's Overdrive account, but this is not a good long-term solution because it creates a major dependency on Overdrive.
+Furthermore we believe that even with version 3, it is not possible to authenticate a patron through the Sierra REST API and then borrow a book for that patron through Overdrive.
+
+It may be possible to integrate with an ILS indirectly thorough a library's Overdrive account, but this is not a good long-term solution because it creates a major dependency on Overdrive.
 
 ## Setup
 
