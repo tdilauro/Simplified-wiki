@@ -86,6 +86,8 @@ sudo apt-get install liblapack-dev
 
 ## Set up the Elasticsearch service (Circulation manager only)
 
+Library Simplified is currently dependent on Elasticsearch version 1.x. Later Elasticsearch versions will raise errors.
+
 ### Linux
 
 Install the JDK:
