@@ -1,5 +1,7 @@
 So you're deploying your library's circulation manager. Awesome! If you'd like to get up and running quickly, we recommend using our Docker image.
 
+If you're already familiar with Docker and/or would like to contribute to our Docker builds, you can find our build files at [NYPL-Simplified/circulation-docker](https://github.com/NYPL-Simplified/circulation-docker).
+
 #### Circulation Manager
 
 ##### *Local Prep*
