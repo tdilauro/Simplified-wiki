@@ -231,7 +231,7 @@ On the metadata wrangler and the circulation manager, download the TextBlob corp
 $ python -m textblob.download_corpora
 ```
 
-# Stand Up Your Server
+# Deploy
 
 There are lots of technologies you can use to get your server up and running. Before you do any of them, make sure you can run `python app.py` and get the app going locally.
 
