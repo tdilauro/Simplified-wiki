@@ -33,6 +33,7 @@ Currently, our active public repositories include:
 # Installation and setup
 
 * [[Deployment Instructions]]
+* [[Connecting the Library Simplified circulation manager to your ILS|AuthenticationSetup]
 * [[Automated Jobs and how to use them|AutomatedJobs]]
 * [[The configuration file|Configuration]]
 * [[Setting up lanes|LaneConfiguration]]
@@ -49,8 +50,6 @@ Currently, our active public repositories include:
 * [[DRM autodiscovery|DRM-Autodiscovery]]
 
 # Integrations
-
-The most important integration, and probably the most complicated, is [between the Library Simplified circulation manager and your ILS|AuthenticationSetup].
 
 ## Sources of content
 
