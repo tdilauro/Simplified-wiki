@@ -50,6 +50,8 @@ Currently, our active public repositories include:
 
 # Integrations
 
+The most important integration, and probably the most complicated, is [between the Library Simplified circulation manager and your ILS|AuthenticationSetup].
+
 ## Sources of content
 
 ## Primarily ebooks
@@ -61,18 +63,6 @@ Currently, our active public repositories include:
 * [[OneClickDigital|One Click Digital]] (from Recorded Books)
 * [[desLibris]] (from the Canadian Electronic Library)
 * Many content sources [[have no API|ContentSourcesWithoutAPI]] and cannot be properly integrated into Simplified.
-
-## ILSes and other patron authenticators
-
-* How to [[connect the circulation manager to your ILS/patron database|AuthenticationSetup]].
-* [[Sierra]] is a common but complicated case.
-* [[SIP]] - An ILS-independent protocol for authenticating patrons.
-* [[SirsiDynix]]
-* [[Evergreen]]
-* [[Koha]]
-* [[Clever]]
-* [[FirstBook]]
-
 
 ## Sources of open-access books
 
