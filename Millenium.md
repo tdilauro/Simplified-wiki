@@ -23,7 +23,7 @@ Here's how you might set up your circulation manager to communicate with your Si
 "authentication": {
     "providers": [
         { "module": "api.millenium_patron",
-          "url": "https://my-library.iii.com:4500/PATRONAPI",
+          "url": "https://my-library.iii.com:54620/PATRONAPI",
           "test_username": "12345678901234",
           "test_password": "5678",
           "authorization_identifier_blacklist": ["lost"]
@@ -70,8 +70,8 @@ While you're waiting for III to fix the certificate, you can deactivate certific
 "authentication": {
     "providers": [
         { "module": "api.millenium_patron",
-          "url": "https://my-library.iii.com:4500/PATRONAPI",
-          "verify_certificate": false,
+          "url": "https://my-library.iii.com:54620/PATRONAPI",
+          "verify_certificate": false
         }
     ]
 }
