@@ -4,7 +4,8 @@ This document is to help you connect your library's OneClick collection to your 
 
 # Table of Contents
 * [Getting Access](##Getting Access)
-* [API Basics:](##API Basics:)
+* [API Basics:](#API Basics)
+* [Patron Account Management](#Patron Account Management)
 
 
 ## Getting Access:
