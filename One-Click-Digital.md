@@ -4,9 +4,19 @@ This document is to help you connect your library's OneClick collection to your 
 
 # Table of Contents
 * [Getting Access](#getting-access)
-* [API Basics:](#api-basics)
+* [API Basics](#api-basics)
 * [Patron Account Management](#patron-account-management)
-* <#maintain-your-catalog>
+* [Start Your Catalog](#start-your-catalog)
+* [Maintain Your Catalog](#maintain-your-catalog)
+* [Book Availability](#book-availability)
+* [Search The Catalog](#search-the-catalog)
+* [Checkouts](#checkouts)
+* [Holds](#holds)
+* [Wishlists](#wishlists)
+* [Bookmarks](#bookmarks)
+* [Fulfillment](#fulfillment)
+* [DRM](#drm)
+* [Testing](#testing)
 
 
 ## Getting Access:
@@ -18,6 +28,10 @@ OneClick API can communicate through HTTPS.
 ## API Basics:
 OneClick provides [API Documentation](http://developer.oneclickdigital.us/documents/getting-started). 
 
+Base API URLs are:
+- api.oneclickdigital.us for QA  
+- api.oneclickdigital.com for Prod  
+
 The API attempts to be as RESTful as possible.  Most request parameters are passed in the URL, and the http method the request is sent by helps differentiate between related request types.  For example, let's say you have a library whose OneClick id is 123.  In that library's OneClick collection, you have a book with the ISBN number 456.  And you have a patron with OneClick id 789.  Then, to ask to check out this book to this patron, you would sent a POST request to the URL [api_url]/123/patrons/789/checkouts/456.  And to ask to return the book, you would send a request to the same URL, but through a DELETE http method.
 
 Most OneClick responses are in the JSON format.  You'll either get a data structure containing the information you asked for, or a dictionary with an error message.  Here, OneClick puts HTTP response codes to intensive use.  Bad requests, data conflicts, books not found are all indicated through HTTP 500, 404, 409, etc. codes.  The error message then provides a more detailed explanation of the problem.  For some types of requests, you can get either an empty-bodied response or a non-JSON single word or number response.  This is relatively rare.
@@ -28,7 +42,7 @@ You will also be sending your trusted token in as a "Authorization: Basic [your-
 
 
 ## Patron Account Management:
-We store patron account data in our ILSes, and pass it through to OneCLick.  OneClick stores their own version of patron records, with the patron data we supply, plus a OneClick internal patron id number.  Thus, our ILS is the One True Source to keep track of.  You will use the data from the ILS to ask OneClick for its internal patron id.  You'll then use that internal patron id in transactions on behalf of the patron.
+We store patron account data in our ILSes, and pass it through to OneCLick.  OneClick stores their own version of patron records, with the patron data we supply, plus a OneClick internal patron id number.  Thus, our ILS is the One True Source to keep track of.  You will use the data from the ILS to ask OneClick for its internal patron id.  You'll then use that internal patron id in transactions on behalf of the patron.  The OneClick internal patron id will not change over the course of the account, barring major migrations.  But it's still good policy to re-get it with the first step.
 
 For patrons who already have OneClick accounts, the account that Library Simplified creates is not merged with the pre-existing account.  The Library Simplified OneClick account is done seamlessly to the patron.  If the patron notices a discrepancy and calls tech support, the accounts can be manually merged.
 
@@ -73,14 +87,14 @@ If the book is not available, or if the patron is not allowed to check out (for 
 
 An HTTP POST call performs a checkout.  A DELETE call returns a book.  And a GET call returns the patron's current checkouts.
 
-The book is checked out for X number of days, where X is determined by your library's agreement with OneClick.  You can shorten the amount of time a book is checked out for by passing the optional "days" parameter.  You cannot extend the checkout time range with the "days" parameter past the library's default X.  You will be able to extend the load by sending a renew call.
+The book is checked out for X number of days, where X is determined by your library's agreement with OneClick.  You can shorten the amount of time a book is checked out for by passing the optional "days" parameter.  You cannot extend the checkout time range with the "days" parameter past the library's default X.  You will be able to extend the loan by sending a renew call.
 
 Audiobooks are multi-use unlimited subscriptions.
 Eboooks are single-use 1 copy, but some have catalog-level expirations, which will see in deltas.
 
 
 ## Holds:
-Work like checkouts, but with books in the catalog that are not currently available.  If you attempt to put a hold on a book that is currently available, your hold request will succeed, and then a bit later, a OneClick daemon will silently convert the hold record to a checkout record.
+Work like checkouts, but with books in the catalog that are not currently available.  If you attempt to put a hold on a book that is currently available, your hold request will succeed, and then a bit later, a OneClick daemon will silently convert the hold record to a checkout record.  Holds don't expire, they just convert to checkouts when the items become available. 
 
 
 ## Wishlists:
@@ -93,7 +107,7 @@ Assume an audio book is available in one format/encoding quality.
 
 
 ## Fulfillment:
-First, you make a call to get all checkouts for the patron.  The response has checkout metadata, including fulfillment urls.  These urls must be called to obtain time-sensitive download/stream links to actual ebook or eaudio files.  For some eaudio books, there can also be a "downloadUrl" property on the checkout, which allows you to download a zip file containing all audio files for the book.
+First, you make a call to get all checkouts for the patron.  The response has checkout metadata, including fulfillment urls.  These urls must be called to obtain time-sensitive download/stream links to actual ebook or eaudio files.  The download urls expire in about 15 minutes.  For some eaudio books, there can also be a "downloadUrl" property on the checkout, which allows you to download a zip file containing all audio files for the book.
 
 EBooks are all protected with Adobe DRM, so the download link gets an ASCM (Adobe Content Server Message) file.  The acsm file is essentially a "token" file that contains all the necessary information for Adobe Digital Editions to open an ebook.  
 
