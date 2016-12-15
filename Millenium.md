@@ -1,4 +1,4 @@
-The Millenium Patron API is a simple HTTP-based API that returns HTML documents. 
+The Millenium Patron API is a simple HTTP-based API that returns HTML documents. It is the recommended technique for getting a Library Simplified circulation manager to communicate with the Sierra ILS.
 
 Millenium Patron API URLs tend to look like this:
 
@@ -7,7 +7,7 @@ Millenium Patron API URLs tend to look like this:
 * `http://ils.mylibrary.org:4500/PATRONAPI/`
 * `http://mylibrary.iii.com:4500/PATRONAPI/`
 
-We'll want to use the HTTPS URLs (which tend to include port 54620), since the circulation manager will probably be calling out to your ILS across the public Internet.
+We'll want to use the HTTPS URLs (which tend to include port 54620), since the circulation manager will probably be calling out to your ILS across the public Internet. If you don't have an HTTPS version of the Millenium Patron API, file a support request with III and ask for one.
 
 The Library Simplified circulation manager uses two endpoints of the Millenium Patron API:
 
