@@ -44,7 +44,7 @@ If your library set up its Overdrive account a long time ago, you may not rememb
 
 Once you have this information, find your ILS on the list below and follow the directions to connect the Library Simplified circulation manager to your ILS.
 
-If you don't have an Overdrive account, you probably won't have a precedent for what you need to do here. You'll need to _decide_ how the Library Simplified circulation manager should connect to your ILS. Find your ILS on the list below to read about your options.
+If you don't have an Overdrive account, you probably won't have a precedent for what you need to do here. You'll need to _decide_ how the Library Simplified circulation manager should connect to your ILS. Find your ILS on the list below to read about your options. If you use self-service checkout kiosks, the answer might be SIP2.
 
 # Supported ILSes
 
@@ -58,7 +58,7 @@ These are not ILSes; they are third-party authentication mechanisms used by the 
 * [[Clever]]
 * [[FirstBook]]
 
-If all else fails, you can probably connect the circulation manager to your ILS via [[SIP]], an ILS-independent protocol for authenticating patrons.
+If all else fails, you can probably connect the circulation manager to your ILS via [[SIP2|SIP]], an ILS-independent protocol for authenticating patrons.
 
 # The `policies['authentication']` section in detail
 
