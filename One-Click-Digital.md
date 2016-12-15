@@ -2,6 +2,11 @@
 This document is to help you connect your library's OneClick collection to your Library Simplified circulation manager.
 
 
+# Table of Contents
+* [Getting Access](##Getting Access)
+* [API Basics:](##API Basics:)
+
+
 ## Getting Access:
 OneClick provides trusted partner tokens.  You'll need one to talk to their api.  To obtain your tokens, you'll need to contact OneClick via email or Slack.
 
@@ -99,7 +104,6 @@ There are two fields to look for in the item metadata: hasDigitalRights and hasd
 
 ## Testing:
 To make a test patron, you can take several routes.  You can send a create-patron api call.  Or you can go to One Click's website for your library or consortium.  Here's the [QA interface link] (http://iconnct.oneclickdigital.com/#register) for Connecticut.
-
 
 
 
