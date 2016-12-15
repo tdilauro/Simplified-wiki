@@ -1,8 +1,4 @@
-The Millenium Patron API is a simple HTTP-based API that returns HTML documents. It offers two useful endpoints:
-
-* `pintest`: Verify that a barcode/PIN combination is valid. Example URL: `https://my-ils.com/PATRONAPI/{barcode}/{pin}/pintest`
-
-* `dump`: Return an HTML representation of a patron's ILS record. Example URL: `https://my-ils.com/PATRONAPI/{barcode}/dump`
+The Millenium Patron API is a simple HTTP-based API that returns HTML documents. 
 
 Millenium Patron API URLs tend to look like this:
 
@@ -12,6 +8,12 @@ Millenium Patron API URLs tend to look like this:
 * `http://mylibrary.iii.com:4500/PATRONAPI/`
 
 We'll want to use the HTTPS URLs (which tend to include port 54620), since the circulation manager will probably be calling out to your ILS across the public Internet.
+
+The Library Simplified circulation manager uses two endpoints of the Millenium Patron API:
+
+* `pintest`: Verify that a barcode/PIN combination is valid. Example URL: `https://ils.mylibrary.org:54620/PATRONAPI/{barcode}/{pin}/pintest`
+
+* `dump`: Return an HTML representation of a patron's ILS record. Example URL: `https://ils.mylibrary.org:54620/PATRONAPI/{barcode}/dump`
 
 # Sample configuration
 
