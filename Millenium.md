@@ -47,9 +47,9 @@ If your Library Simplified circulation manager is hosted outside your library's 
 
 # SSL certificate chain
 
-We've noticed that the hosts of the Millenium Patron API tends to have problems with their SSL certificate chains. The Library Simplified circulation manager will refuse to connect to a server unless it can connect that server's SSL certificate with a certificate it already trusts.
+We've noticed that the hosts of the Millenium Patron API tends to have problems with their SSL certificate chains. The Library Simplified circulation manager will refuse to connect to a server unless it can connect that server's SSL certificate with a certificate it already trusts. For many III hosts, a key piece of evidence is missing, so the circulation manager can't make this connection.
 
-You can test this for yourself by trying to access the Millenium Patron API using the command-line `curl` command:
+You can test for this problem by trying to access the Millenium Patron API using the command-line `curl` command:
 
 ```
 $ curl https://ils.mylibrary.org:54620/PATRONAPI/
