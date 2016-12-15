@@ -2,7 +2,7 @@ Each library has some way of identifying and authenticating patrons. Authenticat
 
 Libraries most commonly authenticate patrons against an Integrated Library System (ILS). The Library Simplified circulation manager integrates with a few ILS systems through custom APIs, and with many more through the SIP2 protocol.
 
-A library may support multiple authentication techniques. For example, the Open Ebooks collection authenticates patrons through both First Book and Clever. Currently, a circulation manager can be configured to support one HTTP Basic Auth mechanism and any number of OAuth mechanisms.
+A library may support multiple authentication techniques to authenticate disjoint sets of patrons. For example, the Open Ebooks collection authenticates patrons through both First Book and Clever. Some patrons authenticate with a First Book credential; others through their Clever account. Currently, a circulation manager can be configured to support one HTTP Basic Auth mechanism and any number of OAuth mechanisms.
 
 To connect your circulation manager to one or more authentication sources, define a `policies["authentication"]` section in your configuration file.
 
@@ -48,5 +48,10 @@ For most American libraries, the simplest thing to do is to find an answer to th
 
 _How does Overdrive communicate with my ILS?_
 
-Most libraries have an Overdrive account.
+Most American libraries have an Overdrive account. Before loaning out a book, Overdrive has to communicate with your ILS to verify that a patron has provided the right credentials, and that their card is not expired or blocked (e.g. due to unpaid fines). The Library Simplified circulation manager needs to do exactly the same thing. If you got it set up with Overdrive, you can use the same strategy to set up a Library Simplified circulation manager.
 
+If your library set up its Overdrive account a long time ago, you may not remember how it was set up, and the person who set it up might not work at the library anymore. If you're not sure, file a support request with Overdrive and ask them how Overdrive communicates with their ILS. It's easy for them to check.
+
+Once you have this information, find your ILS on the list below and follow the directions to connect the Library Simplified circulation manager to your ILS.
+
+If you don't have an Overdrive account, you probably won't have a precedent for what you need to do here. You'll need to _decide_ how the Library Simplified circulation manager should connect to your ILS. Find your ILS on the list below to read about your options.
