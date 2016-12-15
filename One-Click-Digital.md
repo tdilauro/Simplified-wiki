@@ -50,14 +50,10 @@ To read a patron's OneClick record, send a GET call to [api_url]/[library_id]/pa
 
 
 ## Start Your Catalog:
-You've made a database:
-`	
-	
-`
-
+You've made a database:   
 	CREATE DATABASE my_circulation_db_name;
 	GRANT all privileges on database my_circulation_db_name to my_db_user;
-
+   
 To know what titles to show your customers, you'll need to populate your database with your library's OneClick catalog.  You can get this by running the ___ script.  The script sends a GET request to [api_url]/[library_id]/media/all .  This request is quite taxing on OneClick servers, so use sparingly and don't DOS them :).
 
 OneClick currently has collections of ebooks, eaudio, and emagazines.  Library Simplified currently handles ebooks, with eaudio in the pipeline.  The magazine collections are handled through a separate API on the OneClick side, and are to become more integrated in the future.  They are further removed in the Library Simplified's pipeline.
