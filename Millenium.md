@@ -41,4 +41,40 @@ Here's what the keys mean:
 
 # IP Whitelisting
 
+Because you don't want random people to be able to check patron PINs and look at patron records, access to the Millenium Patron API should be restricted only to the specific IP addresses that need it. (This is a good thing to check, actually. If your library offers public wifi, get on the wifi and try to access the Millenium Patron API. You should not be able to connect!)
+
+If your Library Simplified circulation manager is hosted outside your library's internal network, it should also be blocked. Once you have an IP address for your circulation manager, your network administrator will need to whitelist that IP address.
+
 # SSL certificate chain
+
+We've noticed that the hosts of the Millenium Patron API tends to have problems with their SSL certificate chains. The Library Simplified circulation manager will refuse to connect to a server unless it can connect that server's SSL certificate with a certificate it already trusts.
+
+You can test this for yourself by trying to access the Millenium Patron API using the command-line `curl` command:
+
+```
+$ curl https://ils.mylibrary.org:54620/PATRONAPI/
+```
+
+If you get this error, you need to have III fix the SSL certificate chain:
+
+```
+curl: (60) Peer's Certificate issuer is not recognized.
+More details here: https://curl.haxx.se/docs/sslcerts.html
+```
+
+To fix this problem, file a support ticket with III and mention NYPL's III ticket #370916. 
+
+While you're waiting for III to fix the certificate, you can deactivate certificate checking for Millenium Patron by setting the `verify_certificate` configuration option to `false`:
+
+```
+"authentication": {
+    "providers": [
+        { "module": "api.millenium_patron",
+          "url": "https://my-library.iii.com:4500/PATRONAPI",
+          "verify_certificate": false,
+        }
+    ]
+}
+```
+
+This is a security risk and you should remove the `verify_certificate` line before putting your server into production.
