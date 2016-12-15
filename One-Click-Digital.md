@@ -23,6 +23,8 @@ You will also be sending your trusted token in as a "Authorization: Basic [your-
 ## Patron Account Management:
 We store patron account data in our ILSes, and pass it through to OneCLick.  OneClick stores their own version of patron records, with the patron data we supply, plus a OneClick internal patron id number.  Thus, our ILS is the One True Source to keep track of.  You will use the data from the ILS to ask OneClick for its internal patron id.  You'll then use that internal patron id in transactions on behalf of the patron.
 
+For patrons who already have OneClick accounts, the account that Library Simplified creates is not merged with the pre-existing account.  The Library Simplified OneClick account is done seamlessly to the patron.  If the patron notices a discrepancy and calls tech support, the accounts can be manually merged.
+
 To read a patron's OneClick record, send a GET call to [api_url]/[library_id]/patrons/[patron_id] .  To make a patron, the code sends a POST request to that url.
 
 
@@ -39,21 +41,35 @@ Once the catalog is loaded into the database, you'll need a way to check for and
 ## Book Availability:
 There is no way to tell how many licensed copies of a book are available for lending.  All we can know, is the binary answer to whether the book was available when the last catalog availability check was run.  If the book is marked "available", then the patron may try to check it out.  If the book's licenses have gotten used up in the time between our availability check and the checkout request, an appropriate error message will be displayed, the patron will have the opportunity to put the book on hold, and the availability flag in our database will be updated.
 
-There are some, very very rare libraries that choose to display items they do not own in their OneClick collections.  This option is turned on by OneClick on request, when a library account is set up.  For such catalogs, the non-owned items can appear in search, and can be put on wishlist, but not checked out.  If an item is marked "available" in its metadata, it is in fact also a guarantee that the library owns it and it's clear for checkout.
+There are some, very very rare libraries that choose to display items they do not own in their OneClick collections.  This option is turned on by OneClick on request, when a library account is set up.  For such catalogs, the non-owned items can appear in search (the "interest" field in their metadata will reflect the outside catalog ownership), and can be put on wishlist, but not checked out.  If an item is marked "available" in its metadata, it is in fact also a guarantee that the library owns it and it's clear for checkout.
 
 
 ## Search The Catalog:
 The API call is described [here](http://developer.oneclickdigital.us/endpoints/search-partner).  Your search capabilities are not completely flexible -- there is a set list of facet and filter values to search by.  For more flexibility, you'll be using the Library Simplified search functionality, rather than the direct call to OneClick API.
 
+Book categories that are used as search facet values are determined by OneClick, and are generated automatically on ingestion into OneClick, with BISAC codes mapped into 34 OneClick genres. The original codes are sometimes but not always kept on in the MARC records.
+
+Audience determination comes down from publisher, and is in 4 groups. There is an age rating for children's, but not as part of audience rating.
+
 
 ## Checkouts:
 Resources are identified by library id, patron id, and item id.  The library and patron ids are OneClick-internal.  The item id is usually an ISBN.  See [here](http://developer.oneclickdigital.us/endpoints/title-checkouts-admin) for the list of available functionality.  
+
+The checkout process on the OneClick side is:
+- Look at library id. Is patron authorized for that library?
+- Look at patron, are they maxed out? Max checkouts are set in their admin interface by the library itself.
+- Assume the patron is already authenticated by Library Simplified, the trusted partner.
+- Resource id is always isbn.
+- Renewing restrictions – are a setting in each library’s admin interface.
 
 If the book is not available, or if the patron is not allowed to check out (for example, if they've reached their book quota), you'll get an HTTP error status and a response text with a more detailed error message.  
 
 An HTTP POST call performs a checkout.  A DELETE call returns a book.  And a GET call returns the patron's current checkouts.
 
 The book is checked out for X number of days, where X is determined by your library's agreement with OneClick.  You can shorten the amount of time a book is checked out for by passing the optional "days" parameter.  You cannot extend the checkout time range with the "days" parameter past the library's default X.  You will be able to extend the load by sending a renew call.
+
+Audiobooks are multi-use unlimited subscriptions.
+Eboooks are single-use 1 copy, but some have catalog-level expirations, which will see in deltas.
 
 
 ## Holds:
@@ -74,11 +90,11 @@ First, you make a call to get all checkouts for the patron.  The response has ch
 
 EBooks are all protected with Adobe DRM, so the download link gets an ASCM (Adobe Content Server Message) file.  The acsm file is essentially a "token" file that contains all the necessary information for Adobe Digital Editions to open an ebook.  
 
-EAudio books are either un-drm-ed (those are the ones you can download a zip for), or protected by OneClick's proprietary drm.
+EAudio books are either un-drm-ed (those are the ones you can download a zip for), or protected by OneClick's proprietary drm.  Audiobooks are always in mp3 32 bit mono format.
 
 
 ## DRM:
-There are two fields to look for in the item metadata: hasDigitalRights and hasdrm.
+There are two fields to look for in the item metadata: hasDigitalRights and hasdrm.  hasDigitalRights is for ebooks, hasdrm is for audiobooks (???).  All ebooks use AdobeDRM (acsm files).  Audiobooks come in two flavors: non-encrypted (fulfillment allows download of zip file) and with OneClick proprietary DRM (fulfillment sends time-sensitive download link).
 
 
 ## Testing:
