@@ -65,12 +65,8 @@ Currently, our active public repositories include:
 ## ILSes and other patron authenticators
 
 * How to [[connect the circulation manager to your ILS/patron database|AuthenticationSetup]].
-
-* [[SIP]] - A common protocol for authenticating patrons
-* In addition to SIP, Sierra offers a number of APIs:
- - The [[Millenium]] Patron API
- - The [[Sierra]] REST API
- - The "PatronIO" SOAP API is used for _creating_ patron records. It is not useful for validating patron credentials.
+* [[Sierra]] is a common but complicated case.
+* [[SIP]] - An ILS-independent protocol for authenticating patrons.
 * [[SirsiDynix]]
 * [[Evergreen]]
 * [[Koha]]
