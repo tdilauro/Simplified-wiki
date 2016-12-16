@@ -1,6 +1,8 @@
 # DRM Extensions to OPDS
 
-This spec defines a new XML namespace. Elements from this namespace can be included in an OPDS `<link>` tag to convey information about the DRM scheme used to encrypt the document at the other end of the link. The purpose is to provide the information necessary for a client to download and decrypt those documents, and to inform clients of the DRM scheme in use, so that clients unable to handle that DRM scheme can bow out gracefully.
+This spec defines a new XML namespace. Elements from this namespace can be included inside an OPDS `<link>` element to convey information about the DRM scheme used to encrypt the document at the other end of the link. The purpose is to provide the information necessary for a client to download and decrypt documents, and to inform clients of the DRM scheme in use, so that clients unable to handle that DRM scheme can bow out gracefully.
+
+Elements from this namespace can also be included directly inside an OPDS `<feed>` element, to convey information about the authenticated user's DRM credentials even in the absence of any specific documents that can be decrypted with these credentials.
 
 The URI for this namespace is
 `http://librarysimplified.org/terms/drm`. In the examples that follow it is prefixed as
