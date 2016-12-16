@@ -80,7 +80,13 @@ You've filled in the Postgres and the OneClick integrations blocks in your confi
 [...]
 ```
 
-To know what titles to show your customers, you'll need to populate your database with your library's OneClick catalog.  You can get this by running the ___ script.  The script sends a GET request to [api_url]/[library_id]/media/all .  This request is quite taxing on OneClick servers, so use sparingly and don't DOS them :).
+To know what titles to show your customers, you'll need to populate your database with your library's OneClick catalog.  You can get this by running the import script in your virtual environment.
+```
+source circulation_env/bin/activate
+(circulation_env)$ python bin/oneclick_library_import
+```
+
+The script sends a GET request to [api_url]/[library_id]/media/all .  This request is quite taxing on OneClick servers, so use sparingly and don't DOS them :).
 
 OneClick currently has collections of ebooks, eaudio, and emagazines.  Library Simplified currently handles ebooks, with eaudio in the pipeline.  The magazine collections are handled through a separate API on the OneClick side, and are to become more integrated in the future.  They are further removed in the Library Simplified's pipeline.
 
