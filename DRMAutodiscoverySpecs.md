@@ -8,7 +8,7 @@ The URI for this namespace is
 `http://librarysimplified.org/terms/drm`. In the examples that follow it is prefixed as
 `drm` in examples, e.g. `drm:clientToken`.
 
-This namespace defines three tags (`licensor`, `clientToken`, and `serverToken`), and two attributes (`href` and `vendor`).
+This namespace defines three tags (`licensor`, `clientToken`, and `serverToken`), and three attributes (`href`, `scheme`, and `vendor`).
 
 ## `drm:licensor`
 
@@ -68,6 +68,12 @@ The value of `drm:href` is the URL of the URMS Store that provides the resource.
 ### `serverToken` under other DRM schemes
 
 When the LCP or Adobe DRM schemes are in use, the meaning of the `drm:serverToken` tag is undefined. It SHOULD NOT be provided.
+
+## `drm:scheme`
+
+The `drm:scheme` attribute can be used in the `drm:licensor` element to explicitly state the DRM scheme in use, in the absence of any other information that will help the client figure this out. This is useful when a `drm:licensor` element shows up as a direct child of an `<atom:feed>` element, without a specific DRM-encrypted document to serve as context.
+
+The value of the `drm:scheme` attribute MUST be a URI. URIs found in the DRM Scheme Registry are especially appropriate values for `drm:scheme`.
 
 # The Client Token Protocol
 
