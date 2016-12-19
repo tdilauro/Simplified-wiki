@@ -86,13 +86,17 @@ source circulation_env/bin/activate
 (circulation_env)$ python bin/oneclick_library_import
 ```
 
-The script sends a GET request to [api_url]/[library_id]/media/all .  This request is quite taxing on OneClick servers, so use sparingly and don't DOS them :).
+The script sends a GET request to [api_url]/[library_id]/media/all .  **This request is quite taxing on OneClick servers, so use sparingly and don't DOS them :).**
 
 OneClick currently has collections of ebooks, eaudio, and emagazines.  Library Simplified currently handles ebooks, with eaudio in the pipeline.  The magazine collections are handled through a separate API on the OneClick side, and are to become more integrated in the future.  They are further removed in the Library Simplified's pipeline.
 
 
 ## Maintain Your Catalog:
-Once the catalog is loaded into the database, you'll need a way to check for and import any changes.  Do this with the ___ script.  The script will call the [api_url]/[library_id]/media/delta?begin=YYYY-MM-DD&end=YYYY-MM-DD endpoint, described in the API [here](http://developer.oneclickdigital.us/endpoints/titles#get-calculated-deltas).  The delta calls date ranges are limited to last couple of months.
+Once the catalog is loaded into the database, you'll need a way to check for and import any changes.  Do this with the 
+```
+python bin/oneclick_library_delta
+``` 
+script.  The script will call the [api_url]/[library_id]/media/delta?begin=YYYY-MM-DD&end=YYYY-MM-DD endpoint, described in the API [here](http://developer.oneclickdigital.us/endpoints/titles#get-calculated-deltas).  The delta calls date ranges are limited to last couple of months.
 
 
 ## Book Availability:
@@ -156,5 +160,4 @@ There are two fields to look for in the item metadata: hasDigitalRights and hasd
 
 ## Testing:
 To make a test patron, you can take several routes.  You can send a create-patron api call.  Or you can go to One Click's website for your library or consortium.  Here's the [QA interface link] (http://iconnct.oneclickdigital.com/#register) for Connecticut.
-
 
