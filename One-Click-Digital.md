@@ -99,7 +99,7 @@ OneClick currently has collections of ebooks, eaudio, and emagazines.  Library S
 
 ###Availability
 You've got the catalog metadata imported, but you don't yet have the info on which books are currently available for download.  Without it, your patrons can't borrow.  Request this information from OneClick with:
-```
+```sh
 python bin/oneclick_monitor_availability 
 ```
 
