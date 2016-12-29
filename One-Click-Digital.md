@@ -51,7 +51,7 @@ To read a patron's OneClick record, send a GET call to [api_url]/[library_id]/pa
 
 ## Start Your Catalog:
 You've made a database:   
-```
+```sql
 CREATE DATABASE my_circulation_db_name;
 GRANT all privileges on database my_circulation_db_name to my_db_user;
 ```
