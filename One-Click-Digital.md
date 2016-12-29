@@ -57,7 +57,7 @@ GRANT all privileges on database my_circulation_db_name to my_db_user;
 ```
    
 You've filled in the Postgres and the OneClick integrations blocks in your config.json:
-```
+```json
 [...]
     "integrations" : {
         [...]
@@ -81,8 +81,14 @@ You've filled in the Postgres and the OneClick integrations blocks in your confi
 ```
 
 To know what titles to show your customers, you'll need to populate your database with your library's OneClick catalog.  You can get this by running the import script in your virtual environment.
+
+If you don't already have your virtual environment running, create it, and run then start it up with:
 ```
 source circulation_env/bin/activate
+```
+
+Anyways, the import script:
+```
 (circulation_env)$ python bin/oneclick_library_import
 ```
 
@@ -91,10 +97,18 @@ The script sends a GET request to [api_url]/[library_id]/media/all .  **This req
 OneClick currently has collections of ebooks, eaudio, and emagazines.  Library Simplified currently handles ebooks, with eaudio in the pipeline.  The magazine collections are handled through a separate API on the OneClick side, and are to become more integrated in the future.  They are further removed in the Library Simplified's pipeline.
 
 
+###Availability
+You've got the catalog metadata imported, but you don't yet have the info on which books are currently available for download.  Without it, your patrons can't borrow.  Request this information from OneClick with:
+```
+python bin/oneclick_monitor_availability 
+```
+
+Note:  You'll probably want to run this script on a regular basis, to keep updating book availability information.
+
 ## Maintain Your Catalog:
 Once the catalog is loaded into the database, you'll need a way to check for and import any changes.  Do this with the 
 ```
-python bin/oneclick_library_delta
+(circulation_env)$ python bin/oneclick_library_delta
 ``` 
 script.  The script will call the [api_url]/[library_id]/media/delta?begin=YYYY-MM-DD&end=YYYY-MM-DD endpoint, described in the API [here](http://developer.oneclickdigital.us/endpoints/titles#get-calculated-deltas).  The delta calls date ranges are limited to last couple of months.
 
