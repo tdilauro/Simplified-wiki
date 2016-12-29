@@ -88,7 +88,7 @@ source circulation_env/bin/activate
 ```
 
 Anyways, the import script:
-```bash
+```sh
 (circulation_env)$ python bin/oneclick_library_import
 ```
 
