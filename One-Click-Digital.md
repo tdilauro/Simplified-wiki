@@ -113,7 +113,7 @@ Once the catalog is loaded into the database, you'll need a way to check for and
 script.  The script will call the [api_url]/[library_id]/media/delta?begin=YYYY-MM-DD&end=YYYY-MM-DD endpoint, described in the API [here](http://developer.oneclickdigital.us/endpoints/titles#get-calculated-deltas).  The delta calls date ranges are limited to last couple of months.
 
 
-## Book Availability:
+## More On Book Availability:
 There is no way to tell how many licensed copies of a book are available for lending.  All we can know, is the binary answer to whether the book was available when the last catalog availability check was run.  If the book is marked "available", then the patron may try to check it out.  If the book's licenses have gotten used up in the time between our availability check and the checkout request, an appropriate error message will be displayed, the patron will have the opportunity to put the book on hold, and the availability flag in our database will be updated.
 
 There are some, very very rare libraries that choose to display items they do not own in their OneClick collections.  This option is turned on by OneClick on request, when a library account is set up.  For such catalogs, the non-owned items can appear in search (the "interest" field in their metadata will reflect the outside catalog ownership), and can be put on wishlist, but not checked out.  If an item is marked "available" in its metadata, it is in fact also a guarantee that the library owns it and it's clear for checkout.
