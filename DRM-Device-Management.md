@@ -92,6 +92,8 @@ defined
 `<drm:licensor>` tag that links to the protocol endpoint will also
 contain a usable `<drm:clientToken>` tag.
 
+Authentication is done by interpreting the client token as a username and password (as per [["Client token under ACS"|DRMAutodiscoverySpecs#client-token-under-acs]]) and sending it via HTTP Basic Auth.
+
 ## GET
 
 Sending GET to the DRM Device ID Management Protocol endpoint yields a
