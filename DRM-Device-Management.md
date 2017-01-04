@@ -101,8 +101,7 @@ document of media type
 `vnd.librarysimplified/acs-device-id-list`. This list contains all
 known device IDs associated with the authenticated DRM account ID.
 
-A [[Link-Template
-header|https://tools.ietf.org/html/draft-nottingham-link-template-01]]
+A [[Link-Template header|https://tools.ietf.org/html/draft-nottingham-link-template-01]]
 with the 'item' relationship is also served. This link template
 explains how to construct the ID for a specific device ID within the
 protocol. The `{id}` variable is defined to stand for the device ID.
@@ -130,7 +129,7 @@ device IDs. The request entity-body should be a document of media type
 
 ## DELETE
 
-A client sends DELETE to a device ID's URL to signal to the server
+A client sends DELETE to a device ID's URL (generated from the `rel="item"` link template) to signal to the server
 that the client has deactivated that device ID, or knows for a fact
 that that device ID is no longer active. A DELETE request is _not_ a
 request for the server to actually deactivate the device ID. Generally
