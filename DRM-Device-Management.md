@@ -1,4 +1,4 @@
-= Summary
+=Summary
 
 Library patrons frequently find themselves exceeding the device limits
 set by DRM schemes, even though very few people actually have more
@@ -23,7 +23,7 @@ Deactivating a device that's still in use is inconvenient but
 ultimately harmless. The device will automatically be reactivated the
 next time its owner tries to open a book on that device.
 
-= Who should implement?
+=Who should implement?
 
 In general, an entity that implements the Adobe Vendor ID
 Authentication Web Service should also implement the DRM Device ID
@@ -36,7 +36,7 @@ expects NYPL to issue Adobe IDs to its patrons, should have its
 bookshelf URL link to NYPL's DRM Device ID Management Protocol
 endpoint. It should not implement the protocol itself.
 
-= The link
+=The `https://circulation.librarysimplified.org/terms/drm/rel/devices` link relation
 
 We introduce the link relation
 `https://circulation.librarysimplified.org/terms/drm/rel/devices`, which
@@ -62,9 +62,9 @@ A library that wants to provide this link should include it in a
 ```
 
 If the link is not present, there is no expectation that the patron
-will be able to keep track of their device IDs.
+will be able to keep track of their device IDs for that DRM licensor.
 
-= The document type
+=The `vnd.librarysimplified/drm-device-id-list` media type
 
 The media type `vnd.librarysimplified/drm-device-id-list` is a
 newline-delimited text format similar to `text/uri-list`. Example:
@@ -76,9 +76,9 @@ newline-delimited text format similar to `text/uri-list`. Example:
 
 Each line in the document is a known DRM device ID.
 
-= The protocol
+=The protocol
 
-== Authentication
+==Authentication
 
 All requests to the DRM Device ID Management Protocol must be
 authenticated using credentials that uniquely identify a DRM account
@@ -90,7 +90,7 @@ defined
 `<drm:licensor>` tag that links to the protocol endpoint will also
 contain a usable `<drm:clientToken>` tag.
 
-== GET
+==GET
 
 Sending GET to the DRM Device ID Management Protocol endpoint yields a
 document of media type
@@ -118,13 +118,13 @@ From this you can figure out that there are two known device IDs, and
 the URL for dealing with the device ID "89150-ztoi4j-543981jg" is
 `https://vendor-id.server/AdobeAuth/devices/89150-ztoi4j-543981jg`.
 
-== POST
+==POST
 
 Sending POST to the endpoint is a request to register one or more
 device IDs. The request entity-body should be a document of media type
 `vnd.librarysimplified/drm-device-id-list`.
 
-== DELETE
+==DELETE
 
 A client sends DELETE to a device ID's URL to signal to the server
 that the client has deactivated that device ID, or knows for a fact
@@ -133,7 +133,7 @@ request for the server to actually deactivate the device ID. Generally
 speaking, the server has no such power, and only the client can
 deactivate a device ID.
 
-= New considerations
+=New considerations
 
 Since one device can revoke another device's activation, there will be
 a new state where a SimplyE user is logged in to a library but has no
