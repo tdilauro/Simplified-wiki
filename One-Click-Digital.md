@@ -128,6 +128,10 @@ Note:  You'll probably want to run this script on a regular basis, to keep updat
     should all return lots of rows.
 
 
+## Perfect Your Data with MetadataWrangler Coverage
+TODO: write section.  bin/metadata_wrangler_coverage
+
+
 ## Maintain Your Catalog:
 Once the catalog is loaded into the database, you'll need a way to check for and import any changes.  Do this with the 
 ```
