@@ -48,6 +48,7 @@ Currently, our active public repositories include:
 * [[The generic circulation API|GenericCirculation]]
 * [[The annotation API|Annotations]]
 * [[DRM autodiscovery|DRM-Autodiscovery]]
+* [[The ACS Device Management Protocol|DRM-Device-Management]]
 
 # Integrations
 
