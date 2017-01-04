@@ -106,18 +106,26 @@ python bin/oneclick_monitor_availability
 Note:  You'll probably want to run this script on a regular basis, to keep updating book availability information.
 
 
-### Check Yer Feeds
+### Check Yer Data
 1.  Do you have materialized views (mv_works_editions_datasources_identifiers and mv_works_editions_workgenres_datasources_identifiers) in the database.  Do they need refreshing?  If yes, run the 
-```
-python bin/refresh_materialized_views
-```
-script.
+    ```
+    python bin/refresh_materialized_views
+    ```
+    script.
 
 2.  Do you have proper stuff in your cachedfeeds table?  To refresh, run 
-```
-python bin/cache_opds_blocks
-python bin/cache_opds_lane_facets
-```
+    ```
+    python bin/cache_opds_blocks
+    python bin/cache_opds_lane_facets
+    ```
+
+3.  These queries 
+    ```
+    select count(*) from works where presentation_ready=True and quality > 0;
+    select count(*) from licensepools where licenses_available>0;
+    select count(*) from licensepooldeliveries;
+    ``` 
+    should all return lots of rows.
 
 
 ## Maintain Your Catalog:
