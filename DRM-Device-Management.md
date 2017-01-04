@@ -142,10 +142,10 @@ valid device registration (because another device revoked it). The
 SimplyE client should detect this condition and attempt to re-register
 before raising an error.
 
-In theory, associating all of a patron's device IDs with their DRM
-account ID could have privacy implications. However, the same
+Associating all of a patron's device IDs with their DRM
+account ID has privacy implications. However, the same
 associations are already present on the DRM vendor server that hands
-out the device IDs, so there is no new risk. In addition, for most
+out the device IDs, so there is no new type of risk. In addition, for most
 patrons, connecting a patron's DRM account ID to their identifying
 information (e.g. their library barcode) would require access to two
 different databases: the device ID database, managed by NYPL, and the
