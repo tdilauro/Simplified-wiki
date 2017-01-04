@@ -3,7 +3,7 @@
 Library patrons frequently find themselves exceeding the device limits
 set by DRM schemes, even though very few people actually have more
 devices than the limit allows. The most common culprit is redundant
-device IDs created by multiple activations of the same device. In
+device IDs created by multiple activations of a single device. In
 general, without a record of previously used device IDs, there is no
 way to deactivate IDs that are no longer in use.
 
