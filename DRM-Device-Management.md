@@ -132,7 +132,7 @@ device IDs. The request entity-body should be a document of media type
 In the ACS case, a client sends DELETE to a device ID's URL (generated from the `rel="item"` link template) to signal to the server
 that the client has deactivated that device ID, or knows for a fact
 that that device ID is no longer active. In the ACS case, a DELETE request is _not_ a
-request for the server to actually deactivate the device ID. The server has no such power, and only the client can deactivate a device ID.
+request for the server to actually deactivate the device ID. The server has no such power, and only the client can deactivate a device ID, by communicating with Adobe.
 
 # New considerations
 
