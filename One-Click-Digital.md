@@ -105,6 +105,21 @@ python bin/oneclick_monitor_availability
 
 Note:  You'll probably want to run this script on a regular basis, to keep updating book availability information.
 
+
+### Check Yer Feeds
+1.  Do you have materialized views (mv_works_editions_datasources_identifiers and mv_works_editions_workgenres_datasources_identifiers) in the database.  Do they need refreshing?  If yes, run the 
+```
+python bin/refresh_materialized_views
+```
+script.
+
+2.  Do you have proper stuff in your cachedfeeds table?  To refresh, run 
+```
+python bin/cache_opds_blocks
+python bin/cache_opds_lane_facets
+```
+
+
 ## Maintain Your Catalog:
 Once the catalog is loaded into the database, you'll need a way to check for and import any changes.  Do this with the 
 ```
