@@ -23,6 +23,8 @@ Deactivating a device that's still in use is inconvenient but
 ultimately harmless. The device will automatically be reactivated the
 next time its owner tries to open a book on that device.
 
+Although in theory this protocol is generic, it was designed for use with the ACS DRM scheme only.
+
 # Who should implement?
 
 In general, an entity that implements the Adobe Vendor ID
@@ -36,10 +38,10 @@ expects NYPL to issue Adobe IDs to its patrons, should have its
 bookshelf URL link to NYPL's DRM Device ID Management Protocol
 endpoint. It should not implement the protocol itself.
 
-# The `https://circulation.librarysimplified.org/terms/drm/rel/devices` link relation
+# The `http://librarysimplified.org/terms/drm/rel/devices` link relation
 
 We introduce the link relation
-`https://circulation.librarysimplified.org/terms/drm/rel/devices`, which
+`http://librarysimplified.org/terms/drm/rel/devices`, which
 indicates an endpoint into the DRM Device ID Management Protocol.
 
 ```
