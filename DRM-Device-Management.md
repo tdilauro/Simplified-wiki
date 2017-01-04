@@ -88,7 +88,7 @@ ID.
 
 In the SimplyE case, this means authenticating with a client token (as
 defined
-[[https://github.com/NYPL-Simplified/Simplified/wiki/DRMAutodiscoverySpecs#drmclienttoken|here]]). The
+[[here|DRMAutodiscoverySpecs#drmclienttoken]]). The
 `<drm:licensor>` tag that links to the protocol endpoint will also
 contain a usable `<drm:clientToken>` tag.
 
