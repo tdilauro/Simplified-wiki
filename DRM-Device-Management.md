@@ -43,9 +43,8 @@ endpoint. It should not implement the protocol itself.
 The proposal is that we track the association of a patron's DRM account ID with their device IDs. We have weighed the risks against the benefit to patrons and decided to proceed. Our reasoning:
 
 * The risk is not of a new type. The DRM vendor server that hands out the device IDs also knows both the device IDs and the DRM account ID.
-* ACS device IDs are generated strings that have no connection to the device. You cannot use a device ID to determine anything about a device. You also cannot use it to prove ownership of a particular device, unless you also have access to that device. The only information you can find by looking at a list of ACS device IDs is _how many_ devices a person has used.
-* For most patrons, connecting a patron's DRM account ID to identifying information (e.g. their library barcode) would require access to two different databases: the database of the patron's home library, and the database that tracks the device IDs. A compromise of NYPL's database will not reveal any personal information about the patrons of other libraries. (It _would_ reveal connections between NYPL barcodes and NYPL device IDs.)
-
+* ACS device IDs are opaque strings without any semantic content. You cannot use a device ID to determine anything about a device. You also cannot use it to prove ownership of a particular device, unless you also have access to that device. The only information you can find by looking at a list of ACS device IDs is _how many_ devices a person has used.
+* For most patrons, connecting a patron's DRM account ID to identifying information (e.g. their library barcode) would require access to two different databases: the database of the patron's home library, and ONE of the two databases that tracks the device IDs (either NYPL's database or Adobe's database). A compromise of NYPL's database will not reveal any personal information about the patrons of other libraries. (It _would_ reveal connections between NYPL barcodes and NYPL device IDs.)
 
 # The `http://librarysimplified.org/terms/drm/rel/devices` link relation
 
