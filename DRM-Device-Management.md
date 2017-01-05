@@ -91,10 +91,10 @@ defined
 `<drm:licensor>` tag that links to the protocol endpoint will also
 contain a usable `<drm:clientToken>` tag--the token is in there.
 
-You SHOULD base64-encode the client token to make it comply with section 2.1 of RFC 6750. That section does not require tokens to be base64-encoded, but encoding the token is a good way to make sure it's compliant.
+You MUST base64-encode the client token. Section 2.1 of RFC 6750 does not require tokens to be base64-encoded, but encoding the token guarantees it will be acceptable, and requiring that the client token be encoded avoids confusion.
 
 ```
-Authenticate: Bearer [token]
+Authenticate: Bearer [base64-encoded token]
 ```
 
 ## GET
