@@ -121,16 +121,22 @@ Note:  You'll probably want to run this script on a regular basis, to keep updat
     ```
 
 3.  These queries 
-    ```
+    ```sql
+    select count(*) from contributors where display_name != '';
     select count(*) from works where presentation_ready=True and quality > 0;
     select count(*) from licensepools where licenses_available>0;
     select count(*) from licensepooldeliveries;
     ``` 
     should all return lots of rows.
 
+    This query
+    ```sql select * from identifiers order by identifier limit 6;```
+    should return two rows for each book -- one typed "OneClick ID", and the other typed "ISBN".
+
 
 ## Perfect Your Data with MetadataWrangler Coverage
-TODO: write section.  bin/metadata_wrangler_coverage
+Run the ```python bin/metadata_wrangler_coverage``` script.  This will send a request to the MetadataWrangler service for more detailed information on the books you've got.  You'll know the script worked if the 
+```sql select distinct quality, rating, popularity from works limit 5;``` query returns 5 distinct rows.
 
 
 ## Maintain Your Catalog:
