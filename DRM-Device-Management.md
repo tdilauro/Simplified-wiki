@@ -83,16 +83,19 @@ Each line in the document is a known DRM device ID.
 ## Authentication
 
 All requests to the DRM Device ID Management Protocol must be
-authenticated using credentials that uniquely identify a DRM account
-ID.
+authenticated using an OAuth Bearer Token that identifies a DRM account ID.
 
 In the SimplyE case, this means authenticating with a client token (as
 defined
 [[here|DRMAutodiscoverySpecs#drmclienttoken]]). The
 `<drm:licensor>` tag that links to the protocol endpoint will also
-contain a usable `<drm:clientToken>` tag.
+contain a usable `<drm:clientToken>` tag--the token is in there.
 
-Authentication is done by interpreting the client token as a username and password (as per [["Client token under ACS"|DRMAutodiscoverySpecs#client-token-under-acs]]) and sending it via HTTP Basic Auth.
+Authentication is done by base64-encoding the client token and sending it as an OAuth Bearer token. (All OAuth Bearer tokens must be base64-encoded.)
+
+```
+Authenticate: Bearer [token]
+```
 
 ## GET
 
