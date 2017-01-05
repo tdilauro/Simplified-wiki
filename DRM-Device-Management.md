@@ -27,16 +27,10 @@ Although in theory this protocol is generic, it was designed for use with the AC
 
 # Who should implement?
 
-In general, an entity that implements the Adobe Vendor ID
-Authentication Web Service should also implement the DRM Device ID
-Management Protocol. A library that relies on another organization to
-issue Adobe IDs for its patrons should link to that organization's DRM
-Device ID Management Protocol endpoint.
+Any library that serves its patrons content encrypted with Adobe ACS DRM and licensed should implement this protocol.
+The Library Simplified circulation manager implements this protocol, so most SimplyE participating libraries don't have to do anything.
 
-In particular, a library that takes part in the SimplyE program, and
-expects NYPL to issue Adobe IDs to its patrons, should have its
-bookshelf URL link to NYPL's DRM Device ID Management Protocol
-endpoint. It should not implement the protocol itself.
+A library may choose not to implement this protocol. SimplyE will continue to work, but there will be more bogus incidents where patrons exceed their device limit.
 
 # Privacy implications
 
@@ -44,7 +38,6 @@ The proposal is that we track the association of a patron's DRM account ID with 
 
 * The risk is not of a new type. The DRM vendor server that hands out the device IDs also knows both the device IDs and the DRM account ID.
 * ACS device IDs are opaque strings without any semantic content. You cannot use a device ID to determine anything about a device. You also cannot use it to prove ownership of a particular device, unless you also have access to that device. The only information you can find by looking at a list of ACS device IDs is _how many_ devices a person has used.
-* A compromise of NYPL's database will not reveal anything about the patrons of other libraries. NYPL's database stores the connection between DRM device ID and DRM account ID for patrons of multiple libraries, but it only stores the connection between the DRM account ID and the library barcode for NYPL patrons.
 
 # The `http://librarysimplified.org/terms/drm/rel/devices` link relation
 
@@ -90,20 +83,7 @@ Each line in the document is a known DRM device ID.
 
 ## Authentication
 
-All requests to the DRM Device ID Management Protocol must be
-authenticated using an OAuth Bearer Token that identifies a DRM account ID.
-
-In the SimplyE case, this means authenticating with a client token (as
-defined
-[[here|DRMAutodiscoverySpecs#drmclienttoken]]). The
-`<drm:licensor>` tag that links to the protocol endpoint will also
-contain a usable `<drm:clientToken>` tag--the token is in there.
-
-You MUST base64-encode the client token. Section 2.1 of RFC 6750 does not require tokens to be base64-encoded, but encoding the token guarantees it will be acceptable, and requiring that the client token be encoded avoids confusion.
-
-```
-Authenticate: Bearer [base64-encoded token]
-```
+All requests to a library's DRM Device ID Management Protocol endpoint are authenticated using the same technique used to get that library's OPDS bookshelf feed.
 
 ## GET
 
