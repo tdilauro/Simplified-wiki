@@ -91,7 +91,7 @@ defined
 `<drm:licensor>` tag that links to the protocol endpoint will also
 contain a usable `<drm:clientToken>` tag--the token is in there.
 
-Authentication is done by base64-encoding the client token and sending it as an OAuth Bearer token. (All OAuth Bearer tokens must be base64-encoded.)
+You SHOULD base64-encode the client token to make it comply with section 2.1 of RFC 6750. That section does not require tokens to be base64-encoded, but encoding the token is a good way to make sure it's compliant.
 
 ```
 Authenticate: Bearer [token]
