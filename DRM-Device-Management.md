@@ -114,7 +114,7 @@ An example response:
 ```
 200 OK
 Content-Type: vnd.librarysimplified/drm-device-id-list
-Link-Template: <https://vendor-id.server/AdobeAuth/devices/{id}> rel="item"
+Link-Template: <https://vendor-id.server/AdobeAuth/devices/{id}>; rel="item"
 
 10934-234fasd-45893we
 89150-ztoi4j-543981jg
@@ -145,12 +145,8 @@ valid device registration (because another device revoked it). The
 SimplyE client should detect this condition and attempt to re-register
 before raising an error.
 
-Associating all of a patron's device IDs with their DRM
-account ID has privacy implications. However, the same
-associations are already present on the DRM vendor server that hands
-out the device IDs, so the risk is not of a new type. In addition, for most
-patrons, connecting a patron's DRM account ID to their identifying
-information (e.g. their library barcode) would require access to two
-different databases: the device ID database, managed by NYPL, and the
-database of the patron's home library.
+The privacy implications of associating all of a patron's device IDs with their DRM account ID have been considered. We have weighed the risks against the benefit to patrons and decided to proceed with implementing this protocol. Our reasoning:
 
+* The risk is not of a new type. The DRM vendor server that hands out the device IDs also knows both the device IDs and the DRM account ID.
+* For most patrons, connecting a patron's DRM account ID to their identifying information (e.g. their library barcode) would require access to two different databases: the database of the patron's home library, and the database that tracks the device IDs. A compromise of NYPL's database will not reveal any personal information about the patrons of other libraries.
+* ACS device IDs are generated strings that have no connection to the device. You cannot use a device ID to determine anything about a device. You also cannot use it to prove ownership of a particular device, unless you also have access to that device.
