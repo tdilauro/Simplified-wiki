@@ -10,7 +10,7 @@ For each library, the registry will have the following:
 - Location - TBD, could be address or lat/lon
 - Circulation Manager URL
 - Enabled/disabled flag - disabled libraries will be temporarily hidden from the registry’s OPDS feeds
-
+- Coverage area - Either a single lat/long representing the approximate center of the library's coverage area, or a polygon representing the entire coverage area. This lets the registry guide patrons to libraries near their current location.
 
 ## Adding a library to the registry
 For the initial version of the registry, someone from the simplified team will add libraries to the database manually.
