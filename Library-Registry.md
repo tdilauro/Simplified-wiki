@@ -9,7 +9,8 @@ For each library, the registry will have the following:
 - Color - one of a fixed set of values to be used as the text color in the app when the library is selected
 - Circulation Manager URL
 - Enabled/disabled flag - disabled libraries will be temporarily hidden from the registry’s OPDS feeds
-- Coverage area - Either a single lat/long representing the approximate center of the library's coverage area, or a polygon representing the entire coverage area. This lets the registry guide patrons to libraries near their current location.
+- Coverage area - Either a single lat/long representing the approximate center of the library's coverage area, or a polygon representing the entire coverage area. This lets the registry guide patrons to libraries near their current location. 
+- Alternate coverage criteria - Most registry entries represent public libraries who serve everyone in a small geographic area. On its own, "coverage area" handles these collections. But some collections are different.  Instant Classics and the Internet Archive's Open Library serve everyone with Internet access. Open Ebooks and NLS BARD cover the entire United States, but serve only subsets of the US population. It is not practical to specify in machine-readable form the requirements for every library of this type, but at the very least we need a human-readable description of who qualifies for access, and we should be able to create some basic groupings: "universal", "educational", "accessibility", etc.
 
 ## Adding a library to the registry
 For the initial version of the registry, someone from the simplified team will add libraries to the database manually.
