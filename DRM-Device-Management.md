@@ -118,6 +118,8 @@ Sending POST to the endpoint is a request to register one or more
 device IDs. The request entity-body should be a document of media type
 `vnd.librarysimplified/drm-device-id-list`.
 
+The server MAY put limits on how many devices may be registered at once. If the client exceeds this limit, the server SHOULD send the response code 413 ("Payload Too Large"). It is typical for a server to accept only a single device registration at a time.
+
 ## DELETE
 
 In the ACS case, a client sends DELETE to a device ID's URL (generated from the `rel="item"` link template) to signal to the server
