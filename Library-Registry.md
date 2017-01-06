@@ -7,7 +7,6 @@ For each library, the registry will have the following:
 - Display Name - shown to patrons, e.g. “Brooklyn Public Library”. Must be unique
 - Logo - shown in the app when the library is selected, requirements TBD. The image should be uploaded and hosted by the registry provider so it won’t break if the original link stops working.
 - Color - one of a fixed set of values to be used as the text color in the app when the library is selected
-- Location - TBD, could be address or lat/lon
 - Circulation Manager URL
 - Enabled/disabled flag - disabled libraries will be temporarily hidden from the registry’s OPDS feeds
 - Coverage area - Either a single lat/long representing the approximate center of the library's coverage area, or a polygon representing the entire coverage area. This lets the registry guide patrons to libraries near their current location.
