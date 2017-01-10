@@ -1,11 +1,24 @@
 # Library Registry
 
-The library registry provides an OPDS navigation feed of libraries that can be used in multi-library simplified clients. The clients use the library registry to show users a list of available libraries. NYPL will host one library registry that will be used by the SimplyE apps. Other libraries or consortia implementing their own multi-library apps may host their own library registry or prepare a static OPDS navigation feed.
+The library registry is a new Library Simplified product, the equal of the circulation manager or metadata wrangler. A library registry is strongly associated with a mobile application and with Adobe's VendorID specification.
 
-## Information in the registry
-For each library, the registry will have the following:
-- Display Name - shown to patrons, e.g. “Brooklyn Public Library”. Must be unique
-- Logo - shown in the app when the library is selected, requirements TBD. The image should be uploaded and hosted by the registry provider so it won’t break if the original link stops working.
+NYPL will operate a library registry containing all libraries that participate in the SimplyE mobile app. If you want to run your own mobile app, you'll need to set up your own library registry, or create the equivalent in static OPDS feeds.
+
+# Overview
+
+The library registry has two main features:
+
+1. Provide OPDS navigation feeds that a user of your mobile app can use to find their local library.
+2. (Optional) Implement the Adobe Authentication Web Service Specification so you can hand out Adobe IDs to users of your mobile application.
+
+Note that #2 is currently the responsibility of the circulation manager. We're moving it to the library registry because very few organizations need this feature, and the ones that do will also probably need a library registry.
+
+# Information per library
+
+To join a registry, a library must provide the following:
+
+- Display Name - A unique name shown to patrons, e.g. “Brooklyn Public Library”.
+- Logo - shown in the app when the library is selected, requirements TBD. The image should be mirrored somewhere by the registry provider so it won’t break if the original link stops working.
 - Color - one of a fixed set of values to be used as the text color in the app when the library is selected
 - Circulation Manager URL
 - Enabled/disabled flag - disabled libraries will be temporarily hidden from the registry’s OPDS feeds
