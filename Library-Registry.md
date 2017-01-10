@@ -24,7 +24,7 @@ To join a registry, a library must provide the following:
 - Enabled/disabled flag - disabled libraries will be temporarily hidden from the registry’s OPDS feeds
 - Coverage area - Either a single lat/long representing the approximate center of the library's coverage area, or a polygon representing the entire coverage area. This lets the registry guide patrons to libraries near their current location. 
 - Alternate coverage criteria, if any (see below)
-- Short name and shared secret - Used to get Adobe IDs for patrons.
+- Vendor ID information (see below)
 
 ### Logo
 
@@ -33,6 +33,12 @@ Requirements for size, aspect ratio, transparency and palette are TBD. The image
 ### Alternate coverage criteria
 
 Most registry entries represent public libraries who serve everyone in a small geographic area. On its own, "coverage area" handles these collections. But some collections are different.  Instant Classics and the Internet Archive's Open Library serve everyone with Internet access. Open Ebooks and NLS BARD cover the entire United States, but serve only subsets of the US population. It is not practical to specify in machine-readable form the requirements for every library of this type. We need a human-readable description of who qualifies for access for each such collection, and we should be able to create some basic groupings: "universal", "educational", "accessibility", "commercial", etc.
+
+### Vendor ID information
+
+Library Simplified circulation managers may be configured with a short library name and a shared secret. A circulation manager thus configured will start giving out tokens that may be used to activate a device with Adobe, using an Adobe ID provided by the library registry. For this to work, the library registry must know each library's short library name and shared secret, and the short library name must be unique across all that registry's libraries.
+
+If a library does not authenticate patrons, or does not offer any books that are encrypted with Adobe DRM, there is no need to configure the Vendor ID information.
 
 ## Adding a library to the registry
 For the initial version of the registry, someone from the simplified team will add libraries to the database manually.
