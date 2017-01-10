@@ -24,7 +24,7 @@ When an application (mobile or otherwise) sees a `register` link with a `type` o
 
 The application SHOULD modify the registration URL to include a `redirect_uri` query parameter. This provides the equivalent of OAuth's [["redirection endpoint"|https://tools.ietf.org/html/rfc6749#section-3.1.2]].
 
-The application SHOULD modify the registration URL to include a `state` query parameter. This random string serves the same security purpose as the `state` query parameter in OAuth's [["Authorization Request"|https://tools.ietf.org/html/rfc6749#section-4.2.1]]] definition.
+The application SHOULD modify the registration URL to include a `state` query parameter. This random string serves the same security purpose as the `state` query parameter in OAuth's [["Authorization Request"|https://tools.ietf.org/html/rfc6749#section-4.2.1]] definition.
 
 Example: `http://example.com/registration?state=594061549043850995&redirect_uri=opds://register`
 
@@ -45,7 +45,7 @@ When the client sees that the web view has been redirected to the `redirect_uri`
 
 The signup server communicates with the client by adding query parameters to the `redirect_uri` it was given. This specification defines the meaning of the following parameters:
 
-* `state` - If this was provided in the initial request to the signup server, it MUST be replicated in the `redirect_uri`. TODO: what if the client tries to use it and the server just doesn't support it?
+* `state` - If this was provided in the initial request to the signup server, it SHOULD be replicated in the `redirect_uri`. TODO: this is weak, see below.
 * `login` - If the patron was issued a identifier (e.g. a username or barcode), or if an existing identifier for the patron was located, that identifier MUST be provided here. If no `login` is provided, it means that the process concluded without an identifier being associated with the patron -- perhaps the patron gave up on the process or it turned out they were not eligible.
 * `password` - If the patron chose or was issued a password to go along with their identifier, it MAY be provided here. A library may choose not to send the password to the OPDS client, or may not know the password to send it. If that happens, the patron will have to enter their password manually.
 
@@ -63,7 +63,7 @@ Remember, a prematurely killed web view is not an error condition. A user can la
 
 # Open questions
 
-* Can `state` be used reliably?
+* Is `state` really useful? There's no guarantee the server can support it, and without such a guarantee the absence of `state` in the `redirect_uri` means nothing.
 * I believe `client_id` is not necessary because the sign-up process is assumed to be open to the general public, and the resulting credential is tied to the patron, not to any particular client.
 * Would `code` be useful?
 * Should there be restrictions on the URL schemes that are allowable in `redirect_uri`?
