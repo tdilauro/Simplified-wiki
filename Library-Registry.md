@@ -24,6 +24,7 @@ To join a registry, a library must provide the following:
 - Enabled/disabled flag - disabled libraries will be temporarily hidden from the registry’s OPDS feeds
 - Coverage area - Either a single lat/long representing the approximate center of the library's coverage area, or a polygon representing the entire coverage area. This lets the registry guide patrons to libraries near their current location. 
 - Alternate coverage criteria, if any (see below)
+- Short name and shared secret - Used to get Adobe IDs for patrons.
 
 ### Logo
 
@@ -64,11 +65,3 @@ The registry will have a top-level navigation feed that links to additional navi
 - Search by location
 
 For the initial version, there can be a single flat navigation feed with an entry for every library.
-
-
-## Possible Adobe Vendor ID Integration
-For libraries using another library’s Adobe Vendor ID server (see https://github.com/NYPL-Simplified/Simplified/wiki/AdobeVendorID), the registry could also have the library’s short name and shared secret, which would match the library’s circulation manager configuration.
-
-Then the library that has configured Adobe Vendor ID could use the library registry to get short names and shared secrets for the other libraries that use its service. The circulation manager would need a script to update its library information from the registry, and config values for the location of the registry and authenticating with the registry. The registry will need an API for the circulation manager to use.
-
-This may not make sense if many libraries decide to configure their own Adobe Vendor IDs. If almost all of them use NYPL’s, it could be easier to have them enter their information when they’re added to the registry. However, libraries wouldn’t be able to fully test their circulation manager until they were in the registry.
