@@ -32,7 +32,12 @@ Requirements for size, aspect ratio, transparency and palette are TBD. The image
 
 ### Alternate coverage criteria
 
-Most registry entries represent public libraries who serve everyone in a small geographic area. On its own, "coverage area" handles these collections. But some collections are different.  Instant Classics and the Internet Archive's Open Library serve everyone with Internet access. Open Ebooks and NLS BARD cover the entire United States, but serve only subsets of the US population. It is not practical to specify in machine-readable form the requirements for every library of this type. We need a human-readable description of who qualifies for access for each such collection, and we should be able to create some basic groupings: "universal", "educational", "accessibility", "commercial", etc.
+Most registry entries represent public libraries who serve everyone in a small geographic area. On its own, "coverage area" handles these collections. But some collections are different.
+
+* Instant Classics and the Internet Archive's Open Library serve everyone with Internet access.
+* Open Ebooks and NLS BARD cover the entire United States, but serve only subsets of the US population. 
+
+It is not practical to specify in machine-readable form the requirements for every library that doesn't fit the "everyone in a small area" mold. Instead, we need a human-readable description of who qualifies for access for each such collection. We should be able to create some basic groupings: "universal", "educational", "accessibility", "commercial", etc.
 
 ### Vendor ID information
 
