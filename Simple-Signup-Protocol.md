@@ -64,6 +64,6 @@ Remember, a prematurely killed web view is not an error condition. A user can la
 # Open questions
 
 * Can `state` be used reliably?
-* `client_id` is not necessary because the assumption is that a patron could just as easily sign up with their web browser or at a branch library.
-* Is `code` necessary?
-* Is `state` necessary?
+* I believe `client_id` is not necessary because the sign-up process is assumed to be open to the general public, and the resulting credential is tied to the patron, not to any particular client.
+* Would `code` be useful?
+* Should there be restrictions on the URL schemes that are allowable in `redirect_uri`?
