@@ -41,13 +41,17 @@ At some point, either the web view gets closed (because the patron has given up)
 Location: opds://register?login=1004005&password=9102&state=594061549043850995
 ```
 
-When the client sees that the web view has been redirected to the `redirect_uri`, it MUST close the web view. If possible, it MUST use the information contained in the `redirect_uri` to partially or completely authenticate the patron.
+When the client sees that the web view has been redirected to the `redirect_uri`, it MUST close the web view. 
+
+# Understanding the result
 
 The signup server communicates with the client by adding query parameters to the `redirect_uri` it was given. This specification defines the meaning of the following parameters:
 
 * `state` - If this was provided in the initial request to the signup server, it SHOULD be replicated in the `redirect_uri`. TODO: this is weak, see below.
 * `login` - If the patron was issued a identifier (e.g. a username or barcode), or if an existing identifier for the patron was located, that identifier MUST be provided here. If no `login` is provided, it means that the process concluded without an identifier being associated with the patron -- perhaps the patron gave up on the process or it turned out they were not eligible.
 * `password` - If the patron chose or was issued a password to go along with their identifier, it MAY be provided here. A library may choose not to send the password to the OPDS client, or may not know the password to send it. If that happens, the patron will have to enter their password manually.
+
+If possible, the OPDS client MUST use the information contained in the `redirect_uri` to authenticate the patron (and complete the action they were trying to do when they got the original 401 error).
 
 # Conclusion
 
