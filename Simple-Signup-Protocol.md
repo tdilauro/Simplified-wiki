@@ -22,7 +22,7 @@ Here's an example Authentication for OPDS document with a `register` link.
 
 When an application (mobile or otherwise) sees a `register` link with a `type` of "text/html", it is allowed to open a web view to the URL in the link.
 
-The application SHOULD modify the registration URL to include a `redirect_uri` query parameter. This provides the equivalent of OAuth's ["redirection endpoint"|https://tools.ietf.org/html/rfc6749#section-3.1.2].
+The application SHOULD modify the registration URL to include a `redirect_uri` query parameter. This provides the equivalent of OAuth's [["redirection endpoint"|https://tools.ietf.org/html/rfc6749#section-3.1.2]].
 
 The application SHOULD modify the registration URL to include a `state` query parameter. This random string serves the same security purpose as the `state` query parameter in OAuth's [["Authorization Request"|https://tools.ietf.org/html/rfc6749#section-4.2.1]]] definition.
 
