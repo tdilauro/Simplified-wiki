@@ -19,7 +19,7 @@ The 53rd Street Library is a branch of the New York Public Library. Someone who 
 
 The Internet Archive's Open Library is open to everyone with Internet access, but relatively few people will open up SimplyE looking for it.
 
-The Open Ebooks collection is open to a lot of the schoolchildren in the United States, including some who are too young to navigate a complex library selection screen.
+The Open Ebooks collection is open to a lot of the schoolchildren in the United States, including some who are too young to navigate a complex library selection screen. Open Ebooks can be thought of as a library that covers the entire United States but which does not serve everyone in that geographic region.
 
 # Information per library
 
