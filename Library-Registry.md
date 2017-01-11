@@ -130,3 +130,7 @@ It's common for a country to have itself as a subsection. This happens with Braz
 ### Conclusion
 
 Browsing the library list is a use case in search of a user. A list of all the libraries in California is useless, especially if you can't filter or sort it. A list of all the Overdrive libraries in Belgium is useful, because there's only one such library--but searching for "Belgium" or "Brussels" should also give you that library.
+
+Our library list is going to be extremely lopsided. In the near future there will be a couple libraries that cover the entire universe, a couple libraries that cover (some populations in) the United States, two libraries in New York City, and hundreds of libraries in Connecticut. What's more, the entities that are running SimplyE collections in Connecticut are generally not the town libraries a person will think of as "my library".
+
+It needs to be really easy to find out whether you have SimplyE
