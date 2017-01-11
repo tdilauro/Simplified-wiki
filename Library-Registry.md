@@ -11,6 +11,16 @@ The library registry has two main features:
 
 Note that #2 is currently the responsibility of the circulation manager. We're moving it to the library registry because very few organizations need this feature, and the ones that do will also probably need a library registry.
 
+# Use cases
+
+The Cyrenius H. Booth Library serves the town of Newtown, Connecticut. This library is part of the Bibliomation consortium, which provides their ebook service. Someone from Newtown who comes into SimplyE and looks for 'their' library is likely to search for "Newtown", not "Cyrenius" or "Bibliomation".
+
+The 53rd Street Library is a branch of the New York Public Library. Someone who thinks of that branch as 'their' library will probably go into SimplyE and search for "NYPL" to find "their" library. They're probably not going to search for "53rd Street" or "New York Public Library".
+
+The Internet Archive's Open Library is open to everyone with Internet access, but relatively few people will open up SimplyE looking for it.
+
+The Open Ebooks collection is open to a lot of the schoolchildren in the United States, including some who are too young to navigate a complex library selection screen.
+
 # Information per library
 
 To join a registry, a library must provide the following:
@@ -131,6 +141,4 @@ It's common for a country to have itself as a subsection. This happens with Braz
 
 Browsing the library list is a use case in search of a user. A list of all the libraries in California is useless, especially if you can't filter or sort it. A list of all the Overdrive libraries in Belgium is useful, because there's only one such library--but searching for "Belgium" or "Brussels" should also give you that library.
 
-Searching is also a mess, but it's not obvious how to improve it. Probably no one trying to get an ebook from NYPL is going to search for the 96th Street branch library specifically. But it is reasonable for someone to search for the "Irvine" library even though the ebooks come from the Orange County Public Library, or for the "Newtown CT" library even though the ebooks come from a consortium called Bibliomation.
-
-We also have a couple use cases not covered by Feedbooks or Overdrive: libraries that are accessible to everyone in the world (Open Library, Instant Classics), and libraries accessible to everyone in the United States who meets certain criteria (Open Ebooks, BARD).
+Searching is also a mess, but it's not obvious how to improve it in a way that benefits all the use cases above.
