@@ -18,6 +18,7 @@ Note that #2 is currently the responsibility of the circulation manager. We're m
 To join a registry, a library must provide the following:
 
 - Display Name - A unique name shown to patrons, e.g. “Brooklyn Public Library”.
+- Description - A short description of the purpose of the library and the population it serves.
 - Logo - Shown in the app when the library is selected. See below.
 - Color - one of a fixed set of values to be used as the text color in the app when the library is selected
 - Circulation Manager URL
