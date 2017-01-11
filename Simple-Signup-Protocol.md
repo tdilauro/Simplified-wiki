@@ -22,11 +22,9 @@ Here's an example Authentication for OPDS document with a `register` link.
 
 When an application (mobile or otherwise) sees a `register` link with a `type` of "text/html", it is allowed to open a web view to the URL in the link.
 
-The application SHOULD modify the registration URL to include a `redirect_uri` query parameter. This provides the equivalent of OAuth's [["redirection endpoint"|https://tools.ietf.org/html/rfc6749#section-3.1.2]].
-
 The application SHOULD modify the registration URL to include a `state` query parameter. This random string serves the same security purpose as the `state` query parameter in OAuth's [["Authorization Request"|https://tools.ietf.org/html/rfc6749#section-4.2.1]] definition.
 
-Example: `http://example.com/registration?state=594061549043850995&redirect_uri=opds://register`
+Example: `http://example.com/registration?state=594061549043850995`
 
 # The sign-up process
 
@@ -34,40 +32,35 @@ At this point the prospective patron goes through whatever web-based signup proc
 
 # Back to the client
 
-At some point, either the web view gets closed (because the patron has given up) or the web view is redirected to the `redirect_uri`. Here's the sort of HTTP response you might see from the signup server:
+At some point, either the web view gets closed (because the patron has given up) or the web view is redirected to the URI `opds://authorize`. Here's the sort of HTTP response you might see from the signup server:
 
 ```
 201 Created
-Location: opds://register?login=1004005&password=9102&state=594061549043850995
+Location: opds://authorize?login=1004005&password=9102&state=594061549043850995
 ```
 
-When the client sees that the web view has been redirected to the `redirect_uri`, it MUST close the web view. 
+When the client sees that the web view has been redirected to this URI, it MUST close the web view. 
 
 # Understanding the result
 
-The signup server communicates with the client by adding query parameters to the `redirect_uri` it was given. This specification defines the meaning of the following parameters:
+The signup server communicates with the client by adding query parameters to the basic `opds://authorize` URI. This specification defines the meaning of the following parameters:
 
-* `state` - If this was provided in the initial request to the signup server, it SHOULD be replicated in the `redirect_uri`. TODO: this is weak, see below.
+* `state` - If this was provided in the initial request to the signup server, it MUST be replicated in the final redirect URI. This gives client confidence that the signup was processed by the right server.
 * `login` - If the patron was issued a identifier (e.g. a username or barcode), or if an existing identifier for the patron was located, that identifier MUST be provided here. If no `login` is provided, it means that the process concluded without an identifier being associated with the patron -- perhaps the patron gave up on the process or it turned out they were not eligible.
 * `password` - If the patron chose or was issued a password to go along with their identifier, it MAY be provided here. A library may choose not to send the password to the OPDS client, or may not know the password to send it. If that happens, the patron will have to enter their password manually.
 
-If possible, the OPDS client MUST use the information contained in the `redirect_uri` to authenticate the patron (and complete the action they were trying to do when they got the original 401 error).
+If possible, the OPDS client MUST use the information contained in the redirect URI to authenticate the patron (and complete the action they were trying to do when they got the original 401 error).
 
 # Conclusion
 
 If the protocol is followed to completion, the patron now has a library card. The information they need to authenticate has been transferred to the OPDS client, and the OPDS client has logged them in.
 
-If the protocol is not followed to completion, the OPDS client will know. Either the web view will be closed prematurely, or the final redirect URI will be missing a `login` parameter. This might not be an error condition and SHOULD NOT be treated as one. Any error message that needed to be displayed, should have been displayed in the web view. The patron should be given the same choices they were given before the process started: to authenticate with the library, to (re)start the signup process with a fresh web view, or to cancel out and go back to the catalog.
+If the protocol is not followed to completion, the OPDS client will know. Either the web view will be closed prematurely, or the final redirect URI will be missing a `login` parameter. These cases do not necessarily indicate an error condition and SHOULD NOT be treated as errors. Any error message that needed to be displayed, should have been displayed in the web view. 
+
+If the protocol is not followed to completion, the patron should be given the same choices they were given before they started the process: to authenticate with the library, to (re)start the signup process with a fresh web view, or to cancel out and go back to the catalog.
 
 # Noncompliant servers
 
-It may not be possible to modify the signup server to support `callback_url`. In fact, it may not be possible to modify the signup server at all. This protocol can still be useful, so long as the OPDS client allows the user to manually kill the web view. 
+It may not be possible to modify the signup server to support the final redirect. In fact, it may not be possible to modify the signup server at all. This protocol can still be useful, so long as the OPDS client allows the user to manually kill the web view. 
 
 Remember, a prematurely killed web view is not an error condition. A user can launch the web view, sign up for a library card, manually kill the web view once they're done, and then log in with the barcode they were issued.
-
-# Open questions
-
-* Is `state` really useful? There's no guarantee the server can support it, and without such a guarantee the absence of `state` in the `redirect_uri` means nothing.
-* I believe `client_id` is not necessary because the sign-up process is assumed to be open to the general public, and the resulting credential is tied to the patron, not to any particular client.
-* Would `code` be useful?
-* Should there be restrictions on the URL schemes that are allowable in `redirect_uri`?
