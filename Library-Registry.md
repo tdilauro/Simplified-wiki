@@ -24,7 +24,8 @@ To join a registry, a library must provide the following:
 - Enabled/disabled flag - disabled libraries will be temporarily hidden from the registry’s OPDS feeds
 - Coverage area - Either a single lat/long representing the approximate center of the library's coverage area, or a polygon representing the entire coverage area. This lets the registry guide patrons to libraries near their current location. 
 - Alternate coverage criteria, if any (see below)
-- Vendor ID information (see below)
+- Short name for use in Adobe ID generation (see below)
+- Shared secret for use in Adobe ID generation (see below)
 
 ### Logo
 
