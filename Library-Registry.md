@@ -132,3 +132,5 @@ It's common for a country to have itself as a subsection. This happens with Braz
 Browsing the library list is a use case in search of a user. A list of all the libraries in California is useless, especially if you can't filter or sort it. A list of all the Overdrive libraries in Belgium is useful, because there's only one such library--but searching for "Belgium" or "Brussels" should also give you that library.
 
 Searching is also a mess, but it's not obvious how to improve it. No one (probably) is going to search for the 96th Street branch library specifically when trying to get an ebook, but it is reasonable for someone to search for the "Irvine" library even though the books come from the Orange County Public Library, or for the "Newtown CT" library even though the books come from a consortium called Bibliomation.
+
+We also have a couple use cases not covered by Feedbooks or Overdrive: libraries that are accessible to everyone in the world (Open Library, Instant Classics), and libraries accessible to everyone in the United States who meets certain criteria (Open Ebooks, BARD).
