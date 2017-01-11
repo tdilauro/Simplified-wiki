@@ -138,6 +138,8 @@ Note:  You'll probably want to run this script on a regular basis, to keep updat
 Run the ```python bin/metadata_wrangler_coverage``` script.  This will send a request to the MetadataWrangler service for more detailed information on the books you've got.  You'll know the script worked if the 
 ```sql select distinct quality, rating, popularity from works limit 5;``` query returns 5 distinct rows.
 
+You might want to run this script twice, a number of hours apart.  The first time you run it, the Metadata Wrangler service might not have information on all of your items already in its database.  In some cases, it will come back with a "don't know, but check in later" message.  It will then asynchronously consult its sources and try to find good metadata on the items.  The next time you run the script, you'll get a lot more of the data you asked for.
+
 
 ## Maintain Your Catalog:
 Once the catalog is loaded into the database, you'll need a way to check for and import any changes.  Do this with the 
