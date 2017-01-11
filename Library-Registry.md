@@ -76,3 +76,8 @@ The registry will have a top-level navigation feed that links to additional navi
 - Search by location
 
 For the initial version, there can be a single flat navigation feed with an entry for every library.
+
+# Configuration
+
+* Database - to hold library information and Adobe IDs.
+* S3 bucket - to hold library icons
