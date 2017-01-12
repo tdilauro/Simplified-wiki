@@ -22,9 +22,29 @@ Here's an example Authentication for OPDS document with a `register` link.
 
 When an application (mobile or otherwise) sees a `register` link with a `type` of "text/html", it is allowed to open a web view to the URL in the link.
 
-The application SHOULD modify the registration URL to include a `state` query parameter. This random string serves the same security purpose as the `state` query parameter in OAuth's [["Authorization Request"|https://tools.ietf.org/html/rfc6749#section-4.2.1]] definition.
+The client MUST modify the registration URL to include a `response_type` query parameter. The value of this parameter MUST be the literal string `client-password`. This tells the signup server that it's supposed to send back a login and password, rather than an OAuth Bearer Token or some other form of credentials.
 
-Example: `http://example.com/registration?state=594061549043850995`
+The client MUST modify the registration URL to include a value for the `state` query parameter. The value of this parameter MUST be a randomly generated string. It serves the same security purpose as the `state` query parameter in OAuth's [["Authorization Request"|https://tools.ietf.org/html/rfc6749#section-4.2.1]] definition.
+
+The client MUST modify the registration URL to include a `redirect_uri` query parameter. The value of this parameter MUST be an expansion of the following URI Template:
+
+```
+opds://authorize/{id}{?response_type,state}
+```
+
+The `id` parameter is REQUIRED. Its value MUST be the value of `"id"` found in the Authentication for OPDS document. It serves to inform the signup server which Authentication for OPDS document triggered the request for a new account.
+
+Here's an example expansion of the URI Template based on the Authentication for OPDS document given above:
+
+```
+opds://authorize/8e21cd8b-5075-4952-83c3-d37ac01df307
+```
+
+Here's how that URI would be sent to the signup server linked to in the Authentication for OPDS document given above:
+
+```
+http://example.com/registration?response_type=client-password&state=594061549043850995&redirect_uri=opds%3A//authorize/8e21cd8b-5075-4952-83c3-d37ac01df307'
+```
 
 # The sign-up process
 
@@ -32,24 +52,26 @@ At this point the prospective patron goes through whatever web-based signup proc
 
 # Back to the client
 
-At some point, either the web view gets closed (because the patron has given up) or the web view is redirected to the URI `opds://authorize`. Here's the sort of HTTP response you might see from the signup server:
+At some point, either the web view gets closed (because the patron has given up) or the web view is redirected to the `redirect_uri`. Here's the sort of HTTP response you might see from the signup server:
 
 ```
 201 Created
-Location: opds://authorize?login=1004005&password=9102&state=594061549043850995
+Location: opds://authorize/8e21cd8b-5075-4952-83c3-d37ac01df307?login=1004005&password=9102&state=594061549043850995
 ```
 
-When the client sees that the web view has been redirected to this URI, it MUST close the web view. 
+When the client sees that the web view has been redirected to the `redirect_uri`, it MUST close the web view. 
 
 # Understanding the result
 
-The signup server communicates with the client by adding query parameters to the basic `opds://authorize` URI. This specification defines the meaning of the following parameters:
+The signup server communicates with the client by adding query parameters to the basic `opds://authorize/{id}` URI. This specification defines the meaning of the following parameters:
 
-* `state` - If this was provided in the initial request to the signup server, it MUST be replicated in the final redirect URI. This gives client confidence that the signup was processed by the right server.
+* `state` - This MUST be the value of `state` that was provided in the initial request to the signup server. This gives client confidence that the signup was processed by the right server.
 * `login` - If the patron was issued a identifier (e.g. a username or barcode), or if an existing identifier for the patron was located, that identifier MUST be provided here. If no `login` is provided, it means that the process concluded without an identifier being associated with the patron -- perhaps the patron gave up on the process or it turned out they were not eligible.
 * `password` - If the patron chose or was issued a password to go along with their identifier, it MAY be provided here. A library may choose not to send the password to the OPDS client, or may not know the password to send it. If that happens, the patron will have to enter their password manually.
 
-If possible, the OPDS client MUST use the information contained in the redirect URI to authenticate the patron (and complete the action they were trying to do when they got the original 401 error).
+If possible, the OPDS client MUST then use the information contained in the redirect URI to authenticate the patron (and complete the action they were trying to do when they got the original 401 error).
+
+If the `state` doesn't match, it's an error condition that should be reported to the user.
 
 # Conclusion
 
