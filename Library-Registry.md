@@ -18,6 +18,8 @@ When it comes to helping people find circulation managers, we will start out by 
 3. Find sources of books based on geolocation of incoming IP address. (By estimating city from IP address and searching for a city.)
 4. Browse sources of books that serve the whole world or an entire country.
 
+Unlike Feedbooks and Overdrive, we will not initially be offering the ability to browse all participating libraries in a state. 
+
 # Use cases
 
 The Cyrenius H. Booth Library serves the town of Newtown, Connecticut. This library is part of the Bibliomation consortium, which provides their ebook service. Someone from Newtown who comes into SimplyE and looks for 'their' library is likely to search for "Newtown", not "Cyrenius" or "Bibliomation". If they choose "find libraries near me" and the only result is called "Bibliomation" they are likely think their library is not on SimplyE.
