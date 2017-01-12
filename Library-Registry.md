@@ -6,10 +6,17 @@ NYPL will operate a library registry containing all libraries that participate i
 
 The library registry has two main features:
 
-1. Provide OPDS navigation feeds that a user of your mobile app can use to find their local library.
+1. Provide OPDS navigation feeds that a user of your mobile app can use to find the circulation managers that participate in your app.
 2. (Optional) Implement the Adobe Authentication Web Service Specification so you can hand out Adobe IDs to users of your mobile application.
 
 Note that #2 is currently the responsibility of the circulation manager. We're moving it to the library registry because very few organizations need this feature, and the ones that do will also probably need a library registry.
+
+When it comes to helping people find circulation managers, we will start out by supporting these three use cases:
+
+1. Find sources of books that serve a given postal code.
+2. Find sources of books that serve a given town or city.
+3. Find sources of books based on geolocation of incoming IP address. (By estimating city from IP address and searching for a city.)
+4. Browse sources of books that serve the whole world or an entire country.
 
 # Use cases
 
