@@ -11,7 +11,7 @@ The library registry has two main features:
 
 Note that #2 is currently the responsibility of the circulation manager. We're moving it to the library registry because very few organizations need this feature, and the ones that do will also probably need a library registry.
 
-When it comes to helping people find circulation managers, we will start out by supporting these three use cases:
+When it comes to helping people find circulation managers, we will start out by supporting these four use cases:
 
 1. Find sources of books that serve a given postal code.
 2. Find sources of books that serve a given town or city.
