@@ -86,3 +86,5 @@ If the protocol is not followed to completion, the patron should be given the sa
 It may not be possible to modify the signup server to support the final redirect. In fact, it may not be possible to modify the signup server at all. This protocol can still be useful, so long as the OPDS client allows the user to manually kill the web view. 
 
 Remember, a prematurely killed web view is not an error condition. A user can launch the web view, sign up for a library card, manually kill the web view once they're done, and then log in with the barcode they were issued.
+
+As such, an OPDS for Authentication document MAY contain a link with the relationship "register" even if the resource at the other end of the link does not support the Simple Signup Protocol.
