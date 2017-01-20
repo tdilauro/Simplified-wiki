@@ -102,7 +102,7 @@ Local libraries generally serve a single city or town. List all the town names y
 
 ## Postal codes covered
 
-Provide the ZIP codes (or other postal codes) where your patrons live. This will help people find your library by searching for their postal code.
+Provide the ZIP codes (or other postal codes) where your patrons live. This will help people find your library by searching for their postal code. If we have the list of cities you serve, we can generate a corresponding list of ZIP codes for you, which should be pretty accurate.
 
 ## Branch locations (optional)
 
