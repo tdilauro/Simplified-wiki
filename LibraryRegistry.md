@@ -142,6 +142,8 @@ If you represent a group of local libraries who are all joining SimplyE, you hav
 
 In general, we recommend a separate entry for each individual library, even if all the entries go to the same circulation URL. We're trying to help people locate their library, and most people think of their library in terms of the city they live in, not the consortium the library belongs to.
 
+If all the libraries in your consortium have the same circulation URL, you can also add an entry for the consortium itself that points to that URL.
+
 # Adding a library to the registry
 
 For the initial version of the registry, someone from the simplified team will add libraries to the database manually.
