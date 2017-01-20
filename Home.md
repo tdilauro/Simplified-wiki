@@ -55,8 +55,8 @@ Currently, our active public repositories include:
 
 * [[Library registry|LibraryRegistry]]
 * [[Multiple collections in one circulation manager|MultipleCollections]]
+* [[Multiple libraries in one circulation manager|MultipleLibraries]]
 * [[Multiple authentication mechanisms in one circulation manager|MultipleAuthenticationMechanisms]]
-* [[Multiple libraries in one circulation manage|MultipleLibraries]]
 
 # Integrations
 
