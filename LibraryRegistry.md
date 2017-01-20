@@ -11,14 +11,14 @@ The library registry has two main features:
 
 Note that #2 is currently the responsibility of the circulation manager. We're moving it to the library registry because very few organizations need this feature, and the ones that do will also probably need a library registry.
 
-The library registry will start out as a static OPDS navigation feed listing a small number of participating libraries (NYPL, Brooklyn, Instant Classics and Open Ebooks). By the time the first Connecticut consortium launches, it will be a web application that acts as an Adobe ID server and supports these four use cases:
+The SimplyE library registry will start out as a static OPDS navigation feed listing a small number of participating libraries (NYPL, Brooklyn, Instant Classics and Open Ebooks). By the time the first Connecticut consortium launches, it will be a web application that acts as an Adobe ID server and supports these four use cases:
 
 1. Find libraries that serve a given postal code.
 2. Find libraries that serve a given town or city.
 3. Find nearby libraries based on geolocation of incoming IP address.
 4. Browse libraries that serve the whole world or an entire country.
 
-Unlike Feedbooks and Overdrive, we will not initially be offering the ability to browse all participating libraries in a state.
+Unlike Feedbooks and Overdrive, we do not plan to offer the ability to browse all participating libraries in a state or country.
 
 # Use cases
 
@@ -50,22 +50,30 @@ For guidance on what the description should look like, see your type of library 
 
 In general, this is not a great place for feel-good phrases like "serving with pride". People are trying to find a library that serves _them_ in particular.
 
-## Semi-required information
+# Semi-required information
 
 These are not technically required but will be used in most cases.
 
 - Short name for use in Adobe ID generation
 - Shared secret for use in Adobe ID generation
 
-## For local libraries
+# For local libraries
 
-### Description
+## Description
 
 Say which area you serve, and be specific. ("Serving Springfield, IL", not "Serving Springfield" or "Serving the Springfield area").
 
-## For national libraries
+## Cities covered
 
-### Description
+Local libraries generally serve a single city or town. List all the town names you serve, each with its state. If you serve a large city, you may also want to list the names of neighborhoods.
+
+## Postal codes covered
+
+Provide the ZIP codes where your patrons live. This will help people find your library by searching for their ZIP code.
+
+# For national libraries
+
+## Description
 
 Say which nation you serve.
 
@@ -73,15 +81,13 @@ If you serve everyone in your nation, say so. If there are other national-scale 
 
 If you serve a non-geographic subset of your nation, such as the visually impaired, explain who you serve and also mention what's in the collection. 
 
-## For universal libraries
+# For universal libraries
 
-### Description
+## Description
 
 Say that your library is open to everyone and explain what's in your collection.
 
-## Cities covered
 
-Most libraries serve inhabitants of one city, or a small number of cities. 
 
 If you serve
 
@@ -95,7 +101,7 @@ These items are optional:
 - Logo - A small graphic representing your library. This is shown in SimplyE when your library is selected, and it's also shown when your library shows up in lists. See below for details.
 - Color - One of a fixed set of values to be used as the text color in the app when the library is selected. By default, SimplyE uses a grey color scheme.
 - Alternate library names - If your library is known by an abbreviation or a nickname, provide it so we can use it when handling searches.
-- ZIP codes covered - If your library serves residents of particular ZIP codes, provide those ZIP codes. This will help people find your library by searching for their ZIP code.
+
 - Branch location(s) - If your library has one or more physical branches, 
 - Coverage area shapefile - If you have an ESRI shapefile for the area your library covers, provide it. Most of the time it's easier to provide city names and ZIP codes.
 - Online signup link - If you offer your patrons the opportunity to sign up for a library card online, and you want us to advertise this fact in the registry, send us the link to the signup form. To actually get this to work, you will also need to configure your circulation manager or Authentication for OPDS document with the online signup link. We don't store this link, we only need it for verification purposes so we can flip a yes/no switch.
