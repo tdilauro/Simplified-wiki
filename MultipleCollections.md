@@ -97,4 +97,6 @@ We need interfaces for doing the following:
 
 Removing a collection should only be possible if there are no license pools associated with the collection.
 
+Renaming a collection is a pretty big deal since it changes the URLs. Anyone using SimplyE when you rename a collection is likely to get errors until they load the new OPDS feeds. (For this reason maybe we should start serving the collection IDs instead of the names?)
+
 When you load the list of collections, it should (in the background) trigger the self-test for each one and display the results as they come back.
