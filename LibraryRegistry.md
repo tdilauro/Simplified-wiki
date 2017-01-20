@@ -30,24 +30,94 @@ Unlike Feedbooks and Overdrive, we will not initially be offering the ability to
 
 * The Open Ebooks collection is open to a lot of the schoolchildren in the United States, including some who are too young to navigate a complex library selection screen. Open Ebooks can be thought of as a library that covers the entire United States but which does not serve everyone in that geographic region.
 
-# Information per library
+# Required information
 
-To join a registry, a library must provide the following:
+To join a registry, a library must provide the following pieces of information.
 
-- Circulation Manager URL
-- Display Name - A unique name shown to patrons, e.g. “Brooklyn Public Library”.
-- Coverage - A short explanation of who the library serves. If you serve a geographic city or region, say which one and be specific. ("Serving Springfield, IL", not "Serving Springfield" or "Serving the Springfield area"). If you serve a nongeographic community, such as the visually impaired, explain that and also mention what's in the collection. If you serve everybody, say that and explain what's in your collection. This is not a great place for feel-good phrases like "serving with pride". People are trying to figure out which libraries serve _them_ in particular.
-- Logo - Shown in the app when the library is selected. See below. Optional.
-- Color - one of a fixed set of values to be used as the text color in the app when the library is selected. Optional.
-- Enabled/disabled flag - disabled libraries will be temporarily hidden from the registry’s OPDS feeds
-- Coverage area - Either a single lat/long representing the approximate center of the library's coverage area, or a polygon representing the entire coverage area. This lets the registry guide patrons to libraries near their current location. 
+## Circulation URL
+
+The OPDS root for your library. If you have your own circulation manager, this will be the URL to that circulation manager. If you share a circulation manager with other libraries, this will be your library-specific URL on that circulation manager. If you have created custom OPDS software or static OPDS feeds, this will be the root URL for that piece of software or those feeds.
+
+## Display name
+
+The name of your library, as it should be shown to patrons. e.g. "Brooklyn Public Library"
+
+## Description
+
+A short human-readable explanation of who the library serves. This shows up in search results and helps a patron figure out which "Springfield Public Library" is the one they want, or whether they can get books from this particular "Library for the Blind".
+
+For guidance on what the description should look like, see your type of library below.
+
+In general, this is not a great place for feel-good phrases like "serving with pride". People are trying to find a library that serves _them_ in particular.
+
+## Semi-required information
+
+These are not technically required but will be used in most cases.
+
+- Short name for use in Adobe ID generation
+- Shared secret for use in Adobe ID generation
+
+## For local libraries
+
+### Description
+
+Say which area you serve, and be specific. ("Serving Springfield, IL", not "Serving Springfield" or "Serving the Springfield area").
+
+## For national libraries
+
+### Description
+
+Say which nation you serve.
+
+If you serve everyone in your nation, say so. If there are other national-scale libraries, also explain what's in your collection, so that patrons can distinguish between your library and others.
+
+If you serve a non-geographic subset of your nation, such as the visually impaired, explain who you serve and also mention what's in the collection. 
+
+## For universal libraries
+
+### Description
+
+Say that your library is open to everyone and explain what's in your collection.
+
+## Cities covered
+
+Most libraries serve inhabitants of one city, or a small number of cities. 
+
+If you serve
+
+
+
+
+- Enabled/disabled flag - disabled libraries will be hidden from the registry’s OPDS feeds. We'll start your library off in a disabled state and flip the switch after we verify everything is working.
+
+
+These items are optional:
+- Logo - A small graphic representing your library. This is shown in SimplyE when your library is selected, and it's also shown when your library shows up in lists. See below for details.
+- Color - One of a fixed set of values to be used as the text color in the app when the library is selected. By default, SimplyE uses a grey color scheme.
+- Alternate library names - If your library is known by an abbreviation or a nickname, provide it so we can use it when handling searches.
+- ZIP codes covered - If your library serves residents of particular ZIP codes, provide those ZIP codes. This will help people find your library by searching for their ZIP code.
+- Branch location(s) - If your library has one or more physical branches, 
+- Coverage area shapefile - If you have an ESRI shapefile for the area your library covers, provide it. Most of the time it's easier to provide city names and ZIP codes.
+- Online signup link - If you offer your patrons the opportunity to sign up for a library card online, and you want us to advertise this fact in the registry, send us the link to the signup form. To actually get this to work, you will also need to configure your circulation manager or Authentication for OPDS document with the online signup link. We don't store this link, we only need it for verification purposes so we can flip a yes/no switch.
 - Alternate coverage criteria, if any (see below)
-- Short name for use in Adobe ID generation (see below)
-- Shared secret for use in Adobe ID generation (see below)
+
 
 ### Logo
 
 Requirements for size, aspect ratio, transparency and palette are TBD. The image should be mirrored somewhere by the registry provider so it won’t break if the original link stops working.
+
+### Description
+
+
+
+### Coverage area
+
+Before a patron sees a human-readable description of 
+
+- ZIP codes
+- City or town names
+- 
+
 
 ### Alternate coverage criteria
 
