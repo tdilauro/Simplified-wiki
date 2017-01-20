@@ -57,6 +57,22 @@ These are not technically required but will be used in most cases.
 - Short name for use in Adobe ID generation
 - Shared secret for use in Adobe ID generation
 
+# Optional information
+
+Provide this information if it's useful, but you don't have to come up with it if you don't have it.
+
+## Logo 
+
+A small graphic representing your library. This is shown in SimplyE when your library is selected. It's also shown when your library shows up in lists. 
+
+## Color
+
+One of a fixed set of values to be used as the core color in the app once the library is selected. If your library uses a distinctive color scheme, choose the color that best fits your scheme. By default, SimplyE uses a grey color scheme.
+
+## Alternate names
+
+If your library is known by an abbreviation or a nickname, provide it so we can use it when handling searches.
+
 # For local libraries
 
 ## Description
@@ -98,9 +114,7 @@ If you serve
 
 
 These items are optional:
-- Logo - A small graphic representing your library. This is shown in SimplyE when your library is selected, and it's also shown when your library shows up in lists. See below for details.
-- Color - One of a fixed set of values to be used as the text color in the app when the library is selected. By default, SimplyE uses a grey color scheme.
-- Alternate library names - If your library is known by an abbreviation or a nickname, provide it so we can use it when handling searches.
+
 
 - Branch location(s) - If your library has one or more physical branches, 
 - Coverage area shapefile - If you have an ESRI shapefile for the area your library covers, provide it. Most of the time it's easier to provide city names and ZIP codes.
