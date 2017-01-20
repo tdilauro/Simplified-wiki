@@ -140,11 +140,10 @@ Say that your library is open to everyone and explain what's in your collection.
 
 If you represent a group of local libraries who are all joining SimplyE, you have two choices. You can have a separate entry for each individual library, or you can have one entry for the consortium itself.
 
-In general, we recommend a separate entry for each individual library, even if all the entries go to 
-
-If you representa 
+In general, we recommend a separate entry for each individual library, even if all the entries go to the same circulation URL. We're trying to help people locate their library, and most people think of their library in terms of the city they live in, not the consortium the library belongs to.
 
 # Adding a library to the registry
+
 For the initial version of the registry, someone from the simplified team will add libraries to the database manually.
 
 Later, the registry will have a form for a library to fill out when its circulation manager is ready. This will add the library to the database. It might be disabled until someone from the simplified team reviews and enables it. We’ll need to determine what this process should be, and do as much validation as possible automatically when the form is submitted. 
