@@ -11,14 +11,14 @@ The library registry has two main features:
 
 Note that #2 is currently the responsibility of the circulation manager. We're moving it to the library registry because very few organizations need this feature, and the ones that do will also probably need a library registry.
 
-When it comes to helping people find circulation managers, we will start out by supporting these four use cases:
+The library registry will start out as a static OPDS navigation feed listing a small number of participating libraries (NYPL, Brooklyn, Instant Classics and Open Ebooks). By the time the first Connecticut consortium launches, it will be a web application that acts as an Adobe ID server and supports these four use cases:
 
-1. Find sources of books that serve a given postal code.
-2. Find sources of books that serve a given town or city.
-3. Find sources of books based on geolocation of incoming IP address. (By estimating city from IP address and searching for a city.)
-4. Browse sources of books that serve the whole world or an entire country.
+1. Find libraries that serve a given postal code.
+2. Find libraries that serve a given town or city.
+3. Find nearby libraries based on geolocation of incoming IP address.
+4. Browse libraries that serve the whole world or an entire country.
 
-Unlike Feedbooks and Overdrive, we will not initially be offering the ability to browse all participating libraries in a state. 
+Unlike Feedbooks and Overdrive, we will not initially be offering the ability to browse all participating libraries in a state.
 
 # Use cases
 
