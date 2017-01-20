@@ -22,23 +22,23 @@ Unlike Feedbooks and Overdrive, we will not initially be offering the ability to
 
 # Use cases
 
-The Cyrenius H. Booth Library serves the town of Newtown, Connecticut. This library is part of the Bibliomation consortium, which provides their ebook service. Someone from Newtown who comes into SimplyE and looks for 'their' library is likely to search for "Newtown", not "Cyrenius" or "Bibliomation". If they choose "find libraries near me" and the only result is called "Bibliomation" they are likely think their library is not on SimplyE.
+* The Cyrenius H. Booth Library serves the town of Newtown, Connecticut. This library is part of the Bibliomation consortium, which provides their ebook service. Someone from Newtown who comes into SimplyE and looks for 'their' library is likely to search for "Newtown", not "Cyrenius" or "Bibliomation". If they choose "find libraries near me" and the only result is called "Bibliomation" they are likely think their library is not on SimplyE.
 
-The 53rd Street Library is a branch of the New York Public Library. Someone who thinks of that branch as 'their' library will probably go into SimplyE and search for "NYPL" to find "their" library. They're probably not going to search for "53rd Street" or "New York Public Library". If they choose "find libraries near me" they will expect to see "New York Public Library", not "53rd street", "Columbus Library", "Mid-Manhattan Library", etc.
+* The 53rd Street Library is a branch of the New York Public Library. Someone who thinks of that branch as 'their' library will probably go into SimplyE and search for "NYPL" to find "their" library. They're probably not going to search for "53rd Street" or "New York Public Library". If they choose "find libraries near me" they will expect to see "New York Public Library", not "53rd street", "Columbus Library", "Mid-Manhattan Library", etc.
 
-The Internet Archive's Open Library is open to everyone with Internet access, but relatively few people will open up SimplyE looking for it.
+* The Internet Archive's Open Library is open to everyone with Internet access, but relatively few people will open up SimplyE looking for it.
 
-The Open Ebooks collection is open to a lot of the schoolchildren in the United States, including some who are too young to navigate a complex library selection screen. Open Ebooks can be thought of as a library that covers the entire United States but which does not serve everyone in that geographic region.
+* The Open Ebooks collection is open to a lot of the schoolchildren in the United States, including some who are too young to navigate a complex library selection screen. Open Ebooks can be thought of as a library that covers the entire United States but which does not serve everyone in that geographic region.
 
 # Information per library
 
 To join a registry, a library must provide the following:
 
-- Display Name - A unique name shown to patrons, e.g. “Brooklyn Public Library”.
-- Description - A short description of the purpose of the library and the population it serves.
-- Logo - Shown in the app when the library is selected. See below.
-- Color - one of a fixed set of values to be used as the text color in the app when the library is selected
 - Circulation Manager URL
+- Display Name - A unique name shown to patrons, e.g. “Brooklyn Public Library”.
+- Coverage - A short explanation of who the library serves. If you serve a geographic city or region, say which one and be specific. ("Serving Springfield, IL", not "Serving Springfield" or "Serving the Springfield area"). If you serve a nongeographic community, such as the visually impaired, explain that and also mention what's in the collection. If you serve everybody, say that and explain what's in your collection. This is not a great place for feel-good phrases like "serving with pride". People are trying to figure out which libraries serve _them_ in particular.
+- Logo - Shown in the app when the library is selected. See below. Optional.
+- Color - one of a fixed set of values to be used as the text color in the app when the library is selected. Optional.
 - Enabled/disabled flag - disabled libraries will be temporarily hidden from the registry’s OPDS feeds
 - Coverage area - Either a single lat/long representing the approximate center of the library's coverage area, or a polygon representing the entire coverage area. This lets the registry guide patrons to libraries near their current location. 
 - Alternate coverage criteria, if any (see below)
