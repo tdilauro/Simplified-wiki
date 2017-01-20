@@ -51,6 +51,8 @@ Currently, our active public repositories include:
 * [[DRM autodiscovery|DRM-Autodiscovery]]
 * [[The ACS Device Management Protocol|DRM-Device-Management]]
 
+# Proposed changes
+
 # Integrations
 
 ## Sources of content
