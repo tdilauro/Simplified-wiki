@@ -70,9 +70,19 @@ The SimplyE team will generate this string and share it with you. It needs to go
 
 A small graphic representing your library. This is shown in SimplyE when your library is selected. It's also shown when your library shows up in lists. 
 
+Requirements for size, aspect ratio, transparency and palette are TBD.
+
 ## Color (optional)
 
 One of a fixed set of values to be used as the core color in the app once the library is selected. If your library uses a distinctive color scheme, choose the color that best fits your scheme. By default, SimplyE uses a grey color scheme.
+
+## Online signup link (optional) 
+
+If you offer your patrons the opportunity to sign up for a library card online, and you want us to advertise this fact in the registry, send us the link to the signup form. To actually get this to work, you will also need to configure your circulation manager or Authentication for OPDS document with the online signup link. We don't store this link, we only need it for verification purposes so we can flip a yes/no switch.
+
+## No registration required (optional)
+
+Most libraries require patrons to register and authenticate to gain access, but some are open to everyone without requiring registration. If your library is like this, let us know and we'll explain this to prospective patrons.
 
 ## Alternate names (optional)
 
@@ -88,7 +98,7 @@ Say which area you serve, and be specific. ("Serving Springfield, IL", not "Serv
 
 ## Cities covered
 
-Local libraries generally serve a single city or town. List all the town names you serve, each with its state. If you serve a large city, you may also want to list the names of neighborhoods.
+Local libraries generally serve a single city or town. List all the town names you serve, each with its state. If you serve a large city, you may also want to list the names of neighborhoods. If you serve an area larger than a city, you may also want to include county names or the names of other political divisions.
 
 ## Postal codes covered
 
@@ -108,13 +118,13 @@ National libraries either serve everyone in the nation, or a non-geographic subs
 
 ## Nation
 
-We need to know which country you're serving so we can group you with other libraries in that country.
+We need to know which country you serve so we can group you with other libraries in that country.
 
 ## Description guidelines
 
-Say which nation you serve. 
+Again, explicitly state which nation you serve. 
 
-If you serve everyone in your nation, say so. If there are other national-scale libraries, also explain what's in your collection, so that patrons can distinguish between your library and others.
+If you serve everyone in your nation, say so. If there are other national-scale libraries, also explain what's in your collection, so that patrons can distinguish between your library and other national libraries.
 
 If you serve a non-geographic subset of your nation, such as the visually impaired, explain who you serve and also mention what's in the collection. 
 
@@ -126,52 +136,15 @@ Universal libraries are open to everyone in the world.
 
 Say that your library is open to everyone and explain what's in your collection.
 
+# For library consortia
 
-- Enabled/disabled flag - disabled libraries will be hidden from the registry’s OPDS feeds. We'll start your library off in a disabled state and flip the switch after we verify everything is working.
+If you represent a group of local libraries who are all joining SimplyE, you have two choices. You can have a separate entry for each individual library, or you can have one entry for the consortium itself.
 
+In general, we recommend a separate entry for each individual library, even if all the entries go to 
 
-These items are optional:
+If you representa 
 
-
-- Branch location(s) - If your library has one or more physical branches, 
-- 
-- Online signup link - If you offer your patrons the opportunity to sign up for a library card online, and you want us to advertise this fact in the registry, send us the link to the signup form. To actually get this to work, you will also need to configure your circulation manager or Authentication for OPDS document with the online signup link. We don't store this link, we only need it for verification purposes so we can flip a yes/no switch.
-- Alternate coverage criteria, if any (see below)
-
-
-### Logo
-
-Requirements for size, aspect ratio, transparency and palette are TBD. The image should be mirrored somewhere by the registry provider so it won’t break if the original link stops working.
-
-### Description
-
-
-
-### Coverage area
-
-Before a patron sees a human-readable description of 
-
-- ZIP codes
-- City or town names
-- 
-
-
-### Alternate coverage criteria
-
-Most registry entries represent public libraries who serve everyone in a small geographic area. On its own, "coverage area" handles these collections. But some collections are different.
-
-* Instant Classics and the Internet Archive's Open Library serve everyone with Internet access.
-* Open Ebooks and NLS BARD cover the entire United States, but serve only subsets of the US population. 
-
-It is not practical to specify in machine-readable form the requirements for every library that doesn't fit the "everyone in a small area" mold. Instead, we need a human-readable description of who qualifies for access for each such collection. We should be able to create some basic groupings: "universal", "educational", "accessibility", "commercial", etc.
-
-### Vendor ID information
-
-Library Simplified circulation managers may be configured with a short library name and a shared secret. A circulation manager thus configured will start giving out tokens that may be used to activate a device with Adobe, using an Adobe ID provided by the library registry. For this to work, the library registry must know each library's short library name and shared secret, and the short library name must be unique across all that registry's libraries.
-
-If a library does not authenticate patrons, or does not offer any books that are encrypted with Adobe DRM, there is no need to configure the Vendor ID information.
-
-## Adding a library to the registry
+# Adding a library to the registry
 For the initial version of the registry, someone from the simplified team will add libraries to the database manually.
 
 Later, the registry will have a form for a library to fill out when its circulation manager is ready. This will add the library to the database. It might be disabled until someone from the simplified team reviews and enables it. We’ll need to determine what this process should be, and do as much validation as possible automatically when the form is submitted. 
