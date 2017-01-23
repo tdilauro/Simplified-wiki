@@ -20,6 +20,10 @@ The SimplyE library registry will start out as a static OPDS navigation feed lis
 
 Unlike Feedbooks and Overdrive, we do not plan to offer the ability to browse all participating libraries in a state or country.
 
+This document explains what information a library or consortium needs to join the library registry. For implementation details see the [[LibraryRegistryDesign|library registry design document]].
+
+# Joining the registry
+
 # Use cases
 
 * The Cyrenius H. Booth Library serves the town of Newtown, Connecticut. This library is part of the Bibliomation consortium, which provides their ebook service. Someone from Newtown who comes into SimplyE and looks for 'their' library is likely to search for "Newtown", not "Cyrenius" or "Bibliomation". If they choose "find libraries near me" and the only result is called "Bibliomation" they are likely think their library is not on SimplyE.
