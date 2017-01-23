@@ -36,8 +36,6 @@ For guidance on what the description should look like, see your type of library 
 
 Use the language you expect your patrons to read. (TODO: we need a localization strategy for bilingual libraries.)
 
-In general, this is not a great place for feel-good phrases like "serving with pride". People are trying to find a library that serves _them_ in particular.
-
 ## Adobe ID information (optional)
 
 This is marked as optional, but if your library controls access to any books that are encrypted with Adobe DRM, you really should provide it. If you have any books from Overdrive, Bibliotheca, or Axis 360, you need this. Providing it when it's not necessary does no harm.
