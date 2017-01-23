@@ -133,7 +133,9 @@ A library may serve many regions. Regions stack inside each other (e.g. cities a
 regions
  id
  name
+ abbreviated_name
  parent_region_id
+ location_id
  is_city
  is_nation
 ```
@@ -170,7 +172,47 @@ postal_codes
  region_id
 ```
 
+A library may be associated with multiple postal codes.
+
 Note that a postal code may be associated with one location and one region.
+
+# Data population
+
+We can add each US ZIP code to the database, along with the city associated with that ZIP code in [[the Geonames dataset|http://download.geonames.org/export/zip/]], and the shapefile associated with the corresponding ZIP Code Tabulation Area (available from [[TIGER|https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html]]).
+
+[[ZIP codes are not areas|http://www.georeference.org/doc/zip_codes_are_not_areas.htm]], but Zip Code Tabulation Areas are close enough for our purposes.
+
+We can also create a region for each city, county, and state in the US, and associate each with a shapefile we got from TIGER.
+
+# Implementing the use cases
+
+## Search by postal code
+
+This is the simplest case, so we do it first. If there is a search query, we try to match it against `postalcodes.code`. This either gives us nothing (in which case we continue) or it gives us a single location.
+
+Then we run a GIS query to find the libraries whose locations are nearest that location. These are the libraries we return.
+
+## Estimate user's location based on IP address
+
+In all other cases, we need to get a shapefile representing the user's approximate current location. We will either use this information directly to find a nearby library, or we will use it to sort search results by proximity.
+
+## Find nearby libraries
+
+If there is no search query, we need to get from the user's current location to nearby locations associated with libraries, either through region or postal code. This requires doing a GIS search against the `locations` table.
+
+## Find matching locations
+
+If there is a search query, we need to find locations that match the search. There are several ways of doing this.
+
+### Search by library name
+
+We run a search against `libraries.name` and `aliases.name`. This gives us a number of libraries, each with a number of associated locations. We sort the list by proximity to the user's current location.
+
+### Search by city
+
+We run a search against `regions.name` and `regions.abbreviated_name` and look up all regions that match and are associated with libraries. We sort the list by proximity to the user's current location.
+
+We will need to handle queries like `paris, tx`. In this case the user is providing two region names and wants to find only regions that match both.
 
 # Configuration
 
