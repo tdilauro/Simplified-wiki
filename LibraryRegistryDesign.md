@@ -154,7 +154,9 @@ locations
 
 If `shapefile` is provided as well as `latitude` and `longitude`, it's presumed that the latitude/longitude pair is a _representative_ point within the area described by the shapefile.
 
-A library may have multiple locations.
+A library may be associated with multiple locations.
+
+A region may be associated with multiple locations.
 
 ## Postal codes
 
@@ -167,6 +169,8 @@ postal_codes
  location_id
  region_id
 ```
+
+Note that a postal code may be associated with one location and one region.
 
 # Configuration
 
