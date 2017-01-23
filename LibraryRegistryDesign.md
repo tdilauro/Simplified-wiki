@@ -90,6 +90,61 @@ The registry will have a top-level navigation feed that links to additional navi
 
 For the initial version, there can be a single flat navigation feed with an entry for every library.
 
+# Database design
+
+Hopefully we will be able to store library icons as binary objects in the database, and send them inline in the OPDS feeds using `data:` URIs. If not, we'll need to store them in an S3 bucket and keep track of the URLs.
+
+## Libraries
+
+```
+libraries
+ id
+ circulation_url
+ display_name
+ description
+ logo or logo_url
+ color
+ patron_policy
+ shapefile
+ adobe_name
+ adobe_secret
+```
+
+## Aliases
+
+A library may have many aliases. "BPL" and "Bklyn" are aliases for the Brooklyn Public Library. "BPL" is also an alias for the Boston Public Library.
+
+```
+aliases
+ id
+ library_id
+ name
+```
+## Regions
+
+A library may serve many regions. Regions stack inside each other (e.g. cities are inside states). There are many possible ways to stack regions (cities are inside counties are inside states) but we are not interested in creating a perfectly accurate picture of political reality. We only need to do work if it helps people find their library.
+
+```
+regions
+ id
+ name
+ parent_region_id
+ is_city
+ is_nation
+```
+
+## Postal codes
+
+We treat a postal code as a numeric code that corresponds to a shape and/or a point on the globe. Although the overlap is not perfect, postal codes are generally associated with a single region.
+
+```
+postal_codes
+ latitude
+ longitude
+ shape
+ region_id
+```
+
 # Configuration
 
 * Database - to hold library information and Adobe IDs.
