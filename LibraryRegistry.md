@@ -6,7 +6,7 @@ NYPL will operate a library registry containing all libraries that participate i
 
 The SimplyE library registry will start out as a static OPDS navigation feed listing a small number of participating libraries (NYPL, Brooklyn, Instant Classics and Open Ebooks). By the time the first Connecticut consortium launches, it will be a web application that guides patrons to the library or libraries that serve them.
 
-This document explains what information a library or consortium needs to join the library registry. For implementation details see the [[LibraryRegistryDesign|library registry design document]].
+This document explains what information a library or consortium needs to join the library registry. For implementation details see the [[library registry design document|LibraryRegistryDesign]].
 
 # Joining the registry
 
