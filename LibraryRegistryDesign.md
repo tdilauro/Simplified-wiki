@@ -94,7 +94,10 @@ For the initial version, there can be a single flat navigation feed with an entr
 
 Hopefully we will be able to store library icons as binary objects in the database, and send them inline in the OPDS feeds using `data:` URIs. If not, we'll need to store them in an S3 bucket and keep track of the URLs.
 
+
 ## Libraries
+
+Any institution that has a circulation URL is a library.
 
 ```
 libraries
@@ -105,14 +108,13 @@ libraries
  logo or logo_url
  color
  patron_policy
- shapefile
  adobe_name
  adobe_secret
 ```
 
 ## Aliases
 
-A library may have many aliases. "BPL" and "Bklyn" are aliases for the Brooklyn Public Library. "BPL" is also an alias for the Boston Public Library.
+A library may have many aliases. An alias is an alternate name for the library organization itself.
 
 ```
 aliases
@@ -120,6 +122,9 @@ aliases
  library_id
  name
 ```
+
+"BPL" and "Bklyn" are aliases for the Brooklyn Public Library. "BPL" is also an alias for the Boston Public Library. "Brooklyn" is not an alias for the Brooklyn Public Library; it's a region (q.v.) the library serves.
+
 ## Regions
 
 A library may serve many regions. Regions stack inside each other (e.g. cities are inside states). There are many possible ways to stack regions (cities are inside counties are inside states) but we are not interested in creating a perfectly accurate picture of political reality. We only need to do work if it helps people find their library.
@@ -133,15 +138,33 @@ regions
  is_nation
 ```
 
+A library may serve many regions.
+
+## Locations
+
+A location represents a point or area on the globe.
+
+```
+locations
+ id
+ latitude
+ longitude
+ shapefile
+```
+
+If `shapefile` is provided as well as `latitude` and `longitude`, it's presumed that the latitude/longitude pair is a _representative_ point within the area described by the shapefile.
+
+A library may have multiple locations.
+
 ## Postal codes
 
-We treat a postal code as a numeric code that corresponds to a shape and/or a point on the globe. Although the overlap is not perfect, postal codes are generally associated with a single region.
+We treat a postal code as a short string that corresponds to a location. Although the overlap is not perfect, postal codes are also generally associated with a single region.
 
 ```
 postal_codes
- latitude
- longitude
- shape
+ id
+ name
+ location_id
  region_id
 ```
 
