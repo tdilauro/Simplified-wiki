@@ -31,18 +31,48 @@ For the initial version of the registry, the Library Simplified team will accept
 
 Later, the registry will have a form for a library to fill out when its circulation manager is ready. This will add the library to the database. It might be disabled until someone from the simplified team reviews and enables it. We’ll need to determine what this process should be, and do as much validation as possible automatically when the form is submitted. 
 
+# Resource design
 
+The library registry provides a set of OPDS navigation feeds. Each `<entry>` represents a library, links to that library’s circulation URL, and provides display information needed by the clients.
 
+## Top level
 
-## OPDS Feeds
-The library registry provides a set of OPDS navigation feeds, where each library entry links to a library’s circulation manager URL, and provides display information needed by the clients.
+In the first version, the top-level resource is an OPDS navigation feed containing an `<entry>` for each in a preset list of libraries.
+
+In the second version, the top-level resource is an OPDS navigation feed that links to an OpenSearch document (see below) and which contains an `<entry>` for a small number of nearby libraries. "Nearby" is determined using some as-yet-unknown geolocation technique. If geolocation takes too long, we will bail out and just show an empty feed.
+
+It might be that we have to give certain libraries special treatment, (e.g. always put Open Ebooks on the front page so that kids won't have to navigate).
+
+## OpenSearch document
+
+The OpenSearch document explains how to run a search for your library.
+
+```
+<OpenSearchDescription>
+ <ShortName>SimplyE Library Search</ShortName>
+ <Description>Search for your library by name, city or postal code</Description>
+ <InputEncoding>UTF-8</InputEncoding>
+ <OutputEncoding>UTF-8</OutputEncoding>
+ <Url type="application/atom+xml" template="https://catalog.librarysimplified.org/search.atom?query={searchTerms}"/>
+</OpenSearchDescription>
+```
+
+It might be helpful to do another geolocation lookup and insert the name of the guessed city into a `<Query>` tag:
+
+```
+<Query role="example" searchTerms="Columbus"/>
+```
+
+More likely we should not bother. If someone needs to do a search it's probably because our attempt to find nearby libraries has failed them.
+
+## Library entry
 
 Example library entry:
 ```
-<entry>
+<entry simplified:signup_policy="online">
   <id>1</id>
   <title>New York Public Library</title>
-  <content>New York Public Library</content>
+  <content>Serving the five boroughs of New York City, NY.</content>
   <updated_at>2017-01-01T00:00:00Z</updated_at>
   <link rel="http://opds-spec.org/catalog" href="https://circulation.librarysimplified.org“ title=“New York Public Library“/>
   <link rel="alternate" href="/entry/1" type="application/atom+xml;type=entry"/>
