@@ -112,12 +112,12 @@ libraries
  adobe_secret
 ```
 
-## Aliases
+## Library Aliases
 
 A library may have many aliases. An alias is an alternate name for the library organization itself.
 
 ```
-aliases
+libraryaliases
  id
  library_id
  name
@@ -127,20 +127,35 @@ aliases
 
 ## Regions
 
-A library may serve many regions. Regions stack inside each other (e.g. cities are inside states). There are many possible ways to stack regions (cities are inside counties are inside states) but we are not interested in creating a perfectly accurate picture of political reality. We only need to do work if it helps people find their library.
+A library may serve many regions. Postal codes, cities, counties, states, provinces, and nations are all regions. Regions stack inside each other in various ways, but we are not interested in creating a perfectly accurate picture of political reality. We only need to do work if it helps people find their library. As such, although we keep track of a region's parent region, this is mainly for internal record-keeping.
 
 ```
 regions
  id
  name
  abbreviated_name
- parent_region_id
- location_id
- is_city
- is_nation
+ full_name
+ parent_id
 ```
 
 A library may serve many regions.
+
+The `abbreviated_name` for the state of Ohio will be "OH".
+
+The `full_name` for Detroit is "Detroit MI". The idea here is to have a place to store a common search term (the way you refer to a city when addressing a letter) without requiring an entry in `regionaliases` for every ordinary city in the United States.
+
+## Region Aliases
+
+A region may have many aliases. An alias is an alternate name for the region that we expect someone to use when searching.
+
+```
+regionaliases
+ id
+ region_id
+ name
+```
+
+Aliases for New York City include "NYC" and "New York NY". (The automatically generated `full_name` of New York City will be "New York City NY", so we need an alias for the more common form.)
 
 ## Locations
 
@@ -160,29 +175,13 @@ A library may be associated with multiple locations.
 
 A region may be associated with multiple locations.
 
-## Postal codes
-
-We treat a postal code as a short string that corresponds to a location. Although the overlap is not perfect, postal codes are also generally associated with a single region.
-
-```
-postal_codes
- id
- name
- location_id
- region_id
-```
-
-A library may be associated with multiple postal codes.
-
-Note that a postal code may be associated with one location and one region.
-
 # Data population
 
-We can add each US ZIP code to the database, along with the city associated with that ZIP code in [[the Geonames dataset|http://download.geonames.org/export/zip/]], and the shapefile associated with the corresponding ZIP Code Tabulation Area (available from [[TIGER|https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html]]).
+We will create a region for each city, county, and state in the US, and associate each with a shapefile we got from TIGER. Each city and county will be given a `full_name` that appends its state. (e.g. "Orange County CA" and "Orange County FL").
+
+We will create a region for each US ZIP code. The parent of a ZIP code region will be the city associated with that ZIP code in [[the Geonames dataset|http://download.geonames.org/export/zip/]]. The ZIP code region will be represented by the shapefile associated with the corresponding ZIP Code Tabulation Area (available from [[TIGER|https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html]]).
 
 [[ZIP codes are not areas|http://www.georeference.org/doc/zip_codes_are_not_areas.htm]], but Zip Code Tabulation Areas are close enough for our purposes.
-
-We can also create a region for each city, county, and state in the US, and associate each with a shapefile we got from TIGER.
 
 # Implementing the use cases
 
