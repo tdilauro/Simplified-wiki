@@ -123,33 +123,41 @@ libraryaliases
  name
 ```
 
-"BPL" and "Bklyn" are aliases for the Brooklyn Public Library. "BPL" is also an alias for the Boston Public Library. "Brooklyn" is not an alias for the Brooklyn Public Library; it's a region (q.v.) the library serves.
+"BPL" and "Bklyn" are aliases for the Brooklyn Public Library. "BPL" is also an alias for the Boston Public Library. "Brooklyn" is not an alias for the Brooklyn Public Library; it's a place (q.v.) the library serves.
 
-## Regions
+## Places
 
-A library may serve many regions. Postal codes, cities, counties, states, provinces, and nations are all regions. Regions stack inside each other in various ways, but we are not interested in creating a perfectly accurate picture of political reality. We only need to do work if it helps people find their library. As such, although we keep track of a region's parent region, this is mainly for internal record-keeping.
+A library may serve many places. Postal codes, cities, counties, states, provinces, and nations are all regions. Although we will ask librarians to define their service area in terms of preexisting places such as cities and counties, it is possible to create custom places explicitly representing a library's service area, or pointlike places that represent individual branches.
+
+Places stack inside each other in various ways, but we are not interested in creating a perfectly accurate picture of political reality. We only need to do work if it helps people find their library. As such, although we allow a place to have a parent place, we don't use this for very much--mainly for grouping cities and counties inside states.
 
 ```
-regions
+place
  id
  name
+ type
  abbreviated_name
  full_name
  parent_id
+ geography
 ```
 
-A library may serve many regions.
+A library may serve many places.
+
+The `type` field is an enumerated type with the possible values "postal_code", "town", "county", "state", "nation", "other". These words are intended as guidelines, not as precise descriptions. For example, the boroughs and neighborhoods of New York City can be added as places of type "town", even though the Census Bureau doesn't list them as places. (TODO: where do they get added _from_?)
+
+The `geography` field is a geography data type. Its value will generally be derived from an official US Census Bureau shapefile.
 
 The `abbreviated_name` for the state of Ohio will be "OH".
 
 The `full_name` for Detroit is "Detroit MI". The idea here is to have a place to store a common search term (the way you refer to a city when addressing a letter) without requiring an entry in `regionaliases` for every ordinary city in the United States.
 
-## Region Aliases
+## Place Aliases
 
-A region may have many aliases. An alias is an alternate name for the region that we expect someone to use when searching.
+A place may have many aliases. An alias is an alternate name for the region that we expect someone to use when searching.
 
 ```
-regionaliases
+placealiases
  id
  region_id
  name
@@ -157,27 +165,9 @@ regionaliases
 
 Aliases for New York City include "NYC" and "New York NY". (The automatically generated `full_name` of New York City will be "New York City NY", so we need an alias for the more common form.)
 
-## Locations
-
-A location represents a point or area on the globe.
-
-```
-locations
- id
- latitude
- longitude
- shapefile
-```
-
-If `shapefile` is provided as well as `latitude` and `longitude`, it's presumed that the latitude/longitude pair is a _representative_ point within the area described by the shapefile.
-
-A library may be associated with multiple locations.
-
-A region may be associated with multiple locations.
-
 # Data population
 
-We will create a region for each city, county, and state in the US, and associate each with a shapefile we got from TIGER. Each city and county will be given a `full_name` that appends its state. (e.g. "Orange County CA" and "Orange County FL").
+We will create a place for each city, county, and state in the US, and associate each with a shapefile we got from TIGER. Each city and county will be given a `full_name` that appends its state. (e.g. "Orange County CA" and "Orange County FL").
 
 We will create a region for each US ZIP code. The parent of a ZIP code region will be the city associated with that ZIP code in [[the Geonames dataset|http://download.geonames.org/export/zip/]]. The ZIP code region will be represented by the shapefile associated with the corresponding ZIP Code Tabulation Area (available from [[TIGER|https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html]]).
 
