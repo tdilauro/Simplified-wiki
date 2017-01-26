@@ -167,9 +167,9 @@ Aliases for New York City include "NYC" and "New York NY". (The automatically ge
 
 # Data population
 
-We will create a place for each city, county, and state in the US, and associate each with a shapefile we got from TIGER. Each city and county will be given a `full_name` that appends its state. (e.g. "Orange County CA" and "Orange County FL").
+We will create a place for each county, state, and census-designated place in the US, and associate each with a shapefile we got from TIGER. Each city and county will be given a `full_name` that appends its state. (e.g. "Orange County CA" and "Orange County FL").
 
-We will create a region for each US ZIP code. The parent of a ZIP code region will be the city associated with that ZIP code in [[the Geonames dataset|http://download.geonames.org/export/zip/]]. The ZIP code region will be represented by the shapefile associated with the corresponding ZIP Code Tabulation Area (available from [[TIGER|https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html]]).
+We will create a region for each US ZIP code. The parent of a ZIP code region will be the state associated with that ZIP code in [[the Geonames dataset|http://download.geonames.org/export/zip/]]. The ZIP code region will be represented by the shapefile associated with the corresponding ZIP Code Tabulation Area (available from [[TIGER|https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html]]).
 
 [[ZIP codes are not areas|http://www.georeference.org/doc/zip_codes_are_not_areas.htm]], but Zip Code Tabulation Areas are close enough for our purposes.
 
