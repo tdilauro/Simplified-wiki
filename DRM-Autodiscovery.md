@@ -86,7 +86,7 @@ Before a book is borrowed, this is how we indicate that decrypting a book will r
        type="application/atom+xml;type=entry;profile=opds-catalog">
     <opds:indirectAcquisition
           type="vnd.librarysimplified/obfuscated;scheme=http://librarysimplified.org/terms/drm/scheme/URMS">
-      <opds:indirectAcquisition type="application/epub"/>
+      <opds:indirectAcquisition type="application/epub+zip"/>
     </opds:indirectAcquisition>
   </opds:indirectAcquisition>
  </link>
@@ -106,10 +106,10 @@ Once you borrow the book you will be served an OPDS entry like this:
  <link rel="http://opds-spec.org/acquisition"
        href="ccid-urms:01234567890"
        type="vnd.librarysimplified/obfuscated;scheme=http://librarysimplified.org/terms/drm/scheme/URMS">
-  <opds:indirectAcquisition type="application/epub"/>
+  <opds:indirectAcquisition type="application/epub+zip"/>
   <link rel="http://opds-spec.org/acquisition"
         href="https://host/foo.epub"
-        type="vnd.librarysimplified/obfuscated;scheme=http://librarysimplified.org/terms/drm/scheme/URMS;original-type=application/epub"
+        type="vnd.librarysimplified/obfuscated;scheme=http://librarysimplified.org/terms/drm/scheme/URMS;original-type=application/epub+zip"
   />
  </link>
  <drm:licensor>
@@ -146,7 +146,7 @@ Before a book is borrowed, here's how we indicate that reading a book will requi
        type="application/atom+xml;type=entry;profile=opds-catalog">
     <opds:indirectAcquisition
           type="application/vnd.readium.lcp.license-1.0+json">
-      <opds:indirectAcquisition type="application/epub"/>
+      <opds:indirectAcquisition type="application/epub+zip"/>
     </opds:indirectAcquisition>
   </opds:indirectAcquisition>
  </link>
@@ -169,7 +169,7 @@ Once you borrow the book, you'll get an OPDS entry that looks like this:
     <drm:licensor">
       <drm:client-token>sodih43oth489</drm:client-token>
     </drm:licensor>
-    <opds:indirectAcquisition type="application/epub"/>
+    <opds:indirectAcquisition type="application/epub+zip"/>
  </link>
 </entry>
 ```
