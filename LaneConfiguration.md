@@ -14,8 +14,8 @@ Each item in the list is a JSON object that describes one lane.
 {
  "lanes": [ 
   { 
-    "name" : "YA Fiction",
-    "audience" : "Young Adult",
+    "full_name" : "YA Fiction",
+    "audiences" : "Young Adult",
     "fiction" : True
   }
  ]
@@ -24,19 +24,44 @@ Each item in the list is a JSON object that describes one lane.
 
 Each lane may give values for the following keys:
 
-## `name`
+## `full_name`
 
 A name that uniquely identifies this lane. Required.
 
 ## `display_name`
 
-The name shown to patrons. This does not have to be unique.
+The name shown to patrons. This does not have to be unique. If this value is not set, the `full_name` will be used instead.
 
-## `audience`
+## `audiences`
 
 A single audience name, or a list of audience names. Only books classified for one of those audiences will be shown in this lane.
 
 Audience names are: "Adults Only", "Adult", "Young Adult", and "Children". If this is not specified, the parent lane's value is inherited.
+
+## `languages`
+
+A single 3-character language code, or a list of language codes. Only books written in one of these languages will be shown in this lane.
+
+Example language codes can be found below. If this is not specified, the parent lane's value is inherited.
+
+| language | code |
+| --- | --- |
+| Arabic | ara |
+| Bengali | ben |
+| Chinese | chi |
+| English | eng |
+| French | fre |
+| Hindi | hin |
+| German | ger |
+| Italian | ita |
+| Japanese | jpn |
+| Korean | kor |
+| Portuguese | por |
+| Punjabi | pan |
+| Russian | rus |
+| Spanish | spa |
+
+More 3-character language codes can be found in the first column of [this document](http://www.loc.gov/standards/iso639-2/ISO-639-2_utf-8.txt).
 
 ## `age_range`
 
