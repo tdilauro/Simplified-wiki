@@ -116,6 +116,8 @@ response to the "Generate Authtoken" endpoint looks like this:
 
 Then the client token would look like `3375:z4nk82tdj32hf4ad`.
 
+Although the URMS "Generate Authtoken" endpoint serves its entity-body as `application/json`, the Client Token Protocol MUST serve that same entity-body as the media type `vnd.librarysimplified/drm-client-registration-token?scheme=http://librarysimplified.org/terms/drm/scheme/URMS`. However, a client MAY intrepret an entity-body with some other media type as a URMS Authtoken, if it has reason to believe that's what it is.
+
 Since generating a URMS Authtoken is an expensive operation, it is recommended that URMS client tokens be retrieved on demand (through the URL in the `drm:href` attribute) rather than provided in advance (through the `drm:token` attribute).
 
 ### Client token under LCP
