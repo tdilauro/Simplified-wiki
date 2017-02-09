@@ -49,6 +49,7 @@ Currently, our active public repositories include:
 * [[The annotation API|Annotations]]
 * [[The Simple Signup Protocol|Simple-Signup-Protocol]]
 * [[DRM autodiscovery|DRM-Autodiscovery]]
+* [[Short Client Token|Short-Client-Token]] for federated patron management
 * [[The ACS Device Management Protocol|DRM-Device-Management]]
 
 # Proposed changes
