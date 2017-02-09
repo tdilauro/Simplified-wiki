@@ -1,8 +1,8 @@
 The Short Client Token is a short string that identifies the bearer as a particular patron of a particular library. A Short Client Token can be used to prove a patron's identity to a third party that does not know anything about how that library verifies its patrons.
 
-The Short Client Token serves the same purpose as the JSON Web Token created by the TK. Unfortunately, these JWTs cannot be used to disassociate a device from an Adobe Account ID. Deactivating a device through Adobe requires a 'username' that must be less than 75 characters and a 'password' of less than 80 characters. In addition, certain characters cannot appear in the 'username' or 'password'. 
+The Short Client Token serves the same purpose as the JSON Web Token created by the [[Vendor ID Service|https://docs.google.com/document/d/1j8nWPVmy95pJ_iU4UTC-QgHK2QhDUSdQ0OQTFR2NE_0/edit]]. Unfortunately, these JWTs cannot be used to disassociate a device from an Adobe Account ID. Deactivating a device through Adobe requires a 'username' that must be less than 75 characters and a 'password' of less than 80 characters. In addition, certain characters cannot appear in the 'username' or 'password'. 
 
-The Short Client Token is designed to provide the same basic security characteristics as TK, while being easily convertible into a 'username' portion and a 'password' portion.
+The Short Client Token is designed to provide the same basic security characteristics as a JWT from the Vendor Web Service, while being easily convertible into short 'username' and 'password' portions.
 
 A Short Client Token contains no personally identifyin information and cannot, on its own, identify the bearer as a particular human being.
 
