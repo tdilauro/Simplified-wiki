@@ -56,3 +56,12 @@ The signature is the password; the part of the string that was signed is the use
 
 To continue the example above, the 'username' would be `NYNYPL|1486651569|474f5ee0-a518-91e8-b71f-0e9c1d590815` and the 'password' would be `hap72czxMT98WjOgnWaLv1H4:wFKivwEk7qrfBJTN0Y@`.
 
+# Validating the token
+
+To validate the token, split it into a 'username' component and a 'password' component.
+
+Extract the expiration time and verify that the token has yet to expire. A token that has expired is always invalid.
+
+Extract the library name and construct a new signature using the shared secret for that library and the signing procedure specified above.
+
+If the signatures match, the token is valid. Otherwise, the token is invalid.
