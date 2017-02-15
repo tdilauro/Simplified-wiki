@@ -73,7 +73,7 @@ This example conveys two pieces of information that the user cannot change (the 
 ```
 {
  "readable": { "simplified:fines": 4.23,
-               "simplified:fines_currency": "USD",
+               "simplified:fine_currency": "USD",
              },
  "writable": { "simplified:sync_reading": false }
 }
@@ -86,3 +86,21 @@ This specification does not define a mechanism for conveying the human-readable 
 A document MAY NOT include the same key in both `readable` and `writable`.
 
 # Settings
+
+## `simplified:authorization_expires`
+
+Value: The date and time (if known) when the user's authorization will expire (e.g. because their library card expires). This value MUST be either a time in "YY-MM-DDTHH:MM:SSZ" format (with the time being UTC), or a date in "YY-MM-DD" format.
+
+## `simplified:fines`
+
+Value: The amount of money this patron owes in library fines.
+
+## `simplified:fine_currency`
+
+Value: The currency in which the fines are owed. This MUST be an ISO 4217 currency code, e.g. "USD".
+
+## `simplified:syncronize_annotations`
+
+Value: A boolean indicating whether or not the user wants their e-reader client to automatically synchronize local annotations with the [[Web Annotation Protocol|https://www.w3.org/TR/annotation-protocol/]] endpoint used by the server. A server that provides both the Web Annotation Protocol and the User Settings Management Protocol may use this as a way for users to opt their clients in or out of WAP usage.
+
+Even if this is set to `false`, the client may synchronize local annotations with some _other_ Web Annotation Protocol server, if the user has directed it to do so.
