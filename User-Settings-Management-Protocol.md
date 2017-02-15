@@ -12,14 +12,14 @@ Other organizations may implement the Protocol for other types of user accounts,
 
 # The `http://librarysimplified.org/terms/rel/settings` link relation
 
-In the examples to follow, I'll use `http://settings/` as the URL of a resource that implements the Protocol.
+In the examples to follow, I'll use `http://server/settings` as the URL of a resource that implements the Protocol.
 
 We introduce the link relation `http://librarysimplified.org/terms/rel/user-settings`, which indicates that the link target supports the Protocol. This link relation may be used anywhere.
 
 Here's an HTML example of a link into the User Settings Management Protocol:
 
 ```
-<a href="https://settings/" rel="http://librarysimplified.org/terms/rel/user-settings" type="vnd.librarysimplified/user-settings+json">
+<a href="https://server/settings" rel="http://librarysimplified.org/terms/rel/user-settings" type="vnd.librarysimplified/user-settings+json">
  Change your settings
 </a>
 ```
@@ -101,7 +101,9 @@ Value: The currency in which the fines are owed. This MUST be an ISO 4217 curren
 
 ## `simplified:synchronize_annotations`
 
-Value: A boolean value. If this is set to `true`, it indicates that the user wants their e-reader client, when connected to this server, to automatically synchronize local annotations with the server's [[Web Annotation Protocol|https://www.w3.org/TR/annotation-protocol/]] endpoint. If this is set to `false`, the user does not want their e-reader client to automatically synchronize local annotations with the server's WAP endpoint.
+Value: A boolean value. If this is set to `true`, it indicates that the user wants their e-reader client, when connected to this authentication domain, to automatically synchronize local annotations with appropriate [[Web Annotation Protocol|https://www.w3.org/TR/annotation-protocol/]] endpoint in the same domain. If this is set to `false`, the user does not want their e-reader client to automatically synchronize local annotations with appropriate  WAP endpoints.
+
+If the endpoint for the User Settings Management Protocol is `http://server/settings`, then the value of `simplified:sychronize_annotations` would most likely apply to any links with `rel="http://www.w3.org/ns/oa#annotationService"` discovered on `http://server/`.
 
 A server that provides both the Web Annotation Protocol and the User Settings Management Protocol may use this as a way for users to opt their clients in or out of WAP. If a server provides the User Settings Management Protocol, but not the Web Annotation Protocol, then `simplified:synchronize_annotations` has no meaning.
 
