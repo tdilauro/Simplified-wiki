@@ -6,7 +6,7 @@ The User Settings Management Protocol (hereafter the "Protocol") is a very simpl
 
 Any library that wants to participate in the SimplyE program should implement the Protocol. The Library Simplified circulation manager implements the Protocol, so most SimplyE participating libraries don't have to do anything.
 
-A library may choose not to implement the Protocol. SimplyE will work as described in the "Default behavior" section.
+A library may choose not to implement the Protocol. SimplyE will use its default behavior.
 
 Other organizations may implement the Protocol for other types of user accounts, by defining their own keys for the fields.
 
@@ -113,6 +113,10 @@ The currency in which the fines are owed. This MUST be a 3-letter ISO 4217 curre
 
 A boolean value. If this is set to `true`, it indicates that the user wants their client to automatically synchronize local annotations with the [[Web Annotation Protocol|https://www.w3.org/TR/annotation-protocol/]] endpoints that the server thinks are appropriate. If this is set to `false`, the user does not want their e-reader client to automatically synchronize local annotations with those endpoints.
 
-An authentication domain that provides both the Web Annotation Protocol and the User Settings Management Protocol may use this as a way for users to opt their clients in or out of WAP. If an authentication domain provides the User Settings Management Protocol, but not the Web Annotation Protocol, then `simplified:synchronize_annotations` has no meaning.
+An authentication domain that provides both the Web Annotation Protocol and the User Settings Management Protocol may use this as a way for users to opt their clients in or out of WAP. 
+
+If an authentication domain provides the User Settings Management Protocol, but not the Web Annotation Protocol, then `simplified:synchronize_annotations` has no meaning.
+
+If an authentication domain provides the Web Annotation Protocol but not the User Settings Management Protocol, then a client SHOULD ask its user what value it would give for `simplified:synchronize_annotations`, store that value locally, and only use the Web Annotation Protocol with its user's consent. Note that this means the user will be asked this question on every device they use, with no way to detect or reconcile inconsistent answers.
 
 Even if this is set to `false`, the client may synchronize local annotations with some _other_ Web Annotation Protocol server, if the user has directed it to do so.
