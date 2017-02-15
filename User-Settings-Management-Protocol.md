@@ -58,7 +58,7 @@ The value of `readable` MUST be a single JSON object. The keys of this object co
 
 When a client PUTs a document to a Protocol endpoint, it SHOULD NOT send a document that includes `readable`. If it does sent a document that includes `readable`, the server MUST ignore it.
 
-Semantics for a few keys are defined in the [[#settings-registry]]. Other keys may show up in `readable` but this specification does not define their semantics.
+Semantics for a few keys are defined in the [[settings registry|https://github.com/NYPL-Simplified/Simplified/wiki/User-Settings-Management-Protocol]]. Other keys may show up in `readable` but this specification does not define their semantics.
 
 ## `writable`
 
@@ -66,7 +66,7 @@ The value of `readable` MUST be a single JSON object. The keys of this object co
 
 When the document is submitted along with a PUT request, the values associated with these keys correspond to the desired new values of these settings. If a key is not included, it indicates that the client does not wish to change the value of that setting. If a key is mapped to `null`, it indicates that the client wants to set the value of that setting to a null value.
 
-Semantics for a few keys are defined in the [[settings registry|#settings-registry]]. Other keys may show up in `readable` but this specification does not define their semantics.
+Semantics for a few keys are defined in the [[settings registry|https://github.com/NYPL-Simplified/Simplified/wiki/User-Settings-Management-Protocol]]. Other keys may show up in `readable` but this specification does not define their semantics.
 
 ## Example
 
@@ -92,6 +92,8 @@ A document MAY NOT include the same key in both `readable` and `writable`.
 Semantics for the following settings are defined. The `simplified` namespace is reserved, and all settings whose names start with "simplified:" will have their semantics defined in this section.
 
 The `schema` namespace is reserved. All settings whose names start with "schema:" have semantics defined by the appropriate entry on schema.org. For instance, the value of "schema:givenName" is defined, as per [[https://schema.org/givenName|https://schema.org/givenName]], as the given name of the authenticated user.
+
+In general, this specification does not define whether or not a given setting is writable. That depends on the application.
 
 ## `simplified:authorization_expires`
 
