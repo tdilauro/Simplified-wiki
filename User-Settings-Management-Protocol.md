@@ -75,7 +75,7 @@ This example conveys two pieces of information that the user cannot change (the 
  "readable": { "simplified:fines": 4.23,
                "simplified:fine_currency": "USD",
              },
- "writable": { "simplified:sync_reading": false }
+ "writable": { "simplified:synchronize_annotations": false }
 }
 ```
 
@@ -99,8 +99,10 @@ Value: The amount of money this patron owes in library fines.
 
 Value: The currency in which the fines are owed. This MUST be an ISO 4217 currency code, e.g. "USD".
 
-## `simplified:syncronize_annotations`
+## `simplified:synchronize_annotations`
 
-Value: A boolean indicating whether or not the user wants their e-reader client to automatically synchronize local annotations with the [[Web Annotation Protocol|https://www.w3.org/TR/annotation-protocol/]] endpoint used by the server. A server that provides both the Web Annotation Protocol and the User Settings Management Protocol may use this as a way for users to opt their clients in or out of WAP usage.
+Value: A boolean value. If this is set to `true`, it indicates that the user wants their e-reader client, when connected to this server, to automatically synchronize local annotations with the server's [[Web Annotation Protocol|https://www.w3.org/TR/annotation-protocol/]] endpoint. If this is set to `false`, the user does not want their e-reader client to automatically synchronize local annotations with the server's WAP endpoint.
+
+A server that provides both the Web Annotation Protocol and the User Settings Management Protocol may use this as a way for users to opt their clients in or out of WAP. If a server provides the User Settings Management Protocol, but not the Web Annotation Protocol, then `simplified:synchronize_annotations` has no meaning.
 
 Even if this is set to `false`, the client may synchronize local annotations with some _other_ Web Annotation Protocol server, if the user has directed it to do so.
