@@ -56,17 +56,19 @@ This document has the form of a single JSON object. Semantics are defined for tw
 
 The value of `readable` MUST be a single JSON object. The keys of this object correspond to the names of user settings, and the values associated with the keys correspond to the current values of those settings.
 
-When a client PUTs a document to a Protocol endpoint, it SHOULD NOT send a document that includes `readable`. If it does sent a document that includes `readable`, the server MUST ignore it.
+When a client PUTs a document to a Protocol endpoint, it SHOULD NOT send a document that includes `readable`. If it does send a document that includes `readable`, the server MUST ignore it.
 
 Semantics for a few keys are defined in the [[settings registry|https://github.com/NYPL-Simplified/Simplified/wiki/User-Settings-Management-Protocol]]. Other keys may show up in `readable` but this specification does not define their semantics.
 
 ## `writable`
 
-The value of `readable` MUST be a single JSON object. The keys of this object correspond to the names of user settings. When the document is received in response to a GET request, the values associated with the keys correspond to the current values of those settings. 
+The value of `writable` MUST be a single JSON object. The keys of this object correspond to the names of user settings.
 
-When the document is submitted along with a PUT request, the values associated with these keys correspond to the desired new values of these settings. If a key is not included, it indicates that the client does not wish to change the value of that setting. If a key is mapped to `null`, it indicates that the client wants to set the value of that setting to a null value.
+When the document is received in response to a GET request, the values associated with the keys correspond to the current values of those settings. 
 
-Semantics for a few keys are defined in the [[settings registry|https://github.com/NYPL-Simplified/Simplified/wiki/User-Settings-Management-Protocol]]. Other keys may show up in `readable` but this specification does not define their semantics.
+When the document is submitted along with a PUT request, the values associated with these keys correspond to the desired _new_ values of these settings. If a key is not included, it indicates that the client does not wish to change the value of that setting. If a key is mapped to `null`, it indicates that the client wants to set the value of that setting to a null value.
+
+Semantics for a few keys are defined in the [[settings registry|https://github.com/NYPL-Simplified/Simplified/wiki/User-Settings-Management-Protocol]]. Other keys may show up in `writable` but this specification does not define their semantics.
 
 ## Example
 
