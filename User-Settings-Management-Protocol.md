@@ -32,13 +32,13 @@ This is mostly common-sense HTTP stuff.
 
 Unauthenticated users may not participate in the Protocol. An unauthenticated request to an Protocol endpoint MUST result in a 401 response code with an authentication demand.
 
+The settings in a Protocol document apply across the authentication domain to which the Protocol server belongs. These settings do not necessarily apply to other authentication domains, even other domains on the same server.
+
 In general, a user may only administer their own settings. Users with superuser privileges MAY use the Protocol to administer settings for other users, but this spec does not define how that might work.
 
 ## GET
 
 An Protocol server that receives an authenticated GET request SHOULD send a document of media type `vnd.librarysimplified/user-settings+json`. It MAY send some other media type that supports the same essential features.
-
-The settings in this document apply across the authentication domain that the Protocol server belongs to. They do not necessarily apply to other authentication domains, even other domains on the same server.
 
 ## PUT
 
