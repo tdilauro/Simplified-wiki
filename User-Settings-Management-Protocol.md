@@ -38,6 +38,8 @@ In general, a user may only administer their own settings. Users with superuser 
 
 An Protocol server that receives an authenticated GET request SHOULD send a document of media type `vnd.librarysimplified/user-settings+json`. It MAY send some other media type that supports the same essential features.
 
+The settings in this document apply across the authentication domain that the Protocol server belongs to. They do not necessarily apply to other authentication domains, even other domains on the same server.
+
 ## PUT
 
 An authenticated PUT request to a Protocol endpoint SHOULD be accompanied by a document of media type `vnd.librarysimplified/user-settings+json`. It MAY be accompanied by a document of some other media type that supports the same essential features. The Protocol server MUST reject a document it does not understand.
@@ -101,10 +103,8 @@ Value: The currency in which the fines are owed. This MUST be an ISO 4217 curren
 
 ## `simplified:synchronize_annotations`
 
-Value: A boolean value. If this is set to `true`, it indicates that the user wants their e-reader client, when connected to this authentication domain, to automatically synchronize local annotations with appropriate [[Web Annotation Protocol|https://www.w3.org/TR/annotation-protocol/]] endpoint in the same domain. If this is set to `false`, the user does not want their e-reader client to automatically synchronize local annotations with appropriate  WAP endpoints.
+Value: A boolean value. If this is set to `true`, it indicates that the user wants their client to automatically synchronize local annotations with the [[Web Annotation Protocol|https://www.w3.org/TR/annotation-protocol/]] endpoints that the server thinks are appropriate. If this is set to `false`, the user does not want their e-reader client to automatically synchronize local annotations with those endpoints.
 
-If the endpoint for the User Settings Management Protocol is `http://server/settings`, then the value of `simplified:sychronize_annotations` would most likely apply to any links with `rel="http://www.w3.org/ns/oa#annotationService"` discovered on `http://server/`.
-
-A server that provides both the Web Annotation Protocol and the User Settings Management Protocol may use this as a way for users to opt their clients in or out of WAP. If a server provides the User Settings Management Protocol, but not the Web Annotation Protocol, then `simplified:synchronize_annotations` has no meaning.
+An authentication domain that provides both the Web Annotation Protocol and the User Settings Management Protocol may use this as a way for users to opt their clients in or out of WAP. If an authentication domain provides the User Settings Management Protocol, but not the Web Annotation Protocol, then `simplified:synchronize_annotations` has no meaning.
 
 Even if this is set to `false`, the client may synchronize local annotations with some _other_ Web Annotation Protocol server, if the user has directed it to do so.
