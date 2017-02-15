@@ -103,7 +103,7 @@ The amount of money this patron owes in library fines.
 
 ## `simplified:fine_currency`
 
-The currency in which the fines are owed. This MUST be an ISO 4217 currency code, e.g. "USD".
+The currency in which the fines are owed. This MUST be a 3-letter ISO 4217 currency code, e.g. "USD".
 
 ## `simplified:synchronize_annotations`
 
