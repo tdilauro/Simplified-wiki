@@ -58,7 +58,7 @@ The value of `readable` MUST be a single JSON object. The keys of this object co
 
 When a client PUTs a document to a Protocol endpoint, it SHOULD NOT send a document that includes `readable`. If it does sent a document that includes `readable`, the server MUST ignore it.
 
-Semantics for a few keys are defined in the [[settings registry|#settings-registry]]. Other keys may show up in `readable` but this specification does not define their semantics.
+Semantics for a few keys are defined in the [[#settings-registry]]. Other keys may show up in `readable` but this specification does not define their semantics.
 
 ## `writable`
 
