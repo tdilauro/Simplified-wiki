@@ -87,23 +87,27 @@ This specification does not define a mechanism for conveying the human-readable 
 
 A document MAY NOT include the same key in both `readable` and `writable`.
 
-# Settings
+# Settings registry
+
+Semantics for the following settings are defined. The `simplified` namespace is reserved, and all settings whose names start with "simplified:" will have their semantics defined in this section.
+
+The `schema` namespace is reserved. All settings whose names start with "schema:" have semantics defined by the appropriate entry on schema.org. For instance, the value of "schema:givenName" is defined, as per [[https://schema.org/givenName|https://schema.org/givenName]], as the given name of the authenticated user.
 
 ## `simplified:authorization_expires`
 
-Value: The date and time (if known) when the user's authorization will expire (e.g. because their library card expires). This value MUST be either a time in "YY-MM-DDTHH:MM:SSZ" format (with the time being UTC), or a date in "YY-MM-DD" format.
+The date and time (if known) when the user's authorization will expire (e.g. because their library card expires). This value MUST be either a time in "YY-MM-DDTHH:MM:SSZ" format (with the time being UTC), or a date in "YY-MM-DD" format.
 
 ## `simplified:fines`
 
-Value: The amount of money this patron owes in library fines.
+The amount of money this patron owes in library fines.
 
 ## `simplified:fine_currency`
 
-Value: The currency in which the fines are owed. This MUST be an ISO 4217 currency code, e.g. "USD".
+The currency in which the fines are owed. This MUST be an ISO 4217 currency code, e.g. "USD".
 
 ## `simplified:synchronize_annotations`
 
-Value: A boolean value. If this is set to `true`, it indicates that the user wants their client to automatically synchronize local annotations with the [[Web Annotation Protocol|https://www.w3.org/TR/annotation-protocol/]] endpoints that the server thinks are appropriate. If this is set to `false`, the user does not want their e-reader client to automatically synchronize local annotations with those endpoints.
+A boolean value. If this is set to `true`, it indicates that the user wants their client to automatically synchronize local annotations with the [[Web Annotation Protocol|https://www.w3.org/TR/annotation-protocol/]] endpoints that the server thinks are appropriate. If this is set to `false`, the user does not want their e-reader client to automatically synchronize local annotations with those endpoints.
 
 An authentication domain that provides both the Web Annotation Protocol and the User Settings Management Protocol may use this as a way for users to opt their clients in or out of WAP. If an authentication domain provides the User Settings Management Protocol, but not the Web Annotation Protocol, then `simplified:synchronize_annotations` has no meaning.
 
