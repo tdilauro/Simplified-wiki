@@ -86,7 +86,7 @@ This example conveys two pieces of information that the user cannot change (the 
 
 This specification does not define a mechanism for conveying the human-readable names or descriptions of settings.
 
-A document MAY NOT include the same key in both `readable` and `writable`.
+A document MAY include the same key in both the root object and the `settings` sub-object, but both keys MUST have the same value.
 
 # Profile registry
 
@@ -96,7 +96,7 @@ The `schema` namespace is reserved. All settings whose names start with "schema:
 
 The `simplified` namespace is reserved. All elements whose names start with "simplified:" will have their semantics defined in this section.
 
-In general, this specification does not define whether or not a given setting is writable (and thus, whether it should show up in the main document or in `settings`. That depends on the application.
+In general, this specification does not define whether or not a given setting is writable (and thus, whether it should show up in the root object or in the `settings` sub-object). That depends on the application.
 
 ## `simplified:authorization_expires`
 
