@@ -74,11 +74,11 @@ This example might be included with a GET response. It conveys one piece of info
 
 This example might be included with a PUT request. It signifies an
 intent to change the value of `simplified:synchronize_annotations` to
-true.
+`true`.
 
 ```
 {
- "simplified:synchronize_annotations": true,
+ "simplified:synchronize_annotations": true
 }
 ```
 
