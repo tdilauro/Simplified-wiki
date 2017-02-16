@@ -46,6 +46,7 @@ Currently, our active public repositories include:
 * [[The standards we use|StandardsDocuments]]
 * [[The generic metadata layer|GenericMetadata]]
 * [[The generic circulation API|GenericCirculation]]
+* [[The generic authentication API|GenericAuthentication]]
 * [[The annotation API|Annotations]]
 * [[The Simple Signup Protocol|Simple-Signup-Protocol]]
 * [[DRM autodiscovery|DRM-Autodiscovery]]
