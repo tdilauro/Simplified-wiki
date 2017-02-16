@@ -6,15 +6,15 @@ The [[authentication setup|AuthenticationSetup]] page explains how to connect yo
 
 # Two questions
 
-To integrate a new authentication technique into the circulation manager, we must be able to answer two questions:
+To integrate a new authentication technique into the circulation manager, you must be able to answer two questions:
 
-1. Are the provided credentials valid? Do they authenticate a real library patron, or are they incorrect or junk?
-2. What relevant information does the library have about a given patron? (Personal name, fines, expiration date, etc.)
+1. Can you look at any given set of credentials and determine whether they're valid? That is, figure out whether they authenticate a real library patron, or whether they are incorrect or junk?
+2. What relevant account information can you look up for any given patron? (Personal name, fines, expiration date, etc.)
 
-Every class that answers these questions must subclass the `AuthenticationProvider` class, found in [[authenticator.py|https://github.com/NYPL-Simplified/circulation/blob/master/api/authenticator.py]]. (You're actually more likely to subclass one of its two subclasses: `BasicAuthenticationProvider` or `OAuthAuthenticationProvider`). `AuthenticationProvider` defines two methods which must be implemented differently for every authentication technique:
+You program your answers to these two questions into a subclass of the `AuthenticationProvider` class, found in [[authenticator.py|https://github.com/NYPL-Simplified/circulation/blob/master/api/authenticator.py]]. (You're actually more likely to subclass one of its two subclasses: `BasicAuthenticationProvider` or `OAuthAuthenticationProvider`). `AuthenticationProvider` defines two methods which must be implemented differently for every authentication technique:
 
 1. `AuthenticationProvider.authenticated_patron` takes a set of credentials as input and, if the source of truth says they correspond to a real patron, creates a `PatronData` object containing all the information known about the patron.
-2. `AuthenticationProvider.remote_patron_lookup` takes a `Patron` object and updates it with fresh information from the source of truth.
+2. `AuthenticationProvider.remote_patron_lookup` takes a `Patron` object and updates it with fresh information from the source of truth. Its default implementation is a no-op and assumes that the source of truth knows nothing about patrons, and only checks credentials.
 
 # Two core mechanisms
 
