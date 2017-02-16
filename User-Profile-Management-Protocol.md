@@ -10,7 +10,7 @@ A library may choose not to implement the Protocol. SimplyE will revert to sensi
 
 Other organizations may implement the Protocol for other types of user profiles, by defining their own keys for the fields.
 
-# The `http://librarysimplified.org/terms/rel/account-settings` link relation
+# The `http://librarysimplified.org/terms/rel/user-profile` link relation
 
 In the examples to follow, I'll use `http://server/settings` as the URL of a resource that implements the Protocol.
 
@@ -48,27 +48,27 @@ Upon receipt, the server MUST do its best to make the underlying account setting
 
 # The `vnd.librarysimplified/user-profile+json` media type
 
-A document with the media type `vnd.librarysimplified/user-profile+json` represents the current state of account settings (when sent from the server to the client) or a desired future state of account settings (when sent from the client to the server).
+A document with the media type `vnd.librarysimplified/user-profile+json` represents the current state of a user's profile and account settings (when sent from the server to the client) or a desired future state of the user's account settings (when sent from the client to the server).
 
-This document has the form of a single JSON object. Semantics are defined for two keys that MAY appear in the JSON object: `readable` and `writable`. Other keys MAY appear in the JSON object, but this specification does not define their meaning.
+This document has the form of a single JSON object. Semantics are defined for the following keys:
 
-## `readable`
+* The two special keys `settings` and `links`.
+* The keys in the "Profile Registry" below.
 
-The value of `readable` MUST be a single JSON object. The keys of this object correspond to the names of account settings, and the values associated with the keys correspond to the current values of those settings.
+Other keys may show up inside the JSON object. This specification does not define their meaning, except to say that they SHOULD convey pieces of information from the user's profile.
 
-When a client PUTs a document to a Protocol endpoint, it SHOULD NOT send a document that includes `readable`. If it does send a document that includes `readable`, the server MUST ignore it.
+## `settings`
 
-Semantics for a few keys are defined in the [[settings registry|https://github.com/NYPL-Simplified/Simplified/wiki/Account-Settings-Management-Protocol#settings-registry]]. Other keys may show up in `readable` but this specification does not define their semantics.
+The value of `settings` MUST be a JSON object. The keys of this object correspond to account settings whose values the authenticated user can modify. The keys defined in the "Profile Registry" below MAY show up in the `settings` object if the authenticated user can modify them. (Otherwise, they should show up in the document's root object.)
 
-## `writable`
+When the document is received in response to a GET request, the value associated with each key corresponds to the current value of the corresponding account setting.
 
-The value of `writable` MUST be a single JSON object. The keys of this object correspond to the names of account settings.
+When the document is submitted along with a PUT request, the value associated with each provided key corresponds to the desired _new_ value of the corresponding setting. If a key is not included, it indicates that the client does not wish to change the value of that setting. If a key is mapped to `null`, it indicates that the client wants to set the value of that setting to a null value.
 
-When the document is received in response to a GET request, the values associated with the keys correspond to the current values of those settings. 
+## `links`
 
-When the document is submitted along with a PUT request, the values associated with these keys correspond to the desired _new_ values of these settings. If a key is not included, it indicates that the client does not wish to change the value of that setting. If a key is mapped to `null`, it indicates that the client wants to set the value of that setting to a null value.
-
-Semantics for a few keys are defined in the [[settings registry|https://github.com/NYPL-Simplified/Simplified/wiki/Account-Settings-Management-Protocol#settings-registry]]. Other keys may show up in `writable` but this specification does not define their semantics.
+The `links` key is reserved as a name for a set of hypermedia
+links. The format of the `links` section is currently undefined.
 
 ## Example
 
@@ -76,10 +76,9 @@ This example conveys two pieces of information that the user cannot change (the 
 
 ```
 {
- "readable": { "simplified:fines": 4.23,
-               "simplified:fine_currency": "USD",
-             },
- "writable": { "simplified:synchronize_annotations": false }
+ "simplified:fines": 4.23,
+ "simplified::fine_currency": "USD",
+ "settings": { "simplified:synchronize_annotations": false }
 }
 ```
 
