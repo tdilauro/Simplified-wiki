@@ -50,18 +50,18 @@ If the client making a PUT request omits a setting from its payload, the server 
 
 # The `vnd.librarysimplified/user-profile+json` media type
 
-A document with the media type `vnd.librarysimplified/user-profile+json` represents the current state of a user's profile and account settings (when sent from the server to the client) or a desired future state of the user's account settings (when sent from the client to the server).
+A document with the media type `vnd.librarysimplified/user-profile+json` (hereafter "Protocol document") represents the current state of a user's profile and account settings (when sent from the server to the client) or a desired future state of the user's account settings (when sent from the client to the server).
 
-This document has the form of a single JSON object. With a few noted exceptions, the keys and values inside this object correspond to pieces of information associated with the user's profile.
+This document has the form of a single JSON object. With a few noted exceptions (`links` and `settings`), the keys and values inside this object correspond to pieces of information associated with the user's profile.
 
-Semantics are defined for the following keys:
+This specification defines semantics for the following keys:
 
 * The special keys `links` and `settings`.
 * The keys in the "Profile Registry" below.
 
-Apart from `links` and `settings`, the value of each key SHOULD explain something about the authenticated user's profile.
+When a Protocol document is sent along with a PUT request, the contents of the document SHOULD be ignored except for the value associated with the `settings` key.
 
-## Example
+## Examples
 
 This example might be included with a GET response. It conveys one piece of information which the user cannot change (the amount of their fines) and one piece of information that the user can change (whether or not their reading activity is synchronized with the server).
 
@@ -88,7 +88,7 @@ The value of `settings` MUST be a JSON object. The keys and values inside this o
 
 When a server sends a Protocol document in response to a GET request, the presence of a key in `settings` (as opposed to the root object) indicates that the client MAY attempt to change the value associated with that key by sending the new value as part of a PUT request.
 
-When a client sends a Protocol document as part of a PUT request, the presence of a key in `settings` indicates that the client _is in fact_ attempting to change the value associated with that key to the value given in the PRotocol document.
+When a client sends a Protocol document as part of a PUT request, the presence of a key in `settings` indicates that the client _is in fact_ attempting to change the value associated with that key to the value given in the Protocol document.
 
 ## `links`
 
@@ -97,7 +97,9 @@ links. The format of the value associated with `links` is currently undefined.
 
 ## Other notes
 
-This specification does not define a mechanism for conveying the human-readable names, descriptions, or possible values of settings.
+This specification does not define a general mechanism for conveying the human-readable names, descriptions, or possible values of profile elements.
+
+In general, this specification does not define whether or not a given setting is writable (and thus, whether it belongs in the root object or in the `settings` sub-object). That depends on the application.
 
 # Profile registry
 
@@ -106,8 +108,6 @@ Semantics for the following profile elements are defined.
 The `schema` namespace is reserved. All settings whose names start with "schema:" have semantics defined by the appropriate entry on schema.org. For instance, the value of "schema:givenName" is defined, as per [[https://schema.org/givenName|https://schema.org/givenName]], as the given name of the authenticated user.
 
 The `simplified` namespace is reserved. All elements whose names start with "simplified:" will have their semantics defined in this section.
-
-In general, this specification does not define whether or not a given setting is writable (and thus, whether it should show up in the root object or in the `settings` sub-object). That depends on the application.
 
 ## `simplified:authorization_expires`
 
