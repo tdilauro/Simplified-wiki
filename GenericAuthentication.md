@@ -77,3 +77,8 @@ In [[mock_authentication.py|https://github.com/NYPL-Simplified/circulation/blob/
 provider = MockAuthenticationProvider(patrons={"user1": "password1"})
 ```
 
+The `remote_authenticate` implementation checks that dictionary. If the username/password combination isn't found, it denies access. Otherwise, it creates a `PatronData` object for the patron and returns it. Sometimes it puts some extra information in the `PatronData` object like an expiration date or some fines--you can check the implementation for details.
+
+`MockAuthenticationProvider` does not implement `remote_patron_lookup`, even though the "provider" sometimes knows extra information about a patron (expiration date and fines), because that information is obtained automatically as a side effect of authentication. There's no need for a separate authentication step.
+
+The `SIP2AuthenticationProvider` (found in [[sip/__init__.py|https://github.com/NYPL-Simplified/circulation/blob/master/api/sip/__init__.py]]) does the same thing. When you authenticate a patron through SIP2, the response message you get includes information about the patron. This means we can automatically update patron information every time we authenticate them, without having to make a separate "tell me about this patron" request.
