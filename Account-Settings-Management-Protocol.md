@@ -1,6 +1,6 @@
 # Summary
 
-The User Settings Management Protocol (hereafter the "Protocol") is a very simple HTTP-based protocol for retrieving and modifying user settings. Although designed for use in public libraries, the scope of this protocol is not limited to them.
+The Account Settings Management Protocol (hereafter the "Protocol") is a very simple HTTP-based protocol for retrieving and modifying user settings. Although designed for use in public libraries, the scope of this protocol is not limited to them.
 
 ## Who should implement?
 
@@ -16,7 +16,7 @@ In the examples to follow, I'll use `http://server/settings` as the URL of a res
 
 We introduce the link relation `http://librarysimplified.org/terms/rel/user-settings`, which indicates that the link target supports the Protocol. This link relation may be used anywhere.
 
-Here's an HTML example of a link into the User Settings Management Protocol:
+Here's an HTML example of a link into the Protocol:
 
 ```
 <a href="https://server/settings" rel="http://librarysimplified.org/terms/rel/user-settings" type="vnd.librarysimplified/user-settings+json">
@@ -115,8 +115,6 @@ A boolean value. If this is set to `true`, it indicates that the user wants thei
 
 An authentication domain that provides both the Web Annotation Protocol and the User Settings Management Protocol may use this as a way for users to opt their clients in or out of WAP. 
 
-If an authentication domain provides the User Settings Management Protocol, but not the Web Annotation Protocol, then `simplified:synchronize_annotations` has no meaning.
-
-If an authentication domain provides the Web Annotation Protocol but not the User Settings Management Protocol, then a client SHOULD ask its user what value it would give for `simplified:synchronize_annotations`, store that value locally, and only use the Web Annotation Protocol with its user's consent. Note that this means the user will be asked this question on every device they use, with no way to detect or reconcile inconsistent answers.
+The meaning of `simplified:synchronize_annotations` is undefined unless an authentication domain provides both the Account Settings Management Protocol and the Web Annotation Protocol.
 
 Even if this is set to `false`, the client may synchronize local annotations with some _other_ Web Annotation Protocol server, if the user has directed it to do so.
