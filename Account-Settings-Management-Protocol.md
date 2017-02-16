@@ -1,6 +1,6 @@
 # Summary
 
-The Account Settings Management Protocol (hereafter the "Protocol") is a very simple HTTP-based protocol for retrieving and modifying user settings. Although designed for use in public libraries, the scope of this protocol is not limited to them.
+The Account Settings Management Protocol (hereafter the "Protocol") is a very simple HTTP-based protocol for retrieving and modifying account settings. Although designed for use in managing patron accounts for public libraries, the protocol may be used to manage other types of accounts.
 
 ## Who should implement?
 
@@ -44,17 +44,17 @@ An Protocol server that receives an authenticated GET request SHOULD send a docu
 
 An authenticated PUT request to a Protocol endpoint SHOULD be accompanied by a document of media type `vnd.librarysimplified/user-settings+json`. It MAY be accompanied by a document of some other media type that supports the same essential features. The Protocol server MUST reject a document it does not understand.
 
-Upon receipt, the server MUST do its best to make the underlying user settings reflect the content of the incoming document (see below). If this is not possible, due to a security violation, nonsensical values, conflicting values, or any other reason, the server MUST send a [[problem detail|https://tools.ietf.org/html/rfc7807]] explaining the problem.
+Upon receipt, the server MUST do its best to make the underlying account settings reflect the content of the incoming document (see below). If this is not possible, due to a security violation, nonsensical values, conflicting values, or any other reason, the server MUST send a [[problem detail|https://tools.ietf.org/html/rfc7807]] explaining the problem.
 
 # The `vnd.librarysimplified/user-settings+json` media type
 
-A document with the media type `vnd.librarysimplified/user-settings+json` represents the current state of user settings (when sent from the server to the client) or a desired future state of user settings (when sent from the client to the server).
+A document with the media type `vnd.librarysimplified/user-settings+json` represents the current state of account settings (when sent from the server to the client) or a desired future state of account settings (when sent from the client to the server).
 
 This document has the form of a single JSON object. Semantics are defined for two keys that MAY appear in the JSON object: `readable` and `writable`. Other keys MAY appear in the JSON object, but this specification does not define their meaning.
 
 ## `readable`
 
-The value of `readable` MUST be a single JSON object. The keys of this object correspond to the names of user settings, and the values associated with the keys correspond to the current values of those settings.
+The value of `readable` MUST be a single JSON object. The keys of this object correspond to the names of account settings, and the values associated with the keys correspond to the current values of those settings.
 
 When a client PUTs a document to a Protocol endpoint, it SHOULD NOT send a document that includes `readable`. If it does send a document that includes `readable`, the server MUST ignore it.
 
@@ -62,7 +62,7 @@ Semantics for a few keys are defined in the [[settings registry|https://github.c
 
 ## `writable`
 
-The value of `writable` MUST be a single JSON object. The keys of this object correspond to the names of user settings.
+The value of `writable` MUST be a single JSON object. The keys of this object correspond to the names of account settings.
 
 When the document is received in response to a GET request, the values associated with the keys correspond to the current values of those settings. 
 
@@ -113,8 +113,6 @@ The currency in which the fines are owed. This MUST be a 3-letter ISO 4217 curre
 
 A boolean value. If this is set to `true`, it indicates that the user wants their client to automatically synchronize local annotations with the [[Web Annotation Protocol|https://www.w3.org/TR/annotation-protocol/]] endpoints that the server thinks are appropriate. If this is set to `false`, the user does not want their e-reader client to automatically synchronize local annotations with those endpoints.
 
-An authentication domain that provides both the Web Annotation Protocol and the User Settings Management Protocol may use this as a way for users to opt their clients in or out of WAP. 
-
-The meaning of `simplified:synchronize_annotations` is undefined unless an authentication domain provides both the Account Settings Management Protocol and the Web Annotation Protocol.
+An authentication domain that provides both the Web Annotation Protocol and the Account Settings Management Protocol MAY use this as a way for users to opt their clients in or out of WAP. The meaning of `simplified:synchronize_annotations` is undefined unless an authentication domain provides _both_ the Account Settings Management Protocol and the Web Annotation Protocol.
 
 Even if this is set to `false`, the client may synchronize local annotations with some _other_ Web Annotation Protocol server, if the user has directed it to do so.
