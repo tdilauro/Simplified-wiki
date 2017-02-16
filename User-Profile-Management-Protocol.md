@@ -55,7 +55,7 @@ This document has the form of a single JSON object. Semantics are defined for th
 * The two special keys `settings` and `links`.
 * The keys in the "Profile Registry" below.
 
-Other keys may show up inside the JSON object. This specification does not define their meaning, except to say that they SHOULD convey pieces of information from the user's profile.
+Other keys MAY show up inside the JSON object. This specification does not define their meaning, except to say that they SHOULD convey pieces of information from the user's profile.
 
 ## `settings`
 
@@ -67,8 +67,8 @@ When the document is submitted along with a PUT request, the value associated wi
 
 ## `links`
 
-The `links` key is reserved as a name for a set of hypermedia
-links. The format of the `links` section is currently undefined.
+The `links` key is reserved as a place to put hypermedia
+links. The format of the value associated with `links` is currently undefined.
 
 ## Example
 
@@ -88,13 +88,15 @@ This specification does not define a mechanism for conveying the human-readable 
 
 A document MAY NOT include the same key in both `readable` and `writable`.
 
-# Settings registry
+# Profile registry
 
-Semantics for the following settings are defined. The `simplified` namespace is reserved, and all settings whose names start with "simplified:" will have their semantics defined in this section.
+Semantics for the following profile elements are defined. 
 
 The `schema` namespace is reserved. All settings whose names start with "schema:" have semantics defined by the appropriate entry on schema.org. For instance, the value of "schema:givenName" is defined, as per [[https://schema.org/givenName|https://schema.org/givenName]], as the given name of the authenticated user.
 
-In general, this specification does not define whether or not a given setting is writable. That depends on the application.
+The `simplified` namespace is reserved. All elements whose names start with "simplified:" will have their semantics defined in this section.
+
+In general, this specification does not define whether or not a given setting is writable (and thus, whether it should show up in the main document or in `settings`. That depends on the application.
 
 ## `simplified:authorization_expires`
 
