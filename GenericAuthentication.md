@@ -79,7 +79,7 @@ The `remote_authenticate` implementation checks that dictionary. If the username
 
 `MockAuthenticationProvider` does not implement `remote_patron_lookup`, even though the "provider" sometimes knows extra information about a patron (expiration date and fines), because that information is obtained automatically as a side effect of authentication. There's no need for a separate authentication step.
 
-The `SIP2AuthenticationProvider` (found in [[sip/__init__.py|https://github.com/NYPL-Simplified/circulation/blob/master/api/sip/__init__.py]]) does the same thing. When you authenticate a patron through SIP2, the response message you get includes information about the patron. This means we can automatically update patron information every time we authenticate them, without having to make a separate "tell me about this patron" request.
+The `SIP2AuthenticationProvider` (found in [[sip/__init__.py|https://github.com/NYPL-Simplified/circulation/blob/master/api/sip/__init__.py]]) does the same thing. When you authenticate a patron through SIP2, the response message you get includes information about the patron, not just a yes-or-no answer on the credentials. This means we can automatically update patron information every time we authenticate them, without having to make a separate "tell me about this patron" request.
 
 ## Millenium Patron authentication
 
