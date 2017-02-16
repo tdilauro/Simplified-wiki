@@ -46,47 +46,58 @@ An authenticated PUT request to a Protocol endpoint SHOULD be accompanied by a d
 
 Upon receipt, the server MUST do its best to make the underlying account settings reflect the content of the incoming document (see below). If this is not possible, due to a security violation, nonsensical values, conflicting values, or any other reason, the server MUST send a [[problem detail|https://tools.ietf.org/html/rfc7807]] explaining the problem.
 
+If the client making a PUT request omits a setting from its payload, the server MUST interpret this as a wish that the value of that setting remain unchanged. If the client making a PUT request provides a value of `null` for a setting, the server MUST interpret this as a wish that the setting be set to a null value.
+
 # The `vnd.librarysimplified/user-profile+json` media type
 
 A document with the media type `vnd.librarysimplified/user-profile+json` represents the current state of a user's profile and account settings (when sent from the server to the client) or a desired future state of the user's account settings (when sent from the client to the server).
 
-This document has the form of a single JSON object. Semantics are defined for the following keys:
+This document has the form of a single JSON object. With a few noted exceptions, the keys and values inside this object correspond to pieces of information associated with the user's profile.
 
-* The two special keys `settings` and `links`.
+Semantics are defined for the following keys:
+
+* The special keys `links` and `settings`.
 * The keys in the "Profile Registry" below.
 
-Other keys MAY show up inside the JSON object. This specification does not define their meaning, except to say that they SHOULD convey pieces of information from the user's profile.
+Apart from `links` and `settings`, the value of each key SHOULD explain something about the authenticated user's profile.
+
+## Example
+
+This example might be included with a GET response. It conveys one piece of information which the user cannot change (the amount of their fines) and one piece of information that the user can change (whether or not their reading activity is synchronized with the server).
+
+```
+{
+ "simplified:fines": {"amount": "4.23", "currency": "USD"},
+ "settings": { "simplified:synchronize_annotations" : false }
+}
+```
+
+This example might be included with a PUT request. It signifies an
+intent to change the value of `simplified:synchronize_annotations` to
+true.
+
+```
+{
+ "simplified:synchronize_annotations": true,
+}
+```
 
 ## `settings`
 
-The value of `settings` MUST be a JSON object. The keys of this object correspond to account settings whose values the authenticated user can modify. The keys defined in the "Profile Registry" below MAY show up in the `settings` object if the authenticated user can modify them. (Otherwise, they should show up in the document's root object.)
+The value of `settings` MUST be a JSON object. The keys and values inside this object correspond to pieces of information associated with the user's profile. It works just like the root JSON object, except that the special keys `links` and `settings` have no defined meaning.
 
-When the document is received in response to a GET request, the value associated with each key corresponds to the current value of the corresponding account setting.
+When a server sends a Protocol document in response to a GET request, the presence of a key in `settings` (as opposed to the root object) indicates that the client MAY attempt to change the value associated with that key by sending the new value as part of a PUT request.
 
-When the document is submitted along with a PUT request, the value associated with each provided key corresponds to the desired _new_ value of the corresponding setting. If a key is not included, it indicates that the client does not wish to change the value of that setting. If a key is mapped to `null`, it indicates that the client wants to set the value of that setting to a null value.
+When a document is PUT to a Protocol server, the server SHOULD ignore the value of `settings`. If you want to change the value of a setting, you MUST include it in the root object when you PUT, not in `settings`.
 
 ## `links`
 
 The `links` key is reserved as a place to put hypermedia
 links. The format of the value associated with `links` is currently undefined.
 
-## Example
-
-This example conveys two pieces of information that the user cannot change (the amount of their fines and the currency in which their fines are measured) and one piece of information that the user can change (whether or not their reading activity is synchronized with the server).
-
-```
-{
- "simplified:fines": 4.23,
- "simplified::fine_currency": "USD",
- "settings": { "simplified:synchronize_annotations": false }
-}
-```
-
 ## Other notes
 
-This specification does not define a mechanism for conveying the human-readable names or descriptions of settings.
-
-A document MAY include the same key in both the root object and the `settings` sub-object, but both keys MUST have the same value.
+This specification does not define a mechanism for conveying the human-readable names, descriptions, or possible values of settings.
 
 # Profile registry
 
@@ -104,11 +115,7 @@ The date and time (if known) when the user's authorization will expire (e.g. bec
 
 ## `simplified:fines`
 
-The amount of money this patron owes in library fines.
-
-## `simplified:fine_currency`
-
-The currency in which the fines are owed. This MUST be a 3-letter ISO 4217 currency code, e.g. "USD".
+A JSON object. The `value` key of the object corresponds to a string representing the amount of money this patron owes in library fines. The `currency` key corresponds to the currency in which the fines are owed. This MUST be a 3-letter ISO 4217 currency code, e.g. "USD".
 
 ## `simplified:synchronize_annotations`
 
