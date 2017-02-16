@@ -1,6 +1,6 @@
 # Summary
 
-The Profile Management Protocol (hereafter the "Protocol") is a very simple HTTP-based protocol for retrieving and modifying account settings. Although designed for use in managing patron accounts for public libraries, the protocol may be used to manage other types of accounts.
+The User Profile Management Protocol (hereafter the "Protocol") is a very simple HTTP-based protocol for retrieving and modifying account settings. Although designed for use in managing patron accounts for public libraries, the protocol may be used to manage other types of accounts.
 
 ## Who should implement?
 
@@ -113,6 +113,6 @@ The currency in which the fines are owed. This MUST be a 3-letter ISO 4217 curre
 
 A boolean value. If this is set to `true`, it indicates that the user wants their client to automatically synchronize local annotations with the [[Web Annotation Protocol|https://www.w3.org/TR/annotation-protocol/]] endpoints that the server thinks are appropriate. If this is set to `false`, the user does not want their e-reader client to automatically synchronize local annotations with those endpoints.
 
-An authentication domain that provides both the Web Annotation Protocol and the Profile Management Protocol MAY use this as a way for users to opt their clients in or out of WAP. The meaning of `simplified:synchronize_annotations` is undefined unless an authentication domain provides _both_ the Profile Management Protocol and the Web Annotation Protocol.
+An authentication domain that provides both the Web Annotation Protocol and the User Profile Management Protocol MAY use this as a way for users to opt their clients in or out of WAP. The meaning of `simplified:synchronize_annotations` is undefined unless an authentication domain provides _both_ the User Profile Management Protocol and the Web Annotation Protocol.
 
 Even if this is set to `false`, the client may synchronize local annotations with some _other_ Web Annotation Protocol server, if the user has directed it to do so.
