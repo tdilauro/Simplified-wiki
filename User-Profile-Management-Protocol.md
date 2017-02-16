@@ -1,25 +1,25 @@
 # Summary
 
-The User Profile Management Protocol (hereafter the "Protocol") is a very simple HTTP-based protocol for retrieving and modifying account settings. Although designed for use in managing patron accounts for public libraries, the protocol may be used to manage other types of accounts.
+The User Profile Management Protocol (hereafter the "Protocol") is a very simple HTTP-based protocol for retrieving information about a user profile and modifying that user's account settings. Although designed for use in managing patron accounts for public libraries, the protocol may be used to manage other types of user accounts.
 
 ## Who should implement?
 
 Any library that wants to participate in the SimplyE program should implement the Protocol. The Library Simplified circulation manager implements the Protocol, so most SimplyE participating libraries don't have to do anything.
 
-A library may choose not to implement the Protocol. SimplyE will use its default behavior.
+A library may choose not to implement the Protocol. SimplyE will revert to sensible defaults.
 
-Other organizations may implement the Protocol for other types of user accounts, by defining their own keys for the fields.
+Other organizations may implement the Protocol for other types of user profiles, by defining their own keys for the fields.
 
 # The `http://librarysimplified.org/terms/rel/account-settings` link relation
 
 In the examples to follow, I'll use `http://server/settings` as the URL of a resource that implements the Protocol.
 
-We introduce the link relation `http://librarysimplified.org/terms/rel/account-settings`, which indicates that the link target supports the Protocol. This link relation may be used anywhere.
+We introduce the link relation `http://librarysimplified.org/terms/rel/user-profile`, which indicates that the link target supports the Protocol. This link relation may be used anywhere.
 
 Here's an HTML example of a link into the Protocol:
 
 ```
-<a href="https://server/settings" rel="http://librarysimplified.org/terms/rel/account-settings" type="vnd.librarysimplified/account-settings+json">
+<a href="https://server/settings" rel="http://librarysimplified.org/terms/rel/user-profile" type="vnd.librarysimplified/user-profile+json">
  Change your settings
 </a>
 ```
@@ -38,17 +38,17 @@ In general, a user may only administer their own settings. Users with superuser 
 
 ## GET
 
-An Protocol server that receives an authenticated GET request SHOULD send a document of media type `vnd.librarysimplified/account-settings+json`. It MAY send some other media type that supports the same essential features.
+An Protocol server that receives an authenticated GET request SHOULD send a document of media type `vnd.librarysimplified/user-profile+json`. It MAY send some other media type that supports the same essential features.
 
 ## PUT
 
-An authenticated PUT request to a Protocol endpoint SHOULD be accompanied by a document of media type `vnd.librarysimplified/account-settings+json`. It MAY be accompanied by a document of some other media type that supports the same essential features. The Protocol server MUST reject a document it does not understand.
+An authenticated PUT request to a Protocol endpoint SHOULD be accompanied by a document of media type `vnd.librarysimplified/user-profile+json`. It MAY be accompanied by a document of some other media type that supports the same essential features. The Protocol server MUST reject a document it does not understand.
 
 Upon receipt, the server MUST do its best to make the underlying account settings reflect the content of the incoming document (see below). If this is not possible, due to a security violation, nonsensical values, conflicting values, or any other reason, the server MUST send a [[problem detail|https://tools.ietf.org/html/rfc7807]] explaining the problem.
 
-# The `vnd.librarysimplified/account-settings+json` media type
+# The `vnd.librarysimplified/user-profile+json` media type
 
-A document with the media type `vnd.librarysimplified/account-settings+json` represents the current state of account settings (when sent from the server to the client) or a desired future state of account settings (when sent from the client to the server).
+A document with the media type `vnd.librarysimplified/user-profile+json` represents the current state of account settings (when sent from the server to the client) or a desired future state of account settings (when sent from the client to the server).
 
 This document has the form of a single JSON object. Semantics are defined for two keys that MAY appear in the JSON object: `readable` and `writable`. Other keys MAY appear in the JSON object, but this specification does not define their meaning.
 
