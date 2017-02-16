@@ -10,16 +10,16 @@ A library may choose not to implement the Protocol. SimplyE will use its default
 
 Other organizations may implement the Protocol for other types of user accounts, by defining their own keys for the fields.
 
-# The `http://librarysimplified.org/terms/rel/settings` link relation
+# The `http://librarysimplified.org/terms/rel/account-settings` link relation
 
 In the examples to follow, I'll use `http://server/settings` as the URL of a resource that implements the Protocol.
 
-We introduce the link relation `http://librarysimplified.org/terms/rel/user-settings`, which indicates that the link target supports the Protocol. This link relation may be used anywhere.
+We introduce the link relation `http://librarysimplified.org/terms/rel/account-settings`, which indicates that the link target supports the Protocol. This link relation may be used anywhere.
 
 Here's an HTML example of a link into the Protocol:
 
 ```
-<a href="https://server/settings" rel="http://librarysimplified.org/terms/rel/user-settings" type="vnd.librarysimplified/user-settings+json">
+<a href="https://server/settings" rel="http://librarysimplified.org/terms/rel/account-settings" type="vnd.librarysimplified/account-settings+json">
  Change your settings
 </a>
 ```
@@ -38,17 +38,17 @@ In general, a user may only administer their own settings. Users with superuser 
 
 ## GET
 
-An Protocol server that receives an authenticated GET request SHOULD send a document of media type `vnd.librarysimplified/user-settings+json`. It MAY send some other media type that supports the same essential features.
+An Protocol server that receives an authenticated GET request SHOULD send a document of media type `vnd.librarysimplified/account-settings+json`. It MAY send some other media type that supports the same essential features.
 
 ## PUT
 
-An authenticated PUT request to a Protocol endpoint SHOULD be accompanied by a document of media type `vnd.librarysimplified/user-settings+json`. It MAY be accompanied by a document of some other media type that supports the same essential features. The Protocol server MUST reject a document it does not understand.
+An authenticated PUT request to a Protocol endpoint SHOULD be accompanied by a document of media type `vnd.librarysimplified/account-settings+json`. It MAY be accompanied by a document of some other media type that supports the same essential features. The Protocol server MUST reject a document it does not understand.
 
 Upon receipt, the server MUST do its best to make the underlying account settings reflect the content of the incoming document (see below). If this is not possible, due to a security violation, nonsensical values, conflicting values, or any other reason, the server MUST send a [[problem detail|https://tools.ietf.org/html/rfc7807]] explaining the problem.
 
-# The `vnd.librarysimplified/user-settings+json` media type
+# The `vnd.librarysimplified/account-settings+json` media type
 
-A document with the media type `vnd.librarysimplified/user-settings+json` represents the current state of account settings (when sent from the server to the client) or a desired future state of account settings (when sent from the client to the server).
+A document with the media type `vnd.librarysimplified/account-settings+json` represents the current state of account settings (when sent from the server to the client) or a desired future state of account settings (when sent from the client to the server).
 
 This document has the form of a single JSON object. Semantics are defined for two keys that MAY appear in the JSON object: `readable` and `writable`. Other keys MAY appear in the JSON object, but this specification does not define their meaning.
 
@@ -58,7 +58,7 @@ The value of `readable` MUST be a single JSON object. The keys of this object co
 
 When a client PUTs a document to a Protocol endpoint, it SHOULD NOT send a document that includes `readable`. If it does send a document that includes `readable`, the server MUST ignore it.
 
-Semantics for a few keys are defined in the [[settings registry|https://github.com/NYPL-Simplified/Simplified/wiki/User-Settings-Management-Protocol]]. Other keys may show up in `readable` but this specification does not define their semantics.
+Semantics for a few keys are defined in the [[settings registry|https://github.com/NYPL-Simplified/Simplified/wiki/Account-Settings-Management-Protocol#settings-registry]]. Other keys may show up in `readable` but this specification does not define their semantics.
 
 ## `writable`
 
@@ -68,7 +68,7 @@ When the document is received in response to a GET request, the values associate
 
 When the document is submitted along with a PUT request, the values associated with these keys correspond to the desired _new_ values of these settings. If a key is not included, it indicates that the client does not wish to change the value of that setting. If a key is mapped to `null`, it indicates that the client wants to set the value of that setting to a null value.
 
-Semantics for a few keys are defined in the [[settings registry|https://github.com/NYPL-Simplified/Simplified/wiki/User-Settings-Management-Protocol]]. Other keys may show up in `writable` but this specification does not define their semantics.
+Semantics for a few keys are defined in the [[settings registry|https://github.com/NYPL-Simplified/Simplified/wiki/Account-Settings-Management-Protocol#settings-registry]]. Other keys may show up in `writable` but this specification does not define their semantics.
 
 ## Example
 
