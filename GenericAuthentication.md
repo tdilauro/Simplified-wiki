@@ -4,8 +4,6 @@ A Library Simplified circulation manager may be called upon to authenticate patr
 
 The [[authentication setup|AuthenticationSetup]] page explains how to connect your ILS to the currently supported authentication mechanisms. But what if you need to create a brand new authentication mechanism? This page explains the circulation manager's authentication framework so you can get this done with a minimum of new code.
 
-All the classes mentioned in this page can be found in the  module.
-
 # Two questions
 
 To integrate a new authentication technique into the circulation manager, we must be able to answer two questions:
