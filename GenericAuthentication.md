@@ -86,3 +86,11 @@ The `SIP2AuthenticationProvider` (found in [[sip/__init__.py|https://github.com/
 ## Millenium Patron authentication
 
 The `MilleniumPatronAPI` is an example of an `AuthenticationProvider` that implements both `remote_authenticate` and `remote_patron_lookup`. It needs to do this because the Millenium Patron API has different endpoints for validating patron credentials ("pintest") and retrieving a patron record. ("dump").
+
+## Clever OAuth authentication
+
+The `CleverAuthenticationProvider` can be found in [[clever/__init__.py|https://github.com/NYPL-Simplified/circulation/blob/master/api/clever/__init__.py]]. It defines a number of constants: `URI`, `NAME`, `TOKEN_TYPE`, `TOKEN_DATA_SOURCE_NAME`, and `EXTERNAL_AUTHENTICATE_URL`. The meanings of these are specified in the comment at the top of the `OAuthAuthenticationProvider` class. For example, `EXTERNAL_AUTHENTICATE_URL` is a Python string template used to generate the clever.com URL that will demand a patron's Clever credentials.
+
+Once the patron logs in to Clever, Clever sends them back to the circulation manager with a verification code. The `oauth_callback` method is triggered with this code as an argument. The job of `oauth_callback` is to communicate with Clever and convert that code into an OAuth bearer token.
+
+Now that we have an OAuth bearer token, we can call `remote_patron_lookup` and find out details about this patron, like their name and the school they attend.
