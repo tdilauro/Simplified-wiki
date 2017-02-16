@@ -51,7 +51,7 @@ Currently, our active public repositories include:
 * [[DRM autodiscovery|DRM-Autodiscovery]]
 * [[Short Client Token|Short-Client-Token]] for federated patron management
 * [[The ACS Device Management Protocol|DRM-Device-Management]]
-* [[The User Settings Management Protocol|User-Settings-Management-Protocol]]
+* [[The Account Settings Management Protocol|Account-Settings-Management-Protocol]]
 
 # Proposed changes
 
