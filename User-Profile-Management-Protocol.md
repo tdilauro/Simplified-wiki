@@ -74,11 +74,11 @@ This example might be included with a GET response. It conveys one piece of info
 
 This example might be included with a PUT request. It signifies an
 intent to change the value of `simplified:synchronize_annotations` to
-`true`.
+true.
 
 ```
 {
- "simplified:synchronize_annotations": true
+ "settings": { "simplified:synchronize_annotations" : true }
 }
 ```
 
@@ -88,7 +88,7 @@ The value of `settings` MUST be a JSON object. The keys and values inside this o
 
 When a server sends a Protocol document in response to a GET request, the presence of a key in `settings` (as opposed to the root object) indicates that the client MAY attempt to change the value associated with that key by sending the new value as part of a PUT request.
 
-When a document is PUT to a Protocol server, the server SHOULD ignore the value of `settings`. If you want to change the value of a setting, you MUST include it in the root object when you PUT, not in `settings`.
+When a client sends a Protocol document as part of a PUT request, the presence of a key in `settings` indicates that the client _is in fact_ attempting to change the value associated with that key to the value given in the PRotocol document.
 
 ## `links`
 
@@ -111,7 +111,7 @@ In general, this specification does not define whether or not a given setting is
 
 ## `simplified:authorization_expires`
 
-The date and time (if known) when the user's authorization will expire (e.g. because their library card expires). This value MUST be either a time in "YY-MM-DDTHH:MM:SSZ" format (with the time being UTC), or a date in "YY-MM-DD" format.
+The date and time (if known) when the user's authorization will expire (e.g. because their library card expires). This value MUST be a time in "YY-MM-DDTHH:MM:SSZ" format (with the time being UTC).
 
 ## `simplified:fines`
 
