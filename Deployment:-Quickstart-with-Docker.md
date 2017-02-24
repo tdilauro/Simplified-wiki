@@ -8,7 +8,7 @@ If you're already familiar with Docker and/or would like to contribute to our Do
 
 1. **Create your configuration file.** On your local machine, use [this documentation](Configuration) to create the JSON file for your particular library's configuration. If you're unfamiliar with Json, you can use [this JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/#) to validate your configuration file.
 
-2. Name your file `config.json` and **put it on your production server** at `/var/www/config.json`. For the rest of the instructions, we'll be working on this server.
+2. Name your file `config.json` and **put it on your production server** at `/etc/libsimple`. (You can put the file in any empty, unused directory you'd like, but you'll need to change the value in the commands below accordingly.) For the rest of the instructions, we'll be working on this server.
 
 ##### *On the Host Server*
 
@@ -27,7 +27,7 @@ If you're already familiar with Docker and/or would like to contribute to our Do
     ```sh
     $ sudo docker run -d --name circ-scripts \
         -e TZ="US/Central" \
-        -v /var/www/config.json:/var/www/circulation/config.json \
+        -v /etc/libsimple:/etc/circulation \
         nypl/circ-scripts
     ```
 
@@ -43,13 +43,18 @@ If you're already familiar with Docker and/or would like to contribute to our Do
     $ sudo docker exec circ-scripts cat /var/log/cron.log | less
     $ sudo docker exec circ-scripts ls /var/log/libsimple
     $ sudo docker exec circ-scripts cat /var/log/libsimple/overdrive_monitor_full | less
+
+    # The log directory can also be found on the production server.
+    # Its location can be found using this command.
+    $ sudo docker inspect circ-scripts \
+      --format='{{range $mount := .Mounts}}{{if eq $mount.Destination "/etc/circulation"}}{{$mount.Source}}{{end}}{{end}}'
     ```
 
 5. **Create a Circulation Manager deployment container.**
 
     ```sh
     $ sudo docker run -d -p 80:80 --name circ-deploy \
-        -v /var/www/config.json:/var/www/circulation/config.json \
+        -v /etc/libsimple:/etc/circulation \
         nypl/circ-deploy
     ```
 
