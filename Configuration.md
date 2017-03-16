@@ -86,6 +86,7 @@ Currently policies apply only to circulation managers.
 
 | Variable name                      | circ | metadata | content |
 | ---------------------------------- | ---- | -------- | ------- |
+| admin_authentication_domain        | O    |          |         |
 | authentication                     | O    |          |         |
 | external_type_regular_expression   | O    |          |         |
 | holds                              | O    |          |         |
@@ -94,6 +95,10 @@ Currently policies apply only to circulation managers.
 | lending                            | O    |          |         |
 | root_lane                          | O    |          |         |
 | minimum_featured_quality           | O    |          |         |
+
+### `admin_authentication_domain`
+
+This domain (e.g. "gmail.com" or "nypl.org") defines the permitted domain of admin-enabled email addresses. Used in conjunction with `include_admin_interface` and the `Google OAuth` integration, Google-based emails with this domain will be able to use the web-based admin interface to change book details.
 
 ### `authentication`
 
@@ -185,6 +190,7 @@ This section is where you connect the Library Simplified components to other ser
 | Content Cafe                       |      | O        |         |
 | Content Server                     | X    | X        | X       |
 | Elasticsearch                      | X    |          |         |
+| Google OAuth                       | O    |          |         |
 | Metadata Wrangler                  | X    | X        |         |
 | Millenium                          | O    |          |         |
 | New York Times                     | O    | X        |         |
@@ -333,6 +339,25 @@ patron searches. Both values are required.
 * `url`: The URL to the Elasticsearch server.
 * `works_index`: The name of the Elasticsearch index to use. Suggested value: `"circulation-works"`. If this index does not exist it will be automatically created.
 
+### Google OAuth
+
+The circulation manager uses Google OAuth to validate administrators
+for its admin interface. If you haven't set `include_admin_interface`
+to `true` in the configuration, this integration is not required and
+will be ignored.
+
+Use the [Google APIs console](https://console.developers.google.com/)
+to create credentials for your application. For local development,
+you'll want to add `http://localhost:6500/admin/GoogleAuth/callback`
+as an authorized redirect URI; for other environments, the
+`/admin/GoogleAuth/callback` route can be added to any configured url.
+Once finished, use the "Download JSON" button at the top left of the
+Credentials pane to get the JSON required for configuration.
+
+* `web`: The `web` details of the Google Auth configuration, a JSON object
+including the keys `client_id`, `project_id`, `token_uri`,
+`auth_provider_x509_cert_url`, `client_secret`, and `redirect_uris`.
+
 ### Millenium
 
 If access to your collection is managed through Millenium, this
@@ -411,17 +436,11 @@ spreadsheet to CSV, and import it into Library Simplified.
 
 | Variable name                      | circ | metadata | content |
 | ---------------------------------- | ---- | -------- | ------- |
-| logging                            | O    | O        | O       |
 | data_directory                     |      | X        | X       |
 | default_notification_email_address | X    |          |         |
 | gutenberg_illustrated_binary_path  |      |          | X       |
-
-### `logging`
-
-This is a JSON object that determines how logs are generated.
-
-* `level`: The logging level. The value is one of the standard log levels: `"DEBUG"`, `"INFO"`, and so on.
-* `output`: The output type. The value is either `"text"` or `"json"`.
+| include_admin_interface            | O    |          |         |
+| logging                            | O    | O        | O       |
 
 ### `data_directory`
 
@@ -432,3 +451,15 @@ On the metadata wrangler, the `Simplified-data` repository should be checked out
 ### `default_notification_email_address`
 
 Some ebook providers require the patron's email address when putting a book on hold. An email will be sent to that address when the book becomes available. Library Simplified does not gather patrons' email addresses and will do notifications using its own system (not implemented yet). This value should be an email address that will always bounce. Once the notification system is implemented, this value should be the email endpoint to the notification system.
+
+
+### `include_admin_interface`
+
+If you would like to launch the application with an admin interface, you'll need to set this property to `true`. The admin interface also requires the policy `admin_authentication_domain` to be set and the `Google OAuth` integration to be configured.
+
+### `logging`
+
+This is a JSON object that determines how logs are generated.
+
+* `level`: The logging level. The value is one of the standard log levels: `"DEBUG"`, `"INFO"`, and so on.
+* `output`: The output type. The value is either `"text"` or `"json"`.
