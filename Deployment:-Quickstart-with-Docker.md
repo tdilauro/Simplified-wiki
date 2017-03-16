@@ -8,7 +8,7 @@ If you're already familiar with Docker and/or would like to contribute to our Do
 
 1. **Create your configuration file.** On your local machine, use [this documentation](Configuration) to create the JSON file for your particular library's configuration. If you're unfamiliar with Json, you can use [this JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/#) to validate your configuration file.
 
-2. Name your file `config.json` and **put it on your production server** at `/etc/libsimple`. (You can put the file in any empty, unused directory you'd like, but you'll need to change the value in the commands below accordingly.) For the rest of the instructions, we'll be working on this server.
+2. Name your file `config.json` and **put it on your production server** at `/etc/libsimple`. (You can put the file in any directory you'd like, but you'll need to change the value in the commands below accordingly.) For the rest of the instructions, we'll be working on this server.
 
 ##### *On the Host Server*
 
@@ -27,11 +27,13 @@ If you're already familiar with Docker and/or would like to contribute to our Do
     ```sh
     $ sudo docker run -d --name circ-scripts \
         -e TZ="US/Central" \
+        # set the variable below if you have never used the configured database before
+        -e LIBSIMPLE_DB_INIT="true" \
         -v /etc/libsimple:/etc/circulation \
         nypl/circ-scripts
     ```
 
-    *What you're doing.* You're running this container in detached mode (`-d`), passing in your configuration file to where it needs to be (`-v`), and calling it "circ-scripts". With the (`-e`) optional argument `TZ`, you can pass a [Debian-system timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) representing your local time zone, which will cause timed scripts to run according to your local time.
+    *What you're doing.* You're running this container in detached mode (`-d`), passing in your configuration file to where it needs to be (`-v`), and calling it "circ-scripts". With the (`-e`) optional argument `TZ`, you can pass a [Debian-system timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) representing your local time zone, which will cause timed scripts to run according to your local time. If the database you've connected in your configuration has never been used before, use (`-e`) to set the optional argument `LIBSIMPLE_DB_INIT`. This will keep track of the state of the database you've created and create an alias on your Elasticsearch cluster, allowing database updates to be easily managed with scripts.
 
     *Troubleshooting.* You'll want to check the logs of your container. For example:
 
@@ -50,15 +52,17 @@ If you're already familiar with Docker and/or would like to contribute to our Do
       --format='{{range $mount := .Mounts}}{{if eq $mount.Destination "/etc/circulation"}}{{$mount.Source}}{{end}}{{end}}'
     ```
 
-5. **Create a Circulation Manager deployment container.**
+5. **Create a Circulation Manager deployment container.** If you are creating these containers for the first time, only run the deployment container **AFTER** you've created the scripts container, or you run the risk of generating [the IntegrityErrors described in #20](https://github.com/NYPL-Simplified/circulation-docker/issues/20). Should you face this foul beast, run `sudo docker exec circ-deploy touch uwsgi.ini` to reload the application without error.
 
     ```sh
     $ sudo docker run -d -p 80:80 --name circ-deploy \
         -v /etc/libsimple:/etc/circulation \
+        # only set the below variable if you haven't created a scripts container or otherwise used the configured db before
+        -e LIBSIMPLE_DB_INIT="true" \
         nypl/circ-deploy
     ```
 
-    *What you're doing.* You're running this container in detached mode (`-d`), binding its port 80 to your server's port 80 (`-p`), passing in your configuration file where it needs to be (`-v`) and calling it "circ-deploy". When you visit your server through a browser, you'll see a very sparse OPDS feed.
+    *What you're doing.* You're running this container in detached mode (`-d`), binding its port 80 to your server's port 80 (`-p`), passing in your configuration file where it needs to be (`-v`) and calling it "circ-deploy". When you visit your server through a browser, you'll see a very sparse OPDS feed. If the database you've connected in your configuration has never been used before, use (`-e`) to set the optional argument `LIBSIMPLE_DB_INIT`. This will keep track of the state of the database you've created and create an alias on your Elasticsearch cluster, allowing database updates to be easily managed with scripts.
 
     *Troubleshooting.* You'll want to check the logs of your container (`/var/log/nginx/error.log` and `/var/www/circulation/uwsgi.log`) to troubleshoot:
 
