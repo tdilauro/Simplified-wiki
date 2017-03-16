@@ -343,7 +343,7 @@ patron searches. Both values are required.
 
 The circulation manager uses Google OAuth to validate administrators
 for its admin interface. If you haven't set `include_admin_interface`
-to `true` in the configuration, this integration is not required and
+to `"true"` in the configuration, this integration is not required and
 will be ignored.
 
 Use the [Google APIs console](https://console.developers.google.com/)
