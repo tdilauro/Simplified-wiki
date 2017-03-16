@@ -98,7 +98,7 @@ Currently policies apply only to circulation managers.
 
 ### `admin_authentication_domain`
 
-This domain (e.g. "gmail.com" or "nypl.org") defines the permitted domain of admin-enabled email addresses. Used in conjunction with `include_admin_interface` and the `Google OAuth` integration, Google-based emails with this domain will be able to use the web-based admin interface to change book details.
+This domain (e.g. "gmail.com" or "nypl.org") defines the permitted domain of admin-enabled email addresses. Used in conjunction with `include_admin_interface` and the `Google OAuth` integration, anyone with a Google-based email with this domain will be able to use the web-based admin interface to change book details.
 
 ### `authentication`
 
@@ -352,11 +352,11 @@ you'll want to add `http://localhost:6500/admin/GoogleAuth/callback`
 as an authorized redirect URI; for other environments, the
 `/admin/GoogleAuth/callback` route can be added to any configured url.
 Once finished, use the "Download JSON" button at the top left of the
-Credentials pane to get the JSON required for configuration.
-
-* `web`: The `web` details of the Google Auth configuration, a JSON object
-including the keys `client_id`, `project_id`, `token_uri`,
-`auth_provider_x509_cert_url`, `client_secret`, and `redirect_uris`.
+Credentials pane to get the JSON required for configuration. The downloaded
+file should contain a JSON object with a `web` section including the keys
+`client_id`, `project_id`, `token_uri`, `auth_provider_x509_cert_url`, 
+`client_secret`, and `redirect_uris`. Paste this JSON object 
+into the config file under "Google OAuth".
 
 ### Millenium
 
