@@ -71,6 +71,19 @@ sudo apt-get install python-numpy
     brew install homebrew/dupes/zlib
 ```
 
+## Content server only
+The content server has an additional dependency on libyaml:
+
+```
+# Content server only
+sudo yum install libyaml
+```
+
+Ubuntu:
+```
+sudo apt-get install libyaml-dev
+```
+
 ## Metadata wrangler only
 The metadata wrangler has a number of additional dependencies so that scikit-learn can be installed:
 
