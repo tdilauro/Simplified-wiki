@@ -12,7 +12,7 @@ If you're already familiar with Docker and/or would like to contribute to our Do
 
 ##### *On the Host Server*
 
-1. **Install Docker.** Docker has [step-by-step instructions](https://docs.docker.com/engine/installation/linux/) to grab its most up-to-date version. Depending on your package manager, you could also install a slightly older version with: `sudo apt-get install docker-engine` or `sudo yum install docker-engine`.
+1. **Install Docker.** Docker has [step-by-step instructions](https://docs.docker.com/engine/installation/linux/) to grab its most up-to-date version. Depending on your package manager, you could also install a slightly older version with: `sudo apt-get install docker-ce` or `sudo yum install docker-ce`.
 
 2. **Get the Docker images** for the Library Simplified Circulation Manager. Run:
 
