@@ -110,7 +110,7 @@ While we do **not** recommend you run Elasticsearch from a Docker container perm
     $ sudo docker run -d --name es elasticsearch:1     # create an elasticsearch container
     $ sudo docker ps                                   # confirm that it's running
     # note its IP address
-    $ sudo docker inspect es --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}"'
+    $ sudo docker inspect es --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
     ```
 
 3. **Add the Elasticsearch URL to your configuration file.** When you run `sudo docker ps`, you'll see a single running container called es. Use the IP that comes from running `inspect` to update your your `config.json` file with the proper Elasticsearch location. You should end up with something like `"http://172.17.0.2:9200"`.
@@ -132,7 +132,7 @@ While we do **not** recommend you run Postgres from a Docker container permanent
     $ sudo docker run -d --name pg postgres:9.5        # create a postgres container
     $ sudo docker ps                                   # confirm that it's running
     # note its IP address
-    $ sudo docker inspect pg --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}"'
+    $ sudo docker inspect pg --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
     ```
 
 3. **Create a Postgres database.** Run:
