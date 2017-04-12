@@ -225,7 +225,7 @@ Users who have both a nypl.org account and a library card may prefer to log in u
 
 #### Current authentication APIs
 
-The [Innovative Millenium API](http://techdocs.iii.com/patronws_patron_data.shtml) (user:pass nypl_s:chapter) probably also does
+The [Innovative Millenium API](http://techdocs.iii.com/patronws_patron_data.shtml) probably also does
 validation, but I'm not sure how.
 
 #### New library card
