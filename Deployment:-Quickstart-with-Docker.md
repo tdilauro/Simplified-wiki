@@ -49,7 +49,7 @@ If you're already familiar with Docker and/or would like to contribute to our Do
     # The log directory can also be found on the production server.
     # Its location can be found using this command.
     $ sudo docker inspect circ-scripts \
-      --format='{{range $mount := .Mounts}}{{if eq $mount.Destination "/etc/circulation"}}{{$mount.Source}}{{end}}{{end}}'
+      --format='{{range $mount := .Mounts}}{{if eq $mount.Destination "/var/log"}}{{$mount.Source}}{{end}}{{end}}'
     ```
 
 5. **Create a Circulation Manager deployment container.** If you are creating these containers for the first time, only run the deployment container **AFTER** you've created the scripts container, or you run the risk of generating [the IntegrityErrors described in #20](https://github.com/NYPL-Simplified/circulation-docker/issues/20). Should you face this foul beast, run `sudo docker exec circ-deploy touch uwsgi.ini` to reload the application without error.
