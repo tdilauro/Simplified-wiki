@@ -54,9 +54,12 @@ Create a new `patronauthenticationservices` table, by analogy to `adminauthentic
 patronauthenticationservices
  id
  name
+ protocol
  library_id
  external_integration_id
 ```
+
+All configuration items will go into the `ExternalIntegration`
 
 In general, I think a one-to-many relationship between Library and PatronAuthenticationService is best. In general, each library authenticates its patrons in a distinctive way that no other library may use. That's why I gave this table a library_id. However, there are two cases I can think of when there's a many-to-one or many-to-many relationship between a library and the thing that authenticates the patrons.
 
@@ -66,6 +69,7 @@ In the first case, every library in a consortium authenticates against the same 
 patronauthenticationservices
  id
  name
+ protocol
  library_id
  external_integration_id
  extra_config
@@ -88,6 +92,7 @@ libraries_patronauthenticationservices
 patronauthenticationservices
  id
  name
+ protocol
  external_integration_id
 ```
 
@@ -105,6 +110,7 @@ libraries_patronauthenticationservices
 patronauthenticationservices
  id
  name
+ protocol
  external_integration_id
  extra_config
 ```
