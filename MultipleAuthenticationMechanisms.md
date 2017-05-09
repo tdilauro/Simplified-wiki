@@ -31,4 +31,8 @@ Found in api/clever/__init__.py
 * client_secret
 * token_expiration_days
 
-There is no "generic OAuth" AuthenticationProvider. Currently adding an OAuth provider that delegates to a different OAuth server requires defining a subclass in Python code, a la `CleverAuthenticationAPI`, and define values for the constants URI, METHOD (optional), NAME, TOKEN_TYPE, TOKEN_DATA_SOURCE_NAME, and EXTERNAL_AUTHENTICATE_URL. However, it might not be necessary to do this. It might be possible to configure `OAuthAuthenticationProvider` with an `ExternalIntegration` that contains values for those variables.
+# `OAuthAuthenticationProvider`
+
+This is an abstract class. There is currently no "generic OAuth" provider. To add an OAuth provider you must define a subclass in Python code, a la `CleverAuthenticationAPI`, and define values for the constants URI, METHOD (optional), NAME, TOKEN_TYPE, TOKEN_DATA_SOURCE_NAME, and EXTERNAL_AUTHENTICATE_URL. You need to implement `remote_exchange_authorization_code_for_access_token` and `remote_patron_lookup`.
+
+It might not be necessary to do this in all cases. It might be possible to configure `OAuthAuthenticationProvider` with an `ExternalIntegration` that contains values for those variables. Then we could implement a default `remote_exchange_authorization_code_for_access_token` that works in common cases, and implement `remote_patron_lookup` as a no-op.
