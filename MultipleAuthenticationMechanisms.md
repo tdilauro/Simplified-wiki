@@ -109,4 +109,4 @@ patronauthenticationservices
  extra_config
 ```
 
-I think we should make this decision on the basis of usability, both in terms of what we can turn into a usable interface and in terms of not making administrators do duplicate work. But I don't know what the answer is.
+I think we should make this decision on the basis of usability, both in terms of what we can turn into a simple, consistent interface, and in terms of not making administrators do duplicate work. But those two goals seem in conflict so I don't know what the answer is.
