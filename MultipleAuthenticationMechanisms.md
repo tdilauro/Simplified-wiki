@@ -6,6 +6,13 @@ Currently AuthenticationProviders are instantiated from site config. In the futu
 
 Here are the current AuthenticationProviders along with the values you need to configure them.
 
+In addition to the values specified, all Basic Auth authentication providers can be configured with these four options:
+
+* identifier_regular_expression
+* password_regular_expression
+* test_username
+* test_password
+
 ## `SIPAuthenticationProvider`
 
 Found in `api/sip/__init__.py`.
@@ -42,7 +49,7 @@ Found in `api/mock_authentication.py`.
 
 This is problematic because its main attraction is that it's the simplest authentication provider to set up. When configuration is done through a JSON file, it is much simpler to write a `patrons` dictionary than to try to get SIP2 working. But when configuration is done through a web interface that expects a relatively small number of scalar configuration values, it becomes a lot less simple (relatively speaking) to input this kind of configuration.
 
-In the interests of simplicity it might be better to allow MockAuthenticationProvider to accept only a single username and password (the one designated as the test username/password).
+In the interests of simplicity it might be better to allow MockAuthenticationProvider to accept only a single username and password (the `test_username` and `test_password`).
 
 ## `CleverAuthenticationAPI`
 
