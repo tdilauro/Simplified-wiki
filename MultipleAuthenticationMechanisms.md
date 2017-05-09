@@ -59,7 +59,9 @@ patronauthenticationservices
  external_integration_id
 ```
 
-All configuration items will go into the `ExternalIntegration`
+All configuration items will go into the `ExternalIntegration`. This includes configuration items like `test_username` and `test_password`, which will be necessary to run a self-test from the administrative interface.
+
+The model class will enforce rules like "at most one Basic-type authentication mechanism per library".
 
 In general, I think a one-to-many relationship between Library and PatronAuthenticationService is best. In general, each library authenticates its patrons in a distinctive way that no other library may use. That's why I gave this table a library_id. However, there are two cases I can think of when there's a many-to-one or many-to-many relationship between a library and the thing that authenticates the patrons.
 
@@ -98,7 +100,6 @@ patronauthenticationservices
 
 Or we could support both cases with a schema like this:
 
-
 ```
 libraries_patronauthenticationservices
  id
@@ -115,4 +116,20 @@ patronauthenticationservices
  extra_config
 ```
 
+In these cases I'm not convinced that `test_username` and `test_password` belong in the ExternalIntegration, since different libraries probably have different test patrons. I feel closer to saying this stuff should go in `extra_config`.
+
 I think we should make this decision on the basis of usability, both in terms of what we can turn into a simple, consistent interface, and in terms of not making administrators do duplicate work. But those two goals seem in conflict so I don't know what the answer is.
+
+It might be good enough to offer in the admin interface the ability to copy a patron authentication service from one library to another.
+
+# Admin interface
+
+We need interfaces for doing the following:
+
+* List patron authentication services for a library
+* Create a new patron authentication service for a library
+* Delete a patron authentication service
+* Run a self-test on a patron authentication service (using the test username and password configured for that service).
+
+
+If library-patronauthenticationservice is many-to-many then this list will change in predictable ways (creating an authentication service and associating it with a library will be a separate step).
