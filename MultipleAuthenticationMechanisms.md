@@ -32,6 +32,18 @@ Found in `api/firstbook.py`
 * url
 * key (an API key)
 
+## `MockAuthenticationProvider`
+
+Found in `api/mock_authentication.py`.
+
+* patrons (a dictionary mapping usernames to passwords)
+* expired_patrons (a dictionary mapping usernames to passwords)
+* patrons_with_fines (a dictionary mapping usernames to passwords)
+
+This is problematic because its main attraction is that it's the simplest authentication provider to set up. When configuration is done through a JSON file, it is much simpler to write a `patrons` dictionary than to try to get SIP2 working. But when configuration is done through a web interface that expects a relatively small number of scalar configuration values, it becomes a lot less simple (relatively speaking) to input this kind of configuration.
+
+In the interests of simplicity it might be better to allow MockAuthenticationProvider to accept only a single username and password (the one designated as the test username/password).
+
 ## `CleverAuthenticationAPI`
 
 Found in `api/clever/__init__.py`
