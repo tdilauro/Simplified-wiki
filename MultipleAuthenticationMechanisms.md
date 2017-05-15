@@ -32,6 +32,16 @@ Found in `api/millenium_patron.py`.
 * authorization_identifier_blacklist (a list)
 * verify_certificate (a boolean)
 
+### Block codes
+
+In general, libraries use the MBLOCK[p56] field to mark when a patron's access is blocked. Although the value of MBLOCK[p56] is a single character, different libraries use different codes to mean 'blocked' for various reasons.
+
+### Library codes
+
+Even when a Sierra instance manages an entire library consortium, the Millenium Patron API seems to put all patrons into a single namespace. There is no need to provide a library code when authenticating (as there sometimes is with SIP), and no risk that a patron of a different consortium might have the same barcode as you.
+
+Consortia seem to use the CCARD[p46] field to indicate which library supports a patron. Some values for CCARD[p46] indicate that a patron does not have borrowing privileges. In this respect it acts similar to P TYPE[p47].
+
 ## `FirstBookAuthenticationAPI`
 
 Found in `api/firstbook.py`
