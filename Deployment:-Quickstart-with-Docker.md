@@ -64,7 +64,7 @@ If you're already familiar with Docker and/or would like to contribute to our Do
 
     *What you're doing.* You're running this container in detached mode (`-d`), binding its port 80 to your server's port 80 (`-p`), passing in your configuration file where it needs to be (`-v`) and calling it "circ-deploy". When you visit your server through a browser, you'll see a very sparse OPDS feed. If the database you've connected in your configuration has never been used before, use (`-e`) to set the optional argument `LIBSIMPLE_DB_INIT`. This will keep track of the state of the database you've created and create an alias on your Elasticsearch cluster, allowing database updates to be easily managed with scripts.
 
-    *Troubleshooting.* You'll want to check the logs of your container (`/var/log/nginx/error.log` and `/var/www/circulation/uwsgi.log`) to troubleshoot:
+    *Troubleshooting.* You'll want to check the logs of your container (`/var/log/nginx/error.log` and `/var/log/libsimple/uwsgi.log`) to troubleshoot:
 
     ```sh
     # check logs of running supervisor processes
@@ -72,7 +72,7 @@ If you're already familiar with Docker and/or would like to contribute to our Do
 
     # check logs inside the container
     $ sudo docker exec circ-deploy cat /var/log/nginx/error.log | less
-    $ sudo docker exec circ-deploy cat /var/www/circulation/uwsgi.log | less
+    $ sudo docker exec circ-deploy cat /var/log/libsimple/uwsgi.log | less
     ```
 
 6. **Confirm your scripts are running.** Once you've given your scripts some time to run (~30 minutes should be enough time to start having works move through the import process), you'll want to refresh your views so they show up in your deployed app.
@@ -91,7 +91,7 @@ If you're already familiar with Docker and/or would like to contribute to our Do
 
 ##### *Evaluating Success*
 
-If your Docker containers are running successfully, you should have a `/var/log/libsimple` directory full of logfiles in your circ-scripts container, and you should be able to visit your server's domain and see an OPDS feed from circ-deploy. If either of these things aren't occurring, use the troubleshooting details above to check `var/log/cron.log` or the logfiles in `/var/log/libsimple` for circ-scripts and/or `/var/www/circulation/uwsgi.log` or `/var/log/nginx/error.log`.
+If your Docker containers are running successfully, you should have a `/var/log/libsimple` directory full of logfiles in your circ-scripts container, and you should be able to visit your server's domain and see an OPDS feed from circ-deploy. If either of these things aren't occurring, use the troubleshooting details above to check `var/log/cron.log` or the logfiles in `/var/log/libsimple` for circ-scripts and/or `/var/log/libsimple/uwsgi.log` or `/var/log/nginx/error.log`.
 
 
 #### <a name='es'></a>*Elasticsearch* (optional support container)
