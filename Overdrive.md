@@ -22,11 +22,12 @@ doesn't cost anything extra to get all three, and you won't have to go
 back and re-apply if your authentication situation changes.
 
 Under "Planned API usage", mention the name of your library and that
-you are integrating your Overdrive collection into the Library
-Simplified system.
+you are integrating your Overdrive collection into the SimplyE system.
 
 It can take a week or more to get approved for API access, so don't
 put this off!
+
+When Overdrive gets back to you, they may give you a website ID of 100300 and a library ID of 4425. Those are the IDs for the Overdrive test library. If this happens to you, go back to them and tell them that you need the production IDs to integrate your library into the SimplyE system.
 
 ## Types of APIs
 
