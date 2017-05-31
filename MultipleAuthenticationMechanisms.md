@@ -1,6 +1,6 @@
 To support multiple libraries on a single circulation manager, we need to allow a single circulation manager to be configured with several different authentication mechanisms. We already have a configurable set of authentication mechanisms, but configuration itself happens within the JSON file. In a multi-library environment this configuration needs to happen through the web, and the configuration needs to be stored in the database.
 
-Currently AuthenticationProviders are instantiated from site config. In the future they will be instantiated from the database.
+Currently AuthenticationProviders are instantiated from site config. After this work is done, they will be instantiated from the database.
 
 # Existing authentication providers
 
@@ -77,88 +77,38 @@ It might not be necessary to do this in all cases. It might be possible to confi
 
 # Database schema changes
 
+The `externalintegrations` table will be used to store all configuration currently stored in JSON configuration. This includes configuration items like `test_username` and `test_password`, which will be necessary to run a self-test from the administrative interface. (In theory, different libraries that use the same ILS might provide different test patrons, but in practice we generally get a single test patron. So I'm going to say the purpose of test_username and test_password is to verify that the connection to the ILS is working and we can speak its language, rather than to verify that each library has configured the ILS correctly.)
+
+An `ExternalIntegration` for an authentication mechanism has `goal=PATRON_AUTH_GOAL` and a `protocol` corresponding to the authentication technique (SIP2, Millenium Patron, Clever, etc).
+
+This works when there's only one library. Different libraries may use different authentication mechanisms. Libraries that use the same authentication mechanism need to determine whether a patron who passes ILS authentication is actually a patron of _that_ library, rather than a different library on the same ILS.
+
 Create a new `patronauthenticationservices` table, by analogy to `adminauthenticationservices`, that looks like this:
 
 ```
 patronauthenticationservices
  id
- name
- protocol
  library_id
+ patron_restriction_type
+ patron_restriction
  external_integration_id
 ```
 
-All configuration items will go into the `ExternalIntegration`. This includes configuration items like `test_username` and `test_password`, which will be necessary to run a self-test from the administrative interface.
+This table creates a many-to-many relationship between libraries and patron authentication services. Most libraries will only have one authentication service, but some (Open Ebooks) will have more than one.
 
-The model class will enforce rules like "at most one Basic-type authentication mechanism per library".
+If a library will accept anyone who the `ExternalIntegration` thinks is okay, then `patron_restriction_type` and `patron_restriction` can be left empty. If a library needs to distinguish between patrons of _this_ library (who get service) and patrons of _some other_ library (who don't), then `patron_restriction_type` and `patron_restriction` should be set to appropriate values.
 
-In general, I think a one-to-many relationship between Library and PatronAuthenticationService is best. In general, each library authenticates its patrons in a distinctive way that no other library may use. That's why I gave this table a library_id. However, there are two cases I can think of when there's a many-to-one or many-to-many relationship between a library and the thing that authenticates the patrons.
-
-In the first case, every library in a consortium authenticates against the same SIP2 server, but there's some special field (such as location_code) which distinguishes between the two libraries. In this case it would be nice to avoid defining thirty slightly different ExternalIntegrations for the same SIP2 server. PatronAuthenticationService could then become a join table between Library and ExternalIntegration which specifies some extra information.
-
-```
-patronauthenticationservices
- id
- name
- protocol
- library_id
- external_integration_id
- extra_config
-```
-
-It would be annoying to have to come up with a distinct name for each PatronAuthenticationService, but you wouldn't have to specify the SIP2 server multiple times.
-
-In the second case, a number of libraries all authenticate their patrons through the same OAuth server, and you are asked to select your library when you open up the OAuth server in a web view. In this case the ExternalIntegration for every library would be exactly the same, and the PatronAuthenticationServices would also be exactly the same. 
-
-In this case the best database schema might look like this:
-
-```
-libraries_patronauthenticationservices
- id
- library_id
- patronauthenticationservice_id
-```
-
-```
-patronauthenticationservices
- id
- name
- protocol
- external_integration_id
-```
-
-Or we could support both cases with a schema like this:
-
-```
-libraries_patronauthenticationservices
- id
- library_id
- patronauthenticationservice_id
-```
-
-```
-patronauthenticationservices
- id
- name
- protocol
- external_integration_id
- extra_config
-```
-
-In these cases I'm not convinced that `test_username` and `test_password` belong in the ExternalIntegration, since different libraries probably have different test patrons. I feel closer to saying this stuff should go in `extra_config`.
-
-I think we should make this decision on the basis of usability, both in terms of what we can turn into a simple, consistent interface, and in terms of not making administrators do duplicate work. But those two goals seem in conflict so I don't know what the answer is.
-
-It might be good enough to offer in the admin interface the ability to copy a patron authentication service from one library to another.
+Appropriate values for `patron_restriction_type` and `patron_restriction` might be "identifier prefix"/"23333" or "library code"/"56". Once patron information is obtained from the ILS and put into a generic form, the patron restriction type would be imposed to grant or deny access.
 
 # Admin interface
 
 We need interfaces for doing the following:
 
-* List patron authentication services for a library
-* Create a new patron authentication service for a library
-* Delete a patron authentication service
+* List patron authentication services
+* Create a new patron authentication service
+* Configure an existing patron authentication service
 * Run a self-test on a patron authentication service (using the test username and password configured for that service).
-
-
-If library-patronauthenticationservice is many-to-many then this list will change in predictable ways (creating an authentication service and associating it with a library will be a separate step).
+* Associate a patron authentication service with a library, possibly adding a patron restriction
+* Modify or remove the patron restriction on a library+patron authentication service
+* Disassociate a patron authentication service from a library
+* Delete a patron authentication service not used by any libraries
