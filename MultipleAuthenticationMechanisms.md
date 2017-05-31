@@ -2,10 +2,9 @@ To support multiple libraries on a single circulation manager, we need to allow 
 
 Currently AuthenticationProviders are instantiated from site config. After this work is done, they will be instantiated from the database.
 
-# Known libraries
+# What we know
 
-We now know a few things about how different libraries authenticate patrons.
-
+After sending out a lot of questionnaires, we now know a few things about how different libraries authenticate patrons.
 
 * NYPL authenticates all patrons through Millenium Patron. Patrons with certain values for the `P TYPE[p47]` field are restricted to certain classes of books.
 * Open Ebooks can authenticate patrons through Clever or through FirstBook.
