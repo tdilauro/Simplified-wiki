@@ -2,6 +2,25 @@ To support multiple libraries on a single circulation manager, we need to allow 
 
 Currently AuthenticationProviders are instantiated from site config. After this work is done, they will be instantiated from the database.
 
+# Known libraries
+
+We now know a few things about how different libraries authenticate patrons.
+
+
+* NYPL authenticates all patrons through Millenium Patron. Patrons with certain values for the `P TYPE[p47]` field are restricted to certain classes of books.
+* Open Ebooks can authenticate patrons through Clever or through FirstBook.
+* The Ferguson, CT library authenticates all patrons through SIP2. Only patrons whose barcodes start with 2111800 have borrowing privileges.
+* The LION consortium authenticates all patrons through Millenium Patron. The value of a patron's CCARD[p46] field determine the patron's home library within the consortium.
+* The LCI consortium authenticates all patrons through Millenium Patron. The first five characters of a patron's barcode determine the patron's home library within the consortium.
+* The Bibliomation consortium authenticates all patrons through SIP2. The value of the AQ field determines the patron's home library within the consortium.
+
+We also know a few things about how different libraries authorize patrons.
+
+* In general, patrons lose borrowing privileges if they are blocked or if they accrue excessive fines.
+* Although all Sierra libraries use the `MBLOCK[p56]` field to convey block status, different ILS installations have different rules about which values for `MBLOCK[p56]` mean the patron has lost borrowing privileges.
+* Rules about what dollar amount constitutes an "excessive" fine seem to be set ILS-wide, meaning that different libraries within a consortium do not have latitude to change this number.
+* NYPL uses the `P TYPE[p47]` field to control access to different types of books. For example, your `P TYPE[p47]` may restrict you to borrowing childrens' books.
+
 # Existing authentication providers
 
 Here are the current AuthenticationProviders along with the values you need to configure them.
@@ -34,7 +53,7 @@ Found in `api/millenium_patron.py`.
 
 ### Block codes
 
-In general, libraries use the MBLOCK[p56] field to mark when a patron's access is blocked. Although the value of MBLOCK[p56] is a single character, different libraries use different codes to mean 'blocked' for various reasons.
+In general, libraries use the MBLOCK[p56] field to mark when a patron's access is blocked. Although the value of MBLOCK[p56] is a single character, different libraries use different codes to mean 'blocked' for various reasons. This needs to be configured.
 
 ### Library codes
 
