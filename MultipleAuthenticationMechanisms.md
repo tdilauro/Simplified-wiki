@@ -8,7 +8,7 @@ After sending out a lot of questionnaires, we now know a few things about how di
 
 * NYPL authenticates all patrons through Millenium Patron.
 * Open Ebooks can authenticate patrons through Clever or through FirstBook.
-* The Ferguson, CT library authenticates all patrons through SIP2. Only patrons whose barcodes start with 2111800 have borrowing privileges.
+* The Ferguson, CT library authenticates all patrons through SIP2. Only patrons whose barcodes start with a specific seven-character string have borrowing privileges.
 * The LION consortium authenticates all patrons through Millenium Patron. The value of a patron's CCARD[p46] field determine the patron's home library within the consortium.
 * The LCI consortium authenticates all patrons through Millenium Patron. The first five characters of a patron's barcode determine the patron's home library within the consortium.
 * The Bibliomation consortium authenticates all patrons through SIP2. The value of the AQ field determines the patron's home library within the consortium.
