@@ -94,7 +94,7 @@ An `ExternalIntegration` for an authentication mechanism has `goal=PATRON_AUTH_G
 
 When there's only one library, we can use the same code we have now, but pull the AuthenticationProvider configuration from a database query rather than from the JSON config. However, when there's more than one library, different libraries may use different authentication mechanisms. Libraries that use the same authentication mechanism need to determine whether a patron who passes ILS authentication is actually a patron of _that_ library, rather than a different library on the same ILS.
 
-So after moving authentication configuration to `ExternalIntegration, we will create a new `patronauthenticationservices` table, by analogy to `adminauthenticationservices`, that looks like this:
+So after moving authentication configuration to `ExternalIntegration`, we will create a new `patronauthenticationservices` table, by analogy to `adminauthenticationservices`, that looks like this:
 
 ```
 patronauthenticationservices
