@@ -6,19 +6,20 @@ Currently AuthenticationProviders are instantiated from site config. After this 
 
 After sending out a lot of questionnaires, we now know a few things about how different libraries authenticate patrons.
 
-* NYPL authenticates all patrons through Millenium Patron. Patrons with certain values for the `P TYPE[p47]` field are restricted to certain classes of books.
+* NYPL authenticates all patrons through Millenium Patron.
 * Open Ebooks can authenticate patrons through Clever or through FirstBook.
 * The Ferguson, CT library authenticates all patrons through SIP2. Only patrons whose barcodes start with 2111800 have borrowing privileges.
 * The LION consortium authenticates all patrons through Millenium Patron. The value of a patron's CCARD[p46] field determine the patron's home library within the consortium.
 * The LCI consortium authenticates all patrons through Millenium Patron. The first five characters of a patron's barcode determine the patron's home library within the consortium.
 * The Bibliomation consortium authenticates all patrons through SIP2. The value of the AQ field determines the patron's home library within the consortium.
 
-We also know a few things about how different libraries authorize patrons.
+We also know a few things about how different libraries _authorize_ patrons. Not all patrons have borrowing privileges, and not all patrons with borrowing privileges can borrow all books.
 
 * In general, patrons lose borrowing privileges if they are blocked or if they accrue excessive fines.
 * Although all Sierra libraries use the `MBLOCK[p56]` field to convey block status, different ILS installations have different rules about which values for `MBLOCK[p56]` mean the patron has lost borrowing privileges.
 * Rules about what dollar amount constitutes an "excessive" fine seem to be set ILS-wide, meaning that different libraries within a consortium do not have latitude to change this number.
-* NYPL uses the `P TYPE[p47]` field to control access to different types of books. For example, your `P TYPE[p47]` may restrict you to borrowing childrens' books.
+* NYPL uses the patron type (derived from the `P TYPE[p47]` field) to control access to different types of books. For example, your patron type may restrict you to borrowing childrens' books.
+* Open Ebooks uses the patron type (derived from the FirstBook barcode for or by asking the Clever API for grade level) to control which lane you're directed to. For example, your patron type may send you to the Early Grade lane or the Young Adult lane.
 
 # Existing authentication providers
 
