@@ -50,16 +50,6 @@ Found in `api/millenium_patron.py`.
 * authorization_identifier_blacklist (a list)
 * verify_certificate (a boolean)
 
-### Block codes
-
-In general, libraries use the MBLOCK[p56] field to mark when a patron's access is blocked. Although the value of MBLOCK[p56] is a single character, different libraries use different codes to mean 'blocked' for various reasons. This needs to be configured.
-
-### Library codes
-
-Even when a Sierra instance manages an entire library consortium, the Millenium Patron API seems to put all patrons into a single namespace. There is no need to provide a library code when authenticating (as there sometimes is with SIP), and no risk that a patron of a different consortium might have the same barcode as you.
-
-Consortia seem to use the CCARD[p46] field to indicate which library supports a patron. Some values for CCARD[p46] indicate that a patron does not have borrowing privileges. In this respect it acts similar to P TYPE[p47].
-
 ## `FirstBookAuthenticationAPI`
 
 Found in `api/firstbook.py`
@@ -95,13 +85,15 @@ It might not be necessary to do this in all cases. It might be possible to confi
 
 # Database schema changes
 
-The `externalintegrations` table will be used to store all configuration currently stored in JSON configuration. This includes configuration items like `test_username` and `test_password`, which will be necessary to run a self-test from the administrative interface. (In theory, different libraries that use the same ILS might provide different test patrons, but in practice we generally get a single test patron. So I'm going to say the purpose of test_username and test_password is to verify that the connection to the ILS is working and we can speak its language, rather than to verify that each library has configured the ILS correctly.)
+The `externalintegrations` table will be used to store all configuration currently stored in JSON configuration. This includes configuration items like `test_username` and `test_password`, which will be necessary to run a self-test from the administrative interface. 
+
+(In theory, different libraries that use the same ILS might provide different test patrons, but in practice we generally get a single test patron. So I'm going to say the purpose of test_username and test_password is to verify that the connection to the ILS is working and we can speak its language, rather than to verify that each library has configured the ILS correctly.)
 
 An `ExternalIntegration` for an authentication mechanism has `goal=PATRON_AUTH_GOAL` and a `protocol` corresponding to the authentication technique (SIP2, Millenium Patron, Clever, etc).
 
-This works when there's only one library. Different libraries may use different authentication mechanisms. Libraries that use the same authentication mechanism need to determine whether a patron who passes ILS authentication is actually a patron of _that_ library, rather than a different library on the same ILS.
+When there's only one library, we can use the same code we have now, but pull the AuthenticationProvider configuration from a database query rather than from the JSON config. However, when there's more than one library, different libraries may use different authentication mechanisms. Libraries that use the same authentication mechanism need to determine whether a patron who passes ILS authentication is actually a patron of _that_ library, rather than a different library on the same ILS.
 
-Create a new `patronauthenticationservices` table, by analogy to `adminauthenticationservices`, that looks like this:
+So after moving authentication configuration to `ExternalIntegration, we will create a new `patronauthenticationservices` table, by analogy to `adminauthenticationservices`, that looks like this:
 
 ```
 patronauthenticationservices
