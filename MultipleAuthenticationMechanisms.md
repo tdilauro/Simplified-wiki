@@ -12,7 +12,8 @@ After sending out a lot of questionnaires, we now know a few things about how di
 * The LION consortium authenticates all patrons through Millenium Patron. The value of a patron's CCARD[p46] field determine the patron's home library within the consortium.
 * The LCI consortium authenticates all patrons through Millenium Patron. The first five characters of a patron's barcode determine the patron's home library within the consortium.
 * The Bibliomation consortium authenticates all patrons through SIP2. The value of the AQ field determines the patron's home library within the consortium. For some libraries, two or more values for AQ are acceptable.
-* The Alameda County library does authentication through Millenium Patron, but patrons have no PINs. Instead of a PIN a patron is expected to use their surname as their "secret" credential.
+* The Alameda County library does authentication through Millenium Patron, but instead of a PIN, a patron is expected to use their surname as their "secret".
+* Some libraries authenticate patrons with barcodes only--no PIN or other "secret".
 
 We also know a few things about how different libraries _authorize_ patrons. Not all patrons have borrowing privileges, and not all patrons with borrowing privileges can borrow all books.
 
