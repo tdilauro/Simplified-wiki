@@ -17,7 +17,7 @@ We also know a few things about how different libraries _authorize_ patrons. Not
 
 * In general, patrons lose borrowing privileges if they are blocked or if they accrue excessive fines.
 * Although all Sierra libraries use the `MBLOCK[p56]` field to convey block status, different ILS installations have different rules about which values for `MBLOCK[p56]` mean the patron has lost borrowing privileges.
-* Rules about what dollar amount constitutes an "excessive" fine seem to be set ILS-wide, meaning that different libraries within a consortium do not have latitude to change this number.
+* Rules about what dollar amount constitutes an "excessive" fine are sometimes set ILS-wide and sometimes set by individual libraries within a consortium.
 * NYPL uses the patron type (derived from the `P TYPE[p47]` field) to control access to different types of books. For example, your patron type may restrict you to borrowing childrens' books.
 * Open Ebooks uses the patron type (derived from the FirstBook barcode for or by asking the Clever API for grade level) to control which lane you're directed to. For example, your patron type may send you to the Early Grade lane or the Young Adult lane.
 
@@ -86,13 +86,20 @@ It might not be necessary to do this in all cases. It might be possible to confi
 
 # Database schema changes
 
-The `externalintegrations` table will be used to store all configuration currently stored in JSON configuration. This includes configuration items like `test_username` and `test_password`, which will be necessary to run a self-test from the administrative interface. 
+The `externalintegrations` table and the associated `configurationsettings` table will be used to store all configuration currently stored in JSON configuration. This includes configuration items like `test_username` and `test_password`, which will be necessary to run a self-test from the administrative interface. 
 
-(In theory, different libraries that use the same ILS might provide different test patrons, but in practice we generally get a single test patron. So I'm going to say the purpose of test_username and test_password is to verify that the connection to the ILS is working and we can speak its language, rather than to verify that each library has configured the ILS correctly.)
+(In theory, different libraries that use the same ILS might provide different test patrons, but in practice we generally get a single test patron. So I'm going to say the purpose of test_username and test_password is to verify that the connection to the ILS is working and we can speak its language, rather than to verify that each library has configured the ILS correctly. In the future, if a library wants to provide its own test patrons, `configurationsettings` can accommodate that.)
 
 An `ExternalIntegration` for an authentication mechanism has `goal=PATRON_AUTH_GOAL` and a `protocol` corresponding to the authentication technique (SIP2, Millenium Patron, Clever, etc).
 
 When there's only one library, we can use the same code we have now, but pull the AuthenticationProvider configuration from a database query rather than from the JSON config. However, when there's more than one library, different libraries may use different authentication mechanisms. Libraries that use the same authentication mechanism need to determine whether a patron who passes ILS authentication is actually a patron of _that_ library, rather than a different library on the same ILS.
+
+This will be controlled by `configurationsettings` rows that configures the _combination_ of library and authentication mechanism.
+
+* `patron_restriction`: Usually a string, but may also be a JSON list. A patron must meet one of these criteria to be considered a patron of this library.
+* `patron_restriction_type`: The rule to apply when checking whether a patron meets the criteria. Supported rules:
+** `identifier_prefix`: The patron must have an identifier that starts with the `patron_restriction`
+** `library_code`: The patron's library code must equal the`patron_restriction`. Library code is obtained from the ILS. We have seen it derived from the AQ field in SIP2 and the CCARD[p46] field in Sierra. It's likely that "which field contains the library code" will itself need to be a ConfigurationSetting that customizes the authentication mechanism.
 
 So after moving authentication configuration to `ExternalIntegration`, we will create a new `patronauthenticationservices` table, by analogy to `adminauthenticationservices`, that looks like this:
 
