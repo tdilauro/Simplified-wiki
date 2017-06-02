@@ -92,31 +92,14 @@ The `externalintegrations` table and the associated `configurationsettings` tabl
 
 An `ExternalIntegration` for an authentication mechanism has `goal=PATRON_AUTH_GOAL` and a `protocol` corresponding to the authentication technique (SIP2, Millenium Patron, Clever, etc).
 
-When there's only one library, we can use the same code we have now, but pull the AuthenticationProvider configuration from a database query rather than from the JSON config. However, when there's more than one library, different libraries may use different authentication mechanisms. Libraries that use the same authentication mechanism need to determine whether a patron who passes ILS authentication is actually a patron of _that_ library, rather than a different library on the same ILS.
+When there's only one library, we can use the same code we have now, but pull the AuthenticationProvider configuration from a database query rather than from the JSON config. However, when there's more than one library, different libraries may use different authentication mechanisms. In addition, libraries that use the same authentication mechanism need to determine whether a patron who passes ILS authentication is actually a patron of _that_ library, rather than a different library that uses the same ILS.
 
-This will be controlled by `configurationsettings` rows that configures the _combination_ of library and authentication mechanism.
+This will be controlled by `configurationsettings` rows that configure the _combination_ of library and authentication mechanism.
 
 * `patron_restriction`: Usually a string, but may also be a JSON list. A patron must meet one of these criteria to be considered a patron of this library.
 * `patron_restriction_type`: The rule to apply when checking whether a patron meets the criteria. Supported rules:
 ** `identifier_prefix`: The patron must have an identifier that starts with the `patron_restriction`
 ** `library_code`: The patron's library code must equal the`patron_restriction`. Library code is obtained from the ILS. We have seen it derived from the AQ field in SIP2 and the CCARD[p46] field in Sierra. It's likely that "which field contains the library code" will itself need to be a ConfigurationSetting that customizes the authentication mechanism.
-
-So after moving authentication configuration to `ExternalIntegration`, we will create a new `patronauthenticationservices` table, by analogy to `adminauthenticationservices`, that looks like this:
-
-```
-patronauthenticationservices
- id
- library_id
- patron_restriction_type
- patron_restriction
- external_integration_id
-```
-
-This table creates a many-to-many relationship between libraries and patron authentication services. Most libraries will only have one authentication service, but some (Open Ebooks) will have more than one.
-
-If a library will accept anyone who the `ExternalIntegration` thinks is okay, then `patron_restriction_type` and `patron_restriction` can be left empty. If a library needs to distinguish between patrons of _this_ library (who get service) and patrons of _some other_ library (who don't), then `patron_restriction_type` and `patron_restriction` should be set to appropriate values.
-
-Appropriate values for `patron_restriction_type` and `patron_restriction` might be "identifier prefix"/"23333" or "library code"/"56". Once patron information is obtained from the ILS and put into a generic form, the patron restriction type would be imposed to grant or deny access.
 
 # Admin interface
 
@@ -126,7 +109,7 @@ We need interfaces for doing the following:
 * Create a new patron authentication service
 * Configure an existing patron authentication service
 * Run a self-test on a patron authentication service (using the test username and password configured for that service).
-* Associate a patron authentication service with a library, possibly adding a patron restriction
+* Associate a patron authentication service with a library, possibly configuring a patron restriction as you do so
 * Modify or remove the patron restriction on a library+patron authentication service
 * Disassociate a patron authentication service from a library
 * Delete a patron authentication service not used by any libraries
