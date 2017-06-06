@@ -223,7 +223,7 @@ grant all privileges on database simplified_circulation_dev to simplified;
 CREATE USER simplified_test with password '[password]';
 grant all privileges on database simplified_circulation_test to simplified_test;
 
---Add pgcrypto to each database.
+--Add pgcrypto to any circulation manager databases.
 \c simplified_circulation_dev
 create extension pgcrypto;
 \c simplified_circulation_test
