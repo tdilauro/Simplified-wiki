@@ -213,7 +213,7 @@ On Mac OS X, start the Postgresql server and a psql session by clicking on the e
 
 Within the psql session, run these commands:
 
-```
+```sql
 CREATE DATABASE simplified_circulation_test;
 CREATE DATABASE simplified_circulation_dev;
 
@@ -222,7 +222,14 @@ grant all privileges on database simplified_circulation_dev to simplified;
 
 CREATE USER simplified_test with password '[password]';
 grant all privileges on database simplified_circulation_test to simplified_test;
+
+--Add pgcrypto to each database.
+\c simplified_circulation_dev
+create extension pgcrypto;
+\c simplified_circulation_test
+create extension pgcrypto;
 ```
+
 
 # Set up the data directory (metadata and content only)
 
