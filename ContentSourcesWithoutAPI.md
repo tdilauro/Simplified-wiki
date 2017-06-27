@@ -26,6 +26,14 @@ Publisher. I can't find their library-specific gateway.
 
 Seems to offer [multimedia ebooks](http://mycapstonelibrary.com/login/index.html), most likely delivered through a web page and inserted into a catalog via MARC.
 
+## EBSCOhost
+
+Content is streamed in HTML form through a website that offers note-taking and navigation features. An option exists to "Download this book (offline)". This requires creating a personal EBSCOhost account, independent from your library account. Once you do this, you can check out the book and get an ACSM file.
+
+[The EBSCOhost API](https://support.ebsco.com/eit/ws.php) is a search API. Its search results offer a "pdfLink" but I don't see how to square a link to a full-text PDF to the "create an EBSCOhost account, check out a book, download an ACSM file" process I see on the web site. The most likely explanation is that the full-text PDF link is for open-access works only. That means there is currently no path from a Library Simplified client to an ACSM file.
+
+In summary, all the ingredients are here for a successful integration, but they are not put together in the way we would need.
+
 ## Marshall Cavendish
 
 Ebooks, delivered through a web view. [Here's the closest I could get to actual content](http://wdn.ipublishcentral.net/marshall_cavendish/viewinside/46771198771670), and to [the catalog](http://www.marshallcavendishebooks.com/product/adventures-benny).
