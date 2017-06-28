@@ -146,6 +146,26 @@ There are a number of class attributes you can customize in your
   manager to their ILS. A value for this attribute is optional but
   recommended.
 
+* `SETTINGS` and `LIBRARY_SETTINGS`: These lists control the form fields 
+  that show up in the administrative interface when an admin is setting
+  up your integration. `SETTINGS` will be shared across all libraries
+  using the integration, and `LIBRARY_SETTINGS` will be different for
+  each library. Each setting is a dictionary with the following
+  attributes:
+  1. `key`: This will be used to store the setting in the ExternalIntegration
+      or in the ConfigurationSettings table.
+  2. `label`: This is label that will be displayed with the form field.
+  3. `optional`: Set this to true if it's okay for the admin to leave the
+     setting blank. Otherwise, leaving it blank will show an error message.
+  4. `default`: If present, this value will be shown in the form field
+     initially, but will be editable by the admin.
+  5. `type`: Controls the type of form field. Will be `text` by default but
+     can also be set to `select` for a dropdown.
+  6. `options`: If `type` is `select`, these are the options available in the
+     dropdown. Each option should be a dictionary with a key and label.
+     `MilleniumPatronAPI` has examples of this.
+
+
 ### `remote_authenticate(self, username, password)`
 
 This is the core of `BasicAuthenticationProvider`. You're given a
