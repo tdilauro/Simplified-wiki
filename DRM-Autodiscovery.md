@@ -111,11 +111,11 @@ Once you borrow the book you will be served an OPDS entry like this:
         href="https://host/foo.epub"
         type="vnd.librarysimplified/obfuscated;scheme=http://librarysimplified.org/terms/drm/scheme/URMS;original-type=application/epub+zip"
   />
+   <drm:licensor>
+    <drm:clientToken href="https://host/register/CEL"/>
+    <drm:serverToken href="http://urms-12345678.eu-west-1.elb.amazonaws.com" vendor="959"/>
+   </drm:licensor>
  </link>
- <drm:licensor>
-  <drm:clientToken href="https://host/register/CEL"/>
-  <drm:serverToken href="http://urms-12345678.eu-west-1.elb.amazonaws.com" vendor="959"/>
- </drm:licensor>
 </entry>
 ```
 
