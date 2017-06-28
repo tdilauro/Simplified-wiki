@@ -187,4 +187,4 @@ asked to log in there.
 
 Subclassing `OauthAuthenticationProvider` is not covered yet. I'll
 fill in this section as necessary. For an example, see
-[https://github.com/NYPL-Simplified/circulation/blob/master/api/clever/__init__.py](CleverAuthenticationAPI).
+[CleverAuthenticationAPI](https://github.com/NYPL-Simplified/circulation/blob/master/api/clever/__init__.py).
