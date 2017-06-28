@@ -26,6 +26,12 @@ this on a case-by-case basis, but it probably means you'll need to add
 a configuration option to an existing `AuthenticationProvider`
 subclass.
 
+## Where to put the code
+
+Put your code in its own module in the `circulation` repository. The module must define a class called `AuthenticationProvider`. If you look at any of the existing authentication modules such as [the SIP2 module](https://github.com/NYPL-Simplified/circulation/blob/master/api/sip/__init__.py) you'll see that they define an authentication provider class and then assign it to `AuthenticationProvider` at the last line of the module.
+
+To get your authentication provider to show up in the admin interface you'll need to add it to [the admin interface's controller.py](https://github.com/NYPL-Simplified/circulation/blob/master/api/admin/controller.py). The `patron_auth_services` method defines a list of `provider_apis` and a list of `basic_auth_protocols`; you'll need to add your `AuthenticationProvider` subclass to the first list and its `.__module__` to the second list. (TODO: this should be put in a place that's easier to edit.)
+
 ## `PatronData`
 
 The `PatronData` class, located in [authenticator.py](https://github.com/NYPL-Simplified/circulation/blob/master/api/authenticator.py),
