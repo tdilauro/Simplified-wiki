@@ -28,7 +28,7 @@ subclass.
 
 ## `PatronData`
 
-The `PatronData` class, located in [authenticator.py]([https://github.com/NYPL-Simplified/circulation/blob/master/api/authenticator.py)
+The `PatronData` class, located in [authenticator.py](https://github.com/NYPL-Simplified/circulation/blob/master/api/authenticator.py)
 is an ILS-independent abstraction of the information a library keeps
 about a patron. Any time you subclass `AuthenticationProvider`, your
 job is basically to talk to the ILS and turn what it says about a
