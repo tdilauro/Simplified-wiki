@@ -97,11 +97,12 @@ patron into a `PatronData` object.
    manually blocked from accessing the library's resources (as opposed
    to being automatically blocked due to an expired library card or
    unpaid fines).
- * `PatronData.NO_VALUE`: The patron is not blocked.
- * `PatronData.UNKNOWN_REASON`: The patron is blocked but the precise reason is not important.
- * `PatronData.CARD_REPORTED_LOST`: The patron's library card is reported as lost and they have not been given a new card.
- * `PatronData.EXCESSIVE_FINES`: The patron is blocked due to excess unpaid fines. This may be true even if their _current_ level of fines is not available from the ILS or does not exceed the library's maximum fine amount.
-
+1. `PatronData.NO_VALUE`: The patron is not blocked.
+2. `PatronData.UNKNOWN_REASON`: The patron is blocked but the precise reason is not important.
+3. `PatronData.CARD_REPORTED_LOST`: The patron's library card is reported as lost and they have not been given 
+   a new card.
+4. `PatronData.EXCESSIVE_FINES`: The patron is blocked due to excess unpaid fines. This may be true even if their 
+    _current_ level of fines is not available from the ILS or does not exceed the library's maximum fine amount.
 
 * `complete`: A boolean indicating whether or not this `PatronData` includes all the information you can reasonably expect to get about this patron from the ILS. As you'll see below, if you can return a complete `PatronData` from `BasicAuthenticator.remote_authenticate()`, you can make your integration a lot more efficient.
 
