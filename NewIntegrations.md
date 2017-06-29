@@ -8,6 +8,6 @@ currently supported integrations can be configured through the
 administrative interface. When you're adding _a brand new
 integration_, you'll need to go down a level and write some code.
 
-* [[NewPatronAuthenticationIntegration]](A new ILS or other patron authentication technique)
-* [[NewLicenseIntegration]](A new source of items for patrons to borrow)
+* [A new ILS or other patron authentication technique](NewPatronAuthenticationIntegration)
+* [A new source of items for patrons to borrow](NewLicenseIntegration)
 
