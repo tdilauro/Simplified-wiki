@@ -151,7 +151,3 @@ When you call an `apply` method, you're supposed to pass in a
 `ReplacementPolicy` object as well.
 
 TBD
-
-# Cron jobs
-
-TBD
