@@ -1,5 +1,3 @@
-# New patron authentication technique
-
 You probably don't need to write a brand new module to connect the
 circulation manager to your ILS. The circulation manager only needs to
 communicate with your ILS to verify patron credentials and to get
