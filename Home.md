@@ -45,7 +45,7 @@ Currently, our active public repositories include:
 
 * [[Overview|ArchitecturalOverview]]
 * [[The standards we use|StandardsDocuments]]
-* [[The generic metadata layer|GenericMetadata]]
+* [[The generic metadata layer|MetadataLayer]]
 * [[The generic circulation API|GenericCirculation]]
 * [[The generic authentication API|GenericAuthentication]]
 * [[The annotation API|Annotations]]
