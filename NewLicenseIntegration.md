@@ -330,7 +330,7 @@ Your monitor needs to know every time one of these events happens:
 
 When you find out about a new book, you need to grab as much
 bibliographic information about that book as possible and get it into
-the system. The simplest way to do this is through the [[MetadataLayer|metadata layer]]. When you find out that a book is no longer
+the system. The simplest way to do this is through the [[metadata layer|MetadataLayer]]. When you find out that a book is no longer
 available, you'll need to modify its `LicensePool` to reflect this
 fact. The metadata layer can help with this, too.
 
