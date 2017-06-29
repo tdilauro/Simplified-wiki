@@ -330,8 +330,7 @@ Your monitor needs to know every time one of these events happens:
 
 When you find out about a new book, you need to grab as much
 bibliographic information about that book as possible and get it into
-the system. The simplest way to do this is through the metadata layer
-(described below). When you find out that a book is no longer
+the system. The simplest way to do this is through the [MetadataLayer|metadata layer]. When you find out that a book is no longer
 available, you'll need to modify its `LicensePool` to reflect this
 fact. The metadata layer can help with this, too.
 
@@ -380,19 +379,6 @@ offers a delta API probably also needs a "sweep" monitor or an
 "everything" monitor to occasionally check on the collection as a
 whole. A delta API is a lot more efficient on a day-to-day basis, but
 you can't assume you always hear about every single change.
-
-# The metadata layer
-
-When you learn something about a title in the collection, you need to
-find out as much bibliographic information about that title as
-possible, and create an `Identifier`, `Edition`, `LicensePool`, and
-`Work` for it.
-
-Every API has a different way of representing bibliographic metadata
-and licensing data. The metadata layer abstracts away the differences
-between APIs, and hides the complexity of the underlying data model.
-
-TBD
 
 # Cron jobs
 
