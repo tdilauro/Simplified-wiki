@@ -1,5 +1,5 @@
-Every API has a different way of representing bibliographic metadata
-and licensing data. The metadata layer abstracts away the differences
+Every API has a different way of representing bibliographic metadata (facts about a book, like its title)
+and licensing data (facts about access to a book, like the number of patrons in its holds queue). The metadata layer abstracts away the differences
 between APIs, and hides the complexity of the underlying data model.
 
 When you learn something about a title in the collection, you need to
@@ -8,9 +8,9 @@ possible, and create an `Identifier`, `Edition`, `LicensePool`, and
 `Work` for it. The simplest way to do this is through the metadata
 layer.
 
-The metadata layer is defined in `core/metadata_layer.py`. 
+The metadata layer is defined in [`core/metadata_layer.py`](https://github.com/NYPL-Simplified/server_core/blob/master/metadata_layer.py). 
 
-## `CirculationData`
+# `CirculationData`
 
 A `CirculationData` object contains information about a license for a
 book. This includes how many copies of the title are available and in
@@ -145,9 +145,25 @@ TBD
 
 TBD
 
+# Writing to the database
+
+When you create a `Metadata` or `CirculationData` object, you've captured the current state of affairs as described on some remote server. Now you need to make the local database reflect that state of affairs. The `apply` method will take your metadata-layer object and create or modify the necessary database objects to make the database reflect what the third party says.
+
+## `CirculationData.apply(self, _db, collection)`
+
+* `collection` is a `Collection` object representing the collection that contains the book you're talking about. If necessary, `apply` will create a `LicensePool` in that collection representing the fact that this book is available in this collection.
+* `replace` is a `ReplacementPolicy` object (see below).
+
+## `Metadata.apply(self, edition, collection)`
+
+* `edition` is an `Edition` object representing bibliographic information about this book. You can get an appropriate edition by calling `edition(_db)` on the `Metadata` object.
+* `collection` is a `Collection` object representing the collection that contains the book you're talking about. If you're talking about the book in abstract terms, rather than any particular copies of the book, you can leave this blank.
+
 ## `ReplacementPolicy`
 
 When you call an `apply` method, you're supposed to pass in a
 `ReplacementPolicy` object as well.
 
 TBD
+
+
