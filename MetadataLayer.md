@@ -33,7 +33,7 @@ constructor:
 
 * `licenses_available`: The number of licenses that can be loaned out
   _right now_. If this collection doesn't track single-use licenses,
-  it's okay to set this to 1 or 0, depending on whether the title can
+  it's okay to treat this as a boolean: set it to 1 or 0, depending on whether the title can
   be loaned out right now.
 
 * `patrons_in_hold_queue`: The number of patrons who are waiting in
@@ -41,9 +41,9 @@ constructor:
   single-use licenses, this will probably always be 0.
 
 * `licenses_reserved`: The number of licenses that are in the
-  following (somewhat specialized) state: someone put the book on hold
-  waited for it, and is now at the front of the queue. The book is
-  available _for them_ to borrow, but no one else can borrow it.
+  following (somewhat specialized) state: someone put the book on hold,
+  waited for it, and is now at the front of the queue. _They_ can
+  borrow the book right now, but it's not available to borrow in general.
   
   If you don't know how many titles are in this state, it's okay to
   set this to 0.
@@ -123,7 +123,17 @@ A `Metadata` object contains bibliographic information about an item.
 
 ## `ContributorData`
 
-TBD
+This object represents a person or person-like entity that contributed to the production of a title.
+
+* `display_name`: The person's name as it would show up on the front of a book jacket, e.g. "Stephen King".
+* `sort_name`: The person's name as it would show up in an alphabetized card catalog, e.g. "King, Stephen".
+* `family_name`: The person's family name, as it might show up on the side of a book jacket, e.g. "King".
+* `roles`: A list of roles this person had in the creation of this book. The `Contributor` class in [core/model.py](https://github.com/NYPL-Simplified/server_core/blob/master/model.py) lists about thirty common roles ranging from `EDITOR_ROLE` to `LYRICIST_ROLE`. The ones you'll use most often are `PRIMARY_AUTHOR_ROLE` and `AUTHOR_ROLE`.
+* `wikipedia_name`: The name of the person's Wikipedia page, e.g. "Stephen_King"
+* `lc`: The person's LCCN, e.g. "n79063767"
+* `viaf`: The person's VIAF number, e.g. "97113511"
+* `biography`: The person's biography, as you might see on an inside book jacket.
+* `aliases`: A list of alternate names for this person, e.g. `["Richard Bachman"]`
 
 ## `SubjectData`
 
