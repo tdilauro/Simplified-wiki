@@ -186,9 +186,20 @@ This class represents an identifying string used to distinguish this book from o
   
   For a book's `primary_identifier`, this value must be 1.
 
+## `FormatData`
+
+This class represents a format in which the book is available. We consider 'format' to cover both the type of the file and the DRM hoops one must jump through to get the file. 
+
+* `content_type`: The media type of the file or files that contain the book.  The `Representation` class in [core/model.py](https://github.com/NYPL-Simplified/server_core/blob/master/model.py) defines a number of constants for common media types like `EPUB_MEDIA_TYPE`.
+* `drm_scheme`: The DRM scheme used to encrypt or obscure access to the book. The `DeliveryMechanism` class in [core/model.py](https://github.com/NYPL-Simplified/server_core/blob/master/model.py) defines a number of constants for common DRM schemes like `ADOBE_DRM`.
+* `link`: A `LinkData` object representing an actual freely-available copy of the book in this format. If you put a `LinkData` in here, there's no need to also include that object in `Metadata.links`.
+* `rights_uri`: The license under which this book is offered to the general public. The `RightsStatus` class in [core/model.py](https://github.com/NYPL-Simplified/server_core/blob/master/model.py) defines constants for the various Creative Commons licenses and a few others. The default is `RightsStatus.IN_COPYRIGHT`, indicating a book that is not available to the general public except through special arrangement.
+
+Note that adding a new `content_type` or `drm_scheme` will not make the system _support_ the underlying content type or DRM scheme. It merely allows the system to record the _fact_ that a third party has made a book available in a certain format and through a certain DRM scheme.
+
 ## `LinkData`
 
-This class represents a document associated with this book; usually a cover image, a description, or an electronic copy of the book. The assumption is that this file can be downloaded by anyone without authentication, and opened up without any special tools. Which is to say, this is not how DRM-encrypted books are delivered--you want `FormatData` for that.
+This class represents a document associated with this book; usually a cover image, a description, or an electronic copy of the book. The assumption is that this file can be downloaded by anyone without authentication, and opened up without any special tools. Which is to say, this is not how DRM-encrypted books are delivered.
 
 * `href`: The URL to the file.
 * `media_type`: The media type of the file.
@@ -208,10 +219,6 @@ You can store as much data here as you want, but to get it to actually _do_ some
 * `value`: The value of the measurement.
 * `weight`: How confident you are in the accuracy of the measurement, relative to other measurements of the same quantity from the same source. This should be a number from 0..1.
 * `taken_at`: The date at which the measurement was taken. In general, only the most recent measurement is considered.
-
-## `FormatData`
-
-TBD
 
 # Writing to the database
 
