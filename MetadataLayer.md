@@ -151,7 +151,7 @@ This class represents a decision to classify a book under one subject or another
    If your data source defines its own classification scheme, you can add a constant for it in `Subject`. You'll 
    also need to add a`Classifier` subclass to [core/classifier.py](https://github.com/NYPL-Simplified/server_core/blob/master/classifier.py) 
    to boil down the classifications into the genres defined by Library Simplified.
-* `identifier`: The identifier of the subject in use.
+* `identifier`: The identifying string for the subject in use, e.g. "032" for Dewey Decimal Classification 032.
 * `name`: The human-readable name associated with the subject, if different from the identifier. For example, the `identifier` of Dewey Decimal Classification 032 is "032" and the `name` is "Encyclopedias in English".
 * `weight`: A number indicating how strongly you believe this book should be classified under this subject.
    
@@ -162,7 +162,21 @@ This class represents a decision to classify a book under one subject or another
 
 ## `IdentifierData`
 
-TBD
+This class represents an identifying string used to distinguish this book from other books.
+
+* `type`: The `Identifier` class in [core/model.py](https://github.com/NYPL-Simplified/server_core/blob/master/model.py) 
+   defines a number of standard types such as `ISBN` and `URI`, as well as  
+   types that are specific to third parties like `OVERDRIVE_ID` and `ASIN`. You can add an identifier type by adding 
+   a constant to this class.
+
+* `identifier`: The identifying string itself. 
+
+* `weight`: On a scale of 0 to 1, how certain are you that this string identifies the book whose `Metadata` you're 
+  putting it into? If this is true by definition, 1 is an appropriate value. If Overdrive says that the Overdrive ID 
+  of a book is 1234abcd, then it's 1234abcd, by definition. Otherwise it's a judgment call, depending on how much 
+  you trust the data. If you guessed at an ISBN based on a title match, then this number won't be terribly high.
+  
+  For the `primary_identifier`, this value must be 1.
 
 ## `LinkData`
 
