@@ -123,7 +123,9 @@ A `Metadata` object contains bibliographic information about an item.
 
 ## `ContributorData`
 
-This object represents a person or person-like entity that contributed to the production of a title.
+The `Metadata` class acts as a container for lots of other objects. Like `Metadata`, these objects are convenient stand-ins for data model objects. Unlike `Metadata`, you don't need to call `apply()` on these objects to write them to the database. You just associate them with a `Metadata` and they're written to the database with everything else when you call `Metadata.apply()`.
+
+The most important of these objects is `ContributorData`, which represents a person or person-like entity that contributed to the production of a title. It can contain the following information:
 
 * `display_name`: The person's name as it would show up on the front of a book jacket, e.g. "Stephen King".
 * `sort_name`: The person's name as it would show up in an alphabetized card catalog, e.g. "King, Stephen".
@@ -135,9 +137,28 @@ This object represents a person or person-like entity that contributed to the pr
 * `biography`: The person's biography, as you might see on an inside book jacket.
 * `aliases`: A list of alternate names for this person, e.g. `["Richard Bachman"]`
 
+Of these, the only ones that are really important are `display_name`, `sort_name`, and `roles`. If we have `display_name` we can try to automatically figure out `sort_name`, and vice versa, but we don't always get it right.
+
 ## `SubjectData`
 
-TBD
+This class represents a decision to classify a book under one subject or another.
+
+* `type`: The classification scheme in use. The `Subject` class in [core/model.py](https://github.com/NYPL-Simplified/server_core/blob/master/model.py) 
+   defines a number of industry standard types such as `DDC` and `BISAC`, as well as  
+   types that are specific to third party data providers like `OVERDRIVE`. The catch-all `TAG` is designed to hold 
+   unstructured tags.
+   
+   If your data source defines its own classification scheme, you can add a constant for it in `Subject`. You'll 
+   also need to add a`Classifier` subclass to [core/classifier.py](https://github.com/NYPL-Simplified/server_core/blob/master/classifier.py) 
+   to boil down the classifications into the genres defined by Library Simplified.
+* `identifier`: The identifier of the subject in use.
+* `name`: The human-readable name associated with the subject, if different from the identifier. For example, the `identifier` of Dewey Decimal Classification 032 is "032" and the `name` is "Encyclopedias in English".
+* `weight`: A number indicating how strongly you believe this book should be classified under this subject.
+   
+   There are no hard and fast rules here, but in general this number should range from 1 to 100, with 100 meaning 
+   that you trust this data a lot, and 1 meaning that it's just a suggestion. This number can have different values
+   for different classifications from the same data source. We weight Overdrive classifications very highly,
+   but we give very little weight to the freeform tags provided by Overdrive.
 
 ## `IdentifierData`
 
