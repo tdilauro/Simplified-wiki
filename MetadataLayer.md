@@ -121,6 +121,8 @@ A `Metadata` object contains bibliographic information about an item.
   create a `CirculationData` object and carry it around inside a
   `Metadata` object.
 
+Note that there is no special place to put a description of the book, as you might find on the back cover. A book's description is contained in a `LinkData` object (see below) with `rel="description"`, which goes into `links`.
+
 ## `ContributorData`
 
 The `Metadata` class acts as a container for lots of other objects. Like `Metadata`, these objects are convenient stand-ins for data model objects. Unlike `Metadata`, you don't need to call `apply()` on these objects to write them to the database. You just associate them with a `Metadata` and they're written to the database with everything else when you call `Metadata.apply()`.
@@ -169,22 +171,43 @@ This class represents an identifying string used to distinguish this book from o
    types that are specific to third parties like `OVERDRIVE_ID` and `ASIN`. You can add an identifier type by adding 
    a constant to this class.
 
-* `identifier`: The identifying string itself. 
+* `identifier`: The identifying string itself, e.g. "9781453219539" or "019f21e3-9de9-4c40-95a4-dfabf55e7801" or "https://standardebooks.org/ebooks/miguel-de-cervantes-saavedra/don-quixote/john-ormsby/".
 
 * `weight`: On a scale of 0 to 1, how certain are you that this string identifies the book whose `Metadata` you're 
-  putting it into? If this is true by definition, 1 is an appropriate value. If Overdrive says that the Overdrive ID 
-  of a book is 1234abcd, then it's 1234abcd, by definition. Otherwise it's a judgment call, depending on how much 
-  you trust the data. If you guessed at an ISBN based on a title match, then this number won't be terribly high.
+  putting it into?
   
-  For the `primary_identifier`, this value must be 1.
+  If this is true by definition, 1 is an appropriate value. If Overdrive says that the Overdrive ID 
+  of a book is "019f21e3-9de9-4c40-95a4-dfabf55e7801", then it's "019f21e3-9de9-4c40-95a4-dfabf55e7801", by 
+  definition. Otherwise it's a judgment call, depending on how much you trust the data. If you guessed at an 
+  identifier based on a title/author match, then this number won't be terribly high.
+  
+  Most commercial data sources include a proprietary ID as well as an ISBN for the same book. In this case it's
+  appropriate to assign 1 to both identifiers, but the proprietary ID should be used as the primary identifier.
+  
+  For a book's `primary_identifier`, this value must be 1.
 
 ## `LinkData`
 
-TBD
+This class represents a document associated with this book; usually a cover image, a description, or an electronic copy of the book. The assumption is that this file can be downloaded by anyone without authentication, and opened up without any special tools. Which is to say, this is not how DRM-encrypted books are delivered--you want `FormatData` for that.
+
+* `href`: The URL to the file.
+* `media_type`: The media type of the file.
+* `content`: In lieu of a URL, you can provide the actual content of a file. This is most often used for textual descriptions of a book.
+* `rel`: The relationship between the book and the document, or 'link relation'. The `Hyperlink` class in [core/model.py](https://github.com/NYPL-Simplified/server_core/blob/master/model.py) defines a number of link relations, the most important being `IMAGE` (for a cover image), `DESCRIPTION` (for a textual description), and `OPEN_ACCESS_DOWNLOAD` (for a freely available copy of a book).
+* `thumbnail`: If this is an image, and you also know the URL of a smaller version of the image, you can create a `LinkData` object for the smaller version and make it the `thumbnail` of the full-size image.
 
 ## `MeasurementData`
 
-TBD
+Sometimes data sources take measurements of a book's quality, popularity, reading level, or some other numeric value. These values can go into `MeasurementData` objects.
+
+You can store as much data here as you want, but to get it to actually _do_ something you'll need to change one of the methods in the `Measurement` class in [core/model.py](https://github.com/NYPL-Simplified/server_core/blob/master/model.py). This stuff has to be calibrated. To take an obvious example, Amazon's "sales rank" and Overdrive's "popularity" both measure the same quantity (popularity), but a low sales rank means a book is very popular while a low Overdrive popularity means the opposite.
+
+* `quantity_measured`: The quantity being measured. Some popular measurements are defined in the `Measurement` class.
+  Again, adding a new type of measurement (or even an existing measurement from a new source) won't do anything.
+  The measurement values have to be calibrated, which requires changing the `Measurement` class.
+* `value`: The value of the measurement.
+* `weight`: How confident you are in the accuracy of the measurement, relative to other measurements of the same quantity from the same source. This should be a number from 0..1.
+* `taken_at`: The date at which the measurement was taken. In general, only the most recent measurement is considered.
 
 ## `FormatData`
 
