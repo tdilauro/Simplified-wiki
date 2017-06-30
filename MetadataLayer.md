@@ -237,7 +237,9 @@ When you create a `Metadata` or `CirculationData` object, you've captured the cu
 ## `ReplacementPolicy`
 
 When you call an `apply` method, you're supposed to pass in a
-`ReplacementPolicy` object as well.
+`ReplacementPolicy` object as well. This object sets the rules for when a value _overrides_ a previously existing value in the database, versus when it _extends_ previously existing values in the database.
+
+In practice, the details don't matter much. When you're dealing with actual copies of the books (and thus, with `CirculationData`), you probably want to use `ReplacementPolicy.from_license_source`. When you're just editing information about a book (so you have a `Metadata` but no `CirculationData`), you want to use `ReplacementPolicy.from_metadata_source`.
 
 TBD
 
