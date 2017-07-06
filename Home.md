@@ -33,10 +33,10 @@ Currently, our active public repositories include:
 # Installation and setup
 
 * [[Deployment Instructions]]
+* [[The configuration file|Configuration]]
 * [[Connecting the Library Simplified circulation manager to your ILS|AuthenticationSetup]]
 * [[Automated Jobs and how to use them|AutomatedJobs]]
 * [[Creating new server-side integrations|NewIntegrations]]
-* [[The configuration file|Configuration]]
 * [[Setting up lanes|LaneConfiguration]]
 * [[Error handling|ErrorHandling]]
 * [[Contributing to the project|Contributing]]
