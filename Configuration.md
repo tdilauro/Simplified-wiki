@@ -1,3 +1,29 @@
+Most configuration of the Library Simplified circulation manager happens through the administrative interface. Configuration details are stored in a database. But which database?
+
+The circulation manager will look in the environment variable `SIMPLIFIED_PRODUCTION_DATABASE` for a database URL, and will try to connect to that URL to get the rest of the site configuration. To configure your database, make sure some code like this is run before you start up the circulation manager:
+
+```
+export SIMPLIFIED_PRODUCTION_DATABASE=postgres://[username]:[password]@[hostname]:[port]/[database name]
+```
+
+To run the unit tests, you'll need to set the SIMPLIFIED_TEST_DATABASE variable instead.
+
+```
+export SIMPLIFIED_TEST_DATABASE=postgres://[username]:[password]@[hostname]:[port]/[database name]
+```
+
+# Configuration file-based configuration
+
+In older versions of the software, configuration was done with a JSON configuration file. Instead of setting `SIMPLIFIED_PRODUCTION_DATABASE` to the database URL, you would set `SIMPLIFIED_CONFIGURATION_FILE` to the path to the JSON configuration file.
+
+Currently, you only need to set up a JSON configuration file if you want to do one of these things:
+
+* [[Customize your lane configuration.|LaneConfiguration]]
+* Customize the language collections your library offers.
+* Set up a logging integration with Loggly.
+
+Otherwise, you should be able to ignore everything below this point. In the long run, the JSON configuration file will disappear altogether.
+
 The configuration file contains all the necessary information to distinguish one Library Simplified installation from another. This file contains a lot of miscellaneous stuff, but the main sections are:
 
 * Links to especially important information that differs between libraries (privacy policy, terms of service)
