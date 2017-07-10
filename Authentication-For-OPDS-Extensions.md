@@ -95,8 +95,8 @@ This link is used when someone doesn't currently have an account on the OPDS ser
 
 Ideally the site at the other end of this URL would support the [Simple Signup Protocol](Simple-Signup-Protocol), but it's not required.
 
-## Logo
+## `rel="logo"`
 
-If the OPDS server is run by an organization that has an identifiable logo, including that logo in the Authentication for OPDS document is a good way to help people find your server in a catalog.
+If the OPDS server is run by an organization that has an identifiable logo, linking to that logo from the Authentication for OPDS document, using `rel="logo"`, is a good way to help people find your server in a catalog.
 
 For SimplyE we expect logos to be 135 by 135 pixels square, in PNG format, and to look good on a white background. We also prefer that logos be embedded in the Authentication for OPDS document using a [data: URL](http://dataurl.net/), rather than be external links that have to be fetched separately.
