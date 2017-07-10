@@ -16,6 +16,10 @@ The color schemes supported by SimplyE are "red", "blue", "gray", "gold", "green
 
 An OPDS server may use the `service_description` extension to describe itself. This is distinct from the standard `description` field, which is to be used to describe the text prompt displayed to the authenticating user.
 
+```
+ "service_description": "Here you can get all sorts of free books!",
+```
+
 # Input mechanisms
 
 An OPDS server may use the `inputs` extension to customize the input mechanisms used to gather the patron's credentials. 
