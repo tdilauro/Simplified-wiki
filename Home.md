@@ -54,6 +54,7 @@ Currently, our active public repositories include:
 * [[Short Client Token|Short-Client-Token]] for federated patron management
 * [[The ACS Device Management Protocol|DRM-Device-Management]]
 * [[The User Profile Management Protocol|User-Profile-Management-Protocol]]
+* [[Our extensions|Authentiation-For-OPDS-Extensions]] to the [[Authentication for OPDS spec|https://docs.google.com/document/d/1-_0HHt664bDjybtCauBJXUSDXiT-Clg1sZUVNxHyLjw/edit#heading=h.r2fysm93j6kk]]
 
 # Proposed changes
 
