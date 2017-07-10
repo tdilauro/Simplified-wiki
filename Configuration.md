@@ -394,6 +394,7 @@ dimensions (they must be added in this order):
 * language
 * genre
 * open_access
+
 Each dimension should have the scope set to 'Hit' and the 'Active'
 box checked.
 
