@@ -14,7 +14,7 @@ export SIMPLIFIED_TEST_DATABASE=postgres://[username]:[password]@[hostname]:[por
 
 # Web-based configuration
 
-Once you get a circulation manager running, visit the `/admin/` URL. First, you'll be asked to set up an administrator account. You'll most likely do this by setting an admin username and password. 
+Once you get a circulation manager running, visit the `/admin/` URL, e.g. `http://localhost:6500/admin/`. First, you'll be asked to set up an administrator account. You'll most likely do this by setting an admin username and password. 
 
 From this point onward, you'll need that username and password to set the site configuration.
 
