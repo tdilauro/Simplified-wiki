@@ -61,6 +61,16 @@ The `maximum_length` extension lets you specify the maximum length of a given in
 
 This extension lets clients size UI elements appropriately. More importantly, tf `maximum_length` is set to zero, the client should omit the corresponding UI element altogether, and send an empty string as the value for the corresponding field.
 
+## Barcode format
+
+Libraries sometimes issue plastic cards that contain machine-readable representations of a patron's login identifier. The `barcode_format` extension lets an OPDS server explain how to acquire a value for a field through scanning an image rather than through keyboard input.
+
+The following values are defined for this extension.
+
+* `Codabar`: [[Codabar|https://en.wikipedia.org/wiki/Codabar]]
+
+Unlike other field extensions, the `barcode_format` extension is only defined on the `login` field. It has no effect if defined on the `password` field.
+
 # Feature flags
 
 # Standard features of special interest to SimplyE
