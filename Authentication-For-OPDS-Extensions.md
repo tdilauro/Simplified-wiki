@@ -1,6 +1,6 @@
 Although any OPDS server can interact with any OPDS client, creating a seamless user experience requires the server to provide a lot of information not covered in the OPDS spec.
 
-A simple example: OPDS doesn't say anything about authentication. Although library patrons are generally authenticated by a mechanism that's compatible with HTTP Basic Auth, that's not always true. Even when it is true, providing a generic HTTP Basic Auth that asks for "username" and "password" creates a bad experience for a library patron who doesn't think of their "library card number" or "barcode" as a "username".
+A simple example: OPDS doesn't say anything about authentication. Although library patrons are generally authenticated by a mechanism that's compatible with HTTP Basic Auth, that's not always true. Even when it is true, providing a generic HTTP Basic Auth that asks for "username" and "password" creates a bad experience for a library patron who is expecting to type in a "library card number" or a "barcode", not a "username".
 
 The [Authentication for OPDS](https://docs.google.com/document/d/1-_0HHt664bDjybtCauBJXUSDXiT-Clg1sZUVNxHyLjw/edit#heading=h.r2fysm93j6kk) spec gives an OPDS server a way to explain how its clients should present the authentication interface. This document lists extensions the Library Simplified team has devised to give an OPDS server a way to explain _other_ things about the library that affect the user interface.
 
@@ -89,8 +89,6 @@ The following URIs are defined for use as feature flags:
 
 # Standard features of special interest to SimplyE
 
-## `rel="help"`
-
 ## `rel="register"`
 
 This link is used when someone doesn't currently have an account on the OPDS server, and wants to get one. If they follow the instructions at the other end of the URL, they should be in a position to close the web view and enter their newly created credentials. It won't work if there's an extra validation step where they have to, e.g. walk into a branch library and show ID.
@@ -99,3 +97,6 @@ Ideally the site at the other end of this URL would support the [Simple-Signup-P
 
 ## Logo
 
+If the OPDS server is run by an organization that has an identifiable logo, including that logo in the Authentication for OPDS document is a good way to help people find your server in a catalog.
+
+For SimplyE we expect logos to be 135 by 135 pixels square, in PNG format, and to look good on a white background. We also prefer that logos be embedded in the Authentication for OPDS document using a [data: URL](http://dataurl.net/), rather than be external links that have to be fetched separately.
