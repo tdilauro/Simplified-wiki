@@ -226,6 +226,7 @@ This section is where you connect the Library Simplified components to other ser
 | Content Cafe                       |      | O        |         |
 | Content Server                     | X    | X        | X       |
 | Elasticsearch                      | X    |          |         |
+| Google Analytics                   | X    |          |         |
 | Google OAuth                       | O    |          |         |
 | Metadata Wrangler                  | X    | X        |         |
 | Millenium                          | O    |          |         |
@@ -374,6 +375,30 @@ patron searches. Both values are required.
 
 * `url`: The URL to the Elasticsearch server.
 * `works_index`: The name of the Elasticsearch index to use. Suggested value: `"circulation-works"`. If this index does not exist it will be automatically created.
+
+### Google Analytics
+The circulation manager can optionally send circulation-related events
+to your Google Analytics account. To use this integration, set up a
+property in Google Analytics. On the administration page for the property,
+go to Custom Definitions > Custom Dimensions, and add the following
+dimensions (they must be added in this order):
+* time
+* identifier
+* identifier_type
+* title
+* author
+* fiction
+* audience
+* target_age
+* publisher
+* language
+* genre
+* open_access
+Each dimension should have the scope set to 'Hit' and the 'Active'
+box checked.
+
+Then go to Tracking Info and get the tracking id for the property.
+`tracking_id` is the only setting for this integration.
 
 ### Google OAuth
 
