@@ -8,7 +8,7 @@ The [Authentication for OPDS](https://docs.google.com/document/d/1-_0HHt664bDjyb
 
 An OPDS server may use the `color_scheme` extension to specify the color scheme a client should use when rendering that server's OPDS feeds.
 
-`"color_scheme": "blue"`,
+`"color_scheme": "blue",`
 
 The color schemes supported by SimplyE are "red", "blue", "gray", "gold", "green", "teal", and "purple". The specific colors used by these color schemes are laid out in the [NYPL Design Toolkit](https://nypl.github.io/design-toolkit/sections/color.html). ("Gold" is a nicer name for yellow.)
 
