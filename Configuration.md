@@ -21,6 +21,8 @@ Currently, you only need to set up a JSON configuration file if you want to do o
 * [[Customize your lane configuration.|LaneConfiguration]]
 * Customize the language collections your library offers.
 * Set up a logging integration with Loggly.
+* Restrict which titles certain patrons can borrow.
+* Restrict which lanes certain patrons can see.
 
 Otherwise, you should be able to ignore everything below this point. In the long run, the JSON configuration file will disappear altogether.
 
