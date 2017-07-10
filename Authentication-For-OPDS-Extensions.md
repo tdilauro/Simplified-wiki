@@ -77,10 +77,25 @@ Unlike other field extensions, the `barcode_format` extension is only defined on
 
 # Feature flags
 
+An OPDS server may wish to enable or disable certain common features of OPDS clients. Often this can be done by providing or omitting links with certain link relations, but when this isn't enough, a server can add a feature flag URI to the `feature_flags` extension.
+
+Note that an OPDS client is not obligated to respect a feature flag--it can provide UI for a "disabled" feature and decide not to show UI for an "enabled" one.
+
+The `features` extension object contains two optional keys, `enabled` and `disabled`. If present, each maps to a list of URIs indicating features that are enabled or disabled for that server.
+
+The following URIs are defined for use as feature flags:
+
+* `https://librarysimplified.org/rel/policy/reservations`: This feature is enabled by default. If it is disabled, a client should not show any indication that it's possible for a user to place a reservation for a title. A title is either available right now or it's not.
+
 # Standard features of special interest to SimplyE
 
 ## `rel="help"`
 
-## `rel="registration"`
+## `rel="register"`
+
+This link is used when someone doesn't currently have an account on the OPDS server, and wants to get one. If they follow the instructions at the other end of the URL, they should be in a position to close the web view and enter their newly created credentials. It won't work if there's an extra validation step where they have to, e.g. walk into a branch library and show ID.
+
+Ideally the site at the other end of this URL would support the [Simple-Signup-Protocol|Simple Signup Protocol], but we can handle it if not.
 
 ## Logo
+
