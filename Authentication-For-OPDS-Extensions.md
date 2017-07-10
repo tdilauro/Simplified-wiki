@@ -93,7 +93,7 @@ The following URIs are defined for use as feature flags:
 
 This link is used when someone doesn't currently have an account on the OPDS server, and wants to get one. If they follow the instructions at the other end of the URL, they should be in a position to close the web view and enter their newly created credentials. It won't work if there's an extra validation step where they have to, e.g. walk into a branch library and show ID.
 
-Ideally the site at the other end of this URL would support the [Simple-Signup-Protocol|Simple Signup Protocol], but we can handle it if not.
+Ideally the site at the other end of this URL would support the [[Simple-Signup-Protocol|Simple Signup Protocol]], but we can handle it if not.
 
 ## Logo
 
