@@ -12,6 +12,14 @@ To run the unit tests, you'll need to set the SIMPLIFIED_TEST_DATABASE variable 
 export SIMPLIFIED_TEST_DATABASE=postgres://[username]:[password]@[hostname]:[port]/[database name]
 ```
 
+# Web-based configuration
+
+Once you get a circulation manager running, visit the `/admin/` URL. First, you'll be asked to set up an administrator account. You'll most likely do this by setting an admin username and password. 
+
+From this point onward, you'll need that username and password to set the site configuration.
+
+Once you log in with an admin username and password, you'll be able to create and administer libraries and collections through the web-based admin interface.
+
 # Configuration file-based configuration
 
 In older versions of the software, configuration was done with a JSON configuration file. Instead of setting `SIMPLIFIED_PRODUCTION_DATABASE` to the database URL, you would set `SIMPLIFIED_CONFIGURATION_FILE` to the path to the JSON configuration file.
