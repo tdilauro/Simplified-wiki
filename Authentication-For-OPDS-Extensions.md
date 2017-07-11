@@ -2,7 +2,7 @@ Although any OPDS server can interact with any OPDS client, creating a seamless 
 
 A simple example: OPDS doesn't say anything about authentication. Although library patrons are generally authenticated by a mechanism that's compatible with HTTP Basic Auth, that's not always true. Even when it is true, providing a generic UI that asks for "username" and "password" creates a bad experience for a user who is expecting to type in a "library card number" or a "barcode", not a "username".
 
-The [Authentication for OPDS](https://docs.google.com/document/d/1-_0HHt664bDjybtCauBJXUSDXiT-Clg1sZUVNxHyLjw/edit#heading=h.r2fysm93j6kk) spec gives an OPDS server a way to explain how its clients should present the authentication interface. This document lists extensions the Library Simplified team has devised to give an OPDS server a way to explain _other_ things about the library that affect the user interface.
+The [Authentication for OPDS](https://docs.google.com/document/d/1-_0HHt664bDjybtCauBJXUSDXiT-Clg1sZUVNxHyLjw/edit#heading=h.r2fysm93j6kk) spec gives an OPDS server a way to explain how its clients should present the authentication interface. This document lists extensions the Library Simplified team has devised to give an OPDS server a way to explain _other_ things about the library that affect the user interface or the library's prospective audience.
 
 # Color scheme
 
@@ -86,6 +86,63 @@ The `features` extension object contains two optional keys, `enabled` and `disab
 The following URIs are defined for use as feature flags:
 
 * `https://librarysimplified.org/rel/policy/reservations`: This feature is enabled by default. If it is disabled, a client should not show any indication that it's possible for a user to place a reservation for a title. A title is either available right now or it's not.
+
+# Audience signalling
+
+Different OPDS servers
+
+## `audience`
+
+* `library`: Books are loaned out for free.
+* `repository`: Books are given away for free.
+* `bookstore`: Books are sold for money.
+
+## `service_area`
+
+Some libraries and bookstores only serve certain geographical areas. The `service_area` object lets an OPDS server specify its service areas. This helps clients guide people to the OPDS servers that serve their area.
+
+The `service_area` object may take on different types of values:
+
+* The literal string `everywhere`, indicating that the OPDS server considers the entire universe within its service area.
+* A GeoJSON object that spells out the service area in geographic terms.
+* A dictionary that maps [[ISO 3116-1 alpha-2 country codes|https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2]] to lists of place names.
+
+A "list of place names" may take on two different values:
+
+* The literal string `everywhere`, which means every relevant place.
+* A JSON list of strings that refer to places.
+
+If the `service_area` is not present, clients should assume `universal`, i.e. that the OPDS server aims to serve everyone in the universe.
+
+This spec does not define which strings refer to which places. However, the Library Simplified library registry can understand the following place names for the United States.
+
+* A state or territory by its abbreviation.
+* A census-designated place (such as a city or town) in the format "{city}, {state abbreviation}".
+* A county in the format "{name} County, {state abbreviation}".
+* A ZIP code, as a string.
+
+Here's the `service_area` for a library that serves the entire state of California, one city in Kansas, one county in Florida, and one ZIP code in Illinois:
+
+```
+"service_area" : {
+  "US": ["CA", "Lawrence, KS", "Broward County, FL", "60604"]
+}
+```
+
+Here's a library that serves the United States plus one city in Canada:
+
+```
+"service_area" : {
+  "US": "everywhere",
+  "CA": "Toronto, ON"
+}
+```
+
+Here's a library that serves everyone:
+
+```
+"service_area": "everywhere"
+```
 
 # Standard features of special interest to SimplyE
 
