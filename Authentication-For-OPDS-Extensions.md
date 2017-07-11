@@ -87,7 +87,7 @@ Unlike other field extensions, the `barcode_format` extension is only defined on
 
 # Feature flags
 
-An OPDS server may wish to enable or disable certain common features of OPDS clients. Often this can be done by providing or omitting links with certain link relations, but when this isn't enough, a server can add a feature flag URI to the `feature_flags` extension.
+An OPDS server may wish to enable or disable certain common features of OPDS clients, or to set expectations up front as to what kind of server this is. Often this can be done by providing or omitting links with certain link relations, but when this isn't enough, a server can add a feature flag URI to the `feature_flags` extension.
 
 Note that an OPDS client is not obligated to respect a feature flag--it can provide UI for a "disabled" feature and decide not to show UI for an "enabled" one.
 
