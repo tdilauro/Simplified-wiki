@@ -114,6 +114,28 @@ Different OPDS servers serve people in different ways. These extensions allow OP
 
 ## `audience`
 
+Some collections are open to the general public; others restrict access to students or people with other special qualifications.
+
+The `audience` field maps to a list of audiences who may be able to get access to the collection.
+
+The following audiences are defined:
+
+* `public`: Open to the general public. If this is specified, any other values are redundant.
+* `educational-primary`: Open to pre-university students.
+* `educational-secondary`: Open to university-level students, academics and/or researchers.
+* `disability-access`: Open to those who meet some disability requirement. (NOTE: wording on this TBD)
+* `other`: Open to people who meet some other qualification. This requirement should be explained in prose, in `service_description`.
+
+Values are treated as inclusive. This value for `audience` indicates that the collection is available to students of all ages.
+
+```
+"audience": ["educational-primary", "educational-secondary"],
+```
+
+If no `audience` is defined, a client may assume that an OPDS server is open to the general public.
+
+A geographic restriction or a registration requirement does not qualify as an audience restriction in this sense. Those are handled separately, in `service_area` and with the `rel="register"` link. For example, a university library may have an `audience` of `["educational-secondary"]` and a service area of the city in which the university is located. This is not a promise that any college student in that city can get books from that university library; it's a way to help students at that university find _their_ library in a huge list.
+
 ## `service_area`
 
 Some libraries and bookstores only serve certain geographical areas. The `service_area` object lets an OPDS server specify its service areas. This helps clients guide people to the OPDS servers that serve their area.
