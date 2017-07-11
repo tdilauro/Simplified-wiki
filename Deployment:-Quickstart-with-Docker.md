@@ -2,15 +2,27 @@ So you're deploying your library's circulation manager. Awesome! If you'd like t
 
 If you're already familiar with Docker and/or would like to contribute to our Docker builds, you can find our build files at [NYPL-Simplified/circulation-docker](https://github.com/NYPL-Simplified/circulation-docker).
 
-#### Circulation Manager
+#### Contents:
+- Running the Circulation Manager
+  - [Local prep work](#cm-prep)
+  - [Creating Circulation Manager containers](#cm-host)
+  - [Evaluating Success](#cm-success)
+  - [Running Migrations](#cm-migrate)
+- How to create support containers for testing and development
+  - [Creating a Postgres container](#pg)
+  - [Creating an Elasticsearch container](#es)
 
-##### *Local Prep*
+---
+
+#### <a name='cm'></a>Circulation Manager
+
+##### <a name='cm-prep'></a>*Local Prep*
 
 1. **Create your configuration file.** On your local machine, use [this documentation](Configuration) to create the JSON file for your particular library's configuration. If you're unfamiliar with Json, you can use [this JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/#) to validate your configuration file.
 
 2. Name your file `config.json` and **put it on your production server** at `/etc/libsimple`. (You can put the file in any directory you'd like, but you'll need to change the value in the commands below accordingly.) For the rest of the instructions, we'll be working on this server.
 
-##### *On the Host Server*
+##### <a name='cm-host'></a>*On the Host Server*
 
 1. **Install Docker.** Docker has [step-by-step instructions](https://docs.docker.com/engine/installation/linux/) to grab its most up-to-date version. Depending on your package manager, you could also install a slightly older version with: `sudo apt-get install docker-ce` or `sudo yum install docker-ce`.
 
@@ -89,9 +101,12 @@ If you're already familiar with Docker and/or would like to contribute to our Do
     Docker has fantastic documentation to get more familiar with its command line tools, like `docker exec` and `docker inspect`. We recommend you [check them out](https://docs.docker.com/engine/reference/commandline/cli/).
 
 
-##### *Evaluating Success*
+##### <a name='cm-success'></a>*Evaluating Success*
 
 If your Docker containers are running successfully, you should have a `/var/log/libsimple` directory full of logfiles in your circ-scripts container, and you should be able to visit your server's domain and see an OPDS feed from circ-deploy. If either of these things aren't occurring, use the troubleshooting details above to check `var/log/cron.log` or the logfiles in `/var/log/libsimple` for circ-scripts and/or `/var/log/libsimple/uwsgi.log` or `/var/log/nginx/error.log`.
+
+##### <a name='cm-migrate'></a>*Running Migrations*
+
 
 
 #### <a name='es'></a>*Elasticsearch* (optional support container)
