@@ -96,18 +96,15 @@ The `features` extension object contains two optional keys, `enabled` and `disab
 The following URIs are defined for use as feature flags:
 
 * `https://librarysimplified.org/rel/feature/reservations`: This feature is enabled by default. If it is disabled, a client should not show any indication that it's possible for a user to place a reservation for a title. A title is either available right now or it's not.
+* `http://opds-spec.org/acquisition/borrow`: This feature signals that this OPDS server allows users to borrow content for a limited time. Clients should not draw any conclusions from the absence of this feature from the `features` object; instead, they should look in the actual OPDS Feeds and see if links with this relation show up.
+* `http://opds-spec.org/acquisition/open-access`: This feature signals that this OPDS server allows users to directly download content, unencumbered by DRM, and keep it permanently. Clients should not draw any conclusions from the absence of this feature from the `features` object; instead, they should look in the actual OPDS Feeds and see if links with this relation show up.
+* `http://opds-spec.org/acquisition/buy`: This feature signals that this OPDS server allows users to pay for content and keep it (or access to it) permanently. Clients should not draw any conclusions from the absence of this feature from the `features` object; instead, they should look in the actual OPDS Feeds and see if links with this relation show up.
 
-# Service type and service area
+# Specifying your audience
 
 Different OPDS servers serve people in different ways. These extensions allow OPDS servers to explain on a high level how they operate and which populations they serve.
 
-## `service_type`
-
-The `service_type` explains on a high level how people should expect to get books or other content out of an OPDS server. The following three values are defined for `service_type`:
-
-* `library`: A server that primarily gives out free limited-time loans of content.
-* `repository`: A server that primarily gives out free copies of content with no time limitation.
-* `store`: A server that primarily sells content for money.
+## `audience`
 
 ## `service_area`
 
