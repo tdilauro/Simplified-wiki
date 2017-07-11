@@ -134,7 +134,7 @@ Here's a library that serves the United States plus one city in Canada:
 ```
 "service_area" : {
   "US": "everywhere",
-  "CA": "Toronto, ON"
+  "CA": ["Toronto, ON"]
 }
 ```
 
