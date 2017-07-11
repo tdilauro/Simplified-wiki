@@ -134,7 +134,7 @@ Values are treated as inclusive. This value for `audience` indicates that the co
 
 If no `audience` is defined, a client may assume that an OPDS server is open to the general public.
 
-A geographic restriction or a registration requirement does not qualify as an audience restriction in this sense. Those are handled separately, in `service_area` and with the `rel="register"` link. For example, a university library may have an `audience` of `["educational-secondary"]` and a service area of the city in which the university is located. This is not a promise that any college student in that city can get books from that university library; it's a way to help students at that university find _their_ library in a huge list.
+A geographic restriction or a registration requirement does not qualify as an audience restriction in this sense. Those are handled separately, in `service_area` and with the `rel="register"` link. For example, a university library may have an `audience` of `["educational-secondary"]` and a `service_area` describing the city in which the university is located.
 
 ## `service_area`
 
