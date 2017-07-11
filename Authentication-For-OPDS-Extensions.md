@@ -87,17 +87,17 @@ The following URIs are defined for use as feature flags:
 
 * `https://librarysimplified.org/rel/policy/reservations`: This feature is enabled by default. If it is disabled, a client should not show any indication that it's possible for a user to place a reservation for a title. A title is either available right now or it's not.
 
-# Audience segmentation
+# Service type and service area
 
-Different OPDS servers serve different types of audiences. These extensions allow clients to group OPDS servers together by what they tend to offer.
+Different OPDS servers serve people in different ways. These extensions allow OPDS servers to explain on a high level how they operate and which populations they serve.
 
-## `audience`
+## `service_type`
 
-The `audience` explains how a user is generally expected to interact with an OPDS server. The following three values are defined for `audience`:
+The `service_type` explains on a high level how people should expect to get books or other content out of an OPDS server. The following three values are defined for `service_type`:
 
-* `library`: A server that primarily gives out free limited-time loans of books.
-* `repository`: A server that primarily gives out free copies of books with no time limitation.
-* `bookstore`: A server that sells books for money.
+* `library`: A server that primarily gives out free limited-time loans of content.
+* `repository`: A server that primarily gives out free copies of content with no time limitation.
+* `store`: A server that primarily sells content for money.
 
 ## `service_area`
 
