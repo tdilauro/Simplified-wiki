@@ -67,11 +67,11 @@ This extension lets clients size UI elements appropriately. More importantly, tf
 
 ## Barcode format
 
-Libraries sometimes issue plastic cards that contain machine-readable representations of a patron's login identifier. The `barcode_format` extension lets an OPDS server explain how to acquire a value for a field through scanning an image rather than through keyboard input.
+Libraries sometimes issue plastic cards that contain machine-readable representations of a patron's login identifier. The `barcode_format` extension lets an OPDS server explain how to turn an image (e.g. from a phone camera) into a value for the login identifier.
 
 The following values are defined for this extension.
 
-* `Codabar`: [[Codabar|https://en.wikipedia.org/wiki/Codabar]]
+* `Codabar`: Try to scan a barcode in [[Codabar|https://en.wikipedia.org/wiki/Codabar]] format.
 
 Unlike other field extensions, the `barcode_format` extension is only defined on the `login` field. It has no effect if defined on the `password` field.
 
@@ -87,15 +87,17 @@ The following URIs are defined for use as feature flags:
 
 * `https://librarysimplified.org/rel/policy/reservations`: This feature is enabled by default. If it is disabled, a client should not show any indication that it's possible for a user to place a reservation for a title. A title is either available right now or it's not.
 
-# Audience signalling
+# Audience segmentation
 
-Different OPDS servers
+Different OPDS servers serve different types of audiences. These extensions allow clients to group OPDS servers together by what they tend to offer.
 
 ## `audience`
 
-* `library`: Books are loaned out for free.
-* `repository`: Books are given away for free.
-* `bookstore`: Books are sold for money.
+The `audience` explains how a user is generally expected to interact with an OPDS server. The following three values are defined for `audience`:
+
+* `library`: A server that primarily gives out free limited-time loans of books.
+* `repository`: A server that primarily gives out free copies of books with no time limitation.
+* `bookstore`: A server that sells books for money.
 
 ## `service_area`
 
