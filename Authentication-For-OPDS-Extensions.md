@@ -4,14 +4,6 @@ A simple example: OPDS doesn't say anything about authentication. Although libra
 
 The [Authentication for OPDS](https://docs.google.com/document/d/1-_0HHt664bDjybtCauBJXUSDXiT-Clg1sZUVNxHyLjw/edit#heading=h.r2fysm93j6kk) spec gives an OPDS server a way to explain how its clients should present the authentication interface. This document lists extensions the Library Simplified team has devised to give an OPDS server a way to explain _other_ things about the library that affect the user interface or the library's prospective audience.
 
-# Color scheme
-
-An OPDS server may use the `color_scheme` extension to specify the color scheme a client should use when rendering that server's OPDS feeds.
-
-`"color_scheme": "blue",`
-
-The color schemes supported by SimplyE are "red", "blue", "gray", "gold", "green", "teal", and "purple". The specific colors used by these color schemes are laid out in the [NYPL Design Toolkit](https://nypl.github.io/design-toolkit/sections/color.html). ("Gold" is a nicer name for yellow.)
-
 # Server description
 
 An OPDS server may use the `service_description` extension to describe itself. This is distinct from the standard `description` field, which is to be used to describe the text prompt displayed to the authenticating user.
@@ -20,6 +12,24 @@ An OPDS server may use the `service_description` extension to describe itself. T
  "service_description": "Here you can get all sorts of free books!",
 ```
 
+# Color scheme
+
+An OPDS server may use the `color_scheme` extension to specify the color scheme a client should use when rendering that server's OPDS feeds.
+
+`"color_scheme": "blue",`
+
+The color schemes supported by SimplyE are "red", "blue", "gray", "gold", "green", "teal", and "purple". The specific colors used by these color schemes are laid out in the [NYPL Design Toolkit](https://nypl.github.io/design-toolkit/sections/color.html). ("Gold" is a nicer name for yellow.)
+
+# Public key
+
+If your OPDS server needs to receive cryptographically signed messages (e.g. to set up shared secrets with other servers), you can publish your public key in the authentication document.
+
+```
+"public_key": { 
+  "type": "RSA",
+  "value": "-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDDbk5XAE+bLeDLQrl9QtkHh2Z2\nQkZ5NE+VesPOP//Z0UjMpI+cDDdC7DstOQZqYlvr9HMsv0syDja9M8aiyyIXcw4v\nrANiK/7MnpbbWII32YhzQ2p48IVobCWgtTBKqjHuvGY5Y8lr/s6xddx8GnueCpeN\n6lnZq+a86CBm5C+/yQIDAQAB\n-----END PUBLIC KEY-----"
+}
+```
 # Input mechanisms
 
 An OPDS server may use the `inputs` extension to customize the input mechanisms used to gather the patron's credentials. 
@@ -85,7 +95,7 @@ The `features` extension object contains two optional keys, `enabled` and `disab
 
 The following URIs are defined for use as feature flags:
 
-* `https://librarysimplified.org/rel/policy/reservations`: This feature is enabled by default. If it is disabled, a client should not show any indication that it's possible for a user to place a reservation for a title. A title is either available right now or it's not.
+* `https://librarysimplified.org/rel/feature/reservations`: This feature is enabled by default. If it is disabled, a client should not show any indication that it's possible for a user to place a reservation for a title. A title is either available right now or it's not.
 
 # Service type and service area
 
