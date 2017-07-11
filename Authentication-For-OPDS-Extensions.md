@@ -109,14 +109,14 @@ The `service_area` object may take on different types of values:
 
 A "list of place names" may take on two different values:
 
+* A list of strings, each of which refers to a single place.
 * The literal string `everywhere`, which means every relevant place.
-* A JSON list of strings that refer to places.
 
-If the `service_area` is not present, clients should assume `universal`, i.e. that the OPDS server aims to serve everyone in the universe.
+If the `service_area` is not present, clients should assume a value of `everywhere`.
 
-This spec does not define which strings refer to which places. However, the Library Simplified library registry can understand the following place names for the United States.
+This spec does not define which strings refer to which places in a "list of place names". However, the Library Simplified library registry can understand the following place names for the United States.
 
-* A state or territory by its abbreviation.
+* A state or territory, by its abbreviation.
 * A census-designated place (such as a city or town) in the format "{city}, {state abbreviation}".
 * A county in the format "{name} County, {state abbreviation}".
 * A ZIP code, as a string.
