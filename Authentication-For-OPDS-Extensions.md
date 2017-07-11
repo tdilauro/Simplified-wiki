@@ -20,6 +20,14 @@ An OPDS server may use the `color_scheme` extension to specify the color scheme 
 
 The color schemes supported by SimplyE are "red", "blue", "gray", "gold", "green", "teal", and "purple". The specific colors used by these color schemes are laid out in the [NYPL Design Toolkit](https://nypl.github.io/design-toolkit/sections/color.html). ("Gold" is a nicer name for yellow.)
 
+# Collection size
+
+An OPDS server may use `collection_size` to advertise the number of distinct items of content available to a typical user of its collection.
+
+`"collection_size": 100000
+
+This does not need to be a precise measurement, but it should be accurate to within an order of magnitude.
+
 # Public key
 
 If your OPDS server needs to receive cryptographically signed messages (e.g. to set up shared secrets with other servers), you can publish your public key in the authentication document.
