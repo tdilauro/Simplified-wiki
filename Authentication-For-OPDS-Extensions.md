@@ -122,7 +122,8 @@ The following audiences are defined:
 
 * `public`: Open to the general public. If this is specified, any other values are redundant.
 * `educational-primary`: Open to pre-university students.
-* `educational-secondary`: Open to university-level students, academics and/or researchers.
+* `educational-secondary`: Open to university-level students.
+* `research`: Open to academics and researchers.
 * `disability-access`: Open to those who meet some disability requirement. (NOTE: wording on this TBD)
 * `other`: Open to people who meet some other qualification. This requirement should be explained in prose, in `service_description`.
 
