@@ -59,6 +59,7 @@ Currently, our active public repositories include:
 # Proposed changes
 
 * [[Library registry|LibraryRegistry]]
+* [[Unique library IDs|UniqueLibraryIDs]]
 * [[Multiple collections in one circulation manager|MultipleCollections]]
 * [[Multiple libraries in one circulation manager|MultipleLibraries]]
 * [[Multiple authentication mechanisms in one circulation manager|MultipleAuthenticationMechanisms]]
