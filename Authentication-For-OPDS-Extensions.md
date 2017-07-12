@@ -208,6 +208,10 @@ Here's a library that serves everyone:
 "service_area": "everywhere"
 ```
 
+Since the goal of `service_area` is to guide people to OPDS servers they're interested in, an OPDS server may wish to specify a `service_area` more restrictive than its actual service area. Imagine a university press in Kentucky that publishes an OPDS feed containing a few open-access titles. Since the content is all open-access, and anyone can download it, `everywhere` makes sense as a value for `service_area`. But the small size of the collection will give it bad result placement compared to much larger universal collections such as the Internet Archive.
+
+An alternative is to publish `"service_area": {"US": ["KY"]}`. This will boost the university press in search results for people in or near Kentucky, despite the small collection.
+
 # Standard features of special interest to SimplyE
 
 ## `"rel": "alternate", "type": "text/html"`
