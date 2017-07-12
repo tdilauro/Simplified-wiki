@@ -52,6 +52,8 @@ The numbers do not need to be precise measurements, but they should be accurate 
 
 Clients should not draw any conclusions from the absence of a value for `collection_size`, or from the use of a single number rather than a dictionary splitting out the collection by language.
 
+If a server splits out its collections by language, it _is_ fair to assume that languages not mentioned do not have a significant presence on the server, but not to assume that the server has no titles whatsoever in those languages. A server may explicitly indicate that it has no titles in a language by associating it with a value of zero.
+
 # Public key
 
 If your OPDS server needs to receive cryptographically signed messages (e.g. to set up shared secrets with other servers), you can publish your public key in the authentication document.
