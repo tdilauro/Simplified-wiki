@@ -8,7 +8,7 @@ This document expands the role of the A4OPDS document past simple authentication
 
 We expand the A4OPDS document, rather than creating a new type of document, because the A4OPDS spec defines the special requirements needed by a directory listing document. In particular, this document must always be available without authentication.
 
-With our extensions, the A4OPDS document contains everything a potential user needs to decide they want to access the OPDS server, determine their eligibility, find the server, obtain credentials, and authenticate. Once the user is authenticated, OPDS itself takes over.
+With our extensions, the A4OPDS document contains everything a potential user needs to realize they want to access an OPDS server, determine their eligibility, find the server, obtain credentials, and authenticate. Once the user is authenticated, OPDS itself takes over.
 
 # Server description
 
