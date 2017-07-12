@@ -6,7 +6,9 @@ The [Authentication for OPDS](https://docs.google.com/document/d/1-_0HHt664bDjyb
 
 This document expands the role of the A4OPDS document past simple authentication and into the realm of discovery. In the Library Simplified ecosystem, there are thousands of OPDS servers, each serving a slightly different audience with different content. For a person to navigate all these servers they need access to a directory service. To build a directory service, there needs to be a way for each server to describe not only the process of authenticating to the server, but _why_ someone would want to authenticate in the first place, and what _sort_ of person might be able to authenticate.
 
-We expand the A4OPDS document, rather than creating a new type of document, because the A4OPDS spec defines the special requirements needed by a directory listing document. In particular, this document must always be available without authentication. With our extensions, the A4OPDS document contains everything a potential user needs to decide they want to access the OPDS server, obtain credentials, and authenticate. Once the user is authenticated, OPDS itself takes over.
+We expand the A4OPDS document, rather than creating a new type of document, because the A4OPDS spec defines the special requirements needed by a directory listing document. In particular, this document must always be available without authentication.
+
+With our extensions, the A4OPDS document contains everything a potential user needs to decide they want to access the OPDS server, determine their eligibility, find the server, obtain credentials, and authenticate. Once the user is authenticated, OPDS itself takes over.
 
 # Server description
 
