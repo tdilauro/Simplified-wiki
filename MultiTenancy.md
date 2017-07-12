@@ -1,5 +1,7 @@
 The Library Simplified circulation manager can host circulation services for any number of libraries. The goal here is to reduce the hosting cost for small libraries and library consortia.
 
+# When does it work?
+
 Here are some use cases that benefit from multi-tenancy.
 
 * Two (or more) libraries share all of their collections. In this case, every library after the first one can be 
