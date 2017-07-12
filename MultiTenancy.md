@@ -2,9 +2,22 @@ The Library Simplified circulation manager can host circulation services for any
 
 Here are some use cases that benefit from multi-tenancy.
 
-* Two (or more) libraries share all of their collections. In this case, every library after the first one can be hosted for free. These libraries are like a family who live in the same house and share everything. As they say, "two can live as cheaply as one."
-* Two (or more) libraries share a large collection, but each also has an additional collection which is not shared. Hosting these libraries on the same circulation manager is probably simpler and cheaper than giving each its own circulation manager. These libraries are like the inhabitants of an apartment building who share a laundry room. It would be wasteful for everyone to have their own in-unit laundry.
-* Two (or more) libraries have no resources in common, but neither has a large collection. These libraries can split the cost of a single circulation manager. These libraries are like roommates who have nothing in common, but who don't need much space.
+* Two (or more) libraries share all of their collections. In this case, every library after the first one can be 
+  hosted for free.
+
+  These libraries are like a family who live in the same house and share everything. As they say, "two can live as 
+  cheaply as one."
+
+* Two (or more) libraries share a large collection, but each also has an additional collection which is not 
+  shared. Hosting the second library isn't free, but hosting these libraries on the same circulation manager is  
+  probably simpler and cheaper than giving each its own circulation manager.
+  
+  These libraries are like the inhabitants of an apartment building who share a laundry room. It would be wasteful 
+  for everyone to have their own in-unit laundry.
+* Two (or more) libraries have no resources in common, but neither has a large collection. These libraries can 
+  split the cost of a single circulation manager.
+  
+  These libraries are like roommates who have nothing in common, but who don't need much space.
 
 Here's the only case where it's known that multi-tenancy doesn't help:
 
