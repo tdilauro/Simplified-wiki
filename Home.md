@@ -44,6 +44,7 @@ Currently, our active public repositories include:
 # Architecture
 
 * [[Overview|ArchitecturalOverview]]
+* [[Supporting multiple libraries on one server|MultiTenancy]]
 * [[The standards we use|StandardsDocuments]]
 * [[The generic metadata layer|MetadataLayer]]
 * [[The generic circulation API|GenericCirculation]]
