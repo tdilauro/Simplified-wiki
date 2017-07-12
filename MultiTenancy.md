@@ -23,6 +23,8 @@ Here's the only case where it's known that multi-tenancy doesn't help:
 
 * Two libraries with lots of patrons have large collections that are completely disjoint and not shared. Putting these two libraries on the same circulation manager would be like trying to make two mansions share a driveway. It's theoretically possible but the benefit would be small.
 
+# Why does it work?
+
 The scalability advantages of multi-tenancy come from two places:
 
 1. A hosted circulation manager comes with a large startup and maintenance cost. If N libraries can live on the same server, the startup cost is reduced by a factor of N, and the maintenance cost by a slightly smaller factor.
