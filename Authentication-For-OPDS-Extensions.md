@@ -35,11 +35,11 @@ This says that an OPDS server offers about 100,000 items:
 This says that an OPDS server offers ten titles in English, four in Japanese, and one in Chinese:
 
 ```
-`"collection_size": {
+"collection_size": {
  "eng": 10,
  "jpn": 4,
  "chi": 1
-}
+},
 ```
 
 The numbers do not need to be precise measurements, but they should be accurate to within an order of magnitude.
