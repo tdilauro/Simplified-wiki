@@ -5,8 +5,8 @@ Here are some use cases that benefit from multi-tenancy.
 * Two (or more) libraries share all of their collections. In this case, every library after the first one can be 
   hosted for free.
 
-  These libraries are like a family who live in the same house and share everything. As they say, "two can live as 
-  cheaply as one."
+  These libraries are like a family who live in the same house and share everything. As they say, two can live as 
+  cheaply as one.
 
 * Two (or more) libraries share a large collection, but each also has an additional collection which is not 
   shared. Hosting the second library isn't free, but hosting these libraries on the same circulation manager is 
