@@ -31,7 +31,7 @@ the amount of work necessary to keep that collection up-to-date with the source 
 
 # Why not put everyone on one circulation manager?
 
-Note that two libraries can share a circulation manager even if they use different ILS systems and don't have any collections in common. In fact, it's theoretically possible to host every library in the United States on a single clustered circulation manager. This isn't even an obviously bad idea -- this is basically what Overdrive does. It's instructive to examine the reasons why that's not currently a feasible solution.
+Two libraries can share a circulation manager even if they use different ILS systems and don't have any collections in common. In fact, it's theoretically possible to host every library in the United States on a single clustered circulation manager. This isn't even an obviously bad idea -- this is basically what Overdrive does. It's instructive to examine the reasons why that's not currently a feasible solution.
 
 First, libraries like to keep local control. Putting everyone on the same circulation manager would create a single point of technical and political failure for all libraries in the United States. At the same time, there's no reason all members of a library consortium shouldn't be able to live on the same circulation manager--they've already agreed to give up some local control in the name of efficiency.
 
