@@ -2,7 +2,11 @@ Although any OPDS server can interact with any OPDS client, creating a seamless 
 
 A simple example: OPDS doesn't say anything about authentication. Although library patrons are generally authenticated by a mechanism that's compatible with HTTP Basic Auth, that's not always true. Even when it is true, providing a generic UI that asks for "username" and "password" creates a bad experience for a user who is expecting to type in a "library card number" or a "barcode", not a "username".
 
-The [Authentication for OPDS](https://docs.google.com/document/d/1-_0HHt664bDjybtCauBJXUSDXiT-Clg1sZUVNxHyLjw/edit#heading=h.r2fysm93j6kk) spec gives an OPDS server a way to explain how its clients should present the authentication interface. This document lists extensions the Library Simplified team has devised to give an OPDS server a way to explain _other_ things about the library that affect the user interface or the library's prospective audience.
+The [Authentication for OPDS](https://docs.google.com/document/d/1-_0HHt664bDjybtCauBJXUSDXiT-Clg1sZUVNxHyLjw/edit#heading=h.r2fysm93j6kk) (A4OPDS) spec gives an OPDS server a way to explain how its clients should present the authentication interface.
+
+This document expands the role of the A4OPDS document past simple authentication and into the realm of discovery. In the Library Simplified ecosystem, there are thousands of OPDS servers, each serving a slightly different audience with different content. For a person to navigate all these servers they need access to a directory service. To build a directory service, there needs to be a way for each server to describe not only the process of authenticating to the server, but _why_ someone would want to authenticate in the first place, and what _sort_ of person might be able to authenticate.
+
+We expand the A4OPDS document, rather than creating a new type of document, because the A4OPDS spec defines the special requirements needed by a directory listing document. In particular, this document must always be available without authentication. With our extensions, the A4OPDS document contains everything a potential user needs to decide they want to access the OPDS server, obtain credentials, and authenticate. Once the user is authenticated, OPDS itself takes over.
 
 # Server description
 
@@ -206,7 +210,25 @@ Here's a library that serves everyone:
 
 # Standard features of special interest to SimplyE
 
-## `rel="register"`
+## `"rel": "alternate", "type": "text/html"`
+
+SimplyE expects an Authentication for OPDS document to link to the homepage of the organization that runs the server. For a public library, this would be the library's web site. This link has a `rel` of "alternate"` (an IANA-registered link relation) and a `type` of "text/html".
+
+```
+`"links" : [
+ {
+  "href": "http://www.nypl.org/",
+  "rel": "alternate",
+  "type": "text/html"
+ }
+]
+```
+
+## `"rel": "start"`
+
+SimplyE expects an Authentication for OPDS document to link to the root feed of the OPDS server it describes, using the IANA-registered link relation "start".
+
+## `"rel": "register"`
 
 This link is used when someone doesn't currently have an account on the OPDS server, and wants to get one. If they follow the instructions at the other end of the URL, they should be in a position to close the web view and enter their newly created credentials. It won't work if there's an extra validation step where they have to, e.g. walk into a branch library and show ID.
 
@@ -217,3 +239,7 @@ Ideally the site at the other end of this URL would support the [Simple Signup P
 If the OPDS server is run by an organization that has an identifiable logo, linking to that logo from the Authentication for OPDS document, using `rel="logo"`, is a good way to help people find your server in a catalog.
 
 For SimplyE we expect logos to be 135 by 135 pixels square, in PNG format, and to look good on a white background. We also prefer that logos be embedded in the Authentication for OPDS document using a [data: URL](http://dataurl.net/), rather than be external links that have to be fetched separately.
+
+## `rel="support"`
+
+TODO: We use rel="help" for some things where rel="support" would probably be better.
