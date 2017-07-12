@@ -9,6 +9,7 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 4. Canadian Electronic Library
 5. The Internet Archive
 6. Open Text Books
-7. Alameda County Library
-8. Howard County Library System
+7. Alameda County Library (CA)
+8. Howard County Library System (MD)
+9. Montgomery County Library (MD)
 
