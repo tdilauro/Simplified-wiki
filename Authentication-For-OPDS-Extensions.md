@@ -112,6 +112,8 @@ The following URIs are defined for use as feature flags:
 
 Different OPDS servers serve people in different ways. These extensions allow OPDS servers to explain on a high level how they operate and which populations they serve.
 
+These fields are purely advisory and, by themselves, have no effect on who can use the OPDS server. Once you connect to the server, you either have the credentials or you don't. The purpose of these fields is to aid discovery. Systems like the Library Simplified library registry use this data to help people distinguish between (for instance) their local public library and a private, members-only library in the same city.
+
 ## `audience`
 
 Some collections are open to the general public; others restrict access to students or people with other special qualifications.
