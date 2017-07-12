@@ -24,9 +24,9 @@ The color schemes supported by SimplyE are "red", "blue", "gray", "gold", "green
 
 An OPDS server may use `collection_size` to advertise the number of distinct items of content available to a typical user of its collection.
 
-`collection_size` may be an integer representing the total size of the collection, or it may be a dictionary that maps an [ISO 639-2 Alpha-3 language code](https://en.wikipedia.org/wiki/ISO_639-2) to the total collection size _for that language_.
+`collection_size` may be an integer representing the total size of the collection, or it may be a dictionary that maps an [ISO 639-2 Alpha-3 language code](https://en.wikipedia.org/wiki/ISO_639-2) to the total collection size _for that language_. This does not have to include every single language available through the server, but it should include all languages that are easily discoverable through navigating the server's OPDS feeds.
 
-This says that an OPDS server offers about 100,000 items:
+This `collection_size` says that an OPDS server offers about 100,000 items total:
 
 ```
 `"collection_size": 100000,`
@@ -44,7 +44,7 @@ This says that an OPDS server offers ten titles in English, four in Japanese, an
 
 The numbers do not need to be precise measurements, but they should be accurate to within an order of magnitude.
 
-Clients should not draw any conclusions from the absence of a value for `collection_size`, either in terms of the size of the collection or the languages available.
+Clients should not draw any conclusions from the absence of a value for `collection_size`, or from the use of a single number rather than a dictionary splitting out the collection by language.
 
 # Public key
 
