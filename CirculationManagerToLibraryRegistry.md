@@ -28,7 +28,7 @@ shared secrets.
 
 ## Library registry
 
-- Regenerate shared secret on demand.
+- [Generate or regenerate shared secret on demand.](https://github.com/NYPL-Simplified/library_registry/issues)
 
 # After popularity hits
 
