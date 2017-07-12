@@ -24,9 +24,27 @@ The color schemes supported by SimplyE are "red", "blue", "gray", "gold", "green
 
 An OPDS server may use `collection_size` to advertise the number of distinct items of content available to a typical user of its collection.
 
-`"collection_size": 100000,`
+`collection_size` may be an integer representing the total size of the collection, or it may be a dictionary that maps an [ISO 639-2 Alpha-3 language code](https://en.wikipedia.org/wiki/ISO_639-2) to the total collection size _for that language`.
 
-This does not need to be a precise measurement, but it should be accurate to within an order of magnitude.
+This says that an OPDS server offers about 100,000 items:
+
+```
+`"collection_size": 100000,`
+```
+
+This says that an OPDS server offers ten titles in English, four in Japanese, and one in Chinese:
+
+```
+`"collection_size": {
+ "eng": 10,
+ "jpn": 4,
+ "chi": 1
+}
+```
+
+The numbers do not need to be precise measurements, but they should be accurate to within an order of magnitude.
+
+Clients should not draw any conclusions from the absence of a value for `collection_size`, either in terms of the size of the collection or the languages available.
 
 # Public key
 
@@ -114,11 +132,11 @@ Different OPDS servers serve people in different ways. These extensions allow OP
 
 These fields are purely advisory and, by themselves, have no effect on who can use the OPDS server. Once you connect to the server, you either have the credentials or you don't. The purpose of these fields is to aid discovery. Systems like the Library Simplified library registry use this data to help people distinguish between (for instance) their local public library and a private, members-only library in the same city.
 
-## `audience`
+## `audiences`
 
 Some collections are open to the general public; others restrict access to students or people with other special qualifications.
 
-The `audience` field maps to a list of audiences who may be able to get access to the collection.
+The `audiences` field maps to a list of audiences who may be able to get access to the collection.
 
 The following audiences are defined:
 
@@ -129,13 +147,13 @@ The following audiences are defined:
 * `disability-access`: Open to those who meet some disability requirement. (NOTE: wording on this TBD)
 * `other`: Open to people who meet some other qualification. This requirement should be explained in prose, in `service_description`.
 
-Values are treated as inclusive. This value for `audience` indicates that the collection is available to students of all ages.
+Values are treated as inclusive. This value for `audiences` indicates that the collection is available to students of all ages.
 
 ```
-"audience": ["educational-primary", "educational-secondary"],
+"audiences": ["educational-primary", "educational-secondary"],
 ```
 
-If no `audience` is defined, a client may assume that an OPDS server is open to the general public.
+If no `audiences` are defined, a client may assume that an OPDS server is open to the general public.
 
 A geographic restriction or a registration requirement does not qualify as an audience restriction in this sense. Those are handled separately, in `service_area` and with the `rel="register"` link. For example, a university library may have an `audience` of `["educational-secondary"]` and a `service_area` describing the city in which the university is located.
 
