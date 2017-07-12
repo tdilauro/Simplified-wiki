@@ -10,6 +10,10 @@ We expand the A4OPDS document, rather than creating a new type of document, beca
 
 With our extensions, the A4OPDS document contains everything a potential user needs to realize they want to access an OPDS server, determine their eligibility, find the server, obtain credentials, and authenticate. Once the user is authenticated, OPDS itself takes over.
 
+# Link to the A4OPDS document from server root
+
+The root feed of an OPDS server should link to its Authentication For OPDS document using `rel="describedBy"` and `type="application/vnd.opds.authentication.v1.0+json"`. This guarantees that a client can always find the A4OPDS document. If the root feed requires authentication, that's fine, because the A4OPDS document is also supposed to be served as the entity-body of a 401 response.
+
 # Server description
 
 An OPDS server may use the `service_description` extension to describe itself. This is distinct from the standard `description` field, which is to be used to describe the text prompt displayed to the authenticating user.
