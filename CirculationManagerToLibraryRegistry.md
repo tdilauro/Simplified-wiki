@@ -12,7 +12,7 @@ This work needs to be done before we can launch library registry.
 
 ## Library registry
 
-- Register a library or update registration on demand
+- [Implement library sync.](https://github.com/NYPL-Simplified/library_registry/issues/24)
 
 # After launch
 
@@ -28,7 +28,7 @@ shared secrets.
 
 ## Library registry
 
-- [Generate or regenerate shared secret on demand.](https://github.com/NYPL-Simplified/library_registry/issues)
+- [Incorporate shared secret into library sync.](https://github.com/NYPL-Simplified/library_registry/issues/24)
 
 # After popularity hits
 
