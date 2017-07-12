@@ -37,4 +37,6 @@ First, libraries like to keep local control. Putting everyone on the same circul
 
 Second, the more simultaneous patrons a circulation manager has to handle, the bigger the cluster has to be. A surge in demand on one library can affect the performance of another. For a big  organization with a large dev ops group, automatically scaling the cluster isn't a problem, but for a smaller organization it might be smarter to set up two clusters and to scale them separately.
 
+By the same token, you could save a lot of money by placing two libraries from drastically different time zones on the same circulation manager. While people on one side of the world are asleep, the patrons of the other library will be borrowing books; when _they_ go to sleep, the people on the other side of the world will wake up and start borrowing books.
+
 Third, the "script runner" component of the circulation manager is designed to keep track of a small number of collections. If it has to keep track of hundreds of collections, information on any particular collection won't be updated very often. This can be improved; we just haven't gotten around to it yet.
