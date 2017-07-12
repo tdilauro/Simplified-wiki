@@ -33,7 +33,7 @@ An OPDS server may use `collection_size` to advertise the number of distinct ite
 This `collection_size` says that an OPDS server offers about 100,000 items total:
 
 ```
-`"collection_size": 100000,`
+"collection_size": 100000,
 ```
 
 This says that an OPDS server offers ten titles in English, four in Japanese, and one in Chinese:
