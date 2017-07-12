@@ -35,7 +35,7 @@ Two libraries can share a circulation manager even if they use different ILS sys
 
 First, libraries like to keep local control. Putting everyone on the same circulation manager would create a single point of technical and political failure for all libraries in the United States. At the same time, there's no reason all members of a library consortium shouldn't be able to live on the same circulation manager--they've already agreed to give up some local control in the name of efficiency.
 
-Second, the "script runner" component of the circulation manager is designed to keep track of a small number of collections. If it has to keep track of hundreds of collections, information on any particular collection won't be updated very often. This can be improved; we just haven't gotten around to it yet.
+Second, the "script runner" component of the circulation manager is designed to keep track of a small number of collections. If it has to keep track of hundreds of collections, information on any particular collection won't be updated very often. This can be improved; we just haven't tackled the problem yet.
 
 Third, the more simultaneous patrons a circulation manager has to handle, the bigger the cluster has to be. A surge in demand on one library can affect the performance of another. For a big  organization with a large dev ops group, automatically scaling the cluster isn't a problem, but for a smaller organization it might be smarter to set up two clusters and to scale them separately.
 
