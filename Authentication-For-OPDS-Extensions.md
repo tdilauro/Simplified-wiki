@@ -24,7 +24,7 @@ The color schemes supported by SimplyE are "red", "blue", "gray", "gold", "green
 
 An OPDS server may use `collection_size` to advertise the number of distinct items of content available to a typical user of its collection.
 
-`collection_size` may be an integer representing the total size of the collection, or it may be a dictionary that maps an [ISO 639-2 Alpha-3 language code](https://en.wikipedia.org/wiki/ISO_639-2) to the total collection size _for that language`.
+`collection_size` may be an integer representing the total size of the collection, or it may be a dictionary that maps an [ISO 639-2 Alpha-3 language code](https://en.wikipedia.org/wiki/ISO_639-2) to the total collection size _for that language_.
 
 This says that an OPDS server offers about 100,000 items:
 
