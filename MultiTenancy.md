@@ -21,7 +21,7 @@ Here are some use cases that benefit from multi-tenancy.
 
 Here's the only case where it's known that multi-tenancy doesn't help:
 
-* Two libraries with lots of patrons have large collections that are completely disjoint and not shared. Putting these two libraries on the same circulation manager would be like trying to make two mansions share a driveway. It's theoretically possible but there's not a lot of benefit.
+* Two libraries with lots of patrons have large collections that are completely disjoint and not shared. Putting these two libraries on the same circulation manager would be like trying to make two mansions share a driveway It's theoretically possible but the benefit would be small.
 
 The advantage of multi-tenancy comes from two places:
 
