@@ -6,7 +6,7 @@ protocol. But most of the time you'll need to write code.
 
 Most content sources have no API at all, or have an API that can't be
 integrated into Library Simplified
-products. [[ContentSourcesWithoutAPI]](This wiki) has analyses of a
+products. [This wiki](ContentSourcesWithoutAPI) has analyses of a
 large number of popular library content sources that have no usable
 API. If you're in this situation, you'll need to convince the content
 provider to make their stuff available in the first place. _Then_
