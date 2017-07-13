@@ -2,6 +2,8 @@ Temporary Token Access Control (TTAC) is a simple "DRM" scheme which makes no ef
 
 Other DRM systems use the [Client Token Protocol](https://github.com/NYPL-Simplified/Simplified/wiki/DRMAutodiscoverySpecs#the-client-token-protocol) to guide users through the registration process. With  TTAC, the Client Token Protocol is pretty much the whole thing. Once you have a client token, you can use it as a bearer token to request the guarded resource directly.
 
+TTAC is not designed for systems that need fine-grained access control. Once you have a token, you have access to every guarded resource, until the token expires.
+
 # Worked example
 
 A publisher makes the following OPDS feed available to a library.
@@ -110,3 +112,8 @@ The server that serves a client token MUST set the `Cache-Control`
 header to `private`. This tells HTTP intermediaries not to cache the
 token. (This should be in the Client Token Protocol spec, actually.)
 
+# Scope
+
+A TTAC bearer token has the same scope as the credentials used to obtain it. Any resources accessible by the original credentials MUST be accessible through the TTAC bearer token.
+
+A future version of this spec will define a way to issue a TTAC bearer token for a single guarded resource.
