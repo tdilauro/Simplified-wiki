@@ -21,6 +21,13 @@ Here are some use cases that benefit from multi-tenancy.
   
   These libraries are like roommates who have nothing in common, but who don't need much space.
 
+* Two libraries have no resources in common, but they are located on opposite sides of the world. While people on 
+  one side of the world are asleep, the patrons of the other library are borrowing books. The circulation manager 
+  can serve twice as many patrons with no increase in peak demand.
+  
+  These libraries are like sailors on a submarine who work different shifts and share a bunk. At any given time, 
+  the bunk is occupied.
+
 Here's the only case where it's known that multi-tenancy doesn't help:
 
 * Two libraries with lots of patrons have large collections that are completely disjoint and not shared. Putting these two libraries on the same circulation manager would be like trying to make two mansions share a driveway. It's theoretically possible but the benefit would be small.
@@ -42,5 +49,3 @@ First, libraries like to keep local control. Putting everyone on the same circul
 Second, the "script runner" component of the circulation manager is designed to keep track of a small number of collections. If it has to keep track of hundreds of collections, information on any particular collection won't be updated very often. This can be improved; we just haven't tackled the problem yet.
 
 Third, the more simultaneous patrons a circulation manager has to handle, the bigger the cluster has to be. A surge in demand on one library can affect the performance of another. For a big  organization with a large dev ops group, automatically scaling the cluster isn't a problem, but for a smaller organization it might be smarter to set up two clusters and to scale them separately.
-
-By the same token, you could save a lot of money by placing two libraries from drastically different time zones on the same circulation manager. While people on one side of the world are asleep, the patrons of the other library will be borrowing books; when _they_ go to sleep, the people on the other side of the world will wake up and start borrowing books. With this system you could serve twice as many patrons without increasing peak demand at all.
