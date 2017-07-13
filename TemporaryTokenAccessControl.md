@@ -71,8 +71,8 @@ When TTAC is in use, the Client Token Protocol endpoint is indicated
 by a link with the relation
 `https://librarysimplified.org/rel/content-token`.
 
-An OPDS server that supports TTAC SHOULD link to the corresponding CTP
-endpoint from any OPDS feed containing an <entry> that can be
+An OPDS server that supports TTAC SHOULD link to the corresponding Client Token Protocol
+endpoint from any OPDS feed containing an entry that can be
 fulfilled through this scheme.
 
 # Client Token Protocol behavior
