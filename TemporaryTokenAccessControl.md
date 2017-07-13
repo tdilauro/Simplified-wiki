@@ -1,6 +1,6 @@
 Temporary Token Access Control (TTAC) is a simple "DRM" scheme which makes no effort to encrypt or obfuscate the resources it guards. Instead, access to the guarded resources is controlled by temporary tokens. If you have a token, you can download the resource. This allows a library to delegate to its patrons, on a temporary basis, the ability to download a guarded resource such as an EPUB.
 
-Other DRM systems use the [Client Token Protocol](https://github.com/NYPL-Simplified/Simplified/wiki/DRMAutodiscoverySpecs#the-client-token-protocol) to guide users through the registration process. With this TTAC, the Client Token Protocol is pretty much the whole thing. Once you have a client token, you can use it as a bearer token to request the guarded resource directly.
+Other DRM systems use the [Client Token Protocol](https://github.com/NYPL-Simplified/Simplified/wiki/DRMAutodiscoverySpecs#the-client-token-protocol) to guide users through the registration process. With  TTAC, the Client Token Protocol is pretty much the whole thing. Once you have a client token, you can use it as a bearer token to request the guarded resource directly.
 
 # Worked example
 
