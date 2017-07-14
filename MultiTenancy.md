@@ -14,7 +14,7 @@ Here are some use cases that benefit from multi-tenancy.
   shared. Hosting the second library isn't free, but hosting these libraries on the same circulation manager is 
   probably simpler and cheaper than giving each its own circulation manager.
   
-  These libraries are like the inhabitants of an apartment building with a shareed laundry room. It would be 
+  These libraries are like the inhabitants of an apartment building with a shared laundry room. It would be 
   wasteful for everyone to also have their own in-unit laundry.
 * Two (or more) libraries have no resources in common, but neither has a large collection. These libraries can 
   split the cost of a single circulation manager.
