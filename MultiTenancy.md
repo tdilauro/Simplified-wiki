@@ -26,7 +26,7 @@ Here are some use cases that benefit from multi-tenancy.
   can serve twice as many patrons with no increase in peak demand.
   
   These libraries are like sailors on a submarine who work different shifts and share a bunk. At any given time, 
-  the bunk is occupied.
+  the bunk is occupied. The submarine only needs half as many bunks as it has sailors.
 
 Here's the only case where it's known that multi-tenancy doesn't help:
 
