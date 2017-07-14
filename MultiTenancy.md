@@ -19,7 +19,7 @@ Here are some use cases that benefit from multi-tenancy.
 * Two (or more) libraries have no resources in common, but neither has a large collection. These libraries can 
   split the cost of a single circulation manager.
   
-  These libraries are like roommates who have nothing in common, but who don't need much space.
+  These libraries are like roommates who don't interact with each other at all, but who don't need much space.
 
 * Two libraries have no resources in common, but they are located on opposite sides of the world. While people on 
   one side of the world are asleep, the patrons of the other library are borrowing books. The circulation manager 
