@@ -156,7 +156,7 @@ The following audiences are defined:
 * `educational-primary`: Open to pre-university students.
 * `educational-secondary`: Open to university-level students.
 * `research`: Open to academics and researchers.
-* `disability-access`: Open to those who meet some disability requirement. (NOTE: wording on this TBD)
+* `print-disability`: Open only to those who have a print disability.
 * `other`: Open to people who meet some other qualification. This requirement should be explained in prose, in `service_description`.
 
 Values are treated as inclusive. This value for `audiences` indicates that the collection is available to students of all ages.
