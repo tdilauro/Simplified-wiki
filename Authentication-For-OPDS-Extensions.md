@@ -12,7 +12,7 @@ With our extensions, the A4OPDS document contains everything a potential user ne
 
 # Link to the A4OPDS document from server root
 
-The root feed of an OPDS server should link to its Authentication For OPDS document using `rel="describedBy"` and a `type` that makes it clear the document on the other end is an A4OPDS document (that is, `type="application/vnd.opds.authentication.v1.0+json"`). This guarantees that a client can always find the A4OPDS document. If the root feed requires authentication, that's fine, because the A4OPDS document is also supposed to be served as the entity-body of a 401 response.
+The root feed of an OPDS server should link to its Authentication For OPDS document using `rel="http://opds-spec.org/auth/document"` and a `type` that makes it clear the document on the other end is an A4OPDS document (that is, `type="application/vnd.opds.authentication.v1.0+json"`). This guarantees that a client can always find the A4OPDS document. If the root feed requires authentication, that's fine, because the A4OPDS document is also supposed to be served as the entity-body of a 401 response.
 
 # Server description
 
