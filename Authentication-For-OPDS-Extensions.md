@@ -227,7 +227,7 @@ For example, the New York Public Library has a `service_area` of New York State,
 "focus_area": { "US": ["Bronx County, NY", "New York County, NY", "Richmond County, NY"] }
 ```
 
-The format for `focus_area` is the same as for `service_area`. If no value is specified for `promotion_area`, the `focus_area` and `service_area` are assumed to be the same. The `focus_area` must be a geographic subset of the `service_area`, although this is not currently enforced.
+The format for `focus_area` is the same as for `service_area`. If no value is specified for `focus_area`, the `focus_area` and `service_area` are assumed to be the same. The `focus_area` must be a geographic subset of the `service_area`, although this is not currently enforced.
 
 Choosing a large `focus_area` can be bad for your search placement. Consider a university press in Kentucky that publishes an OPDS feed containing a few open-access titles. Since the content is all open-access, and anyone can download it, `everywhere` makes sense as a value for `service_area`. But specifying `everywhere` as a value for `focus_area` will put it in direct competition with much larger universal collections such as the Internet Archive. Specifying a more restrictive `focus_area` will boost the university press in search results for people in or near Kentucky.
 
