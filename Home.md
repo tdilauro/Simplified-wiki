@@ -32,6 +32,7 @@ Currently, our active public repositories include:
 
 # Installation and setup
 
+* [[Getting Your Books Into SimplyE|GettingYourBooksIntoSimplyE]]
 * [[Deployment Instructions]]
 * [[The configuration file|Configuration]]
 * [[Connecting the Library Simplified circulation manager to your ILS|AuthenticationSetup]]
