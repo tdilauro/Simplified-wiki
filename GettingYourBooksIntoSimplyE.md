@@ -12,7 +12,7 @@ If you're the author of a book, and you want to get the book into SimplyE, you s
 
 Your best bet is to upload your book to the [Internet Archive](https://archive.org/) or to get it onto [unglue.it](https://unglue.it/). The Internet Archive will be publishing its books through SimplyE in the near future, so this will make your book available directly through SimplyE. Many libraries in the SimplyE system use unglue.it as a source of free content, so getting your book into unglue.it will make your book available indirectly.
 
-The rest of this document assumes that "you", the person who has books they want to get into SimplyE, represent a publisher, distributor, university, public library. In other words, we assume you represent and organization that deals with hundreds or thousands of titles.
+The rest of this document assumes that "you", the person who has books they want to get into SimplyE, represent a publisher, distributor, university, public library. In other words, we assume you represent an organization that deals with hundreds or thousands of titles--so many titles that it makes sense to set up your own OPDS server.
 
 # Do you want to be in the library registry?
 
