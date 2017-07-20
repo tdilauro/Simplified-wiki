@@ -51,7 +51,10 @@ whether a user account is required at all.
 Once you make these two decisions, you can know approximately what
 features your server will need to have.
 
+
+
 | *Library registry?* | *Anonymous access?* | OPDS feeds | Authentication For OPDS | Search service | Authentication guard | Token service | Example |
+| ------------------- | ------------------- | ---------- | ----------------------- | -------------- | - | - | - |
 | Yes                 | Yes                 | X          | X                       | X              |                      |               | [The SimplyE Collection](https://instantclassics.librarysimplified.org/index.xml) |
 | Yes                 | No                  | X          | X                       | X              | X                    |               | [NYPL](https://circulation.librarysimplified.org/) |
 | No                  | Yes                 | X          | Optional                |                |                      |               | [Standard Ebooks](https://standardebooks.org/opds/all) |
