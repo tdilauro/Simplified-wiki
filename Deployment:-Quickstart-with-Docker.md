@@ -6,8 +6,8 @@ If you're already familiar with Docker and/or would like to contribute to our Do
 - Running the Circulation Manager
   - [Prep work](#cm-prep)
   - [Creating Circulation Manager containers](#cm-host)
+  - [Environment Variables](#cm-env)
   - [Evaluating Success](#cm-success)
-  - [Running Migrations](#cm-migrate)
 - How to create support containers for testing and development
   - [Creating a Postgres container](#pg)
   - [Creating an Elasticsearch container](#es)
@@ -41,9 +41,9 @@ If you're already familiar with Docker and/or would like to contribute to our Do
     ```sh
     $ sudo docker run -d --name circ-scripts \
         -e TZ="US/Central" \
-        # set the variable below if you have never used the configured database before
-        -e LIBSIMPLE_DB_INIT="true" \
         -v /etc/libsimple:/etc/circulation \
+        -e SIMPLIFIED_CONFIGURATION_FILE='/etc/circulation/config.json' \
+        -e SIMPLIFIED_DB_TASK='init' \
         nypl/circ-scripts
     ```
 
@@ -71,8 +71,8 @@ If you're already familiar with Docker and/or would like to contribute to our Do
     ```sh
     $ sudo docker run -d -p 80:80 --name circ-deploy \
         -v /etc/libsimple:/etc/circulation \
-        # only set the below variable if you haven't created a scripts container or otherwise used the configured db before
-        -e LIBSIMPLE_DB_INIT="true" \
+        -e SIMPLIFIED_CONFIGURATION_FILE='/etc/circulation/config.json' \
+        -e SIMPLIFIED_DB_TASK="migrate" \
         nypl/circ-deploy
     ```
 
@@ -102,14 +102,36 @@ If you're already familiar with Docker and/or would like to contribute to our Do
 
     Docker has fantastic documentation to get more familiar with its command line tools, like `docker exec` and `docker inspect`. We recommend you [check them out](https://docs.docker.com/engine/reference/commandline/cli/).
 
+##### <a name='cm-env'></a>*Environment Variables*
+
+###### `SIMPLIFIED_CONFIGURATION_FILE`
+
+*Required in v1.1 only. Optional in v2.x.* The full path to configuration file in the container. Using the volume `-v` for v1.1, it should look something like `/etc/circulation/YOUR_CONFIGURATION_FILENAME.json`. In v2.x you can volume it in wherever you'd like.
+
+Use [this documentation](https://github.com/NYPL-Simplified/Simplified/wiki/Configuration) to create the JSON file for your particular library's configuration. If you're unfamiliar with JSON, you can use [this JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/#) to validate your configuration file.
+
+###### `SIMPLIFIED_DB_TASK`
+
+*Required.* Performs a task against the database at container runtime. Options are:
+  - `ignore` : Does nothing. This is the default value.
+  - `init` : Initializes the app against a brand new database. If you are running a circulation manager for the first time every, use this value to set up an Elasticsearch alias and account for the database schema for future migrations.
+  - `migrate` : Migrates an existing database against a new release. Use this value when switching from one stable version to another.
+
+###### `SIMPLIFIED_PRODUCTION_DATABASE`
+
+*Required in v2.x only.* The URL of the production PostgreSQL database for the application.
+
+###### `SIMPLIFIED_TEST_DATABASE`
+
+*Optional in v2.x only.* The URL of a PostgreSQL database for tests. This optional variable allows unit tests to be run in the container.
+
+###### `TZ`
+
+*Optional. Scripts container only.* The timezone of the library or libraries on this circulation manager, selected according to [Debian-system timezone options](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). This value allows scripts to run at ideal times.
 
 ##### <a name='cm-success'></a>*Evaluating Success*
 
 If your Docker containers are running successfully, you should have a `/var/log/libsimple` directory full of logfiles in your circ-scripts container, and you should be able to visit your server's domain and see an OPDS feed from circ-deploy. If either of these things aren't occurring, use the troubleshooting details above to check `var/log/cron.log` or the logfiles in `/var/log/libsimple` for circ-scripts and/or `/var/log/libsimple/uwsgi.log` or `/var/log/nginx/error.log`.
-
-##### <a name='cm-migrate'></a>*Running Migrations*
-
-
 
 #### <a name='es'></a>*Elasticsearch* (optional support container)
 
