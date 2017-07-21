@@ -4,7 +4,7 @@ If you're already familiar with Docker and/or would like to contribute to our Do
 
 #### Contents:
 - Running the Circulation Manager
-  - [Local prep work](#cm-prep)
+  - [Prep work](#cm-prep)
   - [Creating Circulation Manager containers](#cm-host)
   - [Evaluating Success](#cm-success)
   - [Running Migrations](#cm-migrate)
@@ -16,25 +16,27 @@ If you're already familiar with Docker and/or would like to contribute to our Do
 
 #### <a name='cm'></a>Circulation Manager
 
-##### <a name='cm-prep'></a>*Local Prep*
+##### <a name='cm-prep'></a>*Prep Work*
 
-1. **Create your configuration file.** On your local machine, use [this documentation](Configuration) to create the JSON file for your particular library's configuration. If you're unfamiliar with Json, you can use [this JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/#) to validate your configuration file.
+1. **Create your configuration file.**
 
-2. Name your file `config.json` and **put it on your production server** at `/etc/libsimple`. (You can put the file in any directory you'd like, but you'll need to change the value in the commands below accordingly.) For the rest of the instructions, we'll be working on this server.
+    1. On your local machine, use [this documentation](Configuration) to create the JSON file for your particular library's configuration. If you're unfamiliar with Json, you can use [this JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/#) to validate your configuration file.
+    2. Name your file `config.json` and **put it on your production server** at `/etc/libsimple`. (You can put the file in any directory you'd like, but you'll need to change the value in the commands below accordingly.) For the rest of the instructions, we'll be working on this server.
+
+2. **Install Docker.** Docker has [step-by-step instructions](https://docs.docker.com/engine/installation/linux/) to grab its most up-to-date version. Depending on your package manager, you could also install a slightly older version with: `sudo apt-get install docker-ce` or `sudo yum install docker-ce`.
+
+3. **Create any dependent, temporary containers** (optional) for integrations like Elasticsearch and Postgres. *We don't recommend using containers in the long-term for holding or maintaining data.* However, if you just want to get a sense of how your Circulation Manager will work, containers are a quick option. Instructions for integrating [Elasticsearch](#es) and [Postgres](#pg) via Docker can be found below.
+
 
 ##### <a name='cm-host'></a>*On the Host Server*
 
-1. **Install Docker.** Docker has [step-by-step instructions](https://docs.docker.com/engine/installation/linux/) to grab its most up-to-date version. Depending on your package manager, you could also install a slightly older version with: `sudo apt-get install docker-ce` or `sudo yum install docker-ce`.
-
-2. **Get the Docker images** for the Library Simplified Circulation Manager. Run:
+1. **Get the Docker images** for the Library Simplified Circulation Manager. Run:
 
     ```sh
     $ sudo docker pull nypl/circ-deploy && sudo docker pull nypl/circ-scripts
     ```
 
-3. **Create any dependent, temporary containers** (optional) for integrations like Elasticsearch and Postgres. *We don't recommend using containers in the long-term for holding or maintaining data.* However, if you just want to get a sense of how your Circulation Manager will work, containers are a quick option. Instructions for integrating [Elasticsearch](#es) and [Postgres](#pg) via Docker can be found below.
-
-4. **Create a Circulation Manager script-running container.** Now we need to fill in that empty OPDS feed with your library's books, which will require running a number of scripts. Read the details below about the arguments you're passing before running this script; you will probably need to alter it to meet your needs.
+2. **Create a Circulation Manager script-running container.** Now we need to fill in that empty OPDS feed with your library's books, which will require running a number of scripts. Read the details below about the arguments you're passing before running this script; you will probably need to alter it to meet your needs.
 
     ```sh
     $ sudo docker run -d --name circ-scripts \
@@ -64,7 +66,7 @@ If you're already familiar with Docker and/or would like to contribute to our Do
       --format='{{range $mount := .Mounts}}{{if eq $mount.Destination "/var/log"}}{{$mount.Source}}{{end}}{{end}}'
     ```
 
-5. **Create a Circulation Manager deployment container.** If you are creating these containers for the first time, only run the deployment container **AFTER** you've created the scripts container, or you run the risk of generating [the IntegrityErrors described in #20](https://github.com/NYPL-Simplified/circulation-docker/issues/20). Should you face this foul beast, run `sudo docker exec circ-deploy touch uwsgi.ini` to reload the application without error.
+3. **Create a Circulation Manager deployment container.** If you are creating these containers for the first time, only run the deployment container **AFTER** you've created the scripts container, or you run the risk of generating [the IntegrityErrors described in #20](https://github.com/NYPL-Simplified/circulation-docker/issues/20). Should you face this foul beast, run `sudo docker exec circ-deploy touch uwsgi.ini` to reload the application without error.
 
     ```sh
     $ sudo docker run -d -p 80:80 --name circ-deploy \
@@ -87,13 +89,13 @@ If you're already familiar with Docker and/or would like to contribute to our Do
     $ sudo docker exec circ-deploy cat /var/log/libsimple/uwsgi.log | less
     ```
 
-6. **Confirm your scripts are running.** Once you've given your scripts some time to run (~30 minutes should be enough time to start having works move through the import process), you'll want to refresh your views so they show up in your deployed app.
+4. **Confirm your scripts are running.** Once you've given your scripts some time to run (~30 minutes should be enough time to start having works move through the import process), you'll want to refresh your views so they show up in your deployed app.
 
     ```sh
     $ sudo docker exec circ-scripts /var/www/circulation/core/bin/run refresh_materialized_views
     ```
 
-7. **Maintenance.** You can hop into a running container at any time with the command:
+5. **Maintenance.** You can hop into a running container at any time with the command:
     ```sh
     $ sudo docker exec -it circ /bin/bash
     ```
