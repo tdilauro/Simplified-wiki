@@ -29,7 +29,7 @@ Some organizations that could/will/do show up in the library registry:
 
 * The New York Public Library
 * [Canadian Electronic Library](http://www.canadianelectroniclibrary.ca/)
-* [The Internet Archive](https://archive.org/)
+* [The Internet Archive](https://bookserver.archive.org/catalog/)
 * [BARD](https://nlsbard.loc.gov/login//NLS)
 
 Some organizations that publish (or could publish) OPDS feeds but
