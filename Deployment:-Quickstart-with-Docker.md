@@ -2,7 +2,7 @@ So you're deploying your library's circulation manager. Awesome! If you'd like t
 
 If you're already familiar with Docker and/or would like to contribute to our Docker builds, you can find our build files at [NYPL-Simplified/circulation-docker](https://github.com/NYPL-Simplified/circulation-docker).
 
-#### Contents:
+## Contents:
 - Running the Circulation Manager
   - [Prep work](#cm-prep)
   - [Creating Circulation Manager containers](#cm-host)
@@ -14,9 +14,9 @@ If you're already familiar with Docker and/or would like to contribute to our Do
 
 ---
 
-#### <a name='cm'></a>Circulation Manager
+## <a name='cm'></a>Circulation Manager
 
-##### <a name='cm-prep'></a>*Prep Work*
+### <a name='cm-prep'></a>*Prep Work*
 
 1. **Create your configuration file.**
 
@@ -28,7 +28,7 @@ If you're already familiar with Docker and/or would like to contribute to our Do
 3. **Create any dependent, temporary containers** (optional) for integrations like Elasticsearch and Postgres. *We don't recommend using containers in the long-term for holding or maintaining data.* However, if you just want to get a sense of how your Circulation Manager will work, containers are a quick option. Instructions for integrating [Elasticsearch](#es) and [Postgres](#pg) via Docker can be found below.
 
 
-##### <a name='cm-host'></a>*On the Host Server*
+### <a name='cm-host'></a>*On the Host Server*
 
 1. **Get the Docker images** for the Library Simplified Circulation Manager. Run:
 
@@ -102,38 +102,39 @@ If you're already familiar with Docker and/or would like to contribute to our Do
 
     Docker has fantastic documentation to get more familiar with its command line tools, like `docker exec` and `docker inspect`. We recommend you [check them out](https://docs.docker.com/engine/reference/commandline/cli/).
 
-##### <a name='cm-env'></a>*Environment Variables*
+### <a name='cm-env'></a>*Environment Variables*
 
-###### `SIMPLIFIED_CONFIGURATION_FILE`
+#### `SIMPLIFIED_CONFIGURATION_FILE`
 
 *Required in v1.1 only. Optional in v2.x.* The full path to configuration file in the container. Using the volume `-v` for v1.1, it should look something like `/etc/circulation/YOUR_CONFIGURATION_FILENAME.json`. In v2.x you can volume it in wherever you'd like.
 
 Use [this documentation](https://github.com/NYPL-Simplified/Simplified/wiki/Configuration) to create the JSON file for your particular library's configuration. If you're unfamiliar with JSON, you can use [this JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/#) to validate your configuration file.
 
-###### `SIMPLIFIED_DB_TASK`
+#### `SIMPLIFIED_DB_TASK`
 
 *Required.* Performs a task against the database at container runtime. Options are:
   - `ignore` : Does nothing. This is the default value.
   - `init` : Initializes the app against a brand new database. If you are running a circulation manager for the first time every, use this value to set up an Elasticsearch alias and account for the database schema for future migrations.
   - `migrate` : Migrates an existing database against a new release. Use this value when switching from one stable version to another.
 
-###### `SIMPLIFIED_PRODUCTION_DATABASE`
+#### `SIMPLIFIED_PRODUCTION_DATABASE`
 
 *Required in v2.x only.* The URL of the production PostgreSQL database for the application.
 
-###### `SIMPLIFIED_TEST_DATABASE`
+#### `SIMPLIFIED_TEST_DATABASE`
 
 *Optional in v2.x only.* The URL of a PostgreSQL database for tests. This optional variable allows unit tests to be run in the container.
 
-###### `TZ`
+#### `TZ`
 
 *Optional. Scripts container only.* The timezone of the library or libraries on this circulation manager, selected according to [Debian-system timezone options](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). This value allows scripts to run at ideal times.
 
-##### <a name='cm-success'></a>*Evaluating Success*
+### <a name='cm-success'></a>*Evaluating Success*
 
 If your Docker containers are running successfully, you should have a `/var/log/libsimple` directory full of logfiles in your circ-scripts container, and you should be able to visit your server's domain and see an OPDS feed from circ-deploy. If either of these things aren't occurring, use the troubleshooting details above to check `var/log/cron.log` or the logfiles in `/var/log/libsimple` for circ-scripts and/or `/var/log/libsimple/uwsgi.log` or `/var/log/nginx/error.log`.
 
-#### <a name='es'></a>*Elasticsearch* (optional support container)
+## Support Containers (for use in development or testing)
+### <a name='es'></a>*Elasticsearch*
 
 While we do **not** recommend you run Elasticsearch from a Docker container permanently, you may want to get up and running with a throwaway search index. Elasticsearch isn't installed via the Dockerfile, so the fastest way to connect to it will be through another container. Here's how:
 
@@ -155,7 +156,7 @@ While we do **not** recommend you run Elasticsearch from a Docker container perm
 3. **Add the Elasticsearch URL to your configuration file.** When you run `sudo docker ps`, you'll see a single running container called es. Use the IP that comes from running `inspect` to update your your `config.json` file with the proper Elasticsearch location. You should end up with something like `"http://172.17.0.2:9200"`.
 
 
-#### <a name='pg'></a>*Postgres* (optional support container)
+### <a name='pg'></a>*Postgres*
 
 While we do **not** recommend you run Postgres from a Docker container permanently, you may want to get up and running with a throwaway database. Postgres isn't installed via the Dockerfile, so the best way to connect to Postgres will be through another container. Here's how:
 
