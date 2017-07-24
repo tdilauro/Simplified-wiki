@@ -1,6 +1,6 @@
 When a user loads up a list of libraries from the library registry (as opposed to searching for a specific library) we want to show them the libraries most likely to be useful to them.
 
-We know a number of things for each library:
+We know a number of things for each user:
 
 * Where on the planet they're located (roughly, via IP address).
 * The language used on their device.
