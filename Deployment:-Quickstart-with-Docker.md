@@ -6,17 +6,17 @@ If you're already familiar with Docker and/or would like to contribute to our Do
 - Running the Circulation Manager
   - [Prep work](#cm-prep)
   - [Creating Circulation Manager containers](#cm-host)
-  - [Environment Variables](#cm-env)
-  - [Evaluating Success](#cm-success)
-- How to create support containers for testing and development
+    - [Running Scripts](#cm-scripts)
+    - [Deploying the App](#cm-app)
+    - [Environment Variables](#cm-env)
+    - [Evaluating Success](#cm-success)
+- Support Containers for Testing and Development
   - [Creating a Postgres container](#pg)
   - [Creating an Elasticsearch container](#es)
 
 ---
 
-## <a name='cm'></a>Circulation Manager
-
-### <a name='cm-prep'></a>*Prep Work*
+## <a name='cm-prep'></a>Prep Work
 
 1. **Create your configuration file.**
 
@@ -27,80 +27,101 @@ If you're already familiar with Docker and/or would like to contribute to our Do
 
 3. **Create any dependent, temporary containers** (optional) for integrations like Elasticsearch and Postgres. *We don't recommend using containers in the long-term for holding or maintaining data.* However, if you just want to get a sense of how your Circulation Manager will work, containers are a quick option. Instructions for integrating [Elasticsearch](#es) and [Postgres](#pg) via Docker can be found below.
 
-
-### <a name='cm-host'></a>*On the Host Server*
-
-1. **Get the Docker images** for the Library Simplified Circulation Manager. Run:
+4. **Get the Docker images** for the Library Simplified Circulation Manager. Run:
 
     ```sh
     $ sudo docker pull nypl/circ-deploy && sudo docker pull nypl/circ-scripts
     ```
 
-2. **Create a Circulation Manager script-running container.** Now we need to fill in that empty OPDS feed with your library's books, which will require running a number of scripts. Read the details below about the arguments you're passing before running this script; you will probably need to alter it to meet your needs.
+## <a name='cm-host'></a>Running Circulation Manager containers
 
-    ```sh
-    $ sudo docker run -d --name circ-scripts \
-        -e TZ="US/Central" \
-        -v /etc/libsimple:/etc/circulation \
-        -e SIMPLIFIED_CONFIGURATION_FILE='/etc/circulation/config.json' \
-        -e SIMPLIFIED_DB_TASK='init' \
-        nypl/circ-scripts
-    ```
+### <a name='cm-scripts'></a>Running scripts
 
-    *What you're doing.* You're running this container in detached mode (`-d`), passing in your configuration file to where it needs to be (`-v`), and calling it "circ-scripts". With the (`-e`) optional argument `TZ`, you can pass a [Debian-system timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) representing your local time zone, which will cause timed scripts to run according to your local time. If the database you've connected in your configuration has never been used before, use (`-e`) to set the optional argument `LIBSIMPLE_DB_INIT`. This will keep track of the state of the database you've created and create an alias on your Elasticsearch cluster, allowing database updates to be easily managed with scripts.
+To deploy an app filled with your library's books, you'll need to run a number of scripts. Read [the environment variable details below about](#cm-env) before running this script; you will likely need to alter it to meet your needs.
 
-    *Troubleshooting.* You'll want to check the logs of your container. For example:
+#### Example `docker run` script
 
-    ```sh
-    # check logs of running supervisor processes
-    $ sudo docker logs circ-scripts
+```sh
+$ sudo docker run -d --name circ-scripts \
+    -e TZ="US/Central" \
+    -v /etc/libsimple:/etc/circulation \
+    -e SIMPLIFIED_CONFIGURATION_FILE='/etc/circulation/config.json' \
+    -e SIMPLIFIED_DB_TASK='init' \
+    nypl/circ-scripts
+```
 
-    # check logs of cron and scripts
-    $ sudo docker exec circ-scripts cat /var/log/cron.log | less
-    $ sudo docker exec circ-scripts ls /var/log/libsimple
-    $ sudo docker exec circ-scripts cat /var/log/libsimple/overdrive_monitor_full | less
+#### What It Does
 
-    # The log directory can also be found on the production server.
-    # Its location can be found using this command.
-    $ sudo docker inspect circ-scripts \
-      --format='{{range $mount := .Mounts}}{{if eq $mount.Destination "/var/log"}}{{$mount.Source}}{{end}}{{end}}'
-    ```
+The example above runs this resulting container in detached mode (`-d`), passing in your prepared configuration file to where it needs to be (`-v`, `-e SIMPLIFIED_CONFIGURATION_FILE`) and calling it "circ-scripts". With the (`-e`) optional argument `TZ`, you can pass a [Debian-system timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) representing your local time zone, which will cause timed scripts to run according to your local time. If the database you've connected in your configuration has never been used before, use `-e` to set the optional argument `SIMPLIFIED_DB_TASK` to `'init'`. This will keep track of the state of the database you've created and create an alias on your Elasticsearch cluster, allowing database updates to be easily managed with scripts.
 
-3. **Create a Circulation Manager deployment container.** If you are creating these containers for the first time, only run the deployment container **AFTER** you've created the scripts container, or you run the risk of generating [the IntegrityErrors described in #20](https://github.com/NYPL-Simplified/circulation-docker/issues/20). Should you face this foul beast, run `sudo docker exec circ-deploy touch uwsgi.ini` to reload the application without error.
+#### Running Scripts
 
-    ```sh
-    $ sudo docker run -d -p 80:80 --name circ-deploy \
-        -v /etc/libsimple:/etc/circulation \
-        -e SIMPLIFIED_CONFIGURATION_FILE='/etc/circulation/config.json' \
-        -e SIMPLIFIED_DB_TASK="migrate" \
-        nypl/circ-deploy
-    ```
-
-    *What you're doing.* You're running this container in detached mode (`-d`), binding its port 80 to your server's port 80 (`-p`), passing in your configuration file where it needs to be (`-v`) and calling it "circ-deploy". When you visit your server through a browser, you'll see a very sparse OPDS feed. If the database you've connected in your configuration has never been used before, use (`-e`) to set the optional argument `LIBSIMPLE_DB_INIT`. This will keep track of the state of the database you've created and create an alias on your Elasticsearch cluster, allowing database updates to be easily managed with scripts.
-
-    *Troubleshooting.* You'll want to check the logs of your container (`/var/log/nginx/error.log` and `/var/log/libsimple/uwsgi.log`) to troubleshoot:
-
-    ```sh
-    # check logs of running supervisor processes
-    $ sudo docker logs circ-deploy
-
-    # check logs inside the container
-    $ sudo docker exec circ-deploy cat /var/log/nginx/error.log | less
-    $ sudo docker exec circ-deploy cat /var/log/libsimple/uwsgi.log | less
-    ```
-
-4. **Confirm your scripts are running.** Once you've given your scripts some time to run (~30 minutes should be enough time to start having works move through the import process), you'll want to refresh your views so they show up in your deployed app.
+Once you've given your scripts some time to run (~30 minutes should be enough time to start having works move through the import process), you'll want to refresh your views so they show up in your deployed app.
 
     ```sh
     $ sudo docker exec circ-scripts /var/www/circulation/core/bin/run refresh_materialized_views
     ```
 
-5. **Maintenance.** You can hop into a running container at any time with the command:
-    ```sh
-    $ sudo docker exec -it circ /bin/bash
-    ```
+#### Troubleshooting
 
-    Docker has fantastic documentation to get more familiar with its command line tools, like `docker exec` and `docker inspect`. We recommend you [check them out](https://docs.docker.com/engine/reference/commandline/cli/).
+You'll want to check the logs of your container. For example:
+
+```sh
+# check logs of the database task and running supervisor processes
+$ sudo docker logs circ-scripts
+
+# check logs of cron and scripts
+$ sudo docker exec circ-scripts cat /var/log/cron.log | less
+$ sudo docker exec circ-scripts ls /var/log/libsimple
+$ sudo docker exec circ-scripts cat /var/log/libsimple/overdrive_monitor_full | less
+
+# The log directory can also be found on the production server.
+# Its location can be found using this command.
+$ sudo docker inspect circ-scripts \
+  --format='{{range $mount := .Mounts}}{{if eq $mount.Destination "/var/log"}}{{$mount.Source}}{{end}}{{end}}'
+```
+
+You can hop into a running container at any time with the command: `$ sudo docker exec -it circ /bin/bash`
+
+Docker has fantastic documentation to get more familiar with its command line tools, like `docker exec` and `docker inspect`. We recommend you [check them out](https://docs.docker.com/engine/reference/commandline/cli/).
+
+### <a name='cm-app'></a>Deploying the App
+
+Using an `nypl/circ-deploy` container deploys the OPDS feeds expected by the SimplyE client applications. Read [the environment variable details below about](#cm-env) before running the following script; you will likely need to alter it to meet your needs.
+
+#### Example `docker run` script
+
+```sh
+$ sudo docker run -d -p 80:80 --name circ-deploy \
+    -v /etc/libsimple:/etc/circulation \
+    -e SIMPLIFIED_CONFIGURATION_FILE='/etc/circulation/config.json' \
+    -e SIMPLIFIED_DB_TASK="migrate" \
+    nypl/circ-deploy
+```
+
+#### What It Does
+
+The script above runs the container in detached mode (`-d`), binding its port 80 to your server's port 80 (`-p`), passing in your configuration file where it needs to be (`-v`, `-e SIMPLIFIED_CONFIGURATION_FILE`) and calling it "circ-deploy". Unless you've been running a scripts container for while, when you visit your server through a browser, you'll see a very sparse OPDS feed. If the database you've connected in your configuration has never been used before, use `-e` to set the optional argument `SIMPLIFIED_DB_TASK` to `'init'`. This will keep track of the state of the database you've created and create an alias on your Elasticsearch cluster, allowing database updates to be easily managed with scripts.
+
+#### Troubleshooting
+
+You'll want to check the logs of your container (`/var/log/nginx/error.log` and `/var/log/libsimple/uwsgi.log`) to troubleshoot:
+
+```sh
+# check logs of the database task and running supervisor processes
+$ sudo docker logs circ-deploy
+
+# check logs inside the container
+$ sudo docker exec circ-deploy cat /var/log/nginx/error.log | less
+$ sudo docker exec circ-deploy cat /var/log/libsimple/uwsgi.log | less
+
+# restart the application
+$ sudo docker exec circ-deploy touch uwsgi.ini
+```
+
+You can hop into a running container at any time with the command: `$ sudo docker exec -it circ /bin/bash`
+
+Docker has fantastic documentation to get more familiar with its command line tools, like `docker exec` and `docker inspect`. We recommend you [check them out](https://docs.docker.com/engine/reference/commandline/cli/).
 
 ### <a name='cm-env'></a>*Environment Variables*
 
