@@ -236,6 +236,12 @@ Choosing a large `focus_area` can be bad for your search placement. Consider a u
 "focus_area": {"US": ["KY"]}
 ```
 
+## Link relation for anonymous access
+
+The `https://librarysimplified.org/rel/auth/anonymous` link relation can be used as a value in the `type` array to indicate that it's okay to get books from this site without providing any authentication.
+
+If `https://librarysimplified.org/rel/auth/anonymous` shares the `type` array with another authentication mechanism, it means that it's _also_ possible to authenticate with the site, possibly getting access to additional books or features.
+
 # Standard features of special interest to SimplyE
 
 ## `"rel": "alternate", "type": "text/html"`
