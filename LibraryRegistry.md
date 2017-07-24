@@ -13,19 +13,51 @@ Synchronization between the circulation manager (or equivalent) and the library 
 To synchronize a library with the registry, the circulation manager finds the link with rel "register" in the registry's main feed, and sends a POST request with the "url" parameter set to the url of the library's OPDS feed. The registry attempts to find the Authentication for OPDS document. The document may be in the body of the response if the feed requires authentication. Otherwise, the registry will look for a link with rel "http://opds-spec.org/auth/document" or rel "http://opds-spec.org/shelf".
 
 ## Sync response
-In response to a sync operation, the library registry will provide a JSON document with a permalink to the library's entry in the registry, or a problem detail if the sync failed. 
+In response to a sync operation, the library registry will provide the library's entry in the registry as an [OPDS 2.0](https://github.com/opds-community/opds-revision/blob/master/opds-2.0.md) Catalog, or a problem detail if the sync failed. 
 
 ### Permalink
-A successful sync response will contain a permalink to the library's registry entry. The library can check the permalink to determine if the library is live on the registry yet. Example: 
-`{ "permalink": "https://registry.librarysimplified.org/libraries/1" }`
+A successful sync response will contain a permalink to the library's registry entry with rel "self" under "links". The library can check the permalink to determine if the library is live on the registry yet.
+```
+{
+  "metadata": {
+    "title": "The New York Public Library"
+  },
+  
+  "links": [
+    {"rel": "self", "href": "https://registry.librarysimplified.org/libraries/1", "type": "application/opds+json"}
+  ],
+  
+  "navigation": [
+    {
+      "href": "https://circulation.librarysimplified.org/groups", 
+      "title": "The New York Public Library", 
+      "type": "application/atom+xml;profile=opds-catalog;kind=acquisition",
+    }
+  ]
+}
+```
 
 ### Shared secret
 If the library's Authentication for OPDS document contains a public key, the library registry will also provide an encrypted shared secret and short library name, for use in signing [Short Client Tokens](Short-Client-Token) that the registry can verify. This gives the library registry a way to validate that library's patrons, without needing access to the library's ILS. The registry will generate these values if they don't exist yet. The shared secret will be encrypted with the library's public key using RSA.
 ```
 {
-  "permalink": "https://registry.librarysimplified.org/libraries/1",
-  "shared_secret": "jZdwjQPOO+5oKu797iCstMvVr6/+F6PIr0S4nmV7MlO"
-  "short_name": "abcd"
+  "metadata": {
+    "title": "The New York Public Library",
+    "shared_secret": "jZdwjQPOO+5oKu797iCstMvVr6/+F6PIr0S4nmV7MlO",
+    "short_name": "abcd"
+  },
+  
+  "links": [
+    {"rel": "self", "href": "https://registry.librarysimplified.org/libraries/1", "type": "application/opds+json"}
+  ],
+  
+  "navigation": [
+    {
+      "href": "https://circulation.librarysimplified.org/groups", 
+      "title": "The New York Public Library", 
+      "type": "application/atom+xml;profile=opds-catalog;kind=acquisition",
+    }
+  ]
 }
 ```
 
