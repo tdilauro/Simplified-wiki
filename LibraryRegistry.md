@@ -38,7 +38,7 @@ A successful sync response will contain a permalink to the library's registry en
 ```
 
 ### Shared secret
-If the library's Authentication for OPDS document contains a public key, the library registry will also provide an encrypted shared secret and short library name, for use in signing [Short Client Tokens](Short-Client-Token) that the registry can verify. This gives the library registry a way to validate that library's patrons, without needing access to the library's ILS. The registry will generate these values if they don't exist yet. The shared secret will be encrypted with the library's public key using RSA, and then base 64 encoded.
+If the library's Authentication for OPDS document contains a public key, the library registry will also provide an encrypted shared secret and short library name, for use in signing [Short Client Tokens](Short-Client-Token) that the registry can verify. This gives the library registry a way to validate that library's patrons, without needing access to the library's ILS. The registry will generate these values if they don't exist yet. The shared secret will be encrypted with the library's public key using the RSAES-OAEP scheme, and then base 64 encoded.
 ```
 {
   "metadata": {
