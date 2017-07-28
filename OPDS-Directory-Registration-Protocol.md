@@ -12,7 +12,7 @@ In an OPDS 2 Catalog, you may encounter a link with a link relation of
 
 This link is an entry point to the OPDS Directory Registry Protocol
 (below, just "Protocol"). It says that the OPDS Catalog can be seen
-not as a list of books (or not _just_ as a list of books) but as a
+not just as a list of books (if there are any books at all) but as a
 directory of _other OPDS servers_. If you yourself run an OPDS server,
 you may be able to register it with the directory by going through this
 Protocol.
