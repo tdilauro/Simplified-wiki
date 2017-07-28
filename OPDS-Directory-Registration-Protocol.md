@@ -242,17 +242,7 @@ The registration document you get back will have your new
 
 # Removing your registration
 
-To remove your registration, repeat the POST request you sent to the
-`register` link that led to you registering with the directory in the
-first place.
-
-If the directory cannot connect to that server or the URL you provide
-it gives a 404 response, your OPDS server will be removed from the
-directory.
-
-An OPDS directory may periodically check on your server and remove it
-from the directory if your server goes down or stops serving valid
-OPDS.
+TBD
 
 # Profile definition
 
