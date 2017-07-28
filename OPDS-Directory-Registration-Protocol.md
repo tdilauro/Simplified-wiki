@@ -196,6 +196,8 @@ as the media type
 `application/opds+json;profile=https://librarysimplified.org/rel/profile/directory`;
 that is, as an OPDS 2 catalog with a profile specific to this Protocol.
 
+In general, this catalog contains the information potential users will see when they encounter your library in the directory. However, there are two extra fields that will only be shown to you. Their semantics are defined in the profile definition below.
+
 ```
 {
  "metadata" : {
