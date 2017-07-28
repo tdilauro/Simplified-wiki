@@ -241,7 +241,7 @@ url=http://example.org/my-opds-server/
 The registration document you get back will have your new
 `shared_secret`.
 
-There's no need to provide your shared secret unless you want it changed. For normal re-registration, the fact that you control the OPDS server is sufficient to cause an update. Someone else can forge a re-registration request for your OPDS server, but since you control the documents served from that server, nobody can make your directory entry contradict the information published by your server.
+There's no need to provide your shared secret unless you want it changed. This means that someone else can forge a re-registration request for your OPDS server, but since you control the documents served from that server, nobody can make your directory entry contradict the information published by your server.
 
 # Removing your registration
 
