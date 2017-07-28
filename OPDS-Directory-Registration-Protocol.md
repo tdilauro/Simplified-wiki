@@ -177,11 +177,11 @@ document as `public_key`. Here's an example:
 
 Currently the only supported key type is `RSA`.
 
-If the directory supports shared secret negotiation, it will sign a
-randomly generated string with your public key, encode it using base64
-encoding, and send it to you as `shared_secret` in the registration
-document. Decode it, decrypt it using your public key, and you have
-the shared secret.
+If the directory supports shared secret negotiation, it will encrypt a
+randomly generated string with your public key using the RSAES-OAEP scheme, 
+encode it using base64 encoding, and send it to you as `shared_secret` 
+in the registration document. Decode it, decrypt it using your public key, 
+and you have the shared secret.
 
 A directory is not required to support shared secret negotiation. If a
 directory doesn't support shared secret negotiation, your `public_key`
