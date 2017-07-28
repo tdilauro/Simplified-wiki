@@ -226,19 +226,22 @@ If something goes wrong, you'll get a problem detail document and your
 registration will not be updated. If everything goes well, you'll get
 a new registration document that reflects your current registration.
 
-If you want to change your shared secret, update your registration and
-include the current `shared_secret` in the form you want to submit.
+If you want to change your shared secret, include the current `shared_secret` as a bearer token
+when you submit the form.
 
 ```
 POST /opds-directory
 Host: example.com
 Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer bf58b099a8dd250e617b11a583ba9186c5520eaeef9e01c2
 
-url=http://example.org/my-opds-server/&shared_secret=bf58b099a8dd250e617b11a583ba9186c5520eaeef9e01c2
+url=http://example.org/my-opds-server/
 ```
 
 The registration document you get back will have your new
 `shared_secret`.
+
+There's no need to provide your shared secret unless you want it changed. For normal re-registration, the fact that you control the OPDS server is sufficient to cause an update. Someone else can forge a re-registration request for your OPDS server, but since you control the documents served from that server, nobody can make your directory entry contradict the information published by your server.
 
 # Removing your registration
 
