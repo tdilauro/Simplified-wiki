@@ -111,7 +111,7 @@ document for a number of extensions from [this
 list](https://github.com/NYPL-Simplified/Simplified/wiki/Authentication-For-OPDS-Extensions).
 
 * [`service_description`](Authentication-For-OPDS-Extensions#server-description)
-* [`color_scheme](Authentication-For-OPDS-Extensions#color-scheme)
+* [`color_scheme`](Authentication-For-OPDS-Extensions#color-scheme)
 * [`collection_size`](Authentication-For-OPDS-Extensions#collection-size)
 * [`audiences`](Authentication-For-OPDS-Extensions#audiences)
 * [`service_area`](`Authentication-For-OPDS-Extensions#service_area`)
