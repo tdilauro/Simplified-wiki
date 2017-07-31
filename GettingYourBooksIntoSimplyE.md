@@ -208,9 +208,9 @@ possibly even to the OPDS feeds themselves. There are a variety of
 ways of doing this, but most of the time this means implementing HTTP
 Basic Auth and looking up credentials in some kind of data store.
 
-# Token service
+# Bearer token propagation
 
-The token service is only necessary in one case:
+[Bearer token propagation](BearerTokenPropagation) is only necessary in one case:
 
 * You are a distributor who sells access to your collection to libraries.
 * But you don't want the libraries downloading your books, rehosting them, and serving them to their patrons.
@@ -232,50 +232,4 @@ _patron_ of library X.
 Library X shouldn't have to give out its credentials to every patron
 who asks. It should be able to delegate its authority to a patron for
 purposes of downloading a specific book from your server. This is what
-the token service is for.
-
-The token service is an HTTP endpoint that implements the OAuth client
-credentials grant. You advertise the service endpoint in your
-Authentication for OPDS document.
-
-When a library patron wants a book, their library will make a POST
-request to the token service endpoint that includes the standard OAuth
-parameters `client_id` (in HTTP Basic Auth terms, the "username"),
-`client_secret` (the "password"), and `grant_type`.
-
-```
-POST /auth/token
-Content-Type: application/x-www-form-urlencoded
-
-client_id=1234&client_secret=abcd&grant_type=client_credentials
-```
-
-The server will respond with a standard OAuth document that contains a
-bearer token. It might look like this:
-
-```
-HTTP/1.1 200 OK
-Content-Type: application/json;charset=UTF-8
-Cache-Control: no-store
-Pragma: no-cache
-
-{
-    "scope": "read",
-    "expires_in": 60,
-    "token_type": "Bearer",
-    "access_token": "zKBkFyWYTYmrRGuER2SmpMc9y3qd8T"
-}
-```
-
-The library will communicate this token document to the patron's
-SimplyE client, which will use that token to download a book from your
-server.
-
-```
-GET /books/book123.epub
-Authorization: Bearer zKBkFyWYTYmrRGuER2SmpMc9y3qd8T
-```
-
-Since the token expires in a relatively short time (60 seconds, in the
-case above), this is more secure than expecting the library to hand
-its permanent credentials to a patron.
+[bearer token propagation](BearerTokenPropagation) is for, and it's covered in a separate document.
