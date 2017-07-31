@@ -136,7 +136,7 @@ error. It's not clear what to do about it.
 The Authentication For OPDS document connects these two pieces.
 
 Your root OPDS feed should include a link to your Authentication For
-OPDS document on the <feed> level (not inside any particular <entry>).
+OPDS document on the `<feed>` level (not inside any particular `<entry>`).
 
 ```
 <feed>
