@@ -1,5 +1,7 @@
 You're a publisher or distributor. You have some books you've licensed
-to one or more library. You want to host the books yourself, but make
+to one or more libraries. You want to [get these books into SimplyE](GettingYourBooksIntoSimplyE).
+
+You want to host the books yourself, but make
 them available to patrons of that library on demand. You don't want to
 have to integrate with the library's ILS to check their patron
 credentials; you trust the library to determine who should have access
