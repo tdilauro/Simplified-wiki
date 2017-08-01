@@ -42,7 +42,7 @@ Your OPDS feed won't be shown directly to library patrons; it will be
 consumed by a piece of software. It's important to include all the
 metadata you would show to a patron (title, author, categories, and so
 on), because that information will _eventually_ be shown to the
-patrons, but there's no arranging of books in an order that humans will
+patrons, but there's no need to arrange the books in an order that humans will
 find attractive. The library's server will be combining your books
 with books from other sources, and presenting a unified feed (using
 the metadata you provided) to its patrons.
