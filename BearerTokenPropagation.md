@@ -242,7 +242,7 @@ Content-Type: application/vnd.librarysimplified.bearer-token
     "expires_in": 60,
     "token_type": "Bearer",
     "access_token": "zKBkFyWYTYmrRGuER2SmpMc9y3qd8T"
-    "scope": "https://my-opds-server/the-book.epub"
+    "location": "https://my-opds-server/the-book.epub"
 }
 ```
 
@@ -255,7 +255,7 @@ These fields come directly from the distributor:
 This field is set by the library to tell the client which book it
 should be downloading:
 
-* `scope`: The URL of the book for which the client requested a copy.
+* `location`: The URL of the book for which the client requested a copy.
 
 ## Advertising Bearer Token Propagation
 
