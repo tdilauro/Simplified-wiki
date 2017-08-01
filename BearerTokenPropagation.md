@@ -51,11 +51,13 @@ find attractive. The library's server will be combining your books
 with books from other sources, and presenting a unified feed (using
 the metadata you provided) to its patrons.
 
-Here are best practices for your machine-readable OPDS feed.
+You should create what's called a [Complete Acquisition Feed](http://opds-spec.org/specs/opds-catalog-1-1-20110627/#Complete_Acquisition_Feeds). This is "a single, consolidated Acquisition Feed that includes the complete representation of every unique OPDS Catalog Entry Document in an OPDS Catalog... to facilitate crawling and aggregation."
+
+Here are best practices for your Complete Acquisition Feed:
 
 * List all the books, in reverse chronological order (newest
   first). If something about a book changes (its metadata, for
-  instance), bump it to the top of the list.
+  instance), bump it to the top of the list and update its `<atom:updated>` tag.
 
 * Don't put everything on one page; keep it to 50 or 100 books per
   page. Use the "next" link relation to link from one page to the
