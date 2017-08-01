@@ -10,15 +10,19 @@ to the books.
 Here's the solution:
 
 1. Put up an OPDS feed that lists the metadata for the books, and
-   includes links to their download URLs. To actually download
-   a book from its download URL requires a token.
-2. Put up an OAuth token service that implements the [OAuth 2.0 Client
-   Credentials](https://tools.ietf.org/html/rfc6749#section-1.3.4) flow.
+   includes links to their download URLs. Protect the download URLs so that you
+   must present a token to actually download a copy of a book.
+2. Put up a service that hands out tokens by implementing the [OAuth 2.0 Client
+   Credentials](https://tools.ietf.org/html/rfc6749#section-1.3.4) flow.   
 3. Create an access key and secret key for the Client Credentials flow.
-   Give these keys to the library who's licensed the books. (Create a
+   Give these keys to the library that has licensed your books. (Create a
    different set of keys for every library.)
 4. Put up an Authentication For OPDS document that links to your token
    service. Link to this document from your root OPDS feed.
+5. When a patron requests one of your books from the library, the library will
+   use its access key and secret key to generate a token from your token service.
+   The library will pass this token to the patron, who will use it to download
+   a copy of that book.
 
 Here's how it works:
 
