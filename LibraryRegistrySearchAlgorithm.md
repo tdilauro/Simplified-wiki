@@ -83,7 +83,7 @@ These may not reflect actual user preferences, and even if they do we don't have
 
 # Proposal
 
-The search algorithm should initially filter out libraries that the user is not eligible for, such as a library with an audience of people with print disabilities for a user who doesn't have accessibility features on. 
+The search algorithm should initially filter out libraries that the user is not eligible for, such as a library with an audience of people with print disabilities for a user who doesn't have accessibility features on. We may also want to filter out libraries when the user is outside their service area, but while we still have a relatively small number of libraries in the system, I think it's okay to show libraries that have a service area near the user.
 
 The search algorithm can then compute scores to rank the remaining libraries in the search results.
 
