@@ -73,9 +73,28 @@ These scenarios assume the libraries listed above are the only ones in the syste
 * In Queens: NYPL, Brooklyn, Internet Archive, NYU Press
 * In Albany: Albany, NYPL, Brooklyn, Internet Archive, NYU Press
 * 200 km from Albany: NYPL, Brooklyn, Internet Archive, NYU Press
+* In New Jersey: NYPL, Brooklyn, Internet Archive, NYU Press
 * Las Cruces, NM: UNM Press, Internet Archive
 * In Albany, Russian speaker: NYPL, Albany, Internet Archive
 * In Manhattan, Spanish speaker: NYPL, Internet Archive, UNM Press
 * In Manhattan, with accessibility features turned on: NYPL, Brooklyn, BARD, Internet Archive, NYU PRess
 
 These may not reflect actual user preferences, and even if they do we don't have to get this exactly right, but the algorithm we come up with should be able to make reasonable decisions in these cases.
+
+# Proposal
+
+The search algorithm should initially filter out libraries that the user is not eligible for, such as a library with an audience of people with print disabilities for a user who doesn't have accessibility features on. 
+
+The search algorithm can then compute scores to rank the remaining libraries in the search results.
+
+The score for each library can increase or decrease based on the following factors:
+* Audience: if the user has accessibility features turned on and the library's audience is people with print disabilities, the score is increased.
+* Size of collection in the user's language: The score will decrease as the collection size gets smaller, relative to the maximum collection of any library in that language.
+* Distance from the focus area: The score will decrease as the user gets farther from the focus area.
+* Distance from the service area: The score will decrease as the user gets farther from the service area, but  by a smaller amount than the focus area.
+* Size of the focus area: The score will decrease as the library's focus area gets larger.
+
+The influence of each of these factors will need to be adjusted based on testing the algorithm with real data.
+
+Here's some sample code I wrote to play around with this: https://gist.github.com/aslagle/d6f9d8c4cb2d437914572db372c562b5.
+It handles most of the scenarios well, except the ones with other languages.
