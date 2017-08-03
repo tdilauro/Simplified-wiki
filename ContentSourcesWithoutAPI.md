@@ -26,6 +26,14 @@ Publisher. I can't find their library-specific gateway.
 
 Seems to offer [multimedia ebooks](http://mycapstonelibrary.com/login/index.html), most likely delivered through a web page and inserted into a catalog via MARC.
 
+## CAIRN
+
+[Journals in French](http://www.cairn.info.i.ezproxy.nypl.org/), delivered through a web page but available in PDF form on a per-article basis.
+
+## Casalini
+
+[Journals and monographs in Italian](https://www.nypl.org/collections/articles-databases/editoria-italiana-online-fabrizio-serra-journals), delivered through a web interface. PDFs available for some titles but opening them reveals a multi-lingual message saying that your PDF reader is not "recognized". This may be some kind of para-DRM system or it may be actual DRM where a PDF contains its own ACSM file along with a fallback message.
+
 ## EBSCOhost
 
 Content is streamed in HTML form through a website that offers note-taking and navigation features. An option exists to "Download this book (offline)". This requires creating a personal EBSCOhost account, independent from your library account. Once you do this, you can check out the book and get an ACSM file.
