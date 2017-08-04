@@ -204,10 +204,11 @@ above. The "you" who sends a POST request to
 library; the "you" who downloads the book is one of the library's
 patrons.
 
-The library can get a bearer token with no problem, but how does it
-communicate that bearer token to its patron?
+The library can get a bearer token with no problem, but it's not the one who needs a copy of the book. How does the book actually get to the patron?
 
-You don't need to know how this works unless you are writing an OPDS
+There are two solutions. The first is simple: the library can download the book and send it on to the patron. In this case, the patron never even knows that a token was involved -- it looks like the book came directly from the library. The upside is that this works with every OPDS client. The downside is that it's inefficient (the book is transferred over the network twice) and introduces a new point of failure.
+
+The other solution is to send the token to the client, and have the client redeem it for a copy of the book. We call this "bearer token propagation". You don't need to know how this works unless you are writing an OPDS
 server for a _library_, but here's how it works:
 
 ## How It Works
