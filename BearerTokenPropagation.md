@@ -235,7 +235,7 @@ format](https://tools.ietf.org/html/rfc6749#section-4.1.4) defined by
 OAuth 2.0. In fact, it's almost exactly the same as the access token
 the distributor just sent to the library! The only differences are
 that this document has a special media type (it's not
-`application/json`), and it uses `scope` in a nontraditional way.
+`application/json`), and it includes a new `location` attribute.
 
 ```
 200 OK
