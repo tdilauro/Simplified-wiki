@@ -222,7 +222,7 @@ just obtained a bearer token `abcdefg` from the distributor. Anyone
 who presents that token to the distributor can download that book.
 
 The patron is waiting for an HTTP response. The library doesn't have
-the book and send the book to the patron, but the library _can_ send a
+the book and doesn't want to download it just to pass it in to the patron. Instead, the library sends a
 document containing the two pieces of information necessary to
 download the book from the distributor:
 
