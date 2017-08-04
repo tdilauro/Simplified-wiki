@@ -277,3 +277,83 @@ For SimplyE we expect logos to be 135 by 135 pixels square, in PNG format, and t
 ## `rel="support"`
 
 TODO: We use rel="help" for some things where rel="support" would probably be better.
+
+# Changes to the core spec
+
+We propose some changes to the core OPDS For Authentication spec, mainly centered around these two issues:
+
+1. Making the hypermedia link format consistent with that found in OPDS 2.0
+2. Making it possible to unambiguously specify multiple different authentication flows of the same type.
+
+## 2.3. Syntax
+### 2.3.1. Core Properties
+
+The Authentication Document MUST contain the following name/value pairs:
+
+| Name |  Value | Format/data |
+| ---- | ------ | ----------- |
+| authentication | A list of Authentication Flows as defined in section 2.x. | Array of objects |
+
+## 2.x. Authentication Flows
+
+An Authentication Flow is a JSON object describing a specific method of authenticating with the OPDS Server.
+
+An Authentication Flow must contain the following name/value pair:
+
+| Name |  Value | Format/data |
+| ---- | ------ | ----------- |
+| type | Indicates the type of credentials being offered or the protocol used to authenticate a user. | URI |
+
+An Authentication Flow object MAY include any or all of the following name/value pairs:
+
+| name | value |
+| ---- | ----- |
+| `description` | As defined in 2.3.1. |
+| `links`       | As defined in 2.3.2. |
+| `labels`      | As defined in 2.3.3. |
+
+### 2.3.2. Links
+
+An Authentication Document or Authentication Flow MAY contain a
+`links` object.  This is used to associate the Authentication Document
+(or Authentication Flow) with resources that are not locally
+available.
+
+A `links` object is a list of link objects.
+
+[Move name/value pairs for link objects above the list of link
+relations, and add "rel" to the list of properties associated with a
+link object.]
+
+This specification defines the following `link` relations for the
+links object:
+
+| Relation | Semantics | Applies to | Required? |
+| - | - | - | - |
+| authenticate | Location where a client can authenticate the user with OAuth. | Authentication Flow only | Yes, if the Authentication Flow uses OAuth. |
+| refresh | Location where a client can refresh the Access Token by sending a Refresh Token. |  Authentication Flow only | No |
+| logo | Image of a logo associated with the Catalog Provider or Authentication Provider | Both Authentication Document and Authentication Flow | No |
+| register | Location where a user can register with the Catalog Provider or Authentication Provider | Both Authentication Document and Authentication Flow | No |
+| support | Support resources (a website, an email address, or a telephone number) for a user who is having problems with the Catalog Provider or Authentication Provider | Both Authentication Document and Authentication Flow | No |
+
+A client SHOULd NOT mix the `links` associated with the main
+Authentication Document with the `links` associated with an
+Authentication Flow. The Authentication Document's `links` are
+associated with the Catalog Provider; the Authentication Flow's
+`links` are associated with the Authentication Provider. If a given
+link applies to both the Catalog Provider and the Authentication
+Provider, a server MUST specify it separately in both lists.
+
+### 2.3.3. Labels
+
+If an Authentication Flow does not define a value for `labels`, it
+inherits the value for `labels` associated with the Authentication
+Document itself. If an Authentication Flow defines a value for
+`labels`, that value MUST be used instead of any value associated with
+the Authentication Document.
+
+If an Authentication Flow does not define a value for `description`,
+it inherits the value for `description` associated with the
+Authentication Document itself. If an Authentication Flow defines a
+value for `description`, that value MUST be used instead of any value
+associated with the Authentication Document.
