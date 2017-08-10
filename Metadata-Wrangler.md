@@ -74,10 +74,13 @@ document](https://tools.ietf.org/html/rfc7807). If the registry is
 able to acommodate your OPDS server, you'll get a registration
 document with the media type
 `application/opds+json;profile=https://librarysimplified.org/rel/profile/metadata-service`. This
-document shows you what the directory was able to
-derive from the information you gave it.
+document will contain the shared secret between your server and the circulation manager.
 
-This document will contain a single key, `shared_secret`, containing the shared secret between you and the metadata wrangler.
+Once you have a shared secret, you can perform operations on your collection by sending that secret as a bearer token:
+
+```
+Authorization: Bearer [shared secret]
+```
 
 ## Metadata key document
 
