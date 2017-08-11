@@ -452,9 +452,9 @@ Overdrive when you [[request access|https://developer.overdrive.com/application]
 * `client_secret`
 * `website_id`
 * `library_id`
+* `ils_name`, added in Circulation Manager 2.x . Previous versions of the Circulation Manager relied on using `default` as the value which works for some libraries.
 
-You can also define `ils_name` and `cname_url`, two other pieces of
-information provided by Overdrive, but they're currently not used.
+You can also define `cname_url`, if provided by Overdrive, but is currently not used.
 
 These keys are standard for book providers:
 
