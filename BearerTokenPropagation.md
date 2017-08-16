@@ -166,6 +166,7 @@ this scenario:
 ```
 {
   "id" : "https://my-opds-server/",
+  "title": "My OPDS Server",
   "authentication": [
     {
       "type": "http://opds-spec.org/auth/oauth/client_credentials",
