@@ -90,8 +90,9 @@ Request:
 POST /get-a-bearer-token
 Host: my-opds-server
 Content-Type: application/x-www-form-urlencoded
+Authorization: Basic base64({client_id}:{client_secret})
 
-client_id={client_id}&secret={client_secret}&grant_type=client_credentials
+grant_type=client_credentials
 ```
 
 Response:
