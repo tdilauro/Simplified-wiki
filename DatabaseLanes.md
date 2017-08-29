@@ -10,7 +10,7 @@ Types of lanes:
 * Based on a custom list (Staff Picks)
 * Based on a custom list data source (NYT Best Sellers)
 
-A lane may be of more than one type. Most of a library's lanes will
+These are general guides and lanes may combine different aspects. Most of a library's lanes will
 specify a language, a format, and some other thing (usually a genre).
 
 A new sublane will have its parent lane's settings as a default, but
