@@ -16,6 +16,24 @@ specify a language, a format, and some other thing (usually a genre).
 A new sublane will have its parent lane's settings as a default, but
 it should be easy to change this.
 
+# User interface
+
+This will suffice for nearly all libraries. (Open Ebooks is a notable exception, and we'll have to put custom lane definitions in the database to handle it.)
+
+The goal here is to meet the needs of most libraries with a minimum of UI controls.
+
+Automatically create a lane for each of the 178 (or whatever number genres) in each supported language.
+
+In the user interface, display the tree structure of the lanes for a given language. Alongside each lane, display the number of works in the collection that would be available through the lane.
+
+Display a list of custom lists and well-known data sources for custom lists (NYT, maybe Novelist). 
+
+Admins may check a box next to a genre to show the lane for that genre, or uncheck a box to hide the lane for that genre. These lanes are never deleted, only hidden.
+
+If you hide all of a lane's subgenres, then that lane is rendered as a big scrolling acquisition feed. If one or more of a lane's subgenres are visible, that lane is rendered as a grouped acquisition feed, with an "All {genre}" feed at the bottom that's rendered as a big scrolling acquisition feed.
+
+An admin may drag-and-drop a custom list (or list source) beneath a lane. This creates a lane based on that custom list (or list source) which shows up as a sublane in the grouped acquisition feed for the parent lane.
+
 # The `lanes` table
 
 * `lane_id`: Unique ID
