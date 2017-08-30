@@ -26,6 +26,17 @@ Automatically create a lane for each of the 178 (or whatever number genres) in e
 
 In the user interface, display the tree structure of the lanes for a given language. Alongside each lane, display the number of works in the collection that would be available through the lane.
 
+```
++ English (1000)
+  +- Fiction (500)
+     +- Romance (50)
+        +- Historical Romance (10)
+  +- Nonfiction
+  +- Audiobooks
+  +- YA
+  +- Childrens
+```
+
 Display a list of custom lists and well-known data sources for custom lists (NYT, maybe Novelist). 
 
 Admins may check a box next to a genre to show the lane for that genre, or uncheck a box to hide the lane for that genre. These lanes are never deleted, only hidden.
