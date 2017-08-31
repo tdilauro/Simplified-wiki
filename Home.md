@@ -68,7 +68,7 @@ Currently, our active public repositories include:
 * [[Library registry|LibraryRegistry]]
 * [[Integrating the circulation manager with the library registry|CirculationManagerToLibraryRegistry]]
 * [[Storing lane configuration in the database|DatabaseLanes]]
-
+* [[Improvements to contributor tracking|ContributorImprovements]]
 
 # Recent changes
 * [[Multiple collections in one circulation manager|MultipleCollections]]
