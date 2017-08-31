@@ -12,7 +12,7 @@ This stops data sources from stepping on each others' toes. If you have somethin
 
 # Add `is_presentation` to `Contributor`
 
-A presentation contributor represents the server's attempt to consolidate data from multiple sources, into an all-round view of an individual. This includes making the determination that, e.g. "Alice McPherson", "Alice Mc Pherson", "Alice Mcpherson", "Alice MacPherson", "Alice Mac Pherson", "Alice McPherson (1980-)", and "Alice Maidenname" are all the same person.
+A presentation contributor represents the server's attempt to consolidate data from multiple sources, into an all-round view of an individual. This includes making the determination that, e.g. "Alice McPherson", "Alice Mc Pherson", "Alice Mcpherson", "Alice MacPherson", "Alice Mac Pherson", "Alice McPherson (1980-)", "Allie McPherson", and "Alice Maidenname" are all the same person.
 
 A work's presentation edition will only reference presentation contributors. The `WorkContributor` join table will only reference presentation contributors.
 
