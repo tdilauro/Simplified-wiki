@@ -26,17 +26,17 @@ for an account on the OPDS server.
 Send a POST request to the `register` link with an
 `application/x-www-form-urlencoded` form as payload. The form MUST
 contain a single key-value pair, `url`, with the value being the URL
-to your OPDS server.
+to your server's [Authentication For OPDS document](https://docs.google.com/document/d/1-_0HHt664bDjybtCauBJXUSDXiT-Clg1sZUVNxHyLjw).
 
 ```
 POST /opds-directory
 Host: example.com
 Content-Type: application/x-www-form-urlencoded
 
-url=http://example.org/my-opds-server/
+url=http://example.org/my-opds-server/authentication
 ```
 
-The directory will retrieve the root feed of your OPDS server and try
+The directory will retrieve your Authentication For OPDS document and try
 to get the information it needs to add you to the directory.
 
 If this information is missing, or the directory can't make sense of
@@ -51,30 +51,16 @@ derive from the information you gave it.
 # What the directory expects
 
 When you trigger the registration process, the directory will send an
-unauthenticated GET request to the URL you specified. It's expecting
-to get one of the two results:
+unauthenticated GET request to the URL you specified. It's expecting a 200 response 
+code with an Authentication For OPDS document in the payload.
 
-* A 200 response code with an OPDS 1 or OPDS 2 catalog in the entity-body.
-* A 401 response code with an [Authentication for OPDS document]()
-  (media type application/vnd.opds.authentication.v1.0+json) in the
-  entity-body.
+Registration will fail if:
 
-If the directory gets an OPDS catalog, it will look inside the catalog
-document for links with the relation `authenticate`. It will send GET
-requests to `authenticate` links until it finds one that returns an
-Authentication for OPDS document.
-
-One way or the other, the directory expects to be able to fetch an
-Authentication For OPDS document from your OPDS server.
-
-If your server sends a 401 response code and no Authentication for
-OPDS document, registration will fail. You've given no indication that
-proper authentication will actually grant access to an OPDS catalog.
-
-If you serve an OPDS catalog that doesn't link to an Authentication
-For OPDS document, registration will fail. There's not enough
-information in an ordinary OPDS catalog to create a directory entry
-that will help people find the catalog they're looking for.
+* You send a URL that resolves to an OPDS feed, an HTML page, or anything else that's not an Authentication For OPDS document.
+* The response code is other than 200.
+* The `id` mentioned in the Authentication For OPDS document does not match the URL you sent when triggering the registration process.
+* The Authentication For OPDS document is missing a `title`.
+* The Authentication For OPDS document is missing a link with `rel="start"` which points to your top-level OPDS document.
 
 Even an OPDS server that allows anonymous access can have an
 Authentication For OPDS document. In fact, that document is how you
@@ -84,7 +70,7 @@ access.
 # What the directory looks for
 
 At this point the directory has an Authentication for OPDS document
-from your server. It may also have an OPDS catalog. Any of the
+from your server. It also has a link to your top-level OPDS catalog. Any of the
 information in these documents may be used to build your entry in the
 directory.
 
@@ -96,6 +82,8 @@ document, or registration will fail:
 
 The value for `id` must match the URL you originally sent to the
 Protocol endpoint. If it doesn't match, your registration will fail.
+
+For registration to succeed, your Authentication For OPDS document MUST include a link with the link relation "start". When your users select your OPDS server in the registry, the OPDS client will be sent to this URL.
 
 Although it's not required, your Authentication For OPDS document
 SHOULD include a `logo` link that points to the logo associated with
