@@ -61,7 +61,7 @@ Registration will fail if:
 * The `id` mentioned in the Authentication For OPDS document does not match the URL you sent when triggering the registration process.
 * The Authentication For OPDS document is missing a `title`.
 * The Authentication For OPDS document is missing a link with `rel="start"` which points to your top-level OPDS document.
-* Your top-level OPDS document doesn't link back to the Authentication For OPDS document with the link relation `http://opds-spec.org/auth/document`. The link can be in an OPDS link or the `Link` HTTP header is acceptable here, but this document must link to the exact same URL you registered. This is how we verify that you have authority over both the Authentication For OPDS document and the OPDS feed.
+* Your top-level OPDS document doesn't link back to the Authentication For OPDS document with the link relation `http://opds-spec.org/auth/document`. The link can be in an OPDS link or the `Link` HTTP header, but this document must link to the exact same URL you registered. This is how we verify that you have authority over both the Authentication For OPDS document and the OPDS feed.
 
 Even an OPDS server that allows anonymous access can have an
 Authentication For OPDS document. In fact, that document is how you
