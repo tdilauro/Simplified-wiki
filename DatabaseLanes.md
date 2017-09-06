@@ -172,9 +172,7 @@ these, for when we are initially populating the `lanes` table.
 
 # Initial state
 
-When a library is initially created, it has no lanes.
-
-* In the absence of a lane editor, a script runs once a week and establishes the following situation:
+When a library is initially created, it has no lanes. In the absence of a lane editor, a script runs once a week and establishes the following situation:
 
 * For a language with a large collection, lanes are created a la `lanes_for_large_collection`. Any genre-specific lanes that contain fewer than 200 books are marked as hidden.
 
