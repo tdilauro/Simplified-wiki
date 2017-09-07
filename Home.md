@@ -65,7 +65,6 @@ Currently, our active public repositories include:
 # Proposed changes
 
 * [[Wikiregistry of unique library IDs|UniqueLibraryIDs]]
-* [[Library registry|LibraryRegistry]]
 * [[Integrating the circulation manager with the library registry|CirculationManagerToLibraryRegistry]]
 * [[Storing lane configuration in the database|DatabaseLanes]]
 * [[Improvements to contributor tracking|ContributorImprovements]]
@@ -75,6 +74,7 @@ Currently, our active public repositories include:
 * [[Multiple libraries in one circulation manager|MultipleLibraries]]
 * [[Multiple authentication mechanisms in one circulation manager|MultipleAuthenticationMechanisms]]
 * [[Library registry search algorithm|LibraryRegistrySearchAlgorithm]]
+* [[Library registry|LibraryRegistry]]
 
 # Integrations
 
