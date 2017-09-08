@@ -3,7 +3,7 @@ Here's the work we have to do to automatically integrate the circulation manager
 # After popularity hits
 
 We don't really need this stuff until we start getting a large number
-of libraries in the system that don't fit the "geographically localized public library" mold.
+of libraries in the system.
 
 ## Circulation manager
 
