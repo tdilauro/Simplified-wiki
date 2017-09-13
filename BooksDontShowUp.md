@@ -7,7 +7,9 @@ The simplest thing to do is to run the `bin/repair/where_are_my_books` script. T
 If `where_are_my_books` doesn't fix your problem, you need to pick a specific book and see what's wrong with it. The best entry point is the `bin/informational/explain` script. You `explain` a book by passing in its primary identifier:
 
 `$ bin/informational/explain --identifier-type="Axis 360 ID" 0010163843`
+
 `$ bin/informational/explain --identifier-type="Overdrive ID" 019f21e3-9de9-4c40-95a4-dfabf55e7801`
+
 `$ bin/informational/explain --identifier-type="URI" http://www.gutenberg.org/ebooks/289`
 
 Or you can run it with the internal database ID of the `Identifier`:
