@@ -36,6 +36,7 @@ Currently, our active public repositories include:
 * [[Deployment Instructions]]
 * [[The configuration file|Configuration]]
 * [[Connecting the Library Simplified circulation manager to your ILS|AuthenticationSetup]]
+* [[Troubleshooting "books don't show up in the feed" problems|BooksDontShowUp]]
 * [[Automated Jobs and how to use them|AutomatedJobs]]
 * [[Creating new server-side integrations|NewIntegrations]]
 * [[Setting up lanes|LaneConfiguration]]
