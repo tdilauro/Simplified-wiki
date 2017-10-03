@@ -18,16 +18,11 @@ If you're already familiar with Docker and/or would like to contribute to our Do
 
 ## <a name='cm-prep'></a>Prep Work
 
-1. **Create your configuration file.**
+1. **Install Docker.** Docker has [step-by-step instructions](https://docs.docker.com/engine/installation/linux/) to grab its most up-to-date version. Depending on your package manager, you could also install a slightly older version with: `sudo apt-get install docker-ce` or `sudo yum install docker-ce`.
 
-    1. On your local machine, use [this documentation](Configuration) to create the JSON file for your particular library's configuration. If you're unfamiliar with Json, you can use [this JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/#) to validate your configuration file.
-    2. Name your file `config.json` and **put it on your production server** at `/etc/libsimple`. (You can put the file in any directory you'd like, but you'll need to change the value in the commands below accordingly.) For the rest of the instructions, we'll be working on this server.
+2. **Create any dependent, temporary containers** (optional) for integrations like Elasticsearch and Postgres. *We don't recommend using containers in the long-term for holding or maintaining data.* However, if you just want to get a sense of how your Circulation Manager will work, containers are a quick option. Instructions for integrating [Elasticsearch](#es) and [Postgres](#pg) via Docker can be found below.
 
-2. **Install Docker.** Docker has [step-by-step instructions](https://docs.docker.com/engine/installation/linux/) to grab its most up-to-date version. Depending on your package manager, you could also install a slightly older version with: `sudo apt-get install docker-ce` or `sudo yum install docker-ce`.
-
-3. **Create any dependent, temporary containers** (optional) for integrations like Elasticsearch and Postgres. *We don't recommend using containers in the long-term for holding or maintaining data.* However, if you just want to get a sense of how your Circulation Manager will work, containers are a quick option. Instructions for integrating [Elasticsearch](#es) and [Postgres](#pg) via Docker can be found below.
-
-4. **Get the Docker images** for the Library Simplified Circulation Manager. Run:
+3. **Get the Docker images** for the Library Simplified Circulation Manager. Run:
 
     ```sh
     $ sudo docker pull nypl/circ-deploy && sudo docker pull nypl/circ-scripts
@@ -37,26 +32,25 @@ If you're already familiar with Docker and/or would like to contribute to our Do
 
 ### <a name='cm-scripts'></a>Running scripts
 
-To deploy an app filled with your library's books, you'll need to run a number of scripts. Read [the environment variable details below about](#cm-env) before running this script; you will likely need to alter it to meet your needs.
+To deploy an app filled with your library's books, you'll need to run a number of scripts. Read [the environment variable details below](#cm-env) before running this script; you will likely need to alter it to meet your needs.
 
 #### Example `docker run` script
 
 ```sh
 $ sudo docker run -d --name circ-scripts \
     -e TZ="US/Central" \
-    -v /etc/libsimple:/etc/circulation \
-    -e SIMPLIFIED_CONFIGURATION_FILE='/etc/circulation/config.json' \
     -e SIMPLIFIED_DB_TASK='init' \
+    -e SIMPLIFIED_PRODUCTION_DATABASE='postgres://[username]:[password]@[host]:[port]/[database_name]' \
     nypl/circ-scripts
 ```
 
 #### What It Does
 
-The example above runs this resulting container in detached mode (`-d`), passing in your prepared configuration file to where it needs to be (`-v`, `-e SIMPLIFIED_CONFIGURATION_FILE`) and calling it "circ-scripts". With the (`-e`) optional argument `TZ`, you can pass a [Debian-system timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) representing your local time zone, which will cause timed scripts to run according to your local time. If the database you've connected in your configuration has never been used before, use `-e` to set the optional argument `SIMPLIFIED_DB_TASK` to `'init'`. This will keep track of the state of the database you've created and create an alias on your Elasticsearch cluster, allowing database updates to be easily managed with scripts.
+The example above runs this resulting container in detached mode (`-d`), linked to the (`-e`) `SIMPLIFIED_PRODUCTION_DATABASE` and calling it "circ-scripts". With the (`-e`) optional argument `TZ`, you can pass a [Debian-system timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) representing your local time zone, which will cause timed scripts to run according to your local time. If the database you've connected in your configuration has never been used before, use `-e` to set the optional argument `SIMPLIFIED_DB_TASK` to `'init'`. This will keep track of the state of the database you've created and create an alias on your Elasticsearch cluster, allowing database updates to be easily managed with scripts.
 
 #### Running Scripts
 
-Once you've given your scripts some time to run (~30 minutes should be enough time to start having works move through the import process), you'll want to refresh your views so they show up in your deployed app.
+Once you've given your scripts some time to run (~30 minutes should be enough time to start having works move through the import process), you'll want to refresh your cached materialized views so they show up in your deployed app.
 
     ```sh
     $ sudo docker exec circ-scripts /var/www/circulation/core/bin/run refresh_materialized_views
@@ -87,21 +81,21 @@ Docker has fantastic documentation to get more familiar with its command line to
 
 ### <a name='cm-app'></a>Deploying the App
 
-Using an `nypl/circ-deploy` container deploys the OPDS feeds expected by the SimplyE client applications. Read [the environment variable details below about](#cm-env) before running the following script; you will likely need to alter it to meet your needs.
+Using an `nypl/circ-deploy` container deploys the OPDS feeds expected by the SimplyE client applications. Read [the environment variable details below](#cm-env) before running the following script; you will likely need to alter it to meet your needs.
 
 #### Example `docker run` script
 
 ```sh
-$ sudo docker run -d -p 80:80 --name circ-deploy \
-    -v /etc/libsimple:/etc/circulation \
-    -e SIMPLIFIED_CONFIGURATION_FILE='/etc/circulation/config.json' \
+$ sudo docker run --name circ-deploy \
+    -d -p 80:80 \
+    -e SIMPLIFIED_PRODUCTION_DATABASE='postgres://[username]:[password]@[host]:[port]/[database_name]' \
     -e SIMPLIFIED_DB_TASK="migrate" \
     nypl/circ-deploy
 ```
 
 #### What It Does
 
-The script above runs the container in detached mode (`-d`), binding its port 80 to your server's port 80 (`-p`), passing in your configuration file where it needs to be (`-v`, `-e SIMPLIFIED_CONFIGURATION_FILE`) and calling it "circ-deploy". Unless you've been running a scripts container for while, when you visit your server through a browser, you'll see a very sparse OPDS feed. If the database you've connected in your configuration has never been used before, use `-e` to set the optional argument `SIMPLIFIED_DB_TASK` to `'init'`. This will keep track of the state of the database you've created and create an alias on your Elasticsearch cluster, allowing database updates to be easily managed with scripts.
+The script above runs the container in detached mode (`-d`), binding its port 80 to your server's port 80 (`-p`), connecting it to your PostgreSQL database `-e SIMPLIFIED_PRODUCTION_DATABASE`) and calling it "circ-deploy". Unless you've been running a scripts container for while, when you visit your server through a browser, you'll see a very sparse OPDS feed. If the database you've connected in your configuration has never been used before, use `-e` to set the optional argument `SIMPLIFIED_DB_TASK` to `'init'`. This will keep track of the state of the database you've created and create an alias on your Elasticsearch cluster, allowing database updates to be easily managed with scripts.
 
 #### Troubleshooting
 
@@ -197,7 +191,6 @@ While we do **not** recommend you run Postgres from a Docker container permanent
     ```
 
 3. **Create a Postgres database.** Run:
-
     ```sh
     $ docker exec -u postgres pg psql -c "create user simplified with password 'test';"    # create a user and password
     $ docker exec -u postgres pg psql -c "create database simplified_circ_db;"            # create database
