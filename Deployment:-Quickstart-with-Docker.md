@@ -121,7 +121,7 @@ Docker has fantastic documentation to get more familiar with its command line to
 
 #### `SIMPLIFIED_CONFIGURATION_FILE`
 
-*Required in v1.1 only. Optional in v2.x.* The full path to configuration file in the container. Using the volume `-v` for v1.1, it should look something like `/etc/circulation/YOUR_CONFIGURATION_FILENAME.json`. In v2.x you can volume it in wherever you'd like.
+*Optional* The full path to configuration file in the container. Using the volume options `-v`, e.g. `YOUR_LOCAL_DIRECTORY_WITH_CONFIG_FILE:/etc/simplified`, it should look something like `-e SIMPLIFIED_CONFIGURATION_FILE=/etc/simplified/YOUR_CONFIGURATION_FILENAME.json`.
 
 Use [this documentation](https://github.com/NYPL-Simplified/Simplified/wiki/Configuration) to create the JSON file for your particular library's configuration. If you're unfamiliar with JSON, you can use [this JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/#) to validate your configuration file.
 
@@ -134,7 +134,7 @@ Use [this documentation](https://github.com/NYPL-Simplified/Simplified/wiki/Conf
 
 #### `SIMPLIFIED_PRODUCTION_DATABASE`
 
-*Required in v2.x only.* The URL of the production PostgreSQL database for the application.
+*Required.* The URL of the production PostgreSQL database for the application.
 
 #### `SIMPLIFIED_TEST_DATABASE`
 
