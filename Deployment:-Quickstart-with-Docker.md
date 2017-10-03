@@ -66,8 +66,8 @@ $ sudo docker logs circ-scripts
 
 # check logs of cron and scripts
 $ sudo docker exec circ-scripts cat /var/log/cron.log | less
-$ sudo docker exec circ-scripts ls /var/log/libsimple
-$ sudo docker exec circ-scripts cat /var/log/libsimple/overdrive_monitor_full | less
+$ sudo docker exec circ-scripts ls /var/log/simplified
+$ sudo docker exec circ-scripts cat /var/log/simplified/overdrive_monitor_full | less
 
 # The log directory can also be found on the production server.
 # Its location can be found using this command.
@@ -146,7 +146,7 @@ Use [this documentation](https://github.com/NYPL-Simplified/Simplified/wiki/Conf
 
 ### <a name='cm-success'></a>*Evaluating Success*
 
-If your Docker containers are running successfully, you should have a `/var/log/libsimple` directory full of logfiles in your circ-scripts container, and you should be able to visit your server's domain and see an OPDS feed from circ-deploy. If either of these things aren't occurring, use the troubleshooting details above to check `var/log/cron.log` or the logfiles in `/var/log/libsimple` for circ-scripts and/or `/var/log/libsimple/uwsgi.log` or `/var/log/nginx/error.log`.
+If your Docker containers are running successfully, you should have a `/var/log/simplified` directory full of logfiles in your circ-scripts container, and you should be able to visit your server's domain and see an OPDS feed from circ-deploy. If either of these things aren't occurring, use the troubleshooting details above to check `var/log/cron.log` or the logfiles in `/var/log/simplified` for circ-scripts and/or `/var/log/libsimple/uwsgi.log` or `/var/log/nginx/error.log`.
 
 ## Support Containers (for use in development or testing)
 ### <a name='es'></a>*Elasticsearch*
