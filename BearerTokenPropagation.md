@@ -276,8 +276,10 @@ distributor might look like:
 ...
 <link href="https://my-library.org/borrow/book1"
       rel="http://opds-spec.org/acquisition/borrow"
-      type="application/vnd.librarysimplified.bearer-token">
-  <opds:indirectAcquisition type="application/epub+zip">
+      type="application/atom+xml;type=entry;profile=opds-catalog">
+  <opds:indirectAcquisition type="application/vnd.librarysimplified.bearer-token">
+    <opds:indirectAcquisition type="application/epub+zip">
+  </opds>
 </link>
 </entry>
 ```
@@ -287,10 +289,11 @@ This is saying:
 * You can borrow this book by making a request to
   https://my-library.org/borrow/book1.
 * But you're not going to get back an EPUB!
-* You're going to get a document of type `application/vnd.librarysimplified.bearer-token`...
+* You're going to get a document of type `application/atom+xml;type=entry;profile=opds-catalog`...
+* Which will tell you how to get a document of type `application/vnd.librarysimplified.bearer-token`...
 * ...which you can _exchange_ for an EPUB.
 
-If you're an OPDS client, and you can't handle a document of type
+The `application/vnd.librarysimplified.bearer-token` step is the tricky one. If you're an OPDS client, and you can't handle a document of type
 `application/vnd.librarysimplified.bearer-token`, then you shouldn't
 give your user the impression they can get this book through you. They
 can borrow the book, but you won't be able to go through the steps
