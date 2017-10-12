@@ -28,7 +28,6 @@ Currently, you only need to set up a JSON configuration file if you want to do o
 
 * [[Customize your lane configuration.|LaneConfiguration]]
 * Customize the language collections your library offers.
-* Set up a logging integration with Loggly.
 * Restrict which titles certain patrons can borrow.
 * Restrict which lanes certain patrons can see.
 
