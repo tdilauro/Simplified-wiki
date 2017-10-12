@@ -42,7 +42,9 @@ Audience names are: "Adults Only", "Adult", "Young Adult", and "Children". If th
 
 A single 3-character language code, or a list of language codes. Only books written in one of these languages will be shown in this lane.
 
-Example language codes can be found below. If this is not specified, the parent lane's value is inherited.
+The `languages` field is required. If it is not specified, its value will be inherited from its parent lane.
+
+Example language codes can be found below.
 
 | language | code |
 | --- | --- |
