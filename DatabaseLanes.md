@@ -24,7 +24,7 @@ The goal here is to meet the needs of most libraries with a minimum of UI contro
 
 Automatically create a lane for each of the 178 (or whatever number genres) in each supported language.
 
-In the user interface, display the tree structure of the lanes for a given language. Alongside each lane, display the number of works in the collection that would be available through the lane.
+In the admin interface, display the tree structure of the lanes for a given language. Alongside each lane, display the number of works in the collection that would be available through the lane.
 
 ```
 + English (1000)
@@ -38,13 +38,17 @@ In the user interface, display the tree structure of the lanes for a given langu
   +- Childrens
 ```
 
-Display a list of custom lists and well-known data sources for custom lists (NYT, maybe Novelist). 
+First, an admin may show or hide any lane in the tree from the patron interface. These lanes are never deleted, only hidden.
 
-Admins may check a box next to a genre to show the lane for that genre, or uncheck a box to hide the lane for that genre. These lanes are never deleted, only hidden.
+If you hide all of a lane's sublanes, then that lane is rendered as a big scrolling acquisition feed. If one or more of a lane's sublanes are visible, that lane is rendered as a grouped acquisition feed, with an "All {lane name}" feed at the bottom that's rendered as a big scrolling acquisition feed.
 
-If you hide all of a lane's subgenres, then that lane is rendered as a big scrolling acquisition feed. If one or more of a lane's subgenres are visible, that lane is rendered as a grouped acquisition feed, with an "All {genre}" feed at the bottom that's rendered as a big scrolling acquisition feed.
+In addition, an admin may create a new sublane under one of the existing lanes, based on a custom list or a well-known data source for custom lists (NYT, maybe Novelist). The admin interface has a separate page for creating new lists. The lane editor should show the existing lists and link to the page for creating a new list.
 
-An admin may drag-and-drop a custom list (or list source) beneath a lane. This creates a lane based on that custom list (or list source) which shows up as a sublane in the grouped acquisition feed for the parent lane.
+The admin may remove a lane that was created from a list, and change the name of a lane that was created from a list. (This is different than the other non-list lanes, which can be hidden but not edited or removed). The admin may also specify whether a list-based lane should inherit restrictions from the parent lane. For example, if you had a custom list of non-fiction books about Science Fiction and wanted to put that under the Science Fiction lane, the lane should not inherit the parent's restrictions because that would restrict it to fiction books. On the other hand, if you had a general list of best-sellers and wanted to make a "Best Sellers" lane under Romance, inheriting the parent lane's restrictions would filter out the non-romance books.
+
+An admin may also create a lane from multiple lists, or add an additional list to an existing list-based lane, but this isn't critical and doesn't need to be in the first version.
+
+Finally, an admin may manage languages to control how lanes are automatically created. Each supported language may be treated as 'large', 'small', or 'tiny'. Large languages will have multiple separate lanes at the top level. Small languages will have one lane at the top level, and tiny languages will be grouped into 'Other languages' at the top level. Changing the setting for a language will recreate the lanes for that language and wipe out any list-based lanes that have been created under it.
 
 # The `lanes` table
 
