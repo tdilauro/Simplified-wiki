@@ -241,7 +241,7 @@ that this document has a special media type (it's not
 
 ```
 200 OK
-Content-Type: application/vnd.librarysimplified.bearer-token
+Content-Type: application/vnd.librarysimplified.bearer-token+json
 
 {
     "expires_in": 60,
@@ -277,7 +277,7 @@ distributor might look like:
 <link href="https://my-library.org/borrow/book1"
       rel="http://opds-spec.org/acquisition/borrow"
       type="application/atom+xml;type=entry;profile=opds-catalog">
-  <opds:indirectAcquisition type="application/vnd.librarysimplified.bearer-token">
+  <opds:indirectAcquisition type="application/vnd.librarysimplified.bearer-token+json">
     <opds:indirectAcquisition type="application/epub+zip">
   </opds>
 </link>
@@ -290,11 +290,11 @@ This is saying:
   https://my-library.org/borrow/book1.
 * But you're not going to get back an EPUB!
 * You're going to get a document of type `application/atom+xml;type=entry;profile=opds-catalog`...
-* Which will tell you how to get a document of type `application/vnd.librarysimplified.bearer-token`...
+* Which will tell you how to get a document of type `application/vnd.librarysimplified.bearer-token+json`...
 * ...which you can _exchange_ for an EPUB.
 
-The `application/vnd.librarysimplified.bearer-token` step is the tricky one. If you're an OPDS client, and you can't handle a document of type
-`application/vnd.librarysimplified.bearer-token`, then you shouldn't
+The `application/vnd.librarysimplified.bearer-token+json` step is the tricky one. If you're an OPDS client, and you can't handle a document of type
+`application/vnd.librarysimplified.bearer-token+json`, then you shouldn't
 give your user the impression they can get this book through you. They
 can borrow the book, but you won't be able to go through the steps
 necessary to download it.
