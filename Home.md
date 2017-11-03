@@ -56,7 +56,7 @@ Currently, our active public repositories include:
 * [[DRM autodiscovery|DRM-Autodiscovery]]
 * [[Short Client Token|Short-Client-Token]] for federated patron management
 * [[The ACS Device Management Protocol|DRM-Device-Management]]
-* [[Bearer Token Propagation|BearerTokenPropagation]]
+* [[OPDS For Distributors|OPDSForDistributors]]
 * [[The User Profile Management Protocol|User-Profile-Management-Protocol]]
 * [[OPDS Directory Registration Protocol|OPDS-Directory-Registration-Protocol]]
 * [[Temporary Token Access Control|TemporaryTokenAccessControl]]
