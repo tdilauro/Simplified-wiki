@@ -103,6 +103,45 @@ In most cases, it's preferable to generate your OPDS feeds statically
 ahead of time. As your collection becomes more complicated, it may be
 more practical to generate OPDS feeds as needed and cache them.
 
+## Common OPDS pitfalls
+
+To get your content into a SimplyE circulation manager you'll need to include some information that's not strictly required by the OPDS spec.
+
+### Author sort names
+
+OPDS requires that you identify authors by name, as their name would appear on the front of a book:
+
+```
+<author>
+ <name>Carla T. Robot</name>
+</author>
+```
+
+SimplyE further requires that authors be identified by their name as it would appear in a card catalog:
+
+```
+<author>
+ <name>Carla T. Robot</name>
+ <simplified:sort_name>Robot, Carla T.</name>
+</author>
+```
+
+Be sure to also define the `simplified` namespace in your `<feed>` tag along with the `opds` namespace and any others you're using.
+
+```
+<feed ... xmlns:simplified="http://librarysimplified.org/terms/" ...>
+```
+
+### Categories
+
+It's legal to publish an OPDS entry without any <category> tags, but it'll be very difficult for people to locate that title in a catalog. To make sure your titles show up in lists of "Science Fiction" and "Biography", you should add some <category> tags that tell the circulation managers how to file the books.
+
+The most common classification scheme is BISAC. Here's how an OPDS feed can indicate that a title should be classified under BISAC FIX02800 ("FICTION / Science Fiction / General"):
+
+```
+<category term="FIC028000" scheme="http://www.bisg.org/standards/bisac_subject/"/>
+```
+
 # Authentication For OPDS
 
 An [Authentication For
