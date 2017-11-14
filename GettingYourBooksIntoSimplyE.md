@@ -136,7 +136,7 @@ Be sure to also define the `simplified` namespace in your `<feed>` tag along wit
 
 It's legal to publish an OPDS entry without any `<category>` tags, but it'll be very difficult for people to locate that title in a catalog. To make sure your titles show up in lists of "Science Fiction" and "Biography", you should add some `<category>` tags that tell the circulation managers how to file the books.
 
-The most common classification scheme is BISAC. Here's how an OPDS feed can indicate that a title should be classified under BISAC FIX02800 ("FICTION / Science Fiction / General"):
+The most common classification scheme is BISAC. Here's how an OPDS feed can indicate that a title should be classified under BISAC FIC02800 ("FICTION / Science Fiction / General"):
 
 ```
 <category term="FIC028000" scheme="http://www.bisg.org/standards/bisac_subject/"/>
