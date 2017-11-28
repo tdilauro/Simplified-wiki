@@ -1,7 +1,7 @@
 There are three front-end web applications for the Simplified project:
 - [opds-web-client](https://github.com/NYPL-Simplified/opds-web-client)
   - A generic catalog browser that can display any OPDS feed, and does not handle any circulation manager-specific OPDS extensions. The other applications build on this. This is a front-end application but the repo includes a demo server to run it.
-  - Demo: http://opds-browser-demo.herokuapp.com
+  - Demo: http://opds-browser-demo.herokuapp.com (Try this with [NYPL's circ manager](https://circulation.librarysimplified.org) or [Standard Ebooks](https://standardebooks.org/opds/all))
 - [circulation-patron-web](https://github.com/NYPL-Simplified/circulation-patron-web)
   - A patron-facing catalog app specifically for circulation managers. It does include circulation manager-specific things, and it can be themed differently for different libraries. This application has a Node server that runs independently of the circulation manager and does server-side rendering.
   - This is currently only used in production by Open eBooks (https://catalog.openebooks.us). NYPL has a QA version.
