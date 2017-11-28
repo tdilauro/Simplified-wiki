@@ -30,6 +30,10 @@ Currently, our active public repositories include:
   - [Server Core](https://github.com/NYPL/Simplified-server-core)
   - [Data Store](https://github.com/NYPL-Simplified/data)
 
+- **[[Front-end Web Applications|Simplified-Front-end-Web-Apps]]**
+  - [Patron Facing Client](https://github.com/NYPL-Simplified/circulation-patron-web)
+  - [Circulation Manager Admin Interface](https://github.com/NYPL-Simplified/circulation-web)
+
 # Installation and setup
 
 * [[Getting Your Books Into SimplyE|GettingYourBooksIntoSimplyE]]
