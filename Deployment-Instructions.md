@@ -119,16 +119,26 @@ sudo service elasticsearch start
 
 ### Mac OS X
 
-On a brew-capable Mac, there's no need to install the JDK. Instead, try this:
+The circulation manager [currently requires Elasticsearch 1.5-1.7](https://github.com/NYPL-Simplified/server_core/issues/674), which is no longer supported. It's not possible to install it with Homebrew and it doesn't work with the latest version of Java. If possible, it's easier to point to an Elasticsearch instance hosted elsewhere so you don't need to set it up locally.
 
+If you really want to set it up, you'll first need to uninstall any versions of Java more recent than 8. For example, to uninstall Java 9 on OS 10.13, run:
 ```
-  $ brew tap caskroom/cask
-  $ brew install brew-cask
-  $ brew cask install java
-  $ brew install homebrew/versions/elasticsearch17
+sudo rm -rf "/Library/Internet Plug-Ins/JavaAppletPlugin.plugin"
+sudo rm -rf "/Library/PreferencePanes/JavaControlPanel.prefPane"
+sudo rm -rf /Library/Java/JavaVirtualMachines/jdk-9.jdk/
 ```
 
-Use the instructions given in `$brew info elasticsearch17` to make sure ElasticSearch starts on bootup, or to get it started on a one-time basis.
+Then install the Java 8 JDK, from [the installer on Oracle's site](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+
+Finally, download, extract, and run elasticsearch:
+```
+curl -L -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.6.tar.gz
+tar -xvf elasticsearch-1.7.6.tar.gz
+cd elasticsearch-1.7.6/bin
+./elasticsearch
+```
+
+Check http://localhost:9200 to make sure it's running.
 
 # Check out the Simplified repositories
 
