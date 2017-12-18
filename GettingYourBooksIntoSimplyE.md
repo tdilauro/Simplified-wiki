@@ -249,7 +249,7 @@ Basic Auth and looking up credentials in some kind of data store.
 
 # Bearer token propagation
 
-[Bearer token propagation](BearerTokenPropagation) is only necessary in one case:
+[Bearer token propagation](https://github.com/NYPL-Simplified/Simplified/wiki/OPDSForDistributors#bearer-token-propagation is only necessary in one case:
 
 * You are a distributor who sells access to your collection to libraries.
 * But you don't want the libraries downloading your books, rehosting them, and serving them to their patrons.
@@ -271,4 +271,4 @@ _patron_ of library X.
 Library X shouldn't have to give out its credentials to every patron
 who asks. It should be able to delegate its authority to a patron for
 purposes of downloading a specific book from your server. This is what
-[bearer token propagation](BearerTokenPropagation) is for, and it's covered in a separate document.
+[bearer token propagation](https://github.com/NYPL-Simplified/Simplified/wiki/OPDSForDistributors#bearer-token-propagation) is for, and it's covered in a separate document.
