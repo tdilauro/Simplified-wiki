@@ -106,6 +106,9 @@ The `keyboard` extension within `inputs` lets you specify the keyboard that shou
 * `Default` - The default keyboard for the platform.
 * `Email address` - A keyboard optimized for entering email addresses.
 * `Number pad` - A numeric keypad.
+* `No input` - This server does not expect this input to be provided at all, and the client should not collect it.
+
+If the `keyboard` extension is missing or `null`, the value assumed should be `Default`, not `No input`.
 
 ## Maximum length
 
