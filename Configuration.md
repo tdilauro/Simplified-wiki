@@ -24,10 +24,8 @@ Once you log in with an admin username and password, you'll be able to create an
 
 In older versions of the software, configuration was done with a JSON configuration file. Instead of setting `SIMPLIFIED_PRODUCTION_DATABASE` to the database URL, you would set `SIMPLIFIED_CONFIGURATION_FILE` to the path to the JSON configuration file.
 
-Currently, you only need to set up a JSON configuration file if you want to do one of these things:
+Currently, you only need to set up a JSON configuration file if you want to do one of these (very uncommon) things:
 
-* [[Customize your lane configuration.|LaneConfiguration]]
-* Customize the language collections your library offers.
 * Restrict which titles certain patrons can borrow.
 * Restrict which lanes certain patrons can see.
 
