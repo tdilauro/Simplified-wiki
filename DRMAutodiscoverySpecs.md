@@ -142,6 +142,7 @@ defined:
 | ACS | http://librarysimplified.org/terms/drm/scheme/ACS | Adobe ACS |
 | URMS | http://librarysimplified.org/terms/drm/scheme/URMS | Sony URMS |
 | LCP | http://librarysimplified.org/terms/drm/scheme/LCP | Readium LCP |
+| FAE | http://librarysimplified.org/terms/drm/scheme/FAE | Findaway Audio Engine |
 
 # The `vnd.librarysimplified/obfuscated` media type
 
