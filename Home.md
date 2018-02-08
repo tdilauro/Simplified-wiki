@@ -37,7 +37,8 @@ Currently, our active public repositories include:
 # Installation and setup
 
 * [[Getting Your Books Into SimplyE|GettingYourBooksIntoSimplyE]]
-* [[Deployment Instructions]]
+* [[Deployment: Quickstart with Docker|Deployment:-Quickstart-with-Docker]]
+* [[Deployment for development|DeploymentInstructions]]
 * [[The configuration file|Configuration]]
 * [[Connecting the Library Simplified circulation manager to your ILS|AuthenticationSetup]]
 * [[Troubleshooting "books don't show up in the feed" problems|BooksDontShowUp]]
