@@ -27,9 +27,9 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 22. Ruth Enlow Library of Garrett County (MD)
 23. Washington County Free Library (MD)
 24. MLS SimplyE Collection
-25. NYU Collection
-26. Columbia University Libraries
+25. NYU Collection (Minitex)
+26. Columbia University Libraries (Minitex)
 27. Open Textbooks (Minitex)
-28. Great River Regional Library
-29. Avon Public Library
-30. Ansonia Public Library
+28. Great River Regional Library (Minitex)
+29. Avon Public Library (Lyrasis)
+30. Ansonia Public Library (Lyrasis)
