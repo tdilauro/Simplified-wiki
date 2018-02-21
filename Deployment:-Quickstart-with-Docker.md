@@ -99,7 +99,7 @@ The script above runs the container in detached mode (`-d`), binding its port 80
 
 #### Troubleshooting
 
-You'll want to check the logs of your container (`/var/log/nginx/error.log` and `/var/log/libsimple/uwsgi.log`) to troubleshoot:
+You'll want to check the logs of your container (`/var/log/nginx/error.log` and `/var/log/uwsgi/uwsgi.log`) to troubleshoot:
 
 ```sh
 # check logs of the database task and running supervisor processes
@@ -107,7 +107,7 @@ $ sudo docker logs circ-deploy
 
 # check logs inside the container
 $ sudo docker exec circ-deploy cat /var/log/nginx/error.log | less
-$ sudo docker exec circ-deploy cat /var/log/libsimple/uwsgi.log | less
+$ sudo docker exec circ-deploy cat /var/log/uwsgi/uwsgi.log | less
 
 # restart the application
 $ sudo docker exec circ-deploy touch uwsgi.ini
@@ -146,7 +146,7 @@ Use [this documentation](https://github.com/NYPL-Simplified/Simplified/wiki/Conf
 
 ### <a name='cm-success'></a>*Evaluating Success*
 
-If your Docker containers are running successfully, you should have a `/var/log/simplified` directory full of logfiles in your circ-scripts container, and you should be able to visit your server's domain and see an OPDS feed from circ-deploy. If either of these things aren't occurring, use the troubleshooting details above to check `var/log/cron.log` or the logfiles in `/var/log/simplified` for circ-scripts and/or `/var/log/libsimple/uwsgi.log` or `/var/log/nginx/error.log`.
+If your Docker containers are running successfully, you should have a `/var/log/simplified` directory full of logfiles in your circ-scripts container, and you should be able to visit your server's domain and see an OPDS feed from circ-deploy. If either of these things aren't occurring, use the troubleshooting details above to check `var/log/cron.log` or the logfiles in `/var/log/simplified` for circ-scripts and/or `/var/log/uwsgi/uwsgi.log` or `/var/log/nginx/error.log`.
 
 ## Support Containers (for use in development or testing)
 ### <a name='es'></a>*Elasticsearch*
