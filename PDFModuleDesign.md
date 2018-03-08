@@ -23,7 +23,7 @@ Overall Diagram of Architecture ([Slack: Original Discussion](https://librarysim
 
 The current implementation of the module/library is `PDF` in the iOS project, and that would need to be split into TWO separate libraries (eventually): `PDFRendererProvider` and `PSPDFKitProvider`. I'll kind of outline below how this will look.
 
-The main idea is looking at what is currently in `PSPDFKit` and asking ourselves "what would these methods look like if we didn't know that PSPDFKit existed?"
+The main idea is looking at what is currently in `PDF` and asking ourselves "what would these methods look like if we didn't know that PSPDFKit existed?"
 
 So instead of what's currently in the sample/SimplyE app:
 ```
