@@ -187,3 +187,82 @@ class PSPDFKitRenderer: RendererProviderProtocol {
 
 }
 ```
+
+## Example of quickly saving to disk between a Plist and Dictionary representation of an object
+Ulimately the host app will decide what to do with the objects provided by the library, but this is a quick and dirty way to persist some data between app launches.
+
+```
+
+//Somewhere in the host app:
+
+let annotation: PDFAnnotation
+let annotDict = annotation.dictionaryRepresentation
+saveToDisk(annotDict)	//lots of online examples for saving NSDictionary to Plist
+...
+
+//Loading from plist
+
+let dict = pullDataFromPlistToDict()	//online examples to get an NSDict from a Plist
+let annotation = PDFAnnotation(withDictionary: dict)
+
+
+
+class PDFAnnotation {
+
+	var color: String
+	var opacity: Float
+	var pageIndex: Int
+	var boundingBox: CGRect
+	var rects: [CGRect]
+	//etc.
+
+
+	init() {
+		//...
+	}
+
+	//Create the object from the dictionary representation:
+
+	init(withDictionary dict: [String:AnyObject]) {
+
+		//Convert non-plist formats
+		let boundingBoxString = dict["boundingBox"] as String
+		self.boundingBox = CGRectFromString(boundingBoxString)
+		let rectsArray = dict["rects"] as [String]
+		rectsArray.map {
+			self.rects.append(CGRectFromString($0))
+		}
+
+		//Directly set the rest:
+		self.color = dict["color"] as String
+		self.opacity = dict["opacity"] as Float
+		//etc.
+	}
+
+
+	//...
+
+
+	//Serialize the object into a plist-friendly dictionary:
+
+	func dictionaryRepresentation() -> [String:AnyObject] {
+
+		//Convert non-plist formats (Apple provides StringFromCGRect and CGRectFromString methods)
+		let boundingBoxString = StringFromCGRect(self.boundingBox)	
+		var rectStringsArray = [String]()
+		self.rects.map { 
+			let string = StringFromCGRect($0)
+			rectStringsArray.append(string)
+		}
+
+		let dict = ["color" : self.color,
+					"opacity" : self.opacity,
+					"pageIndex" : self.pageIndex,
+					"boundingBox" : boundingBoxString,
+					"rects" : rectStringsArray]
+
+		return dict
+	}
+
+}
+```
