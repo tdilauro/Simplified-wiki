@@ -34,3 +34,8 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 29. Avon Public Library (Lyrasis)
 30. Ansonia Public Library (Lyrasis)
 31. Yavapai Library Network (Lyrasis)
+32. Beacon Falls Public Library (Lyrasis)
+33. Cornwall Free Library (Lyrasis)
+34. Derby Neck Library (Lyrasis)
+35. Derby Public Library (Lyrasis)
+36. Carnegie Library of Pittsburgh (Lyrasis)
