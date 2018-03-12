@@ -40,3 +40,7 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 35. Derby Neck Library (Lyrasis)
 36. Derby Public Library (Lyrasis)
 37. Carnegie Library of Pittsburgh (Lyrasis)
+38. Beaver Creek Public/School Library
+39. Camp Verde Community Library
+40. Embry-Riddle Aeronautical University
+41. Prescott Public Library
