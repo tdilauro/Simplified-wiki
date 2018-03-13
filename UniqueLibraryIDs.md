@@ -31,16 +31,15 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 26. Columbia University Libraries (Minitex)
 27. Open Textbooks (Minitex)
 28. Great River Regional Library (Minitex)
-29. Avon Public Library (Lyrasis)
-30. Ansonia Public Library (Lyrasis)
-31. Yavapai Library Network (Lyrasis)
-32. Beacon Falls Public Library (Lyrasis)
-33. Bentley Memorial Library (Lyrasis)
-34. Cornwall Free Library (Lyrasis)
-35. Derby Neck Library (Lyrasis)
-36. Derby Public Library (Lyrasis)
-37. Carnegie Library of Pittsburgh (Lyrasis)
-38. Beaver Creek Public/School Library
-39. Camp Verde Community Library
-40. Embry-Riddle Aeronautical University
-41. Prescott Public Library
+29. Avon Public Library
+30. Ansonia Public Library
+31. Beacon Falls Public Library
+32. Bentley Memorial Library
+33. Cornwall Free Library
+34. Derby Neck Library
+35. Derby Public Library
+36. Carnegie Library of Pittsburgh
+37. Beaver Creek Public/School Library
+38. Camp Verde Community Library
+39. Embry-Riddle Aeronautical University
+40. Prescott Public Library
