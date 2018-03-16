@@ -71,7 +71,6 @@ Currently, our active public repositories include:
 # Proposed changes
 
 * [[Wikiregistry of unique library IDs|UniqueLibraryIDs]]
-* [[Static libraries|StaticLibraries]]
 * [[Integrating the circulation manager with the library registry|CirculationManagerToLibraryRegistry]]
 * [[Improvements to contributor tracking|ContributorImprovements]]
 
