@@ -34,6 +34,9 @@ Currently, our active public repositories include:
   - [Patron Facing Client](https://github.com/NYPL-Simplified/circulation-patron-web)
   - [Circulation Manager Admin Interface](https://github.com/NYPL-Simplified/circulation-web)
 
+- **Deployment Tools**
+  - [Circulation Manager Docker configuration](https://github.com/NYPL-Simplified/circulation-docker)
+
 # Installation and setup
 
 * [[Getting Your Books Into SimplyE|GettingYourBooksIntoSimplyE]]
