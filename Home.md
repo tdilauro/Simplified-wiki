@@ -37,19 +37,27 @@ Currently, our active public repositories include:
 - **Deployment Tools**
   - [Circulation Manager Docker configuration](https://github.com/NYPL-Simplified/circulation-docker)
 
-# Installation and setup
+# Installation, Configuration, and Development
 
 * [[Getting Your Books Into SimplyE|GettingYourBooksIntoSimplyE]]
-* [[Deployment: Quickstart with Docker|Deployment:-Quickstart-with-Docker]]
-* [[Deployment for development|Deployment Instructions]]
-* [[The configuration file|Configuration]]
 * [[Connecting the Library Simplified circulation manager to your ILS|AuthenticationSetup]]
-* [[Troubleshooting "books don't show up in the feed" problems|BooksDontShowUp]]
-* [[Automated Jobs and how to use them|AutomatedJobs]]
-* [[Creating new server-side integrations|NewIntegrations]]
+* [[The configuration file|Configuration]]
 * [[Setting up lanes|LaneConfiguration]]
-* [[Error handling|ErrorHandling]]
 * [[Contributing to the project|Contributing]]
+* [[Deployment for development|Deployment Instructions]]
+* [[Creating new server-side integrations|NewIntegrations]]
+
+# Deployment, Docker
+  - [[Deployment: Quickstart with Docker|Deployment:-Quickstart-with-Docker]]
+  - [[Automated Jobs and how to use them|AutomatedJobs]]
+  - **Docker AWS examples:**<br />
+    These are rough guides detailing a few tested methods for deploying the Library Simplified Circulation Manager on AWS. They are by no means complete, and we highly recommend independent research to identify AWS platforms and orchestrations that best suit your needs.
+    - [[nypl/circ-webapp on Elastic Beanstalk|Docker-Deployment-Example:-Elastic-Beanstalk-with-CloudWatch]]
+    - [[nypl/circ-scripts on ECS|Docker-Deployment-Example:-ECS-scripts-container]]
+
+# Troubleshooting
+  - [[Error handling|ErrorHandling]]
+  - [[Troubleshooting "books don't show up in the feed" problems|BooksDontShowUp]]
 
 # Architecture
 
