@@ -1,5 +1,3 @@
-# nypl/circ-webapp on Elastic Beanstalk with CloudWatch
-
 **Prerequisites:** Python; a local ssh key for AWS use
 
 1. Visit AWS IAM via the AWS console. In IAM, create an AWS role for EC2 instances that both has access to Elastic Beanstalk and can write logs to CloudWatch. This role may include standard policies like `AmazonEC2ContainerRegistryReadOnly`, `AWSElasticBeanstalkWebTier`, `AWSElasticBeanstalkMulticontainerDocker`, `AWSElasticBeanstalkWorkerTier`. It should also include a CloudWatch policy that has the actions `logs:CreateLogGroup`, `logs:CreateLogStream`, `logs:PutLogEvents`, and `logs:DescribeLogStreams`.
