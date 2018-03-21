@@ -47,7 +47,7 @@ Currently, our active public repositories include:
 * [[Deployment for development|Deployment Instructions]]
 * [[Creating new server-side integrations|NewIntegrations]]
 
-# Deployment, Docker
+# Deployment and Docker
   - [[Deployment: Quickstart with Docker|Deployment:-Quickstart-with-Docker]]
   - [[Automated Jobs and how to use them|AutomatedJobs]]
   - **Docker AWS examples:**<br />
