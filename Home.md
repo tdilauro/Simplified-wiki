@@ -84,7 +84,7 @@ Currently, our active public repositories include:
 * [[Wikiregistry of unique library IDs|UniqueLibraryIDs]]
 * [[Integrating the circulation manager with the library registry|CirculationManagerToLibraryRegistry]]
 * [[Improvements to contributor tracking|ContributorImprovements]]
-* [[RFC: Canonical Contributors:RFC:-Canonical-Contributors]]
+* [[RFC: Canonical Contributors|RFC:-Canonical-Contributors]]
 
 # Recent changes
 * [[Multiple collections in one circulation manager|MultipleCollections]]
