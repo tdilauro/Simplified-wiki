@@ -48,7 +48,7 @@ Currently, our active public repositories include:
 * [[Creating new server-side integrations|NewIntegrations]]
 
 # Deployment and Docker
-  - [Deployment: Nginx &amp; uWSGI](/Deployment:-Nginx-&-uWSGI)
+  - [Deployment: Nginx &amp; uWSGI](./Deployment:-Nginx-&-uWSGI)
   - [[Deployment: Quickstart with Docker|Deployment:-Quickstart-with-Docker]]
   - [[Automated Jobs and how to use them|AutomatedJobs]]
   - **Docker AWS examples:**<br />
