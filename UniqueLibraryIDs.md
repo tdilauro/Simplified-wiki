@@ -43,3 +43,14 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 38. Camp Verde Community Library
 39. Embry-Riddle Aeronautical University
 40. Prescott Public Library
+41. Welles-Turner Memorial Library
+42. West Hartford Public Libraries
+43. Mansfield Public Library
+44. New Britain Public Library
+45. Simsbury Public Library
+46. Clark Memorial Library
+47. James Blackstone Memorial Library
+48. Durham Public Library
+49. East Hampton Public Library
+50. East Lyme Library
+51. Essex Library Association
