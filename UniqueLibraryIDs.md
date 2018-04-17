@@ -54,3 +54,6 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 49. East Hampton Public Library
 50. East Lyme Library
 51. Essex Library Association
+52. Massachusetts Library System
+53. Nevins Memorial Library
+54. Weymouth Public Libraries
