@@ -57,3 +57,18 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 52. Massachusetts Library System
 53. Nevins Memorial Library
 54. Weymouth Public Libraries
+55. Douglas Library of Hebron
+56. Douglas Library of North Canaan
+57. Gunn Memorial Library
+58. Hagaman Memorial Library
+59. Howard Whittemore Memorial Library
+60. Berlin-Peck Memorial Library
+61. Bloomfield Libraries
+62. Bristol Public Library
+63. Burlington Public Library
+64. Canton Public Library
+65. Guilford Free Library
+66. Brainerd Memorial Library
+67. Hamden Public Libraries
+68. Ivoryton Library
+69. Ledyard Public Libraries
