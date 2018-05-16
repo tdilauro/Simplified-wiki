@@ -156,40 +156,17 @@ git submodule update
 
 When you run `git submodule update`, the `Simplified-server-core` project will be cloned into the `core` directory.
 
-# Create the Python virtual environment
+# Initialize the administrative interface (circulation manager only)
 
-The next step is to create a virtual environment and set up your [[configuration file|Configuration]]. To create the virtual environment, use `virtualenv`:
+The circulation manager includes a front-end administrative interface written in Node. To get this working, you'll need to clone an additional project called `circulation-web`, install its dependencies, and link it to the circulation manager.
 
+``
+git clone https://github.com/NYPL-Simplified/circulation-web.git circulation-web
+cd circulation-web
+npm link
+cd ../api/admin
+npm link simplified-circulation-web
 ```
-$ cd circulation # Or metadata, or content
-virtualenv -p /usr/bin/python2.7 env
-```
-
-Then create your [[configuration file|Configuration]].
-
-Finally, add the following line to the bottom of `env/bin/activate`:
-
-```
-export SIMPLIFIED_CONFIGURATION_FILE="/full/path/to/configuration/file.json"
-```
-
-where `/full/path/to/configuration/file.json` is the full path to your configuration file.
-
-Now, activate the virtual environment:
-
-```
-source env/bin/activate
-```
-
-# Install Python requirements into the virtual environment
-
-This can take a very long time--over 30 minutes for the metadata wrangler.
-
-```
-pip install -r requirements.txt
-```
-
-[This page](http://www.zezuladp.com/2014/10/scaling-numpy-and-scipy-with-django-and.html) explains the problems with installing scipy (used by the metadata wrangler) through pip. I'm using pip because we are running Python 2.7 and AMI instances have Python 2.6 as the system Python.
 
 # Set up database users
 
@@ -220,34 +197,46 @@ create extension pgcrypto;
 create extension pgcrypto;
 ```
 
+# Create the Python virtual environment
+
+The next step is to create a virtual environment. To create the virtual environment, use `virtualenv`:
+
+```
+$ cd circulation # Or metadata
+virtualenv -p /usr/bin/python2.7 env
+```
+
+Then create your [[configuration file|Configuration]].
+
+Finally, add the following lines to the bottom of `env/bin/activate`:
+
+```
+export SIMPLIFIED_PRODUCTION_DATABASE="postgres://simplified:[password]@localhost:5432/simplified_circulation_dev"
+export SIMPLIFIED_TEST_DATABASE="postgres://simplified_test:[password]@localhost:5432/simplified_circulation_test"
+```
+
+These environment variables will point the application server to the correct database. All further configuration will be done through the administrative interface and stored in the database.
+
+Now, activate the virtual environment:
+
+```
+source env/bin/activate
+```
+
+# Install Python requirements into the virtual environment
+
+This can take a very long time--over 30 minutes for the metadata wrangler.
+
+```
+pip install -r requirements.txt
+```
+
+[This page](http://www.zezuladp.com/2014/10/scaling-numpy-and-scipy-with-django-and.html) explains the problems with installing scipy (used by the metadata wrangler) through pip. I'm using pip because we are running Python 2.7 and AMI instances have Python 2.6 as the system Python.
+
 On the metadata wrangler and the circulation manager, download the TextBlob corpora. This shouldn't be necessary on the circulation manager, but for the moment it is.
 
 ```
 $ python -m textblob.download_corpora
-```
-
-### Front-end admin interface
-
-The circulation manager includes a front-end administrative interface written in Node. To get this working, you'll need to install the node module for the front-end application.
-
-The Node project for the administrative interface is called `circulation-web` and its repository is [at https://github.com/NYPL-Simplified/circulation-web/](https://github.com/NYPL-Simplified/circulation-web/).
-
-To use the published version, run `npm install` from api/admin.
-
-```
-cd circulation/api/admin
-npm install
-```
-
-To use a local version, clone `circulation-web` within the `circulation` project and link it.
-
-``
-cd circulation
-git clone https://github.com/NYPL-Simplified/circulation-web.git circulation-web
-cd circulation-web
-npm link
-cd ../api/admin
-npm link simplified-circulation-web
 ```
 
 # Deploy
