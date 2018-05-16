@@ -160,7 +160,7 @@ When you run `git submodule update`, the `Simplified-server-core` project will b
 
 The circulation manager includes a front-end administrative interface written in Node. To get this working, you'll need to clone an additional project called `circulation-web`, install its dependencies, and link it to the circulation manager.
 
-``
+```
 git clone https://github.com/NYPL-Simplified/circulation-web.git circulation-web
 cd circulation-web
 npm link
@@ -206,9 +206,7 @@ $ cd circulation # Or metadata
 virtualenv -p /usr/bin/python2.7 env
 ```
 
-Then create your [[configuration file|Configuration]].
-
-Finally, add the following lines to the bottom of `env/bin/activate`:
+Then add the following lines to the bottom of `env/bin/activate`:
 
 ```
 export SIMPLIFIED_PRODUCTION_DATABASE="postgres://simplified:[password]@localhost:5432/simplified_circulation_dev"
