@@ -241,7 +241,7 @@ $ python -m textblob.download_corpora
 
 # Deploy
 
-There are lots of technologies you can use to get your server up and running. Before you do any of them, make sure you can run `python app.py` and get the app going locally.
+There are lots of technologies you can use to get your server up and running. Before you do any of them, make sure you can run `python app.py` and visit `http://localhost:6500/` to see the application server running.
 
 Done? Great! Now you can use whatever tools your dev team likes best to get the app to the people. If you don't have a preference, you might like to use our [Deployment Instructions for Nginx & uWSGI](https://github.com/NYPL-Simplified/Simplified/wiki/Deployment:-Nginx-&-uWSGI). If you run into any problems, please share them along with your solutions, so we can update the instructions.
 
