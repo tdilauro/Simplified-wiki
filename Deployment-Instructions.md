@@ -163,7 +163,7 @@ The circulation manager includes a front-end administrative interface written in
 ```
 git clone https://github.com/NYPL-Simplified/circulation-web.git circulation-web
 cd circulation-web
-npm link
+sudo npm link
 cd ../api/admin
 npm link simplified-circulation-web
 ```
