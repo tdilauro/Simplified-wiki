@@ -141,7 +141,7 @@ Make sure you [[have an SSH key associated with your Github account|https://help
 If you're checking out the metadata wrangler, the command is the same but the repository is different.
 
 ```
-git clone https://github.com/NYPL-Simplified/metadata_wrangler.git metadata
+git clone git@github.com:NYPL-Simplified/metadata_wrangler.git metadata
 cd metadata
 ```
 
@@ -161,7 +161,7 @@ When you run `git submodule update`, the `Simplified-server-core` project will b
 The circulation manager includes a front-end administrative interface written in Node. To get this working, you'll need to clone an additional project called `circulation-web`, install its dependencies, and link it to the circulation manager.
 
 ```
-git clone https://github.com/NYPL-Simplified/circulation-web.git circulation-web
+git clone git@github.com:NYPL-Simplified/circulation-web.git circulation-web
 cd circulation-web
 sudo npm link
 cd ../api/admin
