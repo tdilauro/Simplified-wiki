@@ -71,19 +71,6 @@ sudo apt-get install python-numpy
     brew install homebrew/dupes/zlib
 ```
 
-## Content server only
-The content server has an additional dependency on libyaml:
-
-```
-# Content server only
-sudo yum install libyaml
-```
-
-Ubuntu:
-```
-sudo apt-get install libyaml-dev
-```
-
 ## Metadata wrangler only
 The metadata wrangler has a number of additional dependencies so that scikit-learn can be installed:
 
@@ -158,16 +145,9 @@ git clone https://github.com/NYPL-Simplified/metadata_wrangler.git metadata
 cd metadata
 ```
 
-If you're checking out the content server, that's a third repository:
-
-```
-git clone https://github.com/NYPL-Simplified/content_server.git content
-cd content
-```
-
 # Initialize the submodules
 
-All three repositories include a Git submodule for the `Simplified-server-core` project, which defines common things like the database schema. You'll need to initialize this module.
+Both product repositories include a Git submodule for the `Simplified-server-core` project, which defines common things like the database schema. You'll need to initialize this module.
 
 ```
 git submodule init
@@ -240,27 +220,34 @@ create extension pgcrypto;
 create extension pgcrypto;
 ```
 
-
-# Set up the data directory (metadata and content only)
-
-On the metadata wrangler, check out the Simplified-data repository to your data directory (the directory you specified as "data_directory" in the configuration file):
-
-```
-$ git clone https://github.com/NYPL-Simplified/data.git $DATA_DIRECTORY 
-```
-
-On the content server, you can just create an empty directory at $DATA_DIRECTORY
-
-On the metadata wrangler and the content server, make sure that $DATA_DIRECTORY is writable by the user that will be running scripts.
-
-```
-$ sudo chown ec2-user.ec2-user $DATA_DIRECTORY
-```
-
 On the metadata wrangler and the circulation manager, download the TextBlob corpora. This shouldn't be necessary on the circulation manager, but for the moment it is.
 
 ```
 $ python -m textblob.download_corpora
+```
+
+### Front-end admin interface
+
+The circulation manager includes a front-end administrative interface written in Node. To get this working, you'll need to install the node module for the front-end application.
+
+The Node project for the administrative interface is called `circulation-web` and its repository is [at https://github.com/NYPL-Simplified/circulation-web/](https://github.com/NYPL-Simplified/circulation-web/).
+
+To use the published version, run `npm install` from api/admin.
+
+```
+cd circulation/api/admin
+npm install
+```
+
+To use a local version, clone `circulation-web` within the `circulation` project and link it.
+
+``
+cd circulation
+git clone https://github.com/NYPL-Simplified/circulation-web.git circulation-web
+cd circulation-web
+npm link
+cd ../api/admin
+npm link simplified-circulation-web
 ```
 
 # Deploy
