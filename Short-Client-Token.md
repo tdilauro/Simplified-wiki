@@ -23,7 +23,7 @@ The parts are as follows:
 
 # Library name
 
-The library name must be unique among all libraries in a federation. It should not exceed ten characters. For US public libraries in the SimplyE federation, we've adopted a convention where the first two letters of the library name designate the US state covered by the library.
+The library name must be unique among all libraries in a federation. It should not exceed seven characters, and six is better. For US public libraries in the SimplyE federation, we've adopted a convention where the first two letters of the library name designate the US state covered by the library.
 
 # Expiration time
 
