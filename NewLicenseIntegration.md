@@ -1,19 +1,21 @@
 To bring a new collection of books or other content into a Library
 Simplified circulation manager, you'll probably need to do a lot of
-work. If the books are made available through OPDS, you can create a
-new collection through the admin interface using the "OPDS Import"
-protocol. But most of the time you'll need to write code.
+work.
 
 Most content sources have no API at all, or have an API that can't be
 integrated into Library Simplified
 products. [This wiki](ContentSourcesWithoutAPI) has analyses of a
 large number of popular library content sources that have no usable
 API. If you're in this situation, you'll need to convince the content
-provider to make their stuff available in the first place. _Then_
-you'll need to write the integration code.
+provider to make their stuff available in the first place.
 
-If a content source does offer an API, this is the _minimum_ work
-you'll need to do:
+If the vendor makes their books available through a normal OPDS feed, you can create a
+new collection through the admin interface using the "OPDS Import"
+protocol.
+
+When books are made available with minimal access control rather than a formal DRM scheme, it's often easy for the distributor to put them in an [https://github.com/NYPL-Simplified/Simplified/wiki/OPDSForDistributors](OPDS For Distributors) feed. You can then create a new collection through the admin interface using the "OPDS For Distributors" protocol.
+
+If the vendor has or creates a custom API for giving you access to their works, you'll need to write  integration code. This is the _minimum_ work you'll need to do:
 
 * Write a subclass of `Monitor` that keeps track of the items in the
   new collection.
