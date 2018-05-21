@@ -13,7 +13,7 @@ If the vendor makes their books available through a normal OPDS feed, you can cr
 new collection through the admin interface using the "OPDS Import"
 protocol.
 
-When books are made available with minimal access control rather than a formal DRM scheme, it's often easy for the distributor to put them in an [https://github.com/NYPL-Simplified/Simplified/wiki/OPDSForDistributors](OPDS For Distributors) feed. You can then create a new collection through the admin interface using the "OPDS For Distributors" protocol.
+When books are made available with minimal access control rather than a formal DRM scheme, it's often easy for the distributor to put them in an [OPDS For Distributors](https://github.com/NYPL-Simplified/Simplified/wiki/OPDSForDistributors) feed. You can then create a new collection through the admin interface using the "OPDS For Distributors" protocol.
 
 If the vendor has or creates a custom API for giving you access to their works, you'll need to write  integration code. This is the _minimum_ work you'll need to do:
 
