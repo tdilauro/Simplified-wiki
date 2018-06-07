@@ -73,3 +73,18 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 68. Ivoryton Library
 69. Ledyard Public Libraries
 70. Brazoria County Library
+71. Janet Carlson Calvert Library
+72. Jonathan Trumbull Library
+73. Kent Memorial Library
+74. Killingly Public Library
+75. Minor Memorial Library
+76. Cheshire Public Library
+77. Cragin Memorial Library
+78. Cromwell Belden Public Library
+79. East Hartford Public Library
+80. The Library Association of Warehouse Point
+81. E.C. Scranton Memorial Library
+82. Meriden Public Library
+83. Levi E. Coe Library
+84. Russell Library
+85. Mitchell College Library
