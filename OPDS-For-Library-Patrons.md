@@ -180,9 +180,34 @@ If the `opds:state` is `available`, then `opds:total` SHOULD be `0`.
 
 ## Examples
 
+This example shows a book which is not currently available, but which
+can be put on hold (the first link, with the relation
+`http://opds-spec.org/acquisition/borrow`) or pre-ordered (the second
+link, with the relation `http://opds-spec.org/acquisition/buy`).
+
+```
+<entry>
+
+ <link type="application/atom+xml;type=entry;profile=opds-catalog" rel="http://opds-spec.org/acquisition/borrow" href="http://example.org/hold/1">
+   <opds:availability state="unavailable" until="2019-09-07"/>
+   <opds:indirectAcquisition type="application/vnd.adobe.adept+xml">
+      <opds:indirectAcquisition type="application/epub+zip"/>
+   </opds:indirectAcquisition>
+ </link>
+
+ <link type="text/html" rel="http://opds-spec.org/acquisition/buy" href="http://example.org/buy/1">
+   <opds:price currency="EUR">10.99</opds:price>
+   <opds:availability state="unavailable" until="2019-09-07"/>
+   <opds:indirectAcquisition type="application/vnd.adobe.adept+xml">
+      <opds:indirectAcquisition type="application/epub+zip"/>
+   </opds:indirectAcquisition>
+ </link>
+</entry>
+```
+
 In this example, there are 100 people in the hold queue, 20 copies in
 total (none of them available) and the user has yet to place a hold
-for the book. The available state is "unavailable" and the until
+for the book. The available state is `unavailable` and the `opds:until` 
 attribute is an estimate of how long the user will be waiting in the
 hold queue.
 
@@ -195,20 +220,49 @@ hold queue.
 </link>
 ```
 
-```
-
 In this example, there are 93 people in the hold queue for a book, and
-87 of those people are ahead of the authenticated user user. The
-availability state is "reserved" and the until attribute associated
-with the availability element gives the estimated time of
-availability.
+87 of those people are ahead of the authenticated user. The
+availability state is `reserved` and the `opds:until` attribute gives
+the estimated time at which the book will be available to this user.
 
+```
 <link ...>
   <opds:availability state="reserved" until="2015-09-07"/>
   <opds:indirectAcquisition type="application/epub+zip"/>
   <opds:holds total="93" position="88"/>
   <opds:copies total="19" available="0"/>
 </link>
+```
+
+In this example, the authenticated user is at the front of the hold
+queue but has not yet acquired a loan. The `opds:position` element is
+missing from `opds:holds`. The `opds:availability` element indicates
+that the user can get the book now (`opds:state` is `ready`) but that
+if they don't act, they eventually lose their opportunity and have to
+place a new hold (`opds:until` gives the time at which this will
+happen).
+
+```
+<link ...>
+  <opds:availability state="ready" since="2018-09-07" until="2018-09-10"/>
+  <opds:holds total="59"/>
+  <opds:copies total="19" available="0"/>
+</link>
+```
+
+In this example, the user has acquired a loan for the book. Here the
+`opds:availability` element is most important. Its `opds:state`
+attribute is `availabile`. The `opds:since` attribute shows the time
+at which the loan was created, and the `opds:until` attribute shows
+the time at which the loan will expire.
+
+```
+<link ...>
+  <opds:availability state="available" since="2018-09-09" until="2018-10-09"/>
+  <opds:holds total="58"/>
+  <opds:copies total="19" available="0"/>
+</link>
+```
 
 
 ## The `borrow` relation
