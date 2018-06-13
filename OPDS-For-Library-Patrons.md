@@ -28,7 +28,7 @@ availability, holds queues, loan durations -- to OPDS clients. It also
 sets out guidelines for how an OPDS client should process the standard
 `http://opds-spec.org/acquisition/borrow` link relation.
 
-## Describing availability with `<opds:availability>`
+## `opds:availability` - describing resource availability
 
 OPDS operates on the background assumption that a book with an OPDS
 entry is available right now and will always be available. In a
@@ -66,7 +66,7 @@ The `opds:availability` tag is OPTIONAL. If it's not present, an OPDS
 client MUST assume that the resource at the other end of the
 `atom:link` is currently available.
 
-### `opds:state`
+### `opds:state` - Is this resource available?
 
 The `opds:state` attribute is REQUIRED for an `opds:availability` tag.
 
@@ -97,7 +97,7 @@ These values are defined for `opds:state`:
   may turn out that the reservation has expired and the resource is now
   unavailable.
 
-### `opds:since` and `opds:until`
+### `opds:since` and `opds:until` - How long do I have?
 
 The date attributes are OPTIONAL in an `opds:status` tag. They are
 used to help the patron plan for the future.
