@@ -61,7 +61,6 @@ Three attributes are defined for the `opds:availability` tag:
 | state     | The current availability state of the resource. | Four values for this attribute are defined below: `available`, `unavailable`, `reserved`, and `ready`. | `available` |
 | since     | Date when the availability state changed to the current state. | ISO 8601 date | No value |
 | until     | Date when the availability state is expected to change again. | ISO 8601 date | No value |
-+-----------+-----------+--------+---------+
 
 The `opds:availability` tag is OPTIONAL. If it's not present, an OPDS
 client MUST assume that the resource at the other end of the
