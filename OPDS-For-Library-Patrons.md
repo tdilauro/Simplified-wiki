@@ -28,7 +28,7 @@ availability, holds queues, loan durations -- to OPDS clients. It also
 sets out guidelines for how an OPDS client should process the standard
 `http://opds-spec.org/acquisition/borrow` link relation.
 
-## `opds:availability` - describing resource availability
+## `opds:availability` - Describing resource availability
 
 OPDS operates on the background assumption that a book with an OPDS
 entry is available right now and will always be available. In a
@@ -66,7 +66,7 @@ The `opds:availability` tag is OPTIONAL. If it's not present, an OPDS
 client MUST assume that the resource at the other end of the
 `atom:link` is currently available.
 
-### `opds:state` - Is this resource available?
+### `opds:state` - Can I have this book?
 
 The `opds:state` attribute is REQUIRED for an `opds:availability` tag.
 
@@ -89,15 +89,20 @@ These values are defined for `opds:state`:
   This is not a binding promise. When the user follows the link, the
   resource may turn out to be available after all.
 
-* `reserved`: The resource is reserved for the authenticated user. The user
-  can acquire the resource now, but if they don't act soon, they will lose
-  the opportunity.
+* `reserved`: The authenticated user will get the resource eventually,
+  but it's not available now. This generally means the authenticated
+  user has placed a hold on the resource and is waiting in a holds
+  queue.
+
+* `ready`: The resource is ready for the authenticated user, but not
+  for the general public. The user can acquire the resource now, but
+  if they don't act soon, they will lose the opportunity.
   
   This is not a binding promise. When the user follows the link, it
   may turn out that the reservation has expired and the resource is now
   unavailable.
 
-### `opds:since` and `opds:until` - How long do I have?
+### `opds:since` and `opds:until` - When does my loan expire?
 
 The date attributes are OPTIONAL in an `opds:status` tag. They are
 used to help the patron plan for the future.
@@ -110,23 +115,100 @@ used to help the patron plan for the future.
   loan's start date and `opds:until` is the expiration date.
 
 * If `opds:state` is `unavailable`, then `opds:since` is the last time
-  at which the resource was available (probably not useful) and `opds:until`
-  is the time at which the resource will become available.
-  
-  If the patron is in a middle of a hold queue, the library may use
-  `opds:until` to provide an _estimated_ time at which the state will
-  change to `opds:reserved`. This estimate can't be exact because it
-  depends on the behavior of people further up in the hold queue.
+  at which the resource was available (probably not useful) and
+  `opds:until` is the estimated time at which the resource will become
+  available. The `opds:until` time may be conditional on the user
+  taking some immediate action, such as putting a hold on the
+  resource.
 
-* If `opds:state` is `reserved`, then `opds:since` is the time
-  at which the resource became reserved for the authenticated user,
+* If `opds:state` is `reserved`, then `opds:since` is the time at
+  which the authenticated user placed their hold, and `opds:until` is
+  the _estimated_ time at which the resource will become available
+  (probably by moving into the `ready` state). This estimate can't be
+  exact because it depends on the behavior of people further up in the
+  hold queue.
+  
+  If the patron does not have an active loan, then `opds:until` for an
+  `unavailable` resource may indicate the estimated time at which the
+  resource _will_ become available if the patron joins the hold queue now,
+
+* If `opds:state` is `ready`, then `opds:since` is the time
+  at which the resource became ready to the authenticated user,
   and `opds:until` is the time at which the resource will revert to its
   default availability (probably `unavailable`).
 
+## `opds:copies` - How many copies does the library have?
 
+The `opds:copies` tag describes the number of licenses the server owns
+for a resource. Although this is intended to describe electronic
+licenses for virtual resources, it may also be used to represent
+physical books in a bookstore or branch library.
 
+Like `opds:availability`, `opds:copies` goes inside an `atom:link` tag
+and describes the resource at the other end of the link. If multiple
+links give access to the same resource (e.g. in different formats),
+each link SHOULD provide the same information in its `opds:copies`.
 
+`opds:copies` has two optional attributes, `opds:total` and
+`opds:available`. Both have a numeric value.
 
-## Holds
+* `opds:total` is the total number of licenses available to the server.
+* `opds:available` is the number of those licenses that are available
+  to patrons right now (e.g. not disabled or on loan to specific patrons).
+
+If the `opds:state` is `unavailable`, then `opds:available` SHOULD be `0`.
+
+## `opds:holds` - Where am I in line?
+
+The `opds:holds` tag describes the people waiting in line for access
+to a resource.
+
+Like `opds:availability`, `opds:holds` goes inside an `atom:link` tag
+and describes the resource at the other end of the link. If multiple
+links give access to the same resource (e.g. in different formats),
+each link SHOULD provide the same information in its `opds:holds`.
+
+`opds:holds` has two optional attributes, `opds:total` and
+`opds:position`. Both have a numeric value.
+
+* `opds:total` Is the total number of people waiting for access to this
+  resource.
+* `opds:position` is the position in that queue of the currently
+  authenticated user.
+
+If the `opds:state` is `available`, then `opds:total` SHOULD be `0`.
+
+## Examples
+
+In this example, there are 100 people in the hold queue, 20 copies in
+total (none of them available) and the user has yet to place a hold
+for the book. The available state is "unavailable" and the until
+attribute is an estimate of how long the user will be waiting in the
+hold queue.
+
+```
+<link ...>
+  <opds:availability state="unavailable" until="2019-09-07"/>
+  <opds:indirectAcquisition type="application/epub+zip"/>
+  <opds:holds total="100"/>
+  <opds:copies total="20" available="0"/>
+</link>
+```
+
+```
+
+In this example, there are 93 people in the hold queue for a book, and
+87 of those people are ahead of the authenticated user user. The
+availability state is "reserved" and the until attribute associated
+with the availability element gives the estimated time of
+availability.
+
+<link ...>
+  <opds:availability state="reserved" until="2015-09-07"/>
+  <opds:indirectAcquisition type="application/epub+zip"/>
+  <opds:holds total="93" position="88"/>
+  <opds:copies total="19" available="0"/>
+</link>
+
 
 ## The `borrow` relation
