@@ -336,14 +336,14 @@ So, here are the specific semantics for the
    (i.e. "application/atom+xml;type=entry;profile=opds-catalog")
    
    Example:
-   ```
+```
 <link href="https://borrow-me/" rel="http://opds-spec.org/acquisition/borrow"
       type="application/atom+xml;type=entry;profile=opds-catalog">
   <opds:indirectAcquisition type="application/vnd.adobe.adept+xml">
      <opds:indirectAcquisition type="application/epub+zip"/>
   </opds:indirectAcquisition>
 </link>
-   ```
+```
    
    We suggest sending an OPDS Entry instead of the actual title for
    two reasons. First, borrowing is different from fulfillment. If a
@@ -368,7 +368,7 @@ So, here are the specific semantics for the
    
    Example:
 
-   ```
+```
     <link href="http://download/book.pdf"
           rel="http://opds-spec.org/acquisition"
           type="application/pdf"/>
@@ -379,7 +379,7 @@ So, here are the specific semantics for the
           type="application/vnd.adobe.adept+xml"/>
       <opds:indirectAcquisition type="application/epub+zip"/>
     </link>
-   ```
+```
    
    The first link is saying there's a PDF document at the other end of
    `http://download/book.pdf`. The second link is saying that there's
