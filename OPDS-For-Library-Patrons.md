@@ -50,11 +50,16 @@ does not necessarily hold. Two possible scenarios:
 * A book may be not be available after a certain date due to an
   expiring license, analogous to how films leave Netflix.
 
-The `opds:availability` tag goes inside an `atom:link` tag and
-communicates the current availability of the resource at the other end
-of the link.
+The `opds:availability` element conveys a title's current availability. It
+goes inside an `atom:link` element and communicates the current
+availability of the resource at the other end of the link.
 
-Three attributes are defined for the `opds:availability` tag:
+Inserting availability information into the link allows a server to
+provide the client with a 'next step' _towards_ availability, even if
+a title is not currently available. It also allows for the possibility
+that a title might be available through one mechanism but not another.
+
+Three attributes are defined for the `opds:availability` element:
 
 | Attribute | Semantics | Values | Default |
 | --------- | --------- | ------ | ------- |
@@ -62,13 +67,13 @@ Three attributes are defined for the `opds:availability` tag:
 | since     | Date when the availability state changed to the current state. | ISO 8601 date | No value |
 | until     | Date when the availability state is expected to change again. | ISO 8601 date | No value |
 
-The `opds:availability` tag is OPTIONAL. If it's not present, an OPDS
+The `opds:availability` element is OPTIONAL. If it's not present, an OPDS
 client MUST assume that the resource at the other end of the
 `atom:link` is currently available.
 
 ### `opds:state` - Can I have this book?
 
-The `opds:state` attribute is REQUIRED for an `opds:availability` tag.
+The `opds:state` attribute is REQUIRED for an `opds:availability` element.
 
 These values are defined for `opds:state`:
 
@@ -104,7 +109,7 @@ These values are defined for `opds:state`:
 
 ### `opds:since` and `opds:until` - When does my loan expire?
 
-The date attributes are OPTIONAL in an `opds:status` tag. They are
+The date attributes are OPTIONAL in an `opds:status` element. They are
 used to help the patron plan for the future.
 
 * If `opds:state` is `available`, then `opds:since` is the time at
@@ -139,12 +144,12 @@ used to help the patron plan for the future.
 
 ## `opds:copies` - How many copies does the library have?
 
-The `opds:copies` tag describes the number of licenses the server owns
+The `opds:copies` element describes the number of licenses the server owns
 for a resource. Although this is intended to describe electronic
 licenses for virtual resources, it may also be used to represent
 physical books in a bookstore or branch library.
 
-Like `opds:availability`, `opds:copies` goes inside an `atom:link` tag
+Like `opds:availability`, `opds:copies` goes inside an `atom:link` element
 and describes the resource at the other end of the link. If multiple
 links give access to the same resource (e.g. in different formats),
 each link SHOULD provide the same information in its `opds:copies`.
@@ -160,10 +165,10 @@ If the `opds:state` is `unavailable`, then `opds:available` SHOULD be `0`.
 
 ## `opds:holds` - Where am I in line?
 
-The `opds:holds` tag describes the people waiting in line for access
+The `opds:holds` element describes the people waiting in line for access
 to a resource.
 
-Like `opds:availability`, `opds:holds` goes inside an `atom:link` tag
+Like `opds:availability`, `opds:holds` goes inside an `atom:link` element
 and describes the resource at the other end of the link. If multiple
 links give access to the same resource (e.g. in different formats),
 each link SHOULD provide the same information in its `opds:holds`.
@@ -264,5 +269,127 @@ the time at which the loan will expire.
 </link>
 ```
 
+## The `http://librarysimplified.org/terms/rel/revoke` relation - Abandon a loan or hold
 
-## The `borrow` relation
+An online bookstore typically does not allow someone who buys a book
+to renounce their purchase. However, a public library allows someone
+with a book on loan to return the book before their loan expires,
+freeing it up for someone else. A library also allows someone with a
+hold on a book to abandon their place in the holds queue, perhaps
+because they're tired of waiting or they gave up and bought their own
+copy.
+
+If an `opds:entry` for a title includes an `atom:link` element with
+the relation `http://librarysimplified.org/terms/rel/revoke`, it means
+the authenticated user can make a POST or DELETE requst to the link
+target (the `atom:href`) to abandon their active loan or hold on that
+title. The server is expected to act as though the user had never
+borrowed this title or put it on hold.
+
+With some DRM systems (such as with Adobe ACS) early return is
+entirely the responsibility of the DRM library, and triggering a link
+with this relation will do nothing. But when there is no DRM,
+triggering the link should be all that's necessary to abandon an
+active loan.
+
+## Detailed semantics for the `http://opds-spec.org/acquisition/borrow` relation
+
+The link relation `http://opds-spec.org/acquisition/borrow` is defined
+in the core OPDS 1.2 spec like so: "Indicates that the complete
+representation of the content Resource may be retrieved as part of a
+lending transaction."
+
+OPDS For Library Patrons offers additional details about how this
+state transition is expected to work, based on the needs of public
+libraries.
+
+There are two basic things to keep in mind.
+
+* "Borrowing" and "fulfillment" are two different steps. To "borrow"
+  is to create a loan. To "fulfill" is to download a copy of a book
+  for which you have an active loan. You can borrow a book once and
+  then fulfill it on several reading devices.
+  
+  This specification uses the link relation
+  `http://opds-spec.org/acquisition/borrow` to talk about the "borrow"
+  step and the generic link relation
+  `http://opds-spec.org/acquisition` to talk about the "fulfill" step.
+
+* When you trigger a `http://opds-spec.org/acquisition/borrow` state
+  transition, you may end up with a hold, rather than a loan. The
+  `opds:availability` element will _guide_ you as to whether following
+  a link will get you a loan or a hold, but the `opds:availability`
+  might be wrong -- someone else may have checked out the last copy of
+  a book just before you did.
+  
+  On the other hand, you may trigger the state transition expecting to
+  get a loan, and end up with a hold -- someone returned their copy of
+  the book in between the time you downloaded the OPDS feed and the
+  time you followed the link.
+
+So, here are the specific semantics for the
+`http://opds-spec.org/acquisition/borrow` link relation:
+
+1. A server that publishes a link with the relation
+   `http://opds-spec.org/acquisition/borrow` SHOULD set `atom:type` to
+   the media type of an OPDS Catalog Entry Document Resource
+   (i.e. "application/atom+xml;type=entry;profile=opds-catalog")
+   
+   Example:
+   ```
+<link href="https://borrow-me/" rel="http://opds-spec.org/acquisition/borrow"
+      type="application/atom+xml;type=entry;profile=opds-catalog">
+  <opds:indirectAcquisition type="application/vnd.adobe.adept+xml">
+     <opds:indirectAcquisition type="application/epub+zip"/>
+  </opds:indirectAcquisition>
+</link>
+   ```
+   
+   We suggest sending an OPDS Entry instead of the actual title for
+   two reasons. First, borrowing is different from fulfillment. If a
+   book is fulfillable in multiple formats, the client should be given
+   a choice of formats at fulfillment time, not at borrow time. That
+   choice of formats is given in an OPDS entry (as per item 3 below).
+   
+   Second, the client may not actually end up with a loan! If the client
+   asks to borrow a title, but the server can only put it on hold, the
+   appropriate response is an OPDS entry explaining the conditions of
+   the hold.
+
+2. A client may trigger a link with the relation
+   `http://opds-spec.org/acquisition/borrow` by sending a POST request
+   to the target URL. No specific entity-body is required, but
+   client authentication MUST be provided if known.
+
+3. When sending an OPDS entry to an authenticated user who has a title
+   on loan, a server MUST use the relation
+   `http://opds-spec.org/acquisition` for links that will lead to
+   digital a copy of the title.
+   
+   Example:
+
+   ```
+    <link href="http://download/book.pdf"
+          rel="http://opds-spec.org/acquisition"
+          type="application/pdf"/>
+    </link>
+
+    <link href="http://acs-server/a-book.acsm"
+          rel="http://opds-spec.org/acquisition"
+          type="application/vnd.adobe.adept+xml"/>
+      <opds:indirectAcquisition type="application/epub+zip"/>
+    </link>
+   ```
+   
+   The first link is saying there's a PDF document at the other end of
+   `http://download/book.pdf`. The second link is saying that there's
+   an Adobe ACSM document at the other end of
+   `http://acs-server/a-book.acsm`, which can be processed to obtain
+   an EPUB document.
+
+So, here's what a client might do and see when the user expresses the intention to borrow a book:
+
+* Send a POST request to the target of a `http://opds-spec.org/acquisition/borrow` link.
+* Parse the resulting OPDS entry.
+* If there are `http://opds-spec.org/acquisition/` links, you have an active loan and can proceed to download the book. You should see an `opds:availability` element explaining the terms of your loan.
+* If there are no such links, you are in the hold queue. You should see an `opds:availability` explaining where you are in the hold queue.
