@@ -323,7 +323,7 @@ There are two basic things to keep in mind.
   a book just before you did.
   
   On the other hand, you may trigger the state transition expecting to
-  get a loan, and end up with a hold -- someone returned their copy of
+  get a hold, and end up with a loan -- someone returned their copy of
   the book in between the time you downloaded the OPDS feed and the
   time you followed the link.
 
