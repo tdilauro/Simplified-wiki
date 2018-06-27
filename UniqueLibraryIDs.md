@@ -90,3 +90,4 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 85. Mitchell College Library
 86. Digital Public Library of America
 87. Columbia University Libraries (Lyrasis)
+88. San Jose Public Library
