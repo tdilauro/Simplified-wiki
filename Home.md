@@ -6,7 +6,7 @@ The Library Simplified project aims to streamline the experience of borrowing el
 
 **Our goal is to make borrowing ebooks as easy as buying them.**
 
-This wiki is written by the Library Simplified developers and intended for use by technical staff at public libraries. For details on how to get your library involved, see [[the Library Simplified website|http://www.librarysimplified.org/]].
+This wiki is written by the Library Simplified developers and intended for use by technical staff at public libraries. For details on how to get your library involved, see [[the Library Simplified website|http://www.librarysimplified.org/]] and the [SimplyE Confluence site](https://confluence.nypl.org/display/SIM).
 
 # Overview
 
