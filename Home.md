@@ -19,7 +19,7 @@ Library Simplified is a collection of middleware, server software and mobile cli
 
 The [SimplyE Confluence site](https://confluence.nypl.org/display/SIM) includes documentation on setup, configuration, and the operation of the community. This wiki focuses more on the technical underpinnings of the software. To see how to get involved with development or how to deploy the system at your library, start at ["Ways to Contribute"](https://confluence.nypl.org/display/SIM/Ways+to+Contribute).
 
-All issues components are tracked in [NYPL's JIRA installation](https://jira.nypl.org/projects/SIMPLY/issues/). JIRA accounts are currently limited to active developers, but you can [see issues](https://jira.nypl.org/projects/SIMPLY/issues/), [file an issue](https://confluence.nypl.org/display/SIM/Bugs+and+Issues) and comment on existing issues without a JIRA account.
+All issues components are tracked in [NYPL's JIRA installation](https://jira.nypl.org/projects/SIMPLY/issues/). JIRA accounts are currently limited to active developers, but you can [see issues](https://jira.nypl.org/projects/SIMPLY/issues/), comment on issues, or [file a new issue](https://confluence.nypl.org/display/SIM/Bugs+and+Issues) without a JIRA account.
 
 All development and code review happens here on Github. These are our main project repositories:
 
