@@ -17,7 +17,11 @@ Library Simplified is a collection of middleware, server software and mobile cli
 * Single Sign On (SSO) credential management system 
 * Commercial eBook hosting and distribution services
 
-Currently, our active public repositories include:
+The [SimplyE Confluence site](https://confluence.nypl.org/display/SIM) includes documentation on setup, configuration, and the operation of the community. This wiki focuses more on the technical underpinnings of the software. To see how to get involved with development or how to deploy the system at your library, start at ["Ways to Contribute"](https://confluence.nypl.org/display/SIM/Ways+to+Contribute).
+
+All issues components are tracked in [NYPL's JIRA installation](https://jira.nypl.org/projects/SIMPLY/issues/). JIRA accounts are currently limited to active developers, but you can [file an issue](https://confluence.nypl.org/display/SIM/Bugs+and+Issues) and comment on existing issues without a JIRA account.
+
+All development and code review happens here on Github. These are our main project repositories:
 
 - **Client-side Readers**
   - [iOS app](https://github.com/NYPL-Simplified/Simplified-iOS)
@@ -25,10 +29,8 @@ Currently, our active public repositories include:
 
 - **Backend Servers**
   - [Circulation Manager](https://github.com/NYPL-Simplified/circulation)
-  - [Open Access Content Server](https://github.com/NYPL-Simplified/content-server)
   - [Metadata Wrangler](https://github.com/NYPL-Simplified/metadata-wrangler)
   - [Server Core](https://github.com/NYPL/Simplified-server-core)
-  - [Data Store](https://github.com/NYPL-Simplified/data)
 
 - **[[Front-end Web Applications|Simplified-Front-end-Web-Apps]]**
   - [Patron Facing Client](https://github.com/NYPL-Simplified/circulation-patron-web)
