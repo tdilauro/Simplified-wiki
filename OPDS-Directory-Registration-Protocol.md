@@ -32,9 +32,9 @@ You MAY also send one or both of these fields.
 
 * `contact`: A `mailto:` URI representing an email point of contact for questions about the OPDS server. The OPDS directory MUST NOT make this email address publicly visible; it's used when the _administrators_ of the directory need to contact the _administrators_ of your OPDS server.
 
-* `state`: This indicates whether you want your OPDS server to be registered in a production state (`state=production`) or a testing state (`state=testing`). Sending `state=testing` will allow you to test the inclusion of your OPDS server in some other application, such as SimplyE, before making it available to the public.
+* `stage`: This indicates whether you want your OPDS server to be included in a production registry (`stage=production`) or a testing registry (`stage=testing`). Sending `stage=testing` will allow you to test the inclusion of your OPDS server in some other application, such as SimplyE, before making it available to the public.
 
-It's the server's choice whether to do anything with these two fields.
+It's the server's choice whether to do anything with `contact` and `stage`.
 
 ## Example request
 
