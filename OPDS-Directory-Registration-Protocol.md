@@ -28,12 +28,18 @@ Send a POST request to the `register` link with an
 contain a single key-value pair, `url`, with the value being the URL
 to your server's [Authentication For OPDS document](https://docs.google.com/document/d/1-_0HHt664bDjybtCauBJXUSDXiT-Clg1sZUVNxHyLjw).
 
+Depending on the type of directory, the form MAY contain 
+
+* `contact`: A `mailto:` URI representing an email point of contact for questions about the OPDS server. The OPDS directory MUST NOT make this email address publicly visible; it's used when the _administrators_ of the directory need to contact the _administrators_ of your OPDS server.
+
+* `state`: This indicates whether you want your OPDS server to be registered in a production state (`state=production`) or a testing state (`state=testing`). Sending `state=testing` will allow you to test the inclusion of your OPDS server in some other application, such as SimplyE, before making it available to the public.
+
 ```
 POST /opds-directory
 Host: example.com
 Content-Type: application/x-www-form-urlencoded
 
-url=http://example.org/my-opds-server/authentication
+url=http://example.org/my-opds-server/authentication&contact=mailto:admin@library.org&state=production
 ```
 
 The directory will retrieve your Authentication For OPDS document and try
@@ -42,11 +48,15 @@ to get the information it needs to add you to the directory.
 If this information is missing, or the directory can't make sense of
 it, you'll get a [problem detail
 document](https://tools.ietf.org/html/rfc7807). If the registry is
-able to acommodate your OPDS server, you'll get a registration
+able to accommodate your OPDS server, you'll get a registration
 document with the media type
 `application/opds+json;profile=https://librarysimplified.org/rel/profile/directory`. This
 document (discussed below) shows you what the directory was able to
 derive from the information you gave it.
+
+## SimplyE Extensions
+
+The SimplyE library registry s `url`, the SimplyE library registry supports two additional
 
 # What the directory expects
 
