@@ -30,6 +30,7 @@ All development and code review happens here on Github. These are our main proje
 - **Backend Servers**
   - [Circulation Manager](https://github.com/NYPL-Simplified/circulation)
   - [Metadata Wrangler](https://github.com/NYPL-Simplified/metadata-wrangler)
+  - [Library Registry](https://github.com/NYPL-Simplified/library_registry)
   - [Server Core](https://github.com/NYPL/Simplified-server-core)
 
 - **[[Front-end Web Applications|Simplified-Front-end-Web-Apps]]**
