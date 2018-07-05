@@ -32,8 +32,8 @@ collection for a relatively small (1-50) number of libraries.
 We also expect the Library Simplified ecosystem to contain many
 software installations which authenticate patrons, negotiate loans,
 and deliver books, but which are not based on the circulation manager
-code base. An example is [https://bookserver.archive.org/catalog/](the
-Internet Archive's book server). The circulation manager _software_ is
+code base. An example is [the
+Internet Archive's book server](https://bookserver.archive.org/catalog/). The circulation manager _software_ is
 less important than the architectural _role_ it fulfills.
 
 ## The library registry
@@ -51,8 +51,8 @@ itself with a library registry.
 
 We expect the Library Simplified ecosystem to contain only one library
 registry. We expect every library in the ecosystem to be registered
-with that library. If there are multiple library registries, it
-becomes much more difficult for patrons to find 'their' libraries.
+with that registry. If there are multiple library registries, it
+becomes much more difficult for patrons to find 'their' libraries, since they would first have to find 'their' library registry. (If this happens, we could mitigate it by creating a second discovery protocol and running searches on multiple registries.)
 
 ## The metadata wrangler
 
@@ -78,11 +78,11 @@ to set up their own metadata wranglers -- it's just inefficient.
 
 A patron of a library uses a client component to communicate with
 their library's circulation manager. Client components are generally
-designed to browse 
+designed for the use of library patrons. Patrons use client components to browse a library's catalog, to borrow books and audiobooks, and to read or listen to the books and audiobooks.
 
 A client component may also communicate with the library registry.
-This allows patrons to find their library from within the client,
-rather than having to locate their library first and see if that
+This would allow patrons to find their library from within the client,
+rather than having to locate their library first (e.g. by a web search) and finding out if that
 particular library has a client available.
 
 ## Mobile applications
