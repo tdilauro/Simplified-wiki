@@ -96,7 +96,9 @@ encrypted with DRM.
 
 ## Web applications 
 
-The [patron-facing web client](https://github.com/NYPL-Simplified/circulation-patron-web) is a web application that 
+The [patron-facing web client](https://github.com/NYPL-Simplified/circulation-patron-web) is a web application that offers much of the functionality of SimplyE within a web browser. Patrons using the web client can browse a catalog, authenticate with their library's ILS, see their current loans, and borrow books and audiobooks. However, the patron-facing web client cannot negotiate DRM licenses for ebooks or audiobooks, so this client can only retrieve titles that are not encrypted with DRM.
+
+Like the circulation manager, the patron-facing web client must be installed for a specific library. The patron-facing web client does not communicate with the library registry and does not have an interface to locate "your library".
 
 ## General OPDS clients
 
