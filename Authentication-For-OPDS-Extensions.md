@@ -28,7 +28,7 @@ An OPDS server may use the `color_scheme` extension to specify the color scheme 
 
 `"color_scheme": "blue",`
 
-The color schemes supported by SimplyE are "red", "blue", "gray", "gold", "green", "teal", and "purple". The specific colors used by these color schemes are laid out in the [NYPL Design Toolkit](https://nypl.github.io/design-toolkit/sections/color.html). ("Gold" is a nicer name for yellow.)
+The color schemes supported by SimplyE are "amber", "black", "blue", "bluegrey", "brown", "cyan", "darkorange", "darkpurple", "green", "grey", "indigo", "lightblue", "orange", "pink", "purple", "red", and "teal". In some cases, the specific colors used by these color schemes are laid out in the [NYPL Design Toolkit](https://nypl.github.io/design-toolkit/sections/color.html). ("Gold" is a nicer name for yellow.)
 
 # Collection size
 
