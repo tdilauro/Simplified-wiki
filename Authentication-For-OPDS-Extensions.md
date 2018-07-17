@@ -28,7 +28,7 @@ An OPDS server may use the `color_scheme` extension to specify the color scheme 
 
 `"color_scheme": "blue",`
 
-The color schemes supported by SimplyE are "amber", "black", "blue", "bluegrey", "brown", "cyan", "darkorange", "darkpurple", "green", "grey", "indigo", "lightblue", "orange", "pink", "purple", "red", and "teal". These colors correspond roughly to the 500 series in [this color tool](https://material.io/tools/color/), but you should not make this choice expecting a specific hex value. Different platforms use color differently: the Android platform uses stronger, more saturated colors than the iOS platform, which primarily uses color for text accents.
+The color schemes supported by SimplyE are "amber", "black", "blue", "bluegray", "brown", "cyan", "darkorange", "darkpurple", "green", "gray", "indigo", "lightblue", "orange", "pink", "purple", "red", and "teal". These colors correspond roughly to the 500 series in [this color tool](https://material.io/tools/color/), but you should not make this choice expecting a specific hex value. Different platforms use color differently: the Android platform uses stronger, more saturated colors than the iOS platform, which primarily uses color for text accents.
 
 # Collection size
 
