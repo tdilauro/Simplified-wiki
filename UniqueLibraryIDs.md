@@ -91,3 +91,54 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 86. Digital Public Library of America
 87. Columbia University Libraries (Lyrasis)
 88. San Jose Public Library
+
+Beginning Regsitry Process. Libraries below this line need further attention
+
+89. RAILS (Reaching Across Illinois Library System) 
+
+90. Easton Public Library
+91. Hall Memorial Library
+92. Slater Library
+93. Milford Public Library
+94. Edith Wheeler Memorial Library
+95. Morris Public Library
+96. Norfolk Library
+97. Oliver Wolcott Library
+98. Oxford Public Library
+99. Putnam Public Library
+100. Mark Twain Public Library
+101. Ridgefield Library
+102. Rockville Public Library
+103. Rowayton Library
+104. Salem Free Public Library
+105. Scoville Memorial Library
+106. Seymour Public Library
+107. Shelton Library System
+108. Sherman Library
+109. Silas Bronson Library
+110. Enfield Public Library
+111. Granby Public Libraries
+112. Manchester Public Library
+113. Richmond Memorial Library
+114. Lucy Robbins Welles Library
+115. Plainville Public Library
+116. Portland Library
+117. Cora J. Belden Library
+118. South Windsor Public Library
+119. Southington Library
+120. Wethersfield Library
+121. Windsor Locks Public Library
+122. Windsor Public Library
+123. Public Library of New London
+124. North Branford Public Libraries
+125. North Haven Memorial Library
+126. Otis Library
+127. Old Lyme Phoebe Griffin Noyes Library
+128. Acton Public Library
+129. Case Memorial Library
+130. Willoughby Wallace Memorial Library
+131. Wallingford Public Library
+132. West Haven Public Library
+133. Westbrook Public Library
+134. Woodbridge Town Library
+135. East Haddam Library System
