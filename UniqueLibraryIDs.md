@@ -9,28 +9,28 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 4. Canadian Electronic Library
 5. The Internet Archive
 6. Open Text Books
-7. Alameda County Library (CA)
-8. Howard County Library System (MD)
-9. Montgomery County Library (MD)
-10. Frederick County Library (MD)
-11. Anne Arundel County Public Library (MD)
-12. Black Gold Cooperative (CA)
-13. St. Mary's County (MD)
-14. Calvert County (MD)
-15. Charles County (MD)
-16. Carroll County (MD)
-17. Butte County Library (CA)
-18. Los Angeles Public Library (CA)
-19. Porterville City Library (CA)
-20. Santa Clara County Library District (CA)
-21. Allegany County Library (MD)
-22. Ruth Enlow Library of Garrett County (MD)
-23. Washington County Free Library (MD)
+7. Alameda County Library
+8. Howard County Library System
+9. Montgomery County Library
+10. Frederick County Library
+11. Anne Arundel County Public Library
+12. Black Gold Cooperative
+13. St. Mary's County
+14. Calvert County
+15. Charles County
+16. Carroll County
+17. Butte County Library
+18. Los Angeles Public Library
+19. Porterville City Library
+20. Santa Clara County Library District
+21. Allegany County Library
+22. Ruth Enlow Library of Garrett County
+23. Washington County Free Library
 24. MLS SimplyE Collection
-25. NYU Collection (Minitex)
-26. Columbia University Libraries (Minitex)
-27. Open Textbooks (Minitex)
-28. Great River Regional Library (Minitex)
+25. NYU Collection
+26. Columbia University Libraries
+27. Open Textbooks
+28. Great River Regional Library
 29. Avon Public Library
 30. Ansonia Public Library
 31. Beacon Falls Public Library
@@ -89,12 +89,12 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 84. Russell Library
 85. Mitchell College Library
 86. Digital Public Library of America
-87. Columbia University Libraries (Lyrasis)
+87. Columbia University Libraries
 88. San Jose Public Library
 
 Beginning Regsitry Process. Libraries below this line need further attention
 
-89. RAILS (Reaching Across Illinois Library System) 
+89. RAILS
 
 90. Easton Public Library
 91. Hall Memorial Library
