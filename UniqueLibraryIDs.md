@@ -11,13 +11,13 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 6. Open Text Books
 7. Alameda County Library
 8. Howard County Library System
-9. Montgomery County Library
-10. Frederick County Library
-11. Anne Arundel County Public Library
-12. Black Gold Cooperative
-13. St. Mary's County
+9. Montgomery County Public Libraries
+10. Frederick County Public Libraries
+11. Anne Arundel Co. Public Library
+12. Black Gold Cooperative Library
+13. St. Mary's County Library
 14. Calvert County
-15. Charles County
+15. Charles County Public Library
 16. Carroll County
 17. Butte County Library
 18. Los Angeles Public Library
@@ -31,7 +31,7 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 26. Columbia University Libraries
 27. Open Textbooks
 28. Great River Regional Library
-29. Avon Public Library
+29. Avon Free Public Library
 30. Ansonia Public Library
 31. Beacon Falls Public Library
 32. Bentley Memorial Library
@@ -72,8 +72,8 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 67. Hamden Public Libraries
 68. Ivoryton Library
 69. Ledyard Public Libraries
-70. Brazoria County Library
-71. Janet Carlson Calvert Library
+70. Brazoria County Library System
+71. Calvert Library
 72. Jonathan Trumbull Library
 73. Kent Memorial Library
 74. Killingly Public Library
@@ -92,10 +92,9 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 87. Columbia University Libraries
 88. San Jose Public Library
 
-Beginning Regsitry Process. Libraries below this line need further attention
+Libraries below this point are still going through the registration process and need special attention.
 
 89. RAILS
-
 90. Easton Public Library
 91. Hall Memorial Library
 92. Slater Library
@@ -142,3 +141,5 @@ Beginning Regsitry Process. Libraries below this line need further attention
 133. Westbrook Public Library
 134. Woodbridge Town Library
 135. East Haddam Library System
+136. Mountain View Public Library
+137. Ottawa Public Library
