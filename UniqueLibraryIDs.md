@@ -16,7 +16,7 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 11. Anne Arundel Co. Public Library
 12. Black Gold Cooperative Library
 13. St. Mary's County Library
-14. Calvert County
+14. Calvert Library
 15. Charles County Public Library
 16. Carroll County
 17. Butte County Library
@@ -73,9 +73,9 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 68. Ivoryton Library
 69. Ledyard Public Libraries
 70. Brazoria County Library System
-71. Calvert Library
+71. Janet Carlson Calvert Library
 72. Jonathan Trumbull Library
-73. Kent Memorial Library
+73. Kent Memorial Library, Kent
 74. Killingly Public Library
 75. Minor Memorial Library
 76. Cheshire Public Library
