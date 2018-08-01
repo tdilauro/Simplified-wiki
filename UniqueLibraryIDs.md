@@ -145,3 +145,4 @@ Libraries below this point are still going through the registration process and 
 137. Ottawa Public Library
 138. Contra Costa County Library
 139. Sunnyvale Public Library
+140. Berkeley Public Library
