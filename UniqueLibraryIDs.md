@@ -13,17 +13,17 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 8. Howard County Library System
 9. Montgomery County Public Libraries
 10. Frederick County Public Libraries
-11. Anne Arundel Co. Public Library
+11. Anne Arundel County Public Library
 12. Black Gold Cooperative Library
-13. St. Mary's County Library
-14. Calvert Library
+13. Saint Mary's County Library
+14. Calvert County Library
 15. Charles County Public Library
-16. Carroll County
+16. Carroll County Public Library
 17. Butte County Library
 18. Los Angeles Public Library
 19. Porterville City Library
 20. Santa Clara County Library District
-21. Allegany County Library
+21. Allegany County Library System
 22. Ruth Enlow Library of Garrett County
 23. Washington County Free Library
 24. MLS SimplyE Collection
@@ -88,7 +88,7 @@ This wiki page keeps track of the unique IDs that have been assigned to particip
 83. Levi E. Coe Library
 84. Russell Library
 85. Mitchell College Library
-86. Digital Public Library of America
+86. Open Bookshelf
 87. Columbia University Libraries
 88. San Jose Public Library
 
