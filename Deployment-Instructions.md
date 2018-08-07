@@ -53,7 +53,7 @@ sudo apt-get install python-numpy
 
     ```
     # install python 2.7
-    brew install python
+    brew install python2
     # install easy_install
     curl https://bootstrap.pypa.io/ez_setup.py -o - | python
     # install pip
