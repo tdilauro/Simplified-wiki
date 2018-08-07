@@ -57,7 +57,7 @@ sudo apt-get install python-numpy
     # install virtualenv
     pip install virtualenv
     # Add postgres executables to PATH
-    export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin/
+    export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.6/bin/
     ```
 6. Install additional dependencies
 ```
