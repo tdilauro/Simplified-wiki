@@ -52,12 +52,8 @@ sudo apt-get install python-numpy
 5. Install Python, pip, virtualenv, and Postgres executables
 
     ```
-    # install python 2.7
+    # install python 2.7, with pip
     brew install python2
-    # install easy_install
-    curl https://bootstrap.pypa.io/ez_setup.py -o - | python
-    # install pip
-    easy_install pip
     # install virtualenv
     pip install virtualenv
     # Add postgres executables to PATH
