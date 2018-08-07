@@ -172,11 +172,10 @@ npm install
 If you plan to do development on the administrative interface, you'll need to clone its repository rather than installing the latest release. Here's how to do that:
 
 ```
-cd circulation
 git clone git@github.com:NYPL-Simplified/circulation-web.git circulation-web
 cd circulation-web
 npm link
-cd ../api/admin
+cd ../circulation/api/admin
 npm link simplified-circulation-web
 ```
 
