@@ -161,13 +161,14 @@ The circulation manager includes a front-end administrative interface written in
 The simplest way to install this project is to run `npm install` within the `circulation/api/admin` directory:
 
 ```
-cd api/admin
+cd circulation/api/admin
 npm install
 ```
 
 If you plan to do development on the administrative interface, you'll need to clone its repository rather than installing the latest release. Here's how to do that:
 
 ```
+cd circulation
 git clone git@github.com:NYPL-Simplified/circulation-web.git circulation-web
 cd circulation-web
 npm link
