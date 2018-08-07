@@ -54,6 +54,8 @@ sudo apt-get install python-numpy
     ```
     # install python 2.7, with pip
     brew install python2
+    # install Node and NPM
+    brew install node
     # install virtualenv
     pip install virtualenv
     # Add postgres executables to PATH
