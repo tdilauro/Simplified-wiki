@@ -61,6 +61,9 @@ sudo apt-get install python-numpy
     # Add postgres executables to PATH
     export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.6/bin/
     ```
+
+Make sure to add the `export PATH` line to your `.bashrc` file -- this will let you run `psql` from the command line in the future.
+
 6. Install additional dependencies
 ```
     brew install cairo --use-clang
