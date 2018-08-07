@@ -56,6 +56,7 @@ sudo apt-get install python-numpy
     brew install python2
     # install Node and NPM
     brew install node
+    brew install pkg-config libffi
     # install virtualenv
     pip install virtualenv
     # Add postgres executables to PATH
