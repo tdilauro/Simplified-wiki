@@ -95,6 +95,10 @@ When a client sends a Protocol document as part of a PUT request, the presence o
 The `links` key is reserved as a place to put hypermedia
 links. The format of the value associated with `links` is currently undefined.
 
+## `drm`
+
+The `drm` key is reserved as a place to put DRM keys. If present, the value associated with `drm` MUST be a list of objects.
+
 ## Other notes
 
 This specification does not define a general mechanism for conveying the human-readable names, descriptions, or possible values of profile elements.
@@ -108,6 +112,8 @@ Semantics for the following profile elements are defined.
 The `schema` namespace is reserved. All settings whose names start with "schema:" have semantics defined by the appropriate entry on schema.org. For instance, the value of "schema:givenName" is defined, as per [[https://schema.org/givenName|https://schema.org/givenName]], as the given name of the authenticated user.
 
 The `simplified` namespace is reserved. All elements whose names start with "simplified:" will have their semantics defined in this section.
+
+The `drm` namespace is reserved. All elements whose names start with "drm:" will have semantics defined by the [https://github.com/NYPL-Simplified/Simplified/wiki/DRMAutodiscoverySpecs](DRM Extensions to OPDS).
 
 ## `simplified:authorization_expires`
 
