@@ -113,7 +113,7 @@ The `schema` namespace is reserved. All settings whose names start with "schema:
 
 The `simplified` namespace is reserved. All elements whose names start with "simplified:" will have their semantics defined in this section.
 
-The `drm` namespace is reserved. All elements whose names start with "drm:" will have semantics defined by the [https://github.com/NYPL-Simplified/Simplified/wiki/DRMAutodiscoverySpecs](DRM Extensions to OPDS).
+The `drm` namespace is reserved. All elements whose names start with "drm:" will have semantics defined by the [DRM Extensions to OPDS](https://github.com/NYPL-Simplified/Simplified/wiki/DRMAutodiscoverySpecs).
 
 ## `simplified:authorization_expires`
 
