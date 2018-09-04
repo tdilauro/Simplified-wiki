@@ -65,19 +65,6 @@ Make sure to add the `export PATH` line to your `.bashrc` file -- this will let 
     brew install libjpeg
 ```
 
-## Metadata wrangler only
-The metadata wrangler has a number of additional dependencies so that scikit-learn can be installed:
-
-```
-# Metadata wrangler only
-sudo yum install numpy python-matplotlib ipython python-pandas sympy python-nose gcc gcc-c++ lapack-devel blas-static lapack-static
-```
-
-Ubuntu:
-```
-sudo apt-get install liblapack-dev
-```
-
 ## Set up the Elasticsearch service (Circulation manager only)
 
 Library Simplified is currently dependent on Elasticsearch version 1.x. Later Elasticsearch versions will raise errors.
