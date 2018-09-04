@@ -18,9 +18,6 @@ sudo yum install postgresql-devel
 
 # Used by pillow to generate JPG thumbnails.
 sudo yum install libjpeg libjpeg-devel
-
-# Used by cairosvg to generate SVG thumbnails.
-sudo yum install libffi-devel pycairo
 ```
 
 ### On Ubuntu systems:
@@ -36,8 +33,6 @@ sudo apt-get install postgresql-server-dev-9.3
 # Used by pillow to generate JPG thumbnails.
 sudo apt-get install libjpeg-dev
 
-# Used by cairosvg to generate SVG thumbnails.
-sudo apt-get install libffi-dev python-cairo
 
 sudo apt-get install python-numpy
 ```
@@ -67,8 +62,6 @@ Make sure to add the `export PATH` line to your `.bashrc` file -- this will let 
 
 6. Install additional dependencies
 ```
-    brew install cairo --use-clang
-    brew install py2cairo
     brew install libjpeg
     brew install homebrew/dupes/zlib
 ```
