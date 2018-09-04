@@ -63,7 +63,6 @@ Make sure to add the `export PATH` line to your `.bashrc` file -- this will let 
 6. Install additional dependencies
 ```
     brew install libjpeg
-    brew install homebrew/dupes/zlib
 ```
 
 ## Metadata wrangler only
