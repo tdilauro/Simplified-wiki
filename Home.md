@@ -8,6 +8,11 @@ The Library Simplified project aims to streamline the experience of borrowing el
 
 This wiki is written by the Library Simplified developers and intended for use by technical staff at public libraries. For details on how to get your library involved, see [[the Library Simplified website|http://www.librarysimplified.org/]] and the [SimplyE Confluence site](https://confluence.nypl.org/display/SIM).
 
+# Getting started with development
+
+* [Deployment Instructions](https://github.com/NYPL-Simplified/Simplified/wiki/Deployment-Instructions)
+* [Configuring a Demonstration Circulation Manager](https://confluence.nypl.org/display/SIM/Quickstart%3A+Configuring+a+Demonstration+Circulation+Manager)
+
 # Overview
 
 Library Simplified is a collection of middleware, server software and mobile client applications for iOS and Android that libraries may use to deliver digital content to their patrons for experimentation or daily eBook services. It is designed to provide a unique user experience for the lending of eBooks and other digital content. It integrates with technologies and systems common to libraries like:
