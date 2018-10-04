@@ -230,3 +230,7 @@ There are lots of technologies you can use to get your server up and running. Be
 Done? Great! Now you can use whatever tools your dev team likes best to get the app to the people. If you don't have a preference, you might like to use our [Deployment Instructions for Nginx & uWSGI](https://github.com/NYPL-Simplified/Simplified/wiki/Deployment:-Nginx-&-uWSGI). If you run into any problems, please share them along with your solutions, so we can update the instructions.
 
 If you use a different stack, we'd love for you to send us a setup walk-through with us so we can add it to the wiki.
+
+# Initial configuration
+
+Once you have the app server running, you can start configuring libraries and importing content, like any other use of the circulation manager ["Configuring a Demonstration Circulation Manager"](https://confluence.nypl.org/display/SIM/Quickstart%3A+Configuring+a+Demonstration+Circulation+Manager) will walk you through this process.
