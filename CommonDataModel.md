@@ -62,7 +62,7 @@ A `Contributor` is a human being or a corporate entity who is credited with work
 
 A `Contributor`:
 
-* Contains basic biographical information about a person or corporation. Most notably, it has both a `display_name` such as "Octavia Butler", the name that would go on the front of a book, and a `sort_name` such as "Butler, Octacia", the name that would go in a card catalog.
+* Contains basic biographical information about a person or corporation. Most notably, it has both a `display_name` such as "Octavia Butler", the name that would go on the front of a book, and a `sort_name` such as "Butler, Octavia", the name that would go in a card catalog.
 
 ### `Contribution`
 
