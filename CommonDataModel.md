@@ -19,6 +19,35 @@ For the sake of simplicity, this document will talk about "books", but the rules
 
 Bibliographic information is information _about_ books as opposed to the books themselves. A book's title, its cover image, and its ISBN are all bibliographic information--the text of the book is not. Bibliographic information flows into the circulation manager and metadata wrangler from a variety of sources, mainly OPDS feeds and proprietary APIs. We keep track of all this information and where it came from, and when necessary we weigh it, sort it, and boil it down into a small amount of information that can be used by other parts of the system.
 
+# `DataSource`
+
+A `DataSource` is some external entity that puts data into the system. This data generally falls into two categories:
+
+* Bibliographic information _about_ a book, such as its title or cover image. This goes into the bibliographic metadata subsystem.
+* Licensing information which can be used to serve actual copies of the book to library patrons. This goes into the licensing subsystem.
+
+Some examples of `DataSource`s:
+
+* Overdrive, Bibliotheca, and Axis 360 license commercially published ebooks to libraries for delivery to patrons. They also provide bibliographic information about the books they license.
+* [Standard Ebooks](https://standardebooks.org/) provides bibliographic information about books, as well as free copies of the books themselves.
+* OCLC and Content Cafe provide bibliographic information about books, but have no way of giving access to the actual books.
+* VIAF provides information about the people who write books, but very little about the books themselves.
+* The New York Times knows the ISBNs of the books on its best-seller lists, but not much more.
+
+A `DataSource` may also:
+
+* Provide many `Edition`s
+* Provide many `Equivalency`s
+* Provide many `Hyperlink`s
+* Provide many `Resource`s
+* Provide many `Classification`s
+* Provide many `CustomList`s
+* Grant access to many `LicensePool`s
+* Provide many `LicensePoolDeliveryMechanism`s
+* Generate many `CoverageRecord`s
+* Have many associated `Credential`s
+* Have one `IntegrationClient`
+
 ## `Identifier`
 
 An `Identifier` provides a way to uniquely refer to a particular book. Common types of `Identifier` include ISBNs and proprietary IDs such as Overdrive or Bibliotheca IDs.
@@ -111,21 +140,6 @@ A Work represents a book in general, as opposed to one specific edition of that 
 
 
 
-
-DATASOURCES:
-
-A DataSource provides information and bibliographic metadata about, potentially including licenses for, a book.  For example, a DataSource may provide the information that is used to determine the book’s contributors, subject, and/or measurements.  In some cases, a DataSource may also provide the book’s actual content.  Examples of well-known DataSources include Project Gutenberg, Overdrive, Amazon, and the New York Times.  A DataSource may also:
-*Have one IntegrationClient
-*Generate many Editions
-*Generate many CoverageRecords
-*Generate many Equivalencies
-*Grant access to many LicensePools
-*Provide many Hyperlinks
-*Provide many Resources
-*Provide many Classifications
-*Have many associated Credentials
-*Generate many CustomLists
-*Provide many LicensePoolDeliveryMechanisms
 
 
 REPRESENTATIONS and RESOURCES:
