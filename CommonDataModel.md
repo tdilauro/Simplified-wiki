@@ -52,13 +52,19 @@ An `Edition`:
 * May have one or more `Contributor`s, through `Contribution`.
 * May be the _presentation edition_ for a specific `Work`. The presentation edition is a synthetic `Edition` created by the system. We look over a bunch of `Edition`s which are all (supposedly) talking about the same book, and consolidate it into a new `Edition` containing the best or most trusted metadata.
 
-## The contributor subsystem: `Contributor` and `Contribution`
+## The contributor subsystem
+
+This system basically tracks who wrote which book. There are two classes in this subsystem: `Contributor` and `Contribution`. 
+
+### `Contributor`
 
 A `Contributor` is a human being or a corporate entity who is credited with work on some `Edition`. The credit itself is kept in a `Contribution`, which ties a `Contributor` to an `Edition`.
 
 A `Contributor`:
 
 * Contains basic biographical information about a person or corporation. Most notably, it has both a `display_name` such as "Octavia Butler", the name that would go on the front of a book, and a `sort_name` such as "Butler, Octacia", the name that would go in a card catalog.
+
+### `Contribution`
 
 A `Contribution`:
 
@@ -67,8 +73,26 @@ A `Contribution`:
 
 ## The classification subsystem
 
-each of which categorizes the Identifier by assigning it to a different Subject.  A Subject designates the general categories that the book referenced by the Identifier falls under, such as target audience or age range, genre, or format.
+This system tracks how a book might be classified in a card catalog or shelved in a bookstore. There are two classes in this subsystem: `Subject` and `Classification`.
 
+### `Subject`
+
+A `Subject` represents a classification that someone might give a book. `Subject` handles a variety of classification schemes: Dewey Decimal, LLC, LCSH, BISAC, proprietary systems like Overdrive's, and free-form tags, among others. Four pieces of information might be stored with the `Subject`:
+
+* Genre ("Billionare Romance" is a type of romance)
+* Fiction/nonfiction status ("Science Fiction" is always fiction)
+* Target audience ("Young Adult Fantasy" is always YA)
+* Target age ("Picture books" are generally for very young children, not 12-year-olds.)
+
+### `Classification`
+
+A `Classification` is someone's opinion that a book should be filed under a certain `Subject`.
+
+A `Classification`:
+
+* Links a `Subject` to an `Identifier`.
+* Has an associated `DataSource` -- this tracks whose opinion it is.
+* Has an associated `weight` representing how certain we are that the book should be filed under this subject. The higher the number, the more certain we are. If OCLC says that a single library has filed a certain book under "Whales", we'll record that information but give it a low `weight`. If OCLC says that ten thousand libraries have filed this book under "Whales", then it's probably about whales.
 
 ## The measurement subsystem
 
