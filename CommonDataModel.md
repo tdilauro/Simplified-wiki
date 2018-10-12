@@ -1,10 +1,12 @@
-Library Simplified Server-side Data Model Overview
+# Introduction
 
-???
+The Library Simplified circulation manager uses a complex data model to represent the current state of:
 
-This data model is common between the circulation manager and the metadata wrangler, although some pieces are exclusively used by one component or the other. For example, only the circulation manager has lanes or patrons, and only the metadata wrangler has integration clients. The library registry component has a separate data model which is similar but much simpler.
+* All the libraries which use the circulation manager.
+* All the ebooks available to the patrons of those libraries.
+* All the patrons who use the circulation manager, with their active loans and holds.
 
-Although the data model is very complex, it can be split up into a few relatively simple systems:
+Looking at the whole data model at once can be overwhelming, so we'll consider it as a few smaller simpler systems:
 
 * Bibliographic metadata
 * Licensing
@@ -13,6 +15,10 @@ Although the data model is very complex, it can be split up into a few relativel
 * Libraries and patrons
 * Site configuration
 * Background processes
+
+These systems overlap around a few key classes, mainly `DataSource`, `Identifier`, `LicensePool`, and `Work`.
+
+This data model is common between the circulation manager and the metadata wrangler, although some pieces are exclusively used by one component or the other. For example, only the circulation manager has lanes or patrons, and only the metadata wrangler has integration clients. The library registry component has a separate data model which is similar but much simpler.
 
 For the sake of simplicity, this document will talk about "books", but the rules are the same for audiobooks and other forms of content.
 
@@ -194,6 +200,8 @@ Each Library can have:
 
 ## `Lane`
 
+# Patrons
+
 ## `Patron`
 
 Each Patron belongs to one Library.  (The human being represented by the Patron object may, in real life, patronize multiple libraries, but will have a separate patron account at each one.)  
@@ -208,15 +216,17 @@ All of these are created via the LicensePool associated with the collection whic
 A Patron can also have: 
     * Complaints against a LicensePool.  Patrons lodge one or more Complaints against a specific LicensePool.  The purpose of Complaints is to report problems pertaining to         specific books; for example, a Patron can lodge a Complaint stating that a book is incorrectly     categorized or described, or that there is a problem with checking it out, reading, or returning it. 
 
-### `Loan`
+## `Loan`
 
-### `Hold`
+## `Hold`
     
-### `Credential`
+## `Credential`
 
 A Credential object stores one Patron’s credentials for external services.  One major example of a type of credential is a Patron’s “Identifier for Adobe Account ID purposes” Credential.  A Credential may have:
 *many associated DRMDeviceIdentifiers.  A DRMDeviceIdentifier registers the Patron’s device with a particular DRM scheme.
 *one associated DelegatedPatronIdentifier.  A DelegatedPatronIdentifier is an identifier that this library has generated for a patron of a different library.
+
+## `Annotation`
 
 # Site configuration
 
