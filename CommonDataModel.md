@@ -149,16 +149,33 @@ This system keeps track of external resources associated with a book. An "extern
 
 ### `Hyperlink`
 
+A `Hyperlink` represents a connection between an `Identifier` and a `Resource`. It contains two extra pieces of information about the link:
+
+* A `DataSource` -- who provided this link?
+* `rel` -- what is the relationship between the `Identifier` and the `Resource`? "There's a link" is very vague; this is more specific. Different `rel` values are defined for a cover image, a thumbnail image, review, a description, a copy of the actual book, and so on.
+
 ### `Resource`
 
-A Representation is a cached document obtained from the Web.  They can be associated with  Identifiers via Resources.  For example, in the case of a cover image for a book: a Hyperlink would be created to associate the book’s Identifier with a particular URL (the Resource), which would lead to an image file (the Representation).  
-
-If a Resource is a derivative of another Resource, a ResourceTransformation object is created as a record of this.  The ResourceTransformation object stores the original Resource, the derived Resource, and the settings that were used to transform the former into the latter.
-
+A `Resource` represents a document found somewhere on the Internet -- probably either a cover image or a free book. It has a `url`
 
 ### `Representation`
 
+A `Representation` is a local cache of a `Resource`. It represents the attempt to actually download a `Resource` and what happened when we tried. If everything went well, the `Representation` will contain a file--binary, text, HTML, or image. Otherwise, the `Representation` will contain information about what went wrong -- maybe the server was down or something.
+
+An image `Representation` that's a thumbnail of another image `Representation` is connected to its original through `.thumbnail_of`.
+
+Here's how the whole subsystem works together. Let's say one of our data sources that claims the URL http://example.org/covers/my-book.png is a cover image for the ISBN "97812345678". We want to represent this fact in our system.
+
+1. We'd create an `Identifier` for the ISBN "97812345678".
+2. We'd create a `Resource` for `http://example.org/covers/my-book.png`
+3. We'd create a `Hyperlink` with the `rel` "http://opds-spec.org/image", for "cover image". The `.data_source` of this `Hyperlink` would be set to the `DataSource` that made the original claim.
+4. We don't have to actually download http://example.org/covers/my-book.png, but if we do decide to download it, the binary image will be stored as a `Representation`. If there's a problem and we can't complete the download, that fact will be stored in the `Representation` instead.
+5. If we download the image and everything goes well, we may also decide to create a thumbnail out of it. This would be stored as a second `Representation`, and its `.thumbnail_of` would point to the original, full-size `Representation`.
+
 ### `ResourceTransformation`
+
+If a Resource is a derivative of another Resource, a ResourceTransformation object is created as a record of this.  The ResourceTransformation object stores the original Resource, the derived Resource, and the settings that were used to transform the former into the latter.
+
 
 # Licensing
 
