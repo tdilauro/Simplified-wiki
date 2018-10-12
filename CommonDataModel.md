@@ -234,7 +234,11 @@ A Credential may have associated `DRMDeviceIdentifier`s. This is used to keep tr
 
 ## `Annotation`
 
-## `DRMDeviceIdentifier`
+A patron in the process of reading a book has a "last reading position" -- the place where they left off. If a patron closes and reopens a book, they expect the book to open their last reading position, not to the beginning of the book.
+
+An `Annotation` stores a `Patron`'s last reading position for a `LicensePool`. If the patron creates bookmarks or highlights text, those are also stored as `Annotation`s.
+
+Annotations are synced between client and server using the [Web Annotation Protocol](https://www.w3.org/TR/annotation-protocol/). A patron must opt in before their annotations are synchronized with the circulation manager. A patron's decision to opt-in or not is tracked in the field `Patron.synchronize_annotations`.
 
 # Site configuration
 
