@@ -139,7 +139,7 @@ A `Measurement` is a numeric value associated with an `Identifier`. It represent
 
 ## The linked resources subsystem
 
-This system keeps track of external resources associated with a book. An "external resource" can be pretty much anything, but these are the most common resources we track
+This system keeps track of external resources associated with a book. An "external resource" can be pretty much anything, but these are the most common types of resources we track:
 
 * A cover image 
 * A thumbnailed version of a preexisting cover image
@@ -156,7 +156,11 @@ A `Hyperlink` represents a connection between an `Identifier` and a `Resource`. 
 
 ### `Resource`
 
-A `Resource` represents a document found somewhere on the Internet -- probably either a cover image or a free book. It has a `url`
+A `Resource` represents a document found somewhere on the Internet -- probably either a cover image or a free book. It has a `url`, and that's basically it -- everything about the document itself is kept in `Representation`.
+
+* A `Resource` that's an image may be chosen by an `Edition` as the best available cover image for a given book.
+* A `Resource` that's a textual description may be chosen by a `Work` as the best description for a given book.
+* A `LicensePoolDeliveryMechanism` for an open-access book will point to a `Resource` that represents the book itself.
 
 ### `Representation`
 
