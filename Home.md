@@ -71,8 +71,8 @@ All development and code review happens here on Github. These are our main proje
 # Architecture
 
 * [[Overview|ArchitecturalOverview]]
-* [[Supporting multiple libraries on one server|MultiTenancy]]
 * [[The standards we use|StandardsDocuments]]
+* [[Our common data model|CommonDataModel]]
 * [[The generic metadata layer|MetadataLayer]]
 * [[The generic circulation API|GenericCirculation]]
 * [[The generic authentication API|GenericAuthentication]]
@@ -88,6 +88,7 @@ All development and code review happens here on Github. These are our main proje
 * [[OPDS For Library Patrons|OPDS-For-Library-Patrons]], our library-specific extensions to OPDS.
 * [[Our extensions|Authentication-For-OPDS-Extensions]] to the [[Authentication for OPDS spec|https://docs.google.com/document/d/1-_0HHt664bDjybtCauBJXUSDXiT-Clg1sZUVNxHyLjw/edit#heading=h.r2fysm93j6kk]]
 * [[APIs implemented by the Metadata Wrangler|Metadata-Wrangler]]
+* [[Supporting multiple libraries on one server|MultiTenancy]]
 
 # Proposed changes
 
