@@ -226,11 +226,11 @@ These classes are nearly identical. They represent a patron's relationship with 
 
 The `Patron` object keeps track of unique identifiers that identify a patron to their ILS. Other identifiers are stored in `Credential` objects.
 
-One major type of credential is the “Identifier for Adobe Account ID purposes”. This is an alias provided to Adobe (through the [Short Client Token|Short-Client-Token] system) whenever the patron needs to activate a mobile device with their Adobe ID.
+One major type of credential is the “Identifier for Adobe Account ID purposes”. This is an alias provided to Adobe (through the [Short Client Token](Short-Client-Token) system) whenever the patron needs to activate a mobile device with their Adobe ID.
 
 Another major type of credential is the “OAuth Token”. This is a temporary token granted by an ebook vendor such as Overdrive. It gives the circulation manager the ability to take action on the patron's behalf, e.g. by borrowing books or placing holds.
 
-A Credential may have associated `DRMDeviceIdentifier`s. This is used to keep track of the device IDs associated with a patron's Adobe ID. This makes the [ACS Device Management Protocol|DRM-Device-Management] possible.
+A Credential may have associated `DRMDeviceIdentifier`s. This is used to keep track of the device IDs associated with a patron's Adobe ID. This makes the [ACS Device Management Protocol](DRM-Device-Management) possible.
 
 ## `Annotation`
 
