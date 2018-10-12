@@ -36,14 +36,28 @@ An `Identifier` may
 
 ## `Edition`
 
-An `Edition` is a collection of information about a book from a particular source. If different data sources provide conflicting information about a book, each data source is given its own `Edition` and we sort it out later.
+An `Edition` is a collection of information about a book from a particular data source. Like most items in the "bibliographic metadata" section, it represents an _opinion_. If different data sources give conflicting information about a book, that's fine -- everyone has their opinion. When this happens, we create multiple `Edition`s and we sort it out later, when it's time to make the _presentation edition_.
 
 An `Edition`:
 
-* Has one Identifier  
-* May be the presentation edition*i.e. the edition visible to library patrons*for a specific Work.
-* Contains metadata*including title, series, author, language, publisher, medium, and cover image*for the Work to which it belongs
-*May have one or more Contributors, through Contributions.  A Contributor is anyone who has contributed to the book in some capacity.  Some common examples of Contributors include authors, editors, translators, illustrators, and narrators.
+* Has one `DataSource`. This is the data source whose opinions are recorded in the `Edition`.
+* Has one `Identifier`, the `primary_identifier`. This identifies the book the data source is talking about.
+* Contains basic metadata -- title, series, language, publisher, medium -- for that book.
+* May have one or more `Contributor`s, through `Contribution`.
+* May be the _presentation edition_ for a specific `Work`. The presentation edition is a synthetic `Edition` created by the system. We look over a bunch of `Edition`s which are all (supposedly) talking about the same book, and consolidate it into a new `Edition` containing the best or most trusted metadata.
+
+## `Contributor` and `Contribution`
+
+A `Contributor` is a human being or a corporate entity who is credited with work on some `Edition`. The credit itself is kept in a `Contribution`, which ties a `Contributor` to an `Edition`.
+
+A `Contributor`:
+
+* Contains basic biographical information about a person or corporation. Most notably, it has both a `display_name` such as "Octavia Butler", the name that would go on the front of a book, and a `sort_name` such as "Butler, Octacia", the name that would go in a card catalog.
+
+A `Contribution`:
+
+* Links a `Contributor` to an `Edition`.
+* Contains a `role` describing the work the `Contributor` did on the `Edition`. Common roles include author, editor, translator, illustrator, and narrator.
 
 WORKS:
 
