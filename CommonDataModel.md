@@ -12,7 +12,8 @@ Looking at the whole data model at once can be overwhelming, so we'll consider i
 * Licensing
 * Works
 * Custom lists
-* Libraries and patrons
+* Libraries
+* Patrons
 * Site configuration
 * Background processes
 
@@ -174,6 +175,9 @@ A LicensePool is a group of licenses granting access to one particular Work.  If
 *has at least one DeliveryMechanism, through LicensePoolDeliveryMechanism.  A DeliveryMechanism is the means by which a distributor delivers a book to a Patron.  There are two parts to a DeliveryMechanism: 1) the DRM scheme implemented by the distributor, and 2) the content type of the book (e.g. Kindle, Nook, etc.).
 *has a RightsStatus, through LicensePoolDeliveryMechanism.  A RightsStatus represents the terms under which a book has been made available to the public. The most common varieties of RightsStatus are 1) in copyright, 2) public domain, and 3) a Creative Commons license. 
 
+### `Complaint`
+
+Patrons lodge one or more Complaints against a specific LicensePool.  The purpose of Complaints is to report problems pertaining to         specific books; for example, a Patron can lodge a Complaint stating that a book is incorrectly     categorized or described, or that there is a problem with checking it out, reading, or returning it. 
 
 # Works
 
@@ -206,29 +210,31 @@ Each Library can have:
 
 ## `Patron`
 
-Each Patron belongs to one Library.  (The human being represented by the Patron object may, in real life, patronize multiple libraries, but will have a separate patron account at each one.)  
+A `Patron` object represents a human being who is a patron of some `Library`. More precisely, a `Patron` object represents that person's library card. A human being with cards for multiple libraries will have multiple `Patron` objects.
 
-A Patron can have:
-    * Loans: books which are currently checked out by that patron
-    * Holds: books which that patron is in line to check out
-    * Annotations: bookmarks, comments, etc. which the patron has created for                  particular books.  
+Most of the information in the `Patron` record comes from the library's ILS. The most important pieces of information are the three fields used to uniquely identify a patron:
 
-All of these are created via the LicensePool associated with the collection which contains the book in question.  
+* `external_identifier` - A permanent unique identifier for this patron's ILS record. The patron probably does not know their own `external_identifier`. We keep track of this so that you don't lose your loans and holds when you get a new library card.
+* `authorization_identifier` - A nonpermanent unique identifier for the patron, usually numeric. This identifier is printed on their physical library card and used by the patron to identify themselves to the library. Libraries may call this by different terms: a "card number", a "barcode", etc.
+* `username` - A nonpermanent unique identifier chosen by the patron themselves as a shorthand method of identification. Most libraries don't give their patrons usernames as distinct from their authorization identifiers, but some do. If present, this is generally alphanumeric.
 
-A Patron can also have: 
-    * Complaints against a LicensePool.  Patrons lodge one or more Complaints against a specific LicensePool.  The purpose of Complaints is to report problems pertaining to         specific books; for example, a Patron can lodge a Complaint stating that a book is incorrectly     categorized or described, or that there is a problem with checking it out, reading, or returning it. 
+## `Loan` and `Hold`
 
-## `Loan`
-
-## `Hold`
+These classes are nearly identical. They represent a patron's relationship with a `LicensePool` -- either they have the right to read the book right now (`Loan`) or they're waiting in line for the chance to read it (`Hold`).
     
 ## `Credential`
 
-A Credential object stores one Patron’s credentials for external services.  One major example of a type of credential is a Patron’s “Identifier for Adobe Account ID purposes” Credential.  A Credential may have:
-*many associated DRMDeviceIdentifiers.  A DRMDeviceIdentifier registers the Patron’s device with a particular DRM scheme.
-*one associated DelegatedPatronIdentifier.  A DelegatedPatronIdentifier is an identifier that this library has generated for a patron of a different library.
+The `Patron` object keeps track of unique identifiers that identify a patron to their ILS. Other identifiers are stored in `Credential` objects.
+
+One major type of credential is the “Identifier for Adobe Account ID purposes”. This is an alias provided to Adobe (through the [Short Client Token|Short-Client-Token] system) whenever the patron needs to activate a mobile device with their Adobe ID.
+
+Another major type of credential is the “OAuth Token”. This is a temporary token granted by an ebook vendor such as Overdrive. It gives the circulation manager the ability to take action on the patron's behalf, e.g. by borrowing books or placing holds.
+
+A Credential may have associated `DRMDeviceIdentifier`s. This is used to keep track of the device IDs associated with a patron's Adobe ID. This makes the [ACS Device Management Protocol|DRM-Device-Management] possible.
 
 ## `Annotation`
+
+## `DRMDeviceIdentifier`
 
 # Site configuration
 
