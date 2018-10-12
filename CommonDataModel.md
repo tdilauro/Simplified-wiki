@@ -106,7 +106,7 @@ This system tracks how a book might be classified in a card catalog or shelved i
 
 ### `Subject`
 
-A `Subject` represents a classification that someone might give a book. `Subject` handles a variety of classification schemes: Dewey Decimal, LLC, LCSH, BISAC, proprietary systems like Overdrive's, and free-form tags, among others. Four pieces of information might be stored with the `Subject`:
+A `Subject` represents a classification that someone might give a book. `Subject` handles a variety of classification schemes: Dewey Decimal, LLC, LCSH, BISAC, proprietary systems like Overdrive's, and free-form tags, among others. Four pieces of information might be derived from the `Subject`, and will be stored with the `Subject` if possible:
 
 * Genre ("Billionare Romance" is a type of romance)
 * Fiction/nonfiction status ("Science Fiction" is always fiction)
@@ -123,7 +123,9 @@ A `Classification`:
 * Has an associated `DataSource` -- this tracks whose opinion it is.
 * Has an associated `weight` representing how certain we are that the book should be filed under this subject. The higher the number, the more certain we are. If OCLC says that a single library has filed a certain book under "Whales", we'll record that information but give it a low `weight`. If OCLC says that ten thousand libraries have filed this book under "Whales", then it's probably about whales.
 
-## The measurement subsystem
+## `Measurement`
+
+A `Measurement` is a numeric value associated with an `Identifier`. It represents some quality that distinguishes one book from others. The most useful measurements are _popularity_ (a popular book is read/accessed/purchased/accessioned more often) and _rating_ (a highly rated book is considered to be of high quality).
 
 ## The linked resources subsystem
 
