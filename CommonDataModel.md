@@ -18,6 +18,8 @@ Looking at the whole data model at once can be overwhelming, so we'll consider i
 
 These systems overlap around a few key classes, mainly `DataSource`, `Identifier`, `LicensePool`, and `Work`.
 
+The code for the data model is in [the `model` package of the `server_core` project](https://github.com/NYPL-Simplified/server_core/tree/master/model).
+
 This data model is common between the circulation manager and the metadata wrangler, although some pieces are exclusively used by one component or the other. For example, only the circulation manager has lanes or patrons, and only the metadata wrangler has integration clients. The library registry component has a separate data model which is similar but much simpler.
 
 For the sake of simplicity, this document will talk about "books", but the rules are the same for audiobooks and other forms of content.
