@@ -164,9 +164,13 @@ A `Resource` represents a document found somewhere on the Internet -- probably e
 
 ### `Representation`
 
-A `Representation` is a local cache of a `Resource`. It represents the attempt to actually download a `Resource` and what happened when we tried. If everything went well, the `Representation` will contain a file--binary, text, HTML, or image. Otherwise, the `Representation` will contain information about what went wrong -- maybe the server was down or something.
+A `Representation` is a local cache of a `Resource`. It represents our attempt to actually download a `Resource` and records what happened when we tried. If everything went well, the `Representation` will contain a file--binary, text, HTML, or image. Otherwise, the `Representation` will contain information about what went wrong -- maybe the server was down or something.
+
+Circulation managers don't usually create `Representation`s -- they rely on the metadata wrangler to do that.
 
 An image `Representation` that's a thumbnail of another image `Representation` is connected to its original through `.thumbnail_of`.
+
+### Putting it all together
 
 Here's how the whole subsystem works together. Let's say one of our data sources that claims the URL http://example.org/covers/my-book.png is a cover image for the ISBN "97812345678". We want to represent this fact in our system.
 
@@ -178,8 +182,9 @@ Here's how the whole subsystem works together. Let's say one of our data sources
 
 ### `ResourceTransformation`
 
-If a Resource is a derivative of another Resource, a ResourceTransformation object is created as a record of this.  The ResourceTransformation object stores the original Resource, the derived Resource, and the settings that were used to transform the former into the latter.
+A `ResourceTransformation` represents a change that was made to one `Resource` to generate another `Resource`.  Currently it's used in the circulation manager's "cover image upload" feature. You can upload a background image (the original `Resource`) and paste the title and author onto it (a `ResourceTransformation` which results in a second `Resource`).
 
+Theoretically, thumbnailing could also be handled as a `ResourceTransformation`, but it's probably not worth making this change.
 
 # Licensing
 
