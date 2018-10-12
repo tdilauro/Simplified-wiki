@@ -7,7 +7,7 @@ This data model is common between the circulation manager and the metadata wrang
 Although the data model is very complex, it can be split up into six relatively simple systems:
 
 * Bibliographic metadata
-* 
+* Hyperlinks
 *
 *
 *
@@ -23,16 +23,22 @@ Bibliographic information is information _about_ books as opposed to the books t
 
 An `Identifier` provides a way to uniquely refer to a particular book. Common types of `Identifier` include ISBNs and proprietary IDs such as Overdrive or Bibliotheca IDs.
 
-An `Identifier` may
+An `Identifier` may:
 
-* Serve as the primary identifier for multiple Editions
-* Serve as the identifier for many LicensePools, through Collection
-* Have many LicensePoolDeliveryMechanisms, through LicensePool
-* Have many HyperLinks connecting it to external Resources, such as cover images or descriptions.
-* Have many Measurements of the various numerically-quantifiable qualities (such as popularity, rating, page count, number of published editions, etc.) of the book to which it refers
-* Have many Classifications, each of which categorizes the Identifier by assigning it to a different Subject.  A Subject designates the general categories that the book referenced by the Identifier falls under, such as target audience or age range, genre, or format.
+* Have many `Classification`s representing how the book would be shelved in a bookstore or library. (See the classification subsystem.)
+* Have many `Measurement`s of quantities like quality and popularity. (See the measurement subsystem.)
+* Have many `HyperLink`s to associated files such as cover images or descriptions. (See the linked resources subsystem.)
+* Participate in many `Equivalency`s.
+* Serve as the `primary_identifier` for multiple `Edition`s.
+* Serve as the `identifier` for many `LicensePool`s, through `Collection`.
 * Be associated with one Work, through Edition
-* Participate in many Equivalencies.  An Equivalency is an assertion made by a particular DataSource, according to which two different Identifiers are in fact referring to the same book, and are therefore equivalent.  
+  
+
+### `Equivalency`
+
+An `Equivalency` is an assertion made by a `DataSource` that two different `Identifiers` refer to the same book.
+
+* The `strength` of the `Equivalency` is a number from -1 to 1 indicating how much we trust the assertion. When Overdrive says that an Overdrive ID is equivalent to an ISBN, we give that `Equivalency` a `strength` of 1, because Overdrive got the ISBN from the publisher and assigned the Overdrive ID itself. When OCLC says that two ISBNs represent the same book, we give it a lower `strength`, because OCLC is frequently wrong about this. A negative `strength` means that the `DataSource` is pretty sure two `Identifier`s represent _different_ books.
 
 ## `Edition`
 
@@ -46,7 +52,7 @@ An `Edition`:
 * May have one or more `Contributor`s, through `Contribution`.
 * May be the _presentation edition_ for a specific `Work`. The presentation edition is a synthetic `Edition` created by the system. We look over a bunch of `Edition`s which are all (supposedly) talking about the same book, and consolidate it into a new `Edition` containing the best or most trusted metadata.
 
-## `Contributor` and `Contribution`
+## The contributor subsystem: `Contributor` and `Contribution`
 
 A `Contributor` is a human being or a corporate entity who is credited with work on some `Edition`. The credit itself is kept in a `Contribution`, which ties a `Contributor` to an `Edition`.
 
@@ -58,6 +64,15 @@ A `Contribution`:
 
 * Links a `Contributor` to an `Edition`.
 * Contains a `role` describing the work the `Contributor` did on the `Edition`. Common roles include author, editor, translator, illustrator, and narrator.
+
+## The classification subsystem
+
+each of which categorizes the Identifier by assigning it to a different Subject.  A Subject designates the general categories that the book referenced by the Identifier falls under, such as target audience or age range, genre, or format.
+
+
+## The measurement subsystem
+
+## The linked resources subsystem
 
 WORKS:
 
