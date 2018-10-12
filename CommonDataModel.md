@@ -129,6 +129,22 @@ A `Measurement` is a numeric value associated with an `Identifier`. It represent
 
 ## The linked resources subsystem
 
+This system keeps track of external resources associated with a book. An "external resource" can be pretty much anything, but these are the most common resources we track
+
+* A cover image 
+* A thumbnailed version of a preexisting cover image
+* A textual description
+* An EPUB copy of a free book
+* A review
+
+### `Hyperlink`
+
+### `Resource`
+
+### `Representation`
+
+### `ResourceTransformation`
+
 WORKS:
 
 A Work represents a book in general, as opposed to one specific edition of that book.  A Work:
