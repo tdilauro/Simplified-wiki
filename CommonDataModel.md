@@ -1,17 +1,18 @@
 Library Simplified Server-side Data Model Overview
 
-
+???
 
 This data model is common between the circulation manager and the metadata wrangler, although some pieces are exclusively used by one component or the other. For example, only the circulation manager has lanes or patrons, and only the metadata wrangler has integration clients. The library registry component has a separate data model which is similar but much simpler.
 
-Although the data model is very complex, it can be split up into six relatively simple systems:
+Although the data model is very complex, it can be split up into a few relatively simple systems:
 
 * Bibliographic metadata
-* Hyperlinks
-*
-*
-*
-*
+* Licensing
+* Works
+* Custom lists
+* Libraries and patrons
+* Site configuration
+* Background processes
 
 For the sake of simplicity, this document will talk about "books", but the rules are the same for audiobooks and other forms of content.
 
@@ -19,7 +20,7 @@ For the sake of simplicity, this document will talk about "books", but the rules
 
 Bibliographic information is information _about_ books as opposed to the books themselves. A book's title, its cover image, and its ISBN are all bibliographic information--the text of the book is not. Bibliographic information flows into the circulation manager and metadata wrangler from a variety of sources, mainly OPDS feeds and proprietary APIs. We keep track of all this information and where it came from, and when necessary we weigh it, sort it, and boil it down into a small amount of information that can be used by other parts of the system.
 
-# `DataSource`
+## `DataSource`
 
 A `DataSource` is some external entity that puts data into the system. This data generally falls into two categories:
 
@@ -141,11 +142,32 @@ This system keeps track of external resources associated with a book. An "extern
 
 ### `Resource`
 
+A Representation is a cached document obtained from the Web.  They can be associated with  Identifiers via Resources.  For example, in the case of a cover image for a book: a Hyperlink would be created to associate the book’s Identifier with a particular URL (the Resource), which would lead to an image file (the Representation).  
+
+If a Resource is a derivative of another Resource, a ResourceTransformation object is created as a record of this.  The ResourceTransformation object stores the original Resource, the derived Resource, and the settings that were used to transform the former into the latter.
+
+
 ### `Representation`
 
 ### `ResourceTransformation`
 
-WORKS:
+# Licensing
+
+## `Collection`
+
+## `LicensePool`
+
+A LicensePool is a group of licenses granting access to one particular Work.  If a Work is not associated with a LicensePool, patrons will not be able to check it out.  In some cases, usually involving open-access LicensePools, there may be more than one LicensePool associated with the same Work; if this happens, the LicensePool which provides the highest-quality version of the book will take precedence.  Each LicensePool:
+*is associated with the Identifier and the DataSource of the Work to which it grants access
+*belongs to one Collection
+*has one Edition, containing the metadata used to describe the Work
+*can have many Loans, Holds, Annotations, and Complaints
+*can have many CirculationEvents.  A CirculationEvent is a record of a change to the LicensePool’s circulation status.  Types of CirculationEvent include events taking place within the circulation manager (e.g. works being checked out or placed on hold), events reported by a distributor (such as licenses being added or removed), and events reported by a client app (i.e. a book having been opened).
+*has at least one DeliveryMechanism, through LicensePoolDeliveryMechanism.  A DeliveryMechanism is the means by which a distributor delivers a book to a Patron.  There are two parts to a DeliveryMechanism: 1) the DRM scheme implemented by the distributor, and 2) the content type of the book (e.g. Kindle, Nook, etc.).
+*has a RightsStatus, through LicensePoolDeliveryMechanism.  A RightsStatus represents the terms under which a book has been made available to the public. The most common varieties of RightsStatus are 1) in copyright, 2) public domain, and 3) a Creative Commons license. 
+
+
+# Works
 
 A Work represents a book in general, as opposed to one specific edition of that book.  A Work:
 *May have copies scattered across many LicensePools
@@ -154,21 +176,25 @@ A Work represents a book in general, as opposed to one specific edition of that 
 *May be referenced by multiple CustomListEntries and/or CachedFeeds
 *May participate in many WorkGenre assignments (i.e. assignments of a Genre to a Work).  
 
+# Custom lists
 
+# Libraries
 
+## `Library`
 
+Each Library can have: 
+    * one or more Collections.  A Collection is a set of LicensePools, through which books are provided to the Library.  Each Collection can have multiple Libraries to which it provides books, and can have multiple child Collections and multiple LicensePools.      
+    * one or more CustomLists.  A CustomList is a list of books, typically grouped by a criterion such as genre, subject, bestseller status, etc., which a librarian has compiled in the admin interface.  Each CustomList is associated with, and presented to patrons in the front-end as, one Lane.  A CustomList has at least one CustomListEntry, each of which refers to a particular Work.      
+    * one or more Lanes, each of which is associated with one CachedFeed.
+    * one or more Admins.
 
+### Admins
 
+  Admins are people who have access to the admin interface (via accounts in the circulation manager), such as librarians.   They are associated with a particular library, via AdminRole.  An Admin may have more than one AdminRole.  The potential AdminRoles are: SystemAdmin; SitewideLibraryManager; LibraryManager; SitewideLibrarian; and Librarian
 
-REPRESENTATIONS and RESOURCES:
+## `Lane`
 
-A Representation is a cached document obtained from the Web.  They can be associated with  Identifiers via Resources.  For example, in the case of a cover image for a book: a Hyperlink would be created to associate the book’s Identifier with a particular URL (the Resource), which would lead to an image file (the Representation).  
-
-If a Resource is a derivative of another Resource, a ResourceTransformation object is created as a record of this.  The ResourceTransformation object stores the original Resource, the derived Resource, and the settings that were used to transform the former into the latter.
-
-
-
-PATRONS:
+## `Patron`
 
 Each Patron belongs to one Library.  (The human being represented by the Patron object may, in real life, patronize multiple libraries, but will have a separate patron account at each one.)  
 
@@ -182,46 +208,29 @@ All of these are created via the LicensePool associated with the collection whic
 A Patron can also have: 
     * Complaints against a LicensePool.  Patrons lodge one or more Complaints against a specific LicensePool.  The purpose of Complaints is to report problems pertaining to         specific books; for example, a Patron can lodge a Complaint stating that a book is incorrectly     categorized or described, or that there is a problem with checking it out, reading, or returning it. 
 
-LIBRARIES:
+### `Loan`
 
-Each Library can have: 
-    * one or more Collections.  A Collection is a set of LicensePools, through which books are provided to the Library.  Each Collection can have multiple Libraries to which it provides books, and can have multiple child Collections and multiple LicensePools.      
-    * one or more CustomLists.  A CustomList is a list of books, typically grouped by a criterion such as genre, subject, bestseller status, etc., which a librarian has compiled in the admin interface.  Each CustomList is associated with, and presented to patrons in the front-end as, one Lane.  A CustomList has at least one CustomListEntry, each of which refers to a particular Work.      
-    * one or more Lanes, each of which is associated with one CachedFeed.
-    * one or more Admins.  Admins are people who have access to the admin interface (via accounts in the circulation manager), such as librarians.   They are associated with a particular library, via AdminRole.  An Admin may have more than one AdminRole.  The potential AdminRoles are: SystemAdmin; SitewideLibraryManager; LibraryManager; SitewideLibrarian; and Librarian
+### `Hold`
     
-
-
-LICENSING:
-
-A LicensePool is a group of licenses granting access to one particular Work.  If a Work is not associated with a LicensePool, patrons will not be able to check it out.  In some cases, usually involving open-access LicensePools, there may be more than one LicensePool associated with the same Work; if this happens, the LicensePool which provides the highest-quality version of the book will take precedence.  Each LicensePool:
-*is associated with the Identifier and the DataSource of the Work to which it grants access
-*belongs to one Collection
-*has one Edition, containing the metadata used to describe the Work
-*can have many Loans, Holds, Annotations, and Complaints
-*can have many CirculationEvents.  A CirculationEvent is a record of a change to the LicensePool’s circulation status.  Types of CirculationEvent include events taking place within the circulation manager (e.g. works being checked out or placed on hold), events reported by a distributor (such as licenses being added or removed), and events reported by a client app (i.e. a book having been opened).
-*has at least one DeliveryMechanism, through LicensePoolDeliveryMechanism.  A DeliveryMechanism is the means by which a distributor delivers a book to a Patron.  There are two parts to a DeliveryMechanism: 1) the DRM scheme implemented by the distributor, and 2) the content type of the book (e.g. Kindle, Nook, etc.).
-*has a RightsStatus, through LicensePoolDeliveryMechanism.  A RightsStatus represents the terms under which a book has been made available to the public. The most common varieties of RightsStatus are 1) in copyright, 2) public domain, and 3) a Creative Commons license. 
-
-CREDENTIALS:
+### `Credential`
 
 A Credential object stores one Patron’s credentials for external services.  One major example of a type of credential is a Patron’s “Identifier for Adobe Account ID purposes” Credential.  A Credential may have:
 *many associated DRMDeviceIdentifiers.  A DRMDeviceIdentifier registers the Patron’s device with a particular DRM scheme.
 *one associated DelegatedPatronIdentifier.  A DelegatedPatronIdentifier is an identifier that this library has generated for a patron of a different library.
 
+# Site configuration
 
+## `ExternalIntegration`
 
+A ConfigurationSetting  holds information about an extra piece of site configuration.  A ConfigurationSetting may be associated with an ExternalIntegration, a Library, both, or neither.
 
+## `ConfigurationSetting`
 
-BACKGROUND PROCESSES:
+An ExternalIntegration contains the configuration for connecting to a third-party API.  Commonly used third-party APIs include the metadata wrangler, DataSources that require protocols, authentication services, storage services, and search providers.
+
+# Background processes
 
 * A Timestamp provides a record of when a Monitor was run.
 * A CoverageRecord provides a record of any processes that have been performed on a book (referred to via its Identifier)
 * A WorkCoverageRecord provides a record of any processes that have been performed on a Work (similar to what CoverageRecord does for Identifiers).
-
-CONFIGURATION:
-
-A ConfigurationSetting  holds information about an extra piece of site configuration.  A ConfigurationSetting may be associated with an ExternalIntegration, a Library, both, or neither.
-
-An ExternalIntegration contains the configuration for connecting to a third-party API.  Commonly used third-party APIs include the metadata wrangler, DataSources that require protocols, authentication services, storage services, and search providers.
 
