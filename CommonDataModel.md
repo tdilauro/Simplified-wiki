@@ -133,6 +133,14 @@ A `Classification`:
 * Has an associated `DataSource` -- this tracks whose opinion it is.
 * Has an associated `weight` representing how certain we are that the book should be filed under this subject. The higher the number, the more certain we are. If OCLC says that a single library has filed a certain book under "Whales", we'll record that information but give it a low `weight`. If OCLC says that ten thousand libraries have filed this book under "Whales", then it's probably about whales.
 
+### `Genre`
+
+There are many different data sources which use many different classification schemes for the same books. Rather than expose this chaos to patrons, we have defined about 150 `Genre`s, corresponding to the sections of a large bookstore or branch library: "Romance", "Biography", and so on.
+
+Each `Subject` may be associated with a `Genre`. When `LicensePool`s are turned into `Work`s, all the related `Classification`s are gathered together. We then assign the Work to the `Genre` that showed up the most.
+
+A `Genre` may also be associated with one or more `Lane`s -- this is the primary technique we use when choosing  how to show books to patrons.
+
 ## `Measurement`
 
 A `Measurement` is a numeric value associated with an `Identifier`. It represents some quality that distinguishes one book from others. The most useful measurements are _popularity_ (a popular book is read/accessed/purchased/accessioned more often) and _rating_ (a highly rated book is considered to be of high quality).
@@ -190,33 +198,68 @@ Theoretically, thumbnailing could also be handled as a `ResourceTransformation`,
 
 ## `Collection`
 
-A collection represents a set of books that are being made available through a given set of credentials.
+A `Collection` represents a set of books that are made available through one set of credentials. 
 
-TODO
+One library may have multiple collections from different vendors, and multiple libraries on the same circulation manager may share a collection.
+
+The books themselves are stored as `LicensePool`s, and the credentials are stored in an `ExternalIntegration`.
 
 ## `LicensePool`
 
-A LicensePool is a group of licenses granting access to one particular Work.  If a Work is not associated with a LicensePool, patrons will not be able to check it out.  In some cases, usually involving open-access LicensePools, there may be more than one LicensePool associated with the same Work; if this happens, the LicensePool which provides the highest-quality version of the book will take precedence.  Each LicensePool:
-*is associated with the Identifier and the DataSource of the Work to which it grants access
-*belongs to one Collection
-*has one Edition, containing the metadata used to describe the Work
-*can have many Loans, Holds, Annotations, and Complaints
-*can have many CirculationEvents.  A CirculationEvent is a record of a change to the LicensePool’s circulation status.  Types of CirculationEvent include events taking place within the circulation manager (e.g. works being checked out or placed on hold), events reported by a distributor (such as licenses being added or removed), and events reported by a client app (i.e. a book having been opened).
-*has at least one DeliveryMechanism, through LicensePoolDeliveryMechanism.  A DeliveryMechanism is the means by which a distributor delivers a book to a Patron.  There are two parts to a DeliveryMechanism: 1) the DRM scheme implemented by the distributor, and 2) the content type of the book (e.g. Kindle, Nook, etc.).
-*has a RightsStatus, through LicensePoolDeliveryMechanism.  A RightsStatus represents the terms under which a book has been made available to the public. The most common varieties of RightsStatus are 1) in copyright, 2) public domain, and 3) a Creative Commons license. 
+A LicensePool represents an agreement on the part of a book vendor to actually deliver a book to a patron.
+
+ a group of licenses granting access to one particular Work.
+
+If a Work is not associated with a LicensePool, patrons will not be able to check it out.  
+
+In some cases, usually involving open-access LicensePools, there may be more than one LicensePool associated with the same Work; if this happens, the LicensePool which provides the highest-quality version of the book will take precedence.
+
+Each LicensePool:
+* is associated with an Identifier, representing how the vendor identifies the book.
+* is associated with a DataSource, representing the vendor who provides the book.
+* belongs to one Collection.
+* has one presentation edition, containing the most complete set of metadata available for the book.
+* can have many Loans, Holds, Annotations, and Complaints
+* can have many `CirculationEvents`.  
+* should have at least one `DeliveryMechanism`, through `LicensePoolDeliveryMechanism`.
+* has a RightsStatus, through LicensePoolDeliveryMechanism.
+
+### `DeliveryMechanism` and `LicensePoolDeliveryMechanism`
+
+A `DeliveryMechanism` describes what format a book is actually available in.  There are two parts to a `DeliveryMechanism`: 1) the DRM scheme implemented by the distributor, if any, and 2) the format of the book (EPUB, PDF, audiobook manifest, Kindle, and so on).
+
+`LicencePoolDeliveryMechanism` is a three-way join table: a record of a promise by a vendor (identified by a `DataSource`) to deliver copies of a book (identified by an `Identifier`) in a specific format (identified by a `DeliveryMechanism`).
+
+### `RightsStatus`
+
+A `RightsStatus` represents the terms under which a book is being made available to patrons. The most common varieties of RightsStatus are 1) in copyright, 2) public domain, and 3) a Creative Commons license. "In copyright" implies that a book is being made available to patrons by virtue of a licensing agreement between the library and the vendor. The other `RightsStatus` values imply that a book is being made available to library patrons on the same terms as it would be to the general public.
 
 ### `Complaint`
 
-Patrons lodge one or more Complaints against a specific LicensePool.  The purpose of Complaints is to report problems pertaining to         specific books; for example, a Patron can lodge a Complaint stating that a book is incorrectly     categorized or described, or that there is a problem with checking it out, reading, or returning it. 
+Patrons may lodge one or more Complaints against a specific LicensePool.  Complaints indicate problems with specific books. For example, a Patron can lodge a Complaint stating that a book is incorrectly     categorized or described, or that there is a problem with checking it out, reading, or returning it.
+
+## `CirculationEvent`
+
+A `CirculationEvent` is a record of something happening to a LicensePool.  A `CirculationEvent` happens when an event takes place within the circulation manager (e.g. a work is checked out or placed on hold), or when we notice that an event happened on the distributor's side (such as licenses for a book being added or removed), or when a client app (i.e. a book having been opened).
+
+`CirculationEvent`s are aggregated and used to create library analytics.
 
 # Works
 
-A Work represents a book in general, as opposed to one specific edition of that book.  A Work:
-*May have copies scattered across many LicensePools
-*May have many Editions, but derives its presentation metadata from one particular Edition, which is known as its “presentation edition.”  Each LicensePool associated with the Work has its own presentation edition; the highest-quality of these is set as the Work’s default presentation edition and displayed to patrons.
-*Stores information about the work’s subject matter classification, intended audience, and popularity, the best available summary for it, and whether it is fiction.
-*May be referenced by multiple CustomListEntries and/or CachedFeeds
-*May participate in many WorkGenre assignments (i.e. assignments of a Genre to a Work).  
+A Work represents a book in general, as opposed to one specific edition of a book, or a specific licensing agreement to deliver copies of a book.
+
+A Work:
+
+* May have copies scattered across many LicensePools
+* May have many Editions, but derives its presentation metadata from one particular Edition, which is known as its “presentation edition.” This special `Edition` represents the best available bibliographic metadata for the book.
+* Stores information that has been aggregated from multiple sources and summarized:
+** Subject matter classification (aggregated from `Classification`s)
+** Intended audience (aggregated from `Classification`s)
+** Fiction/nonfiction status (aggregated from `Classification`s)
+** Popularity (aggregated from `Measurement`s)
+** The best available summary (aggregated from `Resource`s)
+* May be referenced by multiple `CustomListEntries` and/or `CachedFeeds`.
+* May participate in many `WorkGenre` assignments. `WorkGenre` is a simple join table that tracks the assignment of `Work`s to `Genre`s. 
 
 # Custom lists
 
