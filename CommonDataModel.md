@@ -190,6 +190,10 @@ Theoretically, thumbnailing could also be handled as a `ResourceTransformation`,
 
 ## `Collection`
 
+A collection represents a set of books that are being made available through a given set of credentials.
+
+TODO
+
 ## `LicensePool`
 
 A LicensePool is a group of licenses granting access to one particular Work.  If a Work is not associated with a LicensePool, patrons will not be able to check it out.  In some cases, usually involving open-access LicensePools, there may be more than one LicensePool associated with the same Work; if this happens, the LicensePool which provides the highest-quality version of the book will take precedence.  Each LicensePool:
