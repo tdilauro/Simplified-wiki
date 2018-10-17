@@ -253,11 +253,11 @@ A Work:
 * May have copies scattered across many LicensePools
 * May have many Editions, but derives its presentation metadata from one particular Edition, which is known as its “presentation edition.” This special `Edition` represents the best available bibliographic metadata for the book.
 * Stores information that has been aggregated from multiple sources and summarized:
-** Subject matter classification (aggregated from `Classification`s)
-** Intended audience (aggregated from `Classification`s)
-** Fiction/nonfiction status (aggregated from `Classification`s)
-** Popularity (aggregated from `Measurement`s)
-** The best available summary (aggregated from `Resource`s)
+  * Subject matter classification (aggregated from `Classification`s)
+  * Intended audience (aggregated from `Classification`s)
+  * Fiction/nonfiction status (aggregated from `Classification`s)
+  * Popularity (aggregated from `Measurement`s)
+  * The best available summary (aggregated from `Resource`s)
 * May be referenced by multiple `CustomListEntries` and/or `CachedFeeds`.
 * May participate in many `WorkGenre` assignments. `WorkGenre` is a simple join table that tracks the assignment of `Work`s to `Genre`s. 
 
