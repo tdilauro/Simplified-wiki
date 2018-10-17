@@ -202,6 +202,8 @@ A `Collection` represents a set of books that are made available through one set
 
 One library may have multiple collections from different vendors, and multiple libraries on the same circulation manager may share a collection.
 
+A `Collection` may have children which are also `Collection`s. We model an Overdrive Advantage account as a child `Collection` of the main Overdrive `Collection`.
+
 The books themselves are stored as `LicensePool`s, and the credentials are stored in an `ExternalIntegration`.
 
 ## `LicensePool`
@@ -214,7 +216,7 @@ If a Work is not associated with a LicensePool, patrons will not be able to chec
 
 In some cases, usually involving open-access LicensePools, there may be more than one LicensePool associated with the same Work; if this happens, the LicensePool which provides the highest-quality version of the book will take precedence.
 
-Each LicensePool:
+Each `LicensePool`:
 * is associated with an Identifier, representing how the vendor identifies the book.
 * is associated with a DataSource, representing the vendor who provides the book.
 * belongs to one Collection.
@@ -263,21 +265,50 @@ A Work:
 
 # Custom lists
 
+A CustomList is a list of books, typically grouped by a criterion such as genre, subject, bestseller status, etc., which a librarian has compiled in the admin interface.  Each CustomList is associated with, and presented to patrons in the front-end as, one Lane.  A CustomList has at least one CustomListEntry, each of which refers to a particular Work.      
+
 # Libraries
 
 ## `Library`
 
+A library represents some organization that serves a distinct set of patrons.
+
 Each Library can have: 
-    * one or more Collections.  A Collection is a set of LicensePools, through which books are provided to the Library.  Each Collection can have multiple Libraries to which it provides books, and can have multiple child Collections and multiple LicensePools.      
-    * one or more CustomLists.  A CustomList is a list of books, typically grouped by a criterion such as genre, subject, bestseller status, etc., which a librarian has compiled in the admin interface.  Each CustomList is associated with, and presented to patrons in the front-end as, one Lane.  A CustomList has at least one CustomListEntry, each of which refers to a particular Work.      
+
+    * one or more `Collections`.
+    * one or more `CustomLists`.  
     * one or more Lanes, each of which is associated with one CachedFeed.
     * one or more Admins.
 
-### Admins
+### `Admin`
 
-  Admins are people who have access to the admin interface (via accounts in the circulation manager), such as librarians.   They are associated with a particular library, via AdminRole.  An Admin may have more than one AdminRole.  The potential AdminRoles are: SystemAdmin; SitewideLibraryManager; LibraryManager; SitewideLibrarian; and Librarian
+Admins are people such as librarians who have access to the admin interface (via accounts in the circulation manager). An `Admin` is associated with a particular `Library` through `AdminRole`.  An Admin may have more than one `AdminRole`.  The `AdminRoles` are:
+
+* Librarian
+* SitewideLibrarian
+* LibraryManager
+* SitewideLibraryManager
+* SystemAdmin
 
 ## `Lane`
+
+A library groups its books together using `Lane`s. A `Lane` may group books by any combination of these criteria:
+
+* Genre ("Science Fiction")
+* Fiction status ("Nonfiction")
+* Audience ("Young Adult")
+* Target age ("Young Readers")
+* Language ("Spanish")
+* Media ("Audiobooks")
+* Membership on a specific `CustomList` ("Best Sellers")
+
+A lane may have many `CachedFeed`s.
+
+### `CachedFeed`
+
+A `CachedFeed` is a pregenerated OPDS document that's stored in the database to serve future client requests. If a `CachedFeed` can be used, it greatly improves patron-visible response time.
+
+Any OPDS feed served by the circulation manager can be cached. This includes the various feeds served as a patron browses a `Lane`, but it also includes the feeds of books by a given author, books in a given series, and recommendations from sources like NoveList.
 
 # Patrons
 
