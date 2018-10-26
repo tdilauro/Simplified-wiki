@@ -30,6 +30,12 @@ An OPDS server may use the `color_scheme` extension to specify the color scheme 
 
 The color schemes supported by SimplyE are "amber", "black", "blue", "bluegray", "brown", "cyan", "darkorange", "darkpurple", "green", "gray", "indigo", "lightblue", "orange", "pink", "purple", "red", and "teal". These colors correspond roughly to the 500 series in [this color tool](https://material.io/tools/color/), but you should not make this choice expecting a specific hex value. Different platforms use color differently: the Android platform uses stronger, more saturated colors than the iOS platform, which primarily uses color for text accents.
 
+# Web color scheme
+
+An OPDS server may use the `web_color_scheme` extension to specify the color scheme a web-based client should use when rendering that server's OPDS feeds. Web-based clients can support more color options than mobile clients, so `web_color_scheme` specifies hex values for background and foreground colors.
+
+`"web_color_scheme": { "background_color": "#000000", "foreground_color": "#ffffff" }`
+
 # Collection size
 
 An OPDS server may use `collection_size` to advertise the number of distinct items of content available to a typical user of its collection.
