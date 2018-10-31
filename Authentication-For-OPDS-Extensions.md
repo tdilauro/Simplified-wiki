@@ -184,18 +184,14 @@ Some libraries and bookstores only serve certain geographical areas. The `servic
 
 The `service_area` object may take on different types of values:
 
-* The literal string `everywhere`, indicating that the OPDS server considers the entire universe within its service area.
+* A place name.
+* A list of place names.
+* A dictionary that maps [[ISO 3116-1 alpha-2 country codes|https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2]] to place names or lists of place names.
 * A GeoJSON object that spells out the service area in geographic terms.
-* A dictionary that maps [[ISO 3116-1 alpha-2 country codes|https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2]] to lists of place names.
 
-A "list of place names" may take on two different values:
+The only place name defined by this spec is `everywhere`, which covers the entire universe. If the `service_area` is not present, clients should assume a value of `everywhere`.
 
-* A list of strings, each of which refers to a single place.
-* The literal string `everywhere`, which means every relevant place.
-
-If the `service_area` is not present, clients should assume a value of `everywhere`.
-
-This spec does not define which strings refer to which places in a "list of place names". However, the Library Simplified library registry can understand the following place names for the United States.
+As a non-normative guide, the Library Simplified library registry can understand the following place names for the United States:
 
 * A state or territory, by its abbreviation.
 * A census-designated place (such as a city or town) in the format "{city}, {state abbreviation}".
