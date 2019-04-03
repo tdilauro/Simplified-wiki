@@ -74,7 +74,9 @@ BookFlix is [available at NYPL](http://bkflix.grolier.com.i.ezproxy.nypl.org/sw/
 
 [hoopla](https://www.hoopladigital.com/) offers several media formats: ebooks, movies, music etc. They stream content to the patron's device via a custom app.
 
-Patrons choose a library that offers hoopla service, then verify their membership in that library by providing barcode and (optional) PIN. Presumably this is done through an ILS integration. Apart from this ILS integration, hoopla offers no integrations to a library system.
+Patrons choose a library that offers hoopla service, then verify their membership in that library by providing barcode and (optional) PIN.
+
+Hoopla offers an integration API that gives access to catalog and patron information but does not seem to offer an endpoint for delivery of the actual content. Hoopla also uses a wide variety of DRM systems to encrypt and obfuscate different types of content on different platforms.
 
 ## Interactive educational resources
 
