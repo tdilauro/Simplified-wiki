@@ -34,7 +34,7 @@ The color schemes supported by SimplyE are "amber", "black", "blue", "bluegray",
 
 An OPDS server may use the `web_color_scheme` extension to specify the color scheme a web-based client should use when rendering that server's OPDS feeds. Web-based clients can support more color options than mobile clients, so `web_color_scheme` specifies hex values for background and foreground colors.
 
-`"web_color_scheme": { "background_color": "#000000", "foreground_color": "#ffffff" }`
+`"web_color_scheme": { "background": "#000000", "foreground": "#ffffff" }`
 
 # Collection size
 
