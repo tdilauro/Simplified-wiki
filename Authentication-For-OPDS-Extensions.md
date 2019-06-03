@@ -2,7 +2,7 @@ Although any OPDS server can interact with any OPDS client, creating a seamless 
 
 A simple example: OPDS doesn't say anything about authentication. Although library patrons are generally authenticated by a mechanism that's compatible with HTTP Basic Auth, that's not always true. Even when it is true, providing a generic UI that asks for "username" and "password" creates a bad experience for a user who is expecting to type in a "library card number" or a "barcode", not a "username".
 
-The [Authentication for OPDS](https://docs.google.com/document/d/1-_0HHt664bDjybtCauBJXUSDXiT-Clg1sZUVNxHyLjw/edit#heading=h.r2fysm93j6kk) (A4OPDS) spec gives an OPDS server a way to explain how its clients should present the authentication interface.
+The [Authentication for OPDS](https://drafts.opds.io/authentication-for-opds-1.0) (A4OPDS) spec gives an OPDS server a way to explain how its clients should present the authentication interface.
 
 This document expands the role of the A4OPDS document past simple authentication and into the realm of discovery. In the Library Simplified ecosystem, there are thousands of OPDS servers, each serving a slightly different audience with different content. For a person to navigate all these servers they need access to a directory service. To build a directory service, there needs to be a way for each server to describe not only the process of authenticating to the server, but _why_ someone would want to authenticate in the first place, and what _sort_ of person might be able to authenticate.
 
