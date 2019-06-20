@@ -78,6 +78,24 @@ Patrons choose a library that offers hoopla service, then verify their membershi
 
 Hoopla offers an integration API that gives access to catalog and patron information but does not seem to offer an endpoint for delivery of the actual content. Hoopla also uses a wide variety of DRM systems to encrypt and obfuscate different types of content on different platforms.
 
+## ProQuest
+
+ProQuest offers a number of APIs and API-like services.
+
+### Dialog
+
+This is a search-based API. Each search result has a link to a web view where the reader is asked to log in before displaying the book.
+
+It may be possible to use the search API to systematically keep track of all titles in the system, but I didn't go into detail here because delivery happens through a web view, which we don't consider suitable.
+
+### Ebook Central
+
+A scheme whereby ProQuest will periodically send an XML file to you over FTP. The XML file contains bibliographic information and pricing information. The XML isn't ONIX, but this looks a lot like the way publishers FTP ONIX files to distributors. This may be a tool intended for integration with a library's purchasing system rather than something intended for consumption by library patrons.
+
+The XML file contains no information about how to borrow or read a copy of the book, possibly because the book hasn't been licensed yet.
+
+DRM is mentioned (in the context of some books being "DRM-free") but there's no indication of _which_ DRM system is in use.
+
 ## Interactive educational resources
 
 Even if we can get the content, the experience these services provide probably won't fit into the Simplified app because the content they deliver is not in a container that we can reasonably render. In most cases the best we can possibly do is open a web view and transparently handle authentication.
@@ -101,3 +119,4 @@ Available at NYPL, where authentication happens through and content is served th
 ### Universal Class
 
 No visible or advertised API. [Sales page](http://company.universalclass.com/for-libraries.htm) has few details.
+
