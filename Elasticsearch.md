@@ -488,5 +488,10 @@ The upshot of this is that all of these sort name are treated the same for sorti
 
 This means that in a list of books ordered by author, all of Tolkien's works will be grouped together and ordered by title -- basically what you'd expect to see on a library bookshelf.
 
+# Filtering and Sorting
 
-# The server-side scripts
+## The server-side scripts
+
+# Searching
+
+## Hypotheses
