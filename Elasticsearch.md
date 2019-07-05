@@ -237,7 +237,7 @@ From top to bottom, this means that for every work, we want to find:
   information comes from sources like OCLC, and it's associated with
   an Identifier associated with the presentation edition (such as an
   ISBN). We don't show this information directly to library patrons,
-  because it's highly unstructured, but it's useful for handling
+  because it's not in any consistent format, but it's useful for handling
   searches like `etiquette` or `vegan cooking`.
 
 * Information about the `Genre`s under which the work has been
