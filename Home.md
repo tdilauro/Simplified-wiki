@@ -77,6 +77,7 @@ All development and code review happens here on Github. These are our main proje
 * [[The generic circulation API|GenericCirculation]]
 * [[The generic authentication API|GenericAuthentication]]
 * [[The annotation API|Annotations]]
+* [[Elasticsearch -- sorting and searching|Elasticsearch]]
 * [[The Simple Signup Protocol|Simple-Signup-Protocol]]
 * [[DRM autodiscovery|DRM-Autodiscovery]]
 * [[Short Client Token|Short-Client-Token]] for federated patron management
