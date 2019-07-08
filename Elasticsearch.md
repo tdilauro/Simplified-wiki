@@ -730,3 +730,7 @@ Elasticsearch doesn't know anything about books or how people search for books. 
 This work happens in the `Query` object, found in `core/external_search.py`.
 
 ## Hypotheses
+
+Someone who types in a search request might have meant any of a dozen things. We handle this by forming hypotheses about what the person might have meant, and telling Elasticsearch to test all of the hypotheses simultaneously. Every book in the collection is given a score for every hypothesis, and Elasticsearch chooses the best score for each book -- the most generous interpretation possible of why someone who searched for `diary of a stinky kid` is actually looking for _Modern Warfare, Intelligence and Deterrence_. Then the books with the best scores overall are chosen as the search results.
+
+We build the list of hypotheses in `Query.query`. Then we combine them into a `DisMax` query in `Query._combine_hypotheses`. The `DisMax` query is what tells Elasticsearch to try every hypothesis and pick the best one for each book.
