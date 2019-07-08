@@ -700,21 +700,33 @@ At this point we have everything we need to generate big OPDS feeds of books fro
 
 The books in this list aren't sorted by title or author or anything else. In fact we don't really want them to be 'sorted' at all. For every lane in the feed, we want a _random_ selection of high-quality works that belong to that lane and are currently available.
 
-We can take care of 'books that belong to the lane' with the `Filter` code you';ve already seen. But how do we get a random selection of high-quality works?
+We can take care of 'books that belong to the lane' with the `Filter` code you've already seen. But how do we get a random selection of high-quality works?
 
 Well, up to this point we've been using Elasticsearch's "sort" functionality to get books in a predictable order. But when you run a search against an Internet search engine, the results don't come back "sorted" in any recognizable sense. You expect the best matches to be at the top, and that's it.
 
 Elasticsearch has its own algorithm for assigning a numeric score to each document that matches a search. To get a random selection of high-quality works, we just have to replace that algorithm with one that favors "high quality" and "randomness".
 
-This is done in `Filter.featurability_scoring_functions`. We use a variety of Elasticsearch tricks to define different ways of bumping this numeric score up or down.
+This is done in `Filter.featurability_scoring_functions`. We use a variety of Elasticsearch tricks to define different ways of calculating a numeric score for a work:
 
 * A high `Work.quality` score counts for a lot, up to a point.
-* Being featured on a relevant `CustomList` counts for even more.
-* Being currently available counts for something.
-* A random element counts for a little bit, but not much.
+* Being currently available counts for a lot.
+* Being featured on a relevant `CustomList` is _huge_.
+* Random chance counts for a little bit.
 
-TBC
+The `featureability_scoring_functions` method returns a list of these tricks. `ExternalSearchindex.query_works()` (the code that actually runs an Elasticsearch query) tells Elasticsearch to try every one of these tricks and add up all the scores, using `score_mode="sum"`. When the query runs, the works on the first page of results will be the highest-scoring works according to this algorithm. That gives us a random selection of high-quality works, exactly what we were looking for.
 
 # Searching
+
+Now we're ready to talk about the other job. This really is a job that only a search engine like Elasticsearch can do. We need to take a string typed by a human, a string like `science fiction aliens` or `diary of a stinky kid`, and find the books that are most likely to make that person happy.
+
+The key is the same "scoring function" idea we use to get a random selection of high-quality works. But instead of providing our own scoring function, we're going to exploit Elasticsearch's default scoring function.
+
+The default scoring function is basically that books which match the search request get better scores than books that don't. But what does it mean to "match the search request"? There's no book called _Diary of a Stinky Kid_ -- whoever typed that in probably meant _Diary of a Wimpy Kid_. So we probably want to send _Diary of a Wimpy Kid_ as one of the search results. That book is part of a series -- should we send other books in the series, even though they have different titles? How important is the word "Stinky"? Maybe the person who typed in `stinky` was mixing up two different childrens' series. Can we find that other series and return its books as well?
+
+How about `science fiction aliens`? There's no book with that title, and the person who typed that probably doesn't want one. They're looking for a certain _type_ of book -- science fiction novels that feature aliens. A novel like _Rendezvous with Rama_ is a better match for this search query than a book of literary criticism called _100 Years of Aliens in Science Fiction_, even though the book of literary criticism has all of the search terms in its title.
+
+Elasticsearch doesn't know anything about books or how people search for books. We gave it a bunch of JSON documents, it indexed them, and it's ready to search them. It's our job to tell Elasticsearch what a "good" match for a given search query might look like. It's our job to turn `science fiction aliens` into one type of query and `diary of a stinky kid` into another type of query.
+
+This work happens in the `Query` object, found in `core/external_search.py`.
 
 ## Hypotheses
