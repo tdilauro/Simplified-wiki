@@ -488,9 +488,232 @@ The upshot of this is that all of these sort name are treated the same for sorti
 
 This means that in a list of books ordered by author, all of Tolkien's works will be grouped together and ordered by title -- basically what you'd expect to see on a library bookshelf.
 
-# Filtering and Sorting
+## The server-side script
 
-## The server-side scripts
+The final thing we need to define isn't part of the mapping document at all. It's a script written in the [Painless](https://www.elastic.co/guide/en/elasticsearch/painless/current/index.html) scripting language. The source code to this script is defined in the Python class variable `CurrentMapping.WORK_LAST_UPDATE_SCRIPT`, and its job is to figure out the "last update time" for a given work.
+
+Why do we need a script for this? After all, we keep `Work.last_update_time` updated whenever a work's metadata changes, and we store that value in the search index. The problem is that a single work can have different "last update times" in different contexts.
+
+For example, let's say a book published five years ago suddenly makes it big and shows up on the best-seller list. If you're asking ElasticSearch for a list of all the books in a library's collection, this book is nothing new. Its "last update time" might be years ago. But if you're asking for a list of all the books on the best-seller list, the book's "last update time" is very recent. The concept of "last update time" needs to take into account the time the work was added _to a relevant list_.
+
+Similarly, let's say a book has been in Library A's collection for five years. Then one day Library B buys a license for the same book. That has nothing to do with Library A -- the book should stay near the bottom of Library A's "last update" feed. But for Library B, this book is brand new, and it should show up at the top of Library B's "last update" feed. The "last update time" needs to take into account the time the work was added _to a relevant collection_.
+
+That's why we need a server-side script. This value can't be calculated ahead of time: it depends on which combination of collections and which custom lists we're looking at. We can calculate this value inside the circulation manager, once we have the search results, but that won't help us _sort_ a list by this value. It's the Elasticsearch server's job to sort a list, and it can't sort by a value it has no way to calculate. We need to give Elasticsearch the ability to calculate this value, so that we can sort a feed with the "most recent" books first -- whatever that means in context.
+
+# Filtering
+
+Now we're ready to see how we use Elasticsearch to do the two jobs that the database is bad at. We're going to start with the job of quickly finding exactly which books belong in a given lane.
+
+When you think of "Elasticsearch", you probably think of the other job -- processing search requests. I'm going to go through the "filter" job first, because the "search" job needs to use the filtering feature, _plus_ some extra stuff.
+
+## The `Filter` constructor
+
+The `Filter` class (in external_search.py) implements this entire feature. Its job is to take requirements defined in terms of our business model objects -- `Lane`, `CustomList`, `Contributor`, and so on -- and express them in terms of our Elasticsearch mapping document.
+
+The constructor for `filter` takes a large number of arguments representing every currently supported reason to exclude a book from a feed. Some examples:
+
+* We only want books in certain collections (so people don't see books that are in some other library.)
+* We only want books in certain languages.
+* We only want books in certain genres.
+* We only want books that are on certain custom lists.
+
+All of this data is stored in the `Filter` object under construction. Then, whenit's time to go to Elasticsearch, we call `Filter.build()`, which turns this information into a bunch of `Q` (for "query") objects from the `elasticsearch_dsl` library. These objects represent constraints on the Elasticsearch data set, similar to the constraints imposed by WHERE clauses on a SQL dataset. These query objects will be converted into JSON and sent over to the Elasticsearch server.
+
+I won't go into detail on how every single aspect of `Filter` is translated to an `elasticsearch_dsl` query. Instead, I'll go through the different types of examples, so that you'll be able to read through the code and understand it.
+
+### Faceting
+
+The `Filter` constructor takes one argument `facets` which doesn't affect the Elasticsearch query in any predictable way. The `facets` object represents restrictions set by the patron at the other end of an HTTP request. For example, a patron may ask to see only books in the "Audiobooks" entry point, or to only show books that are currently available.
+
+Once all the other work is done, the `Filter` constructor calls `facets.modify_search_filter()` on its faceting object. This method can add additional constraints on the `Filter` object, or modify anything that was set earlier in the constructor. For an example, see `SearchFacets` in [core/lane.py](https://github.com/NYPL-Simplified/server_core/blob/master/lane.py). Under certain circumstances it will modify the `media` and `languages` attributes of the `Filter` object.
+
+Note that the faceting code never directly interacts with any Elasticsearch code. All it can do is modify data associated with the `Filter` object, so that when `Filter.build()` is called, it behaves differently. This keeps all the code that touches Elasticsearch in one file: `external_search.py`.
+
+## `Filter.from_worklist`
+
+Most actual `Filter` objects are created through `Filter.from_worklist`. That's because most real-world filters are trying to restrict Elasticsearch results to books that fit in a specific `Lane`.
+
+Let's say we're getting a list of all the books in a library's English "Science Fiction" lane. That lane implies a number of restrictions:
+
+* Books must be in English.
+* Books must be in the "Science Fiction" genre, or one of its subgenres.
+* Books must be aimed at an adult audience.
+* Books must be in a collection associated with _this particular library_.
+
+`Filter.from_worklist` takes a `WorkList` object such as a lane, and translates its restrictions into `Filter` restrictions. These restrictions can, then, be translated into Elasticsearch query objects that will match only the books that belong in the `WorkList`.
+
+## `Filter.build`
+
+Now it's time to see how the information associated with a `Filter` object -- whether it came in through the constructor or through `Filter.from_worklist` -- gets turned into real Elasticsearch queries.
+
+Recall that our `Works` get indexed as JSON documents. The documents we'll be querying look like this:
+
+```
+{
+  "_id": 122940, 
+  "work_id": 122940,
+  "presentation_ready": true,
+  "title": "Law of the Mountain Man", 
+  "medium": "Book", 
+  "language": "eng", 
+  "audience": "Adult", 
+
+  "customlists": [
+    {
+      "featured": false, 
+      "first_appearance": 1413545710, 
+      "list_id": 86
+    }, 
+  ], 
+
+  "licensepools": [
+    {
+      "availability_time": 1423691583, 
+      "available": true, 
+      "collection_id": 1, 
+      "data_source_id": 2, 
+      "licensed": true, 
+      "licensepool_id": 196028, 
+      "medium": "Book", 
+      "open_access": false, 
+      "quality": 0.743, 
+      "suppressed": false
+    }
+  ]
+}
+```
+
+Each document contains some basic information like `medium`, `language`, and `audience`. It also contains _subdocuments_ like `customlists` and `licensepools`. 
+
+Elasticsearch has a variety of strategies for applying restrictions on a query to filter out JSON documents that don't match what we're looking for. The `elasticsearch_dsl` library provides Python classes that implement these strategies. The `Filter.build` method converts between the two worlds. We start with our version of "only find books aimed at adules" and we end with an Elasticsearch query that says the same thing.
+
+### Main document filters
+
+A filter on a field found in the main document, like `language` in the example above, must be handled differently from a filter on a subdocument, like `customlists` in the example above. The main document filters are simpler, so I'll cover those first.
+
+Here's the bit of `Filter.build` which applies the filters for "titles in certain media" (such as audiobooks) and "titles in certain languages":
+
+```
+    if self.media:
+        f = chain(f, Terms(medium=scrub_list(self.media)))
+
+    if self.languages:
+        f = chain(f, Terms(language=scrub_list(self.languages)))
+```
+
+* We're building the Elasticsearch filter in a variable called called `f`. Once it's complete, this object will be part of the return value from `Filter.build`.
+
+* Every time we find out some new restriction on the Elasticsearch filter, we build a new query object (in this case, a `Terms` object) and connect it to the existing filter with a helper function. This is equivalent to connecting two SQL WHERE clauses with "AND".
+
+* We build different query objects in different circumstances. When it comes to filters, you'll primarily see `Terms`, `Term`, and `Bool`. All of these classes come from the `elasticsearch_dsl.query` module, and each corresponds to a query type in the [Elasticsearch query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html). Although these queries can be combined in complicated ways, each individual query is pretty simple. The `Term` class corresponds to the [term](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html) query, which matches a record if its value for an attribute is one specific value. The `Terms` class corresponds to a [terms](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-terms-query.html) query, which matches a record if its value for an attribute is found in a _list_ of values.
+
+* `scrub_list` is another helper function which turns a single item (such as `"eng"`) into a list (`['eng']`), but leaves a list alone. Since the value of `languages` is guaranteed to be a list, we can always use `Terms` to build our query, rather than having to decide between `Terms` and `Term`.
+
+To sum up, we make a `Terms` query to restrict results to books that are in one of the selected languages, and another `Terms` query to restrict results to books with one of the selected media. We use `scrub_list` so that it doesn't matter whether a single language or a list of languages was provided. We use `chain` to ensure that when there are multiple restrictions, all restrictions are enforced at once.
+
+At the end of `Filter.build` we have a single Elasticsearch query object. Maybe it's big, with many restrictions, like a SQL WHERE clause with many ANDs in it. Maybe it's small and matches almost everything in the search index. Either way, it represents all of the active restrictions this `Filter` object puts _on the main search document_. But it doesn't represent everything. We still have to deal with restrictions on the sub-documents.
+
+### The nested filters
+
+Restrictions on the sub-documents, like `customlists` and `licensepools`, must be handled differently. We handle them using a dictionary called `nested_filters`. This dictionary keeps track of a _list_ of Elasticsearch filters for each sub-document.
+
+Here's an example: we're looking at `Filter.collection_ids`, which restricts the query to books that are in specific collections. This is how we avoid showing patrons of Library A, books that are only available in Library B.
+
+```
+    collection_ids = filter_ids(self.collection_ids)
+    if collection_ids:
+        collection_match = Terms(
+            **{'licensepools.collection_id' : collection_ids}
+        )
+        nested_filters['licensepools'].append(collection_match)
+```
+
+Again, the filter is expressed using Elasticsearch's `Terms` query object. This says that a book matches the filter if _any one_ of its `licensepools` subdocuments has a `collection_id` that's found in the provided list of `collection_ids`.
+
+In the previous section, we used the `chain` helper function to add a bunch of queries onto the big query we're building. Unfortunately, this doesn't work for filters on sub-documents. Filters on sub-documents need to be handled specially, and it's too complicated to deal with here. So we don't deal with it here. We just make the `Terms` object and add it to `nested_filters['licensepools']`. Later on (this happens in `Query.build`), we'll convert all of the objects in `nested_filters` to something Elasticsearch can understand.
+
+Here's an example that's a little more complicated. This is how we represent a library patron's desire to only see books that are currently available.
+
+```
+    open_access = Term(**{'licensepools.open_access' : True})
+    if self.availability==FacetConstants.AVAILABLE_NOW:
+        # Only open-access books and books with currently available
+        # copies should be displayed.
+        available = Term(**{'licensepools.available' : True})
+        nested_filters['licensepools'].append(
+            Bool(should=[open_access, available])
+        )
+```
+
+There are two reasons why a book might be 'available': it might have a LicensePool that's open access (in which case licensepools.open_access will be True), or it might have a LicensePool with available copies (in which case `licensepools.available`, a boolean we calculated way back in `Work.to_search_document`, will be True).
+
+We want to match books where _either_ of these two reasons is true, but Elasticsearch's `Term` query will only match one field. So we build _two_ `Term` objects -- one for `licensepools.open_access` and one for `licensepools.available` -- and then we combine them using the `elasticsearch-dsl` `Bool` class, which corresponds to Elasticsearch's [bool](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html) query.
+
+We put our two `Term` queries in the `should` slot of the `Bool` query. The resulting query will match if there's a match for _at least one_ of the `should` queries. If none of the `should` queries match, the book doesn't match.
+
+A `Bool` query has other slots, like `must` and `must_not`, which can be used to implement logical operations other than "at least one of these must match". If you look through the source code you'll find `Bool` used in a variety of ways.
+
+### The universal filters
+
+Up to this point, all of the filters we've considered have been optional. Sometimes we want a language filter, sometimes we don't. Sometimes only want books that are available now, sometimes we don't care whether they're available or not.
+
+But there are a few filters that are universal. We _never_ want to show books that aren't presentation-ready. We _never_ want to show books that were once in a library's collection but no longer have any licensed copies. Basic stuff like that.
+
+These filters are defined in two special methods, `Filter.universal_base_filter` and `Filter.universal_nested_filters`. They work the same way as the 'base filter' and 'nested filters' you saw earlier. The universal base filter is a single Elasticsearch query object that gets combined with other queries using `chain`, and the universal nested filters are kept in a dictionary so that they can be combined later, in `Query.build`.
+
+## Sorting
+
+There's one argument to the `Filter` constructor that's different from the others, and that's `order`. This doesn't affect which books match the filter -- it affects how the results are sorted.
+
+The default sort order is (sort_author, sort_title, work_id). Works are sorted alphabetically by author, as they would be on a library bookshelf. Any given author's works are sorted alphabetically by title. If there are two copies of the same book by the same author (which can happen if two collections have the same book), the 'tiebreaker' is the internal work ID.
+
+When you change the sort order, you either rearrange these fields or add a new on to the beginning. When you tell `Filter` to sort by title, you're actually telling it to sort by (sort_title, sort_author, work_id). When two books have the same title, we have to have a backup plan, and the backup plan is to sort by author name. When you tell `Filter` to sort by series position, you're actually telling it to sort by (series_position, sort_title, sort_author, work_id).
+
+For most sort orders, that's all you need to know. But there are two sort ordersthat are more complicated.
+
+### `last_update_time`
+
+Sorting by 'last update time' is complicated because 'last update time' isn't stored in Elasticsearch. It's a calculated value, determined at runtime by running the Painless script kept in `CurrentMapping.WORK_LAST_UPDATE_SCRIPT`. We need to tell Elasticsearch to use this script to calculate the sort value. This is a little bit of Elasticsearch magic kept in `Filter._last_update_time_order_by`.
+
+### `licensepools.availability_time`
+
+Sorting by `licensepools.availability_time` (the time a book was added to a collection) is complicated because we're sorting on a value that's kept in a subdocument. This opens up two problems:
+
+1. There might be multiple values for the field we're sorting by. If a book has two LicensePools in different collections, which is "the" availability_time?
+2. We might also be using `licensepools.availability` in our filter. If a book has two LicensePools in different collections, but one of those collections is being filtered out, then its `availability_time` shouldn't count.
+
+We solve both of these these problems in `._availability_time_sort_order`.
+
+The first problem is pretty simple to solve. "The" availability time for a book is the _earliest_ time it was added to _any_ relevant collection. If you've already seen a book, it shouldn't show up as a 'new arrival' again just because the library got another license for it somewhere else.
+
+We can tell Elasticsearch this is the rule by specifying `mode="min"` when defining the sort order. This is equivalent to the `MIN` function in this SQL:
+
+```
+select work_id, MIN(availability_time) from licensepools GROUP BY work_id;
+```
+
+The second problem is more complicated. We have to apply our `collection_id` filter twice: once in the part of the Elasticsearch query that decides which books match the filter (this happens in `Filter.build`), and _again_ in the part of the query that decides how to order the results.
+
+## Custom scoring functions
+
+At this point we have everything we need to generate big OPDS feeds of books from any `Lane` or `WorkList`, using any combination of facets specified by the client. But not all of the OPDS feeds we generate come from just one lane. When someone opens the SimplyE app, the first OPDS feed they see combines books from many different lanes into a grouped feed.
+
+The books in this list aren't sorted by title or author or anything else. In fact we don't really want them to be 'sorted' at all. For every lane in the feed, we want a _random_ selection of high-quality works that belong to that lane and are currently available.
+
+We can take care of 'books that belong to the lane' with the `Filter` code you';ve already seen. But how do we get a random selection of high-quality works?
+
+Well, up to this point we've been using Elasticsearch's "sort" functionality to get books in a predictable order. But when you run a search against an Internet search engine, the results don't come back "sorted" in any recognizable sense. You expect the best matches to be at the top, and that's it.
+
+Elasticsearch has its own algorithm for assigning a numeric score to each document that matches a search. To get a random selection of high-quality works, we just have to replace that algorithm with one that favors "high quality" and "randomness".
+
+This is done in `Filter.featurability_scoring_functions`. We use a variety of Elasticsearch tricks to define different ways of bumping this numeric score up or down.
+
+* A high `Work.quality` score counts for a lot, up to a point.
+* Being featured on a relevant `CustomList` counts for even more.
+* Being currently available counts for something.
+* A random element counts for a little bit, but not much.
+
+TBC
 
 # Searching
 
