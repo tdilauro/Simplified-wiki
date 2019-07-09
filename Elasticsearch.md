@@ -717,11 +717,11 @@ The `featureability_scoring_functions` method returns a list of these tricks. `E
 
 # Searching
 
-Now we're ready to talk about the other job. This really is a job that only a search engine like Elasticsearch can do. We need to take a string typed by a human, a string like `science fiction aliens` or `diary of a stinky kid`, and find the books that are most likely to make that person happy.
+Now we're ready to talk about the second job. This really is a job that only a search engine like Elasticsearch can do. We need to take a string typed by a human, a string like `science fiction aliens` or `diary of a stinky kid`, and find the books that are most likely to make that person happy.
 
 The key is the same "scoring function" idea we use to get a random selection of high-quality works. But instead of providing our own scoring function, we're going to exploit Elasticsearch's default scoring function.
 
-The default scoring function is basically that books which match the search request get better scores than books that don't. But what does it mean to "match the search request"? There's no book called _Diary of a Stinky Kid_ -- whoever typed that in probably meant _Diary of a Wimpy Kid_. So we probably want to send _Diary of a Wimpy Kid_ as one of the search results. That book is part of a series -- should we send other books in the series, even though they have different titles? How important is the word "Stinky"? Maybe the person who typed in `stinky` was mixing up two different childrens' series. Can we find that other series and return its books as well?
+The default scoring function is basically that books which match the search request get better scores than books that don't. But what does it mean to "match the search request"? There's no book called _Diary of a Stinky Kid_ -- whoever typed that in probably meant _Diary of a Wimpy Kid_. So we probably want to send _Diary of a Wimpy Kid_ as one of the search results. That book is part of a series -- should we send other books in the series, even though they have different titles? How important is the word "Stinky"? Maybe the person who typed in `stinky` was mixing up two different childrens' series. Can we find that other series and return its books as well? Of all the books we might send, which ones should we send first?
 
 How about `science fiction aliens`? There's no book with that title, and the person who typed that probably doesn't want one. They're looking for a certain _type_ of book -- science fiction novels that feature aliens. A novel like _Rendezvous with Rama_ is a better match for this search query than a book of literary criticism called _100 Years of Aliens in Science Fiction_, even though the book of literary criticism has all of the search terms in its title.
 
@@ -731,6 +731,53 @@ This work happens in the `Query` object, found in `core/external_search.py`.
 
 ## Hypotheses
 
-Someone who types in a search request might have meant any of a dozen things. We handle this by forming hypotheses about what the person might have meant, and telling Elasticsearch to test all of the hypotheses simultaneously. Every book in the collection is given a score for every hypothesis, and Elasticsearch chooses the best score for each book -- the most generous interpretation possible of why someone who searched for `diary of a stinky kid` is actually looking for _Modern Warfare, Intelligence and Deterrence_. Then the books with the best scores overall are chosen as the search results.
+Someone who types in a search request might have meant any of a number of things. We handle this by forming _hypotheses_ about what the person might have meant. Then we tell Elasticsearch to test all of the hypotheses simultaneously.
 
-We build the list of hypotheses in `Query.query`. Then we combine them into a `DisMax` query in `Query._combine_hypotheses`. The `DisMax` query is what tells Elasticsearch to try every hypothesis and pick the best one for each book.
+Every book in the collection is given a score for every hypothesis we provided, and Elasticsearch chooses the best score for each book -- the most generous interpretation possible of why someone who searched for `diary of a stinky kid` is actually looking for _Modern Warfare, Intelligence and Deterrence_. Then the books with the best scores overall -- which will be more on the _Diary of a Wimpy Kid_ end than the _Modern Warfare_ end -- are chosen as the search results.
+
+We build the list of hypotheses in `Query.query`. Each hypothesis is a query object that would return search results if we sent it to Elasticsearch. Instead of doing that, though, we combine the hypotheses into a single `DisMax` query in `Query._combine_hypotheses`. The `DisMax` query is what tells Elasticsearch to try every hypothesis and pick the best one for each book.
+
+Each hypothesis has a weight associated with it. We determined these weights through trial and error, but the general relative weights should make intuitive sense. If your search string is an exact match for the title of a book, then that book really should be the first search result. We ensure this happens by weighting the "exact match" hypothesis very highly.
+
+The 'hypothesis' metaphor makes the search code modular. We can come up with a lot of strategies, and tell Elasticsearch to try all of them at once and see what works best for this particular search. Here are the strategies we've come up with so far:
+
+### Simple query string match
+
+First, we try a [simple query string query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html) against title, subtitle, series, summary, classification, primary author, publisher, and imprint. This is the closest thing we do to a generic Elasticsearch query. This query works realy well when a search string combines multiple types of information, like `the demon haunted world carl sagan` or `goldfinch novel`.
+
+This query runs against fields that have been put through the standard analyzer. This removes English stopwords like 'and', and applies a stemming algorithm. This ensures that a search for `awaken` will find a book called _The Awakening_ -- you don't have to literally type in `the awakening`.
+
+### Phrase match
+
+We also try a [match phrase query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query-phrase.html) against title, author, or series. We use this to handle the most common type of search request: someone typed in a book title, author, or series, more or less verbatim.
+
+For this query we use the `.minimal` variant of `title` and `series` -- the one we set up to be analyzed using our custom 'en_minimal_analyzer'. The main difference is this analyzer is less aggressive about stemming.
+
+Let's say there are two books in the collection, _Awakened_ and _The Awakening_. If you search for `awakening`, the "simple query string" hypothesis will give both books the same score, because its analyzer converts all three strings to the base string "awaken". The less aggressive stemmer used by the 'en_minimal_analyzer' turns "Awakened" into "awakened" and "The Awakening" into "awakening". This hypothesis will weigh _The Awakening_ much higher than _Awakened_, because it can tell that _The Awakening_ is closer to what you actually typed in.
+
+If you search for `awaken`, then the first hypothesis makes more sense and both books are equally good matches. But if you search for `awakening`, this hypothesis makes more sense and _The Awakening_ should show up first.
+
+### Exact match
+
+This is a _second_ match phrase query, against title and author only, which greatly boosts an exact match. If you _do_ literally type in `the awakening`, this pretty much guarantees _The Awakening_ will be the first result.
+
+### Fuzzy match
+
+This is a [multi match query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html) against any combination of title, subtitle, series, summary, author, publisher, or imprint. This is similar to our first hypothesis, the simple query string query (which is itself a multi match query under the hood). The difference is that this handles the case where the search request contains typos or misspellings. This is where we try to get Elasticsearch to figure out that `raina telemger` refers to author Raina Telgemeier.
+
+### Simple query match with filter
+
+Finally, we have a hypothesis that the search term might include structured data that can be parsed out and turn into a filter. We can extract structured data of the following types:
+
+* A fiction status: `asteroids nonfiction`
+* A target age or grade level: `grade 5 dogs`, `age 10 and up`
+* A target audience: `young adult divorce`
+* A genre: `romance billionare`, `robert moses biography`
+
+The query parser is a class called `QueryParser`. It doesn't have any Elasticsearch code in it, just string processing. The goal is to identify information that we understand, and _remove_ it from the query string so it doesn't send Elasticsearch down the wrong path.
+
+Any identifiable information in the query string becomes one or more filters on the work fields: `fiction`, `target_age`, `audience`, and/or `genres.term`. The rest of the query string, the part we don't understand, becomes a "simple query string" type query, similar to the one used in the first hypothesis.
+
+So, `asteroids nonfiction` becomes a "simple query string" query against `asteroids` with a filter restricting it to nonfiction. `romance billionare` becomes a "simple query string" against `billionare` with a filter restricting it to the "Romance" genre. `age 10 and up` becomes an empty query that gives the same score to all children's books for age 10 and up, and ignores every other book.
+
+Remember that this is just one hypothesis among many. A search for `modern romance` will find books in the "Romance" genre that have `modern` in one of their other fields, such as _Ginger's Heart: Modern Fairytale Series, Book 3_. But `modern romance` is also an exact title match for a book called _Modern Romance_, and the exact title match is probably going to show up first.
