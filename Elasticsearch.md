@@ -776,7 +776,7 @@ Finally, we have a hypothesis that the search term might include structured data
 
 The query parser is a class called `QueryParser`. It doesn't have any Elasticsearch code in it, just string processing. The goal is to identify information that we understand, and _remove_ it from the query string so it doesn't send Elasticsearch down the wrong path.
 
-Any identifiable information in the query string becomes one or more filters on the work fields: `fiction`, `target_age`, `audience`, and/or `genres.term`. The rest of the query string, the part we don't understand, becomes a "simple query string" type query, similar to the one used in the first hypothesis.
+Any identifiable information in the query string becomes one or more filters on the work fields: `fiction`, `target_age`, `audience`, and/or `genres.term`. That part of the query runs in filter context. The rest of the query string, the part we don't understand, becomes a "simple query string" type query, similar to the one used in the first hypothesis. This part of the query runs in query context.
 
 So, `asteroids nonfiction` becomes a "simple query string" query against `asteroids` with a filter restricting it to nonfiction. `romance billionare` becomes a "simple query string" against `billionare` with a filter restricting it to the "Romance" genre. `age 10 and up` becomes an empty query that gives the same score to all children's books for age 10 and up, and ignores every other book.
 
