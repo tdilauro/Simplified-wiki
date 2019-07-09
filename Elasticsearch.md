@@ -669,7 +669,7 @@ The default sort order is (sort_author, sort_title, work_id). Works are sorted a
 
 When you change the sort order, you either rearrange these fields or add a new on to the beginning. When you tell `Filter` to sort by title, you're actually telling it to sort by (sort_title, sort_author, work_id). When two books have the same title, we have to have a backup plan, and the backup plan is to sort by author name. When you tell `Filter` to sort by series position, you're actually telling it to sort by (series_position, sort_title, sort_author, work_id).
 
-For most sort orders, that's all you need to know. But there are two sort ordersthat are more complicated.
+For most sort orders, that's all you need to know. But there are two sort orders that are more complicated.
 
 ### `last_update_time`
 
@@ -682,11 +682,11 @@ Sorting by `licensepools.availability_time` (the time a book was added to a coll
 1. There might be multiple values for the field we're sorting by. If a book has two LicensePools in different collections, which is "the" availability_time?
 2. We might also be using `licensepools.availability` in our filter. If a book has two LicensePools in different collections, but one of those collections is being filtered out, then its `availability_time` shouldn't count.
 
-We solve both of these these problems in `._availability_time_sort_order`.
+We solve both of these these problems in `Filter._availability_time_sort_order`.
 
 The first problem is pretty simple to solve. "The" availability time for a book is the _earliest_ time it was added to _any_ relevant collection. If you've already seen a book, it shouldn't show up as a 'new arrival' again just because the library got another license for it somewhere else.
 
-We can tell Elasticsearch this is the rule by specifying `mode="min"` when defining the sort order. This is equivalent to the `MIN` function in this SQL:
+We can tell Elasticsearch this is the rule by specifying `mode="min"` when defining the sort order. This is equivalent to the `MIN` function in this SQL statement:
 
 ```
 select work_id, MIN(availability_time) from licensepools GROUP BY work_id;
@@ -717,11 +717,11 @@ The `featureability_scoring_functions` method returns a list of these tricks. `E
 
 # Searching
 
-Now we're ready to talk about the second job. This really is a job that only a search engine like Elasticsearch can do. We need to take a string typed by a human, a string like `science fiction aliens` or `diary of a stinky kid`, and find the books that are most likely to make that person happy.
+Now we're ready to talk about the second job: handling search requests. We need to take a string typed by a human, a string like `science fiction aliens` or `diary of a stinky kid`, and find the books that are most likely to make that person happy. The first job -- finding all the books in a lane -- we could technically do with the database; it would just be really slow. But this really is a job that only a search engine like Elasticsearch can do. 
 
-The key is the same "scoring function" idea we use to get a random selection of high-quality works. But instead of providing our own scoring function, we're going to exploit Elasticsearch's default scoring function.
+The key to solving this problem is the same "scoring function" idea we use to get a random selection of high-quality works. But instead of providing our own scoring function, we're going to exploit Elasticsearch's default scoring function.
 
-The default scoring function is basically that books which match the search request get better scores than books that don't. But what does it mean to "match the search request"? There's no book called _Diary of a Stinky Kid_ -- whoever typed that in probably meant _Diary of a Wimpy Kid_. So we probably want to send _Diary of a Wimpy Kid_ as one of the search results. That book is part of a series -- should we send other books in the series, even though they have different titles? How important is the word "Stinky"? Maybe the person who typed in `stinky` was mixing up two different childrens' series. Can we find that other series and return its books as well? Of all the books we might send, which ones should we send first?
+The default scoring function is basically that books which match the search string get better scores than books that don't. But what does it mean to "match the search string"? There's no book called _Diary of a Stinky Kid_ -- whoever typed that in probably meant _Diary of a Wimpy Kid_. So we probably want to send _Diary of a Wimpy Kid_ as one of the search results. That book is part of a series -- should we send other books in the series, even though they have different titles? How important is the word "Stinky"? Maybe the person who typed in `stinky` was mixing up two different childrens' series. Can we find that other series and return its books as well? Of all the books we might send, which ones should we send first?
 
 How about `science fiction aliens`? There's no book with that title, and the person who typed that probably doesn't want one. They're looking for a certain _type_ of book -- science fiction novels that feature aliens. A novel like _Rendezvous with Rama_ is a better match for this search query than a book of literary criticism called _100 Years of Aliens in Science Fiction_, even though the book of literary criticism has all of the search terms in its title.
 
