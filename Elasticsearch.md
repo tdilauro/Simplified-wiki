@@ -324,7 +324,7 @@ Properties are the core of a mapping document. In the `CurrentMapping` construct
         self.add_properties(fields_by_type)
 ```
 
-This is saying that Elasticsearch needs to know know that the `presentation_ready` property will always be a boolwan, the `work_id` property will always be an integer, and `series` will always be a "filterable_text" -- whatever that is. The details of the various data types are explained below.
+This is saying that Elasticsearch needs to know know that the `presentation_ready` property will always be a boolean, the `work_id` property will always be an integer, and `series` will always be a "filterable_text" -- whatever that is. The details of the various data types are explained below.
 
 There are a few properties, like `publisher`, which aren't present in the mapping. We use those fields, but not in a way that requires any special treatment from Elasticsearch.
 
@@ -446,10 +446,10 @@ Above I mentioned three 'custom analyzers'. The `basic_text` and `filterable_tex
 * For `tokenizer` we use `standard`.
 * We provide one `char_filter`. It's called `html_strip`, and it removes HTML (such as the <p> tags in the `description` of the sample book document).
 * For `filter` we choose four transformations:
-** `lowercase` converts all tokens to lowercase.
-** `asciifolding` converts accented characters to their ASCII equivalents.
-** `en_stop_filter` removes English stopwords like "the".
-** Our custom `en_stem_filter` configures Elasticsearch's [stemmer token filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html) to perform stemming of English words. So "talking" would become "talk", "loved" would become "love", and so on.
+    * `lowercase` converts all tokens to lowercase.
+    * `asciifolding` converts accented characters to their ASCII equivalents.
+    * `en_stop_filter` removes English stopwords like "the".
+    * Our custom `en_stem_filter` configures Elasticsearch's [stemmer token filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html) to perform stemming of English words. So "talking" would become "talk", "loved" would become "love", and so on.
 
 Once everything is done, `Law of the Mountain Man` has become `["law", "mountain", "man"]`.
 
