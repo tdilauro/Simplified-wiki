@@ -1,0 +1,5 @@
+# Accessibility Guidelines
+## Standards
+Web Content Accessibility Guidelines (WCAG) is an international digital accessibility standard. It is technology agnostic and can be applied to any digital technology from the web to PDFs to native apps. There are three levels A, AA, AAA. Most organizations meet level AA. (For example, this is the standard used by NYPL, Library of Congress and various governments including USA Federal. The standard organized by 4 principles each with a set of guidelines. Guidelines are defined by success criteria, which are concrete. WCAG 2.1 is the most current version.
+
+This wiki page includes WCAG requirements and best practices that can be applied to the work on the SimplyE Web Client. For the most part, it covers relevant HTML patterns supporting accessible functionality. There are also some notes on visual design.
