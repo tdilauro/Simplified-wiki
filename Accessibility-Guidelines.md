@@ -66,10 +66,14 @@ Every page must * have an h1. This should be the title of the page.
 * A skip link should be the first element on each page. It should link to the main content of the page with link text like “Skip navigation” or “Skip to main content”. The text target can be the h1 or the <main> element. Whichever is the target, add a tab-index of “-1”.
 * The link text can be invisible, but best practice is for it to be visible on focus; you can find an example on nypl.org by tabbing through the page.
 
+## Dynamic Page Change Guidelines
+* When using JavaScript to change the content of a webpage, we need to make sure that information is available and announced to screenreaders. How we achieve this can change based on the functional design of the page. One technique is to use an `aria-live` attribute to announce changes. When using this technique follow best practices and test with screenreader and browser combinations.
 
+## Component Guidelines 
+The [United States Web Design System](https://designsystem.digital.gov/) includes patterns for a number of components. It is a fantastic reference for the accessible way of building and labeling components, including form fields. (Note, you can use the mark-up patterns without using any of the rest of the framework, including the visual styles and naming conventions.) Follow these patterns for:
+* Inputs
+* Dropdowns
+* Buttons
+* Radio-buttons
 
-
-
-
-
-
+Note, when there are multiple buttons with the same label on a page, use an `aria-label` or `aria-labelledby` to create unique, descriptive labels for screenreaders. For example, on a page with multiple “Return” or “Borrow” buttons, use aria attributes to pull in the item title. For instance, "Return The Very Hungry Caterpillar".
