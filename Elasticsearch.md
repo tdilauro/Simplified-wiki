@@ -782,6 +782,10 @@ So, `asteroids nonfiction` becomes a "simple query string" query against `astero
 
 Remember that this is just one hypothesis among many. A search for `modern romance` will find books in the "Romance" genre that have `modern` in one of their other fields, such as _Ginger's Heart: Modern Fairytale Series, Book 3_. But `modern romance` is also an exact title match for a book called _Modern Romance_, and the exact title match is probably going to show up first.
 
+# Pagination
+
+The `Filter` class makes sure that clients don't see items that don't match their current context. But there may be hundreds of thousands of items that match the filter. We can't pull them all from the database at once. We need a way to paginate the list.
+
 ## The `Pagination` class
 
 Pagination is pretty simple when we're handling search results -- someone typed in `science fiction aliens` and we want to show them a hundred top results or so. The `Pagination` class (defined in core/lane.py) lets you create a 'window' into the list of search results using two parameters: `offset` and `size`. The first page of search results sets `offset=0`, `size=50`, which means you get results #0-#49. The second page sets `offset=50, size=50`, which means you get results #50-99. And so on.
