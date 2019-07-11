@@ -4,6 +4,8 @@ Web Content Accessibility Guidelines (WCAG) is an international digital accessib
 
 This wiki page includes WCAG requirements and best practices that can be applied to the work on the SimplyE Web Client. For the most part, it covers relevant HTML patterns supporting accessible functionality. There are also some notes on visual design.
 
+Note: This is not a comprehensive list of the WCAG 2.1, level AA accessibility requirements, but the guidelines on this page set a strong baseline accessibility.
+
 ## General Guidelines
 ### Color Contrast
 * Text color should have a contrast ratio of 4.5:1 with background color.
