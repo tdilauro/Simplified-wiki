@@ -781,3 +781,37 @@ Any identifiable information in the query string becomes one or more filters on 
 So, `asteroids nonfiction` becomes a "simple query string" query against `asteroids` with a filter restricting it to nonfiction. `romance billionare` becomes a "simple query string" against `billionare` with a filter restricting it to the "Romance" genre. `age 10 and up` becomes an empty query that gives the same score to all children's books for age 10 and up, and ignores every other book.
 
 Remember that this is just one hypothesis among many. A search for `modern romance` will find books in the "Romance" genre that have `modern` in one of their other fields, such as _Ginger's Heart: Modern Fairytale Series, Book 3_. But `modern romance` is also an exact title match for a book called _Modern Romance_, and the exact title match is probably going to show up first.
+
+## The `Pagination` class
+
+Pagination is pretty simple when we're handling search results -- someone typed in `science fiction aliens` and we want to show them a hundred top results or so. The `Pagination` class (defined in core/lane.py) lets you create a 'window' into the list of search results using two parameters: `offset` and `size`. The first page of search results sets `offset=0`, `size=50`, which means you get results #0-#49. The second page sets `offset=50, size=50`, which means you get results #50-99. And so on.
+
+# `SortKeyPagination`
+
+The problem with `Pagination` is that Elasticsearch won't paginate more than [ten thousand items deep](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-from-size.html). This isn't a problem for searches -- we won't have ten thousand great search results for any particular search, and nobody's going to scroll through all those results.
+
+But this is a big problem when we're showing all the books in a lane. A big lane like "All Fiction" can easily have more than ten thousand items in it. You might say that nobody's realistically going to scroll through the entire fiction lane, but we also have very large lanes that are designed to be consumed by other computers. In that case, we _need_ the client to scroll through the entire lane. That's what the lane is for. So we need an alternate solution that can handle more than ten thousand items.
+
+The alternate solution is the `SortKeyPagination` class (defined in core/external_search.py). It exploits the fact that when you list all the books in a lane, that list has to be sorted somehow.
+
+So, let's imagine you're sorting the "All Fiction" lane by title. You get the first page of results, and the final item on that page is work #78201, _Abandon_ by Meg Cabot.
+
+The simplest solution is to use `Pagination`, and tell Elasticsearch to get the second page of the "All Fiction" list. We've seen that doesn't work, because we can only get 200 pages that way.
+
+A more sophisticated solution is to add a filter, so that Elasticsearch only considers titles the sort after _Abandon_. That's technically a different list, and we only need the first page of _that_ list. By changing the filter over and over again, and always asking Elasticsearch for the "first page", we can evade the 10,000 item limit.
+
+The problem with this is that it happens that the second page of the "All Fiction" lane starts with a totally different book called _Abandon_, by Pico Iyer. If we tell Elasticsearch to start the second page after "Abandon", it's going to skip the Pico Iyer book.
+
+So, this doesn't work either, but it's very close to a solution that does work. Remember that we sort lists by multiple fields. A list sorted "by title" is actually sorted by title, _then_ author, _then_ work ID. This is why we do that -- because different books can have the same title.
+
+Elasticsearch gives each work in a sorted list a _sort value_. The sort value isn't much to look at (Elasticsearch hashes it), but it contains all the information necessary to uniquely identify any book's relative position in a sorted list. If you decoded the sort keys for all the works near the end of the first page of "All Fiction", you might see something like this:
+
+```
+("Abandon", "Cabot, Meg", 95503)
+("Abandon", "Cabot, Meg", 276451)
+("Abandon", "Iyer, Pico", 50697)
+("Abandon", "Neggers, Carla", 120543)
+("Abandon", "Neggers, Carla", 344980)
+```
+
+The sort values are the missing pieces we've been looking for. If we tell Elasticsearch to start page two after "Abandon", we'll miss a bunch of books, but it works just fine to say that page two should start after ("Abandon", "Cabot, Meg", 276451). The work ID is a unique database ID, so even when there are two copies of a book by the same author, both copies have distinct sort values.
