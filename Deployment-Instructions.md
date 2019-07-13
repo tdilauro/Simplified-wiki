@@ -1,4 +1,6 @@
-Step-by-step instructions for deploying any of the Simplified applications on an EC2 AMI.
+Step-by-step instructions for deploying any of the Simplified applications -- circulation manager, metadata wrangler, or library registry. These instructions are designed for use on an EC2 AMI, or on a personal computer (for doing development).
+
+You can also choose to [deploy a Docker image](https://github.com/NYPL-Simplified/Simplified/wiki/Deployment:-Quickstart-with-Docker).
 
 # Install packaged requirements
 
