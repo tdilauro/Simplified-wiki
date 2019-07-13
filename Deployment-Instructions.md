@@ -79,10 +79,22 @@ Follow the instructions at [Install Elasticsearch with RPM](https://www.elastic.
 sudo yum install elasticsearch
 ```
 
+Make sure Elasticsearch starts on bootup! Here's how to start it manually:
+
+```
+sudo systemctl start elasticsearch
+```
+
 ### Debian
 
 ```
 sudo apt-get install elasticsearch
+```
+
+Make sure Elasticsearch starts on bootup! Here's how to start it manually:
+
+```
+sudo service elasticsearch start
 ```
 
 ### Mac OS X
@@ -95,13 +107,7 @@ elasticsearch-plugin install analysis-icu
 
 ### Afterwards 
 
-Make sure Elasticsearch starts on bootup! Here's how to start it manually:
-
-```
-sudo service elasticsearch start
-```
-
-Check http://localhost:9200 to make sure the server is running.
+Check http://localhost:9200 to make sure the Elasticsearch server is running.
 
 # Check out the Simplified repositories
 
