@@ -67,17 +67,29 @@ Make sure to add the `export PATH` line to your `.bashrc` file -- this will let 
 
 ## Set up the Elasticsearch service (Circulation manager only)
 
-Library Simplified is currently dependent on Elasticsearch version 1.x. Later Elasticsearch versions will raise errors.
+Library Simplified is currently dependent on Elasticsearch version 6 or later.
 
-### Linux
-
-Install the JDK:
+### Red Hat 
 
 ```
-sudo apt-get install openjdk-7-jre
+sudo yum install elasticsearch
 ```
 
-Then, follow the instructions here: https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html
+### Debian
+
+```
+sudo apt-get install elasticsearch
+```
+
+### Mac OS X
+
+```
+brew cask install homebrew/cask-versions/adoptopenjdk8
+brew install elasticsearch
+elasticsearch-plugin install analysis-icu
+```
+
+### Afterwards 
 
 Make sure Elasticsearch starts on bootup! Here's how to start it manually:
 
@@ -85,28 +97,7 @@ Make sure Elasticsearch starts on bootup! Here's how to start it manually:
 sudo service elasticsearch start
 ```
 
-### Mac OS X
-
-The circulation manager [currently requires Elasticsearch 1.5-1.7](https://github.com/NYPL-Simplified/server_core/issues/674), which is no longer supported. It's not possible to install it with Homebrew and it doesn't work with the latest version of Java. If possible, it's easier to point to an Elasticsearch instance hosted elsewhere so you don't need to set it up locally.
-
-If you really want to set it up, you'll first need to uninstall any versions of Java more recent than 8. For example, to uninstall Java 9 on OS 10.13, run:
-```
-sudo rm -rf "/Library/Internet Plug-Ins/JavaAppletPlugin.plugin"
-sudo rm -rf "/Library/PreferencePanes/JavaControlPanel.prefPane"
-sudo rm -rf /Library/Java/JavaVirtualMachines/jdk-9.jdk/
-```
-
-Then install the Java 8 JDK, from [the installer on Oracle's site](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
-
-Finally, download, extract, and run elasticsearch:
-```
-curl -L -O https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.6.tar.gz
-tar -xvf elasticsearch-1.7.6.tar.gz
-cd elasticsearch-1.7.6/bin
-./elasticsearch
-```
-
-Check http://localhost:9200 to make sure it's running.
+Check http://localhost:9200 to make sure the server is running.
 
 # Check out the Simplified repositories
 
