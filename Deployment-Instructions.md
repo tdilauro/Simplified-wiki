@@ -67,7 +67,7 @@ Make sure to add the `export PATH` line to your `.bashrc` file -- this will let 
 
 ## Set up the Elasticsearch service (Circulation manager only)
 
-Library Simplified is currently dependent on Elasticsearch version 6 or later.
+The circulation manager requires on Elasticsearch version 6 or later. Other components of the system don't need Elasticsearch at all.
 
 ### Red Hat 
 
