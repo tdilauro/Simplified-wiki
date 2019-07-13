@@ -71,6 +71,8 @@ Library Simplified is currently dependent on Elasticsearch version 6 or later.
 
 ### Red Hat 
 
+Follow the instructions at [Install Elasticsearch with RPM](https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html). You'll need to the official Elasticsearch repository and import its GPG key. Then you can run this command:
+
 ```
 sudo yum install elasticsearch
 ```
