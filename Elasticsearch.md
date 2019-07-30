@@ -109,6 +109,13 @@ Here's a search document that shows off everything we put into the Elasticsearch
   "presentation_ready": true,
   "last_update_time": 1561581146,
 
+  "identifiers": [
+   {
+    "type": "ISBN",
+    "identifier":9780786025725"
+   }
+  ] 
+
   "title": "Law of the Mountain Man", 
   "sort_title": "Law of the Mountain Man", 
   "subtitle": "Mountain Man Series, Book 5", 
@@ -232,13 +239,16 @@ From top to bottom, this means that for every work, we want to find:
   directly with the `Work`. We'll use this to make feeds of works by a
   specific author or audiobook narrator.
 
+* Information about relevant `Identifier`s associated with the work --
+  basically, all the ISBNs we know about for this work.
+
 * Information about the subject-matter `Classification`s associated
   with the work, such as `Jensen, Smoke (Fictitious character)`. This
   information comes from sources like OCLC, and it's associated with
-  an Identifier associated with the presentation edition (such as an
-  ISBN). We don't show this information directly to library patrons,
-  because it's not in any consistent format, but it's useful for handling
-  searches like `etiquette` or `vegan cooking`.
+  an Identifier associated with the presentation edition, such as an
+  ISBN. We don't show this information directly to library patrons,
+  because it's not in any consistent format, but it's useful for
+  handling searches like `etiquette` or `vegan cooking`.
 
 * Information about the `Genre`s under which the work has been
   classified -- Western, Biography, and so on. By the time we get
@@ -336,6 +346,21 @@ These lists correspond to the database joins between `Work` and other tables: `C
 
 We need to define the data types for fields from three of these subdocuments: `contributors`, `licensepools`, and `customlists`. Although we do searches and filters on `genres` and `classifications`, they're not involved in our use of any advanced Elasticsearch features, so it's not a requirement that we define the subdocuments.
 
+### Identifiers
+
+We primarily use the `identifiers` subdocument when processing book
+recommendations from external APIs.  Those APIs usually use ISBNs to
+refer to books, so grabbing a list of recommended books requires the
+ability to filter on specific ISBNs.
+
+```
+        identifiers = self.subdocument("identifiers")
+        identifier_fields = {
+            'keyword': ['identifier', 'type']
+        }
+        identifiers.add_properties(identifier_fields)
+```
+
 ### Contributors
 
 We primarily use the `contributors` subdocument to create feeds of books by a particular author. We don't use it when sorting feeds by author; instead we use the `sort_author` field in the main document.
@@ -393,7 +418,7 @@ The data types `integer`, `long`, `boolean`, and `keyword` are defined by Elasti
 
 As we'll see, text fields usually have some 'fuzz' that lets a query match a field even if the text doesn't quite match. For most fields, this 'fuzz' is good, although we are a little picky about exactly how the fuzz is applied in different scenarios. We want a search for `john le carre` to match "John le Carré". In a query context, we don't care about little things like capitalization or accents.
 
-But in a filter context we _do_ care about the little things. Elasticsearch won't use `text` fields in a filter context. Text fields can be used in filter context, but only if they're indexed as `keyword`. With `keyword`, there is no 'fuzz' -- nothing but an exact match will count. If the value of a `keyword` value is "Primary Author", then only `Primary Author` will count as a match -- not `primary author`, not `Author`, not `Primary Äuthor`.
+But in a filter context we _do_ care about the little things. Elasticsearch won't use `text` fields in a filter context. Text fields can be used in filter context, but only if they're indexed as `keyword`. With `keyword`, there is no 'fuzz' -- nothing but an exact match will count. If the value of a `keyword` value is "Primary Author", then only `Primary Author` will count as a match -- not `primary author`, not `Author`, not `Primary Äuthor`. That's why all of the "identifiers" fields are indexed as keywords -- nobody searches on part of an ISBN.
 
 We mainly use `keyword` fields for sorting (e.g. sorting a list of books in a seires by series position). Since that kind of sorting happens in filter context, Elasticsearch won't sort on a normal text field. It has to be a numeric field (like `series_position`) or a keyword. Our custom `sort_author_keyword` and `filterable_text` types (defined below) are variants on the `keyword` data type.
 
@@ -405,9 +430,9 @@ Let's think about `description`. It's a textual description of a book, like you 
 
 That's pretty good, but there are some situations where we need to do things differently. When we define `description` as `basic_text`, we're actually defining three different fields:
 
-* `description.standard` : A `text` field analyzed using the standard Elasticsearch analyzer.
-* `description.minimal` : A `text` field analyzed using the custom `en_minimal_analyzer`.
-* `description` : A `text` field analyzed using the custom `en_analyzer`.
+* `description` : A `text` field analyzed using the `en_default_text_analyzer`.
+* `description.minimal` : A `text` field analyzed using the `en_minimal_analyzer`.
+* `description.with_stopwords` : A `text` field analyzed using the `en_with_stopwords_analyzer`.
 
 Elasticsearch will index the description three different times, using slightly different rules each time. When we come in with a search query, we'll be able to use the different sets of rules to test out different hypotheses about what the user is trying to search for. We'll pick the hypothesis that gets the highest score, and hopefully deliver the best possible search results.
 
@@ -425,43 +450,53 @@ A `filterable_text` field is the same as a `basic_text` field, except the value 
 
 This is necessary because ElasticSearch won't use a text field in filter context -- it has to be a keyword field. That's bad news for a field like `series`. We want to use `series` in query context, so that if someone searches for `babysitters club` we can find books in the series they're clearly looking for. But we also want to use `series` in a filter context, so we can build a list of _only_ the books in the `Baby-Sitters Club` series, excluding unrelated books that mention babysitters or clubs in their descriptions.
 
-`filterable_text` lets us have it both ways. We set up `series` as a `filterable_text`, and `Baby-Sitters Club` gets indexed three different ways so it can be used in a query context, like a `basic_text`. But it _also_ gets indexed as-is, as a `keyword`, so it can be used in a filter context for filtering and sorting.
+`filterable_text` lets us have it both ways. We set up `series` as a `filterable_text`, and `Baby-Sitters Club` gets indexed as three different text fields which can be used in a query context, just as a `basic_text` would be. But it _also_ gets indexed as-is, as a `keyword`, so it can be used in a filter context for filtering and sorting.
 
 ### `sort_author_keyword`
 
-This is a slight variant on `icu_collation_keyword` which we use for the `sort_author` field when we're sorting a list of books alphabetically by author. The only difference is that we want some regular expressions to be applied `sort_author` before it's indexed. The normal `icu_collation_keyword` type doesn't allow us to do this, so we kind of had to reinvent that data type and also mix in this feature.
+This is a slight variant on `icu_collation_keyword` which we use for the `sort_author` field when we're sorting a list of books alphabetically by author. The only difference is that we want some regular expressions to be applied to `sort_author` before it's indexed. The normal `icu_collation_keyword` type doesn't allow us to do this, so we kind of had to reinvent that data type and also mix in this feature.
 
 To do this, we created a custom analyzer called `en_sort_author_analyzer`.
 
 ## Custom analyzers
 
-Above I mentioned three 'custom analyzers'. The `basic_text` and `filterable_text` data types make use of `en_analyzer` and `en_minimal_analyzer`. The `sort_author_keyword` data type makes use of `en_sort_author_analyzer`. I'll discuss these custom analyzers in detail now.
+Above I mentioned three 'custom analyzers'. The `basic_text` and `filterable_text` data types make use of `en_default_text_analyzer`, `en_minimal_analyzer`, and `en_with_stopwords_analyzer`. The `sort_author_keyword` data type makes use of `en_sort_author_analyzer`. I'll discuss these custom analyzers in detail now.
 
 * `tokenizer`: The name of an algorithm for turning a string into a series of tokens. We normally use the `standard` tokenizer, which basically splits on whitespace, turning `"Law of the Mountain Man"` into `["Law", "of", "the", "Mountain", "Man"]`. The only other tokenizer we use is `keyword`, which doesn't do anything -- the string is used as-is.
 * `char_filter`: A chain of simple transformations -- each no more complicated than a regular expression -- to apply to the text before it's tokenized. 
 * `filter`: A chain of transformations to apply to each token, _after_ tokenization.
 
-### `en_analyzer`
+### `en_default_text_analyzer`
 
 * For `tokenizer` we use `standard`.
-* We provide one `char_filter`. It's called `html_strip`, and it removes HTML (such as the <p> tags in the `description` of the sample book document).
+* We provide two `char_filter`s:
+    * `html_strip` is a standard filter that removes HTML, such as the <p> tags in the `description` of the sample book document.
+    * `remove_apostrophes` is a custom filter that uses a regular expression to strip apostrophes.
 * For `filter` we choose four transformations:
     * `lowercase` converts all tokens to lowercase.
     * `asciifolding` converts accented characters to their ASCII equivalents.
-    * `en_stop_filter` removes English stopwords like "the".
-    * Our custom `en_stem_filter` configures Elasticsearch's [stemmer token filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html) to perform stemming of English words. So "talking" would become "talk", "loved" would become "love", and so on.
+    * `english_stop` removes English stopwords like "the".
+    * Our custom `english_stemmer` filter configures Elasticsearch's [stemmer token filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html) to perform stemming of English words. So "talking" becomes "talk", "loved" becomes "love", and so on.
 
 Once everything is done, `Law of the Mountain Man` has become `["law", "mountain", "man"]`.
 
 ### `en_minimal_analyzer`
 
-This analyzer is the same as `en_analyzer` except for the final `filter` in the chain. Instead of `en_stem_filter`, we use a second custom filter, `en_stem_minimal_filter`.
+This analyzer is the same as `en_default_text_analyzer` except for the final `filter` in the chain. Instead of `english_stemmer`, we use a second custom filter, `minimal_english_stemmer`.
 
-These two filters are almost exactly the same. They're both the Elasticsearch [stemmer token filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html), but `en_stem_minimal_filter` is configured with a less aggressive English stemmer.
+These two filters are almost exactly the same. They're both the Elasticsearch [stemmer token filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html), but `minimal_english_stemmer` is configured to stem less aggressively.
+
+### `en_with_stopwords_analyzer`
+
+This analyzer is the same as `en_minimal_analyzer`, with one difference: it doesn't have the `english_stop` filter. Stopwords are preserved.
+
+This analyzer will turn `Law of the Mountain Man` into `["law", "of", "the", "mountain", "man"]`.
+
+This is useful for handling queries that contain a lot of stopwords. If you search for `law of the`, the other analyzers will turn your query into ["law"] and think you want a bunch of law books. This analyzer will turn your query into `["law", "of", "the"]`, giving you a better chance of finding the book you're looking for.
 
 ### `en_sort_author_analyzer`
 
-This one's a little complicated. We'd really like to define `sort_author` as a standard `icu_collation_keyword` data type and call it a day. Unfortunately, we need one little feature that `icu_collation_keyword` doesn't support: the ability to specify a custom list of `char_filter`.
+This one's a little complicated. We'd really like to define `sort_author` as a standard `icu_collation_keyword` data type and call it a day. Unfortunately, we need one little feature that `icu_collation_keyword` doesn't support: the ability to specify a custom list of `char_filter`s.
 
 So we need to define a custom analyzer, `en_sort_author_analyzer`. It looks like this:
 
@@ -741,46 +776,220 @@ Each hypothesis has a weight associated with it. We determined these weights thr
 
 The 'hypothesis' metaphor makes the search code modular. We can come up with a lot of strategies, and tell Elasticsearch to try all of them at once and see what works best for this particular search. Here are the strategies we've come up with so far:
 
-### Simple query string match
+### Matches against a single field
 
-First, we try a [simple query string query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html) against title, subtitle, series, summary, classification, primary author, publisher, and imprint. This is the closest thing we do to a generic Elasticsearch query. This query works realy well when a search string combines multiple types of information, like `the demon haunted world carl sagan` or `goldfinch novel`.
+About 75% of real-world search requests are from someone who really only needs to search one field in this huge document. Here are the fields they generally want to search:
 
-This query runs against fields that have been put through the standard analyzer. This removes English stopwords like 'and', and applies a stemming algorithm. This ensures that a search for `awaken` will find a book called _The Awakening_ -- you don't have to literally type in `the awakening`.
+* Title (looking for a specific book)
+* Subtitle (looking for a specific book)
+* Author name (looking for books by a specific person)
+* Series name (looking for books in a specific series)
+* Publisher or imprint (looking for books by a specialty publisher such as O'Reilly or Harlequin Historical)
 
-### Phrase match
+Searching by author name is complicated enough to get its own section
+in this documentation, but all the other fields are handled the same
+way. The `Query.match_one_field_hypotheses` method is in charge of
+generating hypotheses for a given field.
 
-We also try a [match phrase query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query-phrase.html) against title, author, or series. We use this to handle the most common type of search request: someone typed in a book title, author, or series, more or less verbatim.
+For the moment, let's suppose we're generating hypotheses for the
+`title` field. We're spinning theories that maybe the incoming search
+request is an attempt to find a book with a specific title.
 
-For this query we use the `.minimal` variant of `title` and `series` -- the one we set up to be analyzed using our custom 'en_minimal_analyzer'. The main difference is this analyzer is less aggressive about stemming.
+`title` is a `filterable_text` field, meaning it was indexed four times:
 
-Let's say there are two books in the collection, _Awakened_ and _The Awakening_. If you search for `awakening`, the "simple query string" hypothesis will give both books the same score, because its analyzer converts all three strings to the base string "awaken". The less aggressive stemmer used by the 'en_minimal_analyzer' turns "Awakened" into "awakened" and "The Awakening" into "awakening". This hypothesis will weigh _The Awakening_ much higher than _Awakened_, because it can tell that _The Awakening_ is closer to what you actually typed in.
+* `title` - A text field with aggressive stemming applied.
+* `title.minimal` - A text field with minimal stemming applied.
+* `title.with_stopwords` - A text field with minimal stemming applied and stopwords preserved.
+* `title.keyword` - A keyword field that can only be used in exact matches.
 
-If you search for `awaken`, then the first hypothesis makes more sense and both books are equally good matches. But if you search for `awakening`, this hypothesis makes more sense and _The Awakening_ should show up first.
+We'll be testing five different hypotheses. There's one hypothesis for
+each of these indexing techniques, plus an extra.
 
-### Exact match
+1. A [term
+match](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html)
+against the `title.keyword`. This tests the hypothesis that the query
+string is an exact title match for. If you search for `law of the
+mountain man`, then this hypothesis will give an enormous boost to
+_Law of the Mountain Man_, all but ensuring that it's the first result
+you see.
 
-This is a _second_ match phrase query, against title and author only, which greatly boosts an exact match. If you _do_ literally type in `the awakening`, this pretty much guarantees _The Awakening_ will be the first result.
+2. A [phrase match](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query-phrase.html) against `title.minimal`. This tests the hypothesis
+   that the query string is a partial title match. If you search for
+   `jonathan strange`, this hypothesis will bost _Jonathan Strange and
+   Mr Norrell_, because your search query contains two consecutive
+   words from the book title. If you search for `strange jonathan`,
+   this hypothesis will _not_ boost _Jonathan Strange and Mr Norrell_
+   -- it's not a phrase match.
 
-### Fuzzy match
+3. A [fuzzy
+   match](https://www.elastic.co/guide/en/elasticsearch/guide/current/fuzzy-match-query.html)
+   against `title.minimal`. This tests the idea that you were trying
+   to do a title search but you made a typo. If you search for `lwa of
+   the mounain man`, this hypothesis will give a boost to _Law of the
+   Mountain Man_.
 
-This is a [multi match query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html) against any combination of title, subtitle, series, summary, author, publisher, or imprint. This is similar to our first hypothesis, the simple query string query (which is itself a multi match query under the hood). The difference is that this handles the case where the search request contains typos or misspellings. This is where we try to get Elasticsearch to figure out that `raina telemger` refers to author Raina Telgemeier.
+   All incoming queries are run through spellcheck. If the query fails
+   spellcheck, fuzzy match hypothesesis are weighted at 50% of the
+   weight of the original, non-fuzzy query. If the query passes
+   spellcheck, the fuzzy match hypothesis is given only 25% of the
+   weight of the original hypothesis -- we're basically testing the
+   idea that you misspelled one English word as another English word,
+   like in `awl of the mountain man`.
 
-### Simple query match with filter
+   (This isn't terribly important, but technically we generate _two_
+   different fuzzy hypotheses. Although typoes are common, it's
+   relatively uncommon for a typo to affect the first letter of a
+   word. The first fuzzy hypothesis assumes there's no typo in the
+   first letter of each word. The second fuzzy hypothesis thinks there
+   might be a typo anywhere in the word -- `awl of the ountain man` --
+   and it has a lower weight.)
 
-Finally, we have a hypothesis that the search term might include structured data that can be parsed out and turn into a filter. We can extract structured data of the following types:
+4. A [standard
+   match](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html)
+   against the aggressively stemmed `title` field. Unlike the other
+   hypotheses, the standard match disregards the order in which words
+   appear. If you search for `strange jonathan norrell`, then none of
+   the other hypotheses will see a good match, but this hypothesis
+   will speak up and say that _Jonathan Strange and Mr Norrell_ looks
+   like what you're looking for.
+
+   We use the aggressively stemmed version of `title` because we're
+   already supposing that the results won't look much like what was
+   typed as the search query. So this is where we check that maybe you
+   typed `awaken`, when the actual name of the book is _Awakening_.
+
+5. A phrase match against `title.with_stopwords`. This tests the
+   hypothesis that stopwords in the query string are important. If you
+   search for `law of the`, the second hypothesis will boost any book
+   that has _Law_ in the title, but this hypothesis will give a
+   _bigger_ boost to any book that has _Law of the_ in the title,
+   ensuring that _Law of the Mountain Man_ comes out on top.
+
+So, that's the five (or six) ways we check that the query string might
+be trying to look for a book with a specific title. Subtitle, series,
+publisher, and imprint work the same way, with the following differences:
+
+* A subtitle hypothesis is weighted lower than the corresponding title
+  queries. Hypotheses for series, are weighted lower still, and
+  publisher and imprint are weighted much lower than that.
+
+* Title, subtitle, and series are the only fields that use hypotheses
+  #4 and #5. They're useful when searching text, but not so useful when
+  searching names. This applies to names of companies (publisher and
+  imprint) and to names of people (contributor searches, covered
+  below).
+
+### Contributor name matches
+
+The search document for each book has a "contributors" document, with each subdocument talking about someone who worked on the book.
+
+```
+  "contributors": [
+    {
+      "display_name": "William W. Johnstone", 
+      "role": "Author", 
+      "sort_name": "Johnstone, William W.", 
+    }
+  ], 
+```
+
+`contributors.display_name` is a `filterable_text` field, just like
+`title`. So we can use a lot of the same logic I laid out in the
+section above. We give a big boost to an exact match on
+`display_name`, a smaller boost to a phrase match, and an even smaller
+boost to a fuzzy match. Author queries are given about the same weight
+as series queries -- very high, but lower than title or subtitle
+queries.
+
+But author search has some problems that title search doesn't
+have. We'll need to address these specially:
+
+* There are a lot of different ways to express a person's name. We'll
+  need to field queries for `william w johnstone`, `william
+  johnstone`, `johnstone`, `johnstone, william w.`, and so on.
+* Author names are commonly misspelled, and spellchecking names is even less
+  reliable than spellchecking other fields. We'll need to field
+  queries for `wiliam johnston`, `william johnson`, and so on.
+* Sometimes we know the `sort_name` for a contributor but not the
+  `display_name`. That's bad because almost nearly everyone searches for
+  the name they see on the book cover.
+* We want books _by_ William W. Johnstone, or at least books where he
+  had a major role, not books where he did something minor like
+  writing the introduction.
+
+We add a filter on the `contributors.role` field to every hypothesis
+we generate. This takes care of the "wrote the introduction" problem.
+We only consider a `contributors` document if its role was a major
+role like `Author` or `Narrator` -- something people will actually
+search for.
+
+Then, once we've generated all these hypotheses, we use a
+quick-and-dirty algorithm from
+[`core/util/personal_names.py`](https://github.com/NYPL-Simplified/server_core/blob/master/util/personal_names.py)
+to turn the search term from a display name (`william johnstone`) to a
+sort name (`johnstone, william`). If it looks like this works, we
+generate all of these hypotheses _again_, but on the
+`contributors.sort_name` field. This takes care of the "we don't know
+the display_name" problem, as well as the (rare) case where you
+actually searched for someone's sort name.
+
+This can be pretty wasteful -- if you search for `potato chips` we're
+going to make a bunch of hypotheses to check for an qauthor with a
+`display_name` of `potato chips` _or_ a `sort_name` of
+`chips_potato`. But when you _are_ searching for a person's name, it
+does a really good job at finding books by that person, even if the
+circulation manager doesn't have perfect information about them.
+
+### Topic match
+
+Think about a search for `risk management`. Obviously a book called
+_Risk Management_ would be a great match, and a book called
+_Fundamentals of Risk Management_ would be a good match. But we can't
+just hope there are a bunch of books about risk management with "Risk
+Management" in the title. We may need to find books called things like
+_How to Run a Project_, books which which were classified under "Risk
+Management" by a librarian, or that mention "risk management" in their
+summaries.
+
+This is a topic search -- a search for a certain _type_ of book rather than a specific title. We handle topic searches with a hypothesis that performs a [best-fields multi match query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html#type-best-fields) against `summary` (the book's back-cover copy) and `classifications.term` (the terms used by librarians to classify the book). This gives us a catch-all way to handle really general searches like `cute aliens` or `advanced user interfaces javascript`.
+
+Topic matches are given a relatively low weight: significantly below author matches, but above publisher or imprint matches. This is mainly because topic searches are relatively uncommon.
+
+### Multi-match: Title plus some other field
+
+One advanced searching technique sometimes used by library patrons is to combine terms from the title with words from one of the other fields. Some examples:
+
+* Title plus author: `punishment dostoyevsky`
+* Title plus subtitle: `open wide a radical`
+* Title plus series: `dairy of a wimpy kid dog days`
+
+We create three hypotheses to test each of these possibilities: one for author, subtitle, and series. Each hypotheses is a [cross-field multi match queries](https://www.elastic.co/guide/en/elasticsearch/reference/6.2/query-dsl-multi-match-query.html#type-cross-fields) which checks how good the match would be if `title.minimal` and the `.minimal` version of the other field were smushed together into a single text field. Most of the time this is a bad bet. 75% of the time, people are searching in a single field, and one of the single-field hypotheses will win out. But single-field hypotheses have a really hard time with queries like `punishment dostoyevsky`, so these hypotheses will win out when it matters.
+
+### Query plus filter
+
+Finally, we have a hypothesis that the search term might include structured data that can be parsed out and turn into a filter. The structured data may be any of the following types:
 
 * A fiction status: `asteroids nonfiction`
 * A target age or grade level: `grade 5 dogs`, `age 10 and up`
 * A target audience: `young adult divorce`
 * A genre: `romance billionare`, `robert moses biography`
+* Any combination of these: `young adult fiction divorce`
 
-The query parser is a class called `QueryParser`. It doesn't have any Elasticsearch code in it, just string processing. The goal is to identify information that we understand, and _remove_ it from the query string so it doesn't send Elasticsearch down the wrong path.
+We try to extract this information using a class called `QueryParser`. It doesn't have any Elasticsearch code in it, just string processing. The goal is to locate information that we understand on a deep level and _remove_ it from the query string so it doesn't send Elasticsearch down the wrong path.
 
-Any identifiable information in the query string becomes one or more filters on the work fields: `fiction`, `target_age`, `audience`, and/or `genres.term`. That part of the query runs in filter context. The rest of the query string, the part we don't understand, becomes a "simple query string" type query, similar to the one used in the first hypothesis. This part of the query runs in query context.
+Any identifiable information in the query string becomes one or more filters on the work fields: `fiction`, `target_age`, `audience`, and/or `genres.term`. That part of the query runs in filter context. The rest of the query string, the part we don't understand, is run recursively through _the entire search algorithm_ you just saw. We try everything: title, subtitle, author, topic, multi-match, and so on. The only thing we don't try is query-plus-filter, because we just yanked all of the filter information out of the query string, giving query-plus-filter nothing to do.
 
-So, `asteroids nonfiction` becomes a "simple query string" query against `asteroids` with a filter restricting it to nonfiction. `romance billionare` becomes a "simple query string" against `billionare` with a filter restricting it to the "Romance" genre. `age 10 and up` becomes an empty query that gives the same score to all children's books for age 10 and up, and ignores every other book.
+This means that `robert moses biography` is treated the same as a query against `robert moses` with a filter restricting it to the Biography genre. Maybe "robert moses" is part of the title, or the subtitle, or the description, or it's the author's name -- we don't know yet! That's for the recursive query to figure out. All we know is that we'll probably have better luck looking for a biography called _Robert Moses_ than looking for a book called _Robert Moses Biography_.
 
-Remember that this is just one hypothesis among many. A search for `modern romance` will find books in the "Romance" genre that have `modern` in one of their other fields, such as _Ginger's Heart: Modern Fairytale Series, Book 3_. But `modern romance` is also an exact title match for a book called _Modern Romance_, and the exact title match is probably going to show up first.
+Other examples:
+
+* `asteroids nonfiction` becomes a normal query against `asteroids` with a filter restricting results to nonfiction.
+* `grade 5 dogs` becomes a normal query against `dogs` with a filter restricting results to books suitable for fifth-graders.
+* `romance billionare` becomes a normal query against `billionare` with a filter restricting results to the "Romance" genre.
+* `young adult fiction divorce` becomes a normal query against `divorce` with a filter restricting results to young adult titles that are also fiction.
+* `age 10 and up` becomes an empty query that gives the same score to all children's books for age 10 and up, and ignores every other book.
+
+Remember that this whole thing is just one hypothesis among many. A search for `modern romance` will find books in the "Romance" genre that also match `modern`, such as _Ginger's Heart: Modern Fairytale Series, Book 3_. But `modern romance` is also an exact title match for a book called _Modern Romance_, and since exact title matches are boosted so highly, _Modern Romance_ is probably going to be the first result.
 
 # Pagination
 
