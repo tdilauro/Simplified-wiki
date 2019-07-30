@@ -470,13 +470,13 @@ Above I mentioned three 'custom analyzers'. The `basic_text` and `filterable_tex
 
 * For `tokenizer` we use `standard`.
 * We provide two `char_filter`s:
-    * `html_strip` is a standard filter that removes HTML, such as the <p> tags in the `description` of the sample book document.
-    * `remove_apostrophes` is a custom filter that uses a regular expression to strip apostrophes.
+    * `html_strip` is a standard filter that removes HTML, such as the `<p>` tags in the `description` of the sample book document.
+    * `remove_apostrophes` is a custom filter that uses a regular expression to strip apostrophes. This improves the results for searches like `charlottes web`.
 * For `filter` we choose four transformations:
     * `lowercase` converts all tokens to lowercase.
     * `asciifolding` converts accented characters to their ASCII equivalents.
     * `english_stop` removes English stopwords like "the".
-    * Our custom `english_stemmer` filter configures Elasticsearch's [stemmer token filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html) to perform stemming of English words. So "talking" becomes "talk", "loved" becomes "love", and so on.
+    * Our custom `english_stemmer` filter configures Elasticsearch's [stemmer token filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html) to aggressively stem English words. So "talking" becomes "talk", "loved" becomes "love", and so on.
 
 Once everything is done, `Law of the Mountain Man` has become `["law", "mountain", "man"]`.
 
