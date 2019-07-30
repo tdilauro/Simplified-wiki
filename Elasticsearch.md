@@ -934,9 +934,9 @@ the display_name" problem, as well as the (rare) case where you
 actually searched for someone's sort name.
 
 This can be pretty wasteful -- if you search for `potato chips` we're
-going to make a bunch of hypotheses to check for an qauthor with a
+going to make a bunch of hypotheses to check for an author with a
 `display_name` of `potato chips` _or_ a `sort_name` of
-`chips_potato`. But when you _are_ searching for a person's name, it
+`chips, potato`. But when you _are_ searching for a person's name, this
 does a really good job at finding books by that person, even if the
 circulation manager doesn't have perfect information about them.
 
@@ -957,7 +957,7 @@ Topic matches are given a relatively low weight: significantly below author matc
 
 ### Multi-match: Title plus some other field
 
-One advanced searching technique sometimes used by library patrons is to combine terms from the title with words from one of the other fields. Some examples:
+One advanced searching technique sometimes used by library patrons is to combine terms from the title with terms from another fields. Some examples:
 
 * Title plus author: `punishment dostoyevsky`
 * Title plus subtitle: `open wide a radical`
@@ -979,7 +979,7 @@ We try to extract this information using a class called `QueryParser`. It doesn'
 
 Any identifiable information in the query string becomes one or more filters on the work fields: `fiction`, `target_age`, `audience`, and/or `genres.term`. That part of the query runs in filter context. The rest of the query string, the part we don't understand, is run recursively through _the entire search algorithm_ you just saw. We try everything: title, subtitle, author, topic, multi-match, and so on. The only thing we don't try is query-plus-filter, because we just yanked all of the filter information out of the query string, giving query-plus-filter nothing to do.
 
-This means that `robert moses biography` is treated the same as a query against `robert moses` with a filter restricting it to the Biography genre. Maybe "robert moses" is part of the title, or the subtitle, or the description, or it's the author's name -- we don't know yet! That's for the recursive query to figure out. All we know is that we'll probably have better luck looking for a biography called _Robert Moses_ than looking for a book called _Robert Moses Biography_.
+This means that `robert moses biography` is treated as a search for `robert moses` with a filter restricting it to the Biography genre. Maybe "robert moses" is part of the title, or the subtitle, or the description, or it's the author's name -- we don't know yet! That's for the recursive query to figure out. All we know is that we'll probably have better luck looking for a biography called _Robert Moses_ than looking for a book called _Robert Moses Biography_.
 
 Other examples:
 
