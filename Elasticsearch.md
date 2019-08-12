@@ -879,6 +879,8 @@ publisher, and imprint work the same way, with the following differences:
   imprint) and to names of people (contributor searches, covered
   below).
 
+* Exact matches on publisher and imprint are weighted much less than exact matches on other fields. This is because publisher and imprint names are often subject or author matches, such as "penguin" and "macmillan". Subject and author searches are more common than publisher and imprint searches, so we err on the side of finding books about penguins versus books published by Penguin.
+
 ### Contributor name matches
 
 The search document for each book has a "contributors" document, with each subdocument talking about someone who worked on the book.
