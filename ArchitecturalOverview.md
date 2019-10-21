@@ -137,7 +137,7 @@ Every communication in this diagram uses the same protocol: OPDS. OPDS is basica
 There are two different versions of OPDS: [OPDS 1.2](https://github.com/opds-community/opds-revision/blob/master/opds-1.2.md), which is an XML-based format and the forthcoming [OPDS 2.0](https://github.com/opds-community/opds-revision/blob/master/opds-2.0.md), which is a JSON-based format. Both versions of OPDS serve the same purpose -- to convey information about books.
 
 OPDS doesn't cover absolutely everything that Library Simplified needs
-to do. We've invented a lot of extensions to OPDS, as well as totally
+to do. The OPDS community have collectively invented a lot of extensions to OPDS, like [ODL](https://drafts.opds.io/odl-1.0), as well as totally
 separate protocols like the [OPDS Directory Registration
 Protocol](https://github.com/NYPL-Simplified/Simplified/wiki/OPDS-Directory-Registration-Protocol). But
 the core design principle of Library Simplified is that the components
