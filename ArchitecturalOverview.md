@@ -47,7 +47,7 @@ specific audiences, such as students, or people with print
 disabilities.
 
 A properly configured circulation manager can automatically register
-itself with a library registry.
+itself with a library registry, through the [OPDS Directory Registration Protocol](https://github.com/NYPL-Simplified/Simplified/wiki/OPDS-Directory-Registration-Protocol).
 
 We expect the Library Simplified ecosystem to contain only one library
 registry. We expect every library in the ecosystem to be registered
