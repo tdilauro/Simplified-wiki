@@ -1,498 +1,362 @@
-# Basic concepts
+# Introduction
 
-The circulation manager uses a Postgres relational database to store information about real-world concepts: books, authors, genres, libraries, licenses, patrons, loans, holds, and so on. This database is good enough for most purposes, but there are two things it's really bad at:
+The Library Simplified circulation manager uses a complex data model to represent the current state of:
 
-1. Taking a search query someone typed in (e.g. `italian romance` or `raina telemger`) and reliably finding the books that person is probably looking for.
-2. Quickly finding exactly which books belong in a given lane (e.g. finding all the YA science fiction books on the 'staff picks' list).
+* All the libraries which use the circulation manager.
+* All the ebooks available to the patrons of those libraries.
+* All the patrons who use the circulation manager, with their active loans and holds.
 
-Unfortunately these are the two most important features of the circulation manager. Nearly every OPDS feed we serve is either a list of books taken from a lane, or a list of search results. We brought in an Elasticsearch server to help us implement those two features.
+Looking at the whole data model at once can be overwhelming, so we'll consider it as a few smaller simpler systems:
 
-Our Elasticsearch index stores a reformatted copy of some information from the database. We don't store the whole database. We only store what we need to do these two jobs, and we store it in a way that's optimized for these jobs.
+* Bibliographic metadata
+* Licensing
+* Works
+* Custom lists
+* Libraries
+* Patrons
+* Site configuration
+* Background processes
 
-In the Elasticsearch index we primarily store information about works, but we also includes some information about authors, genres, custom lists, and licenses. This is because we might need to find all books by a certain author, or filter out books that have an active holds queue. The circulation manager has a lot of weird ways of generating OPDS feeds, and most of those techniques need special support in the Elasticsearch index.
+These systems overlap around a few key classes, mainly `DataSource`, `Identifier`, `LicensePool`, and `Work`.
 
-The Elasticsearch index is disposable. On most sites, it can be deleted and recreated from scratch in under an hour, using information from the Postgres database. It gets rebuilt once a day, in the middle of the night, and periodically it gets deleted and recreated from scratch as a side effect of an upgrade. If you were to destroy the Elasticsearch index, search performance would be degraded for a few minutes and then everything would be fine. 
+The code for the data model is in [the `model` package of the `server_core` project](https://github.com/NYPL-Simplified/server_core/tree/master/model).
 
-By contrast, the Postgres database is _not_ disposable. The information necessary to build the search index comes from the Postgres database. So do whatever you want with the Elasticsearch index, but don't mess with the database.
+This data model is common between the circulation manager and the metadata wrangler, although some pieces are exclusively used by one component or the other. For example, only the circulation manager has lanes or patrons, and only the metadata wrangler has integration clients. The library registry component has a separate data model which is similar but much simpler.
 
-# Troubleshooting a search index
+For the sake of simplicity, this document will talk about "books", but the rules are the same for audiobooks and other forms of content.
 
-If you manage a circulation manager, it's useful to know how that software makes use of Elasticsearch. Many patron-visible problems can be traced to an out-of-date or misconfigured search index, and you have tools at your disposal to diagnose and fix the problem.
+# Bibliographic metadata
 
-## How the search index is kept updated
+Bibliographic information is information _about_ books as opposed to the books themselves. A book's title, its cover image, and its ISBN are all bibliographic information--the text of the book is not. Bibliographic information flows into the circulation manager and metadata wrangler from a variety of sources, mainly OPDS feeds and proprietary APIs. We keep track of all this information and where it came from, and when necessary we weigh it, sort it, and boil it down into a small amount of information that can be used by other parts of the system.
 
-When the circulation manager realizes that a work's entry in the Elasticsearch index is out of date, it doesn't reindex the work immediately -- this would slow things down for a librarian who is using the admin interface or a library patron who is trying to borrow a book. Instead, the circulation manager creates a 'registered' entry in the `workcoveragerecords` table for that work. This represents work to be done. It's how the circulation manager remembers that this work's entry in the search index is stale and needs to be refreshed.
+## `DataSource`
 
-The `bin/search_index_refresh` runs every few minutes. It looks for stale works: the ones in the 'registered' state, or the ones with no `workcoveragerecords` entry at all. It reindexes the stale works and changes their `workcoveragerecords` entries to the 'success' state. If there's a problem with a record, it puts that record in the 'transient failure' or 'persistent failure' state.
+A `DataSource` is some external entity that puts data into the system. This data generally falls into two categories:
 
-After handling all the works in the 'registered' state, `bin/search_index_refresh` then tries all the works in the 'transient failure' state, on the assumption that a transient problem might go away on its own.
+* Bibliographic information _about_ a book, such as its title or cover image. This goes into the bibliographic metadata subsystem.
+* Licensing information which can be used to serve actual copies of the book to library patrons. This goes into the licensing subsystem.
 
-The `bin/search_index_clear` script runs once a day, in the middle of the night. It removes all search-related records from the `workcoveragerecords`. The next time `bin/search_index_refresh` runs, it will appear as though no search index work has ever been done. At that point the script will update every single work in the system.
+Some examples of `DataSource`s:
 
-This guarantees that the search index is completely rebuilt once a day. Even if there are bugs in the system, no book should ever have a search index entry more than 24 hours out of date.
+* Overdrive, Bibliotheca, and Axis 360 license commercially published ebooks to libraries for delivery to patrons. They also provide bibliographic information about the books they license.
+* [Standard Ebooks](https://standardebooks.org/) provides bibliographic information about books, as well as free copies of the books themselves.
+* OCLC and Content Cafe provide bibliographic information about books, but have no way of giving access to the actual books.
+* VIAF provides information about the people who write books, but very little about the books themselves.
+* The New York Times knows the ISBNs of the books on its best-seller lists, but not much more.
 
-## Looking at the update queue
+A `DataSource` may also:
 
-You can use the following SQL command to see the size of the search index update queue:
+* Provide many `Edition`s
+* Provide many `Equivalency`s
+* Provide many `Hyperlink`s
+* Provide many `Resource`s
+* Provide many `Classification`s
+* Provide many `CustomList`s
+* Grant access to many `LicensePool`s
+* Provide many `LicensePoolDeliveryMechanism`s
+* Generate many `CoverageRecord`s
+* Have many associated `Credential`s
+* Have one `IntegrationClient`
 
-`select status, count(id) from workcoveragerecords where operation='update-search-index' group by status order by status;`
+## `Identifier`
 
-You should see something like this:
+An `Identifier` provides a way to uniquely refer to a particular book. Common types of `Identifier` include ISBNs and proprietary IDs such as Overdrive or Bibliotheca IDs.
 
-```
-      status       | count  
--------------------+--------
- success           | 309621
- transient failure |     19
- registered        |    181
-```
+An `Identifier` may:
 
-The number of works in the `success` state should be about the same as the total number of works on your system. If you see a large number of works in the `registered` state, then `bin/search_index_refresh` probably hasn't been running. If you see a large number of works in the `transient failure` or `persistent failure` states, then something is probably wrong with your ElasticSearch server.
+* Have many `Classification`s representing how the book would be shelved in a bookstore or library. (See the classification subsystem.)
+* Have many `Measurement`s of quantities like quality and popularity. (See the measurement subsystem.)
+* Have many `HyperLink`s to associated files such as cover images or descriptions. (See the linked resources subsystem.)
+* Participate in many `Equivalency`s.
+* Serve as the `primary_identifier` for multiple `Edition`s.
+* Serve as the `identifier` for many `LicensePool`s, through `Collection`.
+* Be associated with one Work, through Edition
+  
 
-If you see nothing, then the most likely explanation is that `bin/search_index_clear` is running but `bin/search_index_refresh` is not.
+### `Equivalency`
 
-## Looking in the index
+An `Equivalency` is an assertion made by a `DataSource` that two different `Identifiers` refer to the same book.
 
-Works are indexed using their database ID. You can always see what your Elasticsearch index thinks of a specific work by making a GET request to this URL:
+* The `strength` of the `Equivalency` is a number from -1 to 1 indicating how much we trust the assertion. When Overdrive says that an Overdrive ID is equivalent to an ISBN, we give that `Equivalency` a `strength` of 1, because Overdrive got the ISBN from the publisher and assigned the Overdrive ID itself. When OCLC says that two ISBNs represent the same book, we give it a lower `strength`, because OCLC is frequently wrong about this. A negative `strength` means that the `DataSource` is pretty sure two `Identifier`s represent _different_ books.
 
-```
-https://{elasticsearch-hostname}/{search-prefix}-v4/work-type/{work-ID}
-```
+## `Edition`
 
-The default search prefix is `circulation-works` (you can change this in the admin interface), so something like this should usually work:
+An `Edition` is a collection of information about a book from a particular data source. Like most items in the "bibliographic metadata" section, it represents an _opinion_. If different data sources give conflicting information about a book, that's fine -- everyone has their opinion. When this happens, we create multiple `Edition`s and we sort it out later, when it's time to make the _presentation edition_.
 
-```
-https://{elasticsearch-hostname}/circulation-works-v4/work-type/1
-```
+An `Edition`:
 
-You should get back a big JSON document full of accurate information about the book. If you get a small document that says `"found":false`, then either the work ID doesn't exist in the database, the search prefix is wrong, or this work was never indexed.
+* Has one `DataSource`. This is the data source whose opinions are recorded in the `Edition`.
+* Has one `Identifier`, the `primary_identifier`. This identifies the book the data source is talking about.
+* Contains basic metadata -- title, series, language, publisher, medium -- for that book.
+* May have one or more `Contributor`s, through `Contribution`.
+* May be the _presentation edition_ for a specific `Work`. The presentation edition is a synthetic `Edition` created by the system. We look over a bunch of `Edition`s which are all (supposedly) talking about the same book, and consolidate it into a new `Edition` containing the best or most trusted metadata.
 
-## Completely rebuilding the index
+## The contributor subsystem
 
-You can completely recreate the search index by running the `bin/repair/search_index` script. This is not run normally, but running it manually is an easy way to see whether your current problem is caused by an out-of-date search index.
+This system basically tracks who wrote which book. There are two classes in this subsystem: `Contributor` and `Contribution`. 
 
-# Why not keep everything in Elasticsearch?
+### `Contributor`
 
-Before getting started with the more technical aspects of how we use Elasticsearch, here's a question to consider. Elasticsearch and a relational database are both very complicated pieces of technology. Why do we need both? We already know why we can't do everything in the relational database -- it's really bad at two important jobs. Why can't we do everything in Elasticsearch? There are two main reasons:
+A `Contributor` is a human being or a corporate entity who is credited with work on some `Edition`. The credit itself is kept in a `Contribution`, which ties a `Contributor` to an `Edition`.
 
-First, it's very difficult to write Elasticsearch query code. One of the main purposes of this document is showing you how to write and understand this code! The language for Elasticsearch queries is nowhere near as mature and stable as SQL, the language for relational database queries. The Elasticsearch API changes frequently, and the [Elasticsearch DSL](https://elasticsearch-dsl.readthedocs.io/en/latest/) Python library is just a thin layer around the raw API. 
+A `Contributor`:
 
-More importantly, Elasticsearch documents store redundant information, and relational databases don't. This would cause major problems if we were to use Elasticsearch as our main data store instead of a convenient way to run two special types of queries.
+* Contains basic biographical information about a person or corporation. Most notably, it has both a `display_name` such as "Octavia Butler", the name that would go on the front of a book, and a `sort_name` such as "Butler, Octavia", the name that would go in a card catalog.
 
-If two books have the same author, a relational database stores five pieces of information:
+### `Contribution`
 
-* Book 1 ("Cujo")
-* Book 2 ("Misery")
-* Author A ("Stephen King")
-* Book 1 is written by author A
-* Book 2 is written by author A
+A `Contribution`:
 
-Our Elasticsearch index mushes all of this together and stores two pieces of information:
+* Links a `Contributor` to an `Edition`.
+* Contains a `role` describing the work the `Contributor` did on the `Edition`. Common roles include author, editor, translator, illustrator, and narrator.
 
-* "Cujo" is written by Stephen King.
-* "Misery" is written by Stephen King.
+## The classification subsystem
 
-This makes it difficult to keep the Elasticsearch index up to date. A small change to the data may mean that a lot of index entries need to be updated. This can be time consuming, and there's also the risk that one of the updates will be missed and one book will have out-of-date information.
+This system tracks how a book might be classified in a card catalog or shelved in a bookstore. There are two classes in this subsystem: `Subject` and `Classification`.
 
-So long as the Elasticsearch index is treated as disposable and rebuilt regularly, any missed update problems are minor. If we treated the Elasticsearch index as the canonical location for this information, and two copies of the same information got out of sync, we'd have a big problem: there'd be no way of knowing which copy was correct!
+### `Subject`
 
-"Keep everything in Elasticsearch" can be the right choice when the application has only one data model object, but the circulation manager has many different objects used for different purposes. The relationships between those objects are best described with a relational database.
+A `Subject` represents a classification that someone might give a book. `Subject` handles a variety of classification schemes: Dewey Decimal, LLC, LCSH, BISAC, proprietary systems like Overdrive's, and free-form tags, among others. Four pieces of information might be derived from the `Subject`, and will be stored with the `Subject` if possible:
 
-# A sample search document
-
-Here's a search document that shows off everything we put into the Elasticsearch index. I'll be using this as a reference throughout the rest of this document. Each of these fields corresponds to something in the database.
-
-```
-{
-  "_id": 122940, 
-  "work_id": 122940,
-  "presentation_ready": true,
-  "last_update_time": 1561581146,
-
-  "title": "Law of the Mountain Man", 
-  "sort_title": "Law of the Mountain Man", 
-  "subtitle": "Mountain Man Series, Book 5", 
-
-  "series": "Mountain Man", 
-  "series_position": 5, 
-
-  "author": "William W. Johnstone", 
-  "sort_author": "Johnstone, William W.", 
-  "contributors": [
-    {
-      "display_name": "William W. Johnstone", 
-      "role": "Author", 
-      "sort_name": "Johnstone, William W.", 
-    }
-  ], 
-
-  "medium": "Book", 
-  "publisher": "Kensington", 
-  "imprint": "Pinnacle", 
-  "summary": "<p><B>The Greatest Western Writer Of The 21st Century<P>When The Bullets Start To Fly</B><P>Smoke Jensen sat in a cave and boiled the last of his coffee. He figured he was in Idaho-somewhere south of Montpelier-but he was certain about only two things: he was cold and he was being hunted by a small army of men....", 
-  "quality": 0.743,
-
-  "language": "eng", 
-  "audience": "Adult", 
-  "target_age": {
-    "lower": 18, 
-    "upper": null
-  },
-  "fiction": "Fiction", 
-  "classifications": [
-    {
-      "scheme": "http://id.worldcat.org/fast/", 
-      "term": "Idaho", 
-      "weight": 0.0133
-    }, 
-    {
-      "scheme": "http://id.worldcat.org/fast/", 
-      "term": "Jensen, Smoke (Fictitious character)", 
-      "weight": 0.0266
-    }, 
-    {
-      "scheme": "http://id.worldcat.org/fast/", 
-      "term": "Western fiction", 
-      "weight": 0.0044
-    }, 
-  ], 
-  "genres": [
-    {
-      "name": "Western", 
-      "scheme": "http://librarysimplified.org/terms/genres/Simplified/", 
-      "term": 254, 
-      "weight": 1
-    }
-  ], 
-
-  "customlists": [
-    {
-      "featured": false, 
-      "first_appearance": 1413545710, 
-      "list_id": 86
-    }, 
-  ], 
-
-  "licensepools": [
-    {
-      "availability_time": 1423691583, 
-      "available": true, 
-      "collection_id": 1, 
-      "data_source_id": 2, 
-      "licensed": true, 
-      "licensepool_id": 196028, 
-      "medium": "Book", 
-      "open_access": false, 
-      "quality": 0.743, 
-      "suppressed": false
-    }
-  ]
-}
-```
-
-The Elasticsearch index is full of documents like this. We fill up the index ahead of time, and when we need to handle a search for `william johnstone idaho`, or list all the books in the `Mountain Man` series, we build an Elasticsearch query that tells us exactly which works should go into our OPDS feed.
-
-# Generating the documents
-
-Where do these big JSON documents come from? They're generated by the `Work.to_search_documents` class method in [core/model/work.py](https://github.com/NYPL-Simplified/server_core/blob/master/model/work.py).
-
-This method is really complicated, so let's focus on the database join it creates (which is also pretty complicated). Here it is diagrammed out.
-
-```
-Work
-|
-+--Edition
-|  |
-|  +-Contribution--Contributor
-|  |
-|  +-Identifier
-|    |
-|    +-Classification--Subject
-|
-+--WorkGenre--Genre
-|
-+--CustomList
-|
-+--LicensePool
-```
-
-From top to bottom, this means that for every work, we want to find:
-
-* Information that comes from the `Work` object itself, such as its database ID
-  and fiction status.
-
-* Bibliographic information about the work -- title, medium (`Book` or
-  `Audio`), series name, numeric position within the series, and so
-  on. This comes from a special `Edition` associated with the `Work`
-  object, called the "presentation edition"
-
-* Information about the book's `Contributor`s -- its author and anyone
-  else who worked on it, such as William W. Johnstone. This
-  information is associated with the presentation edition, not
-  directly with the `Work`. We'll use this to make feeds of works by a
-  specific author or audiobook narrator.
-
-* Information about the subject-matter `Classification`s associated
-  with the work, such as `Jensen, Smoke (Fictitious character)`. This
-  information comes from sources like OCLC, and it's associated with
-  an Identifier associated with the presentation edition (such as an
-  ISBN). We don't show this information directly to library patrons,
-  because it's not in any consistent format, but it's useful for handling
-  searches like `etiquette` or `vegan cooking`.
-
-* Information about the `Genre`s under which the work has been
-  classified -- Western, Biography, and so on. By the time we get
-  here, genre classifications have already been derived from the
-  subject matter classifications, through a process that turns that
-  miscellaneous information into a relatively small number of sections
-  like you'd find in a bookstore or a branch library. This lets us
-  handle searches that combine general terms with specific terms, such
-  as `science fiction aliens`.
-
-* Information about the `CustomList`s to which a librarian has
-  manually added this book, or to which an external service (such the
-  the New York Times best-seller list) has automatically added this
-  book. This lets us make feeds of books found in those lists.
-
-* Information about the `LicensePool`s that allow patrons to actually
-  get copies of this book. We don't need detailed availability
-  information about every `LicensePool` -- if we stored that in
-  Elasticsearch, we'd have to update a books' search index every time
-  someone borrowed it or put it on hold. But we do need to know
-  whether a book is currently available, so that we can make feeds
-  that only show currently available books. We need to know which
-  collection provides each `LicensePool`, so that we don't show people
-  books that are held by a different library. And we need to know the
-  time each book was added to its collection, so we can generate feeds
-  that put new acquisitions at the top.
-
-`Work.to_search_documents` creates a big SQL query that grabs this information for up to 500 works at a time. It uses special Postgres functions -- `row_to_json`, `array_to_json`, and `array_agg` -- to process the data inside the database. The upshot is that this SQL query doesn't return normal data model objects. It returns JSON: one JSON object for each work matched by the query. And the _format_ of these JSON objects is exactly the format in the example above, the format that Elasticsearch is expecting.
-
-This is very complicated, but Python code to do the same thing would also be pretty complicated, and it would be about 100 times slower. Since it's so important to keep the Elasticsearch index up to date, it's worth a lot of effort to optimize the generation of documents that go into the index.
-
-# Initializing the index
-
-`Work.to_search_document` doesn't actually touch the Elasticsearch index -- it just runs a SQL query that generates a bunch of JSON objects. The code that actually touches the Elasticsearch index is kept in [core/external_search.py](https://github.com/NYPL-Simplified/server_core/blob/master/external_search.py), and that's where we're going to spend most of our time for the rest of this document.
-
-Before we can use an Elasticsearch index, we must do four things:
-
-1. Create a [mapping](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html) document, so that ElasticSearch knows what to do with the documents we provide. This is the responsibility of the `CurrentMapping` class.
-2. Create the current version of the index (currently `circulation-works-v4`), based on the mapping document. This can be done with a single HTTP request, and it's the responsibility of the `ExternalSearchIndex.setup_index()` method.
-3. Change the `circulation-works-current` alias to point to `circulation-works-v4`. When we actually run queries against the Elasticsearch index, we'll be using this alias.
-4. Install server-side scripts. These scripts let us run algorithms on the Elasticsearch server that would be impractical to run on our side. Currently we have only one server-side script: `simplified.work_last_update.v4`, which calculates the 'last updated' value for a work in a specific context.
-
-At this point we can start running `Work.to_search_document()` to get huge chunks of JSON, and start dumping the JSON into `ExternalSearchIndex.bulk_update()`. Before long, we'll have a fully populated search index.
-
-However, two of these steps are quite complicated: the mapping document and the server-side scripts. To fully understand the system, we'll need to go into detail for both of these.
-
-# The mapping document
-
-The mapping document is a special JSON object -- different from the ones generated by `Work.to_search_document()` -- that tells Elasticsearch how to index the `Work.to_search_document()` objects. It's conceptually similar to a database schema.
-
-The `CurrentMapping` class contains all the information that's specific to the current version of the mapping document. The `Mapping` and `MappingDocument` classes help generate the JSON in the format Elasticsearch expects, but the important information is almost all in `CurrentMapping`.
-
-## Query vs. Filter Context
-
-Before we get started, there are a couple Elasticsearch concepts I'm going to refer to over and over again.
-
-* _Query context_: The input is a string of text such as `italian romance` or `raina telemger`. This text was written by a human being, most likely using a lousy mobile phone keyboard. We are trying to match this string against our entire collection of books to find the books that the human being is most likely looking for.
-
-* _Filter context_: The input is a set of criteria (e.g. "YA science fiction books on the 'staff picks' list"). We are using these criteria to _eliminate_ large chunks of the search index, leaving only the books that match the criteria.
-
-Query and filter context are not mutually exclusive. When a patron of library A asks for `italian romance`, the query is executed in query context. But we only want to show books that are actually in library A's collection. This means filtering out books from other collections, and that's done in filter context.
-
-## Why do we need a mapping?
-
-Intuitively, you'd expect a search for `law of the mountain man` or `mountain man` to rate our example book pretty highly. And if you just dump the example document into Elasticsearch without providing a mapping, Elasticsearch will take care of that for you. For basic stuff, the mapping is optional.
-
-But a lot of advanced features of Elasticsearch _do_ require a mapping. Almost everything we do that runs in filter context needs to have a basis in the mapping document. All the fields we use as input into server-side scripts must have their data types defined in the mapping. Most of our text fields need to be indexed multiple times using different rules--_that_ requires a mapping, even though the resulting fields are only used in query context. And so on. It turns out that (but not all) of the fields you see in the example document need to be defined in the mapping document.
-
-## Properties
-
-Properties are the core of a mapping document. In the `CurrentMapping` constructor we define the data types for each property we need to map:
-
-```
-        fields_by_type = {
-            "basic_text": ['title', 'subtitle', 'summary',
-                           'classifications.term'],
-            'filterable_text': ['series'],
-            'boolean': ['presentation_ready'],
-            'icu_collation_keyword': ['sort_author', 'sort_title'],
-            'integer': ['series_position', 'work_id'],
-            'long': ['last_update_time'],
-        }
-        self.add_properties(fields_by_type)
-```
-
-This is saying that Elasticsearch needs to know know that the `presentation_ready` property will always be a boolwan, the `work_id` property will always be an integer, and `series` will always be a "filterable_text" -- whatever that is. The details of the various data types are explained below.
-
-There are a few properties, like `publisher`, which aren't present in the mapping. We use those fields, but not in a way that requires any special treatment from Elasticsearch.
-
-## Subdocuments
-
-In the example, some of the field names like `title` and `last_update` have normal values--strings or numbers. But some fields -- `contributors`, `classifications`, `genres`, `customlists`, and `licensepools` -- have values that are lists of other JSON objects.
-
-These lists correspond to the database joins between `Work` and other tables: `Contributor`, `Subject`, `WorkGenre`, `CustomListEntry`, and `LicensePool`. One work can have many contributors, or be on many custom lists, so when we create an Elasticsearch document for a work, we include all of them, as a list of sub-documents.
-
-We need to define the data types for fields from three of these subdocuments: `contributors`, `licensepools`, and `customlists`. Although we do searches and filters on `genres` and `classifications`, they're not involved in our use of any advanced Elasticsearch features, so it's not a requirement that we define the subdocuments.
-
-### Contributors
-
-We primarily use the `contributors` subdocument to create feeds of books by a particular author. We don't use it when sorting feeds by author; instead we use the `sort_author` field in the main document.
-
-```
-        contributors = self.subdocument("contributors")
-        contributor_fields = {
-            'filterable_text' : ['sort_name', 'display_name', 'family_name'],
-            'keyword': ['role', 'lc', 'viaf'],
-        }
-        contributors.add_properties(contributor_fields)
-```
-
-### License pools
-
-We primarily use the `licensepools` subdocument to filter out books that shouldn't be shown. There are many reasons why this might happen, but some big ones are:
-
-* They're in some other library's collection.
-* The library no longer owns any copies.
-* There are no copies available, and the patron asked for books that are available now.
-* They're audiobooks from a vendor whose audiobook API isn't supported.
+* Genre ("Billionare Romance" is a type of romance)
+* Fiction/nonfiction status ("Science Fiction" is always fiction)
+* Target audience ("Young Adult Fantasy" is always YA)
+* Target age ("Picture books" are generally for very young children, not 12-year-olds.)
 
-```
-        licensepools = self.subdocument("licensepools")
-        licensepool_fields = {
-            'integer': ['collection_id', 'data_source_id'],
-            'long': ['availability_time'],
-            'boolean': ['available', 'open_access', 'suppressed', 'licensed'],
-            'keyword': ['medium'],
-        }
-        licensepools.add_properties(licensepool_fields)
-```
+### `Classification`
 
-### Custom lists
+A `Classification` is someone's opinion that a book should be filed under a certain `Subject`.
 
-We primarily use the `customlists` subdocument to create feeds of books that are on specific lists. If a library has a 'staff picks' lane, that lane is based on a custom list managed by library staff. The books in that list have a corresponding entry in their `customlists` subdocument. The 'staff picks' lane is generated by sending a query to ElasticSearch that only picks up books with an appropriate `customlists` entry.
+A `Classification`:
 
-```
-        customlists = self.subdocument("customlists")
-        customlist_fields = {
-            'integer': ['list_id'],
-            'long':  ['first_appearance'],
-            'boolean': ['featured'],
-        }
-        customlists.add_properties(customlist_fields)
-```
+* Links a `Subject` to an `Identifier`.
+* Has an associated `DataSource` -- this tracks whose opinion it is.
+* Has an associated `weight` representing how certain we are that the book should be filed under this subject. The higher the number, the more certain we are. If OCLC says that a single library has filed a certain book under "Whales", we'll record that information but give it a low `weight`. If OCLC says that ten thousand libraries have filed this book under "Whales", then it's probably about whales.
 
-## Data types
+### `Genre`
 
-Every one of these properties has a data type: `integer`, `filterable_text`, and so on. This part of the document explains what the types mean, without going into too much detail.
+There are many different data sources which use many different classification schemes for the same books. Rather than expose this chaos to patrons, we have defined about 150 `Genre`s, corresponding to the sections of a large bookstore or branch library: "Romance", "Biography", and so on.
 
-### Built-in data types
+Each `Subject` may be associated with a `Genre`. When `LicensePool`s are turned into `Work`s, all the related `Classification`s are gathered together. We then assign the Work to the `Genre` that showed up the most.
 
-The data types `integer`, `long`, `boolean`, and `keyword` are defined by Elasticsearch. The first three mean what you think they mean; the only complicated ones are `keyword` and `icu_collation_keyword`.
+A `Genre` may also be associated with one or more `Lane`s -- this is the primary technique we use when choosing  how to show books to patrons.
 
-As we'll see, text fields usually have some 'fuzz' that lets a query match a field even if the text doesn't quite match. For most fields, this 'fuzz' is good, although we are a little picky about exactly how the fuzz is applied in different scenarios. We want a search for `john le carre` to match "John le Carré". In a query context, we don't care about little things like capitalization or accents.
+## `Measurement`
 
-But in a filter context we _do_ care about the little things. Elasticsearch won't use `text` fields in a filter context. Text fields can be used in filter context, but only if they're indexed as `keyword`. With `keyword`, there is no 'fuzz' -- nothing but an exact match will count. If the value of a `keyword` value is "Primary Author", then only `Primary Author` will count as a match -- not `primary author`, not `Author`, not `Primary Äuthor`.
+A `Measurement` is a numeric value associated with an `Identifier`. It represents some quality that distinguishes one book from others. The most useful measurements are _popularity_ (a popular book is read/accessed/purchased/accessioned more often) and _rating_ (a highly rated book is considered to be of high quality).
 
-We mainly use `keyword` fields for sorting (e.g. sorting a list of books in a seires by series position). Since that kind of sorting happens in filter context, Elasticsearch won't sort on a normal text field. It has to be a numeric field (like `series_position`) or a keyword. Our custom `sort_author_keyword` and `filterable_text` types (defined below) are variants on the `keyword` data type.
+## The linked resources subsystem
 
-As for `icu_collation_keyword`... it's the same as `keyword`, but it implements the [Unicode Collation Algorithm](https://unicode.org/reports/tr10/) to improve sorting. This is important when we're sorting on a textual field (such as the title of a book) rather than a numeric field (such as series position).
+This system keeps track of external resources associated with a book. An "external resource" can be pretty much anything, but these are the most common types of resources we track:
 
-### `basic_text`
+* A cover image 
+* A thumbnailed version of a preexisting cover image
+* A textual description
+* An EPUB copy of a free book
+* A review
 
-Let's think about `description`. It's a textual description of a book, like you would see on the back cover. If we simply told Elasticsearch to index this property as `text`, Elasticsearch would run the description through [the standard Elasticsearch analyzer](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-standard-analyzer.html). The text would be converted to lowercase, so that a search for `idaho` would match "Idaho". The text would be split up into tokens, so that you could search for `hunted small army coffee bullets` instead of needing to put all the words in exactly the right order.
+### `Hyperlink`
 
-That's pretty good, but there are some situations where we need to do things differently. When we define `description` as `basic_text`, we're actually defining three different fields:
+A `Hyperlink` represents a connection between an `Identifier` and a `Resource`. It contains two extra pieces of information about the link:
 
-* `description.standard` : A `text` field analyzed using the standard Elasticsearch analyzer.
-* `description.minimal` : A `text` field analyzed using the custom `en_minimal_analyzer`.
-* `description` : A `text` field analyzed using the custom `en_analyzer`.
+* A `DataSource` -- who provided this link?
+* `rel` -- what is the relationship between the `Identifier` and the `Resource`? "There's a link" is very vague; this is more specific. Different `rel` values are defined for a cover image, a thumbnail image, review, a description, a copy of the actual book, and so on.
 
-Elasticsearch will index the description three different times, using slightly different rules each time. When we come in with a search query, we'll be able to use the different sets of rules to test out different hypotheses about what the user is trying to search for. We'll pick the hypothesis that gets the highest score, and hopefully deliver the best possible search results.
+### `Resource`
 
-The implementation of this "define three different fields" thing is in
-`MappingDocument.basic_text_property_hook`. The `add_property` method
-(called many times by `add_properties`) knows to check for a
-`_property_hook` method named after the data type. If that method
-exists, it's called once for every property of that type. This lets us
-implement custom data types while keeping the `CurrentMapping`
-constructor simple.
+A `Resource` represents a document found somewhere on the Internet -- probably either a cover image or a free book. It has a `url`, and that's basically it -- everything about the document itself is kept in `Representation`.
 
-### `filterable_text`
+* A `Resource` that's an image may be chosen by an `Edition` as the best available cover image for a given book.
+* A `Resource` that's a textual description may be chosen by a `Work` as the best description for a given book.
+* A `LicensePoolDeliveryMechanism` for an open-access book will point to a `Resource` that represents the book itself.
 
-A `filterable_text` field is the same as a `basic_text` field, except the value is indexed _four_ times. The fourth time, it's indexed as a `keyword`, not as a `text`. That is, the value is stored as-is without any processing.
+### `Representation`
 
-This is necessary because ElasticSearch won't use a text field in filter context -- it has to be a keyword field. That's bad news for a field like `series`. We want to use `series` in query context, so that if someone searches for `babysitters club` we can find books in the series they're clearly looking for. But we also want to use `series` in a filter context, so we can build a list of _only_ the books in the `Baby-Sitters Club` series, excluding unrelated books that mention babysitters or clubs in their descriptions.
+A `Representation` is a local cache of a `Resource`. It represents our attempt to actually download a `Resource` and records what happened when we tried. If everything went well, the `Representation` will contain a file--binary, text, HTML, or image. Otherwise, the `Representation` will contain information about what went wrong -- maybe the server was down or something.
 
-`filterable_text` lets us have it both ways. We set up `series` as a `filterable_text`, and `Baby-Sitters Club` gets indexed three different ways so it can be used in a query context, like a `basic_text`. But it _also_ gets indexed as-is, as a `keyword`, so it can be used in a filter context for filtering and sorting.
+Circulation managers don't usually create `Representation`s -- they rely on the metadata wrangler to do that.
 
-### `sort_author_keyword`
+An image `Representation` that's a thumbnail of another image `Representation` is connected to its original through `.thumbnail_of`.
 
-This is a slight variant on `icu_collation_keyword` which we use for the `sort_author` field when we're sorting a list of books alphabetically by author. The only difference is that we want some regular expressions to be applied `sort_author` before it's indexed. The normal `icu_collation_keyword` type doesn't allow us to do this, so we kind of had to reinvent that data type and also mix in this feature.
+### Putting it all together
 
-To do this, we created a custom analyzer called `en_sort_author_analyzer`.
+Here's how the whole subsystem works together. Let's say one of our data sources that claims the URL http://example.org/covers/my-book.png is a cover image for the ISBN "97812345678". We want to represent this fact in our system.
 
-## Custom analyzers
+1. We'd create an `Identifier` for the ISBN "97812345678".
+2. We'd create a `Resource` for `http://example.org/covers/my-book.png`
+3. We'd create a `Hyperlink` with the `rel` "http://opds-spec.org/image", for "cover image". The `.data_source` of this `Hyperlink` would be set to the `DataSource` that made the original claim.
+4. We don't have to actually download http://example.org/covers/my-book.png, but if we do decide to download it, the binary image will be stored as a `Representation`. If there's a problem and we can't complete the download, that fact will be stored in the `Representation` instead.
+5. If we download the image and everything goes well, we may also decide to create a thumbnail out of it. This would be stored as a second `Representation`, and its `.thumbnail_of` would point to the original, full-size `Representation`.
 
-Above I mentioned three 'custom analyzers'. The `basic_text` and `filterable_text` data types make use of `en_analyzer` and `en_minimal_analyzer`. The `sort_author_keyword` data type makes use of `en_sort_author_analyzer`. I'll discuss these custom analyzers in detail now.
+### `ResourceTransformation`
 
-* `tokenizer`: The name of an algorithm for turning a string into a series of tokens. We normally use the `standard` tokenizer, which basically splits on whitespace, turning `"Law of the Mountain Man"` into `["Law", "of", "the", "Mountain", "Man"]`. The only other tokenizer we use is `keyword`, which doesn't do anything -- the string is used as-is.
-* `char_filter`: A chain of simple transformations -- each no more complicated than a regular expression -- to apply to the text before it's tokenized. 
-* `filter`: A chain of transformations to apply to each token, _after_ tokenization.
+A `ResourceTransformation` represents a change that was made to one `Resource` to generate another `Resource`.  Currently it's used in the circulation manager's "cover image upload" feature. You can upload a background image (the original `Resource`) and paste the title and author onto it (a `ResourceTransformation` which results in a second `Resource`).
 
-### `en_analyzer`
+Theoretically, thumbnailing could also be handled as a `ResourceTransformation`, but it's probably not worth making this change.
 
-* For `tokenizer` we use `standard`.
-* We provide one `char_filter`. It's called `html_strip`, and it removes HTML (such as the <p> tags in the `description` of the sample book document).
-* For `filter` we choose four transformations:
-** `lowercase` converts all tokens to lowercase.
-** `asciifolding` converts accented characters to their ASCII equivalents.
-** `en_stop_filter` removes English stopwords like "the".
-** Our custom `en_stem_filter` configures Elasticsearch's [stemmer token filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html) to perform stemming of English words. So "talking" would become "talk", "loved" would become "love", and so on.
+# Licensing
 
-Once everything is done, `Law of the Mountain Man` has become `["law", "mountain", "man"]`.
+## `Collection`
 
-### `en_minimal_analyzer`
+A `Collection` represents a set of books that are made available through one set of credentials. 
 
-This analyzer is the same as `en_analyzer` except for the final `filter` in the chain. Instead of `en_stem_filter`, we use a second custom filter, `en_stem_minimal_filter`.
+One library may have multiple collections from different vendors, and multiple libraries on the same circulation manager may share a collection.
 
-These two filters are almost exactly the same. They're both the Elasticsearch [stemmer token filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html), but `en_stem_minimal_filter` is configured with a less aggressive English stemmer.
+A `Collection` may have children which are also `Collection`s. We model an Overdrive Advantage account as a child `Collection` of the main Overdrive `Collection`.
 
-### `en_sort_author_analyzer`
+The books themselves are stored as `LicensePool`s, and the credentials are stored in an `ExternalIntegration`.
 
-This one's a little complicated. We'd really like to define `sort_author` as a standard `icu_collation_keyword` data type and call it a day. Unfortunately, we need one little feature that `icu_collation_keyword` doesn't support: the ability to specify a custom list of `char_filter`s.
+## `LicensePool`
 
-So we need to define a custom analyzer, `en_sort_author_analyzer`. It looks like this:
+A LicensePool represents an agreement on the part of a book vendor to actually deliver a book to a patron.
 
-* The tokenizer is `keyword`, meaning that values aren't tokenized at all -- they're used as they come out of the `char_filter` chain.
-* The `filter` includes a custom filter called `en_sortable_filter`, which recreates the effect of the `icu_collation_keyword` datatype.
-* The `char_filter`--the reason we're doing this--is a chain of five [Java regular expressions](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-pattern-replace-charfilter.html).
+ a group of licenses granting access to one particular Work.
 
-What do these regular expressions do that's so important? They normalize variations in the way author's names are presented, so that authors group together better:
+If a Work is not associated with a LicensePool, patrons will not be able to check it out.  
 
-* The special author `[Unknown]`, which we use to indicate that we don't have any author information, is converted to the last legal Unicode character. This ensures that books where we don't have author information will always appear last in a list ordered by author, rather than sorting at the top or with the letter U
-* If a work has multiple authors, everything except the primary author is removed.
-* Parentheticals are removed, so "Wells, H.G. (Herbert George)" becomes "Wells, H.G.".
-* Periods are removed, so "Wells, H. G. becomes "Wells, H G".
-* Spaces are collapsed for people whose sort names end with initials. So "Wells, H G" becomes "Wells, HG".
+In some cases, usually involving open-access LicensePools, there may be more than one LicensePool associated with the same Work; if this happens, the LicensePool which provides the highest-quality version of the book will take precedence.
 
-The upshot of this is that all of these names are treated the same for sorting purposes.
+Each `LicensePool`:
+* is associated with an Identifier, representing how the vendor identifies the book.
+* is associated with a DataSource, representing the vendor who provides the book.
+* belongs to one Collection.
+* has one presentation edition, containing the most complete set of metadata available for the book.
+* can have many Loans, Holds, Annotations, and Complaints
+* can have many `CirculationEvents`.  
+* should have at least one `DeliveryMechanism`, through `LicensePoolDeliveryMechanism`.
+* has a RightsStatus, through LicensePoolDeliveryMechanism.
 
-* Tolkien, J. R. R.
-* Tolkien, J. R. R. (John Ronald Reuel)
-* Tolkien, J.R.R.
-* Tolkien, JRR
-* Tolkien, J R R
-* Tolkien, J. RR
-* Tolkien, J. R. R.; Tolkien, Christopher
+### `DeliveryMechanism` and `LicensePoolDeliveryMechanism`
 
-This means that in a list of books ordered by author, all of Tolkien's works will be grouped together and ordered by title -- basically what you'd expect to see on a library bookshelf.
+A `DeliveryMechanism` describes what format a book is actually available in.  There are two parts to a `DeliveryMechanism`: 1) the DRM scheme implemented by the distributor, if any, and 2) the format of the book (EPUB, PDF, audiobook manifest, Kindle, and so on).
 
-# Filtering and Sorting
+`LicencePoolDeliveryMechanism` is a three-way join table: a record of a promise by a vendor (identified by a `DataSource`) to deliver copies of a book (identified by an `Identifier`) in a specific format (identified by a `DeliveryMechanism`).
 
-## The server-side scripts
+### `RightsStatus`
 
-# Searching
+A `RightsStatus` represents the terms under which a book is being made available to patrons. The most common varieties of RightsStatus are 1) in copyright, 2) public domain, and 3) a Creative Commons license. "In copyright" implies that a book is being made available to patrons by virtue of a licensing agreement between the library and the vendor. The other `RightsStatus` values imply that a book is being made available to library patrons on the same terms as it would be to the general public.
 
-## Hypotheses
+### `Complaint`
+
+Patrons may lodge one or more Complaints against a specific LicensePool.  Complaints indicate problems with specific books. For example, a Patron can lodge a Complaint stating that a book is incorrectly     categorized or described, or that there is a problem with checking it out, reading, or returning it.
+
+## `CirculationEvent`
+
+A `CirculationEvent` is a record of something happening to a LicensePool.  A `CirculationEvent` happens when an event takes place within the circulation manager (e.g. a work is checked out or placed on hold), or when we notice that an event happened on the distributor's side (such as licenses for a book being added or removed), or when a client app (i.e. a book having been opened).
+
+`CirculationEvent`s are aggregated and used to create library analytics.
+
+# Works
+
+A Work represents a book in general, as opposed to one specific edition of a book, or a specific licensing agreement to deliver copies of a book.
+
+A Work:
+
+* May have copies scattered across many LicensePools
+* May have many Editions, but derives its presentation metadata from one particular Edition, which is known as its “presentation edition.” This special `Edition` represents the best available bibliographic metadata for the book.
+* Stores information that has been aggregated from multiple sources and summarized:
+  * Subject matter classification (aggregated from `Classification`s)
+  * Intended audience (aggregated from `Classification`s)
+  * Fiction/nonfiction status (aggregated from `Classification`s)
+  * Popularity (aggregated from `Measurement`s)
+  * The best available summary (aggregated from `Resource`s)
+* May be referenced by multiple `CustomListEntries` and/or `CachedFeeds`.
+* May participate in many `WorkGenre` assignments. `WorkGenre` is a simple join table that tracks the assignment of `Work`s to `Genre`s. 
+
+# Custom lists
+
+A CustomList is a list of books, typically grouped by a criterion such as genre, subject, bestseller status, etc., which a librarian has compiled in the admin interface.  Each CustomList is associated with, and presented to patrons in the front-end as, one Lane.  A CustomList has at least one CustomListEntry, each of which refers to a particular Work.      
+
+# Libraries
+
+## `Library`
+
+A library represents some organization that serves a distinct set of patrons.
+
+Each Library can have: 
+
+    * one or more `Collections`.
+    * one or more `CustomLists`.  
+    * one or more Lanes, each of which is associated with one CachedFeed.
+    * one or more Admins.
+
+### `Admin`
+
+Admins are people such as librarians who have access to the admin interface (via accounts in the circulation manager). An `Admin` is associated with a particular `Library` through `AdminRole`.  An Admin may have more than one `AdminRole`.  The `AdminRoles` are:
+
+* Librarian
+* SitewideLibrarian
+* LibraryManager
+* SitewideLibraryManager
+* SystemAdmin
+
+## `Lane`
+
+A library groups its books together using `Lane`s. A `Lane` may group books by any combination of these criteria:
+
+* Genre ("Science Fiction")
+* Fiction status ("Nonfiction")
+* Audience ("Young Adult")
+* Target age ("Young Readers")
+* Language ("Spanish")
+* Media ("Audiobooks")
+* Membership on a specific `CustomList` ("Best Sellers")
+
+A lane may have many `CachedFeed`s.
+
+### `CachedFeed`
+
+A `CachedFeed` is a pregenerated OPDS document that's stored in the database to serve future client requests. If a `CachedFeed` can be used, it greatly improves patron-visible response time.
+
+Any OPDS feed served by the circulation manager can be cached. This includes the various feeds served as a patron browses a `Lane`, but it also includes the feeds of books by a given author, books in a given series, and recommendations from sources like NoveList.
+
+# Patrons
+
+## `Patron`
+
+A `Patron` object represents a human being who is a patron of some `Library`. More precisely, a `Patron` object represents that person's library card. A human being with cards for multiple libraries will have multiple `Patron` objects.
+
+Most of the information in the `Patron` record comes from the library's ILS. The most important pieces of information are the three fields used to uniquely identify a patron:
+
+* `external_identifier` - A permanent unique identifier for this patron's ILS record. The patron probably does not know their own `external_identifier`. We keep track of this so that you don't lose your loans and holds when you get a new library card.
+* `authorization_identifier` - A nonpermanent unique identifier for the patron, usually numeric. This identifier is printed on their physical library card and used by the patron to identify themselves to the library. Libraries may call this by different terms: a "card number", a "barcode", etc.
+* `username` - A nonpermanent unique identifier chosen by the patron themselves as a shorthand method of identification. Most libraries don't give their patrons usernames as distinct from their authorization identifiers, but some do. If present, this is generally alphanumeric.
+
+## `Loan` and `Hold`
+
+These classes are nearly identical. They represent a patron's relationship with a `LicensePool` -- either they have the right to read the book right now (`Loan`) or they're waiting in line for the chance to read it (`Hold`).
+    
+## `Credential`
+
+The `Patron` object keeps track of unique identifiers that identify a patron to their ILS. Other identifiers are stored in `Credential` objects.
+
+One major type of credential is the “Identifier for Adobe Account ID purposes”. This is an alias provided to Adobe (through the [Short Client Token](Short-Client-Token) system) whenever the patron needs to activate a mobile device with their Adobe ID.
+
+Another major type of credential is the “OAuth Token”. This is a temporary token granted by an ebook vendor such as Overdrive. It gives the circulation manager the ability to take action on the patron's behalf, e.g. by borrowing books or placing holds.
+
+A Credential may have associated `DRMDeviceIdentifier`s. This is used to keep track of the device IDs associated with a patron's Adobe ID. This makes the [ACS Device Management Protocol](DRM-Device-Management) possible.
+
+## `Annotation`
+
+A patron in the process of reading a book has a "last reading position" -- the place where they left off. If a patron closes and reopens a book, they expect the book to open their last reading position, not to the beginning of the book.
+
+An `Annotation` stores a `Patron`'s last reading position for a `LicensePool`. If the patron creates bookmarks or highlights text, those are also stored as `Annotation`s.
+
+Annotations are synced between client and server using the [Web Annotation Protocol](https://www.w3.org/TR/annotation-protocol/). A patron must opt in before their annotations are synchronized with the circulation manager. A patron's decision to opt-in or not is tracked in the field `Patron.synchronize_annotations`.
+
+# Site configuration
+
+## `ExternalIntegration`
+
+A ConfigurationSetting  holds information about an extra piece of site configuration.  A ConfigurationSetting may be associated with an ExternalIntegration, a Library, both, or neither.
+
+## `ConfigurationSetting`
+
+An ExternalIntegration contains the configuration for connecting to a third-party API.  Commonly used third-party APIs include the metadata wrangler, DataSources that require protocols, authentication services, storage services, and search providers.
+
+# Background processes
+
+* A Timestamp provides a record of when a Monitor was run.
+* A CoverageRecord provides a record of any processes that have been performed on a book (referred to via its Identifier)
+* A WorkCoverageRecord provides a record of any processes that have been performed on a Work (similar to what CoverageRecord does for Identifiers).
+
