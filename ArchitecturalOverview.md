@@ -52,7 +52,7 @@ itself with a library registry, through the [OPDS Directory Registration Protoco
 We expect the Library Simplified ecosystem to contain only one library
 registry. We expect every library in the ecosystem to be registered
 with that registry. If there are multiple library registries, it
-becomes much more difficult for patrons to find 'their' libraries, since they would first have to find 'their' library registry. (If this happens, we could mitigate it by creating a second discovery protocol and running searches on multiple registries.)
+becomes much more difficult for patrons to find 'their' libraries, since they would first have to find 'their' library registry.
 
 ## The metadata wrangler
 
