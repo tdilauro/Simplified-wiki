@@ -8,10 +8,6 @@ Any content source that wants to integrate with a library needs to answer these 
 
 That third one is the deal-breaker for us. A mobile application needs self-contained packages of content.
 
-## Biblioboard
-
-Working on an ODL-based interface, but it's not ready yet.
-
 ## Gale Virtual Reference
 
 Ebooks, delivered through a web view. [Available through NYPL](http://go.galegroup.com.i.ezproxy.nypl.org/ps/start.do?p=GVRL&u=nypl&authCount=1), where access is gated and content served through EZProxy.
