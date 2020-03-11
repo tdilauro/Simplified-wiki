@@ -10,7 +10,9 @@ But first, a bit of wisdom.
 
 ## Git workflow
 
-TBD
+Historically, we've used [git flow](https://nvie.com/posts/a-successful-git-branching-model/) as our basis for branching and tagging releases.
+
+We recommend installing [Git Flow AVH Edition](https://github.com/petervanderdoes/gitflow-avh) to automate some of the work of branching and tagging. Using `gitflow-avh` is not required, but by automating the underlying repository operations, it eliminates the possibility of making mistakes, and keeps the various branches consistent.
 
 ## Android app
 - https://github.com/NYPL-Simplified/Simplified-Android-Core
