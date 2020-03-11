@@ -20,7 +20,17 @@ We recommend installing [Git Flow AVH Edition](https://github.com/petervanderdoe
 
 ### Code style
 
-TBD
+We use a mix of Java and Kotlin when developing applications for Android. New work should generally be done in Kotlin, where appropriate. When touching existing code do your best to match the code style of the file you're working on.
+
+New Kotlin code should adhere to the [Kotlin Coding Conventions](https://google.github.io/styleguide/javaguide.html) and [Android style guide](https://developer.android.com/kotlin/style-guide).
+
+We use a tool called [ktlint](https://github.com/pinterest/ktlint) to enforce a consistent code style. You can run this check against your code using the command `./gradlew ktlint`.
+
+The [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html) is a good reference when writing new Java code.
+
+#### Books we recommend
+- [Effective Java](https://www.oreilly.com/library/view/effective-java-3rd/9780134686097/)
+- [Kotlin in Action](https://www.manning.com/books/kotlin-in-action)
 
 ### Releasing
 
