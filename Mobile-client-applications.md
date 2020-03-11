@@ -1,5 +1,3 @@
-# Mobile client applications
-
 Library Simplified is a collection of middleware, server software and mobile client applications for iOS and Android.
 
 The pages below document various best practices and workflows important for anyone contributing to the mobile client applications. What's considered a best practice will no doubt evolve over time, as should this document.
