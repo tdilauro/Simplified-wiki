@@ -13,7 +13,8 @@ But first, a bit of wisdom.
 TBD
 
 ## Android app
-https://github.com/NYPL-Simplified/Simplified-Android-Core
+- https://github.com/NYPL-Simplified/Simplified-Android-Core
+- https://github.com/NYPL-Simplified/Simplified-Android-SimplyE
 
 ### Code style
 
@@ -24,7 +25,7 @@ TBD
 TBD
 
 ## iOS app
-https://github.com/NYPL-Simplified/Simplified-iOS
+- https://github.com/NYPL-Simplified/Simplified-iOS
 
 ### Code style
 
