@@ -4,7 +4,7 @@ In SimplyE currently the only class that actually depends on R1 is NYPLReaderRea
 
 R2 approach is much more structured: 
 1. the test-app has some light infrastructure to essentially give a ePub URL to R2's parser. The URL can be a file or http URL. 
-2. R2 parsing APIs return a R2Shared::Publication object. 
+2. R2 parsing APIs return a R2Shared::Publication object and a callback for DRM purposes. 
 3. The test app then adds the Publication to its R2Streamer::PublicationServer (running locally).
 4. It also creates a EPUBViewController. This is a custom light-weight VC that wraps a R2Navigator::EPUBNavigatorViewController for handling ebook nav commands (turn pages, etc), as well as other custom events such as presenting user settings, TOC, etc.  
     - The EPUBNavigatorViewController does all the heavy lifting of setting up the view to render the book contents for us, which is great, leaving corollary aspects of the UI to the client app (i.e. the light-weight VC). It can also handle the backend storage of the user settings.
