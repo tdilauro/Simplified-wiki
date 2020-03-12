@@ -39,10 +39,26 @@ TBD
 ## iOS app
 - https://github.com/NYPL-Simplified/Simplified-iOS
 
+### Dependent frameworks that we maintain
+- https://github.com/NYPL-Simplified/NYPLAEToolkit
+- https://github.com/NYPL-Simplified/NYPLAudiobookToolkit
+- https://github.com/NYPL-Simplified/CardCreator-iOS
+- https://github.com/NYPL-Simplified/PDFRendererProvider-iOS
+- https://github.com/NYPL-Simplified/DRM-iOS-Adobe
+- https://github.com/NYPL-Simplified/Adobe-Content-Filter
+- https://github.com/NYPL/tenprintcover-ios
+
 ### Code style
 
-TBD
+We use a mix of Swift and Objective-C when developing applications for iOS. New work should be done in Swift, whenever possible and appropriate. Instead of writing a significant amount of Objective-C code, we strongly prefer to write the same functionality in Swift, even if it costs a bit of refactoring work. 
+
+When touching existing code do your best to match the code style of the file you're working on.
+
+New Swift code should adhere to Apple's [Swift Style Guide](https://google.github.io/swift/).
+
+Objective-C code should again follow [Apple's Conventions](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Conventions/Conventions.html#//apple_ref/doc/uid/TP40011210-CH10-SW1) and more in detail [Google's coding style](https://github.com/google/styleguide/blob/gh-pages/objcguide.md).
 
 ### Releasing
 
-TBD
+For releasing we follow the standard [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/) method of branching.
+
