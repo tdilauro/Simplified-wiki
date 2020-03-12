@@ -29,7 +29,7 @@ Current state: https://github.com/ettore/Simplified-iOS/tree/story/SIMPLY-2489/R
 
 TODO items:
 - Implement switch between R1 and R2 ereader depending if book has DRM or not
-- Sort top icons (TOC, settings, bookmark) in same order as R1
+- ~~Sort top icons (TOC, settings, bookmark) in same order as R1~~
 - Refactor R1 reader settings view in a way that’s reusable
     - e.g. so that it’s possible to wire the buttons to different controllers
 - Make R2 reader settings view open from bottom as in R1
