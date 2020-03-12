@@ -27,7 +27,7 @@ These steps seem in line with the way R2 is designed to work. While we have a re
 
 Current state: https://github.com/ettore/Simplified-iOS/tree/story/SIMPLY-2489/R2-integration
 
-TODO items:
+TODO items ([full list](https://jira.nypl.org/browse/SIMPLY-806?filter=12003)):
 - [SIMPLY-2472](https://jira.nypl.org/browse/SIMPLY-2472) Implement switch between R1 and R2 ereader depending if book has DRM or not
 - ~~Sort top icons (TOC, settings, bookmark) in same order as R1~~
 - [SIMPLY-2617](https://jira.nypl.org/browse/SIMPLY-2607) on R2, open TOC as on R1
