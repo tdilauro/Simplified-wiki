@@ -19,10 +19,22 @@ The main idea here was, if we can get a Publication object out of R2, all we hav
 
 # Step 3: Bring in the Navigator
 
-A significant part of R2's offerings is the [R2Navigator framework](https://github.com/readium/architecture/tree/master/navigator). This solves one of the biggest problems in presenting a book to read to a user, which is rendering the book! The good thing is that R2Navigator still allows the client app to define how the chrome should look like. This is what the test-app does: its UI code lives on top of the actual ebook renderer. For instance, the test-app can configure the navigation bar in the reader, as well as the bottom bar. The user settings configuration and the TOC are separate VCs, local to the sample app, therefore easily modifiable.
+A significant part of R2's offerings is the [R2Navigator framework](https://github.com/readium/architecture/tree/master/navigator). This solves one of the biggest problems, which is rendering the book and dealing with the webview. The good thing is that R2Navigator still allows the client app to define how the chrome should look like. This is what the test-app does: its UI code lives on top of the actual ebook renderer. For instance, the test-app can configure the navigation bar in the reader, as well as the bottom bar. The user settings configuration and the TOC are separate VCs, local to the sample app, therefore easily modifiable.
 
 # Further Integration
 
 These steps seem in line with the way R2 is designed to work. While we have a requirement to configure the new reader to look like the old reader from a user POV, this seems possible with what we've seen so far.
 
 Current state: https://github.com/ettore/Simplified-iOS/tree/story/SIMPLY-2489/R2-integration
+
+TODO items:
+- Implement switch between R1 and R2 ereader depending if book has DRM or not
+- Sort top icons (TOC, settings, bookmark) in same order as R1
+- Refactor R1 reader settings view in a way that’s reusable
+    - e.g. so that it’s possible to wire the buttons to different controllers
+- Make R2 reader settings view open from bottom as in R1
+- On iPhone, fix R1 way of presenting user settings (present on sheet instead of just adding view a subview)
+- On iPhone, consider if we can open settings as on iPad (from top dropdown instead of bottom) to simplify code
+- Wire add bookmark for R2
+- Fix resume reading (implement NYPLBook.locator getter)
+- Style bottom view (page # - chapter) as in R1
