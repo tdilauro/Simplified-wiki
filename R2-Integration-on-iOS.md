@@ -35,6 +35,6 @@ TODO items ([full list](https://jira.nypl.org/browse/SIMPLY-806?filter=12003)):
     - e.g. so that it’s possible to wire the buttons to different controllers
 - On iPhone, make R2 reader settings view open from bottom as in R1
 - On iPhone, consider if we can open settings as on iPad (from top dropdown instead of bottom) to simplify code, or at least fix R1 way of presenting user settings (present on sheet instead of just adding view a subview)
-- Wire add bookmark for R2
+- [SIMPLY-2608](https://jira.nypl.org/browse/SIMPLY-2608) Wire add bookmark for R2
 - [SIMPLY-2609](https://jira.nypl.org/browse/SIMPLY-2609) Implement resume reading (see NYPLBook.locator getter)
 - [SIMPLY-705](https://jira.nypl.org/browse/SIMPLY-705) Style bottom view (page # - chapter) as in R1
