@@ -30,8 +30,8 @@ Current state: https://github.com/ettore/Simplified-iOS/tree/story/SIMPLY-2617/r
 TODO items ([full list](https://jira.nypl.org/browse/SIMPLY-806?filter=12003)):
 - [SIMPLY-2472](https://jira.nypl.org/browse/SIMPLY-2472) Implement switch between R1 and R2 ereader depending if book has DRM or not
 - ~~Sort top icons (TOC, settings, bookmark) in same order as R1~~
-- [SIMPLY-2617](https://jira.nypl.org/browse/SIMPLY-2607) on R2, open TOC as on R1
-- Refactor R1 reader settings view in a way that’s reusable
+- [SIMPLY-2607](https://jira.nypl.org/browse/SIMPLY-2607) on R2, open TOC as on R1
+- [SIMPLY-2473](https://jira.nypl.org/browse/SIMPLY-2473) Refactor R1 reader settings view in a way that’s reusable
     - e.g. so that it’s possible to wire the buttons to different controllers
 - On iPhone, make R2 reader settings view open from bottom as in R1
 - On iPhone, consider if we can open settings as on iPad (from top dropdown instead of bottom) to simplify code, or at least fix R1 way of presenting user settings (present on sheet instead of just adding view a subview)
