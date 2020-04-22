@@ -4,9 +4,9 @@ In SimplyE currently the only class that actually depends on R1 is NYPLReaderRea
 
 R2 approach is much more structured: 
 1. the test-app has some light infrastructure to essentially give a ePub URL to R2's parser. The URL can be a file or http URL. 
-2. R2 parsing APIs return a R2Shared::Publication object and a callback for DRM purposes. 
+2. R2 parsing APIs return a R2Shared::Publication object and a callback for DRM purposes ([see in r2-testapp](https://github.com/readium/r2-testapp-swift/blob/develop/r2-testapp-swift/Library/LibraryService.swift#L317)). 
 3. The test app then adds the Publication to its R2Streamer::PublicationServer (running locally).
-4. It also creates a EPUBViewController. This is a custom light-weight VC that wraps a R2Navigator::EPUBNavigatorViewController for handling ebook nav commands (turn pages, etc), as well as other custom events such as presenting user settings, TOC, etc.  
+4. It creates a custom light-weight [EPUBViewController](https://github.com/readium/r2-testapp-swift/blob/develop/r2-testapp-swift/Reader/EPUB/EPUBViewController.swift) that wraps a R2Navigator::EPUBNavigatorViewController for handling ebook nav commands (turn pages, etc), as well as other custom events such as presenting user settings, TOC, etc.  
     - The EPUBNavigatorViewController does all the heavy lifting of setting up the view to render the book contents for us, which is great, leaving corollary aspects of the UI to the client app (i.e. the light-weight VC). It can also handle the backend storage of the user settings.
 
 # Step 2: Integrate basic backend functionality
@@ -31,7 +31,7 @@ TODO items ([full list](https://jira.nypl.org/browse/SIMPLY-806?filter=12003)):
 - [SIMPLY-2472](https://jira.nypl.org/browse/SIMPLY-2472) Implement switch between R1 and R2 ereader depending if book has DRM or not
 - ~~Sort top icons (TOC, settings, bookmark) in same order as R1~~
 - [SIMPLY-2607](https://jira.nypl.org/browse/SIMPLY-2607) on R2, open TOC as on R1
-- [SIMPLY-2473](https://jira.nypl.org/browse/SIMPLY-2473) Refactor R1 reader settings view in a way that’s reusable
+- ~~[SIMPLY-2473](https://jira.nypl.org/browse/SIMPLY-2473) Refactor R1 reader settings view in a way that’s reusable~~
     - e.g. so that it’s possible to wire the buttons to different controllers
     - open settings as on iPad (from top dropdown instead of bottom) to simplify code (confirmed with Product this is ok)
 - [SIMPLY-2608](https://jira.nypl.org/browse/SIMPLY-2608) Wire add bookmark for R2
