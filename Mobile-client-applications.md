@@ -80,9 +80,10 @@ Currently we do not have CI for SimplyE on iOS, although it's something that is 
 - Select the Distribution certificate and the NYPL_AdHoc_Wildcard provisioning profile.
 - Export to disk.
 - Drag .ipa to https://console.firebase.google.com/project/simplye-nypl/appdistribution/app/ios:org.nypl.labs.SimplyE/releases
-- Add Joe Dalton and/or other internal QA team members. DO NOT add anyone else available in Firebase without checking in with Product team first.
+- Add internal QA team member(s). Usually this is a QA engineer that has requested a build, but if unsure ask your team lead who should be added. DO NOT add anyone else available in Firebase without checking in with Product team first.
 - Add release notes. For QA team this can probably be a list of tickets / features. For a wider release, check in with Product.
 12. For TestFlight builds:
 - Choose App Store Connect.
 - Choose no App Thinning, check Rebuild from Bitcode and Strip Swift symbols. 
 - Select Distribution certificate and follow the prompts to upload to TestFlight.
+- For release notes, check in with Product to gather the approved release notes to add to TestFlight.
