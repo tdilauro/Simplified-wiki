@@ -50,7 +50,7 @@ TBD
 
 ### Code style
 
-We use a mix of Swift and Objective-C when developing applications for iOS. New work should be done in Swift, whenever possible and appropriate. Instead of writing a significant amount of Objective-C code, we strongly prefer to write the same functionality in Swift, even if it costs a bit of refactoring work. 
+We use a mix of Swift and Objective-C when developing applications for iOS. New work should be done in Swift, whenever possible and appropriate. For example, if you need to write a significant amount of Objective-C code to fix a bug or extend a feature, we strongly prefer to write the same functionality in Swift, even if it costs a bit of refactoring work. 
 
 When touching existing code do your best to match the code style of the file you're working on.
 
@@ -62,3 +62,27 @@ Objective-C code should again follow [Apple's Conventions](https://developer.app
 
 For releasing we follow the standard [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/) method of branching.
 
+Currently we do not have CI for SimplyE on iOS, although it's something that is desired and has been discussed for the future. In the mean time we follow these steps for distributing / releasing a new version of SimplyE:
+
+1. Clone the [official Simplified-iOS repo](https://github.com/NYPL-Simplified/Simplified-iOS/) and follow the [instructions for building third party dependencies](https://github.com/NYPL-Simplified/Simplified-iOS/blob/develop/README.md). Make sure to work off of the `develop` branch. With the exception of the Carthage dependencies, and if you haven't modified any files in the Adobe DRM SDK, you only have to do this step once. 
+2. `git checkout develop` # new release/RC builds always start from `develop`, per Git Flow.
+3. If you're preparing a new release, create a new release branch, e.g. `git checkout -b release/3.4.0`
+4. `./build-carthage.sh Debug`
+5. Verify your Certificates repo is up-to-date and then run `./update-certificates.sh`
+6. `open Simplified.xcodeproj`
+7. Verify the version and build number are correct.
+8. Create a new Archive.
+9. Verify there are no new warnings: if you do see them, either file a ticket or fix them in a PR.
+10. In Xcode Organizer, Validate the app and if all goes well Distribute it.
+11. For QA builds:
+- Choose Ad-Hoc Distribution.
+- Choose no App Thinning, check Rebuild from Bitcode and Strip Swift symbols.
+- Select the Distribution certificate and the NYPL_AdHoc_Wildcard provisioning profile.
+- Export to disk.
+- Drag .ipa to https://console.firebase.google.com/project/simplye-nypl/appdistribution/app/ios:org.nypl.labs.SimplyE/releases
+- Add Joe Dalton and/or other internal QA team members. DO NOT add anyone else available in Firebase without checking in with Product team first.
+- Add release notes. For QA team this can probably be a list of tickets / features. For a wider release, check in with Product.
+12. For TestFlight builds:
+- Choose App Store Connect.
+- Choose no App Thinning, check Rebuild from Bitcode and Strip Swift symbols. 
+- Select Distribution certificate and follow the prompts to upload to TestFlight.
