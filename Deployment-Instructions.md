@@ -206,6 +206,8 @@ export SIMPLIFIED_TEST_DATABASE="postgres://simplified_test:[password]@localhost
 
 These environment variables will point the application server to the correct database. All further configuration will be done through the administrative interface and stored in the database.
 
+_PYCHARM NOTE:_ If you're running the web application using PyCharm, editing the `activate` file may not do the job. You may need to define these two environment variables in your global Pycharm configuration.
+
 Now, activate the virtual environment:
 
 ```
@@ -235,3 +237,5 @@ If you use a different stack, we'd love for you to send us a setup walk-through 
 # Initial configuration
 
 Once you have the app server running, you can start configuring libraries and importing content, like any other use of the circulation manager ["Configuring a Demonstration Circulation Manager"](https://confluence.nypl.org/display/SIM/Quickstart%3A+Configuring+a+Demonstration+Circulation+Manager) will walk you through this process.
+
+In particular, you'll need to [connect the circulation manager to your Elasticsearch server](https://confluence.nypl.org/display/SIM/Quickstart%3A+Configuring+a+Demonstration+Circulation+Manager#Quickstart:ConfiguringaDemonstrationCirculationManager-CreatetheElasticsearchServiceIntegration) and [set up an initial library](https://confluence.nypl.org/display/SIM/Quickstart%3A+Configuring+a+Demonstration+Circulation+Manager#Quickstart:ConfiguringaDemonstrationCirculationManager-ConfigureaLibrary).
