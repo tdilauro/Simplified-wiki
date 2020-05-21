@@ -346,11 +346,11 @@ Annotations are synced between client and server using the [Web Annotation Proto
 
 # Site configuration
 
-## `ExternalIntegration`
-
-A ConfigurationSetting  holds information about an extra piece of site configuration.  A ConfigurationSetting may be associated with an ExternalIntegration, a Library, both, or neither.
-
 ## `ConfigurationSetting`
+
+A ConfigurationSetting holds information about an extra piece of site configuration.  A ConfigurationSetting may be associated with an ExternalIntegration, a Library, both, or neither.
+
+## `ExternalIntegration`
 
 An ExternalIntegration contains the configuration for connecting to a third-party API.  Commonly used third-party APIs include the metadata wrangler, DataSources that require protocols, authentication services, storage services, and search providers.
 
